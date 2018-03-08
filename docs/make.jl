@@ -13,7 +13,6 @@ makedocs(
 deploydocs(
   repo   = "github.com/BenLauwens/ThinkJulia.jl",
   target = "build",
-  julia  = "0.6.2",
   deps   = nothing,
   make   = nothing
 )
