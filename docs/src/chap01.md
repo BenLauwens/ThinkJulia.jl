@@ -7,3 +7,5 @@ On one level, you will be learning to program, a useful skill by itself.  On ano
 # What is a program?
 
 A **program** is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching and replacing text in a document or something graphical, like processing an image or playing a video.
+
+The details look different in different languages, but a few basic instructions appear in just about every language:
