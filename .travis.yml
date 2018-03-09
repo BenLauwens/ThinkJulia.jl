@@ -10,7 +10,9 @@ notifications:
   email: false
 git:
   depth: 99999999
-
+addons:
+  apt_packages:
+   - texlive-full
 #matrix:
 #  allow_failures:
 #  - julia: nightly
