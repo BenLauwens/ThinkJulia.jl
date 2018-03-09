@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "The way of the program",
     "title": "Arithmetic operators",
     "category": "section",
-    "text": "After \"Hello, World\", the next step is arithmetic.  Julia providesoperators, which are special symbols that represent computations like addition and multiplication.  The operators +, -, and * perform addition, subtraction, and multiplication, as in the following examples:40 + 2\n42 - 1\n6 * 7The operator / performs division: 84 / 2You might wonder why the result is 42.0 instead of 42. I\'ll explain in the next section.Finally, the operator ^ performs exponentiation; that is, it raises a number to a power:6^2 + 6"
+    "text": "After \"Hello, World\", the next step is arithmetic.  Julia provides operators, which are special symbols that represent computations like addition and multiplication.  The operators +, -, and * perform addition, subtraction, and multiplication, as in the following examples:40 + 2\n42 - 1\n6 * 7The operator / performs division: 84 / 2You might wonder why the result is 42.0 instead of 42. I\'ll explain in the next section.Finally, the operator ^ performs exponentiation; that is, it raises a number to a power:6^2 + 6"
 },
 
 {
@@ -118,6 +118,22 @@ var documenterSearchIndex = {"docs": [
     "title": "Exercise 2",
     "category": "section",
     "text": "Start the Julia REPL and use it as a calculator.How many seconds are there in 42 minutes 42 seconds?\nHow many miles are there in 10 kilometers?  Hint: there are 1.61 kilometers in a mile.\nIf you run a 10 kilometer race in 42 minutes 42 seconds, what is your average pace (time per mile in minutes and seconds)?  What is your average speed in miles per hour?"
+},
+
+{
+    "location": "chap02.html#",
+    "page": "Variables, expressions and statements",
+    "title": "Variables, expressions and statements",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap02.html#Variables,-expressions-and-statements-1",
+    "page": "Variables, expressions and statements",
+    "title": "Variables, expressions and statements",
+    "category": "section",
+    "text": "One of the most powerful features of a programming language is the ability to manipulate variables. A variable is a name that refers to a value."
 },
 
 {
