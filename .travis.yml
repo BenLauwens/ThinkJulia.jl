@@ -17,4 +17,4 @@ git:
 
 after_success:
   # generate documentation
-  - julia -e 'cd(Pkg.dir("ThinkJulia")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
+  - julia -e 'cd(Pkg.dir("ThinkJulia")); Pkg.add("Documenter"); Pkg.add("TikzPictures"); include(joinpath("docs", "make.jl"))'
