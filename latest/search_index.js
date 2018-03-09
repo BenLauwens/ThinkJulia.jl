@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "The way of the program",
     "title": "The first program",
     "category": "section",
-    "text": "Traditionally, the first program you write in a new language is called \"Hello, World!\" because all it does is display the words \"Hello, World!\".  In Julia, it looks like this:println(\"Hello, World!\")This is an example of a print statement, although it doesn\'t actually print anything on paper.  It displays a result on the screen.  In this case, the result is the wordsHello, World!The quotation marks in the program mark the beginning and end of the text to be displayed; they don\'t appear in the result.The parentheses indicate that println is a function.  We\'ll get to functions in Chapter Functions."
+    "text": "Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”.  In Julia, it looks like this:println(\"Hello, World!\")This is an example of a print statement, although it doesn\'t actually print anything on paper.  It displays a result on the screen.  In this case, the result is the wordsHello, World!The quotation marks in the program mark the beginning and end of the text to be displayed; they don\'t appear in the result.The parentheses indicate that println is a function.  We\'ll get to functions in Chapter Functions."
 },
 
 {
