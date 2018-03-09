@@ -71,7 +71,7 @@ It turns out that `type` is one of Julia's **keywords**. The REPL uses keywords 
 Julia has these keywords:
 
 ```
-abstract    baremodule  begin       break       catch
+abstract    baremodule   begin      break       catch
 ccall       const        continue   do          else
 elseif      end          export     finally     for
 function    global       if         import      importall
@@ -250,23 +250,23 @@ Three kinds of errors can occur in a program: syntax errors, runtime errors, and
 
 ## Glossary
 
-- **variable**:  A name that refers to a value.
+- **variable**: A name that refers to a value.
 
-- **assignment**:  A statement that assigns a value to a variable.
+- **assignment**: A statement that assigns a value to a variable.
 
-- **state diagram**:  A graphical representation of a set of variables and the values they refer to.
+- **state diagram**: A graphical representation of a set of variables and the values they refer to.
 
-- **keyword**:  A reserved word that is used to parse a program; you cannot use keywords like `if`, `function`, and `while` as variable names.
+- **keyword**: A reserved word that is used to parse a program; you cannot use keywords like `if`, `function`, and `while` as variable names.
 
-- **operand**:  One of the values on which an operator operates.
+- **operand**: One of the values on which an operator operates.
 
-- **expression**:  A combination of variables, operators, and values that represents a single result.
+- **expression**: A combination of variables, operators, and values that represents a single result.
 
-- **evaluate**:  To simplify an expression by performing the operations in order to yield a single value.
+- **evaluate**: To simplify an expression by performing the operations in order to yield a single value.
 
-- **statement**:  A section of code that represents a command or action.  So far, the statements we have seen are assignments and print statements.
+- **statement**: A section of code that represents a command or action. So far, the statements we have seen are assignments and print statements.
 
-- **execute**:  To run a statement and do what it says.
+- **execute**: To run a statement and do what it says.
 
 - **interactive mode**: A way of using the Julia REPL by typing code at the prompt.
 
@@ -274,19 +274,19 @@ Three kinds of errors can occur in a program: syntax errors, runtime errors, and
 
 - **script**: A program stored in a file.
 
-- **order of operations**:  Rules governing the order in which expressions involving multiple operators and operands are evaluated.
+- **order of operations**: Rules governing the order in which expressions involving multiple operators and operands are evaluated.
 
-- **concatenate**:  To join two operands end-to-end.
+- **concatenate**: To join two operands end-to-end.
 
-- **comment**:  Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
+- **comment**: Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
 
-- **syntax error**:  An error in a program that makes it impossible to parse (and therefore impossible to interpret).
+- **syntax error**: An error in a program that makes it impossible to parse (and therefore impossible to interpret).
 
-- **exception**:  An error that is detected while the program is running.
+- **exception**: An error that is detected while the program is running.
 
-- **semantics**:  The meaning of a program.
+- **semantics**: The meaning of a program.
 
-- **semantic error**:   An error in a program that makes it do something other than what the programmer intended.
+- **semantic error**: An error in a program that makes it do something other than what the programmer intended.
 
 ## Exercises
 
@@ -294,7 +294,7 @@ Three kinds of errors can occur in a program: syntax errors, runtime errors, and
 
 Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.
 
-1. We've seen that `n = 42` is legal.  What about `42 = n`?
+1. We've seen that `n = 42` is legal. What about `42 = n`?
 
 2. How about `x = y = 1`?
 
@@ -310,6 +310,6 @@ Practice using the Julia REPL as a calculator:
 
 1. The volume of a sphere with radius ``r`` is ``\frac{4}{3} \pi r^3``. What is the volume of a sphere with radius 5?
 
-2. Suppose the cover price of a book is € 24.95, but bookstores get a 40 % discount.  Shipping costs € 3 for the first copy and 75 cents for each additional copy.  What is the total wholesale cost for 60 copies?
+2. Suppose the cover price of a book is € 24.95, but bookstores get a 40 % discount. Shipping costs € 3 for the first copy and 75 cents for each additional copy. What is the total wholesale cost for 60 copies?
 
 3. If I leave my house at 6:52 am and run 1 mile at an easy pace (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at easy pace again, what time do I get home for breakfast?
