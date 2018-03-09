@@ -1,4 +1,4 @@
-### License
+# License
 
 Copyright ©2018 Allen Downey, Ben Lauwens.
 
