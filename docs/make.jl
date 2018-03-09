@@ -3,7 +3,7 @@ using Documenter
 makedocs(
   format = :html,
   sitename = "Think Julia",
-  authors = "Ben Lauwens",
+  authors = "Ben Lauwens with Allen B. Downey",
   pages = [
     "Frontmatter" => [
       "copyright.md"
@@ -20,5 +20,7 @@ deploydocs(
   repo   = "github.com/BenLauwens/ThinkJulia.jl",
   target = "build",
   deps   = nothing,
-  make   = nothing
+  make   = nothing,
+  julia  = "0.6",
+  osname = "linux"
 )
