@@ -10,6 +10,7 @@ makedocs(
     ],
     "Mainmatter" => [
       "chap01.md",
+      "chap02.md",
       "chap03.md"
     ]
   ]

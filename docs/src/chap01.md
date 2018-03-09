@@ -69,7 +69,7 @@ The parentheses indicate that `println` is a function.  We'll get to functions i
 
 ## Arithmetic operators
 
-After "Hello, World", the next step is arithmetic.  Julia provides**operators**, which are special symbols that represent computations like addition and multiplication.  
+After "Hello, World", the next step is arithmetic.  Julia provides **operators**, which are special symbols that represent computations like addition and multiplication.  
 
 The operators `+`, `-`, and `*` perform addition, subtraction, and multiplication, as in the following examples:
 
