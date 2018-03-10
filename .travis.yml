@@ -12,7 +12,9 @@ git:
   depth: 99999999
 addons:
   apt_packages:
-    - texlive-full
+    - texlive-luatex
+    - texlive-fonts-extra
+    - pgf
     - pdf2svg
 #matrix:
 #  allow_failures:
@@ -21,4 +23,3 @@ addons:
 after_success:
   # generate documentation
   - julia -e 'cd(Pkg.dir("ThinkJulia")); Pkg.add("Documenter"); Pkg.add("TikzPictures"); include(joinpath("docs", "make.jl"))'
-  - julia -e 'cd(Pkg.dir("ThinkJulia")); cd("docs/build"); run(`pdf2svg fig01.pdf fig01.svg`)'

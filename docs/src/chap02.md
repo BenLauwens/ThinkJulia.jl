@@ -35,7 +35,7 @@ p = TikzPicture(L"""
   \\usepackage{newunicodechar}
 """)
  #save(SVG("fig01"), p)
- save(PDF("fig01"), p)
+ save(TEX("fig01"), p)
  nothing
 ```
 
