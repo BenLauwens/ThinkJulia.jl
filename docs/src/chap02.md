@@ -14,7 +14,7 @@ n = 17
 
 This example makes three assignments. The first assigns a string to a new variable named `message`; the second gives the integer `17` to `n`; the third assigns the (approximate) value of ``\pi`` to `π`.
 
-A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable's state of mind).
+A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable's state of mind). Figure 1 shows the result of the previous example.
 
 ```@eval
 using TikzPictures
@@ -31,7 +31,7 @@ p = TikzPicture(L"""
 	\draw[-latex] (pi) -- (piv);
 """; options="", preamble="""
   \\usepackage{fontspec}
-  \\setmonofont{Roboto Mono}[Scale=MatchLowercase]
+  \\setmonofont{DejaVuSansMono}[Scale=MatchLowercase]
   \\usepackage{newunicodechar}
 """)
  save(SVG("fig01"), p)
@@ -39,7 +39,21 @@ p = TikzPicture(L"""
  nothing
 ```
 
-![State diagram.](fig01.svg)
+```@raw html
+<figure>
+  <img src="fig01.svg" alt="State diagram.">
+  <figcaption>Figure 1. State diagram.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig01}
+\caption{State diagram.}
+\label{fig01}
+\end{figure}
+```
 
 ## Variable names
 
