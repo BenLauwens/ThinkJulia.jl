@@ -1,31 +1,78 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.10)  10 MAR 2018 13:23
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.10)  10 MAR 2018 13:31
  \write18 enabled.
 **fig01
 (./fig01.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cls
+Document Class: standalone 2012/09/15 v1.1b Class to compile TeX sub-files stand
+alone
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
 
-! LaTeX Error: File `standalone.cls' not found.
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+\XKV@depth=\count79
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex)))
+\sa@internal=\count80
+
+(/usr/share/texlive/texmf-dist/tex/latex/standalone/standalone.cfg
+File: standalone.cfg 2012/09/15 v1.1b Default configuration file for 'standalone
+' class
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+
+! LaTeX Error: File `tikz.sty' not found.
 
 Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: cls)
+or enter new name. (Default extension: sty)
 
 Enter file name: 
 ! Emergency stop.
 <read *> 
    
-l.2   \usepackage
-               {fontspec}
+l.514 \fi
+       
 End of file on the terminal!
 
 
 
 Here is how much of LuaTeX's memory you used:
- 11 strings out of 494814
- 100000,89155 words of node,token memory allocated 188 words of node memory still in use:
-   31 glue_spec, 1 dir nodes
-   avail lists: 2:12,3:1
- 3727 multiletter control sequences out of 65536+600000
- 14 fonts using 563007 bytes
- 10i,0n,7p,39b,8s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 697 strings out of 494814
+ 100000,89155 words of node,token memory allocated 237 words of node memory still in use:
+   1 hlist, 1 rule, 38 glue_spec, 1 if_stack, 1 write, 1 dir nodes
+   avail lists: 2:18,3:1,4:2,6:2,9:3
+ 4342 multiletter control sequences out of 65536+600000
+ 15 fonts using 602239 bytes
+ 34i,0n,56p,181b,36s stack positions out of 5000i,500n,10000p,200000b,100000s
 !  ==> Fatal error occurred, no output PDF file produced!
