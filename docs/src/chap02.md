@@ -31,8 +31,6 @@ p = TikzPicture(L"""
 	\draw[-latex] (pi) -- (piv);
 """; options="", preamble="""
   \\usepackage{fontspec}
-  \\usepackage{mathpazo}
-  \\setmainfont{Palatino}
   \\setmonofont{Menlo}[SizeFeatures={Size=9}]
   \\usepackage{newunicodechar}
 """)
@@ -236,7 +234,7 @@ Good variable names can reduce the need for comments, but long names can make co
 
 Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful to distinguish between them in order to track them down more quickly.
 
-- **Syntax error**: "Syntax" refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so `(1 + 2)` is legal, but `8)` is a **syntax error**.
+- **Syntax error**: "Syntax" refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so `(1 + 2)` is legal, but `8)` is a syntax error.
 
   If there is a syntax error anywhere in your program, Julia displays an error message and quits, and you will not be able to run the program. During the first few weeks of your programming career, you might spend a lot of time tracking down syntax errors. As you gain experience, you will make fewer errors and find them faster.
 

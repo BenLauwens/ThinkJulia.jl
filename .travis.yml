@@ -12,7 +12,8 @@ git:
   depth: 99999999
 addons:
   apt_packages:
-   - texlive-full
+    - texlive-full
+    - pdf2svg
 #matrix:
 #  allow_failures:
 #  - julia: nightly
