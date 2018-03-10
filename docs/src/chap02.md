@@ -32,7 +32,6 @@ p = TikzPicture(L"""
 """; options="", preamble="""
   \\usepackage{fontspec}
   \\setmonofont{DejaVuSansMono}[Scale=MatchLowercase]
-  \\usepackage{newunicodechar}
 """)
  #save(SVG("fig01"), p)
  save(PDF("fig01"), p)
