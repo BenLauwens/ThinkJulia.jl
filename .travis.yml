@@ -16,6 +16,7 @@ addons:
     - texlive-fonts-extra
     - texlive-latex-extra
     - texlive-luatex
+    - texlive-pictures
     - pdf2svg
 #matrix:
 #  allow_failures:
