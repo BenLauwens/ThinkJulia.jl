@@ -13,6 +13,7 @@ git:
 addons:
   apt_packages:
     - texlive-luatex
+    - texlive-latex-extra
     - texlive-fonts-extra
     - pgf
     - pdf2svg
