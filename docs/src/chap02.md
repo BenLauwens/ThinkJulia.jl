@@ -34,14 +34,14 @@ p = TikzPicture(L"""
   \\setmonofont{DejaVuSansMono}[Scale=MatchLowercase]
   \\usepackage{newunicodechar}
 """)
- save(SVG("fig01"), p)
+ #save(SVG("fig01"), p)
  save(PDF("fig01"), p)
  nothing
 ```
 
 ```@raw html
 <figure>
-  <img src="fig01.svg" alt="State diagram.">
+  <img src="fig01.svg" alt="State diagram." width=80%>
   <figcaption>Figure 1. State diagram.</figcaption>
 </figure>
 ```
