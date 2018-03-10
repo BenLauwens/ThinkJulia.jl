@@ -31,7 +31,7 @@ p = TikzPicture(L"""
 	\draw[-latex] (pi) -- (piv);
 """; options="", preamble="""
   \\usepackage{fontspec}
-  \\setmonofont{Menlo}[SizeFeatures={Size=9}]
+  \\setmonofont{Roboto Mono}[Scale=MatchLowercase]
   \\usepackage{newunicodechar}
 """)
  save(SVG("fig01"), p)

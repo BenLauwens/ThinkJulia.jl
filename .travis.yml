@@ -12,7 +12,8 @@ git:
   depth: 99999999
 addons:
   apt_packages:
-    - texlive-full
+    - texlive
+    - texlive-fonts-extra
     - pdf2svg
 #matrix:
 #  allow_failures:
