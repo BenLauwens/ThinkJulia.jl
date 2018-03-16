@@ -6,7 +6,7 @@ One of the most powerful features of a programming language is the ability to ma
 
 An **assignment statement** creates a new variable and gives it a value:
 
-```@repl
+```@repl chap02
 message = "And now for something completely different"
 n = 17
 π = 3.141592653589793
@@ -101,7 +101,7 @@ An **expression** is a combination of values, variables, and operators. A value 
 n = 17
 ```
 
-```@repl n
+```@repl chap02
 42
 n
 n + 25
@@ -144,7 +144,7 @@ But if you type the same code into a script and run it, you get no output at all
 
 ```@example
 miles = 26.2
-print(miles * 1.61)
+println(miles * 1.61)
 ```
 
 This behavior can be confusing at first.
@@ -192,7 +192,7 @@ Unicode characters that can be entered via tab completion of LaTeX-like abbrevia
 In general, you can't perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
 
 ```julia
-"2"-"1"    "eggs"/"easy"    "third"+"a charm"
+"2" - "1"    "eggs" / "easy"    "third" + "a charm"
 ```
 
 But there are two exceptions, `*` and `^`.
