@@ -8,7 +8,8 @@ makedocs(
     "copyright.md",
     "chap01.md",
     "chap02.md",
-    "chap03.md"
+    "chap03.md",
+    "chap04.md"
   ]
 )
 

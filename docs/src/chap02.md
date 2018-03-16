@@ -40,7 +40,7 @@ p = TikzPicture(L"""
 
 ```@raw html
 <figure>
-  <img src="fig21.svg" alt="State diagram." width=80%>
+  <img src="fig21.svg" alt="State diagram.">
   <figcaption>Figure 1. State diagram.</figcaption>
 </figure>
 ```

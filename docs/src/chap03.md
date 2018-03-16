@@ -346,7 +346,7 @@ p = TikzPicture(L"""
 
 ```@raw html
 <figure>
-  <img src="fig31.svg" alt="Stack diagram." width=80%>
+  <img src="fig31.svg" alt="Stack diagram.">
   <figcaption>Figure 1. Stack diagram.</figcaption>
 </figure>
 ```
