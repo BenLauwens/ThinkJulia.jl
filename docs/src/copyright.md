@@ -1,3 +1,20 @@
+```@raw latex
+\begin{titlingpage}
+\vspace*{\stretch{2}}
+\normalfont\sffamily\Huge\centering Think Julia\\
+\vspace*{\stretch{1}}
+\normalfont\sffamily\Large\centering HOW TO THINK LIKE A COMPUTER SCIENTISTS\\
+\vspace*{\stretch{2}}
+\normalfont\sffamily\huge\centering Ben Lauwens\\
+\vspace*{\stretch{1}}
+\normalfont\sffamily\Large\centering with Allen B. Downey\\
+\vspace*{\stretch{3}}
+\end{titlingpage}
+\frontmatter
+
+\tableofcontents
+```
+
 # License
 
 Copyright ©2018 Allen Downey, Ben Lauwens.

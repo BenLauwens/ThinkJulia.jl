@@ -31,7 +31,7 @@ p = TikzPicture(L"""
 \draw[-latex] (pi) -- (piv);
 """; options="", preamble="""
   \\usepackage{fontspec}
-  \\setmonofont{Ubuntu Mono}
+  \\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
 """)
  save(SVG("fig01"), p)
  save(PDF("fig01"), p)
