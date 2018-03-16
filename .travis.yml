@@ -12,6 +12,9 @@ git:
   depth: 99999999
 addons:
   apt_packages:
+    - ttf-ubuntu-font-family
+    - texlive-fonts-recommended
+    - texlive-font-utils
     - texlive-luatex
     - texlive-xetex
     - texlive-latex-extra
