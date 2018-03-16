@@ -30,7 +30,7 @@ p = TikzPicture(L"""
 \node[anchor=west] (piv) at (-3, -0.5) {\tt 3.141592653589793};
 \draw[-latex] (pi) -- (piv);
 """; options="", preamble="""
-  %\\usepackage{fontspec}
+  \\usepackage{fontspec}
   %\\setmonofont{Ubuntu Mono}[Scale=MatchLowercase]
 """)
  save(SVG("fig01"), p)
