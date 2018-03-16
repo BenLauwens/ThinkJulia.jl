@@ -65,7 +65,7 @@ The first example uses `log10` to compute a signal-to-noise ratio in decibels (a
 
 The second example finds the sine of radians. The name of the variable is a hint that `sin` and the other trigonometric functions (`cos`, `tan`, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by $\pi$:
 
-```@repl
+```@repl chap03
 degrees = 45
 radians = degrees / 180.0 * π
 sin(radians)
@@ -84,21 +84,13 @@ So far, we have looked at the elements of a program—variables, expressions, an
 
 One of the most useful features of programming languages is their ability to take small building blocks and compose them. For example, the argument of a function can be any kind of expression, including arithmetic operators:
 
-```@setup degrees
-degrees = 45
-```
-
-```@repl degrees
+```@repl chap03
 x = sin(degrees / 360.0 * 2 * π)
 ```
 
 And even function calls:
 
-```@setup x
-x = sin(45 / 360.0 * 2 * π)
-```
-
-```@repl x
+```@repl chap03
 x = exp(log(x+1))
 ```
 
@@ -173,18 +165,14 @@ end
 
 And then call `repeat_lyrics`:
 
-```@setup repeat_lyrics
-function print_lyrics()
-println("I'm a lumberjack, and I'm okay.")
-println("I sleep all night and I work all day.")
-end
+```@setup print_lyrics
 function repeat_lyrics()
 print_lyrics()
 print_lyrics()
 end
 ```
 
-```@repl repeat_lyrics
+```@repl print_lyrics
 repeat_lyrics()
 ```
 
@@ -293,19 +281,14 @@ end
 
 This function takes two arguments, concatenates them, and prints the result twice. Here is an example that uses it:
 
-```@setup cat_twice
-function print_twice(bruce)
-    println(bruce)
-    println(bruce)
-end
-
+```@setup print_twice
 function cat_twice(part1, part2)
     concat = part1 * part2
     print_twice(concat)
 end
 ```
 
-```@repl cat_twice
+```@repl print_twice
 line1 = "Bing tiddle "
 line2 = "tiddle bang."
 cat_twice(line1, line2)
@@ -313,7 +296,7 @@ cat_twice(line1, line2)
 
 When `cat_twice` terminates, the variable `concat` is destroyed. If we try to print it, we get an exception:
 
-```@repl cat_twice
+```@repl print_twice
 println(concat)
 ```
 

@@ -97,10 +97,6 @@ You don't have to memorize this list. In most development environments, keywords
 
 An **expression** is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
 
-```@setup n
-n = 17
-```
-
 ```@repl chap02
 42
 n
