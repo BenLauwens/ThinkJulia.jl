@@ -19,7 +19,7 @@ A common way to represent variables on paper is to write the name with an arrow 
 ```@eval
 using TikzPictures
 p = TikzPicture(L"""
-  \node [draw, fill=lightgray, minimum width=11.5cm, minimum height=1.5cm]{};
+  \node[draw, fill=lightgray, minimum width=11.5cm, minimum height=1.5cm]{};
 	\node[anchor=east] (me) at(-4, 0.5) {\tt message};
 	\node[anchor=west] (mev) at (-3, 0.5) {\tt "And now for something completely different"};
 	\draw[-latex] (me) -- (mev);
