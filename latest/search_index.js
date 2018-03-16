@@ -61,7 +61,7 @@ var documenterSearchIndex = {"docs": [
     "page": "The way of the program",
     "title": "Arithmetic operators",
     "category": "section",
-    "text": "After \"Hello, World\", the next step is arithmetic. Julia provides operators, which are special symbols that represent computations like addition and multiplication. The operators +, -, and * perform addition, subtraction, and multiplication, as in the following examples:40 + 2\n42 - 1\n6 * 7The operator / performs division: 84 / 2You might wonder why the result is 42.0 instead of 42. I\'ll explain in the next section.Finally, the operator ^ performs exponentiation; that is, it raises a number to a power:6^2 + 6"
+    "text": "After \"Hello, World\", the next step is arithmetic. Julia provides operators, which are special symbols that represent computations like addition and multiplication. The operators +, -, and * perform addition, subtraction, and multiplication, as in the following examples:40 + 2\n43 - 1\n6 * 7The operator / performs division: 84 / 2You might wonder why the result is 42.0 instead of 42. I\'ll explain in the next section.Finally, the operator ^ performs exponentiation; that is, it raises a number to a power:6^2 + 6"
 },
 
 {
