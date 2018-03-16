@@ -396,7 +396,7 @@ This list of functions is called a **traceback**. It tells you what program file
 
 The order of the functions in the traceback is the inverse of the order of the frames in the stack diagram. The function that is currently running is at the top.
 
-# Fruitful functions and void functions
+## Fruitful functions and void functions
 
 Some of the functions we have used, such as the math functions, return results; for lack of a better name, I call them **fruitful functions**. Other functions, like `print_twice`, perform an action but don’t return a value. They are called **void functions**.
 
