@@ -12,13 +12,11 @@ git:
   depth: 99999999
 addons:
   apt_packages:
+    - lmodern
     - ttf-ubuntu-font-family
-    - texlive-fonts-recommended
-    - texlive-font-utils
     - texlive-luatex
     - texlive-xetex
     - texlive-latex-extra
-    - texlive-fonts-extra
     - pgf
     - pdf2svg
 #matrix:
