@@ -5,7 +5,7 @@
 
 The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
 
-The single most important skill for a computer scientist is **problem solving**. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That's why this chapter is called, "The way of the program".
+The single most important skill for a computer scientist is **problem solving**. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That's why this chapter is called, “The way of the program”.
 
 On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.
 
@@ -185,7 +185,7 @@ Learning to debug can be frustrating, but it is a valuable skill that is useful 
 The process of formulating a problem, finding a solution, and expressing it.
 
 *high-level language*:
-A programming language like Python that is designed to be easy for humans to read and write.
+A programming language like Julia that is designed to be easy for humans to read and write.
 
 *low-level language*:
 A programming language that is designed to be easy for a computer to run; also called “machine language” or “assembly language”.
@@ -203,7 +203,7 @@ Characters displayed by the interpreter to indicate that it is ready to take inp
 A set of instructions that specifies a computation.
 
 *print statement*:
-An instruction that causes the Python interpreter to display a value on the screen.
+An instruction that causes the Julia REPL to display a value on the screen.
 
 *operator*:
 A special symbol that represents a simple computation like addition, multiplication, or string concatenation.

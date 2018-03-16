@@ -1,14 +1,14 @@
 ```@raw latex
 \begin{titlingpage}
-\vspace*{\stretch{2}}
+\vspace*{\stretch{3}}
 \normalfont\sffamily\Huge\centering Think Julia\\
-\vspace*{\stretch{1}}
-\normalfont\sffamily\Large\centering HOW TO THINK LIKE A COMPUTER SCIENTISTS\\
 \vspace*{\stretch{2}}
+\normalfont\sffamily\Large\centering HOW TO THINK LIKE A COMPUTER SCIENTISTS\\
+\vspace*{\stretch{3}}
 \normalfont\sffamily\huge\centering Ben Lauwens\\
 \vspace*{\stretch{1}}
 \normalfont\sffamily\Large\centering with Allen B. Downey\\
-\vspace*{\stretch{3}}
+\vspace*{\stretch{4}}
 \end{titlingpage}
 \frontmatter
 
