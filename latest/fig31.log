@@ -1,0 +1,31 @@
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.16)  16 MAR 2018 18:57
+ \write18 enabled.
+**fig31
+(./fig31.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+
+! LaTeX Error: File `standalone.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+   
+l.2   \usepackage
+               {fontspec}
+End of file on the terminal!
+
+
+
+Here is how much of LuaTeX's memory you used:
+ 11 strings out of 494814
+ 100000,89155 words of node,token memory allocated 188 words of node memory still in use:
+   31 glue_spec, 1 dir nodes
+   avail lists: 2:12,3:1
+ 3727 multiletter control sequences out of 65536+600000
+ 14 fonts using 563007 bytes
+ 10i,0n,7p,39b,8s stack positions out of 5000i,500n,10000p,200000b,100000s
+!  ==> Fatal error occurred, no output PDF file produced!
