@@ -5,14 +5,10 @@ makedocs(
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",
   pages = [
-    "Frontmatter" => [
-      "copyright.md"
-    ],
-    "Mainmatter" => [
-      "chap01.md",
-      "chap02.md",
-      "chap03.md"
-    ]
+    "copyright.md",
+    "chap01.md",
+    "chap02.md",
+    "chap03.md"
   ]
 )
 

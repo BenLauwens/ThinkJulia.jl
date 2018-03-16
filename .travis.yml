@@ -24,4 +24,5 @@ addons:
 
 after_success:
   # generate documentation
+  - luaotfload-tool --update
   - julia -e 'cd(Pkg.dir("ThinkJulia")); Pkg.add("Documenter"); Pkg.add("TikzPictures"); include(joinpath("docs", "make.jl"))'

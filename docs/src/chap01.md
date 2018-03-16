@@ -1,3 +1,6 @@
+```@raw latex
+\mainmatter
+```
 # The way of the program
 
 The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
@@ -178,67 +181,67 @@ Learning to debug can be frustrating, but it is a valuable skill that is useful 
 
 ## Glossary
 
-**problem solving**:
+*problem solving*:
 The process of formulating a problem, finding a solution, and expressing it.
 
-**high-level language**:
+*high-level language*:
 A programming language like Python that is designed to be easy for humans to read and write.
 
-**low-level language**:
+*low-level language*:
 A programming language that is designed to be easy for a computer to run; also called “machine language” or “assembly language”.
 
-**portability**:
+*portability*:
 A property of a program that can run on more than one kind of computer.
 
-**REPL**:
+*REPL*:
 A program that reads another program and executes it
 
-**prompt**:
+*prompt*:
 Characters displayed by the interpreter to indicate that it is ready to take input from the user.
 
-**program**:
+*program*:
 A set of instructions that specifies a computation.
 
-**print statement**:
+*print statement*:
 An instruction that causes the Python interpreter to display a value on the screen.
 
-**operator**:
+*operator*:
 A special symbol that represents a simple computation like addition, multiplication, or string concatenation.
 
-**value**:
+*value*:
 One of the basic units of data, like a number or string, that a program manipulates.
 
-**type**:
+*type*:
 A category of values. The types we have seen so far are integers (`Int64`), floating-point numbers (`Float64`), and strings (`String`).
 
-**integer**:
+*integer*:
 A type that represents whole numbers.
 
-**floating-point**:
+*floating-point*:
 A type that represents numbers with fractional parts.
 
-**string**:
+*string*:
 A type that represents sequences of characters.
 
-**natural language**:
+*natural language*:
 Any one of the languages that people speak that evolved naturally.
 
-**formal language**:
+*formal language*:
 Any one of the languages that people have designed for specific purposes, such as representing mathematical ideas or computer programs; all programming languages are formal languages.
 
-**token**:
+*token*:
 One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.
 
-**syntax**:
+*syntax*:
 The rules that govern the structure of a program.
 
-**parse**:
+*parse*:
 To examine a program and analyze the syntactic structure.
 
-**bug**:
+*bug*:
 An error in a program.
 
-**debugging**:
+*debugging*:
 The process of finding and correcting bugs.
 
 ## Exercises
