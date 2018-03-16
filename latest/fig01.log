@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.16)  16 MAR 2018 08:47
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.16)  16 MAR 2018 08:52
  \write18 enabled.
 **fig01
 (./fig01.tex
@@ -586,7 +586,7 @@ luaotfload:  then use the possibly updated libraries. The merged
 luaotfload:  version is not supported as it is a frozen instance.
 luaotfload:  Problems can be reported to the ConTeXt mailing list."
 luaotfload: pop namespace from font loader -- non-destructive
-luaotfload: fontloader loaded in 0.038 seconds
+luaotfload: fontloader loaded in 0.040 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -666,33 +666,231 @@ File: eu2lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 luaotfload | load : auto-selecting default features for script: latn
 luaotfload | load : no defaults for script "latn", falling back to "dflt"
-luaotfload | db : Font names database loaded
-luaotfload | fonts : font with asked name 'lmroman10-regular' is not found using
- lookup 'file' :
-luaotfload | fonts : unknown font 'lmroman10-regular', loading aborted :
-! Font \EU2/lmr/m/n/10=file:lmroman10-regular:script=latn;+trep;+tlig; at 10pt n
-ot loadable: metric data not found or bad.
-<to be read again> 
-relax 
-l.100 \fontencoding\encodingdefault\selectfont
-                                            
+luaotfload | db : Font names database loaded(load luc: /home/travis/.texmf-var/l
+uatex-cache/generic/fonts/otf/lmroman10-regular.luc))
+(/usr/share/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many o
+ther characters in Unicode lower plane
+
+(/usr/share/texmf/tex/latex/tipa/t3enc.def
+File: t3enc.def 2001/12/31 T3 encoding
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"(load l
+uc: /home/travis/.texmf-var/luatex-cache/generic/fonts/otf/lmromanslant10-regula
+r.luc)
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"(load l
+uc: /home/travis/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-italic.luc)
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"(load l
+uc: /home/travis/.texmf-var/luatex-cache/generic/fonts/otf/lmroman10-bold.luc)
+LaTeX Font Info:    Try loading font information for EU2+lmss on input line 357.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/euenc/eu2lmss.fd
+File: eu2lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"(load l
+uc: /home/travis/.texmf-var/luatex-cache/generic/fonts/otf/lmsans10-regular.luc)
+)
+\tipaTiiicode=\count315
+\tipasavetokens=\toks26
+\tipachecktokens=\toks27
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \fontspec with arg. spec. 'O{}m' on line 44.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmainfont with arg. spec. 'O{}m' on line 49.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setsansfont with arg. spec. 'O{}m' on line 54.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmonofont with arg. spec. 'O{}m' on line 59.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathrm with arg. spec. 'O{}m' on line 68.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setboldmathrm with arg. spec. 'O{}m' on line 72.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathsf with arg. spec. 'O{}m' on line 76.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \setmathtt with arg. spec. 'O{}m' on line 80.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontfamily with arg. spec. 'mO{}m' on line 99.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontface with arg. spec. 'mO{}m' on line 103.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \defaultfontfeatures with arg. spec. 'om' on line
+. 111.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \addfontfeatures with arg. spec. 'm' on line 147.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontfeature with arg. spec. 'mm' on line 159.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newAATfeature with arg. spec. 'mmmm' on line 167.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newICUfeature with arg. spec. 'mmm' on line 175.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \aliasfontfeature with arg. spec. 'mm' on line
+. 204.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \aliasfontfeatureoption with arg. spec. 'mmm' on
+. line 206.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontscript with arg. spec. 'mm' on line 211.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \newfontlanguage with arg. spec. 'mm' on line 238.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareFontsExtensions with arg. spec. 'm' on
+. line 259.
+.................................................
+Variant \prop_gput:cnV already defined; not changing it on line 586
+Variant \prop_gput:cnx already defined; not changing it on line 587
+\l_fontspec_tmp_int=\count316
+LaTeX Info: Redefining \itshape on input line 2008.
+LaTeX Info: Redefining \slshape on input line 2013.
+LaTeX Info: Redefining \scshape on input line 2018.
+LaTeX Info: Redefining \upshape on input line 2023.
+
+(/usr/share/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+\g__file_internal_ior=\read2
+luaotfload | load : auto-selecting default features for script: dflt(load luc: /
+home/travis/.texmf-var/luatex-cache/generic/fonts/otf/ubuntumono-r.luc)
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload: font no 21 (UbuntuMono-Regular) defines feature case for script latn
+luaotfload: font no 21 (UbuntuMono-Regular) defines feature case for script latn
+\g_fontspec_family_Ubuntu Mono_int=\count317
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload: font no 21 (UbuntuMono-Regular) does not define feature smcp for scr
+ipt latn with language dflt
+luaotfload: no font with id 21
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload | load : auto-selecting default features for script: dflt(load luc: /
+home/travis/.texmf-var/luatex-cache/generic/fonts/otf/ubuntumono-b.luc)
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload: font no 22 (UbuntuMono-Bold) does not define feature smcp for script
+ latn with language dflt
+luaotfload: no font with id 22
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload | load : auto-selecting default features for script: dflt(load luc: /
+home/travis/.texmf-var/luatex-cache/generic/fonts/otf/ubuntumono-ri.luc)
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload: font no 23 (UbuntuMono-Italic) does not define feature smcp for scri
+pt latn with language dflt
+luaotfload: no font with id 23
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload | load : auto-selecting default features for script: dflt(load luc: /
+home/travis/.texmf-var/luatex-cache/generic/fonts/otf/ubuntumono-bi.luc)
+luaotfload | load : auto-selecting default features for script: dflt
+luaotfload: font no 24 (UbuntuMono-BoldItalic) does not define feature smcp for 
+script latn with language dflt
+luaotfload: no font with id 24
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'UbuntuMono(0)' created for font 'Ubuntu Mono' with options [].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. <->"UbuntuMono:mode=node;script=latn;language=DFLT;"
+. 
+. * 'bold' with NFSS spec.:
+. <->"UbuntuMono/B:mode=node;script=latn;language=DFLT;"
+. 
+. * 'italic' with NFSS spec.:
+. <->"UbuntuMono/I:mode=node;script=latn;language=DFLT;"
+. 
+. * 'bold italic' with NFSS spec.:
+. <->"UbuntuMono/BI:mode=node;script=latn;language=DFLT;"
+.................................................
+luaotfload | load : auto-selecting default features for script: latn
+luaotfload | load : no defaults for script "latn", falling back to "dflt"
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3   \setmainfont{Ubuntu Mono}[
+                              Scale=MatchLowercase]
 ? 
 ! Emergency stop.
-<to be read again> 
-relax 
-l.100 \fontencoding\encodingdefault\selectfont
-                                            
-End of file on the terminal!
+ ...                                              
+                                                  
+l.3   \setmainfont{Ubuntu Mono}[
+                              Scale=MatchLowercase]
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
 
 Here is how much of LuaTeX's memory you used:
- 15928 strings out of 494814
- 100000,383344 words of node,token memory allocated 269 words of node memory still in use:
-   2 hlist, 1 rule, 1 kern, 1 attribute, 40 glue_spec, 1 attribute_list, 2 if_st
-ack, 1 write, 1 dir, 1 pdf_colorstack nodes
-   avail lists: 2:15,3:1,4:1,6:2,7:1,9:2
- 18866 multiletter control sequences out of 65536+600000
- 15 fonts using 602623 bytes
- 63i,0n,57p,426b,85s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 22307 strings out of 494814
+ 100000,552014 words of node,token memory allocated 290 words of node memory still in use:
+   3 hlist, 1 rule, 1 kern, 3 attribute, 40 glue_spec, 3 attribute_list, 1 temp,
+ 1 write, 1 local_par, 1 dir, 1 pdf_colorstack nodes
+   avail lists: 2:12,3:1,4:1,6:1,7:1,9:1
+ 25176 multiletter control sequences out of 65536+600000
+ 25 fonts using 2220927 bytes
+ 63i,0n,57p,426b,130s stack positions out of 5000i,500n,10000p,200000b,100000s
 !  ==> Fatal error occurred, no output PDF file produced!
