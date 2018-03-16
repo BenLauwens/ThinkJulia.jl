@@ -78,7 +78,7 @@ The operators `+`, `-`, and `*` perform addition, subtraction, and multiplicatio
 
 ```@repl
 40 + 2
-42 - 1
+43 - 1
 6 * 7
 ```
 
