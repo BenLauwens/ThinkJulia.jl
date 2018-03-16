@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.16)  16 MAR 2018 09:02
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.3.16)  16 MAR 2018 09:13
  \write18 enabled.
 **fig01
 (./fig01.tex
@@ -586,7 +586,7 @@ luaotfload:  then use the possibly updated libraries. The merged
 luaotfload:  version is not supported as it is a frozen instance.
 luaotfload:  Problems can be reported to the ConTeXt mailing list."
 luaotfload: pop namespace from font loader -- non-destructive
-luaotfload: fontloader loaded in 0.047 seconds
+luaotfload: fontloader loaded in 0.039 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -815,8 +815,8 @@ LaTeX Info: Redefining \upshape on input line 2023.
 luaotfload | load : auto-selecting default features for script: dflt(load luc: /
 home/travis/.texmf-var/luatex-cache/generic/fonts/otf/ubuntumono-r.luc)
 luaotfload | load : auto-selecting default features for script: dflt
-luaotfload: font no 21 (UbuntuMono-Regular) defines feature ss01 for script latn
-luaotfload: font no 21 (UbuntuMono-Regular) defines feature ss01 for script latn
+luaotfload: font no 21 (UbuntuMono-Regular) defines feature dnom for script latn
+luaotfload: font no 21 (UbuntuMono-Regular) defines feature dnom for script latn
 \g_fontspec_family_Ubuntu Mono_int=\count317
 luaotfload | load : auto-selecting default features for script: dflt
 luaotfload: font no 21 (UbuntuMono-Regular) does not define feature smcp for scr
@@ -862,8 +862,7 @@ luaotfload: no font with id 24
 . * 'bold italic' with NFSS spec.:
 . <->"UbuntuMono/BI:mode=node;script=latn;language=DFLT;"
 .................................................
-luaotfload | load : auto-selecting default features for script: latn
-luaotfload | load : no defaults for script "latn", falling back to "dflt"
+
 
 ! LaTeX Error: Missing \begin{document}.
 
@@ -871,13 +870,13 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.3   \setmainfont{Ubuntu Mono}[
+l.3   \setmonofont{Ubuntu Mono}[
                               Scale=MatchLowercase]
 ? 
 ! Emergency stop.
  ...                                              
                                                   
-l.3   \setmainfont{Ubuntu Mono}[
+l.3   \setmonofont{Ubuntu Mono}[
                               Scale=MatchLowercase]
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -885,12 +884,12 @@ If that doesn't work, type  X <return>  to quit.
 
 
 Here is how much of LuaTeX's memory you used:
- 22307 strings out of 494814
+ 22305 strings out of 494814
  100000,552014 words of node,token memory allocated 290 words of node memory still in use:
    3 hlist, 1 rule, 1 kern, 3 attribute, 40 glue_spec, 3 attribute_list, 1 temp,
  1 write, 1 local_par, 1 dir, 1 pdf_colorstack nodes
    avail lists: 2:12,3:1,4:1,6:1,7:1,9:1
- 25176 multiletter control sequences out of 65536+600000
- 25 fonts using 2220927 bytes
- 63i,0n,57p,426b,130s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 25175 multiletter control sequences out of 65536+600000
+ 24 fonts using 2023151 bytes
+ 63i,0n,57p,417b,130s stack positions out of 5000i,500n,10000p,200000b,100000s
 !  ==> Fatal error occurred, no output PDF file produced!
