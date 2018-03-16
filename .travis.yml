@@ -15,8 +15,8 @@ addons:
     - lmodern
     - ttf-ubuntu-font-family
     - texlive-luatex
-    #- texlive-xetex
-    #- texlive-latex-extra
+    - texlive-xetex
+    - texlive-latex-extra
     - pgf
     - pdf2svg
 #matrix:
