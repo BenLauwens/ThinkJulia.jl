@@ -150,8 +150,10 @@ function square(t)
         Turn(t, -90)
     end
 end
-
-square(bob)
+bob = Turtle()
+@svg begin
+    square(bob)
+end
 ```
 
 The innermost statements, `Forward` and `Turn` are indented twice to show that they are inside the `for` loop, which is inside the function definition.
@@ -160,7 +162,9 @@ Inside the function, `t` refers to the same turtle `bob`, so `Turn(t, -90)` has 
 
 ```julia
 alice = Turtle()
-square(alice)
+@svg begin
+    square(alice)
+end
 ```
 
 Wrapping a piece of code up in a function is called **encapsulation**. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!
@@ -176,8 +180,10 @@ function square(t, length)
         Turn(t, -90)
     end
 end
-
-square(bob, 100)
+bob = Turtle()
+@svg begin
+    square(bob, 100)
+end
 ```
 
 Adding a parameter to a function is called **generalization** because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.
@@ -192,8 +198,10 @@ function polygon(t, n, length)
         Turn(t, -angle)
     end
 end
-
-polygon(bob, 7, 70)
+bob = Turtle()
+@svg begin
+    polygon(bob, 7, 70)
+end
 ```
 
 This example draws a 7-sided polygon with side length 70.
