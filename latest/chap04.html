@@ -40,24 +40,32 @@ end</code></pre><p>The syntax of a <code>for</code> statement is similar to a fu
         Turn(t, -90)
     end
 end
-
-square(bob)</code></pre><p>The innermost statements, <code>Forward</code> and <code>Turn</code> are indented twice to show that they are inside the <code>for</code> loop, which is inside the function definition.</p><p>Inside the function, <code>t</code> refers to the same turtle <code>bob</code>, so <code>Turn(t, -90)</code> has the same effect as <code>Turn(bob, -90)</code>. In that case, why not call the parameter <code>bob</code>? The idea is that <code>t</code> can be any turtle, not just bob, so you could create a second turtle and pass it as an argument to <code>square</code>:</p><pre><code class="language-julia">alice = Turtle()
-square(alice)</code></pre><p>Wrapping a piece of code up in a function is called <strong>encapsulation</strong>. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!</p><h2><a class="nav-anchor" id="Generalization-1" href="#Generalization-1">Generalization</a></h2><p>The next step is to add a <code>length</code> parameter to <code>square</code>. Here is a solution:</p><pre><code class="language-julia">function square(t, length)
+bob = Turtle()
+@svg begin
+    square(bob)
+end</code></pre><p>The innermost statements, <code>Forward</code> and <code>Turn</code> are indented twice to show that they are inside the <code>for</code> loop, which is inside the function definition.</p><p>Inside the function, <code>t</code> refers to the same turtle <code>bob</code>, so <code>Turn(t, -90)</code> has the same effect as <code>Turn(bob, -90)</code>. In that case, why not call the parameter <code>bob</code>? The idea is that <code>t</code> can be any turtle, not just bob, so you could create a second turtle and pass it as an argument to <code>square</code>:</p><pre><code class="language-julia">alice = Turtle()
+@svg begin
+    square(alice)
+end</code></pre><p>Wrapping a piece of code up in a function is called <strong>encapsulation</strong>. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!</p><h2><a class="nav-anchor" id="Generalization-1" href="#Generalization-1">Generalization</a></h2><p>The next step is to add a <code>length</code> parameter to <code>square</code>. Here is a solution:</p><pre><code class="language-julia">function square(t, length)
     for i in 1:4
         Forward(t, length)
         Turn(t, -90)
     end
 end
-
-square(bob, 100)</code></pre><p>Adding a parameter to a function is called <strong>generalization</strong> because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.</p><p>The next step is also a generalization. Instead of drawing squares, <code>polygon</code> draws regular polygons with any number of sides. Here is a solution:</p><pre><code class="language-julia">function polygon(t, n, length)
+bob = Turtle()
+@svg begin
+    square(bob, 100)
+end</code></pre><p>Adding a parameter to a function is called <strong>generalization</strong> because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.</p><p>The next step is also a generalization. Instead of drawing squares, <code>polygon</code> draws regular polygons with any number of sides. Here is a solution:</p><pre><code class="language-julia">function polygon(t, n, length)
     angle = 360 / n
     for i in 1:n
         Forward(t, length)
         Turn(t, -angle)
     end
 end
-
-polygon(bob, 7, 70)</code></pre><p>This example draws a 7-sided polygon with side length 70.</p><h2><a class="nav-anchor" id="Interface-design-1" href="#Interface-design-1">Interface design</a></h2><p>The next step is to write <code>circle</code>, which takes a radius, <code>r</code>, as a parameter. Here is a simple solution that uses <code>polygon</code> to draw a 50-sided polygon:</p><pre><code class="language-julia">function circle(t, r)
+bob = Turtle()
+@svg begin
+    polygon(bob, 7, 70)
+end</code></pre><p>This example draws a 7-sided polygon with side length 70.</p><h2><a class="nav-anchor" id="Interface-design-1" href="#Interface-design-1">Interface design</a></h2><p>The next step is to write <code>circle</code>, which takes a radius, <code>r</code>, as a parameter. Here is a simple solution that uses <code>polygon</code> to draw a 50-sided polygon:</p><pre><code class="language-julia">function circle(t, r)
     circumference = 2 * π * r
     n = 50
     length = circumference / n
