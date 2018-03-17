@@ -56,3 +56,23 @@ function isosceles(t, r, angle)
   Forward(t, r)
   Turn(t, -180+angle)
 end
+
+"""Draws an Archimedian spiral starting at the origin.
+
+Args:
+  n: how many line segments to draw
+  length: how long each segment is
+  a: how loose the initial spiral starts out (larger is looser)
+  b: how loosly coiled the spiral is (larger is looser)
+
+http://en.wikipedia.org/wiki/Spiral
+"""
+function spiral(t, n, length, a, b)
+  theta = 0.0
+  for i in 1:n
+    Forward(t,length)
+    dtheta = 1 / (a + b * theta)
+    Turn(t, -dtheta)
+    theta += dtheta
+  end
+end

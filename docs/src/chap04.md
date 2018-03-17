@@ -463,7 +463,7 @@ fig04_3()
 ```@raw html
 <figure>
   <img src="fig43.svg" alt="Turtle pies.">
-  <figcaption>Figure 3. Turtle pies.</figcaption>
+  <figcaption>Figure 4.3. Turtle pies.</figcaption>
 </figure>
 ```
 
@@ -484,4 +484,25 @@ You should write one function for each letter, with names `draw_a`, `draw_b`, et
 
 ### Exercise 5  
 
-Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral (or one of the other kinds).
+Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in figure 4.4.
+
+```@eval
+using ThinkJulia
+fig04_4()
+```
+
+```@raw html
+<figure>
+  <img src="fig44.svg" alt="Archimedian spiral.">
+  <figcaption>Figure 4.4. Archimedian spiral.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig44}
+\caption{Archimedian spiral.}
+\label{fig44}
+\end{figure}
+```

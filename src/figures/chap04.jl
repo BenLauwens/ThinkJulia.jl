@@ -61,3 +61,21 @@ function draw_04_3(ext)
   finish() 
   nothing
 end
+
+function fig04_4()
+  draw_04_4("svg")
+  draw_04_4("pdf")
+end
+
+function draw_04_4(ext)
+  Drawing(110, 110, "fig44.$ext")  
+  origin()
+  background("white")  
+  bob = Turtle()
+  Pencolor(bob, "black")
+  Penwidth(bob, 1)
+  Reposition(bob, 0, 15)
+  spiral(bob, 230, 3, 0.1, 0.0002)
+  finish() 
+  nothing
+end
