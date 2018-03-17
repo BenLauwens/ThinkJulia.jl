@@ -7,7 +7,7 @@ bob = Turtle()</code></pre><pre><code class="language-none">Luxor.Turtle(0.0, 0.
     Forward(bob, 100)
 end</code></pre><figure>
   <img src="fig41.svg" alt="Moving the turtle forward.">
-  <figcaption>Figure 1. Moving the turtle forward.</figcaption>
+  <figcaption>Figure 4.1. Moving the turtle forward.</figcaption>
 </figure><p>The <code>@svg</code> keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.</p><p>The arguments of <code>Forward</code> are the Turtle and a distance in pixels, so the actual size depends on your display.</p><p>Another function you can call with a Turtle as argument is <code>Turn</code> for turning. The second argument for <code>Turn</code> is an angle in degrees.</p><p>Also, each Turtle is holding a pen, which is either down or up; if the pen is down, the Turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the Turtle. The functions <code>Penup</code> and <code>Pendown</code> stand for “pen up” and “pen down”.</p><p>To draw a right angle, modify the macro:</p><pre><code class="language-julia">bob = Turtle()
 @svg begin
     Forward(bob, 100)
@@ -132,7 +132,7 @@ function arc(t, r, angle)
     Turn(t, -step_angle/2)
 end</code></pre><h3><a class="nav-anchor" id="Exercise-2-1" href="#Exercise-2-1">Exercise 2</a></h3><p>Write an appropriately general set of functions that can draw flowers as in Figure 4.2.</p><figure>
   <img src="fig42.svg" alt="Turtle flowers.">
-  <figcaption>Figure 2. Turtle flowers.</figcaption>
+  <figcaption>Figure 4.2. Turtle flowers.</figcaption>
 </figure><h3><a class="nav-anchor" id="Exercise-3-1" href="#Exercise-3-1">Exercise 3</a></h3><p>Write an appropriately general set of functions that can draw shapes as in Figure 4.3.</p><figure>
   <img src="fig43.svg" alt="Turtle pies.">
   <figcaption>Figure 3. Turtle pies.</figcaption>
