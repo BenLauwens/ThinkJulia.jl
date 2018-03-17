@@ -492,7 +492,7 @@ You should write one function for each letter, with names `draw_a`, `draw_b`, et
 
 ### Exercise 5  
 
-Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in figure 4.4.
+Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in Figure 4.4.
 
 ```@eval
 using ThinkJulia
