@@ -520,4 +520,20 @@ var documenterSearchIndex = {"docs": [
     "text": "Write an appropriately general set of functions that can draw shapes as in Figure 4.3.using Luxor\n\nfunction draw_pie(t, n, r)\n    polypie(t, n, r)\n    Penup(t)\n    Forward(t, r*2 + 10)\n    Pendown(t)\nend\n\nfunction polypie(t, n, r)\n    angle = 360 / n\n    for i in 1:n\n        isosceles(t, r, angle/2)\n        Turn(t, -angle)\n    end\nend\n\nfunction isosceles(t, r, angle)\n    y = r * sin(angle * pi / 180)\n    Turn(t, angle)\n    Forward(t, r)\n    Turn(t, -90-angle)\n    Forward(t, 2*y)\n    Turn(t, -90-angle)\n    Forward(t, r)\n    Turn(t, -180+angle)\nend\n\nDrawing(360, 80, \"fig43.svg\")  \norigin()\nbackground(\"white\")  \nbob = Turtle()\nPencolor(bob, \"black\")\nPenwidth(bob, 1)\nReposition(bob, -140, 0)\nsize = 40\ndraw_pie(bob, 5, size)\ndraw_pie(bob, 6, size)\ndraw_pie(bob, 7, size)\ndraw_pie(bob, 8, size)\nfinish() \nnothingusing Luxor\n\nfunction draw_pie(t, n, r)\n    polypie(t, n, r)\n    Penup(t)\n    Forward(t, r*2 + 10)\n    Pendown(t)\nend\n\nfunction polypie(t, n, r)\n    angle = 360 / n\n    for i in 1:n\n        isosceles(t, r, angle/2)\n        Turn(t, -angle)\n    end\nend\n\nfunction isosceles(t, r, angle)\n    y = r * sin(angle * pi / 180)\n    Turn(t, angle)\n    Forward(t, r)\n    Turn(t, -90-angle)\n    Forward(t, 2*y)\n    Turn(t, -90-angle)\n    Forward(t, r)\n    Turn(t, -180+angle)\nend\n\nDrawing(360, 80, \"fig43.pdf\")  \norigin()\nbackground(\"white\")  \nbob = Turtle()\nPencolor(bob, \"black\")\nPenwidth(bob, 1)\nReposition(bob, -140, 0)\nsize = 40\ndraw_pie(bob, 5, size)\ndraw_pie(bob, 6, size)\ndraw_pie(bob, 7, size)\ndraw_pie(bob, 8, size)\nfinish() \nnothing<figure>\n  <img src=\"fig43.svg\" alt=\"Turtle pies.\">\n  <figcaption>Figure 3. Turtle pies.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig43}\n\\caption{Turtle pies.}\n\\label{fig43}\n\\end{figure}"
 },
 
+{
+    "location": "chap04.html#Exercise-4-1",
+    "page": "Case study: interface design",
+    "title": "Exercise 4",
+    "category": "section",
+    "text": "The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.You should write one function for each letter, with names draw_a, draw_b, etc., and put your functions in a file named letters.jl."
+},
+
+{
+    "location": "chap04.html#Exercise-5-1",
+    "page": "Case study: interface design",
+    "title": "Exercise 5",
+    "category": "section",
+    "text": "Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral (or one of the other kinds)."
+},
+
 ]}
