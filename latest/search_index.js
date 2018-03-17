@@ -517,7 +517,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Case study: interface design",
     "title": "Exercise 3",
     "category": "section",
-    "text": "Write an appropriately general set of functions that can draw shapes as in Figure 4.3.using ThinkJulia\nfig04_3()<figure>\n  <img src=\"fig43.svg\" alt=\"Turtle pies.\">\n  <figcaption>Figure 3. Turtle pies.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig43}\n\\caption{Turtle pies.}\n\\label{fig43}\n\\end{figure}"
+    "text": "Write an appropriately general set of functions that can draw shapes as in Figure 4.3.using ThinkJulia\nfig04_3()<figure>\n  <img src=\"fig43.svg\" alt=\"Turtle pies.\">\n  <figcaption>Figure 4.3. Turtle pies.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig43}\n\\caption{Turtle pies.}\n\\label{fig43}\n\\end{figure}"
 },
 
 {
@@ -533,7 +533,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Case study: interface design",
     "title": "Exercise 5",
     "category": "section",
-    "text": "Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral (or one of the other kinds)."
+    "text": "Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in figure 4.4.using ThinkJulia\nfig04_4()<figure>\n  <img src=\"fig44.svg\" alt=\"Archimedian spiral.\">\n  <figcaption>Figure 4.4. Archimedian spiral.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig44}\n\\caption{Archimedian spiral.}\n\\label{fig44}\n\\end{figure}"
 },
 
 ]}
