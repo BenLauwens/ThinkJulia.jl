@@ -14,34 +14,17 @@ n = 17
 
 This example makes three assignments. The first assigns a string to a new variable named `message`; the second gives the integer `17` to `n`; the third assigns the (approximate) value of ``\pi`` to `π`.
 
-A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable's state of mind). Figure 1 shows the result of the previous example.
+A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable's state of mind). Figure 2.1 shows the result of the previous example.
 
 ```@eval
-using TikzPictures
-p = TikzPicture(L"""
-\node[draw, fill=lightgray, minimum width=10cm, minimum height=1.5cm]{};
-\node[anchor=east] (me) at(-3.5, 0.5) {\tt message};
-\node[anchor=west] (mev) at (-2.5, 0.5) {\tt "And now for something completely different"};
-\draw[-latex] (me) -- (mev);
-\node[anchor=east] (n) at(-3.5, 0) {\tt n};
-\node[anchor=west] (nv) at (-2.5, 0) {\tt 17};
-\draw[-latex] (n) -- (nv);
-\node[anchor=east] (pi) at(-3.5, -0.5) {\tt π};
-\node[anchor=west] (piv) at (-2.5, -0.5) {\tt 3.141592653589793};
-\draw[-latex] (pi) -- (piv);
-"""; options="", preamble="""
-  \\usepackage{fontspec}
-  \\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
-""")
- save(SVG("fig21"), p)
- save(PDF("fig21"), p)
- nothing
+using ThinkJulia
+fig02_1() 
 ```
 
 ```@raw html
 <figure>
   <img src="fig21.svg" alt="State diagram.">
-  <figcaption>Figure 1. State diagram.</figcaption>
+  <figcaption>Figure 2.1. State diagram.</figcaption>
 </figure>
 ```
 

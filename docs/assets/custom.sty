@@ -1,8 +1,125 @@
-\usepackage[no-math]{fontspec}
-\usepackage{newunicodechar, polyglossia}
+\usepackage{newunicodechar}
+\usepackage{graphicx}
+\usepackage{MinionPro}
+\usepackage{fontspec}
+\setmainfont{Minion Pro}
+\setsansfont{Myriad Pro}
 
-\setmainfont{Lato}[Scale=MatchLowercase, Ligatures=TeX]
-\setmonofont{Roboto Mono}[Scale=MatchLowercase]
+% font settings
+%\usepackage[no-math]{fontspec}
+%\usepackage{newunicodechar, polyglossia}
+
+%\setmainfont{Lato}[Scale=MatchLowercase, Ligatures=TeX]
+%\setmonofont[Scale=MatchLowercase]{Roboto Mono}
+\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
 %
 
-\usepackage[italic]{mathastext}
+% colours
+\usepackage{xcolor}
+
+\definecolor{light-blue}{HTML}{6b85dd}
+\definecolor{dark-blue}{HTML}{4266d5}
+\definecolor{light-red}{HTML}{d66661}
+\definecolor{dark-red}{HTML}{c93d39}
+\definecolor{light-green}{HTML}{6bab5b}
+\definecolor{dark-green}{HTML}{3b972e}
+\definecolor{light-purple}{HTML}{aa7dc0}
+\definecolor{dark-purple}{HTML}{945bb0}
+%
+
+% maths
+%\usepackage{amsmath, amssymb}
+%
+
+% listings
+\usepackage{listings, minted}
+
+\lstset{
+    %basicstyle = \small\ttfamily,
+    basicstyle = \ttfamily,
+    breaklines = true,
+    columns = fullflexible,
+    %frame = leftline,
+    keepspaces = true,
+    showstringspaces = false,
+    xleftmargin = 3pt,
+}
+
+\setminted{
+    breaklines = true,
+    %fontsize = \small,
+    %frame = leftline,
+}
+%
+
+% tables
+\usepackage{tabulary}
+%
+
+% hyperref
+\usepackage{hyperref}
+\hypersetup{
+    pdfpagelabels,
+    bookmarks,
+    hyperindex,
+    unicode = true,
+    linkcolor = dark-blue,
+    urlcolor = dark-purple,
+    colorlinks = true,
+}
+%
+
+% table of contents
+\maxtocdepth{section}
+%
+
+% paragraphs
+\setlength{\parindent}{0pt}
+\nonzeroparskip
+%\setlength{\parskip}{\smallskipamount}
+%
+
+% adjust margins
+\setstocksize{297mm}{210mm}
+\settrimmedsize{233mm}{177mm}{*}
+\setlrmarginsandblock{25mm}{25mm}{*}
+\setulmarginsandblock{20mm}{25mm}{*}
+\setheaderspaces{0mm}{*}{*}
+
+\checkandfixthelayout
+%
+
+\nouppercaseheads
+\makeevenfoot{headings}{\footnotesize\textsf{\thepage}}{\footnotesize\textsf{\leftmark}}{}
+\makeoddfoot{headings}{}{\footnotesize\textsf{\rightmark}}{\footnotesize\textsf{\thepage}}
+\makeevenhead{headings}{}{}{}
+\makeoddhead{headings}{}{}{}
+\makefootrule{headings}{\textwidth}{\normalrulethickness}{0ex}
+\copypagestyle{plainnotice}{plain}
+\makeevenfoot{plainnotice}{\footnotesize\textsf{\thepage}}{}{}
+\makeoddfoot{plainnotice}{}{}{\footnotesize\textsf{\thepage}}
+\makefootrule{plainnotice}{\textwidth}{\normalrulethickness}{0ex}
+\aliaspagestyle{chapter}{plainnotice}
+
+\makechapterstyle{oreilly}{%
+  \chapterstyle{default}
+  \renewcommand*{\chapnumfont}{\normalfont\huge\sffamily}
+  \renewcommand*{\chaptitlefont}{\normalfont\HUGE\sffamily}
+  \renewcommand*{\printchaptername}{\chapnumfont CHAPTER\ }
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{\raggedleft \chapnumfont \thechapter}
+  \renewcommand*{\printchaptertitle}[1]{
+    \vspace{-5mm}\hrule\vspace{2mm}\raggedleft {\chaptitlefont ##1}\par\par\nobreak}}
+\chapterstyle{oreilly}
+
+\setsecheadstyle{\normalfont\huge\sffamily}
+
+\setsubsecheadstyle{\normalfont\itshape}
+
+\setsecnumdepth{chapter}
+\maxsecnumdepth{chapter}
+
+\renewcommand{\cftchapterfont}{\normalfont\sffamily} 
+\renewcommand{\cftchapterpagefont}{\normalfont\sffamily}
+\renewcommand*{\cftchapterleader}{\dotfill}
+\renewcommand*{\cftsectionleader}{\hfill}

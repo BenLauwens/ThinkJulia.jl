@@ -35,37 +35,14 @@ end
 ```
 
 ```@eval
-using Luxor
-Drawing(102, 10, "fig41.svg")  
-origin()
-background("white")  
-bob = Turtle()
-Reposition(bob, -50, 0)
-Pencolor(bob, "black")
-Penwidth(bob, 1)
-Forward(bob, 100)
-finish() 
-nothing
-```
-
-```@eval
-using Luxor
-Drawing(102, 10, "fig41.pdf")  
-origin()
-background("white")  
-bob = Turtle()
-Reposition(bob, -50, 0)
-Pencolor(bob, "black")
-Penwidth(bob, 1)
-Forward(bob, 100)
-finish() 
-nothing
+using ThinkJulia
+fig04_1()
 ```
 
 ```@raw html
 <figure>
   <img src="fig41.svg" alt="Moving the turtle forward.">
-  <figcaption>Figure 1. Moving the turtle forward.</figcaption>
+  <figcaption>Figure 4.1. Moving the turtle forward.</figcaption>
 </figure>
 ```
 
@@ -454,112 +431,14 @@ end
 Write an appropriately general set of functions that can draw flowers as in Figure 4.2.
 
 ```@eval
-using Luxor
-
-function polyline(t, n, length, angle)
-    for i in 1:n
-        Forward(t, length)
-        Turn(t, -angle)
-    end
-end
-
-function arc(t, r, angle)
-    arc_length = 2 * π * r * abs(angle) / 360
-    n = trunc(arc_length / 4) + 3
-    step_length = arc_length / n
-    step_angle = angle / n
-    Turn(t, step_angle/2)
-    polyline(t, n, step_length, step_angle)
-    Turn(t, -step_angle/2)
-end
-
-function petal(t, r, angle)
-    for i in 1:2
-        arc(t, r, angle)
-        Turn(t, angle-180)
-    end
-end 
-
-function flower(t, n, r, angle)
-    for i in 1:n
-        petal(t, r, angle)
-        Turn(t, 360/n)
-    end
-end
-
-Drawing(310, 110, "fig42.svg")  
-origin()
-background("white")  
-bob = Turtle()
-Pencolor(bob, "black")
-Penwidth(bob, 1)
-Reposition(bob, -100, 0)
-flower(bob, 7, 55.0, 60.0)
-Reposition(bob, 0, 0)
-flower(bob, 10, 40.0, 80.0)
-Reposition(bob, 100, 0)
-flower(bob, 20, 140.0, 20.0)
-finish() 
-nothing
-```
-
-```@eval
-using Luxor
-
-function polyline(t, n, length, angle)
-    for i in 1:n
-        Forward(t, length)
-        Turn(t, -angle)
-    end
-end
-
-function arc(t, r, angle)
-    arc_length = 2 * π * r * abs(angle) / 360
-    n = trunc(arc_length / 4) + 3
-    step_length = arc_length / n
-    step_angle = angle / n
-
-    # making a slight left turn before starting reduces
-    # the error caused by the linear approximation of the arc
-    Turn(t, step_angle/2)
-    polyline(t, n, step_length, step_angle)
-    Turn(t, -step_angle/2)
-end
-
-function petal(t, r, angle)
-    for i in 1:2
-        arc(t, r, angle)
-        Turn(t, angle-180)
-    end
-end 
-
-function flower(t, n, r, angle)
-    for i in 1:n
-        petal(t, r, angle)
-        Turn(t, 360/n)
-    end
-end
-
-Drawing(310, 110, "fig42.pdf")  
-origin()
-background("white")  
-bob = Turtle()
-Pencolor(bob, "black")
-Penwidth(bob, 1)
-Reposition(bob, -100, 0)
-flower(bob, 7, 55.0, 60.0)
-Reposition(bob, 0, 0)
-flower(bob, 10, 40.0, 80.0)
-Reposition(bob, 100, 0)
-flower(bob, 20, 140.0, 20.0)
-finish() 
-nothing
+using ThinkJulia
+fig04_2()
 ```
 
 ```@raw html
 <figure>
   <img src="fig42.svg" alt="Turtle flowers.">
-  <figcaption>Figure 2. Turtle flowers.</figcaption>
+  <figcaption>Figure 4.2. Turtle flowers.</figcaption>
 </figure>
 ```
 
@@ -577,93 +456,8 @@ nothing
 Write an appropriately general set of functions that can draw shapes as in Figure 4.3.
 
 ```@eval
-using Luxor
-
-function draw_pie(t, n, r)
-    polypie(t, n, r)
-    Penup(t)
-    Forward(t, r*2 + 10)
-    Pendown(t)
-end
-
-function polypie(t, n, r)
-    angle = 360 / n
-    for i in 1:n
-        isosceles(t, r, angle/2)
-        Turn(t, -angle)
-    end
-end
-
-function isosceles(t, r, angle)
-    y = r * sin(angle * pi / 180)
-    Turn(t, angle)
-    Forward(t, r)
-    Turn(t, -90-angle)
-    Forward(t, 2*y)
-    Turn(t, -90-angle)
-    Forward(t, r)
-    Turn(t, -180+angle)
-end
-
-Drawing(360, 80, "fig43.svg")  
-origin()
-background("white")  
-bob = Turtle()
-Pencolor(bob, "black")
-Penwidth(bob, 1)
-Reposition(bob, -140, 0)
-size = 40
-draw_pie(bob, 5, size)
-draw_pie(bob, 6, size)
-draw_pie(bob, 7, size)
-draw_pie(bob, 8, size)
-finish() 
-nothing
-```
-
-```@eval
-using Luxor
-
-function draw_pie(t, n, r)
-    polypie(t, n, r)
-    Penup(t)
-    Forward(t, r*2 + 10)
-    Pendown(t)
-end
-
-function polypie(t, n, r)
-    angle = 360 / n
-    for i in 1:n
-        isosceles(t, r, angle/2)
-        Turn(t, -angle)
-    end
-end
-
-function isosceles(t, r, angle)
-    y = r * sin(angle * pi / 180)
-    Turn(t, angle)
-    Forward(t, r)
-    Turn(t, -90-angle)
-    Forward(t, 2*y)
-    Turn(t, -90-angle)
-    Forward(t, r)
-    Turn(t, -180+angle)
-end
-
-Drawing(360, 80, "fig43.pdf")  
-origin()
-background("white")  
-bob = Turtle()
-Pencolor(bob, "black")
-Penwidth(bob, 1)
-Reposition(bob, -140, 0)
-size = 40
-draw_pie(bob, 5, size)
-draw_pie(bob, 6, size)
-draw_pie(bob, 7, size)
-draw_pie(bob, 8, size)
-finish() 
-nothing
+using ThinkJulia
+fig04_3()
 ```
 
 ```@raw html
