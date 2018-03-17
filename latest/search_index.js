@@ -533,7 +533,63 @@ var documenterSearchIndex = {"docs": [
     "page": "Case study: interface design",
     "title": "Exercise 5",
     "category": "section",
-    "text": "Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in figure 4.4.using ThinkJulia\nfig04_4()<figure>\n  <img src=\"fig44.svg\" alt=\"Archimedian spiral.\">\n  <figcaption>Figure 4.4. Archimedian spiral.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig44}\n\\caption{Archimedian spiral.}\n\\label{fig44}\n\\end{figure}"
+    "text": "Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in Figure 4.4.using ThinkJulia\nfig04_4()<figure>\n  <img src=\"fig44.svg\" alt=\"Archimedian spiral.\">\n  <figcaption>Figure 4.4. Archimedian spiral.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig44}\n\\caption{Archimedian spiral.}\n\\label{fig44}\n\\end{figure}"
+},
+
+{
+    "location": "chap05.html#",
+    "page": "Conditionals and recursion",
+    "title": "Conditionals and recursion",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap05.html#Conditionals-and-recursion-1",
+    "page": "Conditionals and recursion",
+    "title": "Conditionals and recursion",
+    "category": "section",
+    "text": "The main topic of this chapter is the if statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: floor division and modulus."
+},
+
+{
+    "location": "chap05.html#Floor-division-and-modulus-1",
+    "page": "Conditionals and recursion",
+    "title": "Floor division and modulus",
+    "category": "section",
+    "text": "The floor division operator, ÷ (\\div TAB), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:minutes = 105\nminutes / 60But we don’t normally write hours with decimal points. Floor division returns the integer number of hours, rounding down:hours = minutes ÷ 60To get the remainder, you could subtract off one hour in minutes:remainder = minutes - hours * 60An alternative is to use the modulus operator, %, which divides two numbers and returns the remainder.remainder = minutes % 60The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if x % y is zero, then x is divisible by y.Also, you can extract the right-most digit or digits from a number. For example, x % 10 yields the right-most digit of x (in base 10). Similarly x % 100 yields the last two digits."
+},
+
+{
+    "location": "chap05.html#Boolean-expressions-1",
+    "page": "Conditionals and recursion",
+    "title": "Boolean expressions",
+    "category": "section",
+    "text": "A boolean expression is an expression that is either true or false. The following examples use the operator ==, which compares two operands and produces true if they are equal and false otherwise:5 == 5\n5 == 6true and false are special values that belong to the type Bool; they are not strings:typeof(true)\ntypeof(false)The == operator is one of the relational operators; the others are:      x != y               # x is not equal to y\n      x ≠ y                # (\\ne TAB)\n      x > y                # x is greater than y\n      x < y                # x is less than y\n      x >= y               # x is greater than or equal to y\n      x ≥ y                # (\\ge TAB)\n      x <= y               # x is less than or equal to y\n      x ≤ y                # (\\le TAB)Although these operations are probably familiar to you, the Julia symbols are different from the mathematical symbols. A common error is to use a single equal sign (=) instead of a double equal sign (==). Remember that = is an assignment operator and == is a relational operator. There is no such thing as =< or =>."
+},
+
+{
+    "location": "chap05.html#Logical-operators-1",
+    "page": "Conditionals and recursion",
+    "title": "Logical operators",
+    "category": "section",
+    "text": "There are three logical operators: && (and), || (or), and ! (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, x > 0 && x < 10 is true only if x is greater than 0 and less than 10.n%2 == 0 || n%3 == 0 is true if either or both of the conditions is true, that is, if the number is divisible by 2 or 3.Finally, the ! operator negates a boolean expression, so !(x > y) is true if x > y is false, that is, if x is less than or equal to y.The operators && and || do a short-circuit evaluation: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain. Explicitly, this means that:In the expression a && b, the subexpression b is only evaluated if a evaluates to true.\nIn the expression a || b, the subexpression b is only evaluated if a evaluates to false.Both && and || associate to the right, but && has higher precedence than || does."
+},
+
+{
+    "location": "chap05.html#Conditional-execution-1",
+    "page": "Conditionals and recursion",
+    "title": "Conditional execution",
+    "category": "section",
+    "text": "In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. Conditional statements give us this ability. The simplest form is the if statement:if x > 0\n    println(\"x is positive\")\nendThe boolean expression after if is called the condition. If it is true, the indented statement runs. If not, nothing happens.if statements have the same structure as function definitions: a header followed by body terminated with the keyword end. Statements like this are called compound statements.There is no limit on the number of statements that can appear in the body. Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet).if x < 0\n    # TODO: need to handle negative values!\nend"
+},
+
+{
+    "location": "chap05.html#Alternative-execution-1",
+    "page": "Conditionals and recursion",
+    "title": "Alternative execution",
+    "category": "section",
+    "text": "A second form of the if statement is “alternative execution”, in which there are two possibilities and the condition determines which one runs. The syntax looks like this:if x % 2 == 0\n    println(\"x is even\")\nelse\n    println(\"x is odd\")\nendIf the remainder when x is divided by 2 is 0, then we know that x is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called branches, because they are branches in the flow of execution."
 },
 
 ]}
