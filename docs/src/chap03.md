@@ -14,10 +14,11 @@ The name of the function is `typeof`. The expression in parentheses is called th
 
 It is common to say that a function “takes” an argument and “returns” a result. The result is also called the **return value**.
 
-Julia provides functions that convert values from one type to another. The `parse` function takes a string and converts it to an integer (or to any number type), if it can, or complains otherwise:
+Julia provides functions that convert values from one type to another. The `parse` function takes a string and converts it to any number type, if it can, or complains otherwise:
 
 ```@repl
 parse(Int64, "32")
+parse(Float64, "3.14159")
 parse(Int64, "Hello")
 ```
 
@@ -28,11 +29,10 @@ trunc(3.99999)
 trunc(-2.3)
 ```
 
-`float` converts integers and strings to floating-point numbers:
+`float` converts integers to floating-point numbers:
 
 ```@repl
 float(32)
-float("3.14159")
 ```
 
 Finally, `string` converts its argument to a string:

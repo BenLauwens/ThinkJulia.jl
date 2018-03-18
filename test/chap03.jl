@@ -2,14 +2,14 @@
   @test typeof(42) == Int64
 
   @test parse(Int64, "32") == 32
+  @test parse(Float64, "3.14159") == 3.14159
   @test_throws ArgumentError parse(Int64, "Hello")
 
   @test trunc(3.99999) == 3
   @test trunc(-2.3) == -2
 
   @test float(32) == 32.0
-  @test float("3.14159") == 3.14159
-
+ 
   @test string(32) == "32"
   @test string(3.14159) == "3.14159"
 
@@ -88,4 +88,5 @@
   @test String(take!(copy(io))) == "Bing\n" ^ 2 * "nothing\n"
 
   @test typeof(nothing) == Void
+  #@test typeof(nothing) == Nothing
 end
