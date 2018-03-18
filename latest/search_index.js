@@ -592,4 +592,44 @@ var documenterSearchIndex = {"docs": [
     "text": "A second form of the if statement is “alternative execution”, in which there are two possibilities and the condition determines which one runs. The syntax looks like this:if x % 2 == 0\n    println(\"x is even\")\nelse\n    println(\"x is odd\")\nendIf the remainder when x is divided by 2 is 0, then we know that x is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called branches, because they are branches in the flow of execution."
 },
 
+{
+    "location": "chap05.html#Chained-conditionals-1",
+    "page": "Conditionals and recursion",
+    "title": "Chained conditionals",
+    "category": "section",
+    "text": "Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a chained conditional:if x < y\n    println(\"x is less than y\")\nelseif x > y\n    println(\"x is greater than y\")\nelse\n    println(\"x and y are equal\")\nendAgain, exactly one branch will run. There is no limit on the number of elseif statements. If there is an else clause, it has to be at the end, but there doesn’t have to be one.if choice == \"a\"\n    draw_a()\nelseif choice == \"b\"\n    draw_b()\nelseif choice == \"c\"\n    draw_c()\nendEach condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch runs and the statement ends. Even if more than one condition is true, only the first true branch runs."
+},
+
+{
+    "location": "chap05.html#Nested-conditionals-1",
+    "page": "Conditionals and recursion",
+    "title": "Nested conditionals",
+    "category": "section",
+    "text": "One conditional can also be nested within another. We could have written the example in the previous section like this:if x == y\n    println(\"x and y are equal\")\nelse\n    if x < y\n        println(\"x is less than y\")\n    else\n        println(\"x is greater than y\")\n    end\nendThe outer conditional contains two branches. The first branch contains a simple statement. The second branch contains another if statement, which has two branches of its own. Those two branches are both simple statements, although they could have been conditional statements as well.Although the non-compulsory indentation of the statements makes the structure apparent, nested conditionals become difficult to read very quickly. It is a good idea to avoid them when you can.Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:if 0 < x\n    if x < 10\n        println(\"x is a positive single-digit number.\")\n    end\nendThe print statement runs only if we make it past both conditionals, so we can get the same effect with the && operator:if 0 < x && x < 10\n    println(\"x is a positive single-digit number.\")\nendFor this kind of condition, Julia provides a more concise option:if 0 < x < 10\n    println(\"x is a positive single-digit number.\")\nend"
+},
+
+{
+    "location": "chap05.html#Recursion-1",
+    "page": "Conditionals and recursion",
+    "title": "Recursion",
+    "category": "section",
+    "text": "It is legal for one function to call another; it is also legal for a function to call itself. It may not be obvious why that is a good thing, but it turns out to be one of the most magical things a program can do. For example, look at the following function:function countdown(n)\n    if n <= 0\n        println(\"Blastoff!\")\n    else\n        print(n, \" \")\n        countdown(n-1)\n    end\nendfunction countdown(n)\n    if n <= 0\n        println(\"Blastoff!\")\n    else\n        print(n, \" \")\n        countdown(n-1)\n    end\nendIf n is 0 or negative, it outputs the word, \"Blastoff!\" Otherwise, it outputs n and then calls a function named countdown—itself—passing n-1 as an argument.What happens if we call this function like this?countdown(3)The execution of countdown begins with n=3, and since n is greater than 0, it outputs the value 3, and then calls itself...\nThe execution of countdown begins with n=2, and since n is greater than 0, it outputs the value 2, and then calls itself...\nThe execution of countdown begins with n=1, and since n is greater than 0, it outputs the value 1, and then calls itself...\nThe execution of countdown begins with n=0, and since n is not greater than 0, it outputs the word, \"Blastoff!\" and then returns.\nThe countdown that got n=1 returns.\nThe countdown that got n=2 returns.\nThe countdown that got n=3 returns.And then you’re back in __main__.A function that calls itself is recursive; the process of executing it is called recursion.As another example, we can write a function that prints a string n times.function print_n(s, n)\n    if n <= 0\n        return\n    end\n    println(s)\n    print_n(s, n-1)\nendfunction print_n(s, n)\n    if n <= 0\n        return\n    end\n    println(s)\n    print_n(s, n-1)\nendIf n <= 0 the return statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.The rest of the function is similar to countdown: it displays s and then calls itself to display s n1 additional times. So the number of lines of output is 1 + (n - 1), which adds up to n.For simple examples like this, it is probably easier to use a for loop. But we will see examples later that are hard to write with a for loop and easy to write with recursion, so it is good to start early."
+},
+
+{
+    "location": "chap05.html#Stack-diagrams-for-recursive-functions-1",
+    "page": "Conditionals and recursion",
+    "title": "Stack diagrams for recursive functions",
+    "category": "section",
+    "text": "In Section 3.9, we used a stack diagram to represent the state of a program during a function call. The same kind of diagram can help interpret a recursive function.Every time a function gets called, Julia creates a frame to contain the function’s local variables and parameters. For a recursive function, there might be more than one frame on the stack at the same time.using ThinkJulia\nfig05_1()<figure>\n  <img src=\"fig51.svg\" alt=\"Stack diagram.\">\n  <figcaption>Figure 5.1. Stack diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig51}\n\\caption{Stack diagram.}\n\\label{fig51}\n\\end{figure}Figure 5.1 shows a stack diagram for countdown called with n = 3.As usual, the top of the stack is the frame for __main__. It is empty because we did not create any variables in __main__ or pass any arguments to it.The four countdown frames have different values for the parameter n. The bottom of the stack, where n=0, is called the base case. It does not make a recursive call, so there are no more frames.As an exercise, draw a stack diagram for print_n called with s = \"Hello\" and n=2. Then write a function called do_n that takes a function object and a number, n, as arguments, and that calls the given function n times."
+},
+
+{
+    "location": "chap05.html#Infinite-recursion-1",
+    "page": "Conditionals and recursion",
+    "title": "Infinite recursion",
+    "category": "section",
+    "text": "If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as infinite recursion, and it is generally not a good idea. Here is a minimal program with an infinite recursion:function recurse()\n    recurse()\nendIn most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:julia> recurse()\nERROR: StackOverflowError:\nStacktrace:\n [1] recurse() at ./REPL[1]:2 (repeats 80000 times)This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 recurse frames on the stack!If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it."
+},
+
 ]}
