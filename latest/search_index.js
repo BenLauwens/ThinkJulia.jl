@@ -632,4 +632,84 @@ var documenterSearchIndex = {"docs": [
     "text": "If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as infinite recursion, and it is generally not a good idea. Here is a minimal program with an infinite recursion:function recurse()\n    recurse()\nendIn most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:julia> recurse()\nERROR: StackOverflowError:\nStacktrace:\n [1] recurse() at ./REPL[1]:2 (repeats 80000 times)This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 recurse frames on the stack!If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it."
 },
 
+{
+    "location": "chap05.html#Keyboard-input-1",
+    "page": "Conditionals and recursion",
+    "title": "Keyboard input",
+    "category": "section",
+    "text": "The programs we have written so far accept no input from the user. They just do the same thing every time.Julia provides a built-in function called input that stops the program and waits for the user to type something. When the user presses RETURN or ENTER, the program resumes and readline returns what the user typed as a string.julia> text = readline()\nWhat are you waiting for?\n\"What are you waiting for?\"Before getting input from the user, it is a good idea to print a prompt telling the user what to type:julia> print(\"What...is your name? \"); readline()\nWhat...is your name? Arthur, King of the Britons!\n\"Arthur, King of the Britons!\"; allows to put multiple statements on the same line. In the REPL only the last statement returns its value.If you expect the user to type an integer, you can try to convert the return value to Int64:julia> println(\"What...is the airspeed velocity of an unladen swallow?\"); speed = readline()\nWhat...is the airspeed velocity of an unladen swallow?\n42\n\"42\"\n\njulia> parse(Int64, speed)But if the user types something other than a string of digits, you get an error:julia> println(\"What...is the airspeed velocity of an unladen swallow? \"); speed = readline()\nWhat...is the airspeed velocity of an unladen swallow?\nWhat do you mean, an African or a European swallow?\n\"What do you mean, an African or a European swallow?\"\n\njulia> parse(Int64, speed)\nERROR: ArgumentError: invalid base 10 digit \'W\' in \"What do you mean, an African or a European swallow?\"\nStacktrace:\n [1] macro expansion at ./REPL.jl:2 [inlined]\n [2] (::Base.REPL.##1#2{Base.REPL.REPLBackend})() at ./event.jl:73We will see how to handle this kind of error later."
+},
+
+{
+    "location": "chap05.html#Debugging-1",
+    "page": "Conditionals and recursion",
+    "title": "Debugging",
+    "category": "section",
+    "text": "When a syntax or runtime error occurs, the error message contains a lot of information, but it can be overwhelming. The most useful parts are usually:What kind of error it was, and\nWhere it occurred.Syntax errors are usually easy to find, but there are a few gotchas. In general, error messages indicate where the problem was discovered, but the actual error might be earlier in the code, sometimes on a previous line.The same is true of runtime errors. Suppose you are trying to compute a signal-to-noise ratio in decibels. The formula is SNR_db = 10 log_10 fracP_signalP_noise In Julia, you might write something like this:signal_power = 9\nnoise_power = 10\nratio = signal_power ÷ noise_power\ndecibels = 10 * log10(ratio)\nprint(decibels)This is not the result you expected.To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses floor division instead of floating-point division.You should take the time to read error messages carefully, but don’t assume that everything they say is correct."
+},
+
+{
+    "location": "chap05.html#Glossary-1",
+    "page": "Conditionals and recursion",
+    "title": "Glossary",
+    "category": "section",
+    "text": "floor division: An operator, denoted ÷, that divides two numbers and rounds down (toward negative infinity) to an integer.modulus operator: An operator, denoted with a percent sign (%), that works on integers and returns the remainder when one number is divided by another.boolean expression: An expression whose value is either true or false.relational operator: One of the operators that compares its operands: ==, ≠ (!=), >, <, ≥ (>=\'), and≤(<=`).logical operator: One of the operators that combines boolean expressions: && (and), || (or), and ! (not).conditional statement: A statement that controls the flow of execution depending on some condition.condition: The boolean expression in a conditional statement that determines which branch runs.compound statement: A statement that consists of a header and a body. The body is terminated with the keyword end.branch: One of the alternative sequences of statements in a conditional statement.chained conditional: A conditional statement with a series of alternative branches.nested conditional: A conditional statement that appears in one of the branches of another conditional statement.return statement: A statement that causes a function to end immediately and return to the caller.recursion: The process of calling the function that is currently executing.base case: A conditional branch in a recursive function that does not make a recursive call.infinite recursion: A recursion that doesn’t have a base case, or never reaches it. Eventually, an infinite recursion causes a runtime error."
+},
+
+{
+    "location": "chap05.html#Exercises-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap05.html#Exercise-1-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercise 1",
+    "category": "section",
+    "text": "The function time returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.time()Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch."
+},
+
+{
+    "location": "chap05.html#Exercise-2-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercise 2",
+    "category": "section",
+    "text": "Fermat’s Last Theorem says that there are no positive integers a, b, and c such thata^n + b^n = c^nfor any values of n greater than 2.Write a function named check_fermat that takes four parameters—a, b, c and n—and checks to see if Fermat’s theorem holds. If n is greater than 2 and a^n + b^n == c^n the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”\nWrite a function that prompts the user to input values for a, b, c and n, converts them to integers, and uses check_fermat to check whether they violate Fermat’s theorem."
+},
+
+{
+    "location": "chap05.html#Exercise-3-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercise 3",
+    "category": "section",
+    "text": "If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)Write a function named is_triangle that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.\nWrite a function that prompts the user to input three stick lengths, converts them to integers, and uses is_triangle to check whether sticks with the given lengths can form a triangle."
+},
+
+{
+    "location": "chap05.html#Exercise-4-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercise 4",
+    "category": "section",
+    "text": "What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.function recurse(n, s)\n    if n == 0\n        println(s)\n    else\n        recurse(n-1, n+s)\n    end\nend\n\nrecurse(3, 0)What would happen if you called this function like this: recurse(-1, 0)?\nWrite a docstring that explains everything someone would need to know in order to use this function (and nothing else).The following exercises use the Luxor module, described in Chapter 4:"
+},
+
+{
+    "location": "chap05.html#Exercise-5-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercise 5",
+    "category": "section",
+    "text": "Read the following function and see if you can figure out what it does (see the examples in Chapter 4). Then run it and see if you got it right.function draw(t, length, n)\n    if n == 0\n        return\n    end\n    angle = 50\n    Forward(t, length*n)\n    Turn(t, -angle)\n    draw(t, length, n-1)\n    Turn(t, 2*angle)\n    draw(t, length, n-1)\n    Turn(t, -angle)\n    Forward(-length*n)\nend"
+},
+
+{
+    "location": "chap05.html#Exercise-6-1",
+    "page": "Conditionals and recursion",
+    "title": "Exercise 6",
+    "category": "section",
+    "text": "using ThinkJulia\nfig05_2()<figure>\n  <img src=\"fig52.svg\" alt=\"A Koch curve.\">\n  <figcaption>Figure 5.2. A Koch curve.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig52}\n\\caption{A Koch curve.}\n\\label{fig52}\n\\end{figure}The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length x, all you have to do isDraw a Koch curve with length fracx3.\nTurn left 60 degrees.\nDraw a Koch curve with length fracx3.\nTurn right 120 degrees.\nDraw a Koch curve with length fracx3.\nTurn left 60 degrees.\nDraw a Koch curve with length fracx3.The exception is if x is less than 3: in that case, you can just draw a straight line with length x.Write a function called koch that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.\nWrite a function called snowflake that draws three Koch curves to make the outline of a snowflake.\nThe Koch curve can be generalized in several ways. See http://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite."
+},
+
 ]}
