@@ -326,3 +326,253 @@ Stacktrace:
 This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 `recurse` frames on the stack!
 
 If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
+
+## Keyboard input
+
+The programs we have written so far accept no input from the user. They just do the same thing every time.
+
+Julia provides a built-in function called input that stops the program and waits for the user to type something. When the user presses `RETURN` or `ENTER`, the program resumes and `readline` returns what the user typed as a string.
+
+```julia
+julia> text = readline()
+What are you waiting for?
+"What are you waiting for?"
+```
+
+Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
+
+```julia
+julia> print("What...is your name? "); readline()
+What...is your name? Arthur, King of the Britons!
+"Arthur, King of the Britons!"
+```
+
+`;` allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
+
+If you expect the user to type an integer, you can try to convert the return value to `Int64`:
+
+```julia
+julia> println("What...is the airspeed velocity of an unladen swallow?"); speed = readline()
+What...is the airspeed velocity of an unladen swallow?
+42
+"42"
+
+julia> parse(Int64, speed)
+```
+
+But if the user types something other than a string of digits, you get an error:
+
+```julia
+julia> println("What...is the airspeed velocity of an unladen swallow? "); speed = readline()
+What...is the airspeed velocity of an unladen swallow?
+What do you mean, an African or a European swallow?
+"What do you mean, an African or a European swallow?"
+
+julia> parse(Int64, speed)
+ERROR: ArgumentError: invalid base 10 digit 'W' in "What do you mean, an African or a European swallow?"
+Stacktrace:
+ [1] macro expansion at ./REPL.jl:2 [inlined]
+ [2] (::Base.REPL.##1#2{Base.REPL.REPLBackend})() at ./event.jl:73
+```
+
+We will see how to handle this kind of error later.
+
+## Debugging
+
+When a syntax or runtime error occurs, the error message contains a lot of information, but it can be overwhelming. The most useful parts are usually:
+
+- What kind of error it was, and
+
+- Where it occurred.
+
+Syntax errors are usually easy to find, but there are a few gotchas. In general, error messages indicate where the problem was discovered, but the actual error might be earlier in the code, sometimes on a previous line.
+
+The same is true of runtime errors. Suppose you are trying to compute a signal-to-noise ratio in decibels. The formula is 
+
+$$SNR_{db} = 10 \log_{10} \frac{P_{signal}}{P_{noise}}\ .$$
+
+In Julia, you might write something like this:
+
+```@example
+signal_power = 9
+noise_power = 10
+ratio = signal_power ÷ noise_power
+decibels = 10 * log10(ratio)
+print(decibels)
+```
+
+This is not the result you expected.
+
+To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses floor division instead of floating-point division.
+
+You should take the time to read error messages carefully, but don’t assume that everything they say is correct.
+
+## Glossary
+
+*floor division*:
+An operator, denoted `÷`, that divides two numbers and rounds down (toward negative infinity) to an integer.
+
+*modulus operator*:
+An operator, denoted with a percent sign (%), that works on integers and returns the remainder when one number is divided by another.
+
+*boolean expression*:
+An expression whose value is either `true` or `false`.
+
+*relational operator*:
+One of the operators that compares its operands: `==`, `≠` (`!=`), `>`, `<`, `≥` (`>='), and `≤` (`<=`).
+
+*logical operator*:
+One of the operators that combines boolean expressions: `&&` (and), `||` (or), and `!` (not).
+
+*conditional statement*:
+A statement that controls the flow of execution depending on some condition.
+
+*condition*:
+The boolean expression in a conditional statement that determines which branch runs.
+
+*compound statement*:
+A statement that consists of a header and a body. The body is terminated with the keyword `end`.
+
+*branch*:
+One of the alternative sequences of statements in a conditional statement.
+
+*chained conditional*:
+A conditional statement with a series of alternative branches.
+
+*nested conditional*:
+A conditional statement that appears in one of the branches of another conditional statement.
+
+*return statement*:
+A statement that causes a function to end immediately and return to the caller.
+
+*recursion*:
+The process of calling the function that is currently executing.
+
+*base case*:
+A conditional branch in a recursive function that does not make a recursive call.
+
+*infinite recursion*:
+A recursion that doesn’t have a base case, or never reaches it. Eventually, an infinite recursion causes a runtime error.
+
+## Exercises
+
+### Exercise 1  
+
+The function `time` returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
+
+```@repl
+time()
+```
+
+Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch.
+
+### Exercise 2  
+
+Fermat’s Last Theorem says that there are no positive integers $a$, $b$, and $c$ such that
+
+$$a^n + b^n = c^n$$
+
+for any values of $n$ greater than 2.
+
+1. Write a function named `check_fermat` that takes four parameters—`a`, `b`, `c` and `n`—and checks to see if Fermat’s theorem holds. If `n` is greater than 2 and `a^n + b^n == c^n` the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
+
+2. Write a function that prompts the user to input values for `a`, `b`, `c` and `n`, converts them to integers, and uses `check_fermat` to check whether they violate Fermat’s theorem.
+
+### Exercise 3
+
+If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
+
+*If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)*
+
+1. Write a function named `is_triangle` that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
+
+2. Write a function that prompts the user to input three stick lengths, converts them to integers, and uses `is_triangle` to check whether sticks with the given lengths can form a triangle.
+
+### Exercise 4   
+
+What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
+
+```julia
+function recurse(n, s)
+    if n == 0
+        println(s)
+    else
+        recurse(n-1, n+s)
+    end
+end
+
+recurse(3, 0)
+```
+
+1. What would happen if you called this function like this: `recurse(-1, 0)`?
+
+2. Write a docstring that explains everything someone would need to know in order to use this function (and nothing else).
+
+The following exercises use the `Luxor` module, described in Chapter 4:
+
+### Exercise 5
+
+Read the following function and see if you can figure out what it does (see the examples in Chapter 4). Then run it and see if you got it right.
+
+```julia
+function draw(t, length, n)
+    if n == 0
+        return
+    end
+    angle = 50
+    Forward(t, length*n)
+    Turn(t, -angle)
+    draw(t, length, n-1)
+    Turn(t, 2*angle)
+    draw(t, length, n-1)
+    Turn(t, -angle)
+    Forward(-length*n)
+end
+```
+
+### Exercise 6
+
+```@eval
+using ThinkJulia
+fig05_2()
+```
+
+```@raw html
+<figure>
+  <img src="fig52.svg" alt="A Koch curve.">
+  <figcaption>Figure 5.2. A Koch curve.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig52}
+\caption{A Koch curve.}
+\label{fig52}
+\end{figure}
+```
+
+The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length $x$, all you have to do is
+
+1. Draw a Koch curve with length $\frac{x}{3}$.
+
+2. Turn left 60 degrees.
+
+3. Draw a Koch curve with length $\frac{x}{3}$.
+
+4. Turn right 120 degrees.
+
+5. Draw a Koch curve with length $\frac{x}{3}$.
+
+6. Turn left 60 degrees.
+
+7. Draw a Koch curve with length $\frac{x}{3}$.
+
+The exception is if $x$ is less than 3: in that case, you can just draw a straight line with length $x$.
+
+1. Write a function called `koch` that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
+
+2. Write a function called `snowflake` that draws three Koch curves to make the outline of a snowflake.
+
+3. The Koch curve can be generalized in several ways. See <http://en.wikipedia.org/wiki/Koch_snowflake> for examples and implement your favorite.

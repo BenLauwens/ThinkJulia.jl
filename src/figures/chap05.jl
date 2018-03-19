@@ -1,4 +1,5 @@
 using TikzPictures
+using Luxor
 
 function fig05_1()
   p = TikzPicture(L"""
@@ -28,4 +29,22 @@ function fig05_1()
   save(SVG("fig51"), p)
   save(PDF("fig51"), p)
   nothing
+end
+
+function draw_05_2(ext)
+  Drawing(200, 70, "fig52.$ext")  
+  origin()
+  background("white")  
+  bob = Turtle()
+  Pencolor(bob, "black")
+  Penwidth(bob, 1)
+  Reposition(bob, -100, 30)
+  koch(bob, 200)
+  finish() 
+  nothing
+end
+
+function fig05_2()
+  draw_05_2("svg")
+  draw_05_2("pdf")
 end
