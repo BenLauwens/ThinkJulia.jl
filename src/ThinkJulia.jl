@@ -1,6 +1,7 @@
 module ThinkJulia
   export printlyrics, repeatlyrics, printtwice, cattwice
   export rightjustify
+  export forward, turn, penup, pendown
 
 
   export fig02_1
@@ -10,6 +11,7 @@ module ThinkJulia
   export fig06_1
 
   include("code/chap03.jl")
+  include("code/chap04.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

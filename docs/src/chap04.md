@@ -30,7 +30,7 @@ Once you create a Turtle, you can call a function to move it around a drawing. F
 
 ```julia
 @svg begin
-    Forward(bob, 100)
+    forward(bob, 100)
 end
 ```
 
@@ -57,20 +57,20 @@ fig04_1()
 
 The `@svg` keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.
 
-The arguments of `Forward` are the Turtle and a distance in pixels, so the actual size depends on your display.
+The arguments of `forward` are the Turtle and a distance in pixels, so the actual size depends on your display.
 
-Another function you can call with a Turtle as argument is `Turn` for turning. The second argument for `Turn` is an angle in degrees.
+Another function you can call with a Turtle as argument is `turn` for turning. The second argument for `turn` is an angle in degrees.
 
-Also, each Turtle is holding a pen, which is either down or up; if the pen is down, the Turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the Turtle. The functions `Penup` and `Pendown` stand for “pen up” and “pen down”.
+Also, each Turtle is holding a pen, which is either down or up; if the pen is down, the Turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the Turtle. The functions `penup` and `pendown` stand for “pen up” and “pen down”.
 
 To draw a right angle, modify the macro:
 
 ```julia
 bob = Turtle()
 @svg begin
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
 end
 ```
 
@@ -83,13 +83,13 @@ Chances are you wrote something like this:
 ```julia
 bob = Turtle()
 @svg begin
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
 end
 ```
 
@@ -109,8 +109,8 @@ Here is a `for` statement that draws a square:
 bob = Turtle()
 @svg begin
     for i in 1:4
-        Forward(bob, 100)
-        Turn(bob, -90)
+        forward(bob, 100)
+        turn(bob, -90)
     end
 end
 ```
@@ -146,8 +146,8 @@ The first exercise asks you to put your square-drawing code into a function defi
 ```julia
 function square(t)
     for i in 1:4
-        Forward(t, 100)
-        Turn(t, -90)
+        forward(t, 100)
+        turn(t, -90)
     end
 end
 bob = Turtle()
@@ -156,9 +156,9 @@ bob = Turtle()
 end
 ```
 
-The innermost statements, `Forward` and `Turn` are indented twice to show that they are inside the `for` loop, which is inside the function definition.
+The innermost statements, `forward` and `turn` are indented twice to show that they are inside the `for` loop, which is inside the function definition.
 
-Inside the function, `t` refers to the same Turtle `bob`, so `Turn(t, -90)` has the same effect as `Turn(bob, -90)`. In that case, why not call the parameter `bob`? The idea is that `t` can be any Turtle, not just bob, so you could create a second Turtle and pass it as an argument to `square`:
+Inside the function, `t` refers to the same Turtle `bob`, so `turn(t, -90)` has the same effect as `turn(bob, -90)`. In that case, why not call the parameter `bob`? The idea is that `t` can be any Turtle, not just bob, so you could create a second Turtle and pass it as an argument to `square`:
 
 ```julia
 alice = Turtle()
@@ -176,8 +176,8 @@ The next step is to add a `length` parameter to `square`. Here is a solution:
 ```julia
 function square(t, length)
     for i in 1:4
-        Forward(t, length)
-        Turn(t, -90)
+        forward(t, length)
+        turn(t, -90)
     end
 end
 bob = Turtle()
@@ -194,8 +194,8 @@ The next step is also a generalization. Instead of drawing squares, `polygon` dr
 function polygon(t, n, length)
     angle = 360 / n
     for i in 1:n
-        Forward(t, length)
-        Turn(t, -angle)
+        forward(t, length)
+        turn(t, -angle)
     end
 end
 bob = Turtle()
@@ -255,8 +255,8 @@ function arc(t, r, angle)
     step_length = arc_length / n
     step_angle = angle / n
     for i in 1:n
-        Forward(t, step_length)
-        Turn(t, -step_angle)
+        forward(t, step_length)
+        turn(t, -step_angle)
     end
 end
 ```
@@ -266,8 +266,8 @@ The second half of this function looks like `polygon`, but we can’t re-use `po
 ```julia
 function polyline(t, n, length, angle)
     for i 1:n
-        Forward(t, length)
-        Turn(t, -angle)
+        forward(t, length)
+        turn(t, -angle)
     end
 end
 ```
@@ -330,8 +330,8 @@ angle (in degrees) between them.  t is a Turtle.
 """ 
 function polyline(t, n, length, angle)
     for i in 1:n
-        Forward(t, length)
-        Turn(t, -angle)
+        forward(t, length)
+        turn(t, -angle)
     end
 end
 ```
@@ -428,9 +428,9 @@ function arc(t, r, angle)
 
     # making a slight left turn before starting reduces
     # the error caused by the linear approximation of the arc
-    Turn(t, step_angle/2)
+    turn(t, step_angle/2)
     polyline(t, n, step_length, step_angle)
-    Turn(t, -step_angle/2)
+    turn(t, -step_angle/2)
 end
 ```
 

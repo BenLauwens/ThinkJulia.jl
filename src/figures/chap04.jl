@@ -13,7 +13,7 @@ function draw04_1(ext)
   Reposition(bob, -50, 0)
   Pencolor(bob, "black")
   Penwidth(bob, 1)
-  Forward(bob, 100)
+  forward(bob, 100)
   finish() 
   nothing
 end
@@ -54,10 +54,10 @@ function draw04_3(ext)
   Penwidth(bob, 1)
   Reposition(bob, -140, 0)
   size = 40
-  draw_pie(bob, 5, size)
-  draw_pie(bob, 6, size)
-  draw_pie(bob, 7, size)
-  draw_pie(bob, 8, size)
+  drawpie(bob, 5, size)
+  drawpie(bob, 6, size)
+  drawpie(bob, 7, size)
+  drawpie(bob, 8, size)
   finish() 
   nothing
 end
