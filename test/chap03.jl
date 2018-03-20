@@ -32,58 +32,58 @@
   x = exp(log(x+1))
   @test x == 1.7071067811865475
 
-  function print_lyrics(io)
+  function printlyrics(io)
     println(io, "I'm a lumberjack, and I'm okay.")
     println(io, "I sleep all night and I work all day.")
   end
 
-  @test print_lyrics isa Function
+  @test printlyrics isa Function
   io = IOBuffer()
-  print_lyrics(io)
+  printlyrics(io)
   @test String(take!(copy(io))) == "I'm a lumberjack, and I'm okay.\nI sleep all night and I work all day.\n"
 
-  function repeat_lyrics(io)
-    print_lyrics(io)
-    print_lyrics(io)
+  function repeatlyrics(io)
+    printlyrics(io)
+    printlyrics(io)
   end
   io = IOBuffer()
-  repeat_lyrics(io)
+  repeatlyrics(io)
   @test String(take!(copy(io))) == "I'm a lumberjack, and I'm okay.\nI sleep all night and I work all day.\n" ^ 2
 
-  function print_twice(io, bruce)
+  function printtwice(io, bruce)
     println(io, bruce)
     println(io, bruce)
   end
   io = IOBuffer()
-  print_twice(io, "Spam")
-  print_twice(io, 42)
-  print_twice(io, π)
+  printtwice(io, "Spam")
+  printtwice(io, 42)
+  printtwice(io, π)
   @test String(take!(copy(io))) == "Spam\n" ^ 2 * "42\n" ^ 2 * "$π\n" ^2
 
   io = IOBuffer()
-  print_twice(io, "Spam "^4)
-  print_twice(io, cos(π))
+  printtwice(io, "Spam "^4)
+  printtwice(io, cos(π))
   @test String(take!(copy(io))) == ("Spam " ^ 4 * "\n") ^ 2 * "$(cos(π))\n" ^2
 
   io = IOBuffer()
   michael = "Eric, the half a bee."
-  print_twice(io, michael)
+  printtwice(io, michael)
   @test String(take!(copy(io))) == "Eric, the half a bee.\n" ^ 2
 
-  function cat_twice(io, part1, part2)
+  function cattwice(io, part1, part2)
     concat = part1 * part2
-    print_twice(io, concat)
+    printtwice(io, concat)
   end
   line1 = "Bing tiddle "
   line2 = "tiddle bang."
   io = IOBuffer()
-  cat_twice(io, line1, line2)
+  cattwice(io, line1, line2)
   @test String(take!(copy(io))) == "Bing tiddle tiddle bang.\n" ^ 2
 
   @test_throws UndefVarError println(concat)
 
   io = IOBuffer()
-  result = print_twice(io, "Bing")
+  result = printtwice(io, "Bing")
   println(io, result)
   @test String(take!(copy(io))) == "Bing\n" ^ 2 * "nothing\n"
 

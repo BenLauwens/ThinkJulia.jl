@@ -46,12 +46,12 @@ string(3.14159)
 
 In Julia,  most of the familiar mathematical functions are directly available:
 
-```@setup power
+```@setup chap03
 signal_power = 9
 noise_power = 10
 ```
 
-```@repl power
+```@repl chap03
 ratio = signal_power / noise_power
 decibels = 10 * log10(ratio)
 ```
@@ -129,7 +129,7 @@ The quotation marks must be “straight quotes”, usually located next to Enter
 If you type a function definition in interactive mode, the REPL indents to let you know that the definition isn’t complete:
 
 ```julia
-juliafunction printlyrics()
+julia> function printlyrics()
        println("I'm a lumberjack, and I'm okay.")
 ```
 
@@ -137,20 +137,17 @@ To end the function, you have to enter `end`.
 
 Defining a function creates a function object, which is of type `Function`:
 
-```@setup printlyrics
-function printlyrics()
-println("I'm a lumberjack, and I'm okay.")
-println("I sleep all night and I work all day.")
-end
+```@setup chap03
+using ThinkJulia
 ```
 
-```@repl printlyrics
+```@repl chap03
 printlyrics isa Function
 ```
 
 The syntax for calling the new function is the same as for built-in functions:
 
-```@repl printlyrics
+```@repl chap03
 printlyrics()
 ```
 
@@ -165,14 +162,7 @@ end
 
 And then call `repeatlyrics`:
 
-```@setup printlyrics
-function repeatlyrics()
-printlyrics()
-printlyrics()
-end
-```
-
-```@repl printlyrics
+```@repl chap03
 repeatlyrics()
 ```
 
@@ -237,14 +227,7 @@ This function assigns the argument to a parameter named `bruce`. When the functi
 
 This function works with any value that can be printed.
 
-```@setup printtwice
-function printtwice(bruce)
-    println(bruce)
-    println(bruce)
-end
-```
-
-```@repl printtwice
+```@repl chap03
 printtwice("Spam")
 printtwice(42)
 printtwice(π)
@@ -252,7 +235,7 @@ printtwice(π)
 
 The same rules of composition that apply to built-in functions also apply to programmer-defined functions, so we can use any kind of expression as an argument for `printtwice`:
 
-```@repl printtwice
+```@repl chap03
 printtwice("Spam "^4)
 printtwice(cos(π))
 ```
@@ -261,7 +244,7 @@ The argument is evaluated before the function is called, so in the examples the 
 
 You can also use a variable as an argument:
 
-```@repl printtwice
+```@repl chap03
 michael = "Eric, the half a bee."
 printtwice(michael)
 ```
@@ -281,14 +264,8 @@ end
 
 This function takes two arguments, concatenates them, and prints the result twice. Here is an example that uses it:
 
-```@setup printtwice
-function cattwice(part1, part2)
-    concat = part1 * part2
-    printtwice(concat)
-end
-```
 
-```@repl printtwice
+```@repl chap03
 line1 = "Bing tiddle "
 line2 = "tiddle bang."
 cattwice(line1, line2)
@@ -296,7 +273,7 @@ cattwice(line1, line2)
 
 When `cattwice` terminates, the variable `concat` is destroyed. If we try to print it, we get an exception:
 
-```@repl printtwice
+```@repl chap03
 println(concat)
 ```
 
@@ -375,7 +352,7 @@ This script computes the square root of 5, but since it doesn’t store or displ
 
 Void functions might display something on the screen or have some other effect, but they don’t have a return value. If you assign the result to a variable, you get a special value called `nothing`.
 
-```@repl printtwice
+```@repl chap03
 result = printtwice("Bing")
 println(result)
 ```
@@ -474,14 +451,7 @@ A list of the functions that are executing, printed when an exception occurs.
 
 Write a function named `rightjustify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 
-```@setup rightjustify
-function rightjustify(s)
-    n = 70 - length(s)
-    println(" "^70 * s)
-end
-```
-
-```@repl rightjustify
+```@repl chap03
 rightjustify("monty")
 ```
 
