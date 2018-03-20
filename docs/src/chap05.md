@@ -92,7 +92,7 @@ end
 
 The boolean expression after `if` is called the **condition**. If it is true, the indented statement runs. If not, nothing happens.
 
-if statements have the same structure as function definitions: a header followed by body terminated with the keyword `end`. Statements like this are called **compound statements**.
+`if` statements have the same structure as function definitions: a header followed by body terminated with the keyword `end`. Statements like this are called **compound statements**.
 
 There is no limit on the number of statements that can appear in the body. Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet).
 
@@ -223,49 +223,44 @@ What happens if we call this function like this?
 countdown(3)
 ```
 
-- The execution of `countdown` begins with `n=3`, and since `n` is greater than 0, it outputs the value 3, and then calls itself...
+The execution of `countdown` begins with `n=3`, and since `n` is greater than 0, it outputs the value 3, and then calls itself...
+> The execution of `countdown` begins with `n=2`, and since `n` is greater than 0, it outputs the value 2, and then calls itself...
+>> The execution of `countdown` begins with `n=1`, and since `n` is greater than 0, it outputs the value 1, and then calls itself...
+>>> The execution of `countdown` begins with `n=0`, and since `n` is not greater than 0, it outputs the word, `"Blastoff!"` and then returns.
+>> The countdown that got `n=1` returns.
+> The countdown that got `n=2` returns.
 
-  - The execution of `countdown` begins with `n=2`, and since `n` is greater than 0, it outputs the value 2, and then calls itself...
-
-    - The execution of `countdown` begins with `n=1`, and since `n` is greater than 0, it outputs the value 1, and then calls itself...
-
-      - The execution of `countdown` begins with `n=0`, and since `n` is not greater than 0, it outputs the word, `"Blastoff!"` and then returns.
-
-    - The countdown that got `n=1` returns.
-
-  - The countdown that got `n=2` returns.
-
-- The countdown that got `n=3` returns.
+The countdown that got `n=3` returns.
 
 And then you’re back in `__main__`.
 
 A function that calls itself is **recursive**; the process of executing it is called **recursion**.
 
-As another example, we can write a function that prints a string $n$ times.
+As another example, we can write a function that prints a string ``n`` times.
 
 ```julia
-function print_n(s, n)
+function printn(s, n)
     if n <= 0
         return
     end
     println(s)
-    print_n(s, n-1)
+    printn(s, n-1)
 end
 ```
 
 ```@setup chap05
-function print_n(s, n)
+function printn(s, n)
     if n <= 0
         return
     end
     println(s)
-    print_n(s, n-1)
+    printn(s, n-1)
 end
 ```
 
 If `n <= 0` the `return` statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
 
-The rest of the function is similar to `countdown`: it displays `s` and then calls itself to display `s` $n−1$ additional times. So the number of lines of output is $1 + (n - 1)$, which adds up to $n$.
+The rest of the function is similar to `countdown`: it displays `s` and then calls itself to display `s` ``n−1`` additional times. So the number of lines of output is ``1 + (n - 1)``, which adds up to ``n``.
 
 For simple examples like this, it is probably easier to use a `for` loop. But we will see examples later that are hard to write with a `for` loop and easy to write with recursion, so it is good to start early.
 
@@ -300,9 +295,9 @@ Figure 5.1 shows a stack diagram for `countdown` called with `n = 3`.
 
 As usual, the top of the stack is the frame for `__main__`. It is empty because we did not create any variables in `__main__` or pass any arguments to it.
 
-The four `countdown` frames have different values for the parameter `n`. The bottom of the stack, where `n=0`, is called the **base case**. It does not make a recursive call, so there are no more frames.
+The four `countdown` frames have different values for the parameter `n`. The bottom of the stack, where `n = 0`, is called the **base case**. It does not make a recursive call, so there are no more frames.
 
-As an exercise, draw a stack diagram for `print_n` called with `s = "Hello"` and `n=2`. Then write a function called `do_n` that takes a function object and a number, `n`, as arguments, and that calls the given function $n$ times.
+As an exercise, draw a stack diagram for `printn` called with `s = "Hello"` and `n = 2`. Then write a function called `do_n` that takes a function object and a number, `n`, as arguments, and that calls the given function ``n`` times.
 
 ## Infinite recursion
 
@@ -347,7 +342,7 @@ What...is your name? Arthur, King of the Britons!
 "Arthur, King of the Britons!"
 ```
 
-`;` allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
+A semi-colon `;` allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
 
 If you expect the user to type an integer, you can try to convert the return value to `Int64`:
 
@@ -389,7 +384,9 @@ Syntax errors are usually easy to find, but there are a few gotchas. In general,
 
 The same is true of runtime errors. Suppose you are trying to compute a signal-to-noise ratio in decibels. The formula is 
 
-$$SNR_{db} = 10 \log_{10} \frac{P_{signal}}{P_{noise}}\ .$$
+```math
+SNR_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .
+```
 
 In Julia, you might write something like this:
 
@@ -419,7 +416,7 @@ An operator, denoted with a percent sign (%), that works on integers and returns
 An expression whose value is either `true` or `false`.
 
 *relational operator*:
-One of the operators that compares its operands: `==`, `≠` (`!=`), `>`, `<`, `≥` (`>='), and `≤` (`<=`).
+One of the operators that compares its operands: `==`, `≠` (`!=`), `>`, `<`, `≥` (`>=`), and `≤` (`<=`).
 
 *logical operator*:
 One of the operators that combines boolean expressions: `&&` (and), `||` (or), and `!` (not).
@@ -468,25 +465,27 @@ Write a script that reads the current time and converts it to a time of day in h
 
 ### Exercise 2  
 
-Fermat’s Last Theorem says that there are no positive integers $a$, $b$, and $c$ such that
+Fermat’s Last Theorem says that there are no positive integers ``a``, ``b``, and ``c`` such that
 
-$$a^n + b^n = c^n$$
+```math
+a^n + b^n = c^n
+```
 
-for any values of $n$ greater than 2.
+for any values of ``n`` greater than 2.
 
-1. Write a function named `check_fermat` that takes four parameters—`a`, `b`, `c` and `n`—and checks to see if Fermat’s theorem holds. If `n` is greater than 2 and `a^n + b^n == c^n` the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
+1. Write a function named `checkfermat` that takes four parameters—`a`, `b`, `c` and `n`—and checks to see if Fermat’s theorem holds. If `n` is greater than 2 and `a^n + b^n == c^n` the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
 
-2. Write a function that prompts the user to input values for `a`, `b`, `c` and `n`, converts them to integers, and uses `check_fermat` to check whether they violate Fermat’s theorem.
+2. Write a function that prompts the user to input values for `a`, `b`, `c` and `n`, converts them to integers, and uses `checkfermat` to check whether they violate Fermat’s theorem.
 
 ### Exercise 3
 
 If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
 
-*If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)*
+> *If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)*
 
-1. Write a function named `is_triangle` that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
+1. Write a function named `istriangle` that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
 
-2. Write a function that prompts the user to input three stick lengths, converts them to integers, and uses `is_triangle` to check whether sticks with the given lengths can form a triangle.
+2. Write a function that prompts the user to input three stick lengths, converts them to integers, and uses `istriangle` to check whether sticks with the given lengths can form a triangle.
 
 ### Exercise 4   
 
@@ -553,23 +552,23 @@ fig05_2()
 \end{figure}
 ```
 
-The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length $x$, all you have to do is
+The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length ``x``, all you have to do is
 
-1. Draw a Koch curve with length $\frac{x}{3}$.
+1. Draw a Koch curve with length ``\frac{x}{3}``.
 
 2. Turn left 60 degrees.
 
-3. Draw a Koch curve with length $\frac{x}{3}$.
+3. Draw a Koch curve with length ``\frac{x}{3}``.
 
 4. Turn right 120 degrees.
 
-5. Draw a Koch curve with length $\frac{x}{3}$.
+5. Draw a Koch curve with length ``\frac{x}{3}``.
 
 6. Turn left 60 degrees.
 
-7. Draw a Koch curve with length $\frac{x}{3}$.
+7. Draw a Koch curve with length ``\frac{x}{3}``.
 
-The exception is if $x$ is less than 3: in that case, you can just draw a straight line with length $x$.
+The exception is if ``x`` is less than 3: in that case, you can just draw a straight line with length ``x``.
 
 1. Write a function called `koch` that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
 

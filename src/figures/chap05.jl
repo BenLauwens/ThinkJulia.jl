@@ -25,13 +25,14 @@ function fig05_1()
   \node[anchor=east] (n4) at(-1, -3) {\tt n};
   \node[anchor=west] (n4v) at (0, -3) {\tt 0};
   \draw[-latex] (n4) -- (n4v);
-  """; options="", preamble=preamble)
+  """; options=options, preamble=preamble)
   save(SVG("fig51"), p)
+  p.options=""
   save(PDF("fig51"), p)
   nothing
 end
 
-function draw_05_2(ext)
+function draw05_2(ext)
   Drawing(200, 70, "fig52.$ext")  
   origin()
   background("white")  
@@ -45,6 +46,6 @@ function draw_05_2(ext)
 end
 
 function fig05_2()
-  draw_05_2("svg")
-  draw_05_2("pdf")
+  draw05_2("svg")
+  draw05_2("pdf")
 end

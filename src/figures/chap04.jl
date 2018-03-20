@@ -1,11 +1,11 @@
 using Luxor
 
 function fig04_1()
-  draw_04_1("svg")
-  draw_04_1("pdf")
+  draw04_1("svg")
+  draw04_1("pdf")
 end
 
-function draw_04_1(ext)
+function draw04_1(ext)
   Drawing(102, 10, "fig41.$ext")  
   origin()
   background("white")  
@@ -19,11 +19,11 @@ function draw_04_1(ext)
 end
 
 function fig04_2()
-  draw_04_2("svg")
-  draw_04_2("pdf")
+  draw04_2("svg")
+  draw04_2("pdf")
 end
 
-function draw_04_2(ext)
+function draw04_2(ext)
   Drawing(310, 110, "fig42.$ext")  
   origin()
   background("white")  
@@ -41,11 +41,11 @@ function draw_04_2(ext)
 end
 
 function fig04_3()
-  draw_04_3("svg")
-  draw_04_3("pdf")
+  draw04_3("svg")
+  draw04_3("pdf")
 end
 
-function draw_04_3(ext)
+function draw04_3(ext)
   Drawing(360, 80, "fig43.$ext")  
   origin()
   background("white")  
@@ -63,11 +63,11 @@ function draw_04_3(ext)
 end
 
 function fig04_4()
-  draw_04_4("svg")
-  draw_04_4("pdf")
+  draw04_4("svg")
+  draw04_4("pdf")
 end
 
-function draw_04_4(ext)
+function draw04_4(ext)
   Drawing(110, 110, "fig44.$ext")  
   origin()
   background("white")  

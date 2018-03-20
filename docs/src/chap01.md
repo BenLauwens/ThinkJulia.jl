@@ -5,7 +5,7 @@
 
 The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
 
-The single most important skill for a computer scientist is **problem solving**. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That's why this chapter is called, “The way of the program”.
+The single most important skill for a computer scientist is **problem solving**. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That’s why this chapter is called, “The way of the program”.
 
 On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.
 
@@ -25,13 +25,13 @@ The details look different in different languages, but a few basic instructions 
 
 - *repetition*: Perform some action repeatedly, usually with some variation.
 
-Believe it or not, that's pretty much all there is to it. Every program you've ever used, no matter how complicated, is made up of instructions that look pretty much like these. So you can think of programming as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are simple enough to be performed with one of these basic instructions.
+Believe it or not, that’s pretty much all there is to it. Every program you’ve ever used, no matter how complicated, is made up of instructions that look pretty much like these. So you can think of programming as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are simple enough to be performed with one of these basic instructions.
 
 ## Running Julia
 
 One of the challenges of getting started with Julia is that you might have to install Julia and related software on your computer. If you are familiar with your operating system, and especially if you are comfortable with the command-line interface, you will have no trouble installing Julia. But for beginners, it can be painful to learn about system administration and programming at the same time.
 
-To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I'll make suggestions for installing Julia on your computer.
+To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
 
 In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing.
 
@@ -42,15 +42,15 @@ Base.banner() # hide
 println("julia>") # hide
 ```
 
-The first lines contain information about the REPL and the operating system it's running on, so it might be different for you. But you should check that the version number is at least 0.6.0
+The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least 0.6.0
 
-The last line is a **prompt** that indicates that the REPL is ready for you to enter code. If you type a line of code and hit Enter, the REPL displays the result: 
+The last line is a **prompt** that indicates that the REPL is ready for you to enter code. If you type a line of code and hit `ENTER`, the REPL displays the result: 
 
 ```@repl
 1 + 1
 ```
 
-Now you're ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.
+Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.
 
 ## The first program
 
@@ -60,19 +60,19 @@ Traditionally, the first program you write in a new language is called “Hello,
 println("Hello, World!")
 ```
 
-This is an example of a **print statement**, although it doesn't actually print anything on paper. It displays a result on the screen. In this case, the result is the words
+This is an example of a **print statement**, although it doesn’t actually print anything on paper. It displays a result on the screen. In this case, the result is the words
 
 ```
 Hello, World!
 ```
 
-The quotation marks in the program mark the beginning and end of the text to be displayed; they don't appear in the result.
+The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
 
-The parentheses indicate that `println` is a function. We'll get to functions in Chapter [Functions](@ref).
+The parentheses indicate that `println` is a function. We’ll get to functions in Chapter 3 [Functions](@ref).
 
 ## Arithmetic operators
 
-After "Hello, World", the next step is arithmetic. Julia provides **operators**, which are special symbols that represent computations like addition and multiplication. 
+After “Hello, World!”, the next step is arithmetic. Julia provides **operators**, which are special symbols that represent computations like addition and multiplication. 
 
 The operators `+`, `-`, and `*` perform addition, subtraction, and multiplication, as in the following examples:
 
@@ -88,7 +88,7 @@ The operator `/` performs division:
 84 / 2
 ```
 
-You might wonder why the result is `42.0` instead of `42`. I'll explain in the next section.
+You might wonder why the result is `42.0` instead of `42`. I’ll explain in the next section.
 
 Finally, the operator `^` performs exponentiation; that is, it raises a number to a power:
 
@@ -119,7 +119,7 @@ typeof("2")
 typeof("42.0")
 ```
 
-They're strings.
+They’re strings.
 
 When you type a large integer, you might be tempted to use commas between groups of digits, as in `1,000,000`. This is not a legal *integer* in Julia, but it is legal:
 
@@ -127,7 +127,7 @@ When you type a large integer, you might be tempted to use commas between groups
 1,000,000
 ```
 
-That's not what we expected at all! Julia parses `1,000,000` as a comma-separated sequence of integers. We'll learn more about this kind of sequence later.
+That’s not what we expected at all! Julia parses `1,000,000` as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
 
 ## Formal and natural languages
 
@@ -141,19 +141,19 @@ Formal languages tend to have strict **syntax** rules that govern the structure 
 
 Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 \& 6`` is that `` \&`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
 
-The second type of syntax rule pertains to the way tokens are combined. The equation ``3 += 3`` is illegal because even though ``+`` and ``=`` are legal tokens, you can't have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
+The second type of syntax rule pertains to the way tokens are combined. The equation ``3 += 3`` is illegal because even though ``+`` and ``=`` are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
 
 This is @ well-structured Engli\$h sentence with invalid t*kens in it. This sentence all valid tokens has, but invalid structure with.
 
 When you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called **parsing**.
 
-Although formal and natural languages have many features in common--tokens, structure, and syntax--there are some differences:
+Although formal and natural languages have many features in common—tokens, structure, and syntax—there are some differences:
 
 - ambiguity: Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.
 
 - redundancy: In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.
 
-- literalness: Natural languages are full of idiom and metaphor. If I say, ``The penny dropped'', there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
+- literalness: Natural languages are full of idiom and metaphor. If I say, “The penny dropped”, there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
 
 Because we all grow up speaking natural languages, it is sometimes hard to adjust to formal languages. The difference between formal and natural language is like the difference between poetry and prose, but more so:
 
@@ -194,7 +194,7 @@ A programming language that is designed to be easy for a computer to run; also c
 A property of a program that can run on more than one kind of computer.
 
 *REPL*:
-A program that reads another program and executes it
+A program that reads another program and executes it.
 
 *prompt*:
 Characters displayed by the interpreter to indicate that it is ready to take input from the user.
@@ -250,7 +250,7 @@ The process of finding and correcting bugs.
 
 It is a good idea to read this book in front of a computer so you can try out the examples as you go.
 
-Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the "Hello, world!" program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell `println` wrong?
+Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the “Hello, World!” program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell `println` wrong?
 
 This kind of experiment helps you remember what you read; it also helps when you are programming, because you get to know what the error messages mean. It is better to make mistakes now and on purpose than later and accidentally.
 

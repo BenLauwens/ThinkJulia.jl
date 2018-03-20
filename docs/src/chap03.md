@@ -61,9 +61,9 @@ radians = 0.7
 height = sin(radians)
 ```
 
-The first example uses `log10` to compute a signal-to-noise ratio in decibels (assuming that `signal_power` and `noise_power` are defined). `log`, which computes logarithms base $e$, is also provided.
+The first example uses `log10` to compute a signal-to-noise ratio in decibels (assuming that `signal_power` and `noise_power` are defined). `log`, which computes logarithms base ``e``, is also provided.
 
-The second example finds the sine of radians. The name of the variable is a hint that `sin` and the other trigonometric functions (`cos`, `tan`, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by $\pi$:
+The second example finds the sine of radians. The name of the variable is a hint that `sin` and the other trigonometric functions (`cos`, `tan`, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by ``\pi``:
 
 ```@repl chap03
 degrees = 45
@@ -71,7 +71,7 @@ radians = degrees / 180.0 * π
 sin(radians)
 ```
 
-The value of the variable `π` is a floating-point approximation of $\pi$, accurate to about 21 digits.
+The value of the variable `π` is a floating-point approximation of ``\pi``, accurate to about 21 digits.
 
 If you know trigonometry, you can check the previous result by comparing it to the square root of two divided by two:
 ```@repl
@@ -111,13 +111,13 @@ So far, we have only been using the functions that come with Julia, but it is al
 Here is an example:
 
 ```julia
-function print_lyrics()
+function printlyrics()
     println("I'm a lumberjack, and I'm okay.")
     println("I sleep all night and I work all day.")
 end
 ```
 
-`function` is a keyword that indicates that this is a function definition. The name of the function is `print_lyrics`. The rules for function names are the same as for variable names: they can contain almost all Unicode characters, but the first character can’t be a number. You can’t use a keyword as the name of a function, and you should avoid having a variable and a function with the same name.
+`function` is a keyword that indicates that this is a function definition. The name of the function is `printlyrics`. The rules for function names are the same as for variable names: they can contain almost all Unicode characters, but the first character can’t be a number. You can’t use a keyword as the name of a function, and you should avoid having a variable and a function with the same name.
 
 The empty parentheses after the name indicate that this function doesn’t take any arguments.
 
@@ -129,7 +129,7 @@ The quotation marks must be “straight quotes”, usually located next to Enter
 If you type a function definition in interactive mode, the REPL indents to let you know that the definition isn’t complete:
 
 ```julia
-julia> function print_lyrics()
+juliafunction printlyrics()
        println("I'm a lumberjack, and I'm okay.")
 ```
 
@@ -137,43 +137,43 @@ To end the function, you have to enter `end`.
 
 Defining a function creates a function object, which is of type `Function`:
 
-```@setup print_lyrics
-function print_lyrics()
+```@setup printlyrics
+function printlyrics()
 println("I'm a lumberjack, and I'm okay.")
 println("I sleep all night and I work all day.")
 end
 ```
 
-```@repl print_lyrics
-print_lyrics isa Function
+```@repl printlyrics
+printlyrics isa Function
 ```
 
 The syntax for calling the new function is the same as for built-in functions:
 
-```@repl print_lyrics
-print_lyrics()
+```@repl printlyrics
+printlyrics()
 ```
 
-Once you have defined a function, you can use it inside another function. For example, to repeat the previous refrain, we could write a function called `repeat_lyrics`:
+Once you have defined a function, you can use it inside another function. For example, to repeat the previous refrain, we could write a function called `repeatlyrics`:
 
 ```julia
-function repeat_lyrics()
-    print_lyrics()
-    print_lyrics()
+function repeatlyrics()
+    printlyrics()
+    printlyrics()
 end
 ```
 
-And then call `repeat_lyrics`:
+And then call `repeatlyrics`:
 
-```@setup print_lyrics
-function repeat_lyrics()
-print_lyrics()
-print_lyrics()
+```@setup printlyrics
+function repeatlyrics()
+printlyrics()
+printlyrics()
 end
 ```
 
-```@repl print_lyrics
-repeat_lyrics()
+```@repl printlyrics
+repeatlyrics()
 ```
 
 But that’s not really how the song goes.
@@ -183,26 +183,26 @@ But that’s not really how the song goes.
 Pulling together the code fragments from the previous section, the whole program looks like this:
 
 ```julia
-function print_lyrics()
+function printlyrics()
     println("I'm a lumberjack, and I'm okay.")
     println("I sleep all night and I work all day.")
 end
 
-function repeat_lyrics()
-    print_lyrics()
-    print_lyrics()
+function repeatlyrics()
+    printlyrics()
+    printlyrics()
 end
 
-repeat_lyrics()
+repeatlyrics()
 ```
 
-This program contains two function definitions: `print_lyrics` and `repeat_lyrics`. Function definitions get executed just like other statements, but the effect is to create function objects. The statements inside the function do not run until the function is called, and the function definition generates no output.
+This program contains two function definitions: `printlyrics` and `repeatlyrics`. Function definitions get executed just like other statements, but the effect is to create function objects. The statements inside the function do not run until the function is called, and the function definition generates no output.
 
 As you might expect, you have to create a function before you can run it. In other words, the function definition has to run before the function gets called.
 
 As an exercise, move the last line of this program to the top, so the function call appears before the definitions. Run the program and see what error message you get.
 
-Now move the function call back to the bottom and move the definition of `print_lyrics` after the definition of `repeat_lyrics`. What happens when you run this program?
+Now move the function call back to the bottom and move the definition of `printlyrics` after the definition of `repeatlyrics`. What happens when you run this program?
 
 ## Flow of execution
 
@@ -227,7 +227,7 @@ Some of the functions we have seen require arguments. For example, when you call
 Inside the function, the arguments are assigned to variables called **parameters**. Here is a definition for a function that takes an argument:
 
 ```julia
-function print_twice(bruce)
+function printtwice(bruce)
     println(bruce)
     println(bruce)
 end
@@ -237,70 +237,70 @@ This function assigns the argument to a parameter named `bruce`. When the functi
 
 This function works with any value that can be printed.
 
-```@setup print_twice
-function print_twice(bruce)
+```@setup printtwice
+function printtwice(bruce)
     println(bruce)
     println(bruce)
 end
 ```
 
-```@repl print_twice
-print_twice("Spam")
-print_twice(42)
-print_twice(π)
+```@repl printtwice
+printtwice("Spam")
+printtwice(42)
+printtwice(π)
 ```
 
-The same rules of composition that apply to built-in functions also apply to programmer-defined functions, so we can use any kind of expression as an argument for `print_twice`:
+The same rules of composition that apply to built-in functions also apply to programmer-defined functions, so we can use any kind of expression as an argument for `printtwice`:
 
-```@repl print_twice
-print_twice("Spam "^4)
-print_twice(cos(π))
+```@repl printtwice
+printtwice("Spam "^4)
+printtwice(cos(π))
 ```
 
 The argument is evaluated before the function is called, so in the examples the expressions `"Spam "^4` and `cos(π)` are only evaluated once.
 
 You can also use a variable as an argument:
 
-```@repl print_twice
+```@repl printtwice
 michael = "Eric, the half a bee."
-print_twice(michael)
+printtwice(michael)
 ```
 
-The name of the variable we pass as an argument (`michael`) has nothing to do with the name of the parameter (`bruce`). It doesn’t matter what the value was called back home (in the caller); here in `print_twice`, we call everybody `bruce`.
+The name of the variable we pass as an argument (`michael`) has nothing to do with the name of the parameter (`bruce`). It doesn’t matter what the value was called back home (in the caller); here in `printtwice`, we call everybody `bruce`.
 
 ## Variables and parameters are local
 
 When you create a variable inside a function, it is **local**, which means that it only exists inside the function. For example:
 
 ```julia
-function cat_twice(part1, part2)
+function cattwice(part1, part2)
     concat = part1 * part2
-    print_twice(concat)
+    printtwice(concat)
 end
 ```
 
 This function takes two arguments, concatenates them, and prints the result twice. Here is an example that uses it:
 
-```@setup print_twice
-function cat_twice(part1, part2)
+```@setup printtwice
+function cattwice(part1, part2)
     concat = part1 * part2
-    print_twice(concat)
+    printtwice(concat)
 end
 ```
 
-```@repl print_twice
+```@repl printtwice
 line1 = "Bing tiddle "
 line2 = "tiddle bang."
-cat_twice(line1, line2)
+cattwice(line1, line2)
 ```
 
-When `cat_twice` terminates, the variable `concat` is destroyed. If we try to print it, we get an exception:
+When `cattwice` terminates, the variable `concat` is destroyed. If we try to print it, we get an exception:
 
-```@repl print_twice
+```@repl printtwice
 println(concat)
 ```
 
-Parameters are also local. For example, outside `print_twice`, there is no such thing as `bruce`.
+Parameters are also local. For example, outside `printtwice`, there is no such thing as `bruce`.
 
 ## Stack diagrams
 
@@ -329,19 +329,19 @@ fig03_1()
 \end{figure}
 ```
 
-The frames are arranged in a stack that indicates which function called which, and so on. In this example, `print_twice` was called by `cat_twice`, and `cat_twice` was called by `__main__`, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to `__main__`.
+The frames are arranged in a stack that indicates which function called which, and so on. In this example, `printtwice` was called by `cattwice`, and `cattwice` was called by `__main__`, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to `__main__`.
 
 Each parameter refers to the same value as its corresponding argument. So, `part1` has the same value as `line1`, `part2` has the same value as `line2`, and `bruce` has the same value as `concat`.
 
 If an error occurs during a function call, Julia prints the name of the function, the name of the function that called it, and the name of the function that called *that*, all the way back to `__main__`.
 
-For example, if you try to access `concat` from within `print_twice`, you get a `UndefVarError`:
+For example, if you try to access `concat` from within `printtwice`, you get a `UndefVarError`:
 
 ```julia
 ERROR: UndefVarError: concat not defined
 Stacktrace:
- [1] print_twice at ./REPL[1]:2 [inlined]
- [2] cat_twice(::String, ::String) at ./REPL[2]:3
+ [1] printtwice at ./REPL[1]:2 [inlined]
+ [2] cattwice(::String, ::String) at ./REPL[2]:3
 ```
 
 This list of functions is called a **traceback**. It tells you what program file the error occurred in, and what line, and what functions were executing at the time. It also shows the line of code that caused the error.
@@ -350,7 +350,7 @@ The order of the functions in the traceback is the inverse of the order of the f
 
 ## Fruitful functions and void functions
 
-Some of the functions we have used, such as the math functions, return results; for lack of a better name, I call them **fruitful functions**. Other functions, like `print_twice`, perform an action but don’t return a value. They are called **void functions**.
+Some of the functions we have used, such as the math functions, return results; for lack of a better name, I call them **fruitful functions**. Other functions, like `printtwice`, perform an action but don’t return a value. They are called **void functions**.
 
 When you call a fruitful function, you almost always want to do something with the result; for example, you might assign it to a variable or use it as part of an expression:
 
@@ -375,8 +375,8 @@ This script computes the square root of 5, but since it doesn’t store or displ
 
 Void functions might display something on the screen or have some other effect, but they don’t have a return value. If you assign the result to a variable, you get a special value called `nothing`.
 
-```@repl print_twice
-result = print_twice("Bing")
+```@repl printtwice
+result = printtwice("Bing")
 println(result)
 ```
 
@@ -410,7 +410,7 @@ Debugging is also like an experimental science. Once you have an idea about what
 
 For some people, programming and debugging are the same thing. That is, programming is the process of gradually debugging a program until it does what you want. The idea is that you should start with a working program and make small modifications, debugging them as you go.
 
-For example, Linux is an operating system that contains millions of lines of code, but it started out as a simple program Linus Torvalds used to explore the Intel 80386 chip. According to Larry Greenfield, “One of Linus’s earlier projects was a program that would switch between printing AAAA and BBBB. This later evolved to Linux.” (*The Linux Users’ Guide* Beta Version 1).
+For example, Linux is an operating system that contains millions of lines of code, but it started out as a simple program Linus Torvalds used to explore the Intel 80386 chip. According to Larry Greenfield, “One of Linus’s earlier projects was a program that would switch between printing “AAAA and “BBBB”. This later evolved to Linux.” (*The Linux Users’ Guide* Beta Version 1).
 
 ## Glossary
 
@@ -472,50 +472,50 @@ A list of the functions that are executing, printed when an exception occurs.
 
 ### Exercise 1  
 
-Write a function named `right_justify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
+Write a function named `rightjustify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 
-```@setup right_justify
-function right_justify(s)
+```@setup rightjustify
+function rightjustify(s)
     n = 70 - length(s)
     println(" "^70 * s)
 end
 ```
 
-```@repl right_justify
-right_justify("monty")
+```@repl rightjustify
+rightjustify("monty")
 ```
 
 Hint: Use string concatenation and repetition. Also, Julia provides a built-in function called `length` that returns the length of a string, so the value of `length("monty")` is 5.
 
 ### Exercise 2  
 
-A function object is a value you can assign to a variable or pass as an argument. For example, `do_twice` is a function that takes a function object as an argument and calls it twice:
+A function object is a value you can assign to a variable or pass as an argument. For example, `dotwice` is a function that takes a function object as an argument and calls it twice:
 
 ```julia
-function do_twice(f)
+function dotwice(f)
     f()
     f()
 end
 ```
 
-Here’s an example that uses `do_twice` to call a function named `print_spam` twice.
+Here’s an example that uses `dotwice` to call a function named `print_spam` twice.
 ```julia
 function print_spam()
     println("spam")
 end
 
-do_twice(print_spam)
+dotwice(print_spam)
 ```
 
 1. Type this example into a script and test it.
 
-2. Modify `do_twice` so that it takes two arguments, a function object and a value, and calls the function twice, passing the value as an argument.
+2. Modify `dotwice` so that it takes two arguments, a function object and a value, and calls the function twice, passing the value as an argument.
 
-3. Copy the definition of `print_twice` from earlier in this chapter to your script.
+3. Copy the definition of `printtwice` from earlier in this chapter to your script.
 
-4. Use the modified version of `do_twice` to call `print_twice` twice, passing `"spam"` as an argument.
+4. Use the modified version of `dotwice` to call `printtwice` twice, passing `"spam"` as an argument.
 
-5. Define a new function called `do_four` that takes a function object and a value and calls the function four times, passing the value as a parameter. There should be only two statements in the body of this function, not four.
+5. Define a new function called `dofour` that takes a function object and a value and calls the function four times, passing the value as a parameter. There should be only two statements in the body of this function, not four.
 
 ### Exercise 3
 
@@ -545,7 +545,7 @@ println("+", "-")
 
 The function `print` does not advance to the next line:
 
-   ```julia
+```julia
 print("+ ")
 println("-")
 ```

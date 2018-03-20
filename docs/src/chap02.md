@@ -14,7 +14,7 @@ n = 17
 
 This example makes three assignments. The first assigns a string to a new variable named `message`; the second gives the integer `17` to `n`; the third assigns the (approximate) value of ``\pi`` to `π`.
 
-A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable's state of mind). Figure 2.1 shows the result of the previous example.
+A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable’s state of mind). Figure 2.1 shows the result of the previous example.
 
 ```@eval
 using ThinkJulia
@@ -39,9 +39,9 @@ fig02_1()
 
 ## Variable names
 
-Programmers generally choose names for their variables that are meaningful--they document what the variable is used for.
+Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.
 
-Variable names can be as long as you like. They can contain almost all Unicode characters, but they can't begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variables names.
+Variable names can be as long as you like. They can contain almost all Unicode characters, but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variables names.
 
 The underscore character, `_`, can appear in a name. It is often used in names with multiple words, such as `your_name` or `airspeed_of_unladen_swallow`.
 
@@ -58,9 +58,9 @@ julia> type = "Advanced Theoretical Zymurgy"
 ERROR: syntax: unexpected "="
 ```
 
-`76trombones` is illegal because it begins with a number. `more@` is illegal because it contains an illegal character, `@`. But what's wrong with `type`?
+`76trombones` is illegal because it begins with a number. `more@` is illegal because it contains an illegal character, `@`. But what’s wrong with `type`?
 
-It turns out that `type` is one of Julia's **keywords**. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+It turns out that `type` is one of Julia’s **keywords**. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
 
 Julia has these keywords:
 
@@ -74,7 +74,7 @@ primitive   quote        return     try         type
 using       struct       while
 ```
 
-You don't have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you'll know.
+You don’t have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you’ll know.
 
 ## Expressions and statements
 
@@ -97,7 +97,7 @@ println(n)
 
 The first line is an assignment statement that gives a value to `n`. The second line is a print statement that displays the value of `n`.
 
-When you type a statement, the REPL **executes** it, which means that it does whatever the statement says. In general, statements don't have values.
+When you type a statement, the REPL **executes** it, which means that it does whatever the statement says. In general, statements don’t have values.
 
 ## Script mode
 
@@ -119,7 +119,7 @@ miles * 1.61
 
 The first line assigns a value to `miles`, but it has no visible effect. The second line is an expression, so the REPL evaluates it and displays the result. It turns out that a marathon is about 42 kilometers.
 
-But if you type the same code into a script and run it, you get no output at all. In script mode an expression, all by itself, has no visible effect. Julia actually evaluates the expression, but it doesn't display the value unless you tell it to:
+But if you type the same code into a script and run it, you get no output at all. In script mode an expression, all by itself, has no visible effect. Julia actually evaluates the expression, but it doesn’t display the value unless you tell it to:
 
 ```@example
 miles = 26.2
@@ -154,7 +154,7 @@ Now put the same statements in a script and run it. What is the output? Modify t
 
 When an expression contains more than one operator, the order of evaluation depends on the **order of operations**. For mathematical operators, Julia follows mathematical convention. The acronym **PEMDAS** is a useful way to remember the rules:
 
-- **P**arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, `2 * (3-1)` is 4, and `(1+1)^(5-2)` is 8. You can also use parentheses to make an expression easier to read, as in `(minute * 100) / 60`, even if it doesn't change the result.
+- **P**arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, `2 * (3-1)` is 4, and `(1+1)^(5-2)` is 8. You can also use parentheses to make an expression easier to read, as in `(minute * 100) / 60`, even if it doesn’t change the result.
 
 - **E**xponentiation has the next highest precedence, so `1+2^3` is 9, not 27, and `2*3^2` is 18, not 36.
 
@@ -162,13 +162,13 @@ When an expression contains more than one operator, the order of evaluation depe
 
 - Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression `degrees / 2 * π`, the division happens first and the result is multiplied by `π`. To divide by ``2\pi``, you can use parentheses or write `degrees / 2 / π`.
 
-I don't work very hard to remember the precedence of operators. If I can't tell by looking at the expression, I use parentheses to make it obvious.
+I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
 
 Unicode characters that can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
 
 ## String operations
 
-In general, you can't perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
+In general, you can’t perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
 
 ```julia
 "2" - "1"    "eggs" / "easy"    "third" + "a charm"
@@ -204,7 +204,7 @@ In this case, the comment appears on a line by itself. You can also put comments
 percentage = (minute * 100) / 60   # percentage of an hour
 ```
 
-Everything from the `#` to the end of the line is ignored--it has no effect on the execution of the program.
+Everything from the `#` to the end of the line is ignored—it has no effect on the execution of the program.
 
 Comments are most useful when they document non-obvious features of the code. It is reasonable to assume that the reader can figure out *what* the code does; it is more useful to explain *why*.
 
@@ -226,7 +226,7 @@ Good variable names can reduce the need for comments, but long names can make co
 
 Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful to distinguish between them in order to track them down more quickly.
 
-- **Syntax error**: "Syntax" refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so `(1 + 2)` is legal, but `8)` is a syntax error.
+- **Syntax error**: “Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so `(1 + 2)` is legal, but `8)` is a syntax error.
 
   If there is a syntax error anywhere in your program, Julia displays an error message and quits, and you will not be able to run the program. During the first few weeks of your programming career, you might spend a lot of time tracking down syntax errors. As you gain experience, you will make fewer errors and find them faster.
 
@@ -234,49 +234,68 @@ Three kinds of errors can occur in a program: syntax errors, runtime errors, and
 
   Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a while before you encounter one.
 
-- **Semantic error**: The third type of error is "semantic", which means related to meaning. If there is a semantic error in your program, it will run without generating error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do.
+- **Semantic error**: The third type of error is “semantic”, which means related to meaning. If there is a semantic error in your program, it will run without generating error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do.
 
   Identifying semantic errors can be tricky because it requires you to work backward by looking at the output of the program and trying to figure out what it is doing.
 
 ## Glossary
 
-*variable*: A name that refers to a value.
+*variable*: 
+A name that refers to a value.
 
-*assignment*: A statement that assigns a value to a variable.
+*assignment*: 
+A statement that assigns a value to a variable.
 
-*state diagram*: A graphical representation of a set of variables and the values they refer to.
+*state diagram*: 
+A graphical representation of a set of variables and the values they refer to.
 
-*keyword*: A reserved word that is used to parse a program; you cannot use keywords like `if`, `function`, and `while` as variable names.
+*keyword*: 
+A reserved word that is used to parse a program; you cannot use keywords like `if`, `function`, and `while` as variable names.
 
-*operand*: One of the values on which an operator operates.
+*operand*: 
+One of the values on which an operator operates.
 
-*expression*: A combination of variables, operators, and values that represents a single result.
+*expression*: 
+A combination of variables, operators, and values that represents a single result.
 
-*evaluate*: To simplify an expression by performing the operations in order to yield a single value.
+*evaluate*: 
+To simplify an expression by performing the operations in order to yield a single value.
 
-*statement*: A section of code that represents a command or action. So far, the statements we have seen are assignments and print statements.
+*statement*: 
+A section of code that represents a command or action. So far, the statements we have seen are assignments and print statements.
 
-*execute*: To run a statement and do what it says.
+*execute*: 
+To run a statement and do what it says.
 
-*interactive mode*: A way of using the Julia REPL by typing code at the prompt.
+*interactive mode*: 
+A way of using the Julia REPL by typing code at the prompt.
 
-*script mode*: A way of using the Julia REPL to read code from a script and run it.
+*script mode*: 
+A way of using the Julia REPL to read code from a script and run it.
 
-*script*: A program stored in a file.
+*script*: 
+A program stored in a file.
 
-*order of operations*: Rules governing the order in which expressions involving multiple operators and operands are evaluated.
+*order of operations*: 
+Rules governing the order in which expressions involving multiple operators and operands are evaluated.
 
-*concatenate*: To join two operands end-to-end.
+*concatenate*: 
+To join two operands end-to-end.
 
-*comment*: Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
+*comment*: 
+Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
 
-*syntax error*: An error in a program that makes it impossible to parse (and therefore impossible to interpret).
+*syntax error*: 
+An error in a program that makes it impossible to parse (and therefore impossible to interpret).
 
-*exception*: An error that is detected while the program is running.
+*exception*: 
+An error that is detected while the program is running.
 
-*semantics*: The meaning of a program.
+*semantics*: 
+The meaning of a program.
 
-*semantic error*: An error in a program that makes it do something other than what the programmer intended.
+*semantic error*: 
+An error in a program that makes it do something other than what the programmer intended.
 
 ## Exercises
 
@@ -284,7 +303,7 @@ Three kinds of errors can occur in a program: syntax errors, runtime errors, and
 
 Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.
 
-1. We've seen that `n = 42` is legal. What about `42 = n`?
+1. We’ve seen that `n = 42` is legal. What about `42 = n`?
 
 2. How about `x = y = 1`?
 

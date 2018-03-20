@@ -12,8 +12,9 @@ function fig02_1()
   \node[anchor=east] (pi) at(-3.5, -0.5) {\tt π};
   \node[anchor=west] (piv) at (-2.5, -0.5) {\tt 3.141592653589793};
   \draw[-latex] (pi) -- (piv);
-  """; options="", preamble=preamble)
+  """; options=options, preamble=preamble)
   save(SVG("fig21"), p)
+  p.options=""
   save(PDF("fig21"), p)
   nothing
 end

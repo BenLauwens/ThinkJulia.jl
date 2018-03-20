@@ -41,8 +41,8 @@ fig04_1()
 
 ```@raw html
 <figure>
-  <img src="fig41.svg" alt="Moving the turtle forward.">
-  <figcaption>Figure 4.1. Moving the turtle forward.</figcaption>
+  <img src="fig41.svg" alt="Moving the Turtle forward.">
+  <figcaption>Figure 4.1. Moving the Turtle forward.</figcaption>
 </figure>
 ```
 
@@ -50,7 +50,7 @@ fig04_1()
 \begin{figure}
 \centering
 \includegraphics{fig41}
-\caption{Moving the turtle forward.}
+\caption{Moving the Turtle forward.}
 \label{fig41}
 \end{figure}
 ```
@@ -119,7 +119,7 @@ The syntax of a `for` statement is similar to a function definition. It has a he
 
 A `for` statement is also called a **loop** because the flow of execution runs through the body and then loops back to the top. In this case, it runs the body four times.
 
-This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the turtle back in the starting position, facing in the starting direction.
+This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the Turtle back in the starting position, facing in the starting direction.
 
 ## Exercises
 
@@ -127,21 +127,21 @@ The following is a series of exercises using Turtles. They are meant to be fun, 
 
 The following sections have solutions to the exercises, so don’t look until you have finished (or at least tried).
 
-1. Write a function called `square` that takes a parameter named `t`, which is a turtle. It should use the turtle to draw a square.
+1. Write a function called `square` that takes a parameter named `t`, which is a Turtle. It should use the Turtle to draw a square.
 
 2. Write a function call that passes `bob` as an argument to `square`, and then run the macro again.
 
 3. Add another parameter, named `length`, to square. Modify the body so length of the sides is length, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for `length`.
 
-4. Make a copy of `square` and change the name to `polygon`. Add another parameter named `n` and modify the body so it draws an n-sided regular polygon. Hint: The exterior angles of an n-sided regular polygon are 360/n degrees.
+4. Make a copy of `square` and change the name to `polygon`. Add another parameter named `n` and modify the body so it draws an ``n``-sided regular polygon. Hint: The exterior angles of an ``n``-sided regular polygon are ``\frac{360}{n}`` degrees.
 
-5. Write a function called `circle` that takes a turtle, `t`, and radius, `r`, as parameters and that draws an approximate circle by calling `polygon` with an appropriate length and number of sides. Test your function with a range of values of `r`. Hint: figure out the circumference of the circle and make sure that `length * n == circumference`.
+5. Write a function called `circle` that takes a Turtle, `t`, and radius, `r`, as parameters and that draws an approximate circle by calling `polygon` with an appropriate length and number of sides. Test your function with a range of values of `r`. Hint: figure out the circumference of the circle and make sure that `length * n == circumference`.
 
 6. Make a more general version of `circle` called `arc` that takes an additional parameter `angle`, which determines what fraction of a circle to draw. `angle` is in units of degrees, so when `angle=360`, `arc` should draw a complete circle.
 
 ## Encapsulation
 
-The first exercise asks you to put your square-drawing code into a function definition and then call the function, passing the turtle as a parameter. Here is a solution:
+The first exercise asks you to put your square-drawing code into a function definition and then call the function, passing the Turtle as a parameter. Here is a solution:
 
 ```julia
 function square(t)
@@ -158,7 +158,7 @@ end
 
 The innermost statements, `Forward` and `Turn` are indented twice to show that they are inside the `for` loop, which is inside the function definition.
 
-Inside the function, `t` refers to the same turtle `bob`, so `Turn(t, -90)` has the same effect as `Turn(bob, -90)`. In that case, why not call the parameter `bob`? The idea is that `t` can be any turtle, not just bob, so you could create a second turtle and pass it as an argument to `square`:
+Inside the function, `t` refers to the same Turtle `bob`, so `Turn(t, -90)` has the same effect as `Turn(bob, -90)`. In that case, why not call the parameter `bob`? The idea is that `t` can be any Turtle, not just bob, so you could create a second Turtle and pass it as an argument to `square`:
 
 ```julia
 alice = Turtle()
@@ -219,7 +219,7 @@ function circle(t, r)
 end
 ```
 
-The first line computes the circumference of a circle with radius $r$ using the formula $2 π r$. `n` is the number of line segments in our approximation of a circle, so length is the length of each segment. Thus, `polygon` draws a 50-sided polygon that approximates a circle with radius `r`.
+The first line computes the circumference of a circle with radius ``r`` using the formula ``2 π r``. `n` is the number of line segments in our approximation of a circle, so length is the length of each segment. Thus, `polygon` draws a 50-sided polygon that approximates a circle with radius `r`.
 
 One limitation of this solution is that `n` is a constant, which means that for very big circles, the line segments are too long, and for small circles, we waste time drawing very small segments. One solution would be to generalize the function by taking `n` as a parameter. This would give the user (whoever calls circle) more control, but the interface would be less clean.
 
@@ -326,7 +326,7 @@ A **docstring** is a string before a function that explains the interface (“do
 polyline(t, n, length, angle)
 
 Draws n line segments with the given length and
-angle (in degrees) between them.  t is a turtle.
+angle (in degrees) between them.  t is a Turtle.
 """ 
 function polyline(t, n, length, angle)
     for i in 1:n
@@ -336,7 +336,7 @@ function polyline(t, n, length, angle)
 end
 ```
 
-Documentation can be accessed at the REPL or in a notebook by typing ? followed by the name of a function or macro, and pressing `Enter`:
+Documentation can be accessed in the REPL or in a notebook by typing ? followed by the name of a function or macro, and pressing `ENTER`:
 
 ```julia
 help?> polyline
@@ -344,7 +344,7 @@ search:
 
   polyline(t, n, length, angle)
 
-  Draws n line segments with the given length and angle (in degrees) between them. t is a turtle.
+  Draws n line segments with the given length and angle (in degrees) between them. t is a Turtle.
 ```
 
 By convention, all docstrings are triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.
@@ -408,7 +408,7 @@ Enter the code in this chapter in a notebook.
 
 1. Draw a stack diagram that shows the state of the program while executing `circle(bob, radius)`. You can do the arithmetic by hand or add print statements to the code.
 
-2. The version of arc in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the Turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
+2. The version of `arc` in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the Turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
 
 ```julia
 """ 

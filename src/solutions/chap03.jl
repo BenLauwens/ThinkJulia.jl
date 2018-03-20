@@ -1,104 +1,104 @@
-function right_justify(s)
+function rightjustify(s)
   n = 70 - length(s)
   println(" "^70 * s)
 end
 
-function do_twice(f)
+function dotwice(f)
   f()
   f()
 end
 
-function do_twice(f, v)
+function dotwice(f, v)
   f(v)
   f(v)
 end
 
-function do_four(f)
-  do_twice(f)
-  do_twice(f)
+function dofour(f)
+  dotwice(f)
+  dotwice(f)
 end
 
-function do_four(f, v)
-  do_twice(f, v)
-  do_twice(f, v)
+function dofour(f, v)
+  dotwice(f, v)
+  dotwice(f, v)
 end
 
-function print_beam()
+function printbeam()
   print("+ - - - - ")
 end
 
-function print_post()
+function printpost()
   print("|         ")
 end
 
-function print_beams()
-  do_twice(print_beam)
+function printbeams()
+  dotwice(printbeam)
   println("+")
 end
 
-function print_posts()
-  do_twice(print_post)
+function printposts()
+  dotwice(printpost)
   println("|")
 end
 
-function print_row()
-  print_beams()
-  do_four(print_posts)
+function printrow()
+  printbeams()
+  dofour(printposts)
 end
 
-function print_grid()
-  do_twice(print_row)
-  print_beams()
+function printgrid()
+  dotwice(printrow)
+  printbeams()
 end
 
-function one_four_one(f, g, h)
+function onefourone(f, g, h)
   f()
-  do_four(g)
+  dofour(g)
   h()
 end
 
-function print_plus()
+function printplus()
   print("+ ")
 end
 
-function print_dash()
+function printdash()
   print("- ")
 end
 
-function print_bar()
+function printbar()
   print("| ")
 end
 
-function print_space()
+function printspace()
   print("  ")
 end
 
-function print_end()
+function printend()
   println()
 end
 
-function print_nothing() end
+function printnothing() end
 
 function print1beam()
-  one_four_one(print_nothing, print_dash, print_plus)
+  onefourone(printnothing, printdash, printplus)
 end
 
 function print1post()
-  one_four_one(print_nothing, print_space, print_bar)
+  onefourone(printnothing, printspace, printbar)
 end
 
 function print4beams()
-  one_four_one(print_plus, print1beam, print_end)
+  onefourone(printplus, print1beam, printend)
 end
 
 function print4posts()
-  one_four_one(print_bar, print1post, print_end)
+  onefourone(printbar, print1post, printend)
 end
 
-function print_row4()
-  one_four_one(print_nothing, print4posts, print4beams)
+function printrow4()
+  onefourone(printnothing, print4posts, print4beams)
 end
 
-function print_grid4()
-  one_four_one(print4beams, print_row4, print_nothing)
+function printgrid4()
+  onefourone(print4beams, printrow4, printnothing)
 end
