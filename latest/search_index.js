@@ -453,7 +453,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Case study: interface design",
     "title": "Refactoring",
     "category": "section",
-    "text": "When I wrote circle, I was able to re-use polygon because a many-sided polygon is a good approximation of a circle. But arc is not as cooperative; we can’t use polygon or circle to draw an arc.One alternative is to start with a copy of polygon and transform it into arc. The result might look like this:function arc(t, r, angle)\n    arc_length = 2 * π * r * angle / 360\n    n = trunc(arc_length / 3) + 1\n    step_length = arc_length / n\n    step_angle = angle / n\n    for i in 1:n\n        forward(t, step_length)\n        turn(t, -step_angle)\n    end\nendThe second half of this function looks like polygon, but we can’t re-use polygon without changing the interface. We could generalize polygon to take an angle as a third argument, but then polygon would no longer be an appropriate name! Instead, let’s call the more general function polyline:function polyline(t, n, len, angle)\n    for i 1:n\n        forward(t, len)\n        turn(t, -angle)\n    end\nendNow we can rewrite polygon and arc to use polyline:function polygon(t, n, len)\n    angle = 360 / n\n    polyline(t, n, len, angle)\nend\n\nfunction arc(t, r, angle)\n    arc_length = 2 * π * r * angle / 360\n    n = trunc(arc_length / 3) + 1\n    step_length = arc_length / n\n    step_angle = angle / n\n    polyline(t, n, step_length, step_angle)\nendFinally, we can rewrite circle to use arc:function circle(t, r)\n    arc(t, r, 360)\nendThis process—rearranging a program to improve interfaces and facilitate code re-use—is called refactoring. In this case, we noticed that there was similar code in arc and polygon, so we “factored it out” into polyline.If we had planned ahead, we might have written polyline first and avoided refactoring, but often you don’t know enough at the beginning of a project to design all the interfaces. Once you start coding, you understand the problem better. Sometimes refactoring is a sign that you have learned something."
+    "text": "When I wrote circle, I was able to re-use polygon because a many-sided polygon is a good approximation of a circle. But arc is not as cooperative; we can’t use polygon or circle to draw an arc.One alternative is to start with a copy of polygon and transform it into arc. The result might look like this:function arc(t, r, angle)\n    arc_len = 2 * π * r * angle / 360\n    n = trunc(arc_len / 3) + 1\n    step_len = arc_len / n\n    step_angle = angle / n\n    for i in 1:n\n        forward(t, step_len)\n        turn(t, -step_angle)\n    end\nendThe second half of this function looks like polygon, but we can’t re-use polygon without changing the interface. We could generalize polygon to take an angle as a third argument, but then polygon would no longer be an appropriate name! Instead, let’s call the more general function polyline:function polyline(t, n, len, angle)\n    for i 1:n\n        forward(t, len)\n        turn(t, -angle)\n    end\nendNow we can rewrite polygon and arc to use polyline:function polygon(t, n, len)\n    angle = 360 / n\n    polyline(t, n, len, angle)\nend\n\nfunction arc(t, r, angle)\n    arc_len = 2 * π * r * angle / 360\n    n = trunc(arc_len / 3) + 1\n    step_len = arc_len / n\n    step_angle = angle / n\n    polyline(t, n, step_len, step_angle)\nendFinally, we can rewrite circle to use arc:function circle(t, r)\n    arc(t, r, 360)\nendThis process—rearranging a program to improve interfaces and facilitate code re-use—is called refactoring. In this case, we noticed that there was similar code in arc and polygon, so we “factored it out” into polyline.If we had planned ahead, we might have written polyline first and avoided refactoring, but often you don’t know enough at the beginning of a project to design all the interfaces. Once you start coding, you understand the problem better. Sometimes refactoring is a sign that you have learned something."
 },
 
 {
@@ -501,7 +501,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Case study: interface design",
     "title": "Exercise 1",
     "category": "section",
-    "text": "Enter the code in this chapter in a notebook.Draw a stack diagram that shows the state of the program while executing circle(🐢, radius). You can do the arithmetic by hand or add print statements to the code.\nThe version of arc in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the Turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.\"\"\" \narc(t, r, angle)\n\nDraws an arc with the given radius and angle:\n\n    t: Turtle\n    r: radius\n    angle: angle subtended by the arc, in degrees\n\"\"\"\nfunction arc(t, r, angle)\n    arc_length = 2 * π * r * abs(angle) / 360\n    n = trunc(arc_length / 4) + 3\n    step_length = arc_length / n\n    step_angle = angle / n\n\n    # making a slight left turn before starting reduces\n    # the error caused by the linear approximation of the arc\n    turn(t, step_angle/2)\n    polyline(t, n, step_length, step_angle)\n    turn(t, -step_angle/2)\nend"
+    "text": "Enter the code in this chapter in a notebook.Draw a stack diagram that shows the state of the program while executing circle(🐢, radius). You can do the arithmetic by hand or add print statements to the code.\nThe version of arc in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the Turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.\"\"\" \narc(t, r, angle)\n\nDraws an arc with the given radius and angle:\n\n    t: Turtle\n    r: radius\n    angle: angle subtended by the arc, in degrees\n\"\"\"\nfunction arc(t, r, angle)\n    arc_len = 2 * π * r * abs(angle) / 360\n    n = trunc(arc_len / 4) + 3\n    step_len = arc_len / n\n    step_angle = angle / n\n\n    # making a slight left turn before starting reduces\n    # the error caused by the linear approximation of the arc\n    turn(t, step_angle/2)\n    polyline(t, n, step_len, step_angle)\n    turn(t, -step_angle/2)\nend"
 },
 
 {
@@ -974,6 +974,30 @@ var documenterSearchIndex = {"docs": [
     "title": "Exercise 3",
     "category": "section",
     "text": "The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of frac1pi:frac1pi=frac2sqrt29801sum_k=0^inftyfrac(4k)(1103+26390k)(k)^4 396^4kWrite a function called estimatepi that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than 1e-15 (which is Julia notation for 10−15). You can check the result by comparing it to π."
+},
+
+{
+    "location": "chap08.html#",
+    "page": "Strings",
+    "title": "Strings",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap08.html#Strings-1",
+    "page": "Strings",
+    "title": "Strings",
+    "category": "section",
+    "text": "Strings are not like integers, floats, and booleans. A string is a sequence, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the methods strings provide."
+},
+
+{
+    "location": "chap08.html#Characters-1",
+    "page": "Strings",
+    "title": "Characters",
+    "category": "section",
+    "text": ""
 },
 
 ]}
