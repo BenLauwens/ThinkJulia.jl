@@ -1,0 +1,70 @@
+function area(radius)
+  a = π * radius^2
+  return a
+end
+
+function absvalue(x)
+  if x < 0
+      return -x
+  end
+  if x > 0
+      return x
+  end
+end
+
+function distance(x₁, y₁, x₂, y₂)
+  dx = x₂ - x₁
+  dy = y₂ - y₁
+  d² = dx^2 + dy^2
+  sqrt(d²)
+end
+
+function circlearea(xc, yc, xp, yp)
+  area(distance(xc, yc, xp, yp))
+end
+
+function isdivisible(x, y)
+  if x % y == 0
+      return true
+  else
+      return false
+  end
+end
+
+function fact(n)
+  if !(n isa Int64)
+      println("Factorial is only defined for integers.")
+      return nothing
+  elseif n < 0
+      println("Factorial is not defined for negative integers.")
+      return nothing
+  elseif n == 0
+      return 1
+  else
+      return n * fact(n-1)
+  end
+end
+
+function fib(n)
+  if n == 0
+      return 0
+  elseif n == 1
+      return 1
+  else
+      return fib(n-1) + fib(n-2)
+  end
+end
+
+function factdebug(n)
+  space = " " ^ (4 * n)
+  println(space, "factorial", n)
+  if n == 0
+      println(space, "returning 1")
+      return 1
+  else
+      recurse = factdebug(n-1)
+      result = n * recurse
+      println(space, "returning ", result)
+      return result
+  end
+end

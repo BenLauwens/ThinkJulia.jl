@@ -6,6 +6,10 @@ The main topic of this chapter is the `if` statement, which executes different c
 
 The **floor division** operator, `÷` (`\div TAB`), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
 
+```@setup chap05
+using ThinkJulia
+```
+
 ```@repl chap05
 minutes = 105
 minutes / 60
@@ -204,17 +208,6 @@ function countdown(n)
 end
 ```
 
-```@setup chap05
-function countdown(n)
-    if n <= 0
-        println("Blastoff!")
-    else
-        print(n, " ")
-        countdown(n-1)
-    end
-end
-```
-
 If `n` is 0 or negative, it outputs the word, `"Blastoff!"` Otherwise, it outputs `n` and then calls a function named `countdown`—itself—passing `n-1` as an argument.
 
 What happens if we call this function like this?
@@ -239,16 +232,6 @@ A function that calls itself is **recursive**; the process of executing it is ca
 As another example, we can write a function that prints a string ``n`` times.
 
 ```julia
-function printn(s, n)
-    if n <= 0
-        return
-    end
-    println(s)
-    printn(s, n-1)
-end
-```
-
-```@setup chap05
 function printn(s, n)
     if n <= 0
         return
@@ -353,6 +336,7 @@ What...is the airspeed velocity of an unladen swallow?
 "42"
 
 julia> parse(Int64, speed)
+42
 ```
 
 But if the user types something other than a string of digits, you get an error:
@@ -519,13 +503,13 @@ function draw(t, length, n)
         return
     end
     angle = 50
-    Forward(t, length*n)
-    Turn(t, -angle)
+    forward(t, length*n)
+    turn(t, -angle)
     draw(t, length, n-1)
-    Turn(t, 2*angle)
+    furn(t, 2*angle)
     draw(t, length, n-1)
-    Turn(t, -angle)
-    Forward(-length*n)
+    turn(t, -angle)
+    forward(-length*n)
 end
 ```
 

@@ -1,7 +1,9 @@
 module ThinkJulia
   export printlyrics, repeatlyrics, printtwice, cattwice
   export rightjustify
-  export forward, turn, penup, pendown
+  export forward, turn, penup, pendown, polyline, polygon, square, arc, cercle
+  export countdown, printn, recurse
+  export area, absvalue, distance, circlearea, isdivisible, fact, fib, factdebug
 
 
   export fig02_1
@@ -12,6 +14,8 @@ module ThinkJulia
 
   include("code/chap03.jl")
   include("code/chap04.jl")
+  include("code/chap05.jl")
+  include("code/chap06.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

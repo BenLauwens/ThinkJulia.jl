@@ -1,22 +1,5 @@
 using Luxor
 
-function polyline(t, n, length, angle)
-    for i in 1:n
-        forward(t, length)
-        turn(t, -angle)
-    end
-end
-
-function arc(t, r, angle)
-    arc_length = 2 * π * r * abs(angle) / 360
-    n = trunc(arc_length / 4) + 3
-    step_length = arc_length / n
-    step_angle = angle / n
-    turn(t, step_angle/2)
-    polyline(t, n, step_length, step_angle)
-    turn(t, -step_angle/2)
-end
-
 function petal(t, r, angle)
     for i in 1:2
         arc(t, r, angle)

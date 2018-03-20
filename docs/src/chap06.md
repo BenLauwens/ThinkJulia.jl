@@ -14,14 +14,11 @@ height = radius * sin(radians)
 The functions we have written so far are void. Speaking casually, they have no return value; more precisely, their return value is `nothing`.
 In this chapter, we are (finally) going to write fruitful functions. The first example is `area`, which returns the area of a circle with the given radius:
 
-```julia
-function area(radius)
-    a = π * radius^2
-    return a
-end
+```@setup chap06
+using ThinkJulia
 ```
 
-```@setup chap06
+```julia
 function area(radius)
     a = π * radius^2
     return a
@@ -69,17 +66,6 @@ function absvalue(x)
 end
 ```
 
-```@setup chap06
-function absvalue(x)
-    if x < 0
-        return -x
-    end
-    if x > 0
-        return x
-    end
-end
-```
-
 This function is incorrect because if `x` happens to be 0, neither condition is true, and the function ends without hitting a `return` statement. If the flow of execution gets to the end of a function, the return value is `nothing`, which is not the absolute value of 0.
 
 ```@repl chap06
@@ -114,17 +100,11 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ```
 
-```@setup chap06
-function distance(x₁, y₁, x₂, y₂)
-    0.0
-end
-```
-
 Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (`\_1 TAB`, `\_2 TAB`, etc.).
 
 To test the new function, call it with sample arguments:
 
-```@repl chap06
+```julia chap06
 distance(1, 2, 4, 6)
 ```
 
@@ -231,16 +211,6 @@ function isdivisible(x, y)
 end
 ```
 
-```@setup chap06
-function isdivisible(x, y)
-    if x % y == 0
-        return true
-    else
-        return false
-    end
-end
-```
-
 It is common to give boolean functions names that sound like yes/no questions; `isdivisible` returns either `true` or `false` to indicate whether `x` is divisible by `y`.
 
 Here is an example:
@@ -321,18 +291,6 @@ end
 Otherwise, and this is the interesting part, we have to make a recursive call to find the factorial of `n−1` and then multiply it by `n`:
 
 ```julia
-function fact(n)
-    if n == 0
-        return 1
-    else
-        recurse = fact(n-1)
-        result = n * recurse
-        return result
-    end
-end
-```
-
-```@setup chap06
 function fact(n)
     if n == 0
         return 1
@@ -453,22 +411,6 @@ function fact(n)
 end
 ```
 
-```@setup chap06
-function fact(n)
-    if !(n isa Int64)
-        println("Factorial is only defined for integers.")
-        return nothing
-    elseif n < 0
-        println("Factorial is not defined for negative integers.")
-        return nothing
-    elseif n == 0
-        return 1
-    else
-        return n * fact(n-1)
-    end
-end
-```
-
 The first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns `nothing` to indicate that something went wrong:
 
 ```@repl chap06
@@ -501,32 +443,16 @@ If the function seems to be working, look at the function call to make sure the 
 Adding print statements at the beginning and end of a function can help make the flow of execution more visible. For example, here is a version of `fact` with print statements:
 
 ```julia
-function fact(n)
+function factdebug(n)
     space = " " ^ (4 * n)
     println(space, "factorial", n)
     if n == 0
         println(space, "returning 1")
         return 1
     else
-        recurse = fact(n-1)
+        recurse = factdebug(n-1)
         result = n * recurse
         println(space, "returning", result)
-        return result
-    end
-end
-```
-
-```@setup chap06
-function fact(n)
-    space = " " ^ (4 * n)
-    println(space, "factorial", n)
-    if n == 0
-        println(space, "returning 1")
-        return 1
-    else
-        recurse = fact(n-1)
-        result = n * recurse
-        println(space, "returning ", result)
         return result
     end
 end
@@ -535,7 +461,7 @@ end
 `space` is a string of space characters that controls the indentation of the output.
 
 ```@repl chap06
-fact(4)
+factdebug(4)
 ```
 
 If you are confused about the flow of execution, this kind of output can be helpful. It takes some time to develop effective scaffolding, but a little bit of scaffolding can save a lot of debugging.
