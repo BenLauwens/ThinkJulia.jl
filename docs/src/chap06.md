@@ -359,7 +359,7 @@ After factorial, the most common example of a recursively defined mathematical f
 \begin{aligned}
  	 	fib(0) &= 0 \\ 
  	 	fib(1) &= 1 \\
- 	 	fib(n) &= fib(n−1) + fib(n−2)
+ 	 	fib(n) &= fib(n-1) + fib(n-2)
 \end{aligned}
 ```
 

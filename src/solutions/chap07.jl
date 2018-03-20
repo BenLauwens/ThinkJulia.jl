@@ -1,10 +1,10 @@
-const ϵ = 1e-19  
+const ε = 1e-19  
 
 function mysqrt(a)
   x = 1.0
   while true
     y = (x + a / x) / 2.0
-    if abs(x-y) < ϵ
+    if abs(x-y) < ε
       break
     end
     x = y

@@ -65,13 +65,13 @@ This means “get the current value of `x`, add one, and then update `x` with th
 
 If you try to update a variable that doesn’t exist, you get an error, because Julia evaluates the right side before it assigns a value to `x`:
 
-```repl chap07
+```@repl chap07
 y = y + 1
 ```
 
 Before you can update a variable, you have to initialize it, usually with a simple assignment:
 
-```repl chap07
+```@repl chap07
 y = 0
 y = y + 1
 ```
@@ -249,12 +249,12 @@ For most values of a this works fine, but in general it is dangerous to test flo
 Rather than checking whether `x` and `y` are exactly equal, it is safer to use the built-in function `abs` to compute the absolute value, or magnitude, of the difference between them:
 
 ```julia
-if abs(y-x) < ϵ
+if abs(y-x) < ε
     break
 end
 ```
 
-Where `ϵ` (`\epsilon TAB`) has a value like `0.0000001` that determines how close is close enough.
+Where `ε` (`\varepsilon TAB`) has a value like `0.0000001` that determines how close is close enough.
 
 ## Algorithms
 
@@ -332,14 +332,18 @@ The first column is a number, `a`; the second column is the square root of a com
 
 The built-in function `parse` takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function `eval`. For example:
 
-```@repl
-expr = parse("1+2*3")
-eval(expr)
-```
+```julia
+julia> expr = parse("1+2*3")
+:(1 + 2 * 3)
 
-```@repl
-expr = parse("sqrt(π)")
-eval(expr)
+julia> eval(expr)
+7
+
+julia> expr = parse("sqrt(π)")
+:(sqrt(n))
+
+julia> eval(expr)
+1.7724538509055159
 ```
 
 Write a function called `evalloop` that iteratively prompts the user, takes the resulting input and evaluates it using `eval`, and prints the result. It should continue until the user enters `done`, and then return the value of the last expression it evaluated.

@@ -16,29 +16,29 @@ function pendown(t::Turtle)
   Pendown(t)
 end
 
-function polyline(t, n, length, angle)
+function polyline(t, n, len, angle)
   for i in 1:n
-      forward(t, length)
-      turn(t, -angle)
+    forward(t, len)
+    turn(t, -angle)
   end
 end
 
-function polygon(t, n, length)
+function polygon(t, n, len)
   angle = 360 / n
-  polyline(t, n, length, angle)
+  polyline(t, n, len, angle)
 end
 
-function square(t, length)
-  polygon(t, 4, length)
+function square(t, len)
+  polygon(t, 4, len)
 end
 
 function arc(t, r, angle)
-  arc_length = 2 * π * r * abs(angle) / 360
-  n = trunc(arc_length / 4) + 3
-  step_length = arc_length / n
+  arc_len = 2 * π * r * abs(angle) / 360
+  n = trunc(arc_len / 4) + 3
+  step_len = arc_len / n
   step_angle = angle / n
   turn(t, step_angle/2)
-  polyline(t, n, step_length, step_angle)
+  polyline(t, n, step_len, step_angle)
   turn(t, -step_angle/2)
 end
 

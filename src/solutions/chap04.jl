@@ -1,17 +1,17 @@
 using Luxor
 
 function petal(t, r, angle)
-    for i in 1:2
-        arc(t, r, angle)
-        turn(t, angle-180)
-    end
+  for i in 1:2
+    arc(t, r, angle)
+    turn(t, angle-180)
+  end
 end 
 
 function flower(t, n, r, angle)
-    for i in 1:n
-        petal(t, r, angle)
-        turn(t, 360/n)
-    end
+  for i in 1:n
+    petal(t, r, angle)
+    turn(t, 360/n)
+  end
 end
 
 function drawpie(t, n, r)
@@ -24,8 +24,8 @@ end
 function polypie(t, n, r)
   angle = 360 / n
   for i in 1:n
-      isosceles(t, r, angle/2)
-      turn(t, -angle)
+    isosceles(t, r, angle/2)
+    turn(t, -angle)
   end
 end
 
@@ -40,20 +40,10 @@ function isosceles(t, r, angle)
   turn(t, -180+angle)
 end
 
-"""Draws an Archimedian spiral starting at the origin.
-
-Args:
-  n: how many line segments to draw
-  length: how long each segment is
-  a: how loose the initial spiral starts out (larger is looser)
-  b: how loosly coiled the spiral is (larger is looser)
-
-http://en.wikipedia.org/wiki/Spiral
-"""
-function spiral(t, n, length, a, b)
+function spiral(t, n, len, a, b)
   theta = 0.0
   for i in 1:n
-    forward(t,length)
+    forward(t, len)
     dtheta = 1 / (a + b * theta)
     turn(t, -dtheta)
     theta += dtheta
