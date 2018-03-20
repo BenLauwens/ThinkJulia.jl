@@ -43,7 +43,7 @@ On the other hand, **temporary variables** like `a` and explicit `return` statem
 Sometimes it is useful to have multiple `return` statements, one in each branch of a conditional:
 
 ```julia
-function absolute_value(x)
+function absvalue(x)
     if x < 0
         return -x
     else
@@ -59,7 +59,7 @@ As soon as a `return` statement runs, the function terminates without executing 
 In a fruitful function, it is a good idea to ensure that every possible path through the program hits a return statement. For example:
 
 ```julia
-function absolute_value(x)
+function absvalue(x)
     if x < 0
         return -x
     end
@@ -70,7 +70,7 @@ end
 ```
 
 ```@setup chap06
-function absolute_value(x)
+function absvalue(x)
     if x < 0
         return -x
     end
@@ -83,7 +83,7 @@ end
 This function is incorrect because if `x` happens to be 0, neither condition is true, and the function ends without hitting a `return` statement. If the flow of execution gets to the end of a function, the return value is `nothing`, which is not the absolute value of 0.
 
 ```@repl chap06
-println(absolute_value(0))
+println(absvalue(0))
 ```
 
 By the way, Julia provides a built-in function called `abs` that computes absolute values.
@@ -202,7 +202,7 @@ result = area(radius)
 Encapsulating these steps in a function, we get:
 
 ```julia
-function circle_area(xc, yc, xp, yp)
+function circlearea(xc, yc, xp, yp)
     radius = distance(xc, yc, xp, yp)
     result = area(radius)
     return result
@@ -212,7 +212,7 @@ end
 The temporary variables `radius` and `result` are useful for development and debugging, but once the program is working, we can make it more concise by composing the function calls:
 
 ```julia
-function circle_area(xc, yc, xp, yp)
+function circlearea(xc, yc, xp, yp)
     area(distance(xc, yc, xp, yp))
 end
 ```
@@ -253,7 +253,7 @@ isdivisible(6, 3)
 The result of the `==` operator is a boolean, so we can write the function more concisely by returning it directly:
 
 ```julia
-function is_divisible(x, y)
+function isdivisible(x, y)
     x % y == 0
 end
 ```
