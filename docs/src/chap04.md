@@ -250,12 +250,12 @@ One alternative is to start with a copy of `polygon` and transform it into `arc`
 
 ```julia
 function arc(t, r, angle)
-    arc_length = 2 * π * r * angle / 360
-    n = trunc(arc_length / 3) + 1
-    step_length = arc_length / n
+    arc_len = 2 * π * r * angle / 360
+    n = trunc(arc_len / 3) + 1
+    step_len = arc_len / n
     step_angle = angle / n
     for i in 1:n
-        forward(t, step_length)
+        forward(t, step_len)
         turn(t, -step_angle)
     end
 end
@@ -281,11 +281,11 @@ function polygon(t, n, len)
 end
 
 function arc(t, r, angle)
-    arc_length = 2 * π * r * angle / 360
-    n = trunc(arc_length / 3) + 1
-    step_length = arc_length / n
+    arc_len = 2 * π * r * angle / 360
+    n = trunc(arc_len / 3) + 1
+    step_len = arc_len / n
     step_angle = angle / n
-    polyline(t, n, step_length, step_angle)
+    polyline(t, n, step_len, step_angle)
 end
 ```
 
@@ -421,15 +421,15 @@ Draws an arc with the given radius and angle:
     angle: angle subtended by the arc, in degrees
 """
 function arc(t, r, angle)
-    arc_length = 2 * π * r * abs(angle) / 360
-    n = trunc(arc_length / 4) + 3
-    step_length = arc_length / n
+    arc_len = 2 * π * r * abs(angle) / 360
+    n = trunc(arc_len / 4) + 3
+    step_len = arc_len / n
     step_angle = angle / n
 
     # making a slight left turn before starting reduces
     # the error caused by the linear approximation of the arc
     turn(t, step_angle/2)
-    polyline(t, n, step_length, step_angle)
+    polyline(t, n, step_len, step_angle)
     turn(t, -step_angle/2)
 end
 ```
