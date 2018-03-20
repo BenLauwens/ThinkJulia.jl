@@ -4,24 +4,24 @@ INFO: Cloning cache of Luxor from https://github.com/JuliaGraphics/Luxor.jl.git
 INFO: Installing Luxor v0.10.4
 ...</code></pre><p>This can take some time.</p><p>Before we can use the functions in a module, we have to import it with an <code>using</code> statement:</p><div><pre><code class="language-julia">using Luxor
 bob = Turtle()</code></pre><pre><code class="language-none">Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))</code></pre></div><p>The <code>Luxor</code> module provides a function called <code>Turtle</code> that creates a <code>Luxor.Turtle</code> object, which we assign to a variable named <code>bob</code>.</p><p>Once you create a Turtle, you can call a function to move it around a drawing. For example, to move the Turtle forward:</p><pre><code class="language-julia">@svg begin
-    Forward(bob, 100)
+    forward(bob, 100)
 end</code></pre><figure>
   <img src="fig41.svg" alt="Moving the Turtle forward.">
   <figcaption>Figure 4.1. Moving the Turtle forward.</figcaption>
-</figure><p>The <code>@svg</code> keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.</p><p>The arguments of <code>Forward</code> are the Turtle and a distance in pixels, so the actual size depends on your display.</p><p>Another function you can call with a Turtle as argument is <code>Turn</code> for turning. The second argument for <code>Turn</code> is an angle in degrees.</p><p>Also, each Turtle is holding a pen, which is either down or up; if the pen is down, the Turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the Turtle. The functions <code>Penup</code> and <code>Pendown</code> stand for “pen up” and “pen down”.</p><p>To draw a right angle, modify the macro:</p><pre><code class="language-julia">bob = Turtle()
+</figure><p>The <code>@svg</code> keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.</p><p>The arguments of <code>forward</code> are the Turtle and a distance in pixels, so the actual size depends on your display.</p><p>Another function you can call with a Turtle as argument is <code>turn</code> for turning. The second argument for <code>turn</code> is an angle in degrees.</p><p>Also, each Turtle is holding a pen, which is either down or up; if the pen is down, the Turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the Turtle. The functions <code>penup</code> and <code>pendown</code> stand for “pen up” and “pen down”.</p><p>To draw a right angle, modify the macro:</p><pre><code class="language-julia">bob = Turtle()
 @svg begin
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
 end</code></pre><p>Now modify the macro to draw a square. Don’t go on until you’ve got it working!</p><h2><a class="nav-anchor" id="Simple-repetition-1" href="#Simple-repetition-1">Simple repetition</a></h2><p>Chances are you wrote something like this:</p><pre><code class="language-julia">bob = Turtle()
 @svg begin
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
-    Turn(bob, -90)
-    Forward(bob, 100)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
+    turn(bob, -90)
+    forward(bob, 100)
 end</code></pre><p>We can do the same thing more concisely with a <code>for</code> statement:</p><pre><code class="language-julia-repl">julia&gt; for i in 1:4
            println(&quot;Hello!&quot;)
        end
@@ -31,25 +31,25 @@ Hello!
 Hello!</code></pre><p>This is the simplest use of the <code>for</code> statement; we will see more later. But that should be enough to let you rewrite your square-drawing program. Don’t go on until you do.</p><p>Here is a <code>for</code> statement that draws a square:</p><pre><code class="language-julia">bob = Turtle()
 @svg begin
     for i in 1:4
-        Forward(bob, 100)
-        Turn(bob, -90)
+        forward(bob, 100)
+        turn(bob, -90)
     end
 end</code></pre><p>The syntax of a <code>for</code> statement is similar to a function definition. It has a header and a body that ends with the keyword <code>end</code>. The body can contain any number of statements.</p><p>A <code>for</code> statement is also called a <strong>loop</strong> because the flow of execution runs through the body and then loops back to the top. In this case, it runs the body four times.</p><p>This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the Turtle back in the starting position, facing in the starting direction.</p><h2><a class="nav-anchor" id="Exercises-1" href="#Exercises-1">Exercises</a></h2><p>The following is a series of exercises using Turtles. They are meant to be fun, but they have a point, too. While you are working on them, think about what the point is.</p><p>The following sections have solutions to the exercises, so don’t look until you have finished (or at least tried).</p><ol><li><p>Write a function called <code>square</code> that takes a parameter named <code>t</code>, which is a Turtle. It should use the Turtle to draw a square.</p></li><li><p>Write a function call that passes <code>bob</code> as an argument to <code>square</code>, and then run the macro again.</p></li><li><p>Add another parameter, named <code>length</code>, to square. Modify the body so length of the sides is length, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for <code>length</code>.</p></li><li><p>Make a copy of <code>square</code> and change the name to <code>polygon</code>. Add another parameter named <code>n</code> and modify the body so it draws an <span>$n$</span>-sided regular polygon. Hint: The exterior angles of an <span>$n$</span>-sided regular polygon are <span>$\frac{360}{n}$</span> degrees.</p></li><li><p>Write a function called <code>circle</code> that takes a Turtle, <code>t</code>, and radius, <code>r</code>, as parameters and that draws an approximate circle by calling <code>polygon</code> with an appropriate length and number of sides. Test your function with a range of values of <code>r</code>. Hint: figure out the circumference of the circle and make sure that <code>length * n == circumference</code>.</p></li><li><p>Make a more general version of <code>circle</code> called <code>arc</code> that takes an additional parameter <code>angle</code>, which determines what fraction of a circle to draw. <code>angle</code> is in units of degrees, so when <code>angle=360</code>, <code>arc</code> should draw a complete circle.</p></li></ol><h2><a class="nav-anchor" id="Encapsulation-1" href="#Encapsulation-1">Encapsulation</a></h2><p>The first exercise asks you to put your square-drawing code into a function definition and then call the function, passing the Turtle as a parameter. Here is a solution:</p><pre><code class="language-julia">function square(t)
     for i in 1:4
-        Forward(t, 100)
-        Turn(t, -90)
+        forward(t, 100)
+        turn(t, -90)
     end
 end
 bob = Turtle()
 @svg begin
     square(bob)
-end</code></pre><p>The innermost statements, <code>Forward</code> and <code>Turn</code> are indented twice to show that they are inside the <code>for</code> loop, which is inside the function definition.</p><p>Inside the function, <code>t</code> refers to the same Turtle <code>bob</code>, so <code>Turn(t, -90)</code> has the same effect as <code>Turn(bob, -90)</code>. In that case, why not call the parameter <code>bob</code>? The idea is that <code>t</code> can be any Turtle, not just bob, so you could create a second Turtle and pass it as an argument to <code>square</code>:</p><pre><code class="language-julia">alice = Turtle()
+end</code></pre><p>The innermost statements, <code>forward</code> and <code>turn</code> are indented twice to show that they are inside the <code>for</code> loop, which is inside the function definition.</p><p>Inside the function, <code>t</code> refers to the same Turtle <code>bob</code>, so <code>turn(t, -90)</code> has the same effect as <code>turn(bob, -90)</code>. In that case, why not call the parameter <code>bob</code>? The idea is that <code>t</code> can be any Turtle, not just bob, so you could create a second Turtle and pass it as an argument to <code>square</code>:</p><pre><code class="language-julia">alice = Turtle()
 @svg begin
     square(alice)
 end</code></pre><p>Wrapping a piece of code up in a function is called <strong>encapsulation</strong>. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!</p><h2><a class="nav-anchor" id="Generalization-1" href="#Generalization-1">Generalization</a></h2><p>The next step is to add a <code>length</code> parameter to <code>square</code>. Here is a solution:</p><pre><code class="language-julia">function square(t, length)
     for i in 1:4
-        Forward(t, length)
-        Turn(t, -90)
+        forward(t, length)
+        turn(t, -90)
     end
 end
 bob = Turtle()
@@ -58,8 +58,8 @@ bob = Turtle()
 end</code></pre><p>Adding a parameter to a function is called <strong>generalization</strong> because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.</p><p>The next step is also a generalization. Instead of drawing squares, <code>polygon</code> draws regular polygons with any number of sides. Here is a solution:</p><pre><code class="language-julia">function polygon(t, n, length)
     angle = 360 / n
     for i in 1:n
-        Forward(t, length)
-        Turn(t, -angle)
+        forward(t, length)
+        turn(t, -angle)
     end
 end
 bob = Turtle()
@@ -81,13 +81,13 @@ end</code></pre><p>Now the number of segments is an integer near <code>circumfer
     step_length = arc_length / n
     step_angle = angle / n
     for i in 1:n
-        Forward(t, step_length)
-        Turn(t, -step_angle)
+        forward(t, step_length)
+        turn(t, -step_angle)
     end
 end</code></pre><p>The second half of this function looks like <code>polygon</code>, but we can’t re-use <code>polygon</code> without changing the interface. We could generalize <code>polygon</code> to take an <code>angle</code> as a third argument, but then <code>polygon</code> would no longer be an appropriate name! Instead, let’s call the more general function <code>polyline</code>:</p><pre><code class="language-julia">function polyline(t, n, length, angle)
     for i 1:n
-        Forward(t, length)
-        Turn(t, -angle)
+        forward(t, length)
+        turn(t, -angle)
     end
 end</code></pre><p>Now we can rewrite <code>polygon</code> and <code>arc</code> to use <code>polyline</code>:</p><pre><code class="language-julia">function polygon(t, n, length)
     angle = 360 / n
@@ -110,8 +110,8 @@ angle (in degrees) between them.  t is a Turtle.
 &quot;&quot;&quot; 
 function polyline(t, n, length, angle)
     for i in 1:n
-        Forward(t, length)
-        Turn(t, -angle)
+        forward(t, length)
+        turn(t, -angle)
     end
 end</code></pre><p>Documentation can be accessed in the REPL or in a notebook by typing ? followed by the name of a function or macro, and pressing <code>ENTER</code>:</p><pre><code class="language-julia">help?&gt; polyline
 search:
@@ -135,9 +135,9 @@ function arc(t, r, angle)
 
     # making a slight left turn before starting reduces
     # the error caused by the linear approximation of the arc
-    Turn(t, step_angle/2)
+    turn(t, step_angle/2)
     polyline(t, n, step_length, step_angle)
-    Turn(t, -step_angle/2)
+    turn(t, -step_angle/2)
 end</code></pre><h3><a class="nav-anchor" id="Exercise-2-1" href="#Exercise-2-1">Exercise 2</a></h3><p>Write an appropriately general set of functions that can draw flowers as in Figure 4.2.</p><figure>
   <img src="fig42.svg" alt="Turtle flowers.">
   <figcaption>Figure 4.2. Turtle flowers.</figcaption>
