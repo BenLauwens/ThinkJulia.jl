@@ -856,4 +856,124 @@ var documenterSearchIndex = {"docs": [
     "text": "The greatest common divisor (GCD) of a and b is the largest number that divides both of them with no remainder.One way to find the GCD of two numbers is based on the observation that if r is the remainder when a is divided by b, then gcd(a, b) = gcd(b, r). As a base case, we can use gcd(a, 0) = a.Write a function called gcd that takes parameters a and b and returns their greatest common divisor.Credit: This exercise is based on an example from Abelson and Sussman’s Structure and Interpretation of Computer Programs."
 },
 
+{
+    "location": "chap07.html#",
+    "page": "Iteration",
+    "title": "Iteration",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap07.html#Iteration-1",
+    "page": "Iteration",
+    "title": "Iteration",
+    "category": "section",
+    "text": "This chapter is about iteration, which is the ability to run a block of statements repeatedly. We saw a kind of iteration, using recursion, in Section 5.8. We saw another kind, using a for loop, in Section 4.2. In this chapter we’ll see yet another kind, using a while statement. But first I want to say a little more about variable assignment."
+},
+
+{
+    "location": "chap07.html#Reassignment-1",
+    "page": "Iteration",
+    "title": "Reassignment",
+    "category": "section",
+    "text": "As you may have discovered, it is legal to make more than one assignment to the same variable. A new assignment makes an existing variable refer to a new value (and stop referring to the old value).x = 5\nx = 7The first time we display x, its value is 5; the second time, its value is 7.using ThinkJulia\nfig07_1()<figure>\n  <img src=\"fig71.svg\" alt=\"State diagram.\">\n  <figcaption>Figure 7.1. State diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig71}\n\\caption{State diagram.}\n\\label{fig71}\n\\end{figure}Figure 7.1 shows what reassignment looks like in a state diagram.At this point I want to address a common source of confusion. Because Julia uses the equal sign (=) for assignment, it is tempting to interpret a statement like a = b as a mathematical proposition of equality; that is, the claim that a and b are equal. But this interpretation is wrong.First, equality is a symmetric relationship and assignment is not. For example, in mathematics, if a=7 then 7=a. But in Julia, the statement a = 7 is legal and 7 = a is not.Also, in mathematics, a proposition of equality is either true or false for all time. If a=b now, then a will always equal b. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:a = 5\nb = a\na = 3\nbThe third line changes the value of a but does not change the value of b, so they are no longer equal.Reassigning variables is often useful, but you should use it with caution. If the values of variables change frequently, it can make the code difficult to read and debug."
+},
+
+{
+    "location": "chap07.html#Updating-variables-1",
+    "page": "Iteration",
+    "title": "Updating variables",
+    "category": "section",
+    "text": "A common kind of reassignment is an update, where the new value of the variable depends on the old.x = x + 1This means “get the current value of x, add one, and then update x with the new value.”If you try to update a variable that doesn’t exist, you get an error, because Julia evaluates the right side before it assigns a value to x:y = y + 1Before you can update a variable, you have to initialize it, usually with a simple assignment:y = 0\ny = y + 1Updating a variable by adding 1 is called an increment; subtracting 1 is called a decrement."
+},
+
+{
+    "location": "chap07.html#The-while-statement-1",
+    "page": "Iteration",
+    "title": "The while statement",
+    "category": "section",
+    "text": "Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called iteration.We have already seen two functions, countdown and printn, that iterate using recursion. Because iteration is so common, Julia provides language features to make it easier. One is the for statement we saw in Section 4.2. We’ll get back to that later.Another is the while statement. Here is a version of countdown that uses a while statement:function countdown(n)\n    while n > 0\n        print(n, \" \")\n        n = n - 1\n    end\n    println(\"Blastoff!\")\nendYou can almost read the while statement as if it were English. It means, “While n is greater than 0, display the value of n and then decrement n. When you get to 0, display the word Blastoff!”More formally, here is the flow of execution for a while statement:Determine whether the condition is true or false.\nIf false, exit the while statement and continue execution at the next statement.\nIf the condition is true, run the body and then go back to step 1.This type of flow is called a loop because the third step loops back around to the top.The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an infinite loop. An endless source of amusement for computer scientists is the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite loop.In the case of countdown, we can prove that the loop terminates: if n is zero or negative, the loop never runs. Otherwise, n gets smaller each time through the loop, so eventually we have to get to 0.For some other loops, it is not so easy to tell. For example:function sequence(n)\n    while n != 1\n        println(n)\n        if n % 2 == 0        # n is even\n            n = n / 2\n        else                 # n is odd\n            n = n*3 + 1\n        end\n    end\nendThe condition for this loop is n != 1, so the loop will continue until n is 1, which makes the condition false.Each time through the loop, the program outputs the value of n and then checks whether it is even or odd. If it is even, n is divided by 2. If it is odd, the value of n is replaced with n*3 + 1. For example, if the argument passed to sequence is 3, the resulting values of n are 3, 10, 5, 16, 8, 4, 2, 1.Since n sometimes increases and sometimes decreases, there is no obvious proof that n will ever reach 1, or that the program terminates. For some particular values of n, we can prove termination. For example, if the starting value is a power of two, n will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.The hard question is whether we can prove that this program terminates for all positive values of n. So far, no one has been able to prove it or disprove it! (See http://en.wikipedia.org/wiki/Collatz_conjecture.)As an exercise, rewrite the function printn from Section 5.8 using iteration instead of recursion."
+},
+
+{
+    "location": "chap07.html#break-1",
+    "page": "Iteration",
+    "title": "break",
+    "category": "section",
+    "text": "Sometimes you don’t know it’s time to end a loop until you get half way through the body. In that case you can use the break statement to jump out of the loop.For example, suppose you want to take input from the user until they type done. You could write:while true\n    print(\"> \")\n    line = readline()\n    if line == \"done\"\n        break\n    end\n    println(line)\nend\nprintln(\"Done!\")The loop condition is true, which is always true, so the loop runs until it hits the break statement.Each time through, it prompts the user with an angle bracket. If the user types done, the break statement exits the loop. Otherwise the program echoes whatever the user types and goes back to the top of the loop. Here’s a sample run:> not done\nnot done\n> done\nDone!This way of writing while loops is common because you can check the condition anywhere in the loop (not just at the top) and you can express the stop condition affirmatively (“stop when this happens”) rather than negatively (“keep going until that happens”)."
+},
+
+{
+    "location": "chap07.html#continue-1",
+    "page": "Iteration",
+    "title": "continue",
+    "category": "section",
+    "text": "The break statement exits the loop. When a continue statement is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:for i in 1:10\n    if i % 3 == 0\n        continue\n    end\n    print(i, \" \")\nendIf i is divisible by 3, the continue statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed."
+},
+
+{
+    "location": "chap07.html#Square-roots-1",
+    "page": "Iteration",
+    "title": "Square roots",
+    "category": "section",
+    "text": "Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of a. If you start with almost any estimate, x, you can compute a better estimate with the following formula:y = frac12left(x + fracaxright)For example, if a is 4 and x is 3:a = 4\nx = 3\ny = (x + a/x) / 2The result is closer to the correct answer (sqrt 4 = 2). If we repeat the process with the new estimate, it gets even closer:x = y\ny = (x + a/x) / 2After a few more updates, the estimate is almost exact:x = y\ny = (x + a/x) / 2x = y\ny = (x + a/x) / 2In general we don’t know ahead of time how many steps it takes to get to the right answer, but we know when we get there because the estimate stops changing:x = y\ny = (x + a/x) / 2x = y\ny = (x + a/x) / 2When y == x, we can stop. Here is a loop that starts with an initial estimate, x, and improves it until it stops changing:while true\n    println(x)\n    y = (x + a/x) / 2\n    if y == x\n        break\n    end\n    x = y\nendFor most values of a this works fine, but in general it is dangerous to test float equality. Floating-point values are only approximately right: most rational numbers, like frac13, and irrational numbers, like sqrt 2, can’t be represented exactly with a Float64.Rather than checking whether x and y are exactly equal, it is safer to use the built-in function abs to compute the absolute value, or magnitude, of the difference between them:if abs(y-x) < ϵ\n    break\nendWhere ϵ (\\epsilon TAB) has a value like 0.0000001 that determines how close is close enough."
+},
+
+{
+    "location": "chap07.html#Algorithms-1",
+    "page": "Iteration",
+    "title": "Algorithms",
+    "category": "section",
+    "text": "Newton’s method is an example of an algorithm: it is a mechanical process for solving a category of problems (in this case, computing square roots).To understand what an algorithm is, it might help to start with something that is not an algorithm. When you learned to multiply single-digit numbers, you probably memorized the multiplication table. In effect, you memorized 100 specific solutions. That kind of knowledge is not algorithmic.But if you were “lazy”, you might have learned a few tricks. For example, to find the product of n and 9, you can write n1 as the first digit and 10n as the second digit. This trick is a general solution for multiplying any single-digit number by 9. That’s an algorithm!Similarly, the techniques you learned for addition with carrying, subtraction with borrowing, and long division are all algorithms. One of the characteristics of algorithms is that they do not require any intelligence to carry out. They are mechanical processes where each step follows from the last according to a simple set of rules.Executing algorithms is boring, but designing them is interesting, intellectually challenging, and a central part of computer science.Some of the things that people do naturally, without difficulty or conscious thought, are the hardest to express algorithmically. Understanding natural language is a good example. We all do it, but so far no one has been able to explain how we do it, at least not in the form of an algorithm."
+},
+
+{
+    "location": "chap07.html#Debugging-1",
+    "page": "Iteration",
+    "title": "Debugging",
+    "category": "section",
+    "text": "As you start writing bigger programs, you might find yourself spending more time debugging. More code means more chances to make an error and more places for bugs to hide.One way to cut your debugging time is “debugging by bisection”. For example, if there are 100 lines in your program and you check them one at a time, it would take 100 steps.Instead, try to break the problem in half. Look at the middle of the program, or near it, for an intermediate value you can check. Add a print statement (or something else that has a verifiable effect) and run the program.If the mid-point check is incorrect, there must be a problem in the first half of the program. If it is correct, the problem is in the second half.Every time you perform a check like this, you halve the number of lines you have to search. After six steps (which is fewer than 100), you would be down to one or two lines of code, at least in theory.In practice it is not always clear what the “middle of the program” is and not always possible to check it. It doesn’t make sense to count lines and find the exact midpoint. Instead, think about places in the program where there might be errors and places where it is easy to put a check. Then choose a spot where you think the chances are about the same that the bug is before or after the check."
+},
+
+{
+    "location": "chap07.html#Glossary-1",
+    "page": "Iteration",
+    "title": "Glossary",
+    "category": "section",
+    "text": "reassignment: Assigning a new value to a variable that already exists.update: An assignment where the new value of the variable depends on the old.initialization: An assignment that gives an initial value to a variable that will be updated.increment: An update that increases the value of a variable (often by one).decrement: An update that decreases the value of a variable.iteration: Repeated execution of a set of statements using either a recursive function call or a loop.infinite loop: A loop in which the terminating condition is never satisfied.algorithm: A general process for solving a category of problems."
+},
+
+{
+    "location": "chap07.html#Exercises-1",
+    "page": "Iteration",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap07.html#Exercise-1-1",
+    "page": "Iteration",
+    "title": "Exercise 1",
+    "category": "section",
+    "text": "Copy the loop from Section 7.5 and encapsulate it in a function called mysqrt that takes a as a parameter, chooses a reasonable value of x, and returns an estimate of the square root of a.To test it, write a function named testsquareroot that prints a table like this:using ThinkJuliatestsquareroot() # hideThe first column is a number, a; the second column is the square root of a computed with mysqrt; the third column is the square root computed by sqrt; the fourth column is the absolute value of the difference between the two estimates."
+},
+
+{
+    "location": "chap07.html#Exercise-2-1",
+    "page": "Iteration",
+    "title": "Exercise 2",
+    "category": "section",
+    "text": "The built-in function parse takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function eval. For example:expr = parse(\"1+2*3\")\neval(expr)expr = parse(\"sqrt(π)\")\neval(expr)Write a function called evalloop that iteratively prompts the user, takes the resulting input and evaluates it using eval, and prints the result. It should continue until the user enters done, and then return the value of the last expression it evaluated."
+},
+
+{
+    "location": "chap07.html#Exercise-3-1",
+    "page": "Iteration",
+    "title": "Exercise 3",
+    "category": "section",
+    "text": "The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of frac1pi:frac1pi=frac2sqrt29801sum_k=0^inftyfrac(4k)(1103+26390k)(k)^4 396^4kWrite a function called estimatepi that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than 1e-15 (which is Julia notation for 10−15). You can check the result by comparing it to π."
+},
+
 ]}
