@@ -265,7 +265,7 @@ The second half of this function looks like `polygon`, but we can’t re-use `po
 
 ```julia
 function polyline(t, n, len, angle)
-    for i 1:n
+    for i in 1:n
         forward(t, len)
         turn(t, -angle)
     end
@@ -317,7 +317,7 @@ A **development plan** is a process for writing programs. The process we used in
 
 This process has some drawbacks—we will see alternatives later—but it can be useful if you don’t know ahead of time how to divide the program into functions. This approach lets you design as you go along.
 
-## docstring
+## Docstring
 
 A **docstring** is a string before a function that explains the interface (“doc” is short for “documentation”). Here is an example:
 
@@ -338,7 +338,7 @@ end
 
 Documentation can be accessed in the REPL or in a notebook by typing ? followed by the name of a function or macro, and pressing `ENTER`:
 
-```julia
+```
 help?> polyline
 search:
 

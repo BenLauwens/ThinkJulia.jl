@@ -237,7 +237,7 @@ Then rewrite the function so that instead of traversing the string, it uses the 
 
 ## String library functions
 
-Julia provides functions that perform a variety of useful operations on strings. For example, the method `uppercase` takes a string and returns a new string with all uppercase letters.
+Julia provides functions that perform a variety of useful operations on strings. For example, the function `uppercase` takes a string and returns a new string with all uppercase letters.
 
 ```@repl
 uppercase("Hello, World!")
@@ -439,7 +439,7 @@ end
 isreverse("pots", "stop")
 ```
 
-This time a `BoundsError` has been thrown. The value of `i` is 5, which is out a range for the string `"stop"`.
+This time a `BoundsError` has been thrown. The value of `i` is 5, which is out a range for the string `"pots"`.
 
 Run the program on paper, changing the values of `i` and `j` during each iteration. Find and fix the second error in this function.
 

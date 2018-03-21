@@ -211,7 +211,7 @@ If we get to the end of the loop without finding a fault, then the word passes t
 Here is a version of `ispalindrome` that uses two indices; one starts at the beginning and goes up; the other starts at the end and goes down.
 
 ```julia
-function is_palindrome(word)
+function ispalindrome(word)
     i = 1
     j = prevind(word, sizeof(word)+1)
     while i<j

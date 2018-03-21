@@ -357,9 +357,9 @@ After factorial, the most common example of a recursively defined mathematical f
 
 ```math
 \begin{aligned}
- 	 	fib(0) &= 0 \\ 
- 	 	fib(1) &= 1 \\
- 	 	fib(n) &= fib(n-1) + fib(n-2)
+ 	 	\textit{fib}(0) &= 0 \\ 
+ 	 	\textit{fib}(1) &= 1 \\
+ 	 	\textit{fib}(n) &= \textit{fib}(n-1) + \textit{fib}(n-2)
 \end{aligned}
 ```
 
@@ -520,8 +520,8 @@ The Ackermann function, ``A(m, n)``, is defined:
 A(m, n) = 	
 \begin{cases}
               n+1&	\textrm{if }  m = 0 \\
-        A(m−1, 1)&	\textrm{if }  m > 0 \textrm{ and } n = 0 \\
-A(m−1, A(m, n−1))&	\textrm{if }  m > 0 \textrm{ and } n > 0.
+        A(m-1, 1)&	\textrm{if }  m > 0 \textrm{ and } n = 0 \\
+A(m-1, A(m, n-1))&	\textrm{if }  m > 0 \textrm{ and } n > 0.
 \end{cases}
 ```
 
