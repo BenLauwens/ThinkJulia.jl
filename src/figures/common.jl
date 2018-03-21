@@ -4,4 +4,4 @@ const preamble = """
 \\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
 """
 
-const options = "thick, scale=1.5, transform shape"
+const options = "thick, scale=1.3, transform shape"
