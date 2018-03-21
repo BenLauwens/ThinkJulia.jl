@@ -5,6 +5,7 @@ module ThinkJulia
   export countdown, printn, recurse
   export area, absvalue, distance, circlearea, isdivisible, fact, fib, factdebug
   export mysqrt, testsquareroot
+  export inboth
 
 
   export fig02_1
@@ -18,6 +19,7 @@ module ThinkJulia
   include("code/chap04.jl")
   include("code/chap05.jl")
   include("code/chap06.jl")
+  include("code/chap08.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

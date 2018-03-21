@@ -24,7 +24,7 @@ using Luxor
 🐢 = Turtle()
 ```
 
-The `Luxor` module provides a function called `Turtle` that creates a `Luxor.Turtle` object, which we assign to a variable named `🐢`.
+The `Luxor` module provides a function called `Turtle` that creates a `Luxor.Turtle` object, which we assign to a variable named `🐢` (`\:turtle: TAB`).
 
 Once you create a Turtle, you can call a function to move it around a drawing. For example, to move the Turtle forward:
 

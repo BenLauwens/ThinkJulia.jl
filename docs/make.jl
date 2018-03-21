@@ -1,7 +1,7 @@
 using Documenter
 
 makedocs(
-  format = :html,
+  format = :latex,
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",
   pages = [
@@ -13,7 +13,8 @@ makedocs(
     "chap05.md",
     "chap06.md",
     "chap07.md",
-    "chap08.md"
+    "chap08.md",
+    "chap09.md"
   ]
 )
 

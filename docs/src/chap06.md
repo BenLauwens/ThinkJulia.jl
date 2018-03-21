@@ -543,7 +543,7 @@ function last(word)
 end
 
 function middle(word)
-    word[nextind(word, 1) : prevind(word, sizeof(word))]
+    word[nextind(word, 1) : prevind(word, prevind(word, sizeof(word)+1))]
 end
 ```
 
