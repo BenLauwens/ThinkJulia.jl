@@ -173,17 +173,13 @@ This example concatenates a new first letter onto a slice of greeting. It has no
 
 Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to `string` or repeated multiplications, Julia allows **string interpolation** using `$`:
 
-```@example
+```@repl
 greet = "Hello"
 whom = "World"
 "$greet, $whom!"
 ```
 
-This is more readable and convenient than an equivalent string concatenation:
-
-```julia
-greet * ", " * whom * "!"
-```
+This is more readable and convenient than an equivalent string concatenation: `greet * ", " * whom * "!"`
 
 The shortest complete expression after the `$` is taken as the expression whose value is to be interpolated into the string. Thus, you can interpolate any expression into a string using parentheses:
 
