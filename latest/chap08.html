@@ -16,14 +16,24 @@ julia&gt; fruit[i+1]
 
 julia&gt; fruit[end-1]
 &#39;n&#39;: ASCII/Unicode U+006e (category Ll: Letter, lowercase)</code></pre><p>But the value of the index has to be an integer. Otherwise you get:</p><pre><code class="language-julia-repl">julia&gt; letter = fruit[1.5]
-ERROR: MethodError: no method matching getindex(::String, ::Float64)</code></pre><h2><a class="nav-anchor" id="length-1" href="#length-1"><code>length</code></a></h2><p><code>length</code> is a built-in function that returns the number of characters in a string:</p><pre><code class="language-julia-repl">julia&gt; fruits = &quot;🍌 🍎 🍐&quot;
+ERROR: MethodError: no method matching getindex(::String, ::Float64)
+Closest candidates are:
+  getindex(::String, !Matched::UnitRange{Int64}) at strings/string.jl:233
+  getindex(::String, !Matched::Int64) at strings/string.jl:198
+  getindex(::String, !Matched::UnitRange{#s57} where #s57&lt;:Integer) at strings/string.jl:230
+  ...</code></pre><h2><a class="nav-anchor" id="length-1" href="#length-1"><code>length</code></a></h2><p><code>length</code> is a built-in function that returns the number of characters in a string:</p><pre><code class="language-julia-repl">julia&gt; fruits = &quot;🍌 🍎 🍐&quot;
 &quot;🍌 🍎 🍐&quot;
 
 julia&gt; len = length(fruits)
 5</code></pre><p>To get the last letter of a string, you might be tempted to try something like this:</p><pre><code class="language-julia-repl">julia&gt; last = fruits[length]
-ERROR: MethodError: no method matching getindex(::String, ::Base.#length)</code></pre><p>But you might not get what you expect.</p><p>Strings are encoded using the <strong>UTF-8 encoding</strong>. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.</p><p>The function <code>sizeof</code> gives the number of bytes in a string:</p><pre><code class="language-julia-repl">julia&gt; sizeof(&quot;🍌&quot;)
+ERROR: MethodError: no method matching getindex(::String, ::typeof(length))
+Closest candidates are:
+  getindex(::String, !Matched::UnitRange{Int64}) at strings/string.jl:233
+  getindex(::String, !Matched::Int64) at strings/string.jl:198
+  getindex(::String, !Matched::UnitRange{#s57} where #s57&lt;:Integer) at strings/string.jl:230
+  ...</code></pre><p>But you might not get what you expect.</p><p>Strings are encoded using the <strong>UTF-8 encoding</strong>. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.</p><p>The function <code>sizeof</code> gives the number of bytes in a string:</p><pre><code class="language-julia-repl">julia&gt; sizeof(&quot;🍌&quot;)
 4</code></pre><p>Because an emoji is encoded in 4 bytes and string indexing is byte based, the 5th element of <code>fruits</code> is a <code>SPACE</code>.</p><p>This means also that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string at such an invalid byte index, an error is thrown:</p><pre><code class="language-julia-repl">julia&gt; fruits[2]
-ERROR: UnicodeError: invalid character index 2 (0x9f is a continuation byte)</code></pre><p>In the case of <code>fruits</code>, the character <code>🍌</code> is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character&#39;s index is 5; this next valid index can be computed by <code>nextind(fruit, 1)</code>, and the next index after that by <code>nextind(fruit, 5)</code> and so on.</p><h2><a class="nav-anchor" id="Traversal-with-a-for-loop-1" href="#Traversal-with-a-for-loop-1">Traversal with a <code>for</code> loop</a></h2><p>A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a <strong>traversal</strong>. One way to write a traversal is with a <code>while</code> loop:</p><pre><code class="language-julia">index = firstindex(fruits)
+ERROR: StringIndexError(&quot;🍌 🍎 🍐&quot;, 2)</code></pre><p>In the case of <code>fruits</code>, the character <code>🍌</code> is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character&#39;s index is 5; this next valid index can be computed by <code>nextind(fruit, 1)</code>, and the next index after that by <code>nextind(fruit, 5)</code> and so on.</p><h2><a class="nav-anchor" id="Traversal-with-a-for-loop-1" href="#Traversal-with-a-for-loop-1">Traversal with a <code>for</code> loop</a></h2><p>A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a <strong>traversal</strong>. One way to write a traversal is with a <code>while</code> loop:</p><pre><code class="language-julia">index = firstindex(fruits)
 while index &lt;= sizeof(fruits)
     letter = fruits[index]
     println(letter)
@@ -89,9 +99,7 @@ true</code></pre><p>For example, the following function prints all the letters f
         end
     end
 end</code></pre><p>With well-chosen variable names, Julia sometimes reads like English. You could read this loop, “for (each) letter in (the first) word, if (the) letter is an element of (the second) word, print (the) letter.”</p><p>Here’s what you get if you compare <code>&quot;apples&quot;</code> and <code>&quot;oranges&quot;</code>:</p><div></div><pre><code class="language-julia-repl">julia&gt; inboth(&quot;apples&quot;, &quot;oranges&quot;)
-a
-e
-s</code></pre><h2><a class="nav-anchor" id="String-comparison-1" href="#String-comparison-1">String comparison</a></h2><p>The relational operators work on strings. To see if two strings are equal:</p><pre><code class="language-julia">word = &quot;Pineapple&quot;
+ERROR: UndefVarError: inboth not defined</code></pre><h2><a class="nav-anchor" id="String-comparison-1" href="#String-comparison-1">String comparison</a></h2><p>The relational operators work on strings. To see if two strings are equal:</p><pre><code class="language-julia">word = &quot;Pineapple&quot;
 if word == &quot;banana&quot;
     println(&quot;All right, bananas.&quot;)
 end</code></pre><p>Other relational operations are useful for putting words in alphabetical order:</p><pre><code class="language-julia">if word &lt; &quot;banana&quot;
