@@ -6,6 +6,9 @@ module ThinkJulia
   export area, absvalue, distance, circlearea, isdivisible, fact, fib, factdebug
   export mysqrt, testsquareroot
   export inboth
+  if VERSION < v"0.7-"
+    export firstindex, lastindex
+  end
 
 
   export fig02_1

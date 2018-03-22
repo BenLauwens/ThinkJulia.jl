@@ -535,21 +535,25 @@ The following are functions that take a string argument and return the first, la
 
 ```julia
 function first(word)
-    word[1]
+    first = firstindex(word)
+    word[first]
 end
 
 function last(word)
-    word[end]
+    last = lastindex(word)
+    word[last]
 end
 
 function middle(word)
-    word[nextind(word, 1) : prevind(word, prevind(word, sizeof(word)+1))]
+    first = firstindex(word)
+    last = lastindex(word)
+    word[nextind(word, first) : prevind(word, last)]
 end
 ```
 
 We’ll see how they work in chapter 8
 
-1. Test theses functions out. What happens if you call middle with a string with two letters? One letter? What about the empty string, which is written "" and contains no letters?
+1. Test these functions out. What happens if you call middle with a string with two letters? One letter? What about the empty string, which is written "" and contains no letters?
 
 2. Write a function called `ispalindrome` that takes a string argument and returns `true` if it is a palindrome and `false` otherwise. Remember that you can use the built-in function `length` to check the length of a string.
 

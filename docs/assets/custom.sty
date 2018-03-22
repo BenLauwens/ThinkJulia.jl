@@ -1,9 +1,13 @@
 \usepackage{newunicodechar, polyglossia}
 \usepackage{graphicx}
-\usepackage{MinionPro}
 \usepackage{fontspec}
-\setmainfont{Minion Pro}
-\setsansfont{Myriad Pro}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros Cn}
+%\setsansfont{TeX Gyre Adventor}
+%\setmainfont{Libertinus Serif}
+%\setsansfont{Libertinus Sans}
+%\setmainfont{DejaVu Serif Condensed}
+%\setsansfont{DejaVu Sans Condensed}
 
 % font settings
 %\usepackage[no-math]{fontspec}
@@ -11,9 +15,13 @@
 
 %\setmainfont{Lato}[Scale=MatchLowercase, Ligatures=TeX]
 %\setmonofont[Scale=MatchLowercase]{Roboto Mono}
-\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
+%\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
+\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
 %
-
+\usepackage{amsmath}
+\usepackage{unicode-math}
+%\setmathfont{libertinusmath-regular.otf}
+\setmathfont{texgyretermes-math.otf}
 % colours
 \usepackage{xcolor}
 
@@ -25,10 +33,6 @@
 \definecolor{dark-green}{HTML}{3b972e}
 \definecolor{light-purple}{HTML}{aa7dc0}
 \definecolor{dark-purple}{HTML}{945bb0}
-%
-
-% maths
-\usepackage{amsmath}
 %
 
 % listings
@@ -90,38 +94,42 @@
 %
 
 \nouppercaseheads
-\makeevenfoot{headings}{\footnotesize\textsf{\thepage}}{\footnotesize\textsf{\leftmark}}{}
-\makeoddfoot{headings}{}{\footnotesize\textsf{\rightmark}}{\footnotesize\textsf{\thepage}}
+\makeevenfoot{headings}{\small\textsf{\bfseries\thepage\hspace{0.4cm}|\hspace{0.4cm}\leftmark}}{\small\textsf{\bfseries}}{}
+\makeoddfoot{headings}{}{\small\textsf{\bfseries}}{\small\textsf{\bfseries\rightmark\hspace{0.4cm}|\hspace{0.4cm}\thepage}}
 \makeevenhead{headings}{}{}{}
 \makeoddhead{headings}{}{}{}
 \makefootrule{headings}{\textwidth}{\normalrulethickness}{0ex}
 \copypagestyle{plainnotice}{plain}
-\makeevenfoot{plainnotice}{\footnotesize\textsf{\thepage}}{}{}
-\makeoddfoot{plainnotice}{}{}{\footnotesize\textsf{\thepage}}
+\makeevenfoot{plainnotice}{\small\textsf{\bfseries\thepage}}{}{}
+\makeoddfoot{plainnotice}{}{}{\small\textsf{\bfseries\thepage}}
 \makefootrule{plainnotice}{\textwidth}{\normalrulethickness}{0ex}
 \aliaspagestyle{chapter}{plainnotice}
 
 \makechapterstyle{oreilly}{%
   \chapterstyle{default}
-  \renewcommand*{\chapnumfont}{\normalfont\huge\sffamily}
-  \renewcommand*{\chaptitlefont}{\normalfont\HUGE\sffamily}
+  \renewcommand*{\chapnumfont}{\normalfont\huge\sffamily\bfseries}
+  \renewcommand*{\chaptitlefont}{\normalfont\HUGE\sffamily\bfseries}
   \renewcommand*{\printchaptername}{\chapnumfont CHAPTER\ }
   \renewcommand*{\chapternamenum}{}
   \renewcommand*{\printchapternum}{\raggedleft \chapnumfont \thechapter}
   \renewcommand*{\printchaptertitle}[1]{
-    \vspace{-5mm}\hrule\vspace{2mm}\raggedleft {\chaptitlefont ##1}\par\par\nobreak}}
+    \vspace{-5mm}\hrule\vspace{2mm}\raggedleft {\chaptitlefont ##1}\par\nobreak}
+  \renewcommand*\afterchaptertitle{\par\nobreak\vskip2.5\afterchapskip}}
 \chapterstyle{oreilly}
 
-\setsecheadstyle{\normalfont\huge\sffamily}
+
+\setsecheadstyle{\normalfont\huge\sffamily\bfseries}
 
 \setsubsecheadstyle{\normalfont\itshape}
 
 \setsecnumdepth{chapter}
 \maxsecnumdepth{chapter}
 
-\renewcommand{\cftchapterfont}{\normalfont\sffamily} 
-\renewcommand{\cftchapterpagefont}{\normalfont\sffamily}
+\renewcommand{\cftchapterfont}{\normalfont\sffamily\bfseries\large} 
+\renewcommand{\cftchapterpagefont}{\normalfont\sffamily\bfseries\large}
 \renewcommand*{\cftchapterleader}{\dotfill}
 \renewcommand*{\cftsectionleader}{\hfill}
+
+\addto\captionsenglish{\renewcommand\contentsname{Table of Contents}}
 
 \usepackage{emojione}

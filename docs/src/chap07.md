@@ -78,7 +78,7 @@ y = y + 1
 
 Updating a variable by adding 1 is called an **increment**; subtracting 1 is called a **decrement**.
 
-## The while statement
+## The `while` statement
 
 Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called **iteration**.
 

@@ -158,9 +158,10 @@ For `isabecedarian` we have to compare adjacent letters, which is a little trick
 
 ```julia
 function isabecedarian(word)
-    previous = word[1]
-    second = nextind(word, 1)
-    for c in word[second:end]
+    i = firstindex(word)
+    previous = word[i]
+    j = nextind(word, i)
+    for c in word[j:end]
         if c < previous
             return false
         end
@@ -177,11 +178,12 @@ function isabecedarian(word)
     if length(word) <= 1
         return true
     end
-    second = nextind(word, 1)
-    if word[1] > word[second]
+    i = firstindex(word)
+    j = nextind(word, i)
+    if word[1] > word[j]
         return false
     end
-    isabecedarian(word[second:end])
+    isabecedarian(word[j:end])
 end
 ```
 
@@ -189,7 +191,7 @@ Another option is to use a `while` loop:
 
 ```julia
 function isabecedarian(word)
-    i = 1
+    i = firstindex(word)
     j = nextind(word, 1)
     while j <= sizeof(word)
         if word[j] < word[i]
@@ -212,8 +214,8 @@ Here is a version of `ispalindrome` that uses two indices; one starts at the beg
 
 ```julia
 function ispalindrome(word)
-    i = 1
-    j = prevind(word, sizeof(word)+1)
+    i = firstindex(word)
+    j = lastindex(word)
     while i<j
         if word[i] != word[j]
             return false

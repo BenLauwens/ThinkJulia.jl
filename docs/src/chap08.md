@@ -52,7 +52,7 @@ letter = fruit[1.5]
 
 ## `length`
 
-`lenght` is a built-in function that returns the number of characters in a string:
+`length` is a built-in function that returns the number of characters in a string:
 
 ```@repl chap08
 fruits = "🍌 🍎 🍐"
@@ -90,7 +90,7 @@ In the case of `fruits`, the character `🍌` is a four-byte character, so the i
 A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a **traversal**. One way to write a traversal is with a `while` loop:
 
 ```julia
-index = 1
+index = firstindex(fruits)
 while index <= sizeof(fruits)
     letter = fruits[index]
     println(letter)
@@ -99,6 +99,8 @@ end
 ```
 
 This loop traverses the string and displays each letter on a line by itself. The loop condition is `index <= sizeof(fruit)`, so when index is larger than the number of bytes in the string, the condition is `false`, and the body of the loop doesn’t run.
+
+The function `firstindex` returns the first valid byte index. 
 
 As an exercise, write a function that takes a string as an argument and displays the letters backward, one per line.
 
@@ -179,7 +181,7 @@ whom = "World"
 "$greet, $whom!"
 ```
 
-This is more readable and convenient than an equivalent string concatenation: `greet * ", " * whom * "!"`
+This is more readable and convenient than string concatenation: `greet * ", " * whom * "!"`
 
 The shortest complete expression after the `$` is taken as the expression whose value is to be interpolated into the string. Thus, you can interpolate any expression into a string using parentheses:
 
@@ -193,7 +195,7 @@ What does the following function do?
 
 ```julia
 function find(word, letter)
-    index = 1
+    index = firstindex(fruits)
     while index <= sizeof(word)
         if word[index] == letter
             return index
@@ -335,8 +337,8 @@ function isreverse(word1, word2)
     if length(word1) != length(word2)
         return false
     end
-    i = 1
-    j = sizeof(word2)
+    i = firstindex(word1)
+    j = lastindex(word2)
     while j >= 0
         j = prevind(word2, j)
         if word1[i] != word2[j]
@@ -344,25 +346,26 @@ function isreverse(word1, word2)
         end
         i = nextind(word1, i)
     end
-    return true
+    true
 end
 ```
 
 The first `if` statement checks whether the words are the same length. If not, we can return `false` immediately. Otherwise, for the rest of the function, we can assume that the words are the same length. This is an example of the guardian pattern.
 
-`i` and `j` are indices: `i` traverses word1 forward while `j` traverses word2 backward. If we find two letters that don’t match, we can return `false` immediately. If we get through the whole loop and all the letters match, we return `true`.
+`i` and `j` are indices: `i` traverses `word1` forward while `j` traverses `word2` backward. If we find two letters that don’t match, we can return `false` immediately. If we get through the whole loop and all the letters match, we return `true`.
 
-The function `prevind` returns the previous valid index of a character.
+The function `lastindex` returns the last valid byte index of a string and `prevind` the previous valid index of a character.
 
 If we test this function with the words "pots" and "stop", we expect the return value `true`, but we get `false`:
 
 ```@setup reverse1
+using ThinkJulia
 function isreverse(word1, word2)
     if length(word1) != length(word2)
         return false
     end
-    i = 1
-    j = sizeof(word2)
+    i = firstindex(word1)
+    j = lastindex(word2)
     while j >= 0
         j = prevind(word2, j)
         if word1[i] != word2[j]
@@ -370,7 +373,7 @@ function isreverse(word1, word2)
         end
         i = nextind(word1, i)
     end
-    return true
+    true
 end
 ```
 
@@ -388,12 +391,13 @@ For debugging this kind of error, my first move is to print the values of the in
 ```
 
 ```@setup reverse2
+using ThinkJulia
 function isreverse(word1, word2)
     if length(word1) != length(word2)
         return false
     end
-    i = 1
-    j = sizeof(word2)
+    i = firstindex(word1)
+    j = lastindex(word2)
     while j >= 0
         j = prevind(word2, j)
         println("$i $j")
@@ -402,7 +406,7 @@ function isreverse(word1, word2)
         end
         i = nextind(word1, i)
     end
-    return true
+    true
 end
 ```
 
@@ -412,26 +416,27 @@ Now when I run the program again, I get more information:
 isreverse("pots", "stop")
 ```
 
-The first time through the loop, the value of `j` is 3, which has to be 4. This can be fixed by setting the inital value of `j` to `sizeof(word2) + 1`.
+The first time through the loop, the value of `j` is 3, which has to be 4. This can be fixed by moving `j = prevind(word2, j)` to the end of the `while` loop.
 
 If I fix that error and run the program again, I get:
 
 ```@setup reverse3
+using ThinkJulia
 function isreverse(word1, word2)
     if length(word1) != length(word2)
         return false
     end
-    i = 1
-    j = sizeof(word2) + 1
+    i = firstindex(word1)
+    j = lastindex(word2)
     while j >= 0
-        j = prevind(word2, j)
         println("$i $j")
         if word1[i] != word2[j]
             return false
         end
         i = nextind(word1, i)
+        j = prevind(word2, j)
     end
-    return true
+    true
 end
 ```
 
