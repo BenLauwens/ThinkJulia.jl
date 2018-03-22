@@ -8,24 +8,24 @@ Like a string, an **array** is a sequence of values. In a string, the values are
 
 There are several ways to create a new array; the simplest is to enclose the elements in square brackets (`[ ]`):
 
-```@repl
-[10, 20, 30, 40];
-["crunchy frog", "ram bladder", "lark vomit"];
+```julia
+[10, 20, 30, 40]
+["crunchy frog", "ram bladder", "lark vomit"]
 ```
 
-The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another list:
+The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another array:
 
-```@repl
+```julia
 ["spam", 2.0, 5, [10, 20]];
 ```
 
 As you might expect, you can assign array values to variables:
 
-```@example chap10
+```@repl chap10
 cheeses = ["Cheddar", "Edam", "Gouda"];
 numbers = [42, 123];
 empty = [];
-println(cheeses, " ", numbers, " ", empty)
+print(cheeses, " ", numbers, " ", empty)
 ```
 
 ## Arrays are mutable
@@ -36,7 +36,7 @@ The syntax for accessing the elements of an array is the same as for accessing t
 cheeses[1]
 ```
 
-Unlike strings, arrays are mutable. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:
+Unlike strings, arrays are **mutable**. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:
 
 ```@repl
 numbers = [42, 123];
@@ -46,6 +46,8 @@ print(numbers)
 
 The second element of `numbers`, which used to be 123, is now 5.
 
+Figure 10.1 shows the state diagrams for `cheeses`, `numbers` and `empty`.
+
 ```@eval
 using ThinkJulia
 fig10_1()
@@ -53,8 +55,8 @@ fig10_1()
 
 ```@raw html
 <figure>
-  <img src="fig101.svg" alt="State diagram.">
-  <figcaption>Figure 10.1. State diagram.</figcaption>
+  <img src="fig101.svg" alt="State diagrams.">
+  <figcaption>Figure 10.1. State diagrams.</figcaption>
 </figure>
 ```
 
@@ -62,7 +64,7 @@ fig10_1()
 \begin{figure}
 \centering
 \includegraphics{fig101}
-\caption{State diagram.}
+\caption{State diagrams.}
 \label{fig101}
 \end{figure}
 ```
@@ -281,7 +283,7 @@ splice!(t, 2)
 print(t)
 ```
 
-`splice!` modifies the list and returns the element that was removed.
+`splice!` modifies the array and returns the element that was removed.
 
 `pop!` deletes and returns the last element:
 
@@ -317,7 +319,7 @@ print(insert!(t, 2, 'x'))
 
 ## Arrays and strings
 
-A string is a sequence of characters and a list is a sequence of values, but a list of characters is not the same as a string. To convert from a string to a list of characters, you can use the function `collect`:
+A string is a sequence of characters and an array is a sequence of values, but an array of characters is not the same as a string. To convert from a string to an array of characters, you can use the function `collect`:
 
 ```@repl
 t = collect("spam");
@@ -351,6 +353,8 @@ In this case the delimiter is a space character. To concatenate strings without 
 
 ## Objects and values
 
+An **object** is something a variable can refer to. Until now, you could use “object” and “value” interchangeably.
+
 If we run these assignment statements:
 
 ```julia
@@ -358,4 +362,128 @@ a = "banana"
 b = "banana"
 ```
 
-We know that a and b both refer to a string, but we don’t know whether they refer to the *same* string. There are two possible states, shown in Figure 10.2.
+We know that `a` and `b` both refer to a string, but we don’t know whether they refer to the *same* string. There are two possible states, shown in Figure 10.2.
+
+```@eval
+using ThinkJulia
+fig10_2()
+```
+
+```@raw html
+<figure>
+  <img src="fig102.svg" alt="State diagrams.">
+  <figcaption>Figure 10.2. State diagrams.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig102}
+\caption{State diagrams.}
+\label{fig102}
+\end{figure}
+```
+
+In one case, `a` and `b` refer to two different objects that have the same value. In the second case, they refer to the same object.
+
+To check whether two variables refer to the same object, you can use the `===` operator.
+
+```julia
+julia> a = "banana";
+
+julia> b = "banana";
+
+julia> a === b
+true
+```
+
+In this example, Julia only created one string object, and both `a` and `b` refer to it. But when you create two arrays, you get two objects:
+
+```@repl
+a = [1, 2, 3];
+b = [1, 2, 3];
+a === b
+```
+
+So the state diagram looks like Figure 10.3.
+
+```@eval
+using ThinkJulia
+fig10_3()
+```
+
+```@raw html
+<figure>
+  <img src="fig103.svg" alt="State diagram.">
+  <figcaption>Figure 10.3. State diagram.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig103}
+\caption{State diagram.}
+\label{fig103}
+\end{figure}
+```
+
+In this case we would say that the two arrays are **equivalent**, because they have the same elements, but not **identical**, because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
+
+To be precise an object has a value. If you evaluate `[1, 2, 3]`, you get an array object whose value is a sequence of integers. If another array has the same elements, we say it has the same value, but it is not the same object.
+
+## Aliasing
+
+If `a` refers to an object and you assign `b = a`, then both variables refer to the same object:
+
+```@repl chap10
+a = [1, 2, 3];
+b = a;
+b === a
+```
+
+The state diagram looks like Figure 10.4.
+
+```@eval
+using ThinkJulia
+fig10_4()
+```
+
+```@raw html
+<figure>
+  <img src="fig104.svg" alt="State diagram.">
+  <figcaption>Figure 10.4. State diagram.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig104}
+\caption{State diagram.}
+\label{fig104}
+\end{figure}
+```
+
+The association of a variable with an object is called a **reference**. In this example, there are two references to the same object.
+
+An object with more than one reference has more than one name, so we say that the object is **aliased**.
+
+If the aliased object is mutable, changes made with one alias affect the other:
+
+```@repl chap10
+b[1] = 42;
+print(a)
+```
+
+Although this behavior can be useful, it is error-prone. In general, it is safer to avoid aliasing when you are working with mutable objects.
+
+For immutable objects like strings, aliasing is not as much of a problem. In this example:
+
+```julia
+a = "banana"
+b = "banana"
+```
+
+It almost never makes a difference whether `a` and `b` refer to the same string or not.
