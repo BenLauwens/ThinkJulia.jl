@@ -26,7 +26,7 @@ using Luxor
 
 The `Luxor` module provides a function called `Turtle` that creates a `Luxor.Turtle` object, which we assign to a variable named `🐢` (`\:turtle: TAB`).
 
-Once you create a Turtle, you can call a function to move it around a drawing. For example, to move the Turtle forward:
+Once you create a turtle, you can call a function to move it around a drawing. For example, to move the turtle forward:
 
 ```julia
 @svg begin
@@ -41,8 +41,8 @@ fig04_1()
 
 ```@raw html
 <figure>
-  <img src="fig41.svg" alt="Moving the Turtle forward.">
-  <figcaption>Figure 4.1. Moving the Turtle forward.</figcaption>
+  <img src="fig41.svg" alt="Moving the turtle forward.">
+  <figcaption>Figure 4.1. Moving the turtle forward.</figcaption>
 </figure>
 ```
 
@@ -50,18 +50,18 @@ fig04_1()
 \begin{figure}
 \centering
 \includegraphics{fig41}
-\caption{Moving the Turtle forward.}
+\caption{Moving the turtle forward.}
 \label{fig41}
 \end{figure}
 ```
 
 The `@svg` keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.
 
-The arguments of `forward` are the Turtle and a distance in pixels, so the actual size depends on your display.
+The arguments of `forward` are the turtle and a distance in pixels, so the actual size depends on your display.
 
-Another function you can call with a Turtle as argument is `turn` for turning. The second argument for `turn` is an angle in degrees.
+Another function you can call with a turtle as argument is `turn` for turning. The second argument for `turn` is an angle in degrees.
 
-Also, each Turtle is holding a pen, which is either down or up; if the pen is down, the Turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the Turtle. The functions `penup` and `pendown` stand for “pen up” and “pen down”.
+Also, each turtle is holding a pen, which is either down or up; if the pen is down, the turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the turtle. The functions `penup` and `pendown` stand for “pen up” and “pen down”.
 
 To draw a right angle, modify the macro:
 
@@ -119,15 +119,15 @@ The syntax of a `for` statement is similar to a function definition. It has a he
 
 A `for` statement is also called a **loop** because the flow of execution runs through the body and then loops back to the top. In this case, it runs the body four times.
 
-This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the Turtle back in the starting position, facing in the starting direction.
+This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the turtle back in the starting position, facing in the starting direction.
 
 ## Exercises
 
-The following is a series of exercises using Turtles. They are meant to be fun, but they have a point, too. While you are working on them, think about what the point is.
+The following is a series of exercises using turtles. They are meant to be fun, but they have a point, too. While you are working on them, think about what the point is.
 
 The following sections have solutions to the exercises, so don’t look until you have finished (or at least tried).
 
-1. Write a function called `square` that takes a parameter named `t`, which is a Turtle. It should use the Turtle to draw a square.
+1. Write a function called `square` that takes a parameter named `t`, which is a turtle. It should use the turtle to draw a square.
 
 2. Write a function call that passes `t` as an argument to `square`, and then run the macro again.
 
@@ -135,13 +135,13 @@ The following sections have solutions to the exercises, so don’t look until yo
 
 4. Make a copy of `square` and change the name to `polygon`. Add another parameter named `n` and modify the body so it draws an ``n``-sided regular polygon. Hint: The exterior angles of an ``n``-sided regular polygon are ``\frac{360}{n}`` degrees.
 
-5. Write a function called `circle` that takes a Turtle, `t`, and radius, `r`, as parameters and that draws an approximate circle by calling `polygon` with an appropriate length and number of sides. Test your function with a range of values of `r`. Hint: figure out the circumference of the circle and make sure that `len * n == circumference`.
+5. Write a function called `circle` that takes a turtle, `t`, and radius, `r`, as parameters and that draws an approximate circle by calling `polygon` with an appropriate length and number of sides. Test your function with a range of values of `r`. Hint: figure out the circumference of the circle and make sure that `len * n == circumference`.
 
 6. Make a more general version of `circle` called `arc` that takes an additional parameter `angle`, which determines what fraction of a circle to draw. `angle` is in units of degrees, so when `angle=360`, `arc` should draw a complete circle.
 
 ## Encapsulation
 
-The first exercise asks you to put your square-drawing code into a function definition and then call the function, passing the Turtle as a parameter. Here is a solution:
+The first exercise asks you to put your square-drawing code into a function definition and then call the function, passing the turtle as a parameter. Here is a solution:
 
 ```julia
 function square(t)
@@ -158,7 +158,7 @@ end
 
 The innermost statements, `forward` and `turn` are indented twice to show that they are inside the `for` loop, which is inside the function definition.
 
-Inside the function, `t` refers to the same Turtle `🐢`, so `turn(t, -90)` has the same effect as `turn(🐢, -90)`. In that case, why not call the parameter `🐢`? The idea is that `t` can be any Turtle, not just `🐢`, so you could create a second Turtle and pass it as an argument to `square`:
+Inside the function, `t` refers to the same turtle `🐢`, so `turn(t, -90)` has the same effect as `turn(🐢, -90)`. In that case, why not call the parameter `🐢`? The idea is that `t` can be any turtle, not just `🐢`, so you could create a second turtle and pass it as an argument to `square`:
 
 ```julia
 🐫 = Turtle()
@@ -326,7 +326,7 @@ A **docstring** is a string before a function that explains the interface (“do
 polyline(t, n, len, angle)
 
 Draws n line segments with the given length and
-angle (in degrees) between them.  t is a Turtle.
+angle (in degrees) between them.  t is a turtle.
 """ 
 function polyline(t, n, len, angle)
     for i in 1:n
@@ -344,7 +344,7 @@ search:
 
   polyline(t, n, len, angle)
 
-  Draws n line segments with the given length and angle (in degrees) between them. t is a Turtle.
+  Draws n line segments with the given length and angle (in degrees) between them. t is a turtle.
 ```
 
 By convention, all docstrings are triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.
@@ -357,9 +357,9 @@ Writing this kind of documentation is an important part of interface design. A w
 
 An interface is like a contract between a function and a caller. The caller agrees to provide certain parameters and the function agrees to do certain work.
 
-For example, `polyline` requires four arguments: `t` has to be a Turtle; `n` has to be an integer; `len` should be a positive number; and `angle` has to be a number, which is understood to be in degrees.
+For example, `polyline` requires four arguments: `t` has to be a turtle; `n` has to be an integer; `len` should be a positive number; and `angle` has to be a number, which is understood to be in degrees.
 
-These requirements are called **preconditions** because they are supposed to be true before the function starts executing. Conversely, conditions at the end of the function are **postconditions**. Postconditions include the intended effect of the function (like drawing line segments) and any side effects (like moving the Turtle or making other changes).
+These requirements are called **preconditions** because they are supposed to be true before the function starts executing. Conversely, conditions at the end of the function are **postconditions**. Postconditions include the intended effect of the function (like drawing line segments) and any side effects (like moving the turtle or making other changes).
 
 Preconditions are the responsibility of the caller. If the caller violates a (properly documented!) precondition and the function doesn’t work correctly, the bug is in the caller, not the function.
 
@@ -408,7 +408,7 @@ Enter the code in this chapter in a notebook.
 
 1. Draw a stack diagram that shows the state of the program while executing `circle(🐢, radius)`. You can do the arithmetic by hand or add print statements to the code.
 
-2. The version of `arc` in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the Turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
+2. The version of `arc` in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
 
 ```julia
 """ 
@@ -416,7 +416,7 @@ arc(t, r, angle)
 
 Draws an arc with the given radius and angle:
 
-    t: Turtle
+    t: turtle
     r: radius
     angle: angle subtended by the arc, in degrees
 """

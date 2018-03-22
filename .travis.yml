@@ -5,7 +5,7 @@ os:
   #- osx
 julia:
   - 0.6
-  #- nightly
+  - nightly
 notifications:
   email: false
 git:
@@ -28,4 +28,4 @@ after_success:
   - mkdir ~/.fonts
   - cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
   - luaotfload-tool --update
-  - julia -e 'cd(Pkg.dir("ThinkJulia")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
+  - julia -e 'cd(Pkg.dir("ThinkJulia")); include(joinpath("docs", "make.jl"))'
