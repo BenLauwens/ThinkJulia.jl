@@ -35,9 +35,10 @@ end</code></pre><p>Instead of a list of forbidden letters, we have a list of ava
 end</code></pre><p>Instead of traversing the letters in word, the loop traverses the required letters. If any of the required letters do not appear in the word, we can return <code>false</code>.</p><p>If you were really thinking like a computer scientist, you would have recognized that <code>usesall</code> was an instance of a previously solved problem, and you would have written:</p><pre><code class="language-julia">function usesall(word, required)
     usesonly(required, word)
 end</code></pre><p>This is an example of a program development plan called <strong>reduction to a previously solved problem</strong>, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.</p><h2><a class="nav-anchor" id="Looping-with-indices-1" href="#Looping-with-indices-1">Looping with indices</a></h2><p>I wrote the functions in the previous section with <code>for</code> loops because I only needed the characters in the strings; I didn’t have to do anything with the indices.</p><p>For <code>isabecedarian</code> we have to compare adjacent letters, which is a little tricky with a <code>for</code> loop:</p><pre><code class="language-julia">function isabecedarian(word)
-    previous = word[1]
-    second = nextind(word, 1)
-    for c in word[second:end]
+    i = firstindex(word)
+    previous = word[i]
+    j = nextind(word, i)
+    for c in word[j:end]
         if c &lt; previous
             return false
         end
@@ -48,13 +49,14 @@ end</code></pre><p>An alternative is to use recursion:</p><pre><code class="lang
     if length(word) &lt;= 1
         return true
     end
-    second = nextind(word, 1)
-    if word[1] &gt; word[second]
+    i = firstindex(word)
+    j = nextind(word, i)
+    if word[1] &gt; word[j]
         return false
     end
-    isabecedarian(word[second:end])
+    isabecedarian(word[j:end])
 end</code></pre><p>Another option is to use a <code>while</code> loop:</p><pre><code class="language-julia">function isabecedarian(word)
-    i = 1
+    i = firstindex(word)
     j = nextind(word, 1)
     while j &lt;= sizeof(word)
         if word[j] &lt; word[i]
@@ -65,8 +67,8 @@ end</code></pre><p>Another option is to use a <code>while</code> loop:</p><pre><
     end
     true
 end</code></pre><p>The loop starts at <code>i=1</code> and <code>j=nextind(word, 1)</code> and ends when <code>j&gt;sizeof(word)</code>. Each time through the loop, it compares the <code>i</code>th character (which you can think of as the current character) to the <code>j</code>th character (which you can think of as the next).</p><p>If the next character is less than (alphabetically before) the current one, then we have discovered a break in the abecedarian trend, and we return <code>false</code>.</p><p>If we get to the end of the loop without finding a fault, then the word passes the test. To convince yourself that the loop ends correctly, consider an example like <code>&quot;flossy&quot;</code>.</p><p>Here is a version of <code>ispalindrome</code> that uses two indices; one starts at the beginning and goes up; the other starts at the end and goes down.</p><pre><code class="language-julia">function ispalindrome(word)
-    i = 1
-    j = prevind(word, sizeof(word)+1)
+    i = firstindex(word)
+    j = lastindex(word)
     while i&lt;j
         if word[i] != word[j]
             return false
