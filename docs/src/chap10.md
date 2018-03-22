@@ -86,7 +86,7 @@ The `∈` operator also works on arrays:
 "Brie" in cheeses
 ```
 
-# Traversing an array
+## Traversing an array
 
 The most common way to traverse the elements of an array is with a `for` loop. The syntax is the same as for strings:
 
