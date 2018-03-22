@@ -1,19 +1,19 @@
 var documenterSearchIndex = {"docs": [
 
 {
-    "location": "copyright.html#",
-    "page": "License",
-    "title": "License",
+    "location": "preface.html#",
+    "page": "Preface",
+    "title": "Preface",
     "category": "page",
-    "text": "\\begin{titlingpage}\n\\vspace*{\\stretch{3}}\n\\normalfont\\sffamily\\Huge\\centering\\bfseries Think Julia\\\\\n\\vspace*{\\stretch{2}}\n\\normalfont\\sffamily\\Large\\centering\\bfseries HOW TO THINK LIKE A COMPUTER SCIENTISTS\\\\\n\\vspace*{\\stretch{3}}\n\\normalfont\\sffamily\\huge\\centering\\bfseries Ben Lauwens\\\\\n\\vspace*{\\stretch{1}}\n\\normalfont\\sffamily\\Large\\centering\\bfseries with Allen B. Downey\\\\\n\\vspace*{\\stretch{4}}\n\\end{titlingpage}\n\\frontmatter\n\\tableofcontents*"
+    "text": "\\pagestyle{empty}\n\\begin{center}\n\\normalfont\\sffamily\\bfseries\n\\vspace*{\\stretch{3}}\n\\Huge Think Julia\\\\\n\\vspace*{\\stretch{2}}\n\\Large HOW TO THINK LIKE A COMPUTER SCIENTISTS\\\\\n\\vspace*{\\stretch{3}}\n\\huge Ben Lauwens\\\\\n\\vspace*{\\stretch{1}}\n\\Large with Allen B. Downey\\\\\n\\vspace*{\\stretch{4}}\n\\end{center}\n\\clearpage\nCopyright ©2018 Allen Downey, Ben Lauwens.Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0 Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.The Markdown source for this book is available from https://github.com/BenLauwens/ThinkJulia.jl\\frontmatter\n\\pagestyle{headings}\n\\tableofcontents*"
 },
 
 {
-    "location": "copyright.html#License-1",
-    "page": "License",
-    "title": "License",
+    "location": "preface.html#Preface-1",
+    "page": "Preface",
+    "title": "Preface",
     "category": "section",
-    "text": "Copyright ©2018 Allen Downey, Ben Lauwens.Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0 Unported License, which is available at http://creativecommons.org/licenses/by-nc/3.0/.The Markdown source for this book is available from https://github.com/BenLauwens/ThinkJulia.jl"
+    "text": ""
 },
 
 {
@@ -53,7 +53,7 @@ var documenterSearchIndex = {"docs": [
     "page": "The way of the program",
     "title": "The first program",
     "category": "section",
-    "text": "Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:println(\"Hello, World!\")This is an example of a print statement, although it doesn’t actually print anything on paper. It displays a result on the screen. In this case, the result is the wordsHello, World!The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.The parentheses indicate that println is a function. We’ll get to functions in Chapter 3 Functions."
+    "text": "Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:println(\"Hello, World!\")This is an example of a print statement, although it doesn’t actually print anything on paper. It displays a result on the screen.The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.The parentheses indicate that println is a function. We’ll get to functions in Chapter 3 Functions."
 },
 
 {
