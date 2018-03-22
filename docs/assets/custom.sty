@@ -1,10 +1,10 @@
 \usepackage{newunicodechar, polyglossia}
 \usepackage{graphicx}
 \usepackage{fontspec}
-\setmainfont{TeX Gyre Termes}
-\setsansfont{TeX Gyre Heros Cn}
-%\setsansfont{TeX Gyre Adventor}
-%\setmainfont{Libertinus Serif}
+%\setmainfont{TeX Gyre Termes}
+%\setsansfont{TeX Gyre Heros Cn}
+\setsansfont{TeX Gyre Adventor}
+\setmainfont{Libertinus Serif}
 %\setsansfont{Libertinus Sans}
 %\setmainfont{DejaVu Serif Condensed}
 %\setsansfont{DejaVu Sans Condensed}
@@ -14,14 +14,14 @@
 %\usepackage{newunicodechar}
 
 %\setmainfont{Lato}[Scale=MatchLowercase, Ligatures=TeX]
-%\setmonofont[Scale=MatchLowercase]{Roboto Mono}
+\setmonofont[Scale=MatchLowercase]{Hack}
 %\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
-\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+%\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
 %
 \usepackage{amsmath}
 \usepackage{unicode-math}
-%\setmathfont{libertinusmath-regular.otf}
-\setmathfont{texgyretermes-math.otf}
+\setmathfont{libertinusmath-regular.otf}
+%\setmathfont{texgyretermes-math.otf}
 % colours
 \usepackage{xcolor}
 
@@ -80,7 +80,10 @@
 % paragraphs
 \setlength{\parindent}{0pt}
 \nonzeroparskip
-%\setlength{\parskip}{\smallskipamount}
+%\setlength{\medskipamount}{0pt}
+\setlength\partopsep{-\topsep}
+%\addtolength\partopsep{-\parskip}
+%\addtolength\partopsep{0.5cm}
 %
 
 % adjust margins
@@ -94,14 +97,14 @@
 %
 
 \nouppercaseheads
-\makeevenfoot{headings}{\small\textsf{\bfseries\thepage\hspace{0.4cm}|\hspace{0.4cm}\leftmark}}{\small\textsf{\bfseries}}{}
-\makeoddfoot{headings}{}{\small\textsf{\bfseries}}{\small\textsf{\bfseries\rightmark\hspace{0.4cm}|\hspace{0.4cm}\thepage}}
+\makeevenfoot{headings}{\footnotesize\textsf{\bfseries\thepage\hspace{0.4cm}|\hspace{0.4cm}\leftmark}}{}{}
+\makeoddfoot{headings}{}{}{\footnotesize\textsf{\bfseries\rightmark\hspace{0.4cm}|\hspace{0.4cm}\thepage}}
 \makeevenhead{headings}{}{}{}
 \makeoddhead{headings}{}{}{}
 \makefootrule{headings}{\textwidth}{\normalrulethickness}{0ex}
 \copypagestyle{plainnotice}{plain}
-\makeevenfoot{plainnotice}{\small\textsf{\bfseries\thepage}}{}{}
-\makeoddfoot{plainnotice}{}{}{\small\textsf{\bfseries\thepage}}
+\makeevenfoot{plainnotice}{\footnotesize\textsf{\bfseries\thepage}}{}{}
+\makeoddfoot{plainnotice}{}{}{\footnotesize\textsf{\bfseries\thepage}}
 \makefootrule{plainnotice}{\textwidth}{\normalrulethickness}{0ex}
 \aliaspagestyle{chapter}{plainnotice}
 

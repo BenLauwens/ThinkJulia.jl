@@ -13,7 +13,6 @@ git:
 addons:
   apt_packages:
     - lmodern
-    - fonts-inconsolata
 #    - fonts-dejavu
     - texlive-luatex
     - texlive-xetex
@@ -26,5 +25,7 @@ addons:
 
 after_success:
   # generate documentation
+  - mkdir ~/.fonts
+  - cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
   - luaotfload-tool --update
   - julia -e 'cd(Pkg.dir("ThinkJulia")); Pkg.add("Documenter"); include(joinpath("docs", "make.jl"))'
