@@ -60,11 +60,7 @@ Traditionally, the first program you write in a new language is called “Hello,
 println("Hello, World!")
 ```
 
-This is an example of a **print statement**, although it doesn’t actually print anything on paper. It displays a result on the screen. In this case, the result is the words
-
-```
-Hello, World!
-```
+This is an example of a **print statement**, although it doesn’t actually print anything on paper. It displays a result on the screen.
 
 The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
 
