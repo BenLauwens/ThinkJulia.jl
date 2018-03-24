@@ -1,0 +1,17 @@
+\documentclass[tikz]{standalone}
+\usepackage{cancel}
+\usepackage{fontspec}
+\setmonofont[]{Ubuntu Mono}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.9, transform shape]
+$\node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1cm] at(0,0){};
+\node[anchor=east] (a) at(-1.25, 0.25) {\tt a};
+\node[anchor=west] (av) at (-0.25, 0.25) {\tt [1, 2, 3]};
+\node[anchor=east] (b) at(-1.25, -0.25) {\tt b};
+\node[anchor=west] (bv) at (-0.25, -0.25) {\tt [1, 2, 3]};
+\draw[-latex] (a) -- (av);
+\draw[-latex] (b) -- (bv);
+$
+\end{tikzpicture}
+\end{document}
