@@ -7,7 +7,7 @@ const preamble_svg = """
 const preamble_pdf = """
 \\usepackage{cancel}
 \\usepackage{fontspec}
-\\setmonofont[]{Ubuntu Mono}
+\\setmonofont{Ubuntu Mono}
 """
 
 const options_svg = "thick, scale=1.3, transform shape"

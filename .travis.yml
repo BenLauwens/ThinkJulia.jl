@@ -14,7 +14,7 @@ addons:
   apt_packages:
     - lmodern
     - fonts-dejavu
-    #- ttf-ubuntu-font-family
+    - ttf-ubuntu-font-family
     - texlive-luatex
     - texlive-xetex
     - texlive-latex-extra
