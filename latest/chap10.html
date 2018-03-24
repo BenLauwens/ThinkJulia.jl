@@ -126,16 +126,16 @@ julia&gt; s = join(t, &#39; &#39;)
 b = &quot;banana&quot;</code></pre><p>We know that <code>a</code> and <code>b</code> both refer to a string, but we don’t know whether they refer to the <em>same</em> string. There are two possible states, shown in Figure 10.2.</p><figure>
   <img src="fig102.svg" alt="State diagrams.">
   <figcaption>Figure 10.2. State diagrams.</figcaption>
-</figure><p>In one case, <code>a</code> and <code>b</code> refer to two different objects that have the same value. In the second case, they refer to the same object.</p><p>To check whether two variables refer to the same object, you can use the <code>===</code> operator.</p><pre><code class="language-julia">julia&gt; a = &quot;banana&quot;;
+</figure><p>In one case, <code>a</code> and <code>b</code> refer to two different objects that have the same value. In the second case, they refer to the same object.</p><p>To check whether two variables refer to the same object, you can use the <code>≡</code> (<code>equiv TAB</code>) or <code>===</code> operator.</p><div></div><pre><code class="language-julia-repl">julia&gt; a = &quot;banana&quot;;
 
 julia&gt; b = &quot;banana&quot;;
 
-julia&gt; a === b
+julia&gt; a ≡ b
 true</code></pre><p>In this example, Julia only created one string object, and both <code>a</code> and <code>b</code> refer to it. But when you create two arrays, you get two objects:</p><pre><code class="language-julia-repl">julia&gt; a = [1, 2, 3];
 
 julia&gt; b = [1, 2, 3];
 
-julia&gt; a === b
+julia&gt; a ≡ b
 false</code></pre><p>So the state diagram looks like Figure 10.3.</p><figure>
   <img src="fig103.svg" alt="State diagram.">
   <figcaption>Figure 10.3. State diagram.</figcaption>
@@ -143,7 +143,7 @@ false</code></pre><p>So the state diagram looks like Figure 10.3.</p><figure>
 
 julia&gt; b = a;
 
-julia&gt; b === a
+julia&gt; b ≡ a
 true</code></pre><p>The state diagram looks like Figure 10.4.</p><figure>
   <img src="fig104.svg" alt="State diagram.">
   <figcaption>Figure 10.4. State diagram.</figcaption>
