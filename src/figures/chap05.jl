@@ -25,9 +25,10 @@ function fig05_1()
   \node[anchor=east] (n4) at(-0.5, -3) {\tt n};
   \node[anchor=west] (n4v) at (0.5, -3) {\tt 0};
   \draw[-latex] (n4) -- (n4v);
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig51"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig51"), p)
   nothing
 end

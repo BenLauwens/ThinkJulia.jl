@@ -26,9 +26,10 @@ function fig03_1()
   \node[anchor=east] (b) at(-2.25, -2.75) {\tt bruce};
   \node[anchor=west] (bv) at (-1.25, -2.75) {\tt "Bing tiddle tiddle bang"};
   \draw[-latex] (b) -- (bv);
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig31"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig31"), p)
   nothing
 end

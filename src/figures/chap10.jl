@@ -28,9 +28,10 @@ function fig10_1()
   \node[anchor=east](em) at(-2.75, -3) {\tt numbers};
   \node[draw, fill=lightgray, minimum width=0.5cm, minimum height=0.5cm](emv) at(-1.5, -3){};
   \draw[-latex] (em) -- (emv);
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig101"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig101"), p)
   nothing
 end
@@ -50,9 +51,10 @@ function fig10_2()
   \node[anchor=east] (bb) at(1, -0.25) {\tt b};
   \draw[-latex] (aa) -- (v);
   \draw[-latex] (bb) -- (v);
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig102"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig102"), p)
   nothing
 end
@@ -66,9 +68,10 @@ function fig10_3()
   \node[anchor=west] (bv) at (-0.25, -0.25) {\tt [1, 2, 3]};
   \draw[-latex] (a) -- (av);
   \draw[-latex] (b) -- (bv);
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig103"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig103"), p)
   nothing
 end
@@ -81,9 +84,10 @@ function fig10_4()
   \node[anchor=east] (b) at(-1.25, -0.25) {\tt b};
   \draw[-latex] (a) -- (v);
   \draw[-latex] (b) -- (v);
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig104"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig104"), p)
   nothing
 end

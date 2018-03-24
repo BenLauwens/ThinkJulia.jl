@@ -14,7 +14,7 @@ addons:
   apt_packages:
     - lmodern
     - fonts-dejavu
-    - ttf-ubuntu-font-family
+    #- ttf-ubuntu-font-family
     - texlive-luatex
     - texlive-xetex
     - texlive-latex-extra
@@ -26,8 +26,8 @@ addons:
 
 after_success:
   # generate documentation
-  - mkdir ~/.fonts
-  - cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
+  #- mkdir ~/.fonts
+  #- cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
   #- cp ~/.julia/v0.7/ThinkJulia/fonts/* ~/.fonts
-  - luaotfload-tool --update
+  #- luaotfload-tool --update
   - julia -e 'cd(Pkg.dir("ThinkJulia")); include(joinpath("docs", "make.jl"))'

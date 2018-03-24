@@ -50,9 +50,10 @@ function fig06_1()
   \node [right of=c3, xshift=3.5cm, yshift=0.375cm] {\tt 1};
   \node [right of=c2, xshift=3.5cm, yshift=0.375cm] {\tt 2};
   \node [right of=c1, xshift=3.5cm, yshift=0.375cm] {\tt 6};
-  """; options=options, preamble=preamble)
+  """; options=options_svg, preamble=preamble_svg)
   save(SVG("fig61"), p)
-  p.options=""
+  p.options=options_pdf
+  p.preamble=preamble_pdf
   save(PDF("fig61"), p)
   nothing
 end

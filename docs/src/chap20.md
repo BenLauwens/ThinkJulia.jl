@@ -9,3 +9,7 @@
 ## Map, filter and reduce
 
 `any`, `all`, `map`, `filter`, `reduce`
+
+## Parametric types and functions
+
+## Macros
