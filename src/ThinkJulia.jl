@@ -1,4 +1,5 @@
 module ThinkJulia
+
   export printlyrics, repeatlyrics, printtwice, cattwice
   export rightjustify
   export forward, turn, penup, pendown, polyline, polygon, square, arc, cercle
@@ -24,6 +25,7 @@ module ThinkJulia
   include("code/chap05.jl")
   include("code/chap06.jl")
   include("code/chap08.jl")
+  include("code/chap10.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

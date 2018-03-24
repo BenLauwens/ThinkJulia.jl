@@ -356,4 +356,4 @@ The mathematician Srinivasa Ramanujan found an infinite series that can be used 
 \frac{1}{\pi}=\frac{2\sqrt2}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}
 ```
 
-Write a function called `estimatepi` that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than `1e-15` (which is Julia notation for 10−15). You can check the result by comparing it to `π`.
+Write a function called `estimatepi` that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than `1e-15` (which is Julia notation for ``10^{−15}``). You can check the result by comparing it to `π`.

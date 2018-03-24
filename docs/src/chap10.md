@@ -387,15 +387,19 @@ fig10_2()
 
 In one case, `a` and `b` refer to two different objects that have the same value. In the second case, they refer to the same object.
 
-To check whether two variables refer to the same object, you can use the `===` operator.
+To check whether two variables refer to the same object, you can use the `≡` (`equiv TAB`) or `===` operator.
 
-```julia
-julia> a = "banana";
+```@setup chap10
+if VERSION < v"0.7-"
+    ≡(a::String, b::String) = a == b
+    ≡(a, b) = a === b
+end
+```
 
-julia> b = "banana";
-
-julia> a === b
-true
+```@repl chap10
+a = "banana";
+b = "banana";
+a ≡ b
 ```
 
 In this example, Julia only created one string object, and both `a` and `b` refer to it. But when you create two arrays, you get two objects:
@@ -403,7 +407,7 @@ In this example, Julia only created one string object, and both `a` and `b` refe
 ```@repl
 a = [1, 2, 3];
 b = [1, 2, 3];
-a === b
+a ≡ b
 ```
 
 So the state diagram looks like Figure 10.3.
@@ -440,7 +444,7 @@ If `a` refers to an object and you assign `b = a`, then both variables refer to 
 ```@repl chap10
 a = [1, 2, 3];
 b = a;
-b === a
+b ≡ a
 ```
 
 The state diagram looks like Figure 10.4.

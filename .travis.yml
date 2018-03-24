@@ -13,7 +13,8 @@ git:
 addons:
   apt_packages:
     - lmodern
-#    - fonts-dejavu
+    - fonts-dejavu
+    - ttf-ubuntu-font-family
     - texlive-luatex
     - texlive-xetex
     - texlive-latex-extra

@@ -1,27 +1,42 @@
 \usepackage{newunicodechar, polyglossia}
 \usepackage{graphicx}
 \usepackage{fontspec}
+
 %\setmainfont{TeX Gyre Termes}
 %\setsansfont{TeX Gyre Heros Cn}
-\setsansfont{TeX Gyre Adventor}
-\setmainfont{Libertinus Serif}
-%\setsansfont{Libertinus Sans}
-%\setmainfont{DejaVu Serif Condensed}
-%\setsansfont{DejaVu Sans Condensed}
+%\setsansfont{TeX Gyre Adventor}
+%\setsansfont[BoldFont={* Semibold}]{Encode Sans Condensed}
+%\setmainfont{Libertinus Serif}
+\setmainfont{Minion Pro}
+\setsansfont[BoldFont=MyriadPro-SemiboldCond.otf]{MyriadPro-Cond.otf}
 
-% font settings
-%\usepackage[no-math]{fontspec}
-%\usepackage{newunicodechar}
-
-%\setmainfont{Lato}[Scale=MatchLowercase, Ligatures=TeX]
-\setmonofont[Scale=MatchLowercase]{Hack}
-%\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
+%\setmonofont[Scale=MatchLowercase]{Hack}
 %\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
-%
+
+\setmonofont{Ubuntu Mono}
+\newfontfamily{\monof}{DejaVu Sans Mono}[Scale=MatchLowercase]
+%\newfontfamily{\emoji}{EmojiOne}
+
+\newunicodechar{≤}{\monof≤}
+\newunicodechar{≥}{\monof≥}
+\newunicodechar{÷}{\monof÷}
+\newunicodechar{∈}{\monof∈}
+\newunicodechar{∉}{\monof∉}
+\newunicodechar{≠}{\monof≠}
+\newunicodechar{≡}{\monof≡}
+%\newunicodechar{🐢}{\emoji🐢}
+%\newunicodechar{🐫}{\emoji🐫}
+%\newunicodechar{🍎}{\emoji🍎}
+%\newunicodechar{🍐}{\emoji🍐}
+%\newunicodechar{🍌}{\emoji🍌}
+
 \usepackage{amsmath}
-\usepackage{unicode-math}
-\setmathfont{libertinusmath-regular.otf}
-%\setmathfont{texgyretermes-math.otf}
+%\usepackage{unicode-math}
+%\setmathfont{libertinusmath-regular.otf}
+%\setmathfont{MinionMath-Regular.otf}
+\usepackage[onlymath,mathlf]{MinionPro}
+
+
 % colours
 \usepackage{xcolor}
 
@@ -39,20 +54,20 @@
 \usepackage{listings, minted}
 
 \lstset{
-    %basicstyle = \small\ttfamily,
-    basicstyle = \ttfamily,
+    basicstyle = \ttfamily\small,
     breaklines = true,
     columns = fullflexible,
     %frame = leftline,
     keepspaces = true,
     showstringspaces = false,
-    xleftmargin = 3pt
+    xleftmargin = 0.5cm
 }
 
 \setminted{
     breaklines = true,
-    %fontsize = \small,
+    fontsize = \small,
     %frame = leftline,
+    xleftmargin = 0.5cm
 }
 %
 
