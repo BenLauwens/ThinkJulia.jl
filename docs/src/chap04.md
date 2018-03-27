@@ -19,9 +19,11 @@ INFO: Installing Luxor v0.10.4
 This can take some time.
 
 Before we can use the functions in a module, we have to import it with an `using` statement:
-```@example chap04
-using Luxor
-🐢 = Turtle()
+```jldoctest
+julia> using Luxor
+
+julia> 🐢 = Turtle()
+Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ```
 
 The `Luxor` module provides a function called `Turtle` that creates a `Luxor.Turtle` object, which we assign to a variable named `🐢` (`\:turtle: TAB`).
@@ -95,10 +97,14 @@ end
 
 We can do the same thing more concisely with a `for` statement:
 
-```@repl
-for i in 1:4
-    println("Hello!")
-end
+```jldoctest
+julia> for i in 1:4
+          println("Hello!")
+       end
+Hello!
+Hello!
+Hello!
+Hello!
 ```
 
 This is the simplest use of the `for` statement; we will see more later. But that should be enough to let you rewrite your square-drawing program. Don’t go on until you do.

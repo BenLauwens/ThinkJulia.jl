@@ -1,3 +1,9 @@
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+end
+```
+
 # Fruitful functions
 
 Many of the Julia functions we have used, such as the math functions, produce return values. But the functions we’ve written are all void: they have an effect, like printing a value or moving a turtle, but they return `nothing`. In this chapter you will learn to write fruitful functions.
@@ -13,10 +19,6 @@ height = radius * sin(radians)
 
 The functions we have written so far are void. Speaking casually, they have no return value; more precisely, their return value is `nothing`.
 In this chapter, we are (finally) going to write fruitful functions. The first example is `area`, which returns the area of a circle with the given radius:
-
-```@setup chap06
-using ThinkJulia
-```
 
 ```julia
 function area(radius)
@@ -68,8 +70,9 @@ end
 
 This function is incorrect because if `x` happens to be 0, neither condition is true, and the function ends without hitting a `return` statement. If the flow of execution gets to the end of a function, the return value is `nothing`, which is not the absolute value of 0.
 
-```@repl chap06
-println(absvalue(0))
+```jldoctest
+julia> println(absvalue(0))
+nothing
 ```
 
 By the way, Julia provides a built-in function called `abs` that computes absolute values.
@@ -104,7 +107,7 @@ Obviously, this version doesn’t compute distances; it always returns zero. But
 
 To test the new function, call it with sample arguments:
 
-```julia chap06
+```julia
 distance(1, 2, 4, 6)
 ```
 
@@ -215,9 +218,11 @@ It is common to give boolean functions names that sound like yes/no questions; `
 
 Here is an example:
 
-```@repl chap06
-isdivisible(6, 4)
-isdivisible(6, 3)
+```jldoctest
+julia> isdivisible(6, 4)
+false
+julia> isdivisible(6, 3)
+true
 ```
 
 The result of the `==` operator is a boolean, so we can write the function more concisely by returning it directly:
@@ -383,8 +388,10 @@ If you try to follow the flow of execution here, even for fairly small values of
 
 What happens if we call `fact` and give it `1.5` as an argument?
 
-```@repl chap06
-fact(1.5)
+```jldoctest
+julia> fact(1.5)
+ERROR: StackOverflowError:
+[...]
 ```
 
 It looks like an infinite recursion. How can that be? The function has a base case—when `n == 0`. But if `n` is not an integer, we can *miss* the base case and recurse forever.
@@ -399,10 +406,10 @@ We can use the built-in operator `isa` to verify the type of the argument. While
 function fact(n)
     if !(n isa Int64)
         println("Factorial is only defined for integers.")
-        return nothing
+        return
     elseif n < 0
         println("Factorial is not defined for negative integers.")
-        return nothing
+        return
     elseif n == 0
         return 1
     else
@@ -413,9 +420,31 @@ end
 
 The first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns `nothing` to indicate that something went wrong:
 
-```@repl chap06
-println(fact("fred"))
-println(fact(-2))
+```@meta
+DocTestSetup = quote
+    function fact(n)
+        if !(n isa Int64)
+            println("Factorial is only defined for integers.")
+            return
+        elseif n < 0
+            println("Factorial is not defined for negative integers.")
+            return
+        elseif n == 0
+            return 1
+        else
+            return n * fact(n-1)
+        end
+    end
+end
+```
+
+```jldoctest
+julia> println(fact("fred"))
+Factorial is only defined for integers.
+nothing
+julia> println(fact(-2))
+Factorial is not defined for negative integers.
+nothing
 ```
 
 If we get past both checks, we know that `n` is positive or zero, so we can prove that the recursion terminates.
@@ -443,25 +472,41 @@ If the function seems to be working, look at the function call to make sure the 
 Adding print statements at the beginning and end of a function can help make the flow of execution more visible. For example, here is a version of `fact` with print statements:
 
 ```julia
-function factdebug(n)
+function fact(n)
     space = " " ^ (4 * n)
-    println(space, "factorial", n)
+    println(space, "factorial ", n)
     if n == 0
         println(space, "returning 1")
         return 1
     else
-        recurse = factdebug(n-1)
+        recurse = fact(n-1)
         result = n * recurse
-        println(space, "returning", result)
+        println(space, "returning ", result)
         return result
     end
 end
 ```
 
-`space` is a string of space characters that controls the indentation of the output.
+`space` is a string of space characters that controls the indentation of the output:
+
+```@setup chap06
+function fact(n)
+    space = " " ^ (4 * n)
+    println(space, "factorial ", n)
+    if n == 0
+        println(space, "returning 1")
+        return 1
+    else
+        recurse = fact(n-1)
+        result = n * recurse
+        println(space, "returning ", result)
+        return result
+    end
+end
+```
 
 ```@repl chap06
-factdebug(4)
+fact(4)
 ```
 
 If you are confused about the flow of execution, this kind of output can be helpful. It takes some time to develop effective scaffolding, but a little bit of scaffolding can save a lot of debugging.

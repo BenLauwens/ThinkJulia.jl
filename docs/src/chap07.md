@@ -1,3 +1,9 @@
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+end
+```
+
 # Iteration
 
 This chapter is about iteration, which is the ability to run a block of statements repeatedly. We saw a kind of iteration, using recursion, in Section 5.8. We saw another kind, using a `for` loop, in Section 4.2. In this chapter we’ll see yet another kind, using a `while` statement. But first I want to say a little more about variable assignment.
@@ -6,9 +12,11 @@ This chapter is about iteration, which is the ability to run a block of statemen
 
 As you may have discovered, it is legal to make more than one assignment to the same variable. A new assignment makes an existing variable refer to a new value (and stop referring to the old value).
 
-```@repl chap07
-x = 5
-x = 7
+```jldoctest chap07
+julia> x=5 
+5
+julia> x=7 
+7
 ```
 
 The first time we display `x`, its value is 5; the second time, its value is 7.
@@ -42,11 +50,16 @@ First, equality is a symmetric relationship and assignment is not. For example, 
 
 Also, in mathematics, a proposition of equality is either true or false for all time. If ``a=b`` now, then ``a`` will always equal ``b``. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:
 
-```@repl chap07
-a = 5
-b = a
-a = 3
-b
+```jldoctsets chap07
+julia> a = 5;
+
+julia> b = a;    # a and b are now equal
+
+julia> a = 3;    # a and b are no longer equal
+
+julia> b
+5
+
 ```
 
 The third line changes the value of `a` but does not change the value of `b`, so they are no longer equal.
@@ -57,23 +70,27 @@ Reassigning variables is often useful, but you should use it with caution. If th
 
 A common kind of reassignment is an update, where the new value of the variable depends on the old.
 
-```@repl chap07
-x = x + 1
+```jldoctest chap07
+julia> x = x + 1
+8
 ```
 
 This means “get the current value of `x`, add one, and then update `x` with the new value.”
 
 If you try to update a variable that doesn’t exist, you get an error, because Julia evaluates the right side before it assigns a value to `x`:
 
-```@repl chap07
-y = y + 1
+```jldoctest
+julia> y = y + 1
+ERROR: UndefVarError: y not defined
 ```
 
 Before you can update a variable, you have to initialize it, usually with a simple assignment:
 
-```@repl chap07
-y = 0
-y = y + 1
+```jldoctest 
+julia> y = 0;
+
+julia> y = y + 1
+1
 ```
 
 Updating a variable by adding 1 is called an **increment**; subtracting 1 is called a **decrement**.
@@ -171,12 +188,12 @@ This way of writing `while` loops is common because you can check the condition 
 
 The `break` statement exits the loop. When a `continue` statement is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:
 
-```@example
+```julia
 for i in 1:10
     if i % 3 == 0
         continue
     end
-    print(i, " ")
+    println(i)
 end
 ```
 
@@ -194,41 +211,51 @@ y = \frac{1}{2}\left(x + \frac{a}{x}\right)
  
 For example, if $a$ is 4 and $x$ is 3:
 
-```@repl chap07
-a = 4
-x = 3
-y = (x + a/x) / 2
+```jldoctest chap07
+julia> a = 4;
+
+julia> x = 3;
+
+julia> y = (x + a/x) / 2
+2.1666666666666665
 ```
 
 The result is closer to the correct answer (``\sqrt 4 = 2``). If we repeat the process with the new estimate, it gets even closer:
 
-```@repl chap07
-x = y
-y = (x + a/x) / 2
+```jldoctest chap07
+julia> x = y;
+
+julia> y = (x + a/x) / 2
+2.0064102564102564
 ```
 
 After a few more updates, the estimate is almost exact:
 
-```@repl chap07
-x = y
-y = (x + a/x) / 2
-```
+```jldoctest chap07
+julia> x = y;
 
-```@repl chap07
-x = y
-y = (x + a/x) / 2
+julia> y = (x + a/x) / 2
+2.0000102400262145
+julia> x = y;
+
+julia> y = (x + a/x) / 2
+2.0000000000262146
 ```
 
 In general we don’t know ahead of time how many steps it takes to get to the right answer, but we know when we get there because the estimate stops changing:
 
-```@repl chap07
-x = y
-y = (x + a/x) / 2
+```jldoctest chap07
+julia> x = y;
+
+julia> y = (x + a/x) / 2
+2.0
 ```
 
-```@repl chap07
-x = y
-y = (x + a/x) / 2
+```jldoctest chap07
+julia> x = y;
+
+julia> y = (x + a/x) / 2
+2.0
 ```
 
 When `y == x`, we can stop. Here is a loop that starts with an initial estimate, `x`, and improves it until it stops changing:
@@ -332,7 +359,7 @@ The first column is a number, `a`; the second column is the square root of a com
 
 The built-in function `parse` takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function `eval`. For example:
 
-```julia
+```jldoctest
 julia> expr = parse("1+2*3")
 :(1 + 2 * 3)
 
@@ -340,7 +367,7 @@ julia> eval(expr)
 7
 
 julia> expr = parse("sqrt(π)")
-:(sqrt(n))
+:(sqrt(π))
 
 julia> eval(expr)
 1.7724538509055159

@@ -6,10 +6,13 @@ One of the most powerful features of a programming language is the ability to ma
 
 An **assignment statement** creates a new variable and gives it a value:
 
-```@repl chap02
-message = "And now for something completely different"
-n = 17
-π = 3.141592653589793
+```jldoctest chap01
+julia> message = "And now for something completely different"
+"And now for something completely different"
+julia> n = 17 
+17
+julia> π = 3.141592653589793 
+3.141592653589793
 ```
 
 This example makes three assignments. The first assigns a string to a new variable named `message`; the second gives the integer `17` to `n`; the third assigns the (approximate) value of ``\pi`` to `π`.
@@ -64,7 +67,7 @@ It turns out that `type` is one of Julia’s **keywords**. The REPL uses keyword
 
 Julia has these keywords:
 
-```
+```julia
 abstract    baremodule   begin      break       catch
 ccall       const        continue   do          else
 elseif      end          export     finally     for
@@ -80,19 +83,24 @@ You don’t have to memorize this list. In most development environments, keywor
 
 An **expression** is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
 
-```@repl chap02
+```jldoctest chap01
+julia> 42 
 42
-n
-n + 25
+julia> n 
+17
+julia> n + 25 
+42
 ```
 
 When you type an expression at the prompt, the REPL **evaluates** it, which means that it finds the value of the expression. In this example, `n` has the value 17 and `n + 25` has the value 42.
 
 A **statement** is a unit of code that has an effect, like creating a variable or displaying a value. 
 
-```@repl
-n = 17
-println(n)
+```jldoctest chap01
+julia> n = 17
+17
+julia> println(n) 
+17
 ```
 
 The first line is an assignment statement that gives a value to `n`. The second line is a print statement that displays the value of `n`.
@@ -112,16 +120,18 @@ Because Julia provides both modes, you can test bits of code in interactive mode
 
 For example, if you are using Julia as a calculator, you might type
 
-```@repl
-miles = 26.2
-miles * 1.61
+```jldoctest
+julia> miles = 26.2 
+26.2
+julia> miles * 1.61 
+42.182
 ```
 
 The first line assigns a value to `miles`, but it has no visible effect. The second line is an expression, so the REPL evaluates it and displays the result. It turns out that a marathon is about 42 kilometers.
 
 But if you type the same code into a script and run it, you get no output at all. In script mode an expression, all by itself, has no visible effect. Julia actually evaluates the expression, but it doesn’t display the value unless you tell it to:
 
-```@example
+```julia
 miles = 26.2
 println(miles * 1.61)
 ```
@@ -130,12 +140,20 @@ This behavior can be confusing at first.
 
 A script usually contains a sequence of statements. If there is more than one statement, the results appear one at a time as the statements execute.
 
-For example, the following script produces the output
+For example, the script
 
-```@example
+```julia
 println(1)
 x = 2
 println(x)
+```
+
+produces the output
+
+```@example
+println(1) # hide
+x = 2      # hide
+println(x) # hide
 ```
 
 The assignment statement produces no output.
@@ -177,10 +195,15 @@ In general, you can’t perform mathematical operations on strings, even if the 
 But there are two exceptions, `*` and `^`.
 
 The `*` operator performs **string concatenation**, which means it joins the strings by linking them end-to-end. For example:
-```@repl
-first = "throat"
-second = "warbler"
-first * second
+```jldoctest
+julia> first = "throat"
+"throat"
+
+julia> second = "warbler"
+"warbler"
+
+julia> first * second
+"throatwarbler"
 ```
 
 The `^` operator also works on strings; it performs repetition. For example, `"Spam"^3` is `"SpamSpamSpam"`. If one of the values is a string, the other has to be an integer.

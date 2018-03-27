@@ -1,3 +1,9 @@
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+end
+```
+
 # Conditionals and recursion
 
 The main topic of this chapter is the `if` statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: floor division and modulus.
@@ -6,31 +12,33 @@ The main topic of this chapter is the `if` statement, which executes different c
 
 The **floor division** operator, `÷` (`\div TAB`), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
 
-```@setup chap05
-using ThinkJulia
-```
+```jldoctest chap05
+julia> minutes = 105
+105
 
-```@repl chap05
-minutes = 105
-minutes / 60
+julia> minutes / 60
+1.75
 ```
 
 But we don’t normally write hours with decimal points. Floor division returns the integer number of hours, rounding down:
 
-```@repl chap05
-hours = minutes ÷ 60
+```jldoctest chap05
+julia> hours = minutes ÷ 60
+1
 ```
 
 To get the remainder, you could subtract off one hour in minutes:
 
-```@repl chap05
-remainder = minutes - hours * 60
+```jldoctest chap05
+julia> remainder = minutes - hours * 60
+45
 ```
 
 An alternative is to use the **modulus operator**, `%`, which divides two numbers and returns the remainder.
 
-```@repl chap05
-remainder = minutes % 60
+```jldoctest chap05
+julia> remainder = minutes % 60
+45
 ```
 
 The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if `x % y` is zero, then `x` is divisible by `y`.
@@ -41,16 +49,22 @@ Also, you can extract the right-most digit or digits from a number. For example,
 
 A **boolean expression** is an expression that is either true or false. The following examples use the operator `==`, which compares two operands and produces `true` if they are equal and `false` otherwise:
 
-```@repl
-5 == 5
-5 == 6
+```jldoctest
+julia> 5 == 5
+true
+
+julia> 5 == 6
+false
 ```
 
 `true` and `false` are special values that belong to the type `Bool`; they are not strings:
 
-```@repl
-typeof(true)
-typeof(false)
+```jldoctest
+julia> typeof(true)
+Bool
+
+julia> typeof(false)
+Bool
 ```
 
 The `==` operator is one of the relational operators; the others are:
@@ -72,17 +86,9 @@ Although these operations are probably familiar to you, the Julia symbols are di
 
 There are three **logical operators**: `&&` (and), `||` (or), and `!` (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, `x > 0 && x < 10` is true only if `x` is greater than `0` *and* less than `10`.
 
-`n%2 == 0 || n%3 == 0` is true if *either or both* of the conditions is true, that is, if the number is divisible by 2 *or* 3.
+`n % 2 == 0 || n % 3 == 0` is true if *either or both* of the conditions is true, that is, if the number is divisible by 2 *or* 3.
 
 Finally, the `!` operator negates a boolean expression, so `!(x > y)` is true if `x > y` is false, that is, if `x` is less than or equal to `y`.
-
-The operators `&&` and `||` do a **short-circuit evaluation**: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain. Explicitly, this means that:
-
-- In the expression `a && b`, the subexpression `b` is only evaluated if `a` evaluates to `true`.
-
-- In the expression `a || b`, the subexpression `b` is only evaluated if `a` evaluates to `false`.
-
-Both `&&` and `||` associate to the right, but `&&` has higher precedence than `||` does.
 
 ## Conditional execution
 
@@ -212,8 +218,9 @@ If `n` is 0 or negative, it outputs the word, `"Blastoff!"` Otherwise, it output
 
 What happens if we call this function like this?
 
-```@repl chap05
-countdown(3)
+```jldoctest
+julia> countdown(3)
+3 2 1 Blastoff!
 ```
 
 The execution of `countdown` begins with `n = 3`, and since `n` is greater than 0, it outputs the value 3, and then calls itself...
@@ -293,11 +300,11 @@ end
 
 In most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:
 
-```julia
+```jldoctest
 julia> recurse()
 ERROR: StackOverflowError:
 Stacktrace:
- [1] recurse() at ./REPL[1]:2 (repeats 80000 times)
+ [1] recurse() at /Users/ben/.julia/v0.6/ThinkJulia.jl/src/code/chap05.jl:19 (repeats 80000 times)
 ```
 
 This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 `recurse` frames on the stack!
@@ -368,7 +375,7 @@ Syntax errors are usually easy to find, but there are a few gotchas. In general,
 The same is true of runtime errors. Suppose you are trying to compute a signal-to-noise ratio in decibels. The formula is 
 
 ```math
-SNR_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .
+\textit{SNR}_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .
 ```
 
 In Julia, you might write something like this:
@@ -403,9 +410,6 @@ One of the operators that compares its operands: `==`, `≠` (`!=`), `>`, `<`, `
 
 *logical operator*:
 One of the operators that combines boolean expressions: `&&` (and), `||` (or), and `!` (not).
-
-*short-circuit evaluation*:
-Boolean operators for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
 
 *conditional statement*:
 A statement that controls the flow of execution depending on some condition.

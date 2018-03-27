@@ -32,13 +32,7 @@ function isdivisible(x, y)
 end
 
 function fact(n)
-  if !(n isa Int64)
-      println("Factorial is only defined for integers.")
-      return nothing
-  elseif n < 0
-      println("Factorial is not defined for negative integers.")
-      return nothing
-  elseif n == 0
+  if n == 0
       return 1
   else
       return n * fact(n-1)
@@ -52,19 +46,5 @@ function fib(n)
       return 1
   else
       return fib(n-1) + fib(n-2)
-  end
-end
-
-function factdebug(n)
-  space = " " ^ (4 * n)
-  println(space, "factorial", n)
-  if n == 0
-      println(space, "returning 1")
-      return 1
-  else
-      recurse = factdebug(n-1)
-      result = n * recurse
-      println(space, "returning ", result)
-      return result
   end
 end

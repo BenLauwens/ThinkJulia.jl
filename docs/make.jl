@@ -5,7 +5,7 @@ makedocs(
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",
   pages = [
-    "preface.md",
+    "chap00.md",
     "chap01.md",
     "chap02.md",
     "chap03.md",

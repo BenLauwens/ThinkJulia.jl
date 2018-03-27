@@ -1,17 +1,18 @@
 module ThinkJulia
 
   export printlyrics, repeatlyrics, printtwice, cattwice
-  export rightjustify
+  export rightjustify, printgrid
   export forward, turn, penup, pendown, polyline, polygon, square, arc, cercle
   export countdown, printn, recurse
-  export area, absvalue, distance, circlearea, isdivisible, fact, fib, factdebug
+  export area, absvalue, distance, circlearea, isdivisible, fact, fib
   export mysqrt, testsquareroot
   export inboth
   if VERSION < v"0.7-"
     export firstindex, lastindex
   end
+  export deletehead!
 
-
+  export fig00_1
   export fig02_1
   export fig03_1
   export fig04_1, fig04_2, fig04_3, fig04_4
@@ -31,6 +32,7 @@ module ThinkJulia
   include("solutions/chap05.jl")
   include("solutions/chap07.jl")
   include("figures/common.jl")
+  include("figures/chap00.jl")
   include("figures/chap02.jl")
   include("figures/chap03.jl")
   include("figures/chap04.jl")

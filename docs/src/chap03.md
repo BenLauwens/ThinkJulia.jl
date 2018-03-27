@@ -1,3 +1,9 @@
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+end
+```
+
 # Functions
 
 In the context of programming, a **function** is a named sequence of statements that performs a computation. When you define a function, you specify the name and the sequence of statements. Later, you can “call” the function by name.
@@ -46,17 +52,12 @@ string(3.14159)
 
 In Julia,  most of the familiar mathematical functions are directly available:
 
-```@setup chap03
-signal_power = 9
-noise_power = 10
-```
-
-```@repl chap03
+```julia
 ratio = signal_power / noise_power
 decibels = 10 * log10(ratio)
 ```
 
-```@repl
+```julia
 radians = 0.7
 height = sin(radians)
 ```
@@ -65,17 +66,21 @@ The first example uses `log10` to compute a signal-to-noise ratio in decibels (a
 
 The second example finds the sine of radians. The name of the variable is a hint that `sin` and the other trigonometric functions (`cos`, `tan`, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by ``\pi``:
 
-```@repl chap03
-degrees = 45
-radians = degrees / 180.0 * π
-sin(radians)
+```jldoctest
+julia> degrees = 45 
+45
+julia> radians = degrees / 180 * π 
+0.7853981633974483
+julia> sin(radians) 
+0.7071067811865475
 ```
 
 The value of the variable `π` is a floating-point approximation of ``\pi``, accurate to about 21 digits.
 
 If you know trigonometry, you can check the previous result by comparing it to the square root of two divided by two:
-```@repl
-sqrt(2) / 2
+```jldoctest
+julia> sqrt(2) / 2 
+0.7071067811865476
 ```
 
 ## Composition
@@ -84,13 +89,13 @@ So far, we have looked at the elements of a program—variables, expressions, an
 
 One of the most useful features of programming languages is their ability to take small building blocks and compose them. For example, the argument of a function can be any kind of expression, including arithmetic operators:
 
-```@repl chap03
-x = sin(degrees / 360.0 * 2 * π)
+```julia
+x = sin(degrees / 360 * 2 * π)
 ```
 
 And even function calls:
 
-```@repl chap03
+```julia
 x = exp(log(x+1))
 ```
 
@@ -100,9 +105,11 @@ Almost anywhere you can put a value, you can put an arbitrary expression, with o
 hours = 2
 ```
 
-```@repl hours
-minutes = hours * 60                 # right
-hours * 60 = minutes                 # wrong!
+```jldoctest; setup = :(hours = 2)
+julia> minutes = hours * 60 # right 
+120
+julia> hours * 60 = minutes # wrong! 
+ERROR: syntax: "60" is not a valid function argument name
 ```
 
 ## Adding new functions
@@ -137,18 +144,17 @@ To end the function, you have to enter `end`.
 
 Defining a function creates a function object, which is of type `Function`:
 
-```@setup chap03
-using ThinkJulia
-```
-
-```@repl chap03
-printlyrics isa Function
+```jldoctest
+julia> printlyrics isa Function 
+true
 ```
 
 The syntax for calling the new function is the same as for built-in functions:
 
-```@repl chap03
-printlyrics()
+```jldoctest
+julia> printlyrics()
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
 ```
 
 Once you have defined a function, you can use it inside another function. For example, to repeat the previous refrain, we could write a function called `repeatlyrics`:
@@ -162,8 +168,12 @@ end
 
 And then call `repeatlyrics`:
 
-```@repl chap03
-repeatlyrics()
+```jldoctest
+julia> repeatlyrics()
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day. 
+I'm a lumberjack, and I'm okay.
+I sleep all night and I work all day.
 ```
 
 But that’s not really how the song goes.
@@ -227,26 +237,36 @@ This function assigns the argument to a parameter named `bruce`. When the functi
 
 This function works with any value that can be printed.
 
-```@repl chap03
-printtwice("Spam")
-printtwice(42)
-printtwice(π)
+```jldoctest
+julia> printtwice("Spam") 
+Spam
+Spam
+julia> printtwice(42) 
+42
+42
+julia> printtwice(π) 
+π = 3.1415926535897... 
+π = 3.1415926535897...
 ```
 
 The same rules of composition that apply to built-in functions also apply to programmer-defined functions, so we can use any kind of expression as an argument for `printtwice`:
 
-```@repl chap03
-printtwice("Spam "^4)
-printtwice(cos(π))
+```jldoctest
+julia> printtwice("Spam "^4) 
+Spam Spam Spam Spam
+Spam Spam Spam Spam
 ```
 
 The argument is evaluated before the function is called, so in the examples the expressions `"Spam "^4` and `cos(π)` are only evaluated once.
 
 You can also use a variable as an argument:
 
-```@repl chap03
-michael = "Eric, the half a bee."
-printtwice(michael)
+```jldoctest
+julia> michael = "Eric, the half a bee." 
+"Eric, the half a bee."
+julia> printtwice(michael) 
+Eric, the half a bee. 
+Eric, the half a bee.
 ```
 
 The name of the variable we pass as an argument (`michael`) has nothing to do with the name of the parameter (`bruce`). It doesn’t matter what the value was called back home (in the caller); here in `printtwice`, we call everybody `bruce`.
@@ -265,16 +285,21 @@ end
 This function takes two arguments, concatenates them, and prints the result twice. Here is an example that uses it:
 
 
-```@repl chap03
-line1 = "Bing tiddle "
-line2 = "tiddle bang."
-cattwice(line1, line2)
+```jldoctest
+julia> line1 = "Bing tiddle " 
+"Bing tiddle "
+julia> line2 = "tiddle bang." 
+"tiddle bang."
+julia> cattwice(line1, line2) 
+Bing tiddle tiddle bang. 
+Bing tiddle tiddle bang.
 ```
 
 When `cattwice` terminates, the variable `concat` is destroyed. If we try to print it, we get an exception:
 
-```@repl chap03
-println(concat)
+```jldoctest
+julia> println(concat)
+ERROR: UndefVarError: concat not defined
 ```
 
 Parameters are also local. For example, outside `printtwice`, there is no such thing as `bruce`.
@@ -338,8 +363,9 @@ golden = (sqrt(5) + 1) / 2
 
 When you call a function in interactive mode, Julia displays the result:
 
-```@repl
-sqrt(5)
+```jldoctest
+julia> sqrt(5) 
+2.23606797749979
 ```
 
 But in a script, if you call a fruitful function all by itself, the return value is lost forever!
@@ -352,15 +378,19 @@ This script computes the square root of 5, but since it doesn’t store or displ
 
 Void functions might display something on the screen or have some other effect, but they don’t have a return value. If you assign the result to a variable, you get a special value called `nothing`.
 
-```@repl chap03
-result = printtwice("Bing")
-println(result)
+```jldoctest
+julia> result = printtwice("Bing") 
+Bing
+Bing
+julia> println(result) 
+nothing
 ```
 
 The value `nothing` is not the same as the string `"nothing"`. It is a special value that has its own type:
 
-```@repl
-typeof(nothing)
+```jldoctest
+julia> typeof(nothing) # Nothing in Julia v0.7
+Void
 ```
 
 The functions we have written so far are all void. We will start writing fruitful functions in a few chapters.
@@ -451,7 +481,7 @@ A list of the functions that are executing, printed when an exception occurs.
 
 Write a function named `rightjustify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 
-```@repl chap03
+```@repl
 rightjustify("monty")
 ```
 
@@ -491,9 +521,10 @@ dotwice(print_spam)
 
 Note: This exercise should be done using only the statements and other features we have learned so far.
 
-1. Write a function that draws a grid like the following:
+1. Write a function `printgrid` that draws a grid like the following:
 
-```
+```jldoctest
+julia> printgrid()
 + - - - - + - - - - +
 |         |         |
 |         |         |

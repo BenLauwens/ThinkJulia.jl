@@ -25,7 +25,7 @@ function fig10_1()
   \draw[-latex] (nu1) -- (nuv1);
   \draw[-latex,dashed] (nu2) -- (nuv2);
   \draw[-latex] (nu2) -- (nuv3);
-  \node[anchor=east](em) at(-2.75, -3) {\tt numbers};
+  \node[anchor=east](em) at(-2.75, -3) {\tt empty};
   \node[draw, fill=lightgray, minimum width=0.5cm, minimum height=0.5cm](emv) at(-1.5, -3){};
   \draw[-latex] (em) -- (emv);
   """; options=options_svg, preamble=preamble_svg)

@@ -15,7 +15,7 @@
 
 \setmonofont{Ubuntu Mono}
 \newfontfamily{\monof}{DejaVu Sans Mono}[Scale=MatchLowercase]
-%\newfontfamily{\emoji}{EmojiOne}
+\newfontfamily{\emoji}{EmojiOne}
 
 \newunicodechar{≤}{\monof≤}
 \newunicodechar{≥}{\monof≥}
@@ -24,13 +24,14 @@
 \newunicodechar{∉}{\monof∉}
 \newunicodechar{≠}{\monof≠}
 \newunicodechar{≡}{\monof≡}
-%\newunicodechar{🐢}{\emoji🐢}
-%\newunicodechar{🐫}{\emoji🐫}
-%\newunicodechar{🍎}{\emoji🍎}
-%\newunicodechar{🍐}{\emoji🍐}
-%\newunicodechar{🍌}{\emoji🍌}
+\newunicodechar{🐢}{\mbox{\emoji🐢}}
+\newunicodechar{🐫}{\mbox{\emoji🐫}}
+\newunicodechar{🍎}{\mbox{\emoji🍎}}
+\newunicodechar{🍐}{\mbox{\emoji🍐}}
+\newunicodechar{🍌}{\mbox{\emoji🍌}}
 
 \usepackage{amsmath}
+%\usepackage[italic, defaultmathsizes]{mathastext}
 %\usepackage{unicode-math}
 %\setmathfont{libertinusmath-regular.otf}
 %\setmathfont{MinionMath-Regular.otf}
@@ -150,4 +151,4 @@
 
 \addto\captionsenglish{\renewcommand\contentsname{Table of Contents}}
 
-\usepackage{emojione}
+%\usepackage{emojione}

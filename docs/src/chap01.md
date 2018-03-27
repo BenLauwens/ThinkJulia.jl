@@ -33,21 +33,22 @@ One of the challenges of getting started with Julia is that you might have to in
 
 To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
 
-In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing.
+In the browser you can run Julia on JuliaBox: <https://www.juliabox.com>. No installation is required – just point your browser there, login and start computing.
 
 The Julia **REPL** (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing `julia` on the command line. When it starts, you should see output like this:
 
 ```@example
 Base.banner() # hide
-println("julia>") # hide
+print_with_color(:blue, "julia>"; bold=true) # hide
 ```
 
-The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least 0.6.0
+The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least `v0.x`.
 
 The last line is a **prompt** that indicates that the REPL is ready for you to enter code. If you type a line of code and hit `ENTER`, the REPL displays the result: 
 
-```@repl
-1 + 1
+```jldoctest
+julia> 1 + 1
+2
 ```
 
 Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.
@@ -72,24 +73,29 @@ After “Hello, World!”, the next step is arithmetic. Julia provides **operato
 
 The operators `+`, `-`, and `*` perform addition, subtraction, and multiplication, as in the following examples:
 
-```@repl
-40 + 2
-43 - 1
-6 * 7
+```jldoctest
+julia> 40 + 2
+42
+julia> 43 - 1
+42
+julia> 6 * 7
+42
 ```
 
 The operator `/` performs division: 
 
-```@repl
-84 / 2
+```jldoctest
+julia> 84 / 2
+42.0
 ```
 
 You might wonder why the result is `42.0` instead of `42`. I’ll explain in the next section.
 
 Finally, the operator `^` performs exponentiation; that is, it raises a number to a power:
 
-```@repl
-6^2 + 6
+```jldoctest
+julia> 6^2 + 6
+42
 ```
 
 ## Values and types
@@ -100,19 +106,24 @@ These values belong to different **types**: `2` is an **integer**, `42.0` is a *
 
 If you are not sure what type a value has, the REPL can tell you:
 
-```@repl
-typeof(2)
-typeof(42.0)
-typeof("Hello, World!")
+```jldoctest
+julia> typeof(2)
+Int64
+julia> typeof(42.0)
+Float64
+julia> typeof("Hello, World!")
+String
 ```
 
 Not surprisingly, integers belong to the type `Int64`, strings belong to `String` and floating-point numbers belong to `Float64`.
 
 What about values like `"2"` and `"42.0"`? They look like numbers, but they are in quotation marks like strings.
 
-```@repl
-typeof("2")
-typeof("42.0")
+```jldoctest
+julia> typeof("2")
+String
+julia> typeof("42.0")
+String
 ```
 
 They’re strings.
@@ -120,7 +131,7 @@ They’re strings.
 When you type a large integer, you might be tempted to use commas between groups of digits, as in `1,000,000`. This is not a legal *integer* in Julia, but it is legal:
 
 ```@repl
-1,000,000
+(1, 0, 0)
 ```
 
 That’s not what we expected at all! Julia parses `1,000,000` as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
@@ -193,10 +204,10 @@ A property of a program that can run on more than one kind of computer.
 A program that reads another program and executes it.
 
 *prompt*:
-Characters displayed by the interpreter to indicate that it is ready to take input from the user.
+Characters displayed by the REPL to indicate that it is ready to take input from the user.
 
 *program*:
-A set of instructions that specifies a computation.
+A sequence of instructions that specifies a computation.
 
 *print statement*:
 An instruction that causes the Julia REPL to display a value on the screen.

@@ -1,3 +1,9 @@
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+end
+```
+
 # Strings
 
 Strings are not like integers, floats, and booleans. A string is a **sequence**, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia.
@@ -12,18 +18,29 @@ The **Unicode standard** tackles the complexities of what exactly a character is
 
 A `Char` value represents a single character and is surrounded by single quotes:
 
-```@repl chap08
-'x'
-typeof('x')
+```jldoctest
+julia> 'x'
+'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia> '🍌'
+'🍌': Unicode U+01f34c (category So: Symbol, other)
+
+julia> typeof('x')
+Char
 ```
+
+Emojis are part of the Unicode standard.
 
 ## A string is a sequence
 
 A string is a sequence of characters. This means that characters are **items** of the string. You can access the items one at a time with the bracket operator:
 
-```@repl chap08
-fruit = "banana"
-letter = fruit[1]
+```jldoctest chap08
+julia> fruit = "banana"
+"banana"
+
+julia> letter = fruit[1]
+'b': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
 ```
 
 The second statement selects character number 1 from `fruit` and assigns it to `letter`.
@@ -32,37 +49,47 @@ The expression in brackets is called an **index**. The index indicates which cha
 
 All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index `end`:
 
-```@repl chap08
-fruit[end]
+```jldoctest chap08
+julia> fruit[end]
+'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 ```
 
 As an index you can use an expression that contains variables and operators:
 
-```@repl chap08
-i = 1
-fruit[i+1]
-fruit[end-1]
+```jldoctest chap08
+julia> i = 1;
+
+julia> fruit[i+1]
+'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
+
+julia> fruit[end-1]
+'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)
 ```
 
 But the value of the index has to be an integer. Otherwise you get:
 
-```@repl chap08
-letter = fruit[1.5]
+```jldoctest chap08
+julia> letter = fruit[1.5]
+ERROR: MethodError: no method matching getindex(::String, ::Float64)
 ```
 
 ## `length`
 
 `length` is a built-in function that returns the number of characters in a string:
 
-```@repl chap08
-fruits = "🍌 🍎 🍐"
-len = length(fruits)
+```jldoctest chap08
+julia> fruits = "🍌 🍎 🍐"
+"🍌 🍎 🍐"
+
+julia> len = length(fruits)
+5
 ```
 
 To get the last letter of a string, you might be tempted to try something like this:
 
-```@repl chap08
-last = fruits[length]
+```jldoctest chap08
+julia> last = fruits[len]
+' ': ASCII/Unicode U+0020 (category Zs: Separator, space)
 ```
 
 But you might not get what you expect.
@@ -71,16 +98,19 @@ Strings are encoded using the **UTF-8 encoding**. UTF-8 is a variable-width enco
 
 The function `sizeof` gives the number of bytes in a string:
 
-```@repl chap08
-sizeof("🍌")
+```jldoctest chap08
+julia> sizeof("🍌")
+4
 ```
 
 Because an emoji is encoded in 4 bytes and string indexing is byte based, the 5th element of `fruits` is a `SPACE`.
 
 This means also that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string at such an invalid byte index, an error is thrown:
 
-```@repl chap08
-fruits[2]
+```jldoctest chap08
+julia> fruits[2]
+ERROR: UnicodeError: invalid character index 2 (0x9f is a continuation byte)
+[...]
 ```
 
 In the case of `fruits`, the character `🍌` is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by `nextind(fruit, 1)`, and the next index after that by `nextind(fruit, 5)` and so on.
@@ -116,7 +146,7 @@ Each time through the loop, the next character in the string is assigned to the 
 
 The following example shows how to use concatenation (string multiplication) and a `for` loop to generate an abecedarian series (that is, in alphabetical order). In Robert McCloskey’s book *Make Way for Ducklings*, the names of the ducklings are Jack, Kack, Lack, Mack, Nack, Ouack, Pack, and Quack. This loop outputs these names in order:
 
-```@example
+```julia
 prefixes = "JKLMNOPQ"
 suffix = "ack"
 
@@ -125,29 +155,46 @@ for letter in prefixes
 end
 ```
 
+The output is:
+
+```@setup chap08
+prefixes = "JKLMNOPQ"
+suffix = "ack"
+```
+
+```@example chap08
+for letter in prefixes       # hide
+    println(letter * suffix) # hide
+end                          # hide
+```
+
 Of course, that’s not quite right because “Ouack” and “Quack” are misspelled. As an exercise, modify the program to fix this error.
 
 ## String slices
 
 A segment of a string is called a **slice**. Selecting a slice is similar to selecting a character:
 
-```@repl chap08
-str = "Julius Caesar"
-str[1:6]
+```jldoctest chap08
+julia> str = "Julius Caesar";
+
+julia> str[1:6]
+"Julius"
 ```
 
 The operator `[n:m]` returns the part of the string from the “n-eth” byte to the “m-eth” byte. So the same caution is needed as for simple indexing.
 
 The `end` keyword can be used to indicate the last byte of the string:
 
-```@repl chap08
-str[8:end]
+```jldoctest chap08
+julia> str[8:end]
+"Caesar"
 ```
 
 If the first index is greater than the second the result is an **empty string**, represented by two quotation marks:
 
-```@repl chap08
-str[8:7]
+```jldoctest chap08
+julia> str[8:7]
+""
 ```
 
 An empty string contains no characters and has length 0, but other than that, it is the same as any other string.
@@ -158,15 +205,18 @@ Continuing this example, what do you think `str[:]` means? Try it and see.
 
 It is tempting to use the `[]` operator on the left side of an assignment, with the intention of changing a character in a string. For example:
 
-```@repl chap08 
-greeting = "Hello, world!"
-greeting[0] = 'J'
+```jldoctest chap08 
+julia> greeting = "Hello, world!";
+
+julia> greeting[0] = 'J'
+ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ```
 
 The reason for the error is that strings are **immutable**, which means you can’t change an existing string. The best you can do is create a new string that is a variation on the original:
 
-```@repl chap08 
-new_greeting = "J" * greeting[2:end]
+```jldoctest chap08
+julia> greeting = "J" * greeting[2:end]
+"Jello, world!"
 ```
 
 This example concatenates a new first letter onto a slice of greeting. It has no effect on the original string.
@@ -175,18 +225,22 @@ This example concatenates a new first letter onto a slice of greeting. It has no
 
 Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to `string` or repeated multiplications, Julia allows **string interpolation** using `$`:
 
-```@repl
-greet = "Hello"
-whom = "World"
-"$greet, $whom!"
+```jldoctest
+julia> greet = "Hello";
+
+julia> whom = "World";
+
+julia> "$greet, $(whom)!"
+"Hello, World!"
 ```
 
 This is more readable and convenient than string concatenation: `greet * ", " * whom * "!"`
 
 The shortest complete expression after the `$` is taken as the expression whose value is to be interpolated into the string. Thus, you can interpolate any expression into a string using parentheses:
 
-```@repl
-"1 + 2 = $(1 + 2)"
+```jldoctest
+julia> "1 + 2 = $(1 + 2)"
+"1 + 2 = 3"
 ```
 
 ## Searching
@@ -220,7 +274,7 @@ As an exercise, modify `find` so that it has a third parameter, the index in `wo
 
 The following program counts the number of times the letter a appears in a string:
 
-```@example
+```julia
 word = "banana"
 count = 0
 for letter in word
@@ -241,26 +295,30 @@ Then rewrite the function so that instead of traversing the string, it uses the 
 
 Julia provides functions that perform a variety of useful operations on strings. For example, the function `uppercase` takes a string and returns a new string with all uppercase letters.
 
-```@repl
-uppercase("Hello, World!")
+```jldoctest
+julia> uppercase("Hello, World!")
+"HELLO, WORLD!"
 ```
 
 As it turns out, there is a function named `search` that is remarkably similar to the function `find` we wrote:
 
-```@repl chap08
-search("banana", 'a')
+```jldoctest
+julia> search("banana", 'a')
+2
 ```
 
 Actually, the `search` function is more general than our function; it can find substrings, not just characters:
 
-```@repl chap08
-search("banana", "na")
+```jldoctest
+julia> search("banana", "na")
+3:4
 ```
 
 By default, `search` starts at the beginning of the string, but it can take a third argument, the `index` where it should start:
 
-```@repl chap008
-search("banana", "na", 4)
+```jldoctest
+julia> search("banana", "na", 4)
+5:6
 ```
 
 This is an example of an **optional argument**.
@@ -269,8 +327,9 @@ This is an example of an **optional argument**.
 
 The keyword `∈` (`\in TAB`) is a boolean operator that takes a character and a string and returns `true` if the first appears as in the second:
 
-```@repl
-'a' ∈ "banana"    # 'a' in "banana"
+```jldoctest
+julia> 'a' ∈ "banana"    # 'a' in "banana"
+true
 ```
 
 For example, the following function prints all the letters from word1 that also appear in word2:
@@ -289,12 +348,11 @@ With well-chosen variable names, Julia sometimes reads like English. You could r
 
 Here’s what you get if you compare `"apples"` and `"oranges"`:
 
-```@setup chap08
-using ThinkJulia
-```
-
-```@repl chap08
-inboth("apples", "oranges")
+```jldoctest
+julia> inboth("apples", "oranges")
+a
+e
+s
 ```
 
 ## String comparison
@@ -358,27 +416,31 @@ The function `lastindex` returns the last valid byte index of a string and `prev
 
 If we test this function with the words "pots" and "stop", we expect the return value `true`, but we get `false`:
 
-```@setup reverse1
-using ThinkJulia
-function isreverse(word1, word2)
-    if length(word1) != length(word2)
-        return false
-    end
-    i = firstindex(word1)
-    j = lastindex(word2)
-    while j >= 0
-        j = prevind(word2, j)
-        if word1[i] != word2[j]
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+
+    function isreverse(word1, word2)
+        if length(word1) != length(word2)
             return false
         end
-        i = nextind(word1, i)
+        i = firstindex(word1)
+        j = lastindex(word2)
+        while j >= 0
+            j = prevind(word2, j)
+            if word1[i] != word2[j]
+                return false
+            end
+            i = nextind(word1, i)
+        end
+        true
     end
-    true
 end
 ```
 
-```@repl reverse1
-isreverse("pots", "stop")
+```jldoctest
+julia> isreverse("pots", "stop")
+false
 ```
 
 For debugging this kind of error, my first move is to print the values of the indices:
@@ -390,58 +452,76 @@ For debugging this kind of error, my first move is to print the values of the in
         if word1[i] != word2[j]
 ```
 
-```@setup reverse2
-using ThinkJulia
-function isreverse(word1, word2)
-    if length(word1) != length(word2)
-        return false
-    end
-    i = firstindex(word1)
-    j = lastindex(word2)
-    while j >= 0
-        j = prevind(word2, j)
-        println("$i $j")
-        if word1[i] != word2[j]
+
+
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+
+    function isreverse(word1, word2)
+        if length(word1) != length(word2)
             return false
         end
-        i = nextind(word1, i)
+        i = firstindex(word1)
+        j = lastindex(word2)
+        while j >= 0
+            j = prevind(word2, j)
+            println("$i $j")
+            if word1[i] != word2[j]
+                return false
+            end
+            i = nextind(word1, i)
+        end
+        true
     end
-    true
 end
 ```
 
 Now when I run the program again, I get more information:
 
-```@repl reverse2
-isreverse("pots", "stop")
+```jldoctest
+julia> isreverse("pots", "stop")
+1 3
+false
 ```
 
 The first time through the loop, the value of `j` is 3, which has to be 4. This can be fixed by moving `j = prevind(word2, j)` to the end of the `while` loop.
 
 If I fix that error and run the program again, I get:
 
-```@setup reverse3
-using ThinkJulia
-function isreverse(word1, word2)
-    if length(word1) != length(word2)
-        return false
-    end
-    i = firstindex(word1)
-    j = lastindex(word2)
-    while j >= 0
-        println("$i $j")
-        if word1[i] != word2[j]
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+
+    function isreverse(word1, word2)
+        if length(word1) != length(word2)
             return false
         end
-        i = nextind(word1, i)
-        j = prevind(word2, j)
+        i = firstindex(word1)
+        j = lastindex(word2)
+        while j >= 0
+            println("$i $j")
+            if word1[i] != word2[j]
+                return false
+            end
+            i = nextind(word1, i)
+            j = prevind(word2, j)
+        end
+        true
     end
-    true
 end
 ```
 
-```@repl reverse3
-isreverse("pots", "stop")
+```jldoctest
+julia> isreverse("pots", "stop")
+1 4
+2 3
+3 2
+4 1
+5 0
+ERROR: BoundsError: attempt to access "pots"
+  at index [5]
+[...]
 ```
 
 This time a `BoundsError` has been thrown. The value of `i` is 5, which is out a range for the string `"pots"`.
@@ -577,14 +657,16 @@ Write a function called `rotateword` that takes a string and an integer as param
 
 You might want to use the built-in function `Int`, which converts a character to a numeric code, and `Char`, which converts numeric codes to characters. Letters of the alphabet are encoded in alphabetical order, so for example:
 
-```@repl
-Int('c') - Int('a')
+```jldoctest
+julia> Int('c') - Int('a')
+2
 ```
 
 Because `'c'` is the third letter of the alphabet. But beware: the numeric codes for uppercase letters are different.
 
-```@repl
-Char(Int('A') + 32)
+```jldoctest
+julia> Char(Int('A') + 32)
+'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 ```
 
 Potentially offensive jokes on the Internet are sometimes encoded in ROT13, which is a Caesar cypher with rotation 13. If you are not easily offended, find and decode some of them.
