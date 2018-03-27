@@ -45,7 +45,7 @@ julia> typeof(empty)
 Array{Any,1}
 ```
 
-The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array `empty` contains values of type `Any`. This a predefined type that can represent any type.
+The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array `empty` contains values of type `Any`. This is a predefined type that can represent any type.
 
 ## Arrays are mutable
 

@@ -1,7 +1,7 @@
 ```@meta
 DocTestSetup = quote
-    cd(Pkg.dir("ThinkJulia"))
-    cd("data)
+    dir = Pkg.dir("Thinkjulia")
+    fin = open(dir * "/data/words.txt")
 end
 ```
 
@@ -15,14 +15,14 @@ For the exercises in this chapter we need a list of English words. There are lot
 
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function `open` takes the name of the file as a parameter and returns a **file stream** you can use to read the file.
 
-```jldoctest
+```julia
 julia> fin = open("words.txt")
 IOStream(<file words.txt>)
 ```
 
 `fin` is a common name for a file stream used for input. Julia provides several function for reading, including `readline`, which reads characters from the file until it gets to a `NEWLINE` and returns the result as a string:
 
-```jldoctest
+```jldoctest chap09
 julia> readline(fin)
 "aa"
 ```
@@ -31,7 +31,7 @@ The first word in this particular list is “aa”, which is a kind of lava.
 
 The file stream keeps track of where it is in the file, so if you call readline again, you get the next word:
 
-```jldoctest
+```jldoctest chap09
 julia> readline(fin)
 "aah"
 ```

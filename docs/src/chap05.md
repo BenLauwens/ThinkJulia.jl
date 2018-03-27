@@ -300,11 +300,12 @@ end
 
 In most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:
 
-```jldoctest
-julia> recurse()
-ERROR: StackOverflowError:
-Stacktrace:
- [1] recurse() at /Users/ben/.julia/v0.6/ThinkJulia.jl/src/code/chap05.jl:19 (repeats 80000 times)
+```@setup chap05
+using ThinkJulia
+```
+
+```@repl chap05
+recurse()
 ```
 
 This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 `recurse` frames on the stack!
