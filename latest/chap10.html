@@ -14,7 +14,7 @@ julia&gt; typeof(numbers)
 Array{Int64,1}
 
 julia&gt; typeof(empty)
-Array{Any,1}</code></pre><p>The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array <code>empty</code> contains values of type <code>Any</code>. This a predefined type that can represent any type.</p><h2><a class="nav-anchor" id="Arrays-are-mutable-1" href="#Arrays-are-mutable-1">Arrays are mutable</a></h2><p>The syntax for accessing the elements of an array is the same as for accessing the characters of a string—the bracket operator. The expression inside the brackets specifies the index. Remember that the indices start at 1:</p><pre><code class="language-julia-repl">julia&gt; cheeses[1]
+Array{Any,1}</code></pre><p>The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array <code>empty</code> contains values of type <code>Any</code>. This is a predefined type that can represent any type.</p><h2><a class="nav-anchor" id="Arrays-are-mutable-1" href="#Arrays-are-mutable-1">Arrays are mutable</a></h2><p>The syntax for accessing the elements of an array is the same as for accessing the characters of a string—the bracket operator. The expression inside the brackets specifies the index. Remember that the indices start at 1:</p><pre><code class="language-julia-repl">julia&gt; cheeses[1]
 &quot;Cheddar&quot;</code></pre><p>Unlike strings, arrays are <strong>mutable</strong>. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:</p><pre><code class="language-julia-repl">julia&gt; numbers[2] = 5;
 
 julia&gt; print(numbers)

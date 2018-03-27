@@ -629,7 +629,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Conditionals and recursion",
     "title": "Infinite recursion",
     "category": "section",
-    "text": "If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as infinite recursion, and it is generally not a good idea. Here is a minimal program with an infinite recursion:function recurse()\n    recurse()\nendIn most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:julia> recurse()\nERROR: StackOverflowError:\nStacktrace:\n [1] recurse() at /Users/ben/.julia/v0.6/ThinkJulia.jl/src/code/chap05.jl:19 (repeats 80000 times)This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 recurse frames on the stack!If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it."
+    "text": "If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as infinite recursion, and it is generally not a good idea. Here is a minimal program with an infinite recursion:function recurse()\n    recurse()\nendIn most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:using ThinkJuliarecurse()This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 recurse frames on the stack!If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it."
 },
 
 {
@@ -1157,7 +1157,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Case study: word play",
     "title": "Case study: word play",
     "category": "page",
-    "text": "DocTestSetup = quote\n    cd(Pkg.dir(\"ThinkJulia\"))\n    cd(\"data)\nend"
+    "text": "DocTestSetup = quote\n    dir = Pkg.dir(\"ThinkJulia\")\n    fin = open(dir * \"/data/words.txt\")\nend"
 },
 
 {
@@ -1317,7 +1317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Arrays",
     "title": "An array is a sequence",
     "category": "section",
-    "text": "Like a string, an array is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called elements or sometimes items.There are several ways to create a new array; the simplest is to enclose the elements in square brackets ([ ]):[10, 20, 30, 40]\n[\"crunchy frog\", \"ram bladder\", \"lark vomit\"]The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another array:[\"spam\", 2.0, 5, [10, 20]]As you might expect, you can assign array values to variables:julia> cheeses = [\"Cheddar\", \"Edam\", \"Gouda\"];\n\njulia> numbers = [42, 123];\n\njulia> empty = [];\n\njulia> print(cheeses, \" \", numbers, \" \", empty)\nString[\"Cheddar\", \"Edam\", \"Gouda\"] [42, 123] Any[]The function typeof can be used to find out the kind of the array:julia> typeof(cheeses)\nArray{String,1}\n\njulia> typeof(numbers)\nArray{Int64,1}\n\njulia> typeof(empty)\nArray{Any,1}The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array empty contains values of type Any. This a predefined type that can represent any type."
+    "text": "Like a string, an array is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called elements or sometimes items.There are several ways to create a new array; the simplest is to enclose the elements in square brackets ([ ]):[10, 20, 30, 40]\n[\"crunchy frog\", \"ram bladder\", \"lark vomit\"]The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another array:[\"spam\", 2.0, 5, [10, 20]]As you might expect, you can assign array values to variables:julia> cheeses = [\"Cheddar\", \"Edam\", \"Gouda\"];\n\njulia> numbers = [42, 123];\n\njulia> empty = [];\n\njulia> print(cheeses, \" \", numbers, \" \", empty)\nString[\"Cheddar\", \"Edam\", \"Gouda\"] [42, 123] Any[]The function typeof can be used to find out the kind of the array:julia> typeof(cheeses)\nArray{String,1}\n\njulia> typeof(numbers)\nArray{Int64,1}\n\njulia> typeof(empty)\nArray{Any,1}The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array empty contains values of type Any. This is a predefined type that can represent any type."
 },
 
 {
