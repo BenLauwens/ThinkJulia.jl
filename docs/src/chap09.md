@@ -1,10 +1,3 @@
-```@meta
-DocTestSetup = quote
-    dir = Pkg.dir("ThinkJulia")
-    fin = open(dir * "/data/words.txt")
-end
-```
-
 # Case study: word play
 
 This chapter presents the second case study, which involves solving word puzzles by searching for words that have certain properties. For example, we’ll find the longest palindromes in English and search for words whose letters appear in alphabetical order. And I will present another program development plan: reduction to a previously solved problem.
@@ -15,6 +8,11 @@ For the exercises in this chapter we need a list of English words. There are lot
 
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function `open` takes the name of the file as a parameter and returns a **file stream** you can use to read the file.
 
+```@setup chap09
+dir = Pkg.dir("ThinkJulia")
+fin = open(dir * "/data/words.txt")
+```
+
 ```julia
 julia> fin = open("words.txt")
 IOStream(<file words.txt>)
@@ -22,18 +20,16 @@ IOStream(<file words.txt>)
 
 `fin` is a common name for a file stream used for input. Julia provides several function for reading, including `readline`, which reads characters from the file until it gets to a `NEWLINE` and returns the result as a string:
 
-```jldoctest chap09
-julia> readline(fin)
-"aa"
+```@repl chap09
+readline(fin)
 ```
 
 The first word in this particular list is “aa”, which is a kind of lava. 
 
 The file stream keeps track of where it is in the file, so if you call readline again, you get the next word:
 
-```jldoctest chap09
-julia> readline(fin)
-"aah"
+```@repl chap09
+readline(fin)
 ```
 
 The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like that.
