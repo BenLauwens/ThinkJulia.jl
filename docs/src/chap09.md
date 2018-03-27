@@ -1,6 +1,6 @@
 ```@meta
 DocTestSetup = quote
-    dir = Pkg.dir("Thinkjulia")
+    dir = Pkg.dir("ThinkJulia")
     fin = open(dir * "/data/words.txt")
 end
 ```
