@@ -10,7 +10,7 @@ module ThinkJulia
   if VERSION < v"0.7-"
     export firstindex, lastindex
   end
-  export deletehead!
+  export deletehead!, baddeletehead, tail, nestedsum, cumulsum, interior, interior!, issort
 
   export fig00_1
   export fig02_1
@@ -19,7 +19,7 @@ module ThinkJulia
   export fig05_1, fig05_2
   export fig06_1
   export fig07_1
-  export fig10_1, fig10_2, fig10_3, fig10_4
+  export fig10_1, fig10_2, fig10_3, fig10_4, fig10_5
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -31,6 +31,7 @@ module ThinkJulia
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")
   include("solutions/chap07.jl")
+  include("solutions/chap10.jl")
   include("figures/common.jl")
   include("figures/chap00.jl")
   include("figures/chap02.jl")

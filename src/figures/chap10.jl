@@ -91,3 +91,31 @@ function fig10_4()
   save(PDF("fig104"), p)
   nothing
 end
+
+function fig10_5()
+  p = TikzPicture(L"""
+  \node[anchor=east] at(-1.2,0){\tt \_\_main\_\_};
+  \node[draw, fill=lightgray, minimum width=2cm, minimum height=0.5cm] at(0,0){};
+  \node[anchor=west] (l) at(-0.75, 0) {\tt letters};
+  \node[anchor=east] at(-1.2,-1){\tt deletehead!};
+  \node[draw, fill=lightgray, minimum width=2cm, minimum height=0.5cm] at(0,-1){};
+  \node[anchor=west] (t) at(-0.75, -1) {\tt t};
+  \node[draw, fill=lightgray, minimum width=2.5cm, minimum height=1.5cm] (a) at(3.25,-0.5){};
+  \node[anchor=east] (i1) at(2.5, 0) {\tt 1};
+  \node[anchor=west] (v1) at(3.5, 0) {\tt `a`};
+  \node[anchor=east] (i2) at(2.5, -0.5) {\tt 2};
+  \node[anchor=west] (v2) at(3.5, -0.5) {\tt `b`};
+  \node[anchor=east] (i3) at(2.5, -1) {\tt 3};
+  \node[anchor=west] (v3) at(3.5, -1) {\tt `c`};
+  \draw[-latex] (i1) -- (v1);
+  \draw[-latex] (i2) -- (v2);
+  \draw[-latex] (i3) -- (v3);
+  \draw[-latex] (l.east) -- (a);
+  \draw[-latex] (t.east) -- (a);
+  """; options=options_svg, preamble=preamble_svg)
+  save(SVG("fig105"), p)
+  p.options=options_pdf
+  p.preamble=preamble_pdf
+  save(PDF("fig105"), p)
+  nothing
+end

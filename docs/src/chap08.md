@@ -33,7 +33,7 @@ Emojis are part of the Unicode standard.
 
 ## A string is a sequence
 
-A string is a sequence of characters. This means that characters are **items** of the string. You can access the items one at a time with the bracket operator:
+A string is a sequence of characters. You can access the characters one at a time with the bracket operator:
 
 ```jldoctest chap08
 julia> fruit = "banana"
@@ -538,9 +538,6 @@ A character encoding standard for electronic communication specifying 128 charac
 
 *Unicode standard*:
 A computing industry standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems.
-
-*item*:
-One of the values in a sequence.
 
 *index*:
 An integer value used to select an item in a sequence, such as a character in a string. In Python indices start from 0.

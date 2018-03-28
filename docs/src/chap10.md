@@ -19,6 +19,10 @@ The first example is an array of four integers. The second is an array of three 
 ["spam", 2.0, 5, [10, 20]]
 ```
 
+An array within another array is **nested**.
+
+An array that contains no elements is called an empty array; you can create one with empty brackets, `[]`.
+
 As you might expect, you can assign array values to variables:
 
 ```jldoctest chap10
@@ -404,7 +408,7 @@ julia> print(t)
 SubString{String}["pining", "for", "the", "fjords"]
 ```
 
-An optional argument called a delimiter specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
+An optional argument called a **delimiter** specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
 
 ```jldoctest
 julia> t = split("spam-spam-spam", '-');
@@ -607,3 +611,314 @@ julia> print(letters)
 
 The parameter `t` and the variable `letters` are aliases for the same object. The stack diagram looks like Figure 10.5.
 
+```@eval
+using ThinkJulia
+fig10_5()
+```
+
+```@raw html
+<figure>
+  <img src="fig105.svg" alt="Stack diagram.">
+  <figcaption>Figure 10.5. Stack diagram.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig105}
+\caption{Stack diagram.}
+\label{fig105}
+\end{figure}
+```
+
+Since the array is shared by two frames, I drew it between them.
+
+It is important to distinguish between operations that modify arrays and operations that create new arrays. For example, `push!` modifies an array, but `vcat` creates a new array.
+
+Here’s an example using `push!`:
+
+```jldoctest chap10
+julia> t1 = [1, 2];
+
+julia> t2 = push!(t1, 3);
+
+julia> print(t1)
+[1, 2, 3]
+```
+
+`t2` is an alias of `t1`.
+
+Here’s an example using `vcat`:
+
+```jldoctest chap10
+julia> t3 = vcat(t1, [4]);
+
+julia> print(t1)
+[1, 2, 3]
+julia> print(t3)
+[1, 2, 3, 4]
+```
+
+The result of `vcat` is a new array, and the original array is unchanged.
+
+This difference is important when you write functions that are supposed to modify arrays.
+
+For example, this function *does not* delete the head of a array:
+
+```julia
+function baddeletehead(t)
+    t[2:end]                # WRONG!
+end
+```
+
+The slice operator creates a new array and the assignment makes `t` refer to it, but that doesn’t
+affect the caller.
+
+```jldoctest chap10
+julia> t4 = baddeletehead(t3);
+
+julia> print(t3)
+[1, 2, 3, 4]
+julia> print(t4)
+[2, 3, 4]
+```
+
+At the beginning of `baddeletehead`, `t` and `t3` refer to the same array. At the end, `t` refers to a new array, but `t3` still refers to the original, unmodified array.
+
+An alternative is to write a function that creates and returns a new array. For example, `tail` returns all but the first element of an array:
+
+```julia
+function tail(t)
+    t[2:end]
+end
+```
+
+This function leaves the original array unmodified. Here’s how it is used:
+
+```jldoctest
+julia> letters = ['a', 'b', 'c'];
+
+julia> rest = tail(letters);
+
+julia> print(rest)
+['b', 'c']
+```
+
+## Debugging
+
+Careless use of arrays (and other mutable objects) can lead to long hours of debugging. Here are some common pitfalls and ways to avoid them:
+
+- Most array functions modify the argument. This is the opposite of the string functions, which return a new string and leave the original alone. Before using array methods and operators, you should read the documentation carefully and then test them in interactive mode.
+
+  If you are used to writing string code like this:
+
+```julia
+new_word = strip(word)
+```
+
+  It is tempting to write array code like this:
+
+```julia
+t2 = sort!(t1)
+```
+
+  Because `sort!` returns the modified original array `t1`, `t2` is an alias of `t1`.
+
+  Before using list methods and operators, you should read the documentation carefully and then test them in interactive mode.
+
+- Pick an idiom and stick with it. 
+
+  Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use `pop!`, `shift!`, `delete_at`, or even a slice assignment. To add an element, you can use `push!`, `unshift!` or `insert`. Assuming that `t` is an array and `x` is an array element, these are correct:
+
+```julia
+insert!(t, 4, x)
+push!(t, x)
+append!(t, [x])
+```
+
+  And these are wrong:
+
+```julia
+insert!(t, 4, [x])         # WRONG!
+push!(t, [x])              # WRONG!
+```
+
+- Make copies to avoid aliasing. 
+
+  If you want to use a function like `sort!` that modifies the argument, but you need to keep the original array as well, you can make a copy:
+
+```jldoctest
+julia> t = [3, 1, 2];
+
+julia> t2 = t[:];
+
+julia> sort!(t2);
+
+julia> print(t)
+[3, 1, 2]
+julia> print(t2)
+[1, 2, 3]
+```
+
+In this example you could also use the built-in function `sort`, which returns a new, sorted array and leaves the original alone:
+
+```jldoctest
+julia> t2 = sort(t);
+
+julia> println(t)
+[3, 1, 2]
+
+julia> println(t2)
+[1, 2, 3]
+```
+
+## Glossary
+
+*list*:
+A sequence of values.
+
+*element*:
+One of the values in an array (or other sequence), also called items.
+
+*nested list*:
+An array that is an element of another array.
+
+*accumulator*:
+A variable used in a loop to add up or accumulate a result.
+
+*augmented assignment*:
+A statement that updates the value of a variable using an operator like `+=`.
+
+*dot operator*:
+Binary operator that is applied element-by-element to arrays.
+
+*dot-syntax*:
+Syntax used to apply a function elementwise to any array.
+
+*reduce*:
+A processing pattern that traverses a sequence and accumulates the elements into a single result.
+
+*map*:
+A processing pattern that traverses a sequence and performs an operation on each element.
+
+*filter*:
+A processing pattern that traverses a sequence and selects the elements that satisfy some criterion.
+
+*object*:
+Something a variable can refer to. An object has a type and a value.
+
+*equivalent*:
+Having the same value.
+
+*identical*:
+Being the same object (which implies equivalence).
+
+*reference*:
+The association between a variable and its value.
+
+*aliasing*:
+A circumstance where two or more variables refer to the same object.
+
+*delimiter*:
+A character or string used to indicate where a string should be split.
+
+## Exercises
+
+### Exercise 1
+
+Write a function called `nestedsum` that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:
+```jldoctest
+julia> t = [[1, 2], [3], [4, 5, 6]];
+
+julia> nestedsum(t)
+21
+```
+
+### Exercise 2  
+
+Write a function called `cumulsum` that takes an array of numbers and returns the cumulative sum; that is, a new array where the ``i``th element is the sum of the first ``i+1`` elements from the original array. For example:
+
+```jldoctest
+julia> t = [1, 2, 3];
+
+julia> print(cumulsum(t))
+Any[1, 3, 6]
+```
+
+### Exercise 3  
+
+Write a function called `interior` that takes an array and returns a new array that contains all but the first and last elements. For example:
+```jldoctest 
+julia> t = [1, 2, 3, 4];
+
+julia> print(interior(t))
+[2, 3]
+```
+
+### Exercise 4  
+
+Write a function called `interior!` that takes an array, modifies it by removing the first and last elements, and returns `nothing`. For example:
+
+```julia
+julia> t = [1, 2, 3, 4];
+
+julia> interior!(t)
+
+julia> print(t)
+[2, 3]
+```
+
+### Exercise 5   
+
+Write a function called `issort` that takes an array as a parameter and returns `true` if the array is sorted in ascending order and `false` otherwise. For example:
+
+```jldoctest
+julia> issort([1, 2, 2])
+true
+
+julia> issort(['b', 'a'])
+false
+```
+
+### Exercise 6  
+
+Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called `isanagram` that takes two strings and returns `true` if they are anagrams.
+
+### Exercise 7  
+
+Write a function called `hasduplicates` that takes an array and returns `true` if there is any element that appears more than once. It should not modify the original array.
+
+### Exercise 8  
+
+This exercise pertains to the so-called Birthday Paradox, which you can read about at <http://en.wikipedia.org/wiki/Birthday_paradox>.
+
+If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches. Hint: you can generate random birthdays with `rand(1:365)`.
+
+### Exercise 9  
+
+Write a function that reads the file `words.txt` and builds an array with one element per word. Write two versions of this function, one using `push!` and the other using the idiom `t = [t..., x]`. Which one takes longer to run? Why?
+
+### Exercise 10
+
+To check whether a word is in the word array, you could use the `∈` operator, but it would be slow because it searches through the words in order.
+
+Because the words are in alphabetical order, we can speed things up with a bisection search (also known as binary search), which is similar to what you do when you look a word up in the dictionary. You start in the middle and check to see whether the word you are looking for comes before the word in the middle of the list. If so, you search the first half of the list the same way. Otherwise you search the second half.
+
+Either way, you cut the remaining search space in half. If the word list has 113,809 words, it will take about 17 steps to find the word or conclude that it’s not there.
+
+Write a function called `inbisect` that takes a sorted array and a target value and returns `true if the word is in the array and `false` if it’s not.
+
+### Exercise 11 
+
+Two words are a “reverse pair” if each is the reverse of the other. Write a program that finds all the reverse pairs in the word array.
+
+### Exercise 12  
+
+Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”. 
+
+Credit: This exercise is inspired by an example at <http://puzzlers.org>.
+
+1. Write a program that finds all pairs of words that interlock. Hint: don’t enumerate all pairs!
+
+2. Can you find any words that are three-way interlocked; that is, every third letter forms a word, starting from the first, second or third?
