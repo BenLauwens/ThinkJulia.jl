@@ -1005,7 +1005,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Strings",
     "title": "A string is a sequence",
     "category": "section",
-    "text": "A string is a sequence of characters. This means that characters are items of the string. You can access the items one at a time with the bracket operator:julia> fruit = \"banana\"\n\"banana\"\n\njulia> letter = fruit[1]\n\'b\': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)The second statement selects character number 1 from fruit and assigns it to letter.The expression in brackets is called an index. The index indicates which character in the sequence you want (hence the name).All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index end:julia> fruit[end]\n\'a\': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)As an index you can use an expression that contains variables and operators:julia> i = 1;\n\njulia> fruit[i+1]\n\'a\': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)\n\njulia> fruit[end-1]\n\'n\': ASCII/Unicode U+006e (category Ll: Letter, lowercase)But the value of the index has to be an integer. Otherwise you get:julia> letter = fruit[1.5]\nERROR: MethodError: no method matching getindex(::String, ::Float64)"
+    "text": "A string is a sequence of characters. You can access the characters one at a time with the bracket operator:julia> fruit = \"banana\"\n\"banana\"\n\njulia> letter = fruit[1]\n\'b\': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)The second statement selects character number 1 from fruit and assigns it to letter.The expression in brackets is called an index. The index indicates which character in the sequence you want (hence the name).All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index end:julia> fruit[end]\n\'a\': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)As an index you can use an expression that contains variables and operators:julia> i = 1;\n\njulia> fruit[i+1]\n\'a\': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)\n\njulia> fruit[end-1]\n\'n\': ASCII/Unicode U+006e (category Ll: Letter, lowercase)But the value of the index has to be an integer. Otherwise you get:julia> letter = fruit[1.5]\nERROR: MethodError: no method matching getindex(::String, ::Float64)"
 },
 
 {
@@ -1101,7 +1101,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Strings",
     "title": "Glossary",
     "category": "section",
-    "text": "sequence: An ordered collection of values where each value is identified by an integer index.ASCII standard: A character encoding standard for electronic communication specifying 128 characters.Unicode standard: A computing industry standard for the consistent encoding, representation, and handling of text expressed in most of the world\'s writing systems.item: One of the values in a sequence.index: An integer value used to select an item in a sequence, such as a character in a string. In Python indices start from 0.UTF-8 encoding: A variable width character encoding capable of encoding all 1112064 valid code points in Unicode using one to four 8-bit bytes.traverse: To iterate through the items in a sequence, performing a similar operation on each.slice: A part of a string specified by a range of indices.empty string: A string with no characters and length 0, represented by two quotation marks.immutable: The property of a sequence whose items cannot be changed.string interpolation: The process of evaluating a string containing one or more placeholders, yielding a result in which the placeholders are replaced with their corresponding values.search: A pattern of traversal that stops when it finds what it is looking for.counter: A variable used to count something, usually initialized to zero and then incremented.optional argument: A function or method argument that is not required."
+    "text": "sequence: An ordered collection of values where each value is identified by an integer index.ASCII standard: A character encoding standard for electronic communication specifying 128 characters.Unicode standard: A computing industry standard for the consistent encoding, representation, and handling of text expressed in most of the world\'s writing systems.index: An integer value used to select an item in a sequence, such as a character in a string. In Python indices start from 0.UTF-8 encoding: A variable width character encoding capable of encoding all 1112064 valid code points in Unicode using one to four 8-bit bytes.traverse: To iterate through the items in a sequence, performing a similar operation on each.slice: A part of a string specified by a range of indices.empty string: A string with no characters and length 0, represented by two quotation marks.immutable: The property of a sequence whose items cannot be changed.string interpolation: The process of evaluating a string containing one or more placeholders, yielding a result in which the placeholders are replaced with their corresponding values.search: A pattern of traversal that stops when it finds what it is looking for.counter: A variable used to count something, usually initialized to zero and then incremented.optional argument: A function or method argument that is not required."
 },
 
 {
@@ -1317,7 +1317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Arrays",
     "title": "An array is a sequence",
     "category": "section",
-    "text": "Like a string, an array is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called elements or sometimes items.There are several ways to create a new array; the simplest is to enclose the elements in square brackets ([ ]):[10, 20, 30, 40]\n[\"crunchy frog\", \"ram bladder\", \"lark vomit\"]The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another array:[\"spam\", 2.0, 5, [10, 20]]As you might expect, you can assign array values to variables:julia> cheeses = [\"Cheddar\", \"Edam\", \"Gouda\"];\n\njulia> numbers = [42, 123];\n\njulia> empty = [];\n\njulia> print(cheeses, \" \", numbers, \" \", empty)\nString[\"Cheddar\", \"Edam\", \"Gouda\"] [42, 123] Any[]The function typeof can be used to find out the kind of the array:julia> typeof(cheeses)\nArray{String,1}\n\njulia> typeof(numbers)\nArray{Int64,1}\n\njulia> typeof(empty)\nArray{Any,1}The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array empty contains values of type Any. This is a predefined type that can represent any type."
+    "text": "Like a string, an array is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called elements or sometimes items.There are several ways to create a new array; the simplest is to enclose the elements in square brackets ([ ]):[10, 20, 30, 40]\n[\"crunchy frog\", \"ram bladder\", \"lark vomit\"]The first example is an array of four integers. The second is an array of three strings. The elements of an array don’t have to be the same type. The following array contains a string, a float, an integer, and another array:[\"spam\", 2.0, 5, [10, 20]]An array within another array is nested.An array that contains no elements is called an empty array; you can create one with empty brackets, [].As you might expect, you can assign array values to variables:julia> cheeses = [\"Cheddar\", \"Edam\", \"Gouda\"];\n\njulia> numbers = [42, 123];\n\njulia> empty = [];\n\njulia> print(cheeses, \" \", numbers, \" \", empty)\nString[\"Cheddar\", \"Edam\", \"Gouda\"] [42, 123] Any[]The function typeof can be used to find out the kind of the array:julia> typeof(cheeses)\nArray{String,1}\n\njulia> typeof(numbers)\nArray{Int64,1}\n\njulia> typeof(empty)\nArray{Any,1}The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array empty contains values of type Any. This is a predefined type that can represent any type."
 },
 
 {
@@ -1405,7 +1405,127 @@ var documenterSearchIndex = {"docs": [
     "page": "Arrays",
     "title": "Array arguments",
     "category": "section",
-    "text": "When you pass an array to a function, the function gets a reference to the array. If the function modifies the array, the caller sees the change. For example, deletehead! removes the first element from an array:function deletehead!(t)\n    shift!(t)\nendHere’s how it is used:DocTestSetup = quote\n    using ThinkJulia\nendjulia> letters = [\'a\', \'b\', \'c\'];\n\njulia> deletehead!(letters);\n\njulia> print(letters)\n[\'b\', \'c\']The parameter t and the variable letters are aliases for the same object. The stack diagram looks like Figure 10.5."
+    "text": "When you pass an array to a function, the function gets a reference to the array. If the function modifies the array, the caller sees the change. For example, deletehead! removes the first element from an array:function deletehead!(t)\n    shift!(t)\nendHere’s how it is used:DocTestSetup = quote\n    using ThinkJulia\nendjulia> letters = [\'a\', \'b\', \'c\'];\n\njulia> deletehead!(letters);\n\njulia> print(letters)\n[\'b\', \'c\']The parameter t and the variable letters are aliases for the same object. The stack diagram looks like Figure 10.5.using ThinkJulia\nfig10_5()<figure>\n  <img src=\"fig105.svg\" alt=\"Stack diagram.\">\n  <figcaption>Figure 10.5. Stack diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig105}\n\\caption{Stack diagram.}\n\\label{fig105}\n\\end{figure}Since the array is shared by two frames, I drew it between them.It is important to distinguish between operations that modify arrays and operations that create new arrays. For example, push! modifies an array, but vcat creates a new array.Here’s an example using push!:julia> t1 = [1, 2];\n\njulia> t2 = push!(t1, 3);\n\njulia> print(t1)\n[1, 2, 3]t2 is an alias of t1.Here’s an example using vcat:julia> t3 = vcat(t1, [4]);\n\njulia> print(t1)\n[1, 2, 3]\njulia> print(t3)\n[1, 2, 3, 4]The result of vcat is a new array, and the original array is unchanged.This difference is important when you write functions that are supposed to modify arrays.For example, this function does not delete the head of a array:function baddeletehead(t)\n    t[2:end]                # WRONG!\nendThe slice operator creates a new array and the assignment makes t refer to it, but that doesn’t affect the caller.julia> t4 = baddeletehead(t3);\n\njulia> print(t3)\n[1, 2, 3, 4]\njulia> print(t4)\n[2, 3, 4]At the beginning of baddeletehead, t and t3 refer to the same array. At the end, t refers to a new array, but t3 still refers to the original, unmodified array.An alternative is to write a function that creates and returns a new array. For example, tail returns all but the first element of an array:function tail(t)\n    t[2:end]\nendThis function leaves the original array unmodified. Here’s how it is used:julia> letters = [\'a\', \'b\', \'c\'];\n\njulia> rest = tail(letters);\n\njulia> print(rest)\n[\'b\', \'c\']"
+},
+
+{
+    "location": "chap10.html#Debugging-1",
+    "page": "Arrays",
+    "title": "Debugging",
+    "category": "section",
+    "text": "Careless use of arrays (and other mutable objects) can lead to long hours of debugging. Here are some common pitfalls and ways to avoid them:Most array functions modify the argument. This is the opposite of the string functions, which return a new string and leave the original alone. Before using array methods and operators, you should read the documentation carefully and then test them in interactive mode.\nIf you are used to writing string code like this:new_word = strip(word)It is tempting to write array code like this:t2 = sort!(t1)Because sort! returns the modified original array t1, t2 is an alias of t1.Before using list methods and operators, you should read the documentation carefully and then test them in interactive mode.Pick an idiom and stick with it. \nPart of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use pop!, shift!, delete_at, or even a slice assignment. To add an element, you can use push!, unshift! or insert. Assuming that t is an array and x is an array element, these are correct:insert!(t, 4, x)\npush!(t, x)\nappend!(t, [x])And these are wrong:insert!(t, 4, [x])         # WRONG!\npush!(t, [x])              # WRONG!Make copies to avoid aliasing. \nIf you want to use a function like sort! that modifies the argument, but you need to keep the original array as well, you can make a copy:julia> t = [3, 1, 2];\n\njulia> t2 = t[:];\n\njulia> sort!(t2);\n\njulia> print(t)\n[3, 1, 2]\njulia> print(t2)\n[1, 2, 3]In this example you could also use the built-in function sort, which returns a new, sorted array and leaves the original alone:julia> t2 = sort(t);\n\njulia> println(t)\n[3, 1, 2]\n\njulia> println(t2)\n[1, 2, 3]"
+},
+
+{
+    "location": "chap10.html#Glossary-1",
+    "page": "Arrays",
+    "title": "Glossary",
+    "category": "section",
+    "text": "list: A sequence of values.element: One of the values in an array (or other sequence), also called items.nested list: An array that is an element of another array.accumulator: A variable used in a loop to add up or accumulate a result.augmented assignment: A statement that updates the value of a variable using an operator like +=.dot operator: Binary operator that is applied element-by-element to arrays.dot-syntax: Syntax used to apply a function elementwise to any array.reduce: A processing pattern that traverses a sequence and accumulates the elements into a single result.map: A processing pattern that traverses a sequence and performs an operation on each element.filter: A processing pattern that traverses a sequence and selects the elements that satisfy some criterion.object: Something a variable can refer to. An object has a type and a value.equivalent: Having the same value.identical: Being the same object (which implies equivalence).reference: The association between a variable and its value.aliasing: A circumstance where two or more variables refer to the same object.delimiter: A character or string used to indicate where a string should be split."
+},
+
+{
+    "location": "chap10.html#Exercises-1",
+    "page": "Arrays",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap10.html#Exercise-1-1",
+    "page": "Arrays",
+    "title": "Exercise 1",
+    "category": "section",
+    "text": "Write a function called nestedsum that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:julia> t = [[1, 2], [3], [4, 5, 6]];\n\njulia> nestedsum(t)\n21"
+},
+
+{
+    "location": "chap10.html#Exercise-2-1",
+    "page": "Arrays",
+    "title": "Exercise 2",
+    "category": "section",
+    "text": "Write a function called cumulsum that takes an array of numbers and returns the cumulative sum; that is, a new array where the ith element is the sum of the first i+1 elements from the original array. For example:julia> t = [1, 2, 3];\n\njulia> print(cumulsum(t))\nAny[1, 3, 6]"
+},
+
+{
+    "location": "chap10.html#Exercise-3-1",
+    "page": "Arrays",
+    "title": "Exercise 3",
+    "category": "section",
+    "text": "Write a function called interior that takes an array and returns a new array that contains all but the first and last elements. For example:julia> t = [1, 2, 3, 4];\n\njulia> print(interior(t))\n[2, 3]"
+},
+
+{
+    "location": "chap10.html#Exercise-4-1",
+    "page": "Arrays",
+    "title": "Exercise 4",
+    "category": "section",
+    "text": "Write a function called interior! that takes an array, modifies it by removing the first and last elements, and returns nothing. For example:julia> t = [1, 2, 3, 4];\n\njulia> interior!(t)\n\njulia> print(t)\n[2, 3]"
+},
+
+{
+    "location": "chap10.html#Exercise-5-1",
+    "page": "Arrays",
+    "title": "Exercise 5",
+    "category": "section",
+    "text": "Write a function called issort that takes an array as a parameter and returns true if the array is sorted in ascending order and false otherwise. For example:julia> issort([1, 2, 2])\ntrue\n\njulia> issort([\'b\', \'a\'])\nfalse"
+},
+
+{
+    "location": "chap10.html#Exercise-6-1",
+    "page": "Arrays",
+    "title": "Exercise 6",
+    "category": "section",
+    "text": "Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called isanagram that takes two strings and returns true if they are anagrams."
+},
+
+{
+    "location": "chap10.html#Exercise-7-1",
+    "page": "Arrays",
+    "title": "Exercise 7",
+    "category": "section",
+    "text": "Write a function called hasduplicates that takes an array and returns true if there is any element that appears more than once. It should not modify the original array."
+},
+
+{
+    "location": "chap10.html#Exercise-8-1",
+    "page": "Arrays",
+    "title": "Exercise 8",
+    "category": "section",
+    "text": "This exercise pertains to the so-called Birthday Paradox, which you can read about at http://en.wikipedia.org/wiki/Birthday_paradox.If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches. Hint: you can generate random birthdays with rand(1:365)."
+},
+
+{
+    "location": "chap10.html#Exercise-9-1",
+    "page": "Arrays",
+    "title": "Exercise 9",
+    "category": "section",
+    "text": "Write a function that reads the file words.txt and builds an array with one element per word. Write two versions of this function, one using push! and the other using the idiom t = [t..., x]. Which one takes longer to run? Why?"
+},
+
+{
+    "location": "chap10.html#Exercise-10-1",
+    "page": "Arrays",
+    "title": "Exercise 10",
+    "category": "section",
+    "text": "To check whether a word is in the word array, you could use the ∈ operator, but it would be slow because it searches through the words in order.Because the words are in alphabetical order, we can speed things up with a bisection search (also known as binary search), which is similar to what you do when you look a word up in the dictionary. You start in the middle and check to see whether the word you are looking for comes before the word in the middle of the list. If so, you search the first half of the list the same way. Otherwise you search the second half.Either way, you cut the remaining search space in half. If the word list has 113,809 words, it will take about 17 steps to find the word or conclude that it’s not there.Write a function called inbisect that takes a sorted array and a target value and returns true if the word is in the array andfalse` if it’s not."
+},
+
+{
+    "location": "chap10.html#Exercise-11-1",
+    "page": "Arrays",
+    "title": "Exercise 11",
+    "category": "section",
+    "text": "Two words are a “reverse pair” if each is the reverse of the other. Write a program that finds all the reverse pairs in the word array."
+},
+
+{
+    "location": "chap10.html#Exercise-12-1",
+    "page": "Arrays",
+    "title": "Exercise 12",
+    "category": "section",
+    "text": "Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”. Credit: This exercise is inspired by an example at http://puzzlers.org.Write a program that finds all pairs of words that interlock. Hint: don’t enumerate all pairs!\nCan you find any words that are three-way interlocked; that is, every third letter forms a word, starting from the first, second or third?"
 },
 
 ]}
