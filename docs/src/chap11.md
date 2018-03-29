@@ -144,10 +144,16 @@ The first line of the function creates an empty dictionary. The `for` loop trave
 Here’s how it works:
 
 ```jldoctest chap11
-julia> h = histogram("brontosaurus");
-
-julia> print(h)
-Dict{Any,Any}(Pair{Any,Any}('n', 1),Pair{Any,Any}('b', 1),Pair{Any,Any}('o', 2),Pair{Any,Any}('t', 1),Pair{Any,Any}('a', 1),Pair{Any,Any}('u', 2),Pair{Any,Any}('s', 2),Pair{Any,Any}('r', 2))
+julia> h = histogram("brontosaurus")
+Dict{Any,Any} with 8 entries:
+  'n' => 1
+  'b' => 1
+  'o' => 2
+  't' => 1
+  'a' => 1
+  'u' => 2
+  's' => 2
+  'r' => 2
 ```
 
 The histogram indicates that the letters `'a'` and `'b'` appear once; `'o'` appears twice, and so on.
@@ -155,10 +161,9 @@ The histogram indicates that the letters `'a'` and `'b'` appear once; `'o'` appe
 Dictionaries have a function called `get` that takes a key and a default value. If the key appears in the dictionary, `get` returns the corresponding value; otherwise it returns the default value. For example:
 
 ```jldoctest chap11
-julia> h = histogram("a");
-
-julia> print(h)
-Dict{Any,Any}(Pair{Any,Any}('a', 1))
+julia> h = histogram("a")
+Dict{Any,Any} with 1 entry:
+  'a' => 1
 julia> get(h, 'a', 0)
 1
 
@@ -279,10 +284,10 @@ Here is an example:
 ```jldoctest chap11
 julia> hist = histogram("parrot");
 
-julia> inverse = invertdict(hist);
-
-julia> print(inverse)
-Dict{Any,Any}(Pair{Any,Any}(2, ['r']),Pair{Any,Any}(1, ['o', 'a', 'p', 't']))
+julia> inverse = invertdict(hist)
+Dict{Any,Any} with 2 entries:
+  2 => ['r']
+  1 => ['o', 'a', 'p', 't']
 ```
 
 ```@eval
@@ -506,7 +511,7 @@ As you work with bigger datasets it can become unwieldy to debug by printing and
 
 - *Format the output*:
 
->Formatting debugging output can make it easier to spot an error. We saw an example in Section 6.9. Another tool you might find useful is the pprint module, which provides a pprint function that displays built-in types in a more human-readable format (pprint stands for “pretty print”).
+>Formatting debugging output can make it easier to spot an error. We saw an example in Section 6.9.
 >Again, time you spend building scaffolding can reduce the time you spend debugging.
 
 ## Glossary
