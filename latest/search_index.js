@@ -105,17 +105,17 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap01.html#Exercise-1-1",
+    "location": "chap01.html#Exercise-1-1-1",
     "page": "The way of the program",
-    "title": "Exercise 1",
+    "title": "Exercise 1-1",
     "category": "section",
     "text": "It is a good idea to read this book in front of a computer so you can try out the examples as you go.Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the “Hello, World!” program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell println wrong?This kind of experiment helps you remember what you read; it also helps when you are programming, because you get to know what the error messages mean. It is better to make mistakes now and on purpose than later and accidentally.In a print statement, what happens if you leave out one of the parentheses, or both?\nIf you are trying to print a string, what happens if you leave out one of the quotation marks, or both?\nYou can use a minus sign to make a negative number like -2. What happens if you put a plus sign before a number? What about 2++2?\nIn math notation, leading zeros are ok, as in 02. What happens if you try this in Julia?\nWhat happens if you have two values with no operator between them?"
 },
 
 {
-    "location": "chap01.html#Exercise-2-1",
+    "location": "chap01.html#Exercise-1-2-1",
     "page": "The way of the program",
-    "title": "Exercise 2",
+    "title": "Exercise 1-2",
     "category": "section",
     "text": "Start the Julia REPL and use it as a calculator.How many seconds are there in 42 minutes 42 seconds?\nHow many miles are there in 10 kilometers? Hint: there are 1.61 kilometers in a mile.\nIf you run a 10 kilometer race in 42 minutes 42 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?"
 },
@@ -217,17 +217,17 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap02.html#Exercise-1-1",
+    "location": "chap02.html#Exercise-2-1-1",
     "page": "Variables, expressions and statements",
-    "title": "Exercise 1",
+    "title": "Exercise 2-1",
     "category": "section",
     "text": "Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.We’ve seen that n = 42 is legal. What about 42 = n?\nHow about x = y = 1?\nIn some languages every statement ends with a semi-colon, ;. What happens if you put a semi-colon at the end of a Julia statement?\nWhat if you put a period at the end of a statement?\nIn math notation you can multiply x and y like this: x y. What happens if you try that in Julia?"
 },
 
 {
-    "location": "chap02.html#Exercise-2-1",
+    "location": "chap02.html#Exercise-2-2-1",
     "page": "Variables, expressions and statements",
-    "title": "Exercise 2",
+    "title": "Exercise 2-2",
     "category": "section",
     "text": "Practice using the Julia REPL as a calculator:The volume of a sphere with radius r is frac43 pi r^3. What is the volume of a sphere with radius 5?\nSuppose the cover price of a book is € 24.95, but bookstores get a 40 % discount. Shipping costs € 3 for the first copy and 75 cents for each additional copy. What is the total wholesale cost for 60 copies?\nIf I leave my house at 6:52 am and run 1 mile at an easy pace (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at easy pace again, what time do I get home for breakfast?"
 },
@@ -361,17 +361,17 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap03.html#Exercise-1-1",
+    "location": "chap03.html#Exercise-3-1-1",
     "page": "Functions",
-    "title": "Exercise 1",
+    "title": "Exercise 3-1",
     "category": "section",
     "text": "Write a function named rightjustify that takes a string named s as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.rightjustify(\"monty\")Hint: Use string concatenation and repetition. Also, Julia provides a built-in function called length that returns the length of a string, so the value of length(\"monty\") is 5."
 },
 
 {
-    "location": "chap03.html#Exercise-2-1",
+    "location": "chap03.html#Exercise-3-2-1",
     "page": "Functions",
-    "title": "Exercise 2",
+    "title": "Exercise 3-2",
     "category": "section",
     "text": "A function object is a value you can assign to a variable or pass as an argument. For example, dotwice is a function that takes a function object as an argument and calls it twice:function dotwice(f)\n    f()\n    f()\nendHere’s an example that uses dotwice to call a function named print_spam twice.function print_spam()\n    println(\"spam\")\nend\n\ndotwice(print_spam)Type this example into a script and test it.\nModify dotwice so that it takes two arguments, a function object and a value, and calls the function twice, passing the value as an argument.\nCopy the definition of printtwice from earlier in this chapter to your script.\nUse the modified version of dotwice to call printtwice twice, passing \"spam\" as an argument.\nDefine a new function called dofour that takes a function object and a value and calls the function four times, passing the value as a parameter. There should be only two statements in the body of this function, not four."
 },
@@ -497,41 +497,41 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap04.html#Exercise-1-1",
+    "location": "chap04.html#Exercise-4-1-1",
     "page": "Case study: interface design",
-    "title": "Exercise 1",
+    "title": "Exercise 4-1",
     "category": "section",
     "text": "Enter the code in this chapter in a notebook.Draw a stack diagram that shows the state of the program while executing circle(🐢, radius). You can do the arithmetic by hand or add print statements to the code.\nThe version of arc in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.\"\"\"\narc(t, r, angle)\n\nDraws an arc with the given radius and angle:\n\n    t: turtle\n    r: radius\n    angle: angle subtended by the arc, in degrees\n\"\"\"\nfunction arc(t, r, angle)\n    arc_len = 2 * π * r * abs(angle) / 360\n    n = trunc(arc_len / 4) + 3\n    step_len = arc_len / n\n    step_angle = angle / n\n\n    # making a slight left turn before starting reduces\n    # the error caused by the linear approximation of the arc\n    turn(t, step_angle/2)\n    polyline(t, n, step_len, step_angle)\n    turn(t, -step_angle/2)\nend"
 },
 
 {
-    "location": "chap04.html#Exercise-2-1",
+    "location": "chap04.html#Exercise-4-2-1",
     "page": "Case study: interface design",
-    "title": "Exercise 2",
+    "title": "Exercise 4-2",
     "category": "section",
     "text": "Write an appropriately general set of functions that can draw flowers as in Figure 4.2.using ThinkJulia\nfig04_2()<figure>\n  <img src=\"fig42.svg\" alt=\"Turtle flowers.\">\n  <figcaption>Figure 4.2. Turtle flowers.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig42}\n\\caption{Turtle flowers.}\n\\label{fig42}\n\\end{figure}"
 },
 
 {
-    "location": "chap04.html#Exercise-3-1",
+    "location": "chap04.html#Exercise-4-3-1",
     "page": "Case study: interface design",
-    "title": "Exercise 3",
+    "title": "Exercise 4-3",
     "category": "section",
     "text": "Write an appropriately general set of functions that can draw shapes as in Figure 4.3.using ThinkJulia\nfig04_3()<figure>\n  <img src=\"fig43.svg\" alt=\"Turtle pies.\">\n  <figcaption>Figure 4.3. Turtle pies.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig43}\n\\caption{Turtle pies.}\n\\label{fig43}\n\\end{figure}"
 },
 
 {
-    "location": "chap04.html#Exercise-4-1",
+    "location": "chap04.html#Exercise-4-4-1",
     "page": "Case study: interface design",
-    "title": "Exercise 4",
+    "title": "Exercise 4-4",
     "category": "section",
     "text": "The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.You should write one function for each letter, with names draw_a, draw_b, etc., and put your functions in a file named letters.jl."
 },
 
 {
-    "location": "chap04.html#Exercise-5-1",
+    "location": "chap04.html#Exercise-4-5-1",
     "page": "Case study: interface design",
-    "title": "Exercise 5",
+    "title": "Exercise 4-5",
     "category": "section",
     "text": "Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in Figure 4.4.using ThinkJulia\nfig04_4()<figure>\n  <img src=\"fig44.svg\" alt=\"Archimedian spiral.\">\n  <figcaption>Figure 4.4. Archimedian spiral.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig44}\n\\caption{Archimedian spiral.}\n\\label{fig44}\n\\end{figure}"
 },
@@ -665,49 +665,49 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap05.html#Exercise-1-1",
+    "location": "chap05.html#Exercise-5-1-1",
     "page": "Conditionals and recursion",
-    "title": "Exercise 1",
+    "title": "Exercise 5-1",
     "category": "section",
     "text": "The function time returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.time()Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch."
 },
 
 {
-    "location": "chap05.html#Exercise-2-1",
+    "location": "chap05.html#Exercise-5-2-1",
     "page": "Conditionals and recursion",
-    "title": "Exercise 2",
+    "title": "Exercise 5-2",
     "category": "section",
     "text": "Fermat’s Last Theorem says that there are no positive integers a, b, and c such thata^n + b^n = c^nfor any values of n greater than 2.Write a function named checkfermat that takes four parameters—a, b, c and n—and checks to see if Fermat’s theorem holds. If n is greater than 2 and a^n + b^n == c^n the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”\nWrite a function that prompts the user to input values for a, b, c and n, converts them to integers, and uses checkfermat to check whether they violate Fermat’s theorem."
 },
 
 {
-    "location": "chap05.html#Exercise-3-1",
+    "location": "chap05.html#Exercise-5-3-1",
     "page": "Conditionals and recursion",
-    "title": "Exercise 3",
+    "title": "Exercise 5-3",
     "category": "section",
     "text": "If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)Write a function named istriangle that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.\nWrite a function that prompts the user to input three stick lengths, converts them to integers, and uses istriangle to check whether sticks with the given lengths can form a triangle."
 },
 
 {
-    "location": "chap05.html#Exercise-4-1",
+    "location": "chap05.html#Exercise-5-4-1",
     "page": "Conditionals and recursion",
-    "title": "Exercise 4",
+    "title": "Exercise 5-4",
     "category": "section",
     "text": "What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.function recurse(n, s)\n    if n == 0\n        println(s)\n    else\n        recurse(n-1, n+s)\n    end\nend\n\nrecurse(3, 0)What would happen if you called this function like this: recurse(-1, 0)?\nWrite a docstring that explains everything someone would need to know in order to use this function (and nothing else).The following exercises use the Luxor module, described in Chapter 4:"
 },
 
 {
-    "location": "chap05.html#Exercise-5-1",
+    "location": "chap05.html#Exercise-5-5-1",
     "page": "Conditionals and recursion",
-    "title": "Exercise 5",
+    "title": "Exercise 5-5",
     "category": "section",
     "text": "Read the following function and see if you can figure out what it does (see the examples in Chapter 4). Then run it and see if you got it right.function draw(t, length, n)\n    if n == 0\n        return\n    end\n    angle = 50\n    forward(t, length*n)\n    turn(t, -angle)\n    draw(t, length, n-1)\n    furn(t, 2*angle)\n    draw(t, length, n-1)\n    turn(t, -angle)\n    forward(-length*n)\nend"
 },
 
 {
-    "location": "chap05.html#Exercise-6-1",
+    "location": "chap05.html#Exercise-5-6-1",
     "page": "Conditionals and recursion",
-    "title": "Exercise 6",
+    "title": "Exercise 5-6",
     "category": "section",
     "text": "using ThinkJulia\nfig05_2()<figure>\n  <img src=\"fig52.svg\" alt=\"A Koch curve.\">\n  <figcaption>Figure 5.2. A Koch curve.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig52}\n\\caption{A Koch curve.}\n\\label{fig52}\n\\end{figure}The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length x, all you have to do isDraw a Koch curve with length fracx3.\nTurn left 60 degrees.\nDraw a Koch curve with length fracx3.\nTurn right 120 degrees.\nDraw a Koch curve with length fracx3.\nTurn left 60 degrees.\nDraw a Koch curve with length fracx3.The exception is if x is less than 3: in that case, you can just draw a straight line with length x.Write a function called koch that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.\nWrite a function called snowflake that draws three Koch curves to make the outline of a snowflake.\nThe Koch curve can be generalized in several ways. See http://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite."
 },
@@ -817,41 +817,41 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap06.html#Exercise-1-1",
+    "location": "chap06.html#Exercise-6-1-1",
     "page": "Fruitful functions",
-    "title": "Exercise 1",
+    "title": "Exercise 6-1",
     "category": "section",
     "text": "Draw a stack diagram for the following program. What does the program print?function b(z)\n    prod = a(z, z)\n    println(z, \" \", prod)\n    prod\nend\n\nfunction a(x, y)\n    x = x + 1\n    x * y\nend\n\nfunction c(x, y, z)\n    total = x + y + z\n    square = b(total)^2\n    square\nend\n\nx = 1\ny = x + 1\nprintln(c(x, y+3, x+y))"
 },
 
 {
-    "location": "chap06.html#Exercise-2-1",
+    "location": "chap06.html#Exercise-6-2-1",
     "page": "Fruitful functions",
-    "title": "Exercise 2",
+    "title": "Exercise 6-2",
     "category": "section",
     "text": "The Ackermann function, A(m n), is defined:A(m n) =\nbegincases\n              n+1 textrmif   m = 0 \n        A(m-1 1) textrmif   m  0 textrm and  n = 0 \nA(m-1 A(m n-1)) textrmif   m  0 textrm and  n  0\nendcasesSee http://en.wikipedia.org/wiki/Ackermann_function. Write a function named ack that evaluates the Ackermann function. Use your function to evaluate ack(3, 4), which should be 125. What happens for larger values of m and n?"
 },
 
 {
-    "location": "chap06.html#Exercise-3-1",
+    "location": "chap06.html#Exercise-6-3-1",
     "page": "Fruitful functions",
-    "title": "Exercise 3",
+    "title": "Exercise 6-3",
     "category": "section",
     "text": "A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.The following are functions that take a string argument and return the first, last, and middle letters:function first(word)\n    first = firstindex(word)\n    word[first]\nend\n\nfunction last(word)\n    last = lastindex(word)\n    word[last]\nend\n\nfunction middle(word)\n    first = firstindex(word)\n    last = lastindex(word)\n    word[nextind(word, first) : prevind(word, last)]\nendWe’ll see how they work in chapter 8Test these functions out. What happens if you call middle with a string with two letters? One letter? What about the empty string, which is written \"\" and contains no letters?\nWrite a function called ispalindrome that takes a string argument and returns true if it is a palindrome and false otherwise. Remember that you can use the built-in function length to check the length of a string."
 },
 
 {
-    "location": "chap06.html#Exercise-4-1",
+    "location": "chap06.html#Exercise-6-4-1",
     "page": "Fruitful functions",
-    "title": "Exercise 4",
+    "title": "Exercise 6-4",
     "category": "section",
     "text": "A number, a, is a power of b if it is divisible by b and fracab is a power of b. Write a function called ispower that takes parameters a and b and returns true if a is a power of b. Note: you will have to think about the base case."
 },
 
 {
-    "location": "chap06.html#Exercise-5-1",
+    "location": "chap06.html#Exercise-6-5-1",
     "page": "Fruitful functions",
-    "title": "Exercise 5",
+    "title": "Exercise 6-5",
     "category": "section",
     "text": "The greatest common divisor (GCD) of a and b is the largest number that divides both of them with no remainder.One way to find the GCD of two numbers is based on the observation that if r is the remainder when a is divided by b, then gcd(a, b) = gcd(b, r). As a base case, we can use gcd(a, 0) = a.Write a function called gcd that takes parameters a and b and returns their greatest common divisor.Credit: This exercise is based on an example from Abelson and Sussman’s Structure and Interpretation of Computer Programs."
 },
@@ -953,25 +953,25 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap07.html#Exercise-1-1",
+    "location": "chap07.html#Exercise-7-1-1",
     "page": "Iteration",
-    "title": "Exercise 1",
+    "title": "Exercise 7-1",
     "category": "section",
     "text": "Copy the loop from Section 7.5 and encapsulate it in a function called mysqrt that takes a as a parameter, chooses a reasonable value of x, and returns an estimate of the square root of a.To test it, write a function named testsquareroot that prints a table like this:using ThinkJuliatestsquareroot() # hideThe first column is a number, a; the second column is the square root of a computed with mysqrt; the third column is the square root computed by sqrt; the fourth column is the absolute value of the difference between the two estimates."
 },
 
 {
-    "location": "chap07.html#Exercise-2-1",
+    "location": "chap07.html#Exercise-7-2-1",
     "page": "Iteration",
-    "title": "Exercise 2",
+    "title": "Exercise 7-2",
     "category": "section",
     "text": "The built-in function parse takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function eval. For example:julia> expr = parse(\"1+2*3\")\n:(1 + 2 * 3)\n\njulia> eval(expr)\n7\n\njulia> expr = parse(\"sqrt(π)\")\n:(sqrt(π))\n\njulia> eval(expr)\n1.7724538509055159Write a function called evalloop that iteratively prompts the user, takes the resulting input and evaluates it using eval, and prints the result. It should continue until the user enters done, and then return the value of the last expression it evaluated."
 },
 
 {
-    "location": "chap07.html#Exercise-3-1",
+    "location": "chap07.html#Exercise-7-3-1",
     "page": "Iteration",
-    "title": "Exercise 3",
+    "title": "Exercise 7-3",
     "category": "section",
     "text": "The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of frac1pi:frac1pi=frac2sqrt29801sum_k=0^inftyfrac(4k)(1103+26390k)(k)^4 396^4kWrite a function called estimatepi that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than 1e-15 (which is Julia notation for 10^15). You can check the result by comparing it to π."
 },
@@ -1113,41 +1113,41 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap08.html#Exercise-1-1",
+    "location": "chap08.html#Exercise-8-1-1",
     "page": "Strings",
-    "title": "Exercise 1",
+    "title": "Exercise 8-1",
     "category": "section",
     "text": "Read the documentation of the string functions at https://docs.julialang.org/en/stable/stdlib/strings/. You might want to experiment with some of them to make sure you understand how they work. strip and replace are particularly useful.The documentation uses a syntax that might be confusing. For example, in search(string::AbstractString, chars::Chars, [start::Integer]), the brackets indicate optional arguments. So string and chars are required, but start is optional."
 },
 
 {
-    "location": "chap08.html#Exercise-2-1",
+    "location": "chap08.html#Exercise-8-2-1",
     "page": "Strings",
-    "title": "Exercise 2",
+    "title": "Exercise 8-2",
     "category": "section",
     "text": "There is a builtin function called count that is similar to the function in Section 8.9. Read the documentation of this function and use it to count the number of a’s in \"banana\"."
 },
 
 {
-    "location": "chap08.html#Exercise-3-1",
+    "location": "chap08.html#Exercise-8-3-1",
     "page": "Strings",
-    "title": "Exercise 3",
+    "title": "Exercise 8-3",
     "category": "section",
     "text": "A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.fruit = \"banana\"\nfruit[1:2:6]A step size of -1 goes through the word backwards, so the slice [end:-1:1] generates a reversed string.Use this idiom to write a one-line version of ispalindrome from Exercise 6.3."
 },
 
 {
-    "location": "chap08.html#Exercise-4-1",
+    "location": "chap08.html#Exercise-8-4-1",
     "page": "Strings",
-    "title": "Exercise 4",
+    "title": "Exercise 8-4",
     "category": "section",
     "text": "The following functions are all intended to check whether a string contains any lowercase letters, but at least some of them are wrong. For each function, describe what the function actually does (assuming that the parameter is a string).function anylowercase1(s)\n    for c in s\n        if islower(c)\n            return true\n        else\n            return false\n        end\n    end\nend\n\nfunction anylowercase2(s)\n    for c in s\n        if islower(\'c\')\n            return \"true\"\n        else\n            return \"false\"\n        end\n    end\nend\n\nfunction anylowercase3(s)\n    for c in s\n        flag = islower(c)\n    end\n    flag\nend\n\nfunction anylowercase4(s)\n    flag = false\n    for c in s\n        flag = flag || islower(c)\n    end\n    flag\nend\n\nfunction anylowercase5(s)\n    for c in s\n        if !islower(c)\n            return false\n        end\n    end\n    true\nend"
 },
 
 {
-    "location": "chap08.html#Exercise-5-1",
+    "location": "chap08.html#Exercise-8-5-1",
     "page": "Strings",
-    "title": "Exercise 5",
+    "title": "Exercise 8-5",
     "category": "section",
     "text": "A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so ’A’ rotated by 3 is ’D’ and ’Z’ rotated by 1 is ’A’.To rotate a word, rotate each letter by the same amount. For example, \"cheer\" rotated by 7 is \"jolly\" and \"melon\" rotated by -10 is \"cubed\". In the movie 2001: A Space Odyssey, the ship computer is called HAL, which is IBM rotated by -1.Write a function called rotateword that takes a string and an integer as parameters, and returns a new string that contains the letters from the original string rotated by the given amount.You might want to use the built-in function Int, which converts a character to a numeric code, and Char, which converts numeric codes to characters. Letters of the alphabet are encoded in alphabetical order, so for example:julia> Int(\'c\') - Int(\'a\')\n2Because \'c\' is the third letter of the alphabet. But beware: the numeric codes for uppercase letters are different.julia> Char(Int(\'A\') + 32)\n\'a\': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)Potentially offensive jokes on the Internet are sometimes encoded in ROT13, which is a Caesar cypher with rotation 13. If you are not easily offended, find and decode some of them."
 },
@@ -1185,49 +1185,49 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap09.html#Exercise-1-1",
+    "location": "chap09.html#Exercise-9-1-1",
     "page": "Case study: word play",
-    "title": "Exercise 1",
+    "title": "Exercise 9-1",
     "category": "section",
     "text": "Write a program that reads words.txt and prints only the words with more than 20 characters (not counting whitespace)."
 },
 
 {
-    "location": "chap09.html#Exercise-2-1",
+    "location": "chap09.html#Exercise-9-2-1",
     "page": "Case study: word play",
-    "title": "Exercise 2",
+    "title": "Exercise 9-2",
     "category": "section",
     "text": "In 1939 Ernest Vincent Wright published a 50,000 word novel called Gadsby that does not contain the letter \'e\'. Since \'e\' is the most common letter in English, that’s not easy to do.In fact, it is difficult to construct a solitary thought without using that most common symbol. It is slow going at first, but with caution and hours of training you can gradually gain facility.All right, I’ll stop now.Write a function called hasno_e that returns true if the given word doesn’t have the letter \'e\' in it.Modify your program from the previous section to print only the words that have no \'e\' and compute the percentage of the words in the list that have no \'e\'."
 },
 
 {
-    "location": "chap09.html#Exercise-3-1",
+    "location": "chap09.html#Exercise-9-3-1",
     "page": "Case study: word play",
-    "title": "Exercise 3",
+    "title": "Exercise 9-3",
     "category": "section",
     "text": "Write a function named avoids that takes a word and a string of forbidden letters, and that returns true if the word doesn’t use any of the forbidden letters.Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?"
 },
 
 {
-    "location": "chap09.html#Exercise-4-1",
+    "location": "chap09.html#Exercise-9-4-1",
     "page": "Case study: word play",
-    "title": "Exercise 4",
+    "title": "Exercise 9-4",
     "category": "section",
     "text": "Write a function named usesonly that takes a word and a string of letters, and that returns true if the word contains only letters in the list. Can you make a sentence using only the letters acefhlo? Other than \"Hoe alfalfa?\""
 },
 
 {
-    "location": "chap09.html#Exercise-5-1",
+    "location": "chap09.html#Exercise-9-5-1",
     "page": "Case study: word play",
-    "title": "Exercise 5",
+    "title": "Exercise 9-5",
     "category": "section",
     "text": "Write a function named usesall that takes a word and a string of required letters, and that returns true if the word uses all the required letters at least once. How many words are there that use all the vowels aeiou? How about aeiouy?"
 },
 
 {
-    "location": "chap09.html#Exercise-6-1",
+    "location": "chap09.html#Exercise-9-6-1",
     "page": "Case study: word play",
-    "title": "Exercise 6",
+    "title": "Exercise 9-6",
     "category": "section",
     "text": "Write a function called isabecedarian that returns true if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?"
 },
@@ -1273,25 +1273,25 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap09.html#Exercise-7-1",
+    "location": "chap09.html#Exercise-9-7-1",
     "page": "Case study: word play",
-    "title": "Exercise 7",
+    "title": "Exercise 9-7",
     "category": "section",
     "text": "This question is based on a Puzzler that was broadcast on the radio program Car Talk (http://www.cartalk.com/content/puzzlers):Give me a word with three consecutive double letters. I’ll give you a couple of words that almost qualify, but don’t. For example, the word committee, c-o-m-m-i-t-t-e-e. It would be great except for the \'i\' that sneaks in there. Or Mississippi: M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would work. But there is a word that has three consecutive pairs of letters and to the best of my knowledge this may be the only word. Of course there are probably 500 more but I can only think of one. What is the word?Write a program to find it."
 },
 
 {
-    "location": "chap09.html#Exercise-8-1",
+    "location": "chap09.html#Exercise-9-8-1",
     "page": "Case study: word play",
-    "title": "Exercise 8",
+    "title": "Exercise 9-8",
     "category": "section",
     "text": "Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):“I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0. “Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5. “One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6. One mile after that, the middle 4 out of 6 numbers were palindromic. And you ready for this? One mile later, all 6 were palindromic! “The question is, what was on the odometer when I first looked?”Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements."
 },
 
 {
-    "location": "chap09.html#Exercise-9-1",
+    "location": "chap09.html#Exercise-9-9-1",
     "page": "Case study: word play",
-    "title": "Exercise 9",
+    "title": "Exercise 9-9",
     "category": "section",
     "text": "Here’s another Car Talk Puzzler you can solve with a search (http://www.cartalk.com/content/puzzlers):“Recently I had a visit with my mom and we realized that the two digits that make up my age when reversed resulted in her age. For example, if she’s 73, I’m 37. We wondered how often this has happened over the years but we got sidetracked with other topics and we never came up with an answer. “When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?”Write a Julia program that searches for solutions to this Puzzler. Hint: you might find the function lpad useful."
 },
@@ -1433,97 +1433,97 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap10.html#Exercise-1-1",
+    "location": "chap10.html#Exercise-10-1-1",
     "page": "Arrays",
-    "title": "Exercise 1",
+    "title": "Exercise 10-1",
     "category": "section",
     "text": "Write a function called nestedsum that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:julia> t = [[1, 2], [3], [4, 5, 6]];\n\njulia> nestedsum(t)\n21"
 },
 
 {
-    "location": "chap10.html#Exercise-2-1",
+    "location": "chap10.html#Exercise-10-2-1",
     "page": "Arrays",
-    "title": "Exercise 2",
+    "title": "Exercise 10-2",
     "category": "section",
     "text": "Write a function called cumulsum that takes an array of numbers and returns the cumulative sum; that is, a new array where the ith element is the sum of the first i+1 elements from the original array. For example:julia> t = [1, 2, 3];\n\njulia> print(cumulsum(t))\nAny[1, 3, 6]"
 },
 
 {
-    "location": "chap10.html#Exercise-3-1",
+    "location": "chap10.html#Exercise-10-3-1",
     "page": "Arrays",
-    "title": "Exercise 3",
+    "title": "Exercise 10-3",
     "category": "section",
     "text": "Write a function called interior that takes an array and returns a new array that contains all but the first and last elements. For example:julia> t = [1, 2, 3, 4];\n\njulia> print(interior(t))\n[2, 3]"
 },
 
 {
-    "location": "chap10.html#Exercise-4-1",
+    "location": "chap10.html#Exercise-10-4-1",
     "page": "Arrays",
-    "title": "Exercise 4",
+    "title": "Exercise 10-4",
     "category": "section",
     "text": "Write a function called interior! that takes an array, modifies it by removing the first and last elements, and returns nothing. For example:julia> t = [1, 2, 3, 4];\n\njulia> interior!(t)\n\njulia> print(t)\n[2, 3]"
 },
 
 {
-    "location": "chap10.html#Exercise-5-1",
+    "location": "chap10.html#Exercise-10-5-1",
     "page": "Arrays",
-    "title": "Exercise 5",
+    "title": "Exercise 10-5",
     "category": "section",
     "text": "Write a function called issort that takes an array as a parameter and returns true if the array is sorted in ascending order and false otherwise. For example:julia> issort([1, 2, 2])\ntrue\n\njulia> issort([\'b\', \'a\'])\nfalse"
 },
 
 {
-    "location": "chap10.html#Exercise-6-1",
+    "location": "chap10.html#Exercise-10-6-1",
     "page": "Arrays",
-    "title": "Exercise 6",
+    "title": "Exercise 10-6",
     "category": "section",
     "text": "Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called isanagram that takes two strings and returns true if they are anagrams."
 },
 
 {
-    "location": "chap10.html#Exercise-7-1",
+    "location": "chap10.html#Exercise-10-7-1",
     "page": "Arrays",
-    "title": "Exercise 7",
+    "title": "Exercise 10-7",
     "category": "section",
     "text": "Write a function called hasduplicates that takes an array and returns true if there is any element that appears more than once. It should not modify the original array."
 },
 
 {
-    "location": "chap10.html#Exercise-8-1",
+    "location": "chap10.html#Exercise-10-8-1",
     "page": "Arrays",
-    "title": "Exercise 8",
+    "title": "Exercise 10-8",
     "category": "section",
     "text": "This exercise pertains to the so-called Birthday Paradox, which you can read about at http://en.wikipedia.org/wiki/Birthday_paradox.If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches. Hint: you can generate random birthdays with rand(1:365)."
 },
 
 {
-    "location": "chap10.html#Exercise-9-1",
+    "location": "chap10.html#Exercise-10-9-1",
     "page": "Arrays",
-    "title": "Exercise 9",
+    "title": "Exercise 10-9",
     "category": "section",
     "text": "Write a function that reads the file words.txt and builds an array with one element per word. Write two versions of this function, one using push! and the other using the idiom t = [t..., x]. Which one takes longer to run? Why?"
 },
 
 {
-    "location": "chap10.html#Exercise-10-1",
+    "location": "chap10.html#Exercise-10-10-1",
     "page": "Arrays",
-    "title": "Exercise 10",
+    "title": "Exercise 10-10",
     "category": "section",
     "text": "To check whether a word is in the word array, you could use the ∈ operator, but it would be slow because it searches through the words in order.Because the words are in alphabetical order, we can speed things up with a bisection search (also known as binary search), which is similar to what you do when you look a word up in the dictionary. You start in the middle and check to see whether the word you are looking for comes before the word in the middle of the array. If so, you search the first half of the array the same way. Otherwise you search the second half.Either way, you cut the remaining search space in half. If the word array has 113,809 words, it will take about 17 steps to find the word or conclude that it’s not there.Write a function called inbisect that takes a sorted array and a target value and returns true if the word is in the array and false if it’s not."
 },
 
 {
-    "location": "chap10.html#Exercise-11-1",
+    "location": "chap10.html#Exercise-10-11-1",
     "page": "Arrays",
-    "title": "Exercise 11",
+    "title": "Exercise 10-11",
     "category": "section",
     "text": "Two words are a “reverse pair” if each is the reverse of the other. Write a program that finds all the reverse pairs in the word array."
 },
 
 {
-    "location": "chap10.html#Exercise-12-1",
+    "location": "chap10.html#Exercise-10-12-1",
     "page": "Arrays",
-    "title": "Exercise 12",
+    "title": "Exercise 10-12",
     "category": "section",
     "text": "Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”.Credit: This exercise is inspired by an example at http://puzzlers.org.Write a program that finds all pairs of words that interlock. Hint: don’t enumerate all pairs!\nCan you find any words that are three-way interlocked; that is, every third letter forms a word, starting from the first, second or third?"
 },
@@ -1557,7 +1557,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Dictionaries",
     "title": "Dictionary as a collection of counters",
     "category": "section",
-    "text": "Suppose you are given a string and you want to count how many times each letter appears. There are several ways you could do it:You could create 26 variables, one for each letter of the alphabet. Then you could traverse the string and, for each character, increment the corresponding counter, probably using a chained conditional.\nYou could create an array with 26 elements. Then you could convert each character to a number (using the built-in function Int), use the number as an index into the array, and increment the appropriate counter.\nYou could create a dictionary with characters as keys and counters as the corresponding values. The first time you see a character, you would add an item to the dictionary. After that you would increment the value of an existing item.Each of these options performs the same computation, but each of them implements that computation in a different way.An implementation is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.Here is what the code might look like:function histogram(s)\n    d = Dict()\n    for c in s\n        if c ∉ keys(d)\n            d[c] = 1\n        else\n            d[c] += 1\n        end\n    end\n    d\nendThe name of the function is histogram, which is a statistical term for a collection of counters (or frequencies).The first line of the function creates an empty dictionary. The for loop traverses the string. Each time through the loop, if the character c is not in the dictionary, we create a new item with key c and the initial value 1 (since we have seen this letter once). If c is already in the dictionary we increment d[c].Here’s how it works:julia> h = histogram(\"brontosaurus\");\n\njulia> print(h)\nDict{Any,Any}(Pair{Any,Any}(\'n\', 1),Pair{Any,Any}(\'b\', 1),Pair{Any,Any}(\'o\', 2),Pair{Any,Any}(\'t\', 1),Pair{Any,Any}(\'a\', 1),Pair{Any,Any}(\'u\', 2),Pair{Any,Any}(\'s\', 2),Pair{Any,Any}(\'r\', 2))The histogram indicates that the letters \'a\' and \'b\' appear once; \'o\' appears twice, and so on.Dictionaries have a function called get that takes a key and a default value. If the key appears in the dictionary, get returns the corresponding value; otherwise it returns the default value. For example:julia> h = histogram(\"a\");\n\njulia> print(h)\nDict{Any,Any}(Pair{Any,Any}(\'a\', 1))\njulia> get(h, \'a\', 0)\n1\n\njulia> get(h, \'b\', 0)\n0As an exercise, use get! to write histogram more concisely. get! returns the same value as get but if the key does not exist in the dictionary, it is added with the default value. You should be able to eliminate the if statement."
+    "text": "Suppose you are given a string and you want to count how many times each letter appears. There are several ways you could do it:You could create 26 variables, one for each letter of the alphabet. Then you could traverse the string and, for each character, increment the corresponding counter, probably using a chained conditional.\nYou could create an array with 26 elements. Then you could convert each character to a number (using the built-in function Int), use the number as an index into the array, and increment the appropriate counter.\nYou could create a dictionary with characters as keys and counters as the corresponding values. The first time you see a character, you would add an item to the dictionary. After that you would increment the value of an existing item.Each of these options performs the same computation, but each of them implements that computation in a different way.An implementation is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.Here is what the code might look like:function histogram(s)\n    d = Dict()\n    for c in s\n        if c ∉ keys(d)\n            d[c] = 1\n        else\n            d[c] += 1\n        end\n    end\n    d\nendThe name of the function is histogram, which is a statistical term for a collection of counters (or frequencies).The first line of the function creates an empty dictionary. The for loop traverses the string. Each time through the loop, if the character c is not in the dictionary, we create a new item with key c and the initial value 1 (since we have seen this letter once). If c is already in the dictionary we increment d[c].Here’s how it works:julia> h = histogram(\"brontosaurus\");\n\njulia> print(h)\nDict{Any,Any}(Pair{Any,Any}(\'n\', 1),Pair{Any,Any}(\'b\', 1),Pair{Any,Any}(\'o\', 2),Pair{Any,Any}(\'t\', 1),Pair{Any,Any}(\'a\', 1),Pair{Any,Any}(\'u\', 2),Pair{Any,Any}(\'s\', 2),Pair{Any,Any}(\'r\', 2))The histogram indicates that the letters \'a\' and \'b\' appear once; \'o\' appears twice, and so on.Dictionaries have a function called get that takes a key and a default value. If the key appears in the dictionary, get returns the corresponding value; otherwise it returns the default value. For example:julia> h = histogram(\"a\");\n\njulia> print(h)\nDict{Any,Any}(Pair{Any,Any}(\'a\', 1))\njulia> get(h, \'a\', 0)\n1\n\njulia> get(h, \'b\', 0)\n0As an exercise, use get to write histogram more concisely. You should be able to eliminate the if statement."
 },
 
 {
@@ -1582,6 +1582,94 @@ var documenterSearchIndex = {"docs": [
     "title": "Dictionaries and arrays",
     "category": "section",
     "text": "Arrays can appear as values in a dictionary. For example, if you are given a dictionary that maps from letters to frequencies, you might want to invert it; that is, create a dictionary that maps from frequencies to letters. Since there might be several letters with the same frequency, each value in the inverted dictionary should be an array of letters.Here is a function that inverts a dictionary:function invertdict(d)\n    inverse = Dict()\n    for key in keys(d)\n        val = d[key]\n        if val ∉ keys(inverse)\n            inverse[val] = [key]\n        else\n            push!(inverse[val], key)\n        end\n    end\n    inverse\nendEach time through the loop, key gets a key from d and val gets the corresponding value. If val is not in inverse, that means we haven’t seen it before, so we create a new item and initialize it with a singleton (an array that contains a single element). Otherwise we have seen this value before, so we append the corresponding key to the array.Here is an example:julia> hist = histogram(\"parrot\");\n\njulia> inverse = invertdict(hist);\n\njulia> print(inverse)\nDict{Any,Any}(Pair{Any,Any}(2, [\'r\']),Pair{Any,Any}(1, [\'o\', \'a\', \'p\', \'t\']))using ThinkJulia\nfig11_1()<figure>\n  <img src=\"fig111.svg\" alt=\"State diagram.\">\n  <figcaption>Figure 11.1. State diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig111}\n\\caption{State diagram.}\n\\label{fig111}\n\\end{figure}Figure 11.1 is a state diagram showing hist and inverse. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be hashable.A hash is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs."
+},
+
+{
+    "location": "chap11.html#Memos-1",
+    "page": "Dictionaries",
+    "title": "Memos",
+    "category": "section",
+    "text": "If you played with the fibonacci function from Section 6.7, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.To understand why, consider Figure 11.2, which shows the call graph for fibonacci with n = 4:using ThinkJulia\nfig11_2()<figure>\n  <img src=\"fig112.svg\" alt=\"Call graph.\">\n  <figcaption>Figure 11.2. Call graph.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig112}\n\\caption{Call graph.}\n\\label{fig112}\n\\end{figure}A call graph shows a set of function frames, with lines connecting each frame to the frames of the functions it calls. At the top of the graph, fibonacci with n = 4 calls fibonacci with  n = 3 and n = 2. In turn, fibonacci with n = 3 calls fibonacci with n = 2 and n = 1. And so on.Count how many times fibonacci(0) and fibonacci(1) are called. This is an inefficient solution to the problem, and it gets worse as the argument gets bigger.One solution is to keep track of values that have already been computed by storing them in a dictionary. A previously computed value that is stored for later use is called a memo. Here is a “memoized” version of fibonacci:known = Dict(0=>0, 1=>1)\n\nfunction fibonacci(n)\n    if n ∈ keys(known)\n        return known[n]\n    end\n    res = fibonacci(n-1) + fibonacci(n-2)\n    known[n] = res\n    res\nendknown is a dictionary that keeps track of the Fibonacci numbers we already know. It starts with two items: 0 maps to 0 and 1 maps to 1.Whenever fibonacci is called, it checks known. If the result is already there, it can return immediately. Otherwise it has to compute the new value, add it to the dictionary, and return it.If you run this version of fibonacci and compare it with the original, you will find that it is much faster."
+},
+
+{
+    "location": "chap11.html#Global-variables-1",
+    "page": "Dictionaries",
+    "title": "Global variables",
+    "category": "section",
+    "text": "In the previous example, known is created outside the function, so it belongs to the special frame called __main__. Variables in __main__ are sometimes called global because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.It is common to use global variables for flags; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named verbose to control the level of detail in the output:verbose = true\n\nfunction example1()\n    if verbose\n        println(\"Running example1\")\n    end\nendIf you try to reassign a global variable, you might be surprised. The following example is supposed to keep track of whether the function has been called:been_called = false\n\nfunction example2()\n    been_called = true         # WRONG\nendBut if you run it you will see that the value of been_called doesn’t change. The problem is that example2 creates a new local variable named been_called. The local variable goes away when the function ends, and has no effect on the global variable.To reassign a global variable inside a function you have to declare the global variable before you use it:been_called = false\n\nfunction example2()\n    global been_called\n    been_called = true\nendThe global statement tells the interpreter something like, “In this function, when I say been_called, I mean the global variable; don’t create a local one.”Here’s an example that tries to update a global variable:count = 0\n\nfunction example3()\n    count = count + 1          # WRONG\nendIf you run it you get:ERROR: UndefVarError: count not definedJulia assumes that count is local, and under that assumption you are reading it before writing it. The solution, again, is to declare count global.count = 0\n\nfunction example3()\n    global count\n    count += 1\nendIf a global variable refers to a mutable value, you can modify the value without declaring the variable:known = Dict(0=>0, 1=>1)\n\nfunction example4()\n    known[2] = 1\nendSo you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it:known = Dict(0=>0, 1=>1)\n\nfunction example5()\n    global known\n    known = Dict()\nendGlobal variables can be useful, but if you have a lot of them, and you modify them frequently, they can make programs hard to debug and perform badly.In almost all code (and particularly performance sensitive code) global variables should be declared constant:const known = Dict(0=>0, 1=>1)\n\nfunction fibonacci(n)\n    if n ∉ keys(known)\n        known[n] = fibonacci(n-1) + fibonacci(n-2)\n    end\n    known[n]\nendHere is a function that tries to reassign a constant global variable:const known = Dict(0=>0, 1=>1)\n\nfunction example5()\n    global known\n    known = Dict()\nendIf you run this an exception is generated:ERROR: invalid redefinition of constant known"
+},
+
+{
+    "location": "chap11.html#Debugging-1",
+    "page": "Dictionaries",
+    "title": "Debugging",
+    "category": "section",
+    "text": "As you work with bigger datasets it can become unwieldy to debug by printing and checking the output by hand. Here are some suggestions for debugging large datasets:Scale down the input:If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find. You can either edit the files themselves, or (better) modify the program so it reads only the first n lines. If there is an error, you can reduce n to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.Check summaries and types:Instead of printing and checking the entire dataset, consider printing summaries of the data: for example, the number of items in a dictionary or the total of an array of numbers. A common cause of runtime errors is a value that is not the right type. For debugging this kind of error, it is often enough to print the type of a value.Write self-checks:Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check” because it detects results that are “insane”. Another kind of check compares the results of two different computations to see if they are consistent. This is called a “consistency check”.Format the output:Formatting debugging output can make it easier to spot an error. We saw an example in Section 6.9. Another tool you might find useful is the pprint module, which provides a pprint function that displays built-in types in a more human-readable format (pprint stands for “pretty print”). Again, time you spend building scaffolding can reduce the time you spend debugging."
+},
+
+{
+    "location": "chap11.html#Glossary-1",
+    "page": "Dictionaries",
+    "title": "Glossary",
+    "category": "section",
+    "text": "mapping: A relationship in which each element of one set corresponds to an element of another set.dictionary: A mapping from keys to their corresponding values.key-value pair: The representation of the mapping from a key to a value.item: In a dictionary, another name for a key-value pair.key: An object that appears in a dictionary as the first part of a key-value pair.value: An object that appears in a dictionary as the second part of a key-value pair. This is more specific than our previous use of the word “value”.implementation: A way of performing a computation.hashtable: The algorithm used to implement Python dictionaries.hash function: A function used by a hashtable to compute the location for a key.hashable: A type that has a hash function. Immutable types like integers, floats and strings are hashable; mutable types like arrays and dictionaries are not.lookup: A dictionary operation that takes a key and finds the corresponding value.reverse lookup: A dictionary operation that takes a value and finds one or more keys that map to it.singleton: An array (or other sequence) with a single element.call graph: A diagram that shows every frame created during the execution of a program, with an arrow from each caller to each callee.memo: A computed value stored to avoid unnecessary future computation.global variable: A variable defined outside a function. Global variables can be accessed from any function.global statement: A statement that declares a variable name global.flag: A boolean variable used to indicate whether a condition is true.declaration: A statement like global that tells the interpreter something about a variable.constant global variable: A global variable that can not be reassigned."
+},
+
+{
+    "location": "chap11.html#Exercises-1",
+    "page": "Dictionaries",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap11.html#Exercise-11-1-1",
+    "page": "Dictionaries",
+    "title": "Exercise 11-1",
+    "category": "section",
+    "text": "Write a function that reads the words in words.txt and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the ∈ operator as a fast way to check whether a string is in the dictionary.If you did Exercise 10-10, you can compare the speed of this implementation with the array ∈ operator and the bisection search."
+},
+
+{
+    "location": "chap11.html#Exercise-11-2-1",
+    "page": "Dictionaries",
+    "title": "Exercise 11-2",
+    "category": "section",
+    "text": "Read the documentation of the dictionary function get! and use it to write a more concise version of invert_dict."
+},
+
+{
+    "location": "chap11.html#Exercise-11-3-1",
+    "page": "Dictionaries",
+    "title": "Exercise 11-3",
+    "category": "section",
+    "text": "Memoize the Ackermann function from Exercise 6-2 and see if memoization makes it possible to evaluate the function with bigger arguments. Hint: no."
+},
+
+{
+    "location": "chap11.html#Exercise-11-4-1",
+    "page": "Dictionaries",
+    "title": "Exercise 11-4",
+    "category": "section",
+    "text": "If you did Exercise 10-7, you already have a function named hasduplicates that takes an array as a parameter and returns true if there is any object that appears more than once in the array.Use a dictionary to write a faster, simpler version of hasduplicates."
+},
+
+{
+    "location": "chap11.html#Exercise-11_5-1",
+    "page": "Dictionaries",
+    "title": "Exercise 11_5",
+    "category": "section",
+    "text": "Two words are “rotate pairs” if you can rotate one of them and get the other (see rotateword in Exercise 8.5).Write a program that reads a word array and finds all the rotate pairs."
+},
+
+{
+    "location": "chap11.html#Exercise-11-6-1",
+    "page": "Dictionaries",
+    "title": "Exercise 11-6",
+    "category": "section",
+    "text": "Here’s another Puzzler from Car Talk (http://www.cartalk.com/content/puzzlers):This was sent in by a fellow named Dan O’Leary. He came upon a common one-syllable, five-letter word recently that has the following unique property. When you remove the first letter, the remaining letters form a homophone of the original word, that is a word that sounds exactly the same. Replace the first letter, that is, put it back and remove the second letter and the result is yet another homophone of the original word. And the question is, what’s the word? Now I’m going to give you an example that doesn’t work. Let’s look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like to ‘wrack with pain.’ If I remove the first letter, I am left with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see the rack on that buck! It must have been a nine-pointer!’ It’s a perfect homophone. If you put the ‘w’ back, and remove the ‘r,’ instead, you’re left with the word, ‘wack,’ which is a real word, it’s just not a homophone of the other two words. But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?You can use the dictionary from Exercise 11-1 to check whether a string is in the word array.To check whether two words are homophones, you can use the CMU Pronouncing Dictionary. You can download it from http://www.speech.cs.cmu.edu/cgi-bin/cmudict.Write a program that lists all the words that solve the Puzzler."
 },
 
 ]}
