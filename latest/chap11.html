@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Dictionaries · Think Julia</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="assets/documenter.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link href="assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>Think Julia</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="chap00.html">Preface</a></li><li><a class="toctext" href="chap01.html">The way of the program</a></li><li><a class="toctext" href="chap02.html">Variables, expressions and statements</a></li><li><a class="toctext" href="chap03.html">Functions</a></li><li><a class="toctext" href="chap04.html">Case study: interface design</a></li><li><a class="toctext" href="chap05.html">Conditionals and recursion</a></li><li><a class="toctext" href="chap06.html">Fruitful functions</a></li><li><a class="toctext" href="chap07.html">Iteration</a></li><li><a class="toctext" href="chap08.html">Strings</a></li><li><a class="toctext" href="chap09.html">Case study: word play</a></li><li><a class="toctext" href="chap10.html">Arrays</a></li><li class="current"><a class="toctext" href="chap11.html">Dictionaries</a><ul class="internal"><li><a class="toctext" href="#A-dictionary-is-a-mapping-1">A dictionary is a mapping</a></li><li><a class="toctext" href="#Dictionary-as-a-collection-of-counters-1">Dictionary as a collection of counters</a></li><li><a class="toctext" href="#Looping-and-dictionaries-1">Looping and dictionaries</a></li><li><a class="toctext" href="#Reverse-lookup-1">Reverse lookup</a></li><li><a class="toctext" href="#Dictionaries-and-arrays-1">Dictionaries and arrays</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li><a href="chap11.html">Dictionaries</a></li></ul><a class="edit-page" href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/docs/src/chap11.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Dictionaries</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Dictionaries-1" href="#Dictionaries-1">Dictionaries</a></h1><p>This chapter presents another built-in type called a dictionary. Dictionaries are one of Julia’s best features; they are the building blocks of many efficient and elegant algorithms.</p><h2><a class="nav-anchor" id="A-dictionary-is-a-mapping-1" href="#A-dictionary-is-a-mapping-1">A dictionary is a mapping</a></h2><p>A <strong>dictionary</strong> is like an array, but more general. In an array, the indices have to be integers; in a dictionary they can be (almost) any type.</p><p>A dictionary contains a collection of indices, which are called <strong>keys</strong>, and a collection of values. Each key is associated with a single value. The association of a key and a value is called a <strong>key-value pair</strong> or sometimes an item.</p><p>In mathematical language, a dictionary represents a <strong>mapping</strong> from keys to values, so you can also say that each key “maps to” a value. As an example, we’ll build a dictionary that maps from English to Spanish words, so the keys and the values are all strings.</p><p>The function <code>Dict</code> creates a new dictionary with no items. Because <code>Dict</code> is the name of a built-in function, you should avoid using it as a variable name.</p><pre><code class="language-julia-repl">julia&gt; eng2sp = Dict()
+Dict{Any,Any} with 0 entries</code></pre><p>The kind of dictionary is surrounded by curly brackets: the keys are of type <code>Any</code> and also the values are of type <code>Any</code>.</p><p>The dictionary is empty. To add items to the dictionary, you can use square brackets:</p><pre><code class="language-julia-repl">julia&gt; eng2sp[&quot;one&quot;] = &quot;uno&quot;;
+</code></pre><p>This line creates an item that maps from the key &quot;one&quot; to the value &quot;uno&quot;. If we print the dictionary again, we see a key-value pair with an arrow &quot;=&gt;&quot; between the key and value:</p><pre><code class="language-julia-repl">julia&gt; eng2sp
+Dict{Any,Any} with 1 entry:
+  &quot;one&quot; =&gt; &quot;uno&quot;</code></pre><p>This output format is also an input format. For example, you can create a new dictionary with three items:</p><pre><code class="language-julia-repl">julia&gt; eng2sp = Dict(&quot;one&quot; =&gt; &quot;uno&quot;, &quot;two&quot; =&gt; &quot;dos&quot;, &quot;three&quot; =&gt; &quot;tres&quot;)
+Dict{String,String} with 3 entries:
+  &quot;two&quot;   =&gt; &quot;dos&quot;
+  &quot;one&quot;   =&gt; &quot;uno&quot;
+  &quot;three&quot; =&gt; &quot;tres&quot;</code></pre><p>The order of the key-value pairs might not be the same. If you type the same example on your computer, you might get a different result. In general, the order of items in a dictionary is unpredictable.</p><p>But that’s not a problem because the elements of a dictionary are never indexed with integer indices. Instead, you use the keys to look up the corresponding values:</p><pre><code class="language-julia-repl">julia&gt; eng2sp[&quot;two&quot;]
+&quot;dos&quot;</code></pre><p>The key &quot;two&quot; always maps to the value &quot;dos&quot; so the order of the items doesn’t matter.</p><p>If the key isn’t in the dictionary, you get an exception:</p><pre><code class="language-julia-repl">julia&gt; eng2sp[&quot;four&quot;]
+ERROR: KeyError: key &quot;four&quot; not found</code></pre><p>The <code>length</code> function works on dictionaries; it returns the number of key-value pairs:</p><pre><code class="language-julia-repl">julia&gt; length(eng2sp)
+3</code></pre><p>The function <code>keys</code> returns an array with the keys of the dictionary:</p><pre><code class="language-julia-repl">julia&gt; ks = keys(eng2sp);
+
+julia&gt; print(ks)
+String[&quot;two&quot;, &quot;one&quot;, &quot;three&quot;]</code></pre><p>Now you can use the <code>∈</code> operator to see whether something appears as a <em>key</em> in the dictionary:</p><pre><code class="language-julia-repl">julia&gt; &quot;one&quot; ∈ ks
+true
+
+julia&gt; &quot;uno&quot; ∈ ks
+false</code></pre><p>To see whether something appears as a value in a dictionary, you can use the function <code>values</code>, which returns a collection of values, and then use the <code>∈</code> operator:</p><pre><code class="language-julia-repl">julia&gt; vs = values(eng2sp);
+
+julia&gt; &quot;uno&quot; ∈ vs
+true</code></pre><p>The <code>∈</code> operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in Section 8.6. As the array gets longer, the search time gets longer in direct proportion.</p><p>For dictionaries, Julia uses an algorithm called a <strong>hashtable</strong> that has a remarkable property: the <code>∈</code> operator takes about the same amount of time no matter how many items are in the dictionary.</p><h2><a class="nav-anchor" id="Dictionary-as-a-collection-of-counters-1" href="#Dictionary-as-a-collection-of-counters-1">Dictionary as a collection of counters</a></h2><p>Suppose you are given a string and you want to count how many times each letter appears. There are several ways you could do it:</p><ul><li><p>You could create 26 variables, one for each letter of the alphabet. Then you could traverse the string and, for each character, increment the corresponding counter, probably using a chained conditional.</p></li><li><p>You could create an array with 26 elements. Then you could convert each character to a number (using the built-in function <code>Int</code>), use the number as an index into the array, and increment the appropriate counter.</p></li><li><p>You could create a dictionary with characters as keys and counters as the corresponding values. The first time you see a character, you would add an item to the dictionary. After that you would increment the value of an existing item.</p></li></ul><p>Each of these options performs the same computation, but each of them implements that computation in a different way.</p><p>An <strong>implementation</strong> is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.</p><p>Here is what the code might look like:</p><pre><code class="language-julia">function histogram(s)
+    d = Dict()
+    for c in s
+        if c ∉ keys(d)
+            d[c] = 1
+        else
+            d[c] += 1
+        end
+    end
+    d
+end</code></pre><p>The name of the function is <code>histogram</code>, which is a statistical term for a collection of counters (or frequencies).</p><p>The first line of the function creates an empty dictionary. The <code>for</code> loop traverses the string. Each time through the loop, if the character <code>c</code> is not in the dictionary, we create a new item with key <code>c</code> and the initial value <code>1</code> (since we have seen this letter once). If <code>c</code> is already in the dictionary we increment <code>d[c]</code>.</p><p>Here’s how it works:</p><pre><code class="language-julia-repl">julia&gt; h = histogram(&quot;brontosaurus&quot;);
+
+julia&gt; print(h)
+Dict{Any,Any}(Pair{Any,Any}(&#39;n&#39;, 1),Pair{Any,Any}(&#39;b&#39;, 1),Pair{Any,Any}(&#39;o&#39;, 2),Pair{Any,Any}(&#39;t&#39;, 1),Pair{Any,Any}(&#39;a&#39;, 1),Pair{Any,Any}(&#39;u&#39;, 2),Pair{Any,Any}(&#39;s&#39;, 2),Pair{Any,Any}(&#39;r&#39;, 2))</code></pre><p>The histogram indicates that the letters <code>&#39;a&#39;</code> and <code>&#39;b&#39;</code> appear once; <code>&#39;o&#39;</code> appears twice, and so on.</p><p>Dictionaries have a function called <code>get</code> that takes a key and a default value. If the key appears in the dictionary, <code>get</code> returns the corresponding value; otherwise it returns the default value. For example:</p><pre><code class="language-julia-repl">julia&gt; h = histogram(&quot;a&quot;);
+
+julia&gt; print(h)
+Dict{Any,Any}(Pair{Any,Any}(&#39;a&#39;, 1))
+julia&gt; get(h, &#39;a&#39;, 0)
+1
+
+julia&gt; get(h, &#39;b&#39;, 0)
+0</code></pre><p>As an exercise, use <code>get!</code> to write <code>histogram</code> more concisely. <code>get!</code> returns the same value as <code>get</code> but if the key does not exist in the dictionary, it is added with the default value. You should be able to eliminate the <code>if</code> statement.</p><h2><a class="nav-anchor" id="Looping-and-dictionaries-1" href="#Looping-and-dictionaries-1">Looping and dictionaries</a></h2><p>You can traverse the keys of the dictionary in a <code>for</code> statement. For example, <code>printhist</code> prints each key and the corresponding value:</p><pre><code class="language-julia">function printhist(h)
+    for c in keys(h)
+        println(c, &quot; &quot;, h[c])
+    end
+end</code></pre><p>Here’s what the output looks like:</p><pre><code class="language-julia-repl">julia&gt; h = histogram(&quot;parrot&quot;);
+
+julia&gt; printhist(h)
+o 1
+a 1
+p 1
+t 1
+r 2</code></pre><p>Again, the keys are in no particular order. To traverse the keys in sorted order, you can combine <code>sort!</code> and <code>collect</code>:</p><pre><code class="language-julia-repl">julia&gt; for c in sort!(collect(keys(h)))
+           println(c, &quot; &quot;, h[c])
+       end
+a 1
+o 1
+p 1
+r 2
+t 1</code></pre><h2><a class="nav-anchor" id="Reverse-lookup-1" href="#Reverse-lookup-1">Reverse lookup</a></h2><p>Given a dictionary <code>d</code> and a key <code>k</code>, it is easy to find the corresponding value <code>v = d[k]</code>. This operation is called a <strong>lookup</strong>.</p><p>But what if you have <code>v</code> and you want to find <code>k</code>? You have two problems: first, there might be more than one key that maps to the value <code>v</code>. Depending on the application, you might be able to pick one, or you might have to make an array that contains all of them. Second, there is no simple syntax to do a <strong>reverse lookup</strong>; you have to search.</p><p>Here is a function that takes a value and returns the first key that maps to that value:</p><pre><code class="language-julia">function reverselookup(d, v)
+    for k in keys(d)
+        if d[k] == v
+            return k
+        end
+    end
+    error(&quot;LookupError&quot;)
+end</code></pre><p>This function is yet another example of the search pattern, but it uses a function we haven’t seen before, <code>error</code>. The <code>error</code> function is used to produce an <code>ErrorException</code> that interrupts the normal flow of control. In this case it has the message <code>&quot;LookupError&quot;</code>, indicating that a key does not exist.</p><p>If we get to the end of the loop, that means <code>v</code> doesn’t appear in the dictionary as a value, so we throw an exception.</p><p>Here is an example of a successful reverse lookup:</p><pre><code class="language-julia-repl">julia&gt; h = histogram(&quot;parrot&quot;);
+
+julia&gt; key = reverselookup(h, 2)
+&#39;r&#39;: ASCII/Unicode U+0072 (category Ll: Letter, lowercase)</code></pre><p>And an unsuccessful one:</p><pre><code class="language-julia-repl">julia&gt; key = reverselookup(h, 3)
+ERROR: LookupError
+Stacktrace:
+ [1] reverselookup(::Dict{Any,Any}, ::Int64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap11.jl:21</code></pre><p>The effect when you generate an exception is the same as when Julia throws one: it prints a traceback and an error message.</p><p>A reverse lookup is much slower than a forward lookup; if you have to do it often, or if the dictionary gets big, the performance of your program will suffer.</p><h2><a class="nav-anchor" id="Dictionaries-and-arrays-1" href="#Dictionaries-and-arrays-1">Dictionaries and arrays</a></h2><p>Arrays can appear as values in a dictionary. For example, if you are given a dictionary that maps from letters to frequencies, you might want to invert it; that is, create a dictionary that maps from frequencies to letters. Since there might be several letters with the same frequency, each value in the inverted dictionary should be an array of letters.</p><p>Here is a function that inverts a dictionary:</p><pre><code class="language-julia">function invertdict(d)
+    inverse = Dict()
+    for key in keys(d)
+        val = d[key]
+        if val ∉ keys(inverse)
+            inverse[val] = [key]
+        else
+            push!(inverse[val], key)
+        end
+    end
+    inverse
+end</code></pre><p>Each time through the loop, <code>key</code> gets a key from <code>d</code> and <code>val</code> gets the corresponding value. If <code>val</code> is not in <code>inverse</code>, that means we haven’t seen it before, so we create a new item and initialize it with a <strong>singleton</strong> (an array that contains a single element). Otherwise we have seen this value before, so we append the corresponding key to the array.</p><p>Here is an example:</p><pre><code class="language-julia-repl">julia&gt; hist = histogram(&quot;parrot&quot;);
+
+julia&gt; inverse = invertdict(hist);
+
+julia&gt; print(inverse)
+Dict{Any,Any}(Pair{Any,Any}(2, [&#39;r&#39;]),Pair{Any,Any}(1, [&#39;o&#39;, &#39;a&#39;, &#39;p&#39;, &#39;t&#39;]))</code></pre><figure>
+  <img src="fig111.svg" alt="State diagram.">
+  <figcaption>Figure 11.1. State diagram.</figcaption>
+</figure><p>Figure 11.1 is a state diagram showing <code>hist</code> and <code>inverse</code>. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.</p><p>I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be <strong>hashable</strong>.</p><p>A <strong>hash</strong> is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs.</p><footer><hr/><a class="previous" href="chap10.html"><span class="direction">Previous</span><span class="title">Arrays</span></a></footer></article></body></html>
