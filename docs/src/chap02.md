@@ -323,7 +323,7 @@ An error in a program that makes it do something other than what the programmer 
 
 ## Exercises
 
-### Exercise 1
+### Exercise 2-1
 
 Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.
 
@@ -337,7 +337,7 @@ Repeating my advice from the previous chapter, whenever you learn a new feature,
 
 5. In math notation you can multiply `x` and `y` like this: `x y`. What happens if you try that in Julia?
 
-### Exercise 2
+### Exercise 2-2
 
 Practice using the Julia REPL as a calculator:
 

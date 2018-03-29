@@ -832,7 +832,7 @@ A character or string used to indicate where a string should be split.
 
 ## Exercises
 
-### Exercise 1
+### Exercise 10-1
 
 Write a function called `nestedsum` that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:
 
@@ -843,7 +843,7 @@ julia> nestedsum(t)
 21
 ```
 
-### Exercise 2
+### Exercise 10-2
 
 Write a function called `cumulsum` that takes an array of numbers and returns the cumulative sum; that is, a new array where the ``i``th element is the sum of the first ``i+1`` elements from the original array. For example:
 
@@ -854,7 +854,7 @@ julia> print(cumulsum(t))
 Any[1, 3, 6]
 ```
 
-### Exercise 3
+### Exercise 10-3
 
 Write a function called `interior` that takes an array and returns a new array that contains all but the first and last elements. For example:
 
@@ -865,7 +865,7 @@ julia> print(interior(t))
 [2, 3]
 ```
 
-### Exercise 4
+### Exercise 10-4
 
 Write a function called `interior!` that takes an array, modifies it by removing the first and last elements, and returns `nothing`. For example:
 
@@ -878,7 +878,7 @@ julia> print(t)
 [2, 3]
 ```
 
-### Exercise 5
+### Exercise 10-5
 
 Write a function called `issort` that takes an array as a parameter and returns `true` if the array is sorted in ascending order and `false` otherwise. For example:
 
@@ -890,25 +890,25 @@ julia> issort(['b', 'a'])
 false
 ```
 
-### Exercise 6
+### Exercise 10-6
 
 Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called `isanagram` that takes two strings and returns `true` if they are anagrams.
 
-### Exercise 7
+### Exercise 10-7
 
 Write a function called `hasduplicates` that takes an array and returns `true` if there is any element that appears more than once. It should not modify the original array.
 
-### Exercise 8
+### Exercise 10-8
 
 This exercise pertains to the so-called Birthday Paradox, which you can read about at <http://en.wikipedia.org/wiki/Birthday_paradox>.
 
 If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches. Hint: you can generate random birthdays with `rand(1:365)`.
 
-### Exercise 9
+### Exercise 10-9
 
 Write a function that reads the file `words.txt` and builds an array with one element per word. Write two versions of this function, one using `push!` and the other using the idiom `t = [t..., x]`. Which one takes longer to run? Why?
 
-### Exercise 10
+### Exercise 10-10
 
 To check whether a word is in the word array, you could use the `∈` operator, but it would be slow because it searches through the words in order.
 
@@ -918,11 +918,11 @@ Either way, you cut the remaining search space in half. If the word array has 11
 
 Write a function called `inbisect` that takes a sorted array and a target value and returns `true` if the word is in the array and `false` if it’s not.
 
-### Exercise 11
+### Exercise 10-11
 
 Two words are a “reverse pair” if each is the reverse of the other. Write a program that finds all the reverse pairs in the word array.
 
-### Exercise 12
+### Exercise 10-12
 
 Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”.
 

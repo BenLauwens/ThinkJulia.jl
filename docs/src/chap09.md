@@ -44,11 +44,11 @@ end
 
 ## Exercises
 
-### Exercise 1
+### Exercise 9-1
 
 Write a program that reads `words.txt` and prints only the words with more than 20 characters (not counting whitespace).
 
-### Exercise 2
+### Exercise 9-2
 
 In 1939 Ernest Vincent Wright published a 50,000 word novel called Gadsby that does not contain the letter `'e'`. Since `'e'` is the most common letter in English, that’s not easy to do.
 
@@ -60,21 +60,21 @@ Write a function called `hasno_e` that returns `true` if the given word doesn’
 
 Modify your program from the previous section to print only the words that have no `'e'` and compute the percentage of the words in the list that have no `'e'`.
 
-### Exercise 3
+### Exercise 9-3
 
 Write a function named `avoids` that takes a word and a string of forbidden letters, and that returns `true` if the word doesn’t use any of the forbidden letters.
 
 Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
 
-### Exercise 4
+### Exercise 9-4
 
 Write a function named `usesonly` that takes a word and a string of letters, and that returns `true` if the word contains only letters in the list. Can you make a sentence using only the letters `acefhlo`? Other than `"Hoe alfalfa?"`
 
-### Exercise 5
+### Exercise 9-5
 
 Write a function named `usesall` that takes a word and a string of required letters, and that returns `true` if the word uses all the required letters at least once. How many words are there that use all the vowels `aeiou`? How about `aeiouy`?
 
-### Exercise 6
+### Exercise 9-6
 
 Write a function called `isabecedarian` that returns `true` if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
 
@@ -267,7 +267,7 @@ A test case that is atypical or non-obvious (and less likely to be handled corre
 
 ## Exercises
 
-### Exercise 7
+### Exercise 9-7
 
 This question is based on a Puzzler that was broadcast on the radio program *Car Talk* (<http://www.cartalk.com/content/puzzlers>):
 
@@ -275,7 +275,7 @@ This question is based on a Puzzler that was broadcast on the radio program *Car
 
 Write a program to find it.
 
-### Exercise 8
+### Exercise 9-8
 
 Here’s another *Car Talk* Puzzler (<http://www.cartalk.com/content/puzzlers>):
 
@@ -286,7 +286,7 @@ Here’s another *Car Talk* Puzzler (<http://www.cartalk.com/content/puzzlers>):
 
 Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements.
 
-### Exercise 9
+### Exercise 9-9
 
 Here’s another *Car Talk* Puzzler you can solve with a search (<http://www.cartalk.com/content/puzzlers>):
 

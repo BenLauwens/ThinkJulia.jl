@@ -569,17 +569,17 @@ A function or method argument that is not required.
 
 ## Exercises
 
-### Exercise 1
+### Exercise 8-1
 
 Read the documentation of the string functions at <https://docs.julialang.org/en/stable/stdlib/strings/>. You might want to experiment with some of them to make sure you understand how they work. `strip` and `replace` are particularly useful.
 
 The documentation uses a syntax that might be confusing. For example, in `search(string::AbstractString, chars::Chars, [start::Integer])`, the brackets indicate optional arguments. So `string` and `chars` are required, but `start` is optional.
 
-### Exercise 2
+### Exercise 8-2
 
 There is a builtin function called `count` that is similar to the function in Section 8.9. Read the documentation of this function and use it to count the number of `a`’s in "banana".
 
-### Exercise 3
+### Exercise 8-3
 
 A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
 
@@ -592,7 +592,7 @@ A step size of -1 goes through the word backwards, so the slice `[end:-1:1]` gen
 
 Use this idiom to write a one-line version of `ispalindrome` from Exercise 6.3.
 
-### Exercise 4
+### Exercise 8-4
 
 The following functions are all *intended* to check whether a string contains any lowercase letters, but at least some of them are wrong. For each function, describe what the function actually does (assuming that the parameter is a string).
 
@@ -642,7 +642,7 @@ function anylowercase5(s)
 end
 ```
 
-### Exercise 5
+### Exercise 8-5
 
 A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so `’A’` rotated by 3 is `’D’` and `’Z’` rotated by 1 is `’A’`.
 

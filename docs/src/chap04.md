@@ -410,7 +410,7 @@ A requirement that should be satisfied by the function before it ends.
 
 ## Exercises
 
-### Exercise 1
+### Exercise 4-1
 
 Enter the code in this chapter in a notebook.
 
@@ -442,7 +442,7 @@ function arc(t, r, angle)
 end
 ```
 
-### Exercise 2
+### Exercise 4-2
 
 Write an appropriately general set of functions that can draw flowers as in Figure 4.2.
 
@@ -467,7 +467,7 @@ fig04_2()
 \end{figure}
 ```
 
-### Exercise 3
+### Exercise 4-3
 
 Write an appropriately general set of functions that can draw shapes as in Figure 4.3.
 
@@ -492,13 +492,13 @@ fig04_3()
 \end{figure}
 ```
 
-### Exercise 4
+### Exercise 4-4
 
 The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.
 
 You should write one function for each letter, with names `draw_a`, `draw_b`, etc., and put your functions in a file named `letters.jl`.
 
-### Exercise 5
+### Exercise 4-5
 
 Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in Figure 4.4.
 

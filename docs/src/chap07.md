@@ -340,7 +340,7 @@ A general process for solving a category of problems.
 
 ## Exercises
 
-### Exercise 1
+### Exercise 7-1
 
 Copy the loop from Section 7.5 and encapsulate it in a function called `mysqrt` that takes `a` as a parameter, chooses a reasonable value of `x`, and returns an estimate of the square root of `a`.
 
@@ -356,7 +356,7 @@ testsquareroot() # hide
 
 The first column is a number, `a`; the second column is the square root of a computed with `mysqrt`; the third column is the square root computed by `sqrt`; the fourth column is the absolute value of the difference between the two estimates.
 
-### Exercise 2
+### Exercise 7-2
 
 The built-in function `parse` takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function `eval`. For example:
 
@@ -376,7 +376,7 @@ julia> eval(expr)
 
 Write a function called `evalloop` that iteratively prompts the user, takes the resulting input and evaluates it using `eval`, and prints the result. It should continue until the user enters `done`, and then return the value of the last expression it evaluated.
 
-### Exercise 3
+### Exercise 7-3
 
 The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of ``\frac{1}{\pi}``:
 

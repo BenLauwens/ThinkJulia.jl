@@ -21,7 +21,7 @@ module ThinkJulia
   export fig06_1
   export fig07_1
   export fig10_1, fig10_2, fig10_3, fig10_4, fig10_5
-  export fig11_1
+  export fig11_1, fig11_2
 
   include("code/chap03.jl")
   include("code/chap04.jl")

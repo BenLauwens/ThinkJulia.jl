@@ -445,7 +445,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 
 ## Exercises
 
-### Exercise 1
+### Exercise 5-1
 
 The function `time` returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
 
@@ -455,7 +455,7 @@ time()
 
 Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch.
 
-### Exercise 2
+### Exercise 5-2
 
 Fermat’s Last Theorem says that there are no positive integers ``a``, ``b``, and ``c`` such that
 
@@ -469,7 +469,7 @@ for any values of ``n`` greater than 2.
 
 2. Write a function that prompts the user to input values for `a`, `b`, `c` and `n`, converts them to integers, and uses `checkfermat` to check whether they violate Fermat’s theorem.
 
-### Exercise 3
+### Exercise 5-3
 
 If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
 
@@ -479,7 +479,7 @@ If you are given three sticks, you may or may not be able to arrange them in a t
 
 2. Write a function that prompts the user to input three stick lengths, converts them to integers, and uses `istriangle` to check whether sticks with the given lengths can form a triangle.
 
-### Exercise 4
+### Exercise 5-4
 
 What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
 
@@ -501,7 +501,7 @@ recurse(3, 0)
 
 The following exercises use the `Luxor` module, described in Chapter 4:
 
-### Exercise 5
+### Exercise 5-5
 
 Read the following function and see if you can figure out what it does (see the examples in Chapter 4). Then run it and see if you got it right.
 
@@ -521,7 +521,7 @@ function draw(t, length, n)
 end
 ```
 
-### Exercise 6
+### Exercise 5-6
 
 ```@eval
 using ThinkJulia

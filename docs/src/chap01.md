@@ -254,7 +254,7 @@ The process of finding and correcting bugs.
 
 ## Exercises
 
-### Exercise 1
+### Exercise 1-1
 
 It is a good idea to read this book in front of a computer so you can try out the examples as you go.
 
@@ -272,7 +272,7 @@ This kind of experiment helps you remember what you read; it also helps when you
 
 5. What happens if you have two values with no operator between them?
 
-### Exercise 2
+### Exercise 1-2
 
 Start the Julia REPL and use it as a calculator.
 

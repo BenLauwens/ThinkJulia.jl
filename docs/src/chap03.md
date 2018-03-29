@@ -476,7 +476,7 @@ A list of the functions that are executing, printed when an exception occurs.
 
 ## Exercises
 
-### Exercise 1
+### Exercise 3-1
 
 Write a function named `rightjustify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 
@@ -486,7 +486,7 @@ rightjustify("monty")
 
 Hint: Use string concatenation and repetition. Also, Julia provides a built-in function called `length` that returns the length of a string, so the value of `length("monty")` is 5.
 
-### Exercise 2
+### Exercise 3-2
 
 A function object is a value you can assign to a variable or pass as an argument. For example, `dotwice` is a function that takes a function object as an argument and calls it twice:
 

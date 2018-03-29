@@ -530,7 +530,7 @@ A programming pattern that uses a conditional statement to check for and handle 
 
 ## Exercises
 
-### Exercise 1
+### Exercise 6-1
 
 Draw a stack diagram for the following program. What does the program print?
 
@@ -557,7 +557,7 @@ y = x + 1
 println(c(x, y+3, x+y))
 ```
 
-### Exercise 2
+### Exercise 6-2
 
 The Ackermann function, ``A(m, n)``, is defined:
 
@@ -572,7 +572,7 @@ A(m-1, A(m, n-1))& \textrm{if }  m > 0 \textrm{ and } n > 0.
 
 See <http://en.wikipedia.org/wiki/Ackermann_function>. Write a function named `ack` that evaluates the Ackermann function. Use your function to evaluate `ack(3, 4)`, which should be 125. What happens for larger values of `m` and `n`?
 
-### Exercise 3
+### Exercise 6-3
 
 A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.
 
@@ -602,11 +602,11 @@ We’ll see how they work in chapter 8
 
 2. Write a function called `ispalindrome` that takes a string argument and returns `true` if it is a palindrome and `false` otherwise. Remember that you can use the built-in function `length` to check the length of a string.
 
-### Exercise 4
+### Exercise 6-4
 
 A number, ``a``, is a power of ``b`` if it is divisible by ``b`` and ``\frac{a}{b}`` is a power of ``b``. Write a function called `ispower` that takes parameters `a` and `b` and returns `true` if `a` is a power of `b`. Note: you will have to think about the base case.
 
-### Exercise 5
+### Exercise 6-5
 
 The greatest common divisor (GCD) of ``a`` and ``b`` is the largest number that divides both of them with no remainder.
 
