@@ -9,9 +9,9 @@ An **assignment statement** creates a new variable and gives it a value:
 ```jldoctest chap01
 julia> message = "And now for something completely different"
 "And now for something completely different"
-julia> n = 17 
+julia> n = 17
 17
-julia> π = 3.141592653589793 
+julia> π = 3.141592653589793
 3.141592653589793
 ```
 
@@ -21,7 +21,7 @@ A common way to represent variables on paper is to write the name with an arrow 
 
 ```@eval
 using ThinkJulia
-fig02_1() 
+fig02_1()
 ```
 
 ```@raw html
@@ -84,22 +84,22 @@ You don’t have to memorize this list. In most development environments, keywor
 An **expression** is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
 
 ```jldoctest chap01
-julia> 42 
+julia> 42
 42
-julia> n 
+julia> n
 17
-julia> n + 25 
+julia> n + 25
 42
 ```
 
 When you type an expression at the prompt, the REPL **evaluates** it, which means that it finds the value of the expression. In this example, `n` has the value 17 and `n + 25` has the value 42.
 
-A **statement** is a unit of code that has an effect, like creating a variable or displaying a value. 
+A **statement** is a unit of code that has an effect, like creating a variable or displaying a value.
 
 ```jldoctest chap01
 julia> n = 17
 17
-julia> println(n) 
+julia> println(n)
 17
 ```
 
@@ -121,9 +121,9 @@ Because Julia provides both modes, you can test bits of code in interactive mode
 For example, if you are using Julia as a calculator, you might type
 
 ```jldoctest
-julia> miles = 26.2 
+julia> miles = 26.2
 26.2
-julia> miles * 1.61 
+julia> miles * 1.61
 42.182
 ```
 
@@ -195,6 +195,7 @@ In general, you can’t perform mathematical operations on strings, even if the 
 But there are two exceptions, `*` and `^`.
 
 The `*` operator performs **string concatenation**, which means it joins the strings by linking them end-to-end. For example:
+
 ```jldoctest
 julia> first = "throat"
 "throat"
@@ -240,7 +241,7 @@ v = 5   # assign 5 to v
 This comment contains useful information that is not in the code:
 
 ```julia
-v = 5   # velocity in meters/second. 
+v = 5   # velocity in meters/second.
 ```
 
 Good variable names can reduce the need for comments, but long names can make complex expressions hard to read, so there is a tradeoff.
@@ -263,61 +264,61 @@ Three kinds of errors can occur in a program: syntax errors, runtime errors, and
 
 ## Glossary
 
-*variable*: 
+*variable*:
 A name that refers to a value.
 
-*assignment*: 
-A statement that assigns a value to a variable.
+*assignment*:
+A statement that assigns a value to a variable
 
-*state diagram*: 
+*state diagram*:
 A graphical representation of a set of variables and the values they refer to.
 
-*keyword*: 
+*keyword*:
 A reserved word that is used to parse a program; you cannot use keywords like `if`, `function`, and `while` as variable names.
 
-*operand*: 
+*operand*:
 One of the values on which an operator operates.
 
-*expression*: 
+*expression*:
 A combination of variables, operators, and values that represents a single result.
 
-*evaluate*: 
+*evaluate*:
 To simplify an expression by performing the operations in order to yield a single value.
 
-*statement*: 
+*statement*:
 A section of code that represents a command or action. So far, the statements we have seen are assignments and print statements.
 
-*execute*: 
+*execute*:
 To run a statement and do what it says.
 
-*interactive mode*: 
+*interactive mode*:
 A way of using the Julia REPL by typing code at the prompt.
 
-*script mode*: 
+*script mode*:
 A way of using the Julia REPL to read code from a script and run it.
 
-*script*: 
+*script*:
 A program stored in a file.
 
-*order of operations*: 
+*order of operations*:
 Rules governing the order in which expressions involving multiple operators and operands are evaluated.
 
-*concatenate*: 
+*concatenate*:
 To join two operands end-to-end.
 
-*comment*: 
+*comment*:
 Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
 
-*syntax error*: 
+*syntax error*:
 An error in a program that makes it impossible to parse (and therefore impossible to interpret).
 
-*exception*: 
+*exception*:
 An error that is detected while the program is running.
 
-*semantics*: 
+*semantics*:
 The meaning of a program.
 
-*semantic error*: 
+*semantic error*:
 An error in a program that makes it do something other than what the programmer intended.
 
 ## Exercises
@@ -338,7 +339,7 @@ Repeating my advice from the previous chapter, whenever you learn a new feature,
 
 ### Exercise 2
 
-Practice using the Julia REPL as a calculator: 
+Practice using the Julia REPL as a calculator:
 
 1. The volume of a sphere with radius ``r`` is ``\frac{4}{3} \pi r^3``. What is the volume of a sphere with radius 5?
 

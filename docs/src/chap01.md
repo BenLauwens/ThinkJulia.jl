@@ -1,6 +1,7 @@
 ```@raw latex
 \mainmatter
 ```
+
 # The way of the program
 
 The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
@@ -44,7 +45,7 @@ print_with_color(:blue, "julia>"; bold=true) # hide
 
 The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least `v0.x`.
 
-The last line is a **prompt** that indicates that the REPL is ready for you to enter code. If you type a line of code and hit `ENTER`, the REPL displays the result: 
+The last line is a **prompt** that indicates that the REPL is ready for you to enter code. If you type a line of code and hit `ENTER`, the REPL displays the result:
 
 ```jldoctest
 julia> 1 + 1
@@ -69,7 +70,7 @@ The parentheses indicate that `println` is a function. We’ll get to functions 
 
 ## Arithmetic operators
 
-After “Hello, World!”, the next step is arithmetic. Julia provides **operators**, which are special symbols that represent computations like addition and multiplication. 
+After “Hello, World!”, the next step is arithmetic. Julia provides **operators**, which are special symbols that represent computations like addition and multiplication.
 
 The operators `+`, `-`, and `*` perform addition, subtraction, and multiplication, as in the following examples:
 
@@ -82,7 +83,7 @@ julia> 6 * 7
 42
 ```
 
-The operator `/` performs division: 
+The operator `/` performs division:
 
 ```jldoctest
 julia> 84 / 2
@@ -146,7 +147,7 @@ That’s not what we expected at all! Julia parses `1,000,000` as a comma-separa
 
 Formal languages tend to have strict **syntax** rules that govern the structure of statements. For example, in mathematics the statement ``3 + 3 = 6`` has correct syntax, but ``3 + = 3 \& 6`` does not. In chemistry ``H_2O`` is a syntactically correct formula, but ``_2Zz`` is not.
 
-Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 \& 6`` is that `` \&`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
+Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 \& 6`` is that ``\&`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
 
 The second type of syntax rule pertains to the way tokens are combined. The equation ``3 += 3`` is illegal because even though ``+`` and ``=`` are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
 

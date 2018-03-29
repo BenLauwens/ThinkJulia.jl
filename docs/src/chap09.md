@@ -2,7 +2,7 @@
 
 This chapter presents the second case study, which involves solving word puzzles by searching for words that have certain properties. For example, we’ll find the longest palindromes in English and search for words whose letters appear in alphabetical order. And I will present another program development plan: reduction to a previously solved problem.
 
-##  Reading word lists
+## Reading word lists
 
 For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see <http://wikipedia.org/wiki/Moby_Project>). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is `113809of.fic`; you can download a copy, with the simpler name `words.txt`, from <https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt>.
 
@@ -24,7 +24,7 @@ IOStream(<file words.txt>)
 readline(fin)
 ```
 
-The first word in this particular list is “aa”, which is a kind of lava. 
+The first word in this particular list is “aa”, which is a kind of lava.
 
 The file stream keeps track of where it is in the file, so if you call readline again, you get the next word:
 
@@ -44,7 +44,7 @@ end
 
 ## Exercises
 
-### Exercise 1   
+### Exercise 1
 
 Write a program that reads `words.txt` and prints only the words with more than 20 characters (not counting whitespace).
 
@@ -60,21 +60,22 @@ Write a function called `hasno_e` that returns `true` if the given word doesn’
 
 Modify your program from the previous section to print only the words that have no `'e'` and compute the percentage of the words in the list that have no `'e'`.
 
-### Exercise 3  
+### Exercise 3
 
 Write a function named `avoids` that takes a word and a string of forbidden letters, and that returns `true` if the word doesn’t use any of the forbidden letters.
 
 Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
 
-### Exercise 4  
+### Exercise 4
 
 Write a function named `usesonly` that takes a word and a string of letters, and that returns `true` if the word contains only letters in the list. Can you make a sentence using only the letters `acefhlo`? Other than `"Hoe alfalfa?"`
 
-### Exercise 5 
+### Exercise 5
 
 Write a function named `usesall` that takes a word and a string of required letters, and that returns `true` if the word uses all the required letters at least once. How many words are there that use all the vowels `aeiou`? How about `aeiouy`?
 
-### Exercise 6  
+### Exercise 6
+
 Write a function called `isabecedarian` that returns `true` if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
 
 ## Search
@@ -274,16 +275,13 @@ This question is based on a Puzzler that was broadcast on the radio program *Car
 
 Write a program to find it.
 
-### Exercise 8   
+### Exercise 8
 
 Here’s another *Car Talk* Puzzler (<http://www.cartalk.com/content/puzzlers>):
 
 > “I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0.
-
 > “Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5.
-
 > “One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6. One mile after that, the middle 4 out of 6 numbers were palindromic. And you ready for this? One mile later, all 6 were palindromic!
-
 > “The question is, what was on the odometer when I first looked?”
 
 Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements.
@@ -293,7 +291,6 @@ Write a Julia program that tests all the six-digit numbers and prints any number
 Here’s another *Car Talk* Puzzler you can solve with a search (<http://www.cartalk.com/content/puzzlers>):
 
 > “Recently I had a visit with my mom and we realized that the two digits that make up my age when reversed resulted in her age. For example, if she’s 73, I’m 37. We wondered how often this has happened over the years but we got sidetracked with other topics and we never came up with an answer.
-
 >“When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?”
 
 Write a Julia program that searches for solutions to this Puzzler. Hint: you might find the function `lpad` useful.

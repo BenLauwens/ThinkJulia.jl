@@ -1,10 +1,10 @@
+# Functions
+
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
 end
 ```
-
-# Functions
 
 In the context of programming, a **function** is a named sequence of statements that performs a computation. When you define a function, you specify the name and the sequence of statements. Later, you can “call” the function by name.
 
@@ -67,19 +67,20 @@ The first example uses `log10` to compute a signal-to-noise ratio in decibels (a
 The second example finds the sine of radians. The name of the variable is a hint that `sin` and the other trigonometric functions (`cos`, `tan`, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by ``\pi``:
 
 ```jldoctest
-julia> degrees = 45 
+julia> degrees = 45
 45
-julia> radians = degrees / 180 * π 
+julia> radians = degrees / 180 * π
 0.7853981633974483
-julia> sin(radians) 
+julia> sin(radians)
 0.7071067811865475
 ```
 
 The value of the variable `π` is a floating-point approximation of ``\pi``, accurate to about 21 digits.
 
 If you know trigonometry, you can check the previous result by comparing it to the square root of two divided by two:
+
 ```jldoctest
-julia> sqrt(2) / 2 
+julia> sqrt(2) / 2
 0.7071067811865476
 ```
 
@@ -106,9 +107,9 @@ hours = 2
 ```
 
 ```jldoctest; setup = :(hours = 2)
-julia> minutes = hours * 60 # right 
+julia> minutes = hours * 60 # right
 120
-julia> hours * 60 = minutes # wrong! 
+julia> hours * 60 = minutes # wrong!
 ERROR: syntax: "60" is not a valid function argument name
 ```
 
@@ -130,7 +131,6 @@ The empty parentheses after the name indicate that this function doesn’t take 
 
 The first line of the function definition is called the **header**; the rest is called the **body**. The body is terminated with the keyword `end` and it can contain any number of statements.
 
-
 The quotation marks must be “straight quotes”, usually located next to Enter on the keyboard. “Curly quotes”, like the ones in this sentence, are not legal in Julia.
 
 If you type a function definition in interactive mode, the REPL indents to let you know that the definition isn’t complete:
@@ -145,7 +145,7 @@ To end the function, you have to enter `end`.
 Defining a function creates a function object, which is of type `Function`:
 
 ```jldoctest
-julia> printlyrics isa Function 
+julia> printlyrics isa Function
 true
 ```
 
@@ -171,7 +171,7 @@ And then call `repeatlyrics`:
 ```jldoctest
 julia> repeatlyrics()
 I'm a lumberjack, and I'm okay.
-I sleep all night and I work all day. 
+I sleep all night and I work all day.
 I'm a lumberjack, and I'm okay.
 I sleep all night and I work all day.
 ```
@@ -238,21 +238,21 @@ This function assigns the argument to a parameter named `bruce`. When the functi
 This function works with any value that can be printed.
 
 ```jldoctest
-julia> printtwice("Spam") 
+julia> printtwice("Spam")
 Spam
 Spam
-julia> printtwice(42) 
+julia> printtwice(42)
 42
 42
-julia> printtwice(π) 
-π = 3.1415926535897... 
+julia> printtwice(π)
+π = 3.1415926535897...
 π = 3.1415926535897...
 ```
 
 The same rules of composition that apply to built-in functions also apply to programmer-defined functions, so we can use any kind of expression as an argument for `printtwice`:
 
 ```jldoctest
-julia> printtwice("Spam "^4) 
+julia> printtwice("Spam "^4)
 Spam Spam Spam Spam
 Spam Spam Spam Spam
 ```
@@ -262,10 +262,10 @@ The argument is evaluated before the function is called, so in the examples the 
 You can also use a variable as an argument:
 
 ```jldoctest
-julia> michael = "Eric, the half a bee." 
+julia> michael = "Eric, the half a bee."
 "Eric, the half a bee."
-julia> printtwice(michael) 
-Eric, the half a bee. 
+julia> printtwice(michael)
+Eric, the half a bee.
 Eric, the half a bee.
 ```
 
@@ -284,14 +284,13 @@ end
 
 This function takes two arguments, concatenates them, and prints the result twice. Here is an example that uses it:
 
-
 ```jldoctest
-julia> line1 = "Bing tiddle " 
+julia> line1 = "Bing tiddle "
 "Bing tiddle "
-julia> line2 = "tiddle bang." 
+julia> line2 = "tiddle bang."
 "tiddle bang."
-julia> cattwice(line1, line2) 
-Bing tiddle tiddle bang. 
+julia> cattwice(line1, line2)
+Bing tiddle tiddle bang.
 Bing tiddle tiddle bang.
 ```
 
@@ -364,7 +363,7 @@ golden = (sqrt(5) + 1) / 2
 When you call a function in interactive mode, Julia displays the result:
 
 ```jldoctest
-julia> sqrt(5) 
+julia> sqrt(5)
 2.23606797749979
 ```
 
@@ -379,10 +378,10 @@ This script computes the square root of 5, but since it doesn’t store or displ
 Void functions might display something on the screen or have some other effect, but they don’t have a return value. If you assign the result to a variable, you get a special value called `nothing`.
 
 ```jldoctest
-julia> result = printtwice("Bing") 
+julia> result = printtwice("Bing")
 Bing
 Bing
-julia> println(result) 
+julia> println(result)
 nothing
 ```
 
@@ -477,7 +476,7 @@ A list of the functions that are executing, printed when an exception occurs.
 
 ## Exercises
 
-### Exercise 1  
+### Exercise 1
 
 Write a function named `rightjustify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 
@@ -487,7 +486,7 @@ rightjustify("monty")
 
 Hint: Use string concatenation and repetition. Also, Julia provides a built-in function called `length` that returns the length of a string, so the value of `length("monty")` is 5.
 
-### Exercise 2  
+### Exercise 2
 
 A function object is a value you can assign to a variable or pass as an argument. For example, `dotwice` is a function that takes a function object as an argument and calls it twice:
 
@@ -499,6 +498,7 @@ end
 ```
 
 Here’s an example that uses `dotwice` to call a function named `print_spam` twice.
+
 ```julia
 function print_spam()
     println("spam")
@@ -551,10 +551,10 @@ print("+ ")
 println("-")
 ```
 
-The output of these statements is `"+ -"` on the same line. 
+The output of these statements is `"+ -"` on the same line.
 
 The output from the next print statement would begin on the next line.
 
-2. Write a function that draws a similar grid with four rows and four columns.
+1. Write a function that draws a similar grid with four rows and four columns.
 
 Credit: This exercise is based on an exercise in Oualline, *Practical C Programming*, Third Edition, O’Reilly Media, 1997.

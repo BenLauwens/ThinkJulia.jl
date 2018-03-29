@@ -1,18 +1,18 @@
+# Strings
+
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
 end
 ```
 
-# Strings
-
 Strings are not like integers, floats, and booleans. A string is a **sequence**, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia.
 
 ## Characters
 
-The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the **ASCII standard**. 
+The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the **ASCII standard**.
 
-There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean. 
+There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean.
 
 The **Unicode standard** tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.
 
@@ -130,7 +130,7 @@ end
 
 This loop traverses the string and displays each letter on a line by itself. The loop condition is `index <= sizeof(fruit)`, so when index is larger than the number of bytes in the string, the condition is `false`, and the body of the loop doesn’t run.
 
-The function `firstindex` returns the first valid byte index. 
+The function `firstindex` returns the first valid byte index.
 
 As an exercise, write a function that takes a string as an argument and displays the letters backward, one per line.
 
@@ -205,7 +205,7 @@ Continuing this example, what do you think `str[:]` means? Try it and see.
 
 It is tempting to use the `[]` operator on the left side of an assignment, with the intention of changing a character in a string. For example:
 
-```jldoctest chap08 
+```jldoctest chap08
 julia> greeting = "Hello, world!";
 
 julia> greeting[0] = 'J'
@@ -380,7 +380,7 @@ end
 
 Julia does not handle uppercase and lowercase letters the same way people do. All the uppercase letters come before all the lowercase letters, so:
 
-```
+```julia
 Your word, Pineapple, comes before banana.
 ```
 
@@ -451,8 +451,6 @@ For debugging this kind of error, my first move is to print the values of the in
         println("$i $j")        # print here
         if word1[i] != word2[j]
 ```
-
-
 
 ```@meta
 DocTestSetup = quote
@@ -581,7 +579,7 @@ The documentation uses a syntax that might be confusing. For example, in `search
 
 There is a builtin function called `count` that is similar to the function in Section 8.9. Read the documentation of this function and use it to count the number of `a`’s in "banana".
 
-### Exercise 3 
+### Exercise 3
 
 A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
 

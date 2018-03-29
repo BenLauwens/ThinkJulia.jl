@@ -2,13 +2,14 @@
 
 This chapter presents a case study that demonstrates a process for designing functions that work together.
 
-It introduces the `Luxor` module, which allows you to create images using turtle graphics. 
+It introduces the `Luxor` module, which allows you to create images using turtle graphics.
 
 The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document.
 
 ## The Luxor module
 
 A **module** is a file that contains a collection of related functions. Modules can be installed in the REPL:
+
 ```julia
 julia> Pkg.add("Luxor")
 INFO: Cloning cache of Luxor from https://github.com/JuliaGraphics/Luxor.jl.git
@@ -19,6 +20,7 @@ INFO: Installing Luxor v0.10.4
 This can take some time.
 
 Before we can use the functions in a module, we have to import it with an `using` statement:
+
 ```jldoctest
 julia> using Luxor
 
@@ -333,7 +335,7 @@ polyline(t, n, len, angle)
 
 Draws n line segments with the given length and
 angle (in degrees) between them.  t is a turtle.
-""" 
+"""
 function polyline(t, n, len, angle)
     for i in 1:n
         forward(t, len)
@@ -344,7 +346,7 @@ end
 
 Documentation can be accessed in the REPL or in a notebook by typing ? followed by the name of a function or macro, and pressing `ENTER`:
 
-```
+```julia
 help?> polyline
 search:
 
@@ -408,7 +410,7 @@ A requirement that should be satisfied by the function before it ends.
 
 ## Exercises
 
-### Exercise 1  
+### Exercise 1
 
 Enter the code in this chapter in a notebook.
 
@@ -417,7 +419,7 @@ Enter the code in this chapter in a notebook.
 2. The version of `arc` in Section 4.7 is not very accurate because the linear approximation of the circle is always outside the true circle. As a result, the turtle ends up a few pixels away from the correct destination. My solution shows a way to reduce the effect of this error. Read the code and see if it makes sense to you. If you draw a diagram, you might see how it works.
 
 ```julia
-""" 
+"""
 arc(t, r, angle)
 
 Draws an arc with the given radius and angle:
@@ -440,7 +442,7 @@ function arc(t, r, angle)
 end
 ```
 
-### Exercise 2  
+### Exercise 2
 
 Write an appropriately general set of functions that can draw flowers as in Figure 4.2.
 
@@ -465,7 +467,7 @@ fig04_2()
 \end{figure}
 ```
 
-### Exercise 3 
+### Exercise 3
 
 Write an appropriately general set of functions that can draw shapes as in Figure 4.3.
 
@@ -490,13 +492,13 @@ fig04_3()
 \end{figure}
 ```
 
-### Exercise 4 
+### Exercise 4
 
 The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.
 
 You should write one function for each letter, with names `draw_a`, `draw_b`, etc., and put your functions in a file named `letters.jl`.
 
-### Exercise 5  
+### Exercise 5
 
 Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in Figure 4.4.
 

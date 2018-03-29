@@ -1,10 +1,10 @@
+# Iteration
+
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
 end
 ```
-
-# Iteration
 
 This chapter is about iteration, which is the ability to run a block of statements repeatedly. We saw a kind of iteration, using recursion, in Section 5.8. We saw another kind, using a `for` loop, in Section 4.2. In this chapter we’ll see yet another kind, using a `while` statement. But first I want to say a little more about variable assignment.
 
@@ -13,9 +13,9 @@ This chapter is about iteration, which is the ability to run a block of statemen
 As you may have discovered, it is legal to make more than one assignment to the same variable. A new assignment makes an existing variable refer to a new value (and stop referring to the old value).
 
 ```jldoctest chap07
-julia> x=5 
+julia> x=5
 5
-julia> x=7 
+julia> x=7
 7
 ```
 
@@ -86,7 +86,7 @@ ERROR: UndefVarError: y not defined
 
 Before you can update a variable, you have to initialize it, usually with a simple assignment:
 
-```jldoctest 
+```jldoctest
 julia> y = 0;
 
 julia> y = y + 1
@@ -171,11 +171,12 @@ while true
 end
 println("Done!")
 ```
+
 The loop condition is `true`, which is always true, so the loop runs until it hits the `break` statement.
 
 Each time through, it prompts the user with an angle bracket. If the user types `done`, the `break` statement exits the loop. Otherwise the program echoes whatever the user types and goes back to the top of the loop. Here’s a sample run:
 
-```
+```julia
 > not done
 not done
 > done
@@ -208,7 +209,7 @@ For example, one way of computing square roots is Newton’s method. Suppose tha
 ```math
 y = \frac{1}{2}\left(x + \frac{a}{x}\right)
 ```
- 
+
 For example, if $a$ is 4 and $x$ is 3:
 
 ```jldoctest chap07
@@ -339,7 +340,7 @@ A general process for solving a category of problems.
 
 ## Exercises
 
-### Exercise 1 
+### Exercise 1
 
 Copy the loop from Section 7.5 and encapsulate it in a function called `mysqrt` that takes `a` as a parameter, chooses a reasonable value of `x`, and returns an estimate of the square root of `a`.
 
@@ -355,7 +356,7 @@ testsquareroot() # hide
 
 The first column is a number, `a`; the second column is the square root of a computed with `mysqrt`; the third column is the square root computed by `sqrt`; the fourth column is the absolute value of the difference between the two estimates.
 
-### Exercise 2  
+### Exercise 2
 
 The built-in function `parse` takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function `eval`. For example:
 
@@ -375,7 +376,7 @@ julia> eval(expr)
 
 Write a function called `evalloop` that iteratively prompts the user, takes the resulting input and evaluates it using `eval`, and prints the result. It should continue until the user enters `done`, and then return the value of the last expression it evaluated.
 
-### Exercise 3  
+### Exercise 3
 
 The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of ``\frac{1}{\pi}``:
 

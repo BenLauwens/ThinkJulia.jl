@@ -1,10 +1,10 @@
+# Fruitful functions
+
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
 end
 ```
-
-# Fruitful functions
 
 Many of the Julia functions we have used, such as the math functions, produce return values. But the functions we’ve written are all void: they have an effect, like printing a value or moving a turtle, but they return `nothing`. In this chapter you will learn to write fruitful functions.
 
@@ -35,7 +35,7 @@ function area(radius)
 end
 ```
 
-The value returned by a function is the value of the last expression evaluated, which, by default, is the last expression in the body of the function definition.  
+The value returned by a function is the value of the last expression evaluated, which, by default, is the last expression in the body of the function definition.
 
 On the other hand, **temporary variables** like `a` and explicit `return` statements can make debugging easier.
 
@@ -362,9 +362,9 @@ After factorial, the most common example of a recursively defined mathematical f
 
 ```math
 \begin{aligned}
- 	 	\textit{fib}(0) &= 0 \\ 
- 	 	\textit{fib}(1) &= 1 \\
- 	 	\textit{fib}(n) &= \textit{fib}(n-1) + \textit{fib}(n-2)
+    \textit{fib}(0) &= 0 \\
+    \textit{fib}(1) &= 1 \\
+    \textit{fib}(n) &= \textit{fib}(n-1) + \textit{fib}(n-2)
 \end{aligned}
 ```
 
@@ -562,11 +562,11 @@ println(c(x, y+3, x+y))
 The Ackermann function, ``A(m, n)``, is defined:
 
 ```math
-A(m, n) = 	
+A(m, n) =
 \begin{cases}
-              n+1&	\textrm{if }  m = 0 \\
-        A(m-1, 1)&	\textrm{if }  m > 0 \textrm{ and } n = 0 \\
-A(m-1, A(m, n-1))&	\textrm{if }  m > 0 \textrm{ and } n > 0.
+              n+1& \textrm{if }  m = 0 \\
+        A(m-1, 1)& \textrm{if }  m > 0 \textrm{ and } n = 0 \\
+A(m-1, A(m, n-1))& \textrm{if }  m > 0 \textrm{ and } n > 0.
 \end{cases}
 ```
 
