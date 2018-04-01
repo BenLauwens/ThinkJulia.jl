@@ -5,18 +5,18 @@ julia&gt; x=7
 7</code></pre><p>The first time we display <code>x</code>, its value is 5; the second time, its value is 7.</p><figure>
   <img src="fig71.svg" alt="State diagram.">
   <figcaption>Figure 7.1. State diagram.</figcaption>
-</figure><p>Figure 7.1 shows what <strong>reassignment</strong> looks like in a state diagram.</p><p>At this point I want to address a common source of confusion. Because Julia uses the equal sign (<code>=</code>) for assignment, it is tempting to interpret a statement like <code>a = b</code> as a mathematical proposition of equality; that is, the claim that <code>a</code> and <code>b</code> are equal. But this interpretation is wrong.</p><p>First, equality is a symmetric relationship and assignment is not. For example, in mathematics, if <span>$a=7$</span> then <span>$7=a$</span>. But in Julia, the statement <code>a = 7</code> is legal and <code>7 = a</code> is not.</p><p>Also, in mathematics, a proposition of equality is either true or false for all time. If <span>$a=b$</span> now, then <span>$a$</span> will always equal <span>$b$</span>. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:</p><pre><code class="language-jldoctsets">julia&gt; a = 5;
-
-julia&gt; b = a;    # a and b are now equal
-
-julia&gt; a = 3;    # a and b are no longer equal
-
+</figure><p>Figure 7.1 shows what <strong>reassignment</strong> looks like in a state diagram.</p><p>At this point I want to address a common source of confusion. Because Julia uses the equal sign (<code>=</code>) for assignment, it is tempting to interpret a statement like <code>a = b</code> as a mathematical proposition of equality; that is, the claim that <code>a</code> and <code>b</code> are equal. But this interpretation is wrong.</p><p>First, equality is a symmetric relationship and assignment is not. For example, in mathematics, if <span>$a=7$</span> then <span>$7=a$</span>. But in Julia, the statement <code>a = 7</code> is legal and <code>7 = a</code> is not.</p><p>Also, in mathematics, a proposition of equality is either true or false for all time. If <span>$a=b$</span> now, then <span>$a$</span> will always equal <span>$b$</span>. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:</p><pre><code class="language-julia-repl">julia&gt; a = 5
+5
+julia&gt; b = a    # a and b are now equal
+5
+julia&gt; a = 3    # a and b are no longer equal
+3
 julia&gt; b
 5
 </code></pre><p>The third line changes the value of <code>a</code> but does not change the value of <code>b</code>, so they are no longer equal.</p><p>Reassigning variables is often useful, but you should use it with caution. If the values of variables change frequently, it can make the code difficult to read and debug.</p><h2><a class="nav-anchor" id="Updating-variables-1" href="#Updating-variables-1">Updating variables</a></h2><p>A common kind of reassignment is an update, where the new value of the variable depends on the old.</p><pre><code class="language-julia-repl">julia&gt; x = x + 1
 8</code></pre><p>This means “get the current value of <code>x</code>, add one, and then update <code>x</code> with the new value.”</p><p>If you try to update a variable that doesn’t exist, you get an error, because Julia evaluates the right side before it assigns a value to <code>x</code>:</p><pre><code class="language-julia-repl">julia&gt; y = y + 1
-ERROR: UndefVarError: y not defined</code></pre><p>Before you can update a variable, you have to initialize it, usually with a simple assignment:</p><pre><code class="language-julia-repl">julia&gt; y = 0;
-
+ERROR: UndefVarError: y not defined</code></pre><p>Before you can update a variable, you have to initialize it, usually with a simple assignment:</p><pre><code class="language-julia-repl">julia&gt; y = 0
+0
 julia&gt; y = y + 1
 1</code></pre><p>Updating a variable by adding 1 is called an <strong>increment</strong>; subtracting 1 is called a <strong>decrement</strong>.</p><h2><a class="nav-anchor" id="The-while-statement-1" href="#The-while-statement-1">The <code>while</code> statement</a></h2><p>Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called <strong>iteration</strong>.</p><p>We have already seen two functions, <code>countdown</code> and <code>printn</code>, that iterate using recursion. Because iteration is so common, Julia provides language features to make it easier. One is the <code>for</code> statement we saw in Section 4.2. We’ll get back to that later.</p><p>Another is the <code>while</code> statement. Here is a version of <code>countdown</code> that uses a <code>while</code> statement:</p><pre><code class="language-julia">function countdown(n)
     while n &gt; 0
@@ -49,26 +49,27 @@ Done!</code></pre><p>This way of writing <code>while</code> loops is common beca
         continue
     end
     println(i)
-end</code></pre><p>If <code>i</code> is divisible by 3, the <code>continue</code> statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed.</p><h2><a class="nav-anchor" id="Square-roots-1" href="#Square-roots-1">Square roots</a></h2><p>Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.</p><p>For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of <span>$a$</span>. If you start with almost any estimate, <span>$x$</span>, you can compute a better estimate with the following formula:</p><div>\[y = \frac{1}{2}\left(x + \frac{a}{x}\right)\]</div><p>For example, if <span>$a$</span> is 4 and <span>$x$</span> is 3:</p><pre><code class="language-julia-repl">julia&gt; a = 4;
-
-julia&gt; x = 3;
-
+end</code></pre><p>If <code>i</code> is divisible by 3, the <code>continue</code> statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed.</p><h2><a class="nav-anchor" id="Square-roots-1" href="#Square-roots-1">Square roots</a></h2><p>Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.</p><p>For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of <span>$a$</span>. If you start with almost any estimate, <span>$x$</span>, you can compute a better estimate with the following formula:</p><div>\[y = \frac{1}{2}\left(x + \frac{a}{x}\right)\]</div><p>For example, if <span>$a$</span> is 4 and <span>$x$</span> is 3:</p><pre><code class="language-julia-repl">julia&gt; a = 4
+4
+julia&gt; x = 3
+3
 julia&gt; y = (x + a/x) / 2
-2.1666666666666665</code></pre><p>The result is closer to the correct answer (<span>$\sqrt 4 = 2$</span>). If we repeat the process with the new estimate, it gets even closer:</p><pre><code class="language-julia-repl">julia&gt; x = y;
-
+2.1666666666666665</code></pre><p>The result is closer to the correct answer (<span>$\sqrt 4 = 2$</span>). If we repeat the process with the new estimate, it gets even closer:</p><pre><code class="language-julia-repl">julia&gt; x = y
+2.1666666666666665
 julia&gt; y = (x + a/x) / 2
-2.0064102564102564</code></pre><p>After a few more updates, the estimate is almost exact:</p><pre><code class="language-julia-repl">julia&gt; x = y;
-
+2.0064102564102564</code></pre><p>After a few more updates, the estimate is almost exact:</p><pre><code class="language-julia-repl">julia&gt; x = y
+2.0064102564102564
 julia&gt; y = (x + a/x) / 2
 2.0000102400262145
-julia&gt; x = y;
-
+julia&gt; x = y
+2.0000102400262145
 julia&gt; y = (x + a/x) / 2
-2.0000000000262146</code></pre><p>In general we don’t know ahead of time how many steps it takes to get to the right answer, but we know when we get there because the estimate stops changing:</p><pre><code class="language-julia-repl">julia&gt; x = y;
-
+2.0000000000262146</code></pre><p>In general we don’t know ahead of time how many steps it takes to get to the right answer, but we know when we get there because the estimate stops changing:</p><pre><code class="language-julia-repl">julia&gt; x = y
+2.0000000000262146
 julia&gt; y = (x + a/x) / 2
-2.0</code></pre><pre><code class="language-julia-repl">julia&gt; x = y;
-
+2.0
+julia&gt; x = y
+2.0
 julia&gt; y = (x + a/x) / 2
 2.0</code></pre><p>When <code>y == x</code>, we can stop. Here is a loop that starts with an initial estimate, <code>x</code>, and improves it until it stops changing:</p><pre><code class="language-julia">while true
     println(x)
@@ -91,12 +92,9 @@ end</code></pre><p>Where <code>ε</code> (<code>\varepsilon TAB</code>) has a va
 8.0 2.82842712474619   2.8284271247461903 4.440892098500626e-16
 9.0 3.0                3.0                0.0</code></pre></div><p>The first column is a number, <code>a</code>; the second column is the square root of a computed with <code>mysqrt</code>; the third column is the square root computed by <code>sqrt</code>; the fourth column is the absolute value of the difference between the two estimates.</p><h3><a class="nav-anchor" id="Exercise-7-2-1" href="#Exercise-7-2-1">Exercise 7-2</a></h3><p>The built-in function <code>parse</code> takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function <code>eval</code>. For example:</p><pre><code class="language-julia-repl">julia&gt; expr = parse(&quot;1+2*3&quot;)
 :(1 + 2 * 3)
-
 julia&gt; eval(expr)
 7
-
 julia&gt; expr = parse(&quot;sqrt(π)&quot;)
 :(sqrt(π))
-
 julia&gt; eval(expr)
 1.7724538509055159</code></pre><p>Write a function called <code>evalloop</code> that iteratively prompts the user, takes the resulting input and evaluates it using <code>eval</code>, and prints the result. It should continue until the user enters <code>done</code>, and then return the value of the last expression it evaluated.</p><h3><a class="nav-anchor" id="Exercise-7-3-1" href="#Exercise-7-3-1">Exercise 7-3</a></h3><p>The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of <span>$\frac{1}{\pi}$</span>:</p><div>\[\frac{1}{\pi}=\frac{2\sqrt2}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\]</div><p>Write a function called <code>estimatepi</code> that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than <code>1e-15</code> (which is Julia notation for <span>$10^{−15}$</span>). You can check the result by comparing it to <code>π</code>.</p><footer><hr/><a class="previous" href="chap06.html"><span class="direction">Previous</span><span class="title">Fruitful functions</span></a><a class="next" href="chap08.html"><span class="direction">Next</span><span class="title">Strings</span></a></footer></article></body></html>
