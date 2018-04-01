@@ -1,6 +1,7 @@
 using Documenter
 
 makedocs(
+  #format = :latex,
   format = :html,
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",

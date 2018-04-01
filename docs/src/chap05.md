@@ -15,7 +15,6 @@ The **floor division** operator, `÷` (`\div TAB`), divides two numbers and roun
 ```jldoctest chap05
 julia> minutes = 105
 105
-
 julia> minutes / 60
 1.75
 ```
@@ -52,7 +51,6 @@ A **boolean expression** is an expression that is either true or false. The foll
 ```jldoctest
 julia> 5 == 5
 true
-
 julia> 5 == 6
 false
 ```
@@ -62,7 +60,6 @@ false
 ```jldoctest
 julia> typeof(true)
 Bool
-
 julia> typeof(false)
 Bool
 ```
@@ -301,12 +298,20 @@ end
 
 In most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:
 
-```@setup chap05
-using ThinkJulia
+```@raw latex
+\begin{minted}{jlcon}
+julia> recurse()
+ERROR: StackOverflowError:
+Stacktrace:
+ [1] recurse() at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap05.jl:19 (repeats 80000 times)
+\end{minted}
 ```
 
-```@repl chap05
-recurse()
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; recurse()
+ERROR: StackOverflowError:
+Stacktrace:
+ [1] recurse() at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap05.jl:19 (repeats 80000 times)</code></pre>
 ```
 
 This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 `recurse` frames on the stack!
@@ -319,47 +324,82 @@ The programs we have written so far accept no input from the user. They just do 
 
 Julia provides a built-in function called input that stops the program and waits for the user to type something. When the user presses `RETURN` or `ENTER`, the program resumes and `readline` returns what the user typed as a string.
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> text = readline()
 What are you waiting for?
 "What are you waiting for?"
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; text = readline()
+What are you waiting for?
+"What are you waiting for?"</code></pre>
 ```
 
 Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> print("What...is your name? "); readline()
 What...is your name? Arthur, King of the Britons!
 "Arthur, King of the Britons!"
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; print("What...is your name? "); readline()
+What...is your name? Arthur, King of the Britons!
+"Arthur, King of the Britons!"</code></pre>
 ```
 
 A semi-colon `;` allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
 
 If you expect the user to type an integer, you can try to convert the return value to `Int64`:
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> println("What...is the airspeed velocity of an unladen swallow?"); speed = readline()
 What...is the airspeed velocity of an unladen swallow?
 42
 "42"
-
 julia> parse(Int64, speed)
 42
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; println("What...is the airspeed velocity of an unladen swallow?"); speed = readline()
+What...is the airspeed velocity of an unladen swallow?
+42
+"42"
+julia&gt; parse(Int64, speed)
+42</code></pre>
 ```
 
 But if the user types something other than a string of digits, you get an error:
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> println("What...is the airspeed velocity of an unladen swallow? "); speed = readline()
 What...is the airspeed velocity of an unladen swallow?
 What do you mean, an African or a European swallow?
 "What do you mean, an African or a European swallow?"
-
 julia> parse(Int64, speed)
 ERROR: ArgumentError: invalid base 10 digit 'W' in "What do you mean, an African or a European swallow?"
-Stacktrace:
- [1] macro expansion at ./REPL.jl:2 [inlined]
- [2] (::Base.REPL.##1#2{Base.REPL.REPLBackend})() at ./event.jl:73
+[...]
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; println("What...is the airspeed velocity of an unladen swallow? "); speed = readline()
+What...is the airspeed velocity of an unladen swallow?
+What do you mean, an African or a European swallow?
+"What do you mean, an African or a European swallow?"
+julia&gt; parse(Int64, speed)
+ERROR: ArgumentError: invalid base 10 digit 'W' in "What do you mean, an African or a European swallow?"
+[...]</code></pre>
 ```
 
 We will see how to handle this kind of error later.

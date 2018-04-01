@@ -40,7 +40,16 @@ The Julia **REPL** (Read–Eval–Print Loop) is a program that reads and execut
 
 ```@example
 Base.banner() # hide
-print_with_color(:blue, "julia>"; bold=true) # hide
+```
+
+```@raw latex
+\begin{minted}{jlcon}
+julia>
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt;</code></pre>
 ```
 
 The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least `v0.x`.
@@ -58,8 +67,9 @@ Now you’re ready to get started. From here on, I assume that you know how to s
 
 Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:
 
-```@repl
-println("Hello, World!")
+```jldoctest
+julia> println("Hello, World!")
+Hello, World!
 ```
 
 This is an example of a **print statement**, although it doesn’t actually print anything on paper. It displays a result on the screen.
@@ -131,7 +141,8 @@ They’re strings.
 
 When you type a large integer, you might be tempted to use commas between groups of digits, as in `1,000,000`. This is not a legal *integer* in Julia, but it is legal:
 
-```@repl
+```jldoctest
+julia> 1,000,000
 (1, 0, 0)
 ```
 

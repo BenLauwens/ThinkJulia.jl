@@ -89,7 +89,6 @@ Now you can use the `∈` operator to see whether something appears as a *key* i
 ```jldoctest chap11
 julia> "one" ∈ ks
 true
-
 julia> "uno" ∈ ks
 false
 ```
@@ -166,7 +165,6 @@ Dict{Any,Any} with 1 entry:
   'a' => 1
 julia> get(h, 'a', 0)
 1
-
 julia> get(h, 'b', 0)
 0
 ```
@@ -598,7 +596,7 @@ If you did Exercise 10-7, you already have a function named `hasduplicates` that
 
 Use a dictionary to write a faster, simpler version of `hasduplicates`.
 
-### Exercise 11_5
+### Exercise 11-5
 
 Two words are “rotate pairs” if you can rotate one of them and get the other (see `rotateword` in Exercise 8.5).
 

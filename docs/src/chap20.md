@@ -1,5 +1,7 @@
 # The goodies
 
+## Keyword arguments
+
 ## Conditional expressions
 
 The operators `&&` and `||` do a **short-circuit evaluation**: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain. Explicitly, this means that:

@@ -41,10 +41,8 @@ The function `typeof` can be used to find out the kind of the array:
 ```jldoctest chap10
 julia> typeof(cheeses)
 Array{String,1}
-
 julia> typeof(numbers)
 Array{Int64,1}
-
 julia> typeof(empty)
 Array{Any,1}
 ```
@@ -63,8 +61,8 @@ julia> cheeses[1]
 Unlike strings, arrays are **mutable**. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:
 
 ```jldoctest chap10
-julia> numbers[2] = 5;
-
+julia> numbers[2] = 5
+5
 julia> print(numbers)
 [42, 5]
 ```
@@ -109,7 +107,6 @@ The `∈` operator also works on arrays:
 ```jldoctest chap10
 julia> "Edam" ∈ cheeses
 true
-
 julia> "Brie" in cheeses
 false
 ```
@@ -341,7 +338,6 @@ julia> t = ['a', 'b', 'c'];
 
 julia> splice!(t, 2)
 'b': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
-
 julia> print(t)
 ['a', 'c']
 ```
@@ -355,7 +351,6 @@ julia> t = ['a', 'b', 'c'];
 
 julia> pop!(t)
 'c': ASCII/Unicode U+0063 (category Ll: Letter, lowercase)
-
 julia> print(t)
 ['a', 'b']
 ```
@@ -367,7 +362,6 @@ julia> t = ['a', 'b', 'c'];
 
 julia> shift!(t)
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
-
 julia> print(t)
 ['b', 'c']
 ```
@@ -482,10 +476,10 @@ end
 ```
 
 ```jldoctest
-julia> a = "banana";
-
-julia> b = "banana";
-
+julia> a = "banana"
+"banana"
+julia> b = "banana"
+"banana"
 julia> a ≡ b        # false for Julia v0.6
 true
 ```
@@ -571,8 +565,8 @@ An object with more than one reference has more than one name, so we say that th
 If the aliased object is mutable, changes made with one alias affect the other:
 
 ```jldoctest chap10
-julia> b[1] = 42;
-
+julia> b[1] = 42
+42
 julia> print(a)
 [42, 2, 3]
 ```
@@ -775,7 +769,6 @@ julia> t2 = sort(t);
 
 julia> println(t)
 [3, 1, 2]
-
 julia> println(t2)
 [1, 2, 3]
 ```
@@ -869,7 +862,7 @@ julia> print(interior(t))
 
 Write a function called `interior!` that takes an array, modifies it by removing the first and last elements, and returns `nothing`. For example:
 
-```julia
+```jldoctest
 julia> t = [1, 2, 3, 4];
 
 julia> interior!(t)
@@ -885,7 +878,6 @@ Write a function called `issort` that takes an array as a parameter and returns 
 ```jldoctest
 julia> issort([1, 2, 2])
 true
-
 julia> issort(['b', 'a'])
 false
 ```

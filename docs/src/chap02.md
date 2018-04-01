@@ -50,15 +50,24 @@ The underscore character, `_`, can appear in a name. It is often used in names w
 
 If you give a variable an illegal name, you get a syntax error:
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> 76trombones = "big parade"
 ERROR: syntax: "76" is not a valid function argument name
-
 julia> more@ = 1000000
 ERROR: syntax: unexpected "="
-
 julia> type = "Advanced Theoretical Zymurgy"
 ERROR: syntax: unexpected "="
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; 76trombones = &quot;big parade&quot;
+ERROR: syntax: "76" is not a valid function argument name
+julia&gt; more@ = 1000000
+ERROR: syntax: unexpected "="
+julia&gt; type = &quot;Advanced Theoretical Zymurgy&quot;
+ERROR: syntax: unexpected "="</code></pre>
 ```
 
 `76trombones` is illegal because it begins with a number. `more@` is illegal because it contains an illegal character, `@`. But what’s wrong with `type`?
@@ -199,10 +208,8 @@ The `*` operator performs **string concatenation**, which means it joins the str
 ```jldoctest
 julia> first = "throat"
 "throat"
-
 julia> second = "warbler"
 "warbler"
-
 julia> first * second
 "throatwarbler"
 ```

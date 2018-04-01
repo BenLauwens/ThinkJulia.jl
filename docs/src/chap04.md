@@ -10,11 +10,19 @@ The examples in this chapter can be executed in a graphical notebook on JuliaBox
 
 A **module** is a file that contains a collection of related functions. Modules can be installed in the REPL:
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> Pkg.add("Luxor")
 INFO: Cloning cache of Luxor from https://github.com/JuliaGraphics/Luxor.jl.git
 INFO: Installing Luxor v0.10.4
 ...
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; Pkg.add("Luxor")
+INFO: Cloning cache of Luxor from https://github.com/JuliaGraphics/Luxor.jl.git
+INFO: Installing Luxor v0.10.4</code></pre>
 ```
 
 This can take some time.

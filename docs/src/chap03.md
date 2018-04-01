@@ -12,8 +12,9 @@ In the context of programming, a **function** is a named sequence of statements 
 
 We have already seen one example of a function call:
 
-```@repl
-typeof(42)
+```jldoctest
+julia> typeof(42)
+Int64
 ```
 
 The name of the function is `typeof`. The expression in parentheses is called the **argument** of the function. The result, for this function, is the type of the argument.
@@ -22,30 +23,38 @@ It is common to say that a function “takes” an argument and “returns” a 
 
 Julia provides functions that convert values from one type to another. The `parse` function takes a string and converts it to any number type, if it can, or complains otherwise:
 
-```@repl
-parse(Int64, "32")
-parse(Float64, "3.14159")
-parse(Int64, "Hello")
+```jldoctest
+julia> parse(Int64, "32")
+32
+julia> parse(Float64, "3.14159")
+3.14159
+julia> parse(Int64, "Hello")
+ERROR: ArgumentError: invalid base 10 digit 'H' in "Hello"
 ```
 
 `trunc` can convert floating-point values to integers, but it doesn’t round off; it chops off the fraction part:
 
-```@repl
-trunc(3.99999)
-trunc(-2.3)
+```jldoctest
+julia> trunc(Int64, 3.99999)
+3
+julia> trunc(Int64, -2.3)
+-2
 ```
 
 `float` converts integers to floating-point numbers:
 
-```@repl
-float(32)
+```jldoctest
+julia> float(32)
+32.0
 ```
 
 Finally, `string` converts its argument to a string:
 
-```@repl
-string(32)
-string(3.14159)
+```jldoctest
+julia> string(32)
+"32"
+julia> string(3.14159)
+"3.14159"
 ```
 
 ## Math functions
@@ -135,9 +144,16 @@ The quotation marks must be “straight quotes”, usually located next to Enter
 
 If you type a function definition in interactive mode, the REPL indents to let you know that the definition isn’t complete:
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> function printlyrics()
        println("I'm a lumberjack, and I'm okay.")
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; function printlyrics()
+       println("I'm a lumberjack, and I'm okay.")</code></pre>
 ```
 
 To end the function, you have to enter `end`.
@@ -480,7 +496,11 @@ A list of the functions that are executing, printed when an exception occurs.
 
 Write a function named `rightjustify` that takes a string named `s` as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 
-```@repl
+```@setup chap03
+using ThinkJulia
+```
+
+```@repl chap03
 rightjustify("monty")
 ```
 
@@ -517,7 +537,7 @@ dotwice(print_spam)
 
 5. Define a new function called `dofour` that takes a function object and a value and calls the function four times, passing the value as a parameter. There should be only two statements in the body of this function, not four.
 
-### Exercise 3
+### Exercise 3-3
 
 Note: This exercise should be done using only the statements and other features we have learned so far.
 

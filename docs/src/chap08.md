@@ -21,10 +21,8 @@ A `Char` value represents a single character and is surrounded by single quotes:
 ```jldoctest
 julia> 'x'
 'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
-
 julia> '🍌'
 '🍌': Unicode U+01f34c (category So: Symbol, other)
-
 julia> typeof('x')
 Char
 ```
@@ -38,7 +36,6 @@ A string is a sequence of characters. You can access the characters one at a tim
 ```jldoctest chap08
 julia> fruit = "banana"
 "banana"
-
 julia> letter = fruit[1]
 'b': ASCII/Unicode U+0062 (category Ll: Letter, lowercase)
 ```
@@ -57,11 +54,10 @@ julia> fruit[end]
 As an index you can use an expression that contains variables and operators:
 
 ```jldoctest chap08
-julia> i = 1;
-
+julia> i = 1
+1
 julia> fruit[i+1]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
-
 julia> fruit[end-1]
 'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)
 ```
@@ -80,7 +76,6 @@ ERROR: MethodError: no method matching getindex(::String, ::Float64)
 ```jldoctest chap08
 julia> fruits = "🍌 🍎 🍐"
 "🍌 🍎 🍐"
-
 julia> len = length(fruits)
 5
 ```
@@ -206,8 +201,8 @@ Continuing this example, what do you think `str[:]` means? Try it and see.
 It is tempting to use the `[]` operator on the left side of an assignment, with the intention of changing a character in a string. For example:
 
 ```jldoctest chap08
-julia> greeting = "Hello, world!";
-
+julia> greeting = "Hello, world!"
+"Hello, world!"
 julia> greeting[0] = 'J'
 ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ```
@@ -226,10 +221,10 @@ This example concatenates a new first letter onto a slice of greeting. It has no
 Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to `string` or repeated multiplications, Julia allows **string interpolation** using `$`:
 
 ```jldoctest
-julia> greet = "Hello";
-
-julia> whom = "World";
-
+julia> greet = "Hello"
+"Hello"
+julia> whom = "World"
+"World"
 julia> "$greet, $(whom)!"
 "Hello, World!"
 ```
@@ -583,9 +578,11 @@ There is a builtin function called `count` that is similar to the function in Se
 
 A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
 
-```@repl
-fruit = "banana"
-fruit[1:2:6]
+```jldoctest
+julia> fruit = "banana"
+"banana"
+julia> fruit[1:2:6]
+"bnn"
 ```
 
 A step size of -1 goes through the word backwards, so the slice `[end:-1:1]` generates a reversed string.

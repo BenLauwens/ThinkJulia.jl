@@ -13,9 +13,16 @@ dir = Pkg.dir("ThinkJulia")
 fin = open(dir * "/data/words.txt")
 ```
 
-```julia
+```@raw latex
+\begin{minted}{jlcon}
 julia> fin = open("words.txt")
 IOStream(<file words.txt>)
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; fin = open("words.txt")
+IOStream(<file words.txt>)</code></pre>
 ```
 
 `fin` is a common name for a file stream used for input. Julia provides several function for reading, including `readline`, which reads characters from the file until it gets to a `NEWLINE` and returns the result as a string:

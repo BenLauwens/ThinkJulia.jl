@@ -50,13 +50,13 @@ First, equality is a symmetric relationship and assignment is not. For example, 
 
 Also, in mathematics, a proposition of equality is either true or false for all time. If ``a=b`` now, then ``a`` will always equal ``b``. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:
 
-```jldoctsets chap07
-julia> a = 5;
-
-julia> b = a;    # a and b are now equal
-
-julia> a = 3;    # a and b are no longer equal
-
+```jldoctest
+julia> a = 5
+5
+julia> b = a    # a and b are now equal
+5
+julia> a = 3    # a and b are no longer equal
+3
 julia> b
 5
 
@@ -87,8 +87,8 @@ ERROR: UndefVarError: y not defined
 Before you can update a variable, you have to initialize it, usually with a simple assignment:
 
 ```jldoctest
-julia> y = 0;
-
+julia> y = 0
+0
 julia> y = y + 1
 1
 ```
@@ -213,10 +213,10 @@ y = \frac{1}{2}\left(x + \frac{a}{x}\right)
 For example, if $a$ is 4 and $x$ is 3:
 
 ```jldoctest chap07
-julia> a = 4;
-
-julia> x = 3;
-
+julia> a = 4
+4
+julia> x = 3
+3
 julia> y = (x + a/x) / 2
 2.1666666666666665
 ```
@@ -224,8 +224,8 @@ julia> y = (x + a/x) / 2
 The result is closer to the correct answer (``\sqrt 4 = 2``). If we repeat the process with the new estimate, it gets even closer:
 
 ```jldoctest chap07
-julia> x = y;
-
+julia> x = y
+2.1666666666666665
 julia> y = (x + a/x) / 2
 2.0064102564102564
 ```
@@ -233,12 +233,12 @@ julia> y = (x + a/x) / 2
 After a few more updates, the estimate is almost exact:
 
 ```jldoctest chap07
-julia> x = y;
-
+julia> x = y
+2.0064102564102564
 julia> y = (x + a/x) / 2
 2.0000102400262145
-julia> x = y;
-
+julia> x = y
+2.0000102400262145
 julia> y = (x + a/x) / 2
 2.0000000000262146
 ```
@@ -246,15 +246,12 @@ julia> y = (x + a/x) / 2
 In general we don’t know ahead of time how many steps it takes to get to the right answer, but we know when we get there because the estimate stops changing:
 
 ```jldoctest chap07
-julia> x = y;
-
+julia> x = y
+2.0000000000262146
 julia> y = (x + a/x) / 2
 2.0
-```
-
-```jldoctest chap07
-julia> x = y;
-
+julia> x = y
+2.0
 julia> y = (x + a/x) / 2
 2.0
 ```
@@ -363,13 +360,10 @@ The built-in function `parse` takes a string and transforms it into an expressio
 ```jldoctest
 julia> expr = parse("1+2*3")
 :(1 + 2 * 3)
-
 julia> eval(expr)
 7
-
 julia> expr = parse("sqrt(π)")
 :(sqrt(π))
-
 julia> eval(expr)
 1.7724538509055159
 ```
