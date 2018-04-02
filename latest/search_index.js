@@ -789,7 +789,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Fruitful functions",
     "title": "Checking types",
     "category": "section",
-    "text": "What happens if we call fact and give it 1.5 as an argument?julia> fact(1.5)\nERROR: StackOverflowError:\n[...]It looks like an infinite recursion. How can that be? The function has a base case—when n == 0. But if n is not an integer, we can miss the base case and recurse forever.In the first recursive call, the value of n is 0.5. In the next, it is -0.5. From there, it gets smaller (more negative), but it will never be 0.We have two choices. We can try to generalize the factorial function to work with floating-point numbers, or we can make fact check the type of its argument. The first option is called the gamma function and it’s a little beyond the scope of this book. So we’ll go for the second.We can use the built-in operator isa to verify the type of the argument. While we’re at it, we can also make sure the argument is positive:function fact(n)\n    if !(n isa Int64)\n        println(\"Factorial is only defined for integers.\")\n        return\n    elseif n < 0\n        println(\"Factorial is not defined for negative integers.\")\n        return\n    elseif n == 0\n        return 1\n    else\n        return n * fact(n-1)\n    end\nendThe first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns nothing to indicate that something went wrong:DocTestSetup = quote\n    function fact(n)\n        if !(n isa Int64)\n            println(\"Factorial is only defined for integers.\")\n            return\n        elseif n < 0\n            println(\"Factorial is not defined for negative integers.\")\n            return\n        elseif n == 0\n            return 1\n        else\n            return n * fact(n-1)\n        end\n    end\nendjulia> println(fact(\"fred\"))\nFactorial is only defined for integers.\nnothing\njulia> println(fact(-2))\nFactorial is not defined for negative integers.\nnothingIf we get past both checks, we know that n is positive or zero, so we can prove that the recursion terminates.This program demonstrates a pattern sometimes called a guardian. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.In Section 11.4 we will see a more flexible alternative to printing an error message: raising an exception."
+    "text": "What happens if we call fact and give it 1.5 as an argument?\\begin{minted}{jlcon}\njulia> fact(1.5)\nERROR: StackOverflowError:\nStacktrace:\n [1] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:0\n [2] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:38 (repeats 52402 times)\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; fact(1.5)\nERROR: StackOverflowError:\nStacktrace:\n [1] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:0\n [2] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:38 (repeats 52402 times)</code></pre>It looks like an infinite recursion. How can that be? The function has a base case—when n == 0. But if n is not an integer, we can miss the base case and recurse forever.In the first recursive call, the value of n is 0.5. In the next, it is -0.5. From there, it gets smaller (more negative), but it will never be 0.We have two choices. We can try to generalize the factorial function to work with floating-point numbers, or we can make fact check the type of its argument. The first option is called the gamma function and it’s a little beyond the scope of this book. So we’ll go for the second.We can use the built-in operator isa to verify the type of the argument. While we’re at it, we can also make sure the argument is positive:function fact(n)\n    if !(n isa Int64)\n        println(\"Factorial is only defined for integers.\")\n        return\n    elseif n < 0\n        println(\"Factorial is not defined for negative integers.\")\n        return\n    elseif n == 0\n        return 1\n    else\n        return n * fact(n-1)\n    end\nendThe first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns nothing to indicate that something went wrong:DocTestSetup = quote\n    function fact(n)\n        if !(n isa Int64)\n            println(\"Factorial is only defined for integers.\")\n            return\n        elseif n < 0\n            println(\"Factorial is not defined for negative integers.\")\n            return\n        elseif n == 0\n            return 1\n        else\n            return n * fact(n-1)\n        end\n    end\nendjulia> println(fact(\"fred\"))\nFactorial is only defined for integers.\nnothing\njulia> println(fact(-2))\nFactorial is not defined for negative integers.\nnothingIf we get past both checks, we know that n is positive or zero, so we can prove that the recursion terminates.This program demonstrates a pattern sometimes called a guardian. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.In Section 11.4 we will see a more flexible alternative to printing an error message: raising an exception."
 },
 
 {
@@ -1685,7 +1685,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Tuples",
     "title": "Tuples",
     "category": "section",
-    "text": "This chapter presents one more built-in type, the tuple, and then shows how arrays, dictionaries, and tuples work together. I also present a useful feature for variable-length argument arrays, the gather and scatter operators.One note: there is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”."
+    "text": "DocTestSetup = quote\n    using ThinkJulia\nendThis chapter presents one more built-in type, the tuple, and then shows how arrays, dictionaries, and tuples work together. I also present a useful feature for variable-length argument arrays, the gather and scatter operators.One note: there is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”."
 },
 
 {
@@ -1702,6 +1702,102 @@ var documenterSearchIndex = {"docs": [
     "title": "Tuple assignment",
     "category": "section",
     "text": "It is often useful to swap the values of two variables. With conventional assignments, you have to use a temporary variable. For example, to swap a and b:temp = a\na = b\nb = tempThis solution is cumbersome; tuple assignment is more elegant:a, b = b, aThe left side is a tuple of variables; the right side is a tuple of expressions. Each value is assigned to its respective variable. All the expressions on the right side are evaluated before any of the assignments.The number of variables on the left and the number of values on the right have to be the same:julia> a, b, c = 1, 2\nERROR: BoundsError: attempt to access (1, 2)\n  at index [3]More generally, the right side can be any kind of sequence (string, array or tuple). For example, to split an email address into a user name and a domain, you could write:julia> addr = \"julius.caesar@rome\"\n\"julius.caesar@rome\"\njulia> uname, domain = split(addr, \'@\');\nThe return value from split is an array with two elements; the first element is assigned to uname, the second to domain.julia> uname\n\"julius.caesar\"\njulia> domain\n\"rome\""
+},
+
+{
+    "location": "chap12.html#Tuples-as-return-values-1",
+    "page": "Tuples",
+    "title": "Tuples as return values",
+    "category": "section",
+    "text": "Strictly speaking, a function can only return one value, but if the value is a tuple, the effect is the same as returning multiple values. For example, if you want to divide two integers and compute the quotient and remainder, it is inefficient to compute x ÷ y and then x % y. It is better to compute them both at the same time.The built-in function divrem takes two arguments and returns a tuple of two values, the quotient and remainder. You can store the result as a tuple:julia> t = divrem(7, 3)\n(2, 1)Or use tuple assignment to store the elements separately:julia> quot, rem = divrem(7, 3);\n\njulia> println(quot)\n2\njulia> println(rem)\n1Here is an example of a function that returns a tuple:function min_max(t)\n    minimum(t), maximum(t)\nendmaximum and mininimum are built-in functions that find the largest and smallest elements of a sequence. min_max computes both and returns a tuple of two values."
+},
+
+{
+    "location": "chap12.html#Variable-length-argument-tuples-1",
+    "page": "Tuples",
+    "title": "Variable-length argument tuples",
+    "category": "section",
+    "text": "Functions can take a variable number of arguments. A parameter name that ends with ... gathers arguments into a tuple. For example, printall takes any number of arguments and prints them:function printall(args...)\n    println(args)\nendThe gather parameter can have any name you like, but args is conventional. Here’s how the function works:julia> printall(1, 2.0, \'3\')\n(1, 2.0, \'3\')The complement of gather is scatter. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the ... operator. For example, divrem takes exactly two arguments; it doesn’t work with a tuple:julia> t = (7, 3);\n\njulia> divrem(t)\nERROR: MethodError: no method matching divrem(::Tuple{Int64,Int64})But if you scatter the tuple, it works:julia> divrem(t...)\n(2, 1)Many of the built-in functions use variable-length argument tuples. For example, max and min can take any number of arguments:julia> max(1, 2, 3)\n3But sum does not:julia> sum(1, 2, 3)\nERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)As an exercise, write a function called sumall that takes any number of arguments and returns their sum."
+},
+
+{
+    "location": "chap12.html#Arrays-and-tuples-1",
+    "page": "Tuples",
+    "title": "Arrays and tuples",
+    "category": "section",
+    "text": "zip is a built-in function that takes two or more sequences and returns an array of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.This example zips a string and an array:julia> s = \"abc\";\n\njulia> t = [1, 2, 3];\n\njulia> zip(s, t)\nBase.Iterators.Zip2{String,Array{Int64,1}}(\"abc\", [1, 2, 3])The result is a zip object that knows how to iterate through the pairs. The most common use of zip is in a for loop:julia> for pair in zip(s, t)\n           println(pair)\n       end\n(\'a\', 1)\n(\'b\', 2)\n(\'c\', 3)A zip object is a kind of iterator, which is any object that iterates through a sequence. Iterators are similar to arrays in some ways, but unlike arrays, you can’t use an index to select an element from an iterator.If you want to use array operators and functions, you can use a zip object to make an array:julia> collect(zip(s, t))\n3-element Array{Tuple{Char,Int64},1}:\n (\'a\', 1)\n (\'b\', 2)\n (\'c\', 3)The result is an array of tuples; in this example, each tuple contains a character from the string and the corresponding element from the array.If the sequences are not the same length, the result has the length of the shorter one.julia> collect(zip(\"Anne\", \"Elk\"))\n3-element Array{Tuple{Char,Char},1}:\n (\'A\', \'E\')\n (\'n\', \'l\')\n (\'n\', \'k\')You can use tuple assignment in a for loop to traverse an array of tuples:julia> t = [(\'a\', 1), (\'b\', 2), (\'c\', 3)];\n\njulia> for (letter, number) in t\n           println(number, \" \", letter)\n       end\n1 a\n2 b\n3 cEach time through the loop, Julia selects the next tuple in the array and assigns the elements to letter and number. The parentheses around (letter, number) are compulsory.If you combine zip, for and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, hasmatch takes two sequences, t1 and t2, and returns true if there is an index i such that t1[i] == t2[i]:function has_match(t1, t2)\n    for (x, y) in zip(t1, t2)\n        if x == y\n            return true\n        end\n    end\n    false\nendIf you need to traverse the elements of a sequence and their indices, you can use the built-in function enumerate:julia> for (index, element) in enumerate(\"abc\")\n           println(index, \" \", element)\n       end\n1 a\n2 b\n3 cThe result from enumerate is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence."
+},
+
+{
+    "location": "chap12.html#Dictionaries-and-tuples-1",
+    "page": "Tuples",
+    "title": "Dictionaries and tuples",
+    "category": "section",
+    "text": "Dictionaries can be used as iterators that iterates the key-value pairs. You can use it in a for loop like this:julia> d = Dict(\'a\'=>1, \'b\'=>2, \'c\'=>3);\n\njulia> for (key, value) in d\n           println(key, \" \", value)\n       end\nb 2\na 1\nc 3As you should expect from a dictionary, the items are in no particular order.Going in the other direction, you can use an array of tuples to initialize a new dictionary:julia> t = [(\'a\', 1), (\'c\', 3), (\'b\', 2)];\n\njulia> d = Dict(t)\nDict{Char,Int64} with 3 entries:\n  \'b\' => 2\n  \'a\' => 1\n  \'c\' => 3Combining Dict with zip yields a concise way to create a dictionary:julia> d = Dict(zip(\"abc\", 1:3))\nDict{Char,Int64} with 3 entries:\n  \'b\' => 2\n  \'a\' => 1\n  \'c\' => 3It is common to use tuples as keys in dictionaries. For example, a telephone directory might map from last-name, first-name pairs to telephone numbers. Assuming that we have defined last, first and number, we could write:directory[last, first] = numberThe expression in brackets is a tuple. We could use tuple assignment to traverse this dictionary.for ((last, first), number) in directory\n    println(first, \" \", last, \" \", number)\nendThis loop traverses the key-value pairs in directory, which are tuples. It assigns the elements of the key in each tuple to last and first, and the value to number, then prints the name and corresponding telephone number.There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple (\"Cleese\", \"John\") would appear as in Figure 12.1.using ThinkJulia\nfig12_1()<figure>\n  <img src=\"fig121.svg\" alt=\"State diagram.\">\n  <figcaption>Figure 12.1. State diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig121}\n\\caption{State diagram.}\n\\label{fig121}\n\\end{figure}But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in Figure 12.2.using ThinkJulia\nfig12_2()<figure>\n  <img src=\"fig122.svg\" alt=\"State diagram.\">\n  <figcaption>Figure 12.2. State diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig122}\n\\caption{State diagram.}\n\\label{fig122}\n\\end{figure}Here the tuples are shown using Julia syntax as a graphical shorthand. The telephone number in the diagram is the complaints line for the BBC, so please don’t call it."
+},
+
+{
+    "location": "chap12.html#Sequences-of-sequences-1",
+    "page": "Tuples",
+    "title": "Sequences of sequences",
+    "category": "section",
+    "text": "I have focused on arrays of tuples, but almost all of the examples in this chapter also work with arrays of arrays, tuples of tuples, and tuples of arrays. To avoid enumerating the possible combinations, it is sometimes easier to talk about sequences of sequences.In many contexts, the different kinds of sequences (strings, arrays and tuples) can be used interchangeably. So how should you choose one over the others?To start with the obvious, strings are more limited than other sequences because the elements have to be characters. They are also immutable. If you need the ability to change the characters in a string (as opposed to creating a new string), you might want to use an array of characters instead.Arrays are more common than tuples, mostly because they are mutable. But there are a few cases where you might prefer tuples:In some contexts, like a return statement, it is syntactically simpler to create a tuple than an array.\nIf you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.Because tuples are immutable, they don’t provide function like sort! and reverse!, which modify existing arrays. But Julia provides the built-in function sort, which takes an array and returns a new array with the same elements in sorted order, and reverse, which takes any sequence and returns a sequence of the same type in reverse order."
+},
+
+{
+    "location": "chap12.html#Debugging-1",
+    "page": "Tuples",
+    "title": "Debugging",
+    "category": "section",
+    "text": "Arrays, dictionaries and tuples are examples of data structures; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call shape errors; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work."
+},
+
+{
+    "location": "chap12.html#Glossary-1",
+    "page": "Tuples",
+    "title": "Glossary",
+    "category": "section",
+    "text": "tuple: An immutable sequence of elements.tuple assignment: An assignment with a sequence on the right side and a tuple of variables on the left. The right side is evaluated and then its elements are assigned to the variables on the left.gather: The operation of assembling a variable-length argument tuple.scatter: The operation of treating a sequence as a list of arguments.zip object: The result of calling a built-in function zip; an object that iterates through a sequence of tuples.iterator: An object that can iterate through a sequence, but which does not provide array operators and functions.data structure: A collection of related values, often organized in array, dictionaries, tuples, etc.shape error: An error caused because a value has the wrong shape; that is, the wrong type or size."
+},
+
+{
+    "location": "chap12.html#Exercises-1",
+    "page": "Tuples",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap12.html#Exercise-1-1",
+    "page": "Tuples",
+    "title": "Exercise 1",
+    "category": "section",
+    "text": "Write a function called mostfrequent that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at http://en.wikipedia.org/wiki/Letter_frequencies."
+},
+
+{
+    "location": "chap12.html#Exercise-2-1",
+    "page": "Tuples",
+    "title": "Exercise 2",
+    "category": "section",
+    "text": "More anagrams!Write a program that reads a word list from a file (see Section 9.1) and prints all the sets of words that are anagrams.\nHere is an example of what the output might look like:[\"deltas\", \"desalt\", \"lasted\", \"salted\", \"slated\", \"staled\"]\n[\"retainers\", \"ternaries\"]\n[\"generating\", \"greatening\"]\n[\"resmelts\", \"smelters\", \"termless\"]Hint: you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.\nIn Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos? Hint: there are seven."
+},
+
+{
+    "location": "chap12.html#Exercise-3-1",
+    "page": "Tuples",
+    "title": "Exercise 3",
+    "category": "section",
+    "text": "Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible swaps. Credit: This exercise is inspired by an example at http://puzzlers.org."
+},
+
+{
+    "location": "chap12.html#Exercise-4-1",
+    "page": "Tuples",
+    "title": "Exercise 4",
+    "category": "section",
+    "text": "Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):What is the longest English word, that remains a valid English word, as you remove its letters one at a time? Now, letters can be removed from either end, or the middle, but you can’t rearrange any of the letters. Every time you drop a letter, you wind up with another English word. If you do that, you’re eventually going to wind up with one letter and that too is going to be an English word—one that’s found in the dictionary. I want to know what’s the longest word and how many letters does it have? I’m going to give you a little modest example: Sprite. Ok? You start off with sprite, you take a letter off, one from the interior of the word, take the r away, and we’re left with the word spite, then we take the e off the end, we’re left with spit, we take the s off, we’re left with pit, it, and I.Write a program to find all words that can be reduced in this way, and then find the longest one.This exercise is a little more challenging than most, so here are some suggestions:You might want to write a function that takes a word and computes a list of all the words that can be formed by removing one letter. These are the “children” of the word.\nRecursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.\nThe wordlist I provided, words.txt, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.\nTo improve the performance of your program, you might want to memoize the words that are known to be reducible."
 },
 
 ]}
