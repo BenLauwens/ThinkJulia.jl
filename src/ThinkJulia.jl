@@ -12,6 +12,7 @@ module ThinkJulia
   end
   export deletehead!, baddeletehead, tail, nestedsum, cumulsum, interior, interior!, issort
   export histogram, printhist, reverselookup, invertdict
+  export printall
 
   export fig00_1
   export fig02_1
@@ -22,6 +23,7 @@ module ThinkJulia
   export fig07_1
   export fig10_1, fig10_2, fig10_3, fig10_4, fig10_5
   export fig11_1, fig11_2
+  export fig12_1, fig12_2
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -30,6 +32,7 @@ module ThinkJulia
   include("code/chap08.jl")
   include("code/chap10.jl")
   include("code/chap11.jl")
+  include("code/chap12.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")
@@ -44,5 +47,6 @@ module ThinkJulia
   include("figures/chap06.jl")
   include("figures/chap07.jl")
   include("figures/chap10.jl")
-  include("figures/chap11.jl")
+  include("figures/chap11.jl")  
+  include("figures/chap12.jl")
 end
