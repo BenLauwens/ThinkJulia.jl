@@ -13,6 +13,7 @@ module ThinkJulia
   export deletehead!, baddeletehead, tail, nestedsum, cumulsum, interior, interior!, issort
   export histogram, printhist, reverselookup, invertdict
   export printall
+  export processfile, processline, totalwords, differentwords, mostcommon, printmostcommon, subtract
 
   export fig00_1
   export fig02_1
@@ -33,6 +34,7 @@ module ThinkJulia
   include("code/chap10.jl")
   include("code/chap11.jl")
   include("code/chap12.jl")
+  include("code/chap13.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

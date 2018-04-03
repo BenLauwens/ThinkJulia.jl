@@ -1,19 +1,15 @@
 \usepackage{newunicodechar, polyglossia}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \usepackage{fontspec}
 
-%\setmainfont{TeX Gyre Termes}
-%\setsansfont{TeX Gyre Heros Cn}
-%\setsansfont{TeX Gyre Adventor}
-%\setsansfont[BoldFont={* Semibold}]{Encode Sans Condensed}
-%\setmainfont{Libertinus Serif}
 \setmainfont{Minion Pro}
-\setsansfont[BoldFont=MyriadPro-SemiboldCond.otf]{MyriadPro-Cond.otf}
+\setsansfont[BoldFont = {Myriad Pro Semibold Condensed}]{MyriadPro-Cond}
 
 %\setmonofont[Scale=MatchLowercase]{Hack}
 %\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
 
-\setmonofont{Ubuntu Mono}
 \newfontfamily{\monof}{DejaVu Sans Mono}[Scale=MatchLowercase]
 \newfontfamily{\emoji}{EmojiOne}
 
@@ -30,12 +26,9 @@
 \newunicodechar{🍐}{\mbox{\emoji🍐}}
 \newunicodechar{🍌}{\mbox{\emoji🍌}}
 
-\usepackage{amsmath}
-%\usepackage[italic, defaultmathsizes]{mathastext}
-%\usepackage{unicode-math}
-%\setmathfont{libertinusmath-regular.otf}
-%\setmathfont{MinionMath-Regular.otf}
-\usepackage[onlymath,mathlf]{MinionPro}
+\usepackage{unicode-math}
+\setmathfont{Minion Math}
+%\usepackage[onlymath,mathlf]{MinionPro}
 
 
 % colours
@@ -55,7 +48,8 @@
 \usepackage{listings, minted}
 
 \lstset{
-    basicstyle = \ttfamily\small,
+    %basicstyle = \ttfamily\small,
+    basicstyle = \ttfamily,
     breaklines = true,
     columns = fullflexible,
     %frame = leftline,
@@ -66,7 +60,7 @@
 
 \setminted{
     breaklines = true,
-    fontsize = \small,
+    %fontsize = \small,
     %frame = leftline,
     xleftmargin = 0.5cm
 }
@@ -96,7 +90,6 @@
 % paragraphs
 \setlength{\parindent}{0pt}
 \nonzeroparskip
-%\setlength{\medskipamount}{0pt}
 \setlength\partopsep{-\topsep}
 %\addtolength\partopsep{-\parskip}
 %\addtolength\partopsep{0.5cm}
@@ -133,7 +126,7 @@
   \renewcommand*{\printchapternum}{\raggedleft \chapnumfont \thechapter}
   \renewcommand*{\printchaptertitle}[1]{
     \vspace{-5mm}\hrule\vspace{2mm}\raggedleft {\chaptitlefont ##1}\par\nobreak}
-  \renewcommand*\afterchaptertitle{\par\nobreak\vskip2.5\afterchapskip}}
+  \renewcommand*\afterchaptertitle{\par\nobreak\vskip2.75\afterchapskip}}
 \chapterstyle{oreilly}
 
 

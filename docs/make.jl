@@ -18,7 +18,8 @@ makedocs(
     "chap09.md",
     "chap10.md",
     "chap11.md",
-    "chap12.md"
+    "chap12.md",
+    "chap13.md"
   ]
 )
 

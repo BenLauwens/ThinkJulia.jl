@@ -20,9 +20,13 @@ Both `&&` and `||` associate to the right, but `&&` has higher precedence than `
 
 `any`, `all`, `map`, `filter`, `reduce`
 
+## Set
+
 ## Parametric types and functions
 
 ## Macros
+
+## Ccall
 
 ## Glossary
 
