@@ -7,9 +7,6 @@ module ThinkJulia
   export area, absvalue, distance, circlearea, isdivisible, fact, fib
   export mysqrt, testsquareroot
   export inboth
-  if VERSION < v"0.7-"
-    export firstindex, lastindex
-  end
   export deletehead!, baddeletehead, tail, nestedsum, cumulsum, interior, interior!, issort
   export histogram, printhist, reverselookup, invertdict
   export printall
@@ -35,6 +32,7 @@ module ThinkJulia
   include("code/chap11.jl")
   include("code/chap12.jl")
   include("code/chap13.jl")
+  include("code/chap14.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

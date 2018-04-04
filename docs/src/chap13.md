@@ -448,6 +448,8 @@ The process of choosing between data structures by implementing alternatives and
 *rubber duck debugging*:
 Debugging by explaining your problem to an inanimate object such as a rubber duck. Articulating the problem can help you solve it, even if the rubber duck doesn’t know Julia.
 
+## Exercises
+
 ### Exercise 9
 
 The “rank” of a word is its position in an array of words sorted by frequency: the most common word has rank 1, the second most common has rank 2, etc.

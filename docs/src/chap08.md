@@ -3,6 +3,7 @@
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
+    using Compat
 end
 ```
 
@@ -105,7 +106,6 @@ This means also that not every byte index into a UTF-8 string is necessarily a v
 ```jldoctest chap08
 julia> fruits[2]
 ERROR: UnicodeError: invalid character index 2 (0x9f is a continuation byte)
-[...]
 ```
 
 In the case of `fruits`, the character `🍌` is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by `nextind(fruit, 1)`, and the next index after that by `nextind(fruit, 5)` and so on.
@@ -414,6 +414,7 @@ If we test this function with the words "pots" and "stop", we expect the return 
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
+    using Compat
 
     function isreverse(word1, word2)
         if length(word1) != length(word2)
@@ -450,6 +451,7 @@ For debugging this kind of error, my first move is to print the values of the in
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
+    using Compat
 
     function isreverse(word1, word2)
         if length(word1) != length(word2)
@@ -485,6 +487,7 @@ If I fix that error and run the program again, I get:
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
+    using Compat
 
     function isreverse(word1, word2)
         if length(word1) != length(word2)
@@ -514,7 +517,6 @@ julia> isreverse("pots", "stop")
 5 0
 ERROR: BoundsError: attempt to access "pots"
   at index [5]
-[...]
 ```
 
 This time a `BoundsError` has been thrown. The value of `i` is 5, which is out a range for the string `"pots"`.
