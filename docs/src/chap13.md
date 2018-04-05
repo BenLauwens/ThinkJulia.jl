@@ -3,7 +3,8 @@
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
-    hist = processfile("../data/Emma.txt");
+    dir = Pkg.dir("ThinkJulia")
+    hist = processfile(dir * "/data/Emma.txt");
 end
 ```
 

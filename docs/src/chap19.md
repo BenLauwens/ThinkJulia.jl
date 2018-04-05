@@ -22,6 +22,10 @@ Both `&&` and `||` associate to the right, but `&&` has higher precedence than `
 
 ## Set
 
+## Anonymous functions
+
+### `do` syntax
+
 ## Parametric types and functions
 
 ## Macros

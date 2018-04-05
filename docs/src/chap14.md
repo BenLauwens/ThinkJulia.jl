@@ -89,13 +89,13 @@ The function `pwd` returns the name of the current directory:
 
 ```@raw latex
 \begin{minted}{jlcon}
-julia> cwd =pwd()
+julia> cwd = pwd()
 "/home/dinsdale"
 \end{minted}
 ```
 
 ```@raw html
-<pre><code class="language-julia-repl">julia&gt; pwd()
+<pre><code class="language-julia-repl">julia&gt; cwd = pwd()
 "/home/dinsdale"</code></pre>
 ```
 
@@ -190,7 +190,7 @@ end
 
 `joinpath` takes a directory and a file name and joins them into a complete path.
 
-Julia provides a function called [`walkdir`](https://docs.julialang.org/en/stable/stdlib/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+Julia provides a function called `walkdir` (see <https://docs.julialang.org/en/stable/stdlib/file/#Base.Filesystem.walkdir>) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 
 ## Catching exceptions
 
@@ -282,7 +282,7 @@ julia> db["cleese.png"]
 "Photo of John Cleese doing a silly walk."
 ```
 
-Some dictionary methods, like `keys` and `values`, don’t work with database objects. But iteration with a `for` loop works:
+Some functions having a dictionary as argument, like `keys` and `values`, don’t work with database objects. But iteration with a `for` loop works:
 
 ```julia
 for (key, value) in db
@@ -299,7 +299,7 @@ julia> close(db)
 
 ## Serialization
 
-A limitation of `GDBM` is that the keys and the values have to be strings or bytes. If you try to use any other type, you get an error.
+A limitation of `GDBM` is that the keys and the values have to be strings or byte arrays. If you try to use any other type, you get an error.
 
 The functions `serialize` and `deserialize` can help. They translate almost any type of object into a byte array suitable for storage in a database, and then translates byte arrays back into objects:
 
@@ -330,6 +330,8 @@ julia> t2 = deserialize(IOBuffer(s));
 julia> print(t2)
 [1, 2, 3]
 ```
+
+`serialize` and `deserialize` write to and read from a iobuffer object which represents an in-memory I/O stream. The function `take!` fetches the contents of the iobuffer as a byte array and resets the iobuffer to its initial state.
 
 Although the new object has the same value as the old, it is not (in general) the same object:
 
@@ -364,7 +366,7 @@ julia> run(cmd)
 hello
 ```
 
-The `hello` is the output of the echo command, sent to `STDOUT`. The `run` method itself returns nothing, and throws an `ErrorException` if the external command fails to run successfully.
+The `hello` is the output of the echo command, sent to `STDOUT`. The `run` function itself returns nothing, and throws an `ErrorException` if the external command fails to run successfully.
 
 If you want to read the output of the external command, `readstring` can be used instead:
 
@@ -530,7 +532,7 @@ An object that represents a shell command, allowing a Julia program to run comma
 
 ## Exercises
 
-### Exercise 14-1 
+### Exercise 14-1
 
 Write a function called `sed` that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
 
@@ -538,7 +540,7 @@ If an error occurs while opening, reading, writing or closing files, your progra
 
 ### Exercise 14-2
 
-If you have done Exercise 12-2, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "`opst"` maps to the list `["opts", "post", "pots", "spot", "stop", "tops"].
+If you have done Exercise 12-2, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "`opst"` maps to the list `["opts", "post", "pots", "spot", "stop", "tops"]`.
 
 Write a module that imports `anagramsets` and provides two new functions: `storeanagrams` should store the anagram dictionary using `JLD2`; `read_anagrams` should look up a word and return a list of its anagrams.
 

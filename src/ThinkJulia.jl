@@ -22,6 +22,7 @@ module ThinkJulia
   export fig10_1, fig10_2, fig10_3, fig10_4, fig10_5
   export fig11_1, fig11_2
   export fig12_1, fig12_2
+  export fig15_1
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -49,4 +50,5 @@ module ThinkJulia
   include("figures/chap10.jl")
   include("figures/chap11.jl")  
   include("figures/chap12.jl")
+  include("figures/chap15.jl")
 end
