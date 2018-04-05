@@ -238,7 +238,7 @@ ThinkJulia.Point(0.0, 0.0)
 
 ## Instances as arguments
 
-If a mutable struct object is passed to a function as an argument, the function can modify the attributes of the object. For example, `movepoint` takes a mpoint object and two numbers, `dx` and `dy`, and adds the numbers to respectively the `x` and the `y` attribute of the mpoint:
+If a mutable struct object is passed to a function as an argument, the function can modify the attributes of the object. For example, `movepoint` takes a mutable point object and two numbers, `dx` and `dy`, and adds the numbers to respectively the `x` and the `y` attribute of the point:
 
 ```julia
 function movepoint!(p, dx, dy)
@@ -372,11 +372,11 @@ end
 
 ## Glossary
 
-*type*:
-A programmer-defined type. A type definition creates a new type object.
+*struct*:
+A composite type. A struct definition creates a new struct object.
 
-*type object*:
-An object that contains information about a programmer-defined type. The type object can be used to create instances of the type.
+*struct object*:
+An object that contains information about a composite type. The struct object can be used to create instances of the type.
 
 *instance*:
 An object that belongs to a type.
@@ -391,7 +391,7 @@ One of the named values associated with an object.
 An object that is stored as an attribute of another object.
 
 *deep copy*:
-To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the deepcopy function in the copy module.
+To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the `deepcopy` function.
 
 *object diagram*:
 A diagram that shows objects, their attributes, and the values of the attributes.
