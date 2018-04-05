@@ -1769,33 +1769,33 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap12.html#Exercise-1-1",
+    "location": "chap12.html#Exercise-12-1-1",
     "page": "Tuples",
-    "title": "Exercise 1",
+    "title": "Exercise 12-1",
     "category": "section",
     "text": "Write a function called mostfrequent that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at http://en.wikipedia.org/wiki/Letter_frequencies."
 },
 
 {
-    "location": "chap12.html#Exercise-2-1",
+    "location": "chap12.html#Exercise-12-2-1",
     "page": "Tuples",
-    "title": "Exercise 2",
+    "title": "Exercise 12-2",
     "category": "section",
     "text": "More anagrams!Write a program that reads a word list from a file (see Section 9.1) and prints all the sets of words that are anagrams.\nHere is an example of what the output might look like:[\"deltas\", \"desalt\", \"lasted\", \"salted\", \"slated\", \"staled\"]\n[\"retainers\", \"ternaries\"]\n[\"generating\", \"greatening\"]\n[\"resmelts\", \"smelters\", \"termless\"]Hint: you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.\nIn Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos? Hint: there are seven."
 },
 
 {
-    "location": "chap12.html#Exercise-3-1",
+    "location": "chap12.html#Exercise-12-3-1",
     "page": "Tuples",
-    "title": "Exercise 3",
+    "title": "Exercise 12-3",
     "category": "section",
     "text": "Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible swaps. Credit: This exercise is inspired by an example at http://puzzlers.org."
 },
 
 {
-    "location": "chap12.html#Exercise-4-1",
+    "location": "chap12.html#Exercise-12-4-1",
     "page": "Tuples",
-    "title": "Exercise 4",
+    "title": "Exercise 12-4",
     "category": "section",
     "text": "Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):What is the longest English word, that remains a valid English word, as you remove its letters one at a time? Now, letters can be removed from either end, or the middle, but you can’t rearrange any of the letters. Every time you drop a letter, you wind up with another English word. If you do that, you’re eventually going to wind up with one letter and that too is going to be an English word—one that’s found in the dictionary. I want to know what’s the longest word and how many letters does it have? I’m going to give you a little modest example: Sprite. Ok? You start off with sprite, you take a letter off, one from the interior of the word, take the r away, and we’re left with the word spite, then we take the e off the end, we’re left with spit, we take the s off, we’re left with pit, it, and I.Write a program to find all words that can be reduced in this way, and then find the longest one.This exercise is a little more challenging than most, so here are some suggestions:You might want to write a function that takes a word and computes a list of all the words that can be formed by removing one letter. These are the “children” of the word.\nRecursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.\nThe wordlist I provided, words.txt, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.\nTo improve the performance of your program, you might want to memoize the words that are known to be reducible."
 },
@@ -1825,33 +1825,33 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap13.html#Exercise-1-1",
+    "location": "chap13.html#Exercise-13-1-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 1",
+    "title": "Exercise 13-1",
     "category": "section",
     "text": "Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.Hint: the function isalpha tests whether a character is alphabetic."
 },
 
 {
-    "location": "chap13.html#Exercise-2-1",
+    "location": "chap13.html#Exercise-13-2-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 2",
+    "title": "Exercise 13-2",
     "category": "section",
     "text": "Go to Project Gutenberg (http://gutenberg.org) and download your favorite out-of-copyright book in plain text format.Modify your program from the previous exercise to read the book you downloaded, skip over the header information at the beginning of the file, and process the rest of the words as before.Then modify the program to count the total number of words in the book, and the number of times each word is used.Print the number of different words used in the book. Compare different books by different authors, written in different eras. Which author uses the most extensive vocabulary?"
 },
 
 {
-    "location": "chap13.html#Exercise-3-1",
+    "location": "chap13.html#Exercise-13-3-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 3",
+    "title": "Exercise 13-3",
     "category": "section",
     "text": "Modify the program from the previous exercise to print the 20 most frequently used words in the book."
 },
 
 {
-    "location": "chap13.html#Exercise-4-1",
+    "location": "chap13.html#Exercise-13-4-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 4",
+    "title": "Exercise 13-4",
     "category": "section",
     "text": "Modify the previous program to read a word list and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?"
 },
@@ -1865,9 +1865,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap13.html#Exercise-5-1",
+    "location": "chap13.html#Exercise-13-5-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 5",
+    "title": "Exercise 13-5",
     "category": "section",
     "text": "Write a function named choosefromhist that takes a histogram as defined in Section 11.2 and returns a random value from the histogram, chosen with probability in proportion to frequency. For example, for this histogram:julia> t = [\'a\', \'a\', \'b\'];\n\njulia> histogram(t)\nDict{Any,Any} with 2 entries:\n  \'b\' => 1\n  \'a\' => 2your function should return \'a\' with probability frac23 and \'b\' with probability frac13."
 },
@@ -1905,9 +1905,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap13.html#Exercise-6-1",
+    "location": "chap13.html#Exercise-13-6-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 6",
+    "title": "Exercise 13-6",
     "category": "section",
     "text": "Julia provides a data structure called set that provides many common set operations. You can read about them in Section 19.5, or read the documentation at https://docs.julialang.org/en/stable/stdlib/collections/#Set-Like-Collections-1.Write a program that uses set subtraction to find words in the book that are not in the word list."
 },
@@ -1921,9 +1921,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap13.html#Exercise-7-1",
+    "location": "chap13.html#Exercise-13-7-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 7",
+    "title": "Exercise 13-7",
     "category": "section",
     "text": "Write a program that uses this algorithm to choose a random word from the book."
 },
@@ -1937,9 +1937,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap13.html#Exercise-8-1",
+    "location": "chap13.html#Exercise-13-8-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 8",
+    "title": "Exercise 13-8",
     "category": "section",
     "text": "Markov analysis:Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be a list, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.\nAdd a function to the previous program to generate random text based on the Markov analysis. Here is an example from Emma with prefix length 2:\nHe was very clever, be it sweetness or be angry, ashamed or only amused, at such a stroke. She had never thought of Hannah till you were never meant for me?\" \"I cannot make speeches, Emma:\" he soon cut it all himself.\nFor this example, I left the punctuation attached to the words. The result is almost syntactically correct, but not quite. Semantically, it almost makes sense, but not quite.\nWhat happens if you increase the prefix length? Does the random text make more sense?\nOnce your program is working, you might want to try a mash-up: if youCredit: This case study is based on an example from Kernighan and Pike, The Practice of Programming, Addison-Wesley, 1999.You should attempt this exercise before you go on."
 },
@@ -1977,9 +1977,9 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "chap13.html#Exercise-9-1",
+    "location": "chap13.html#Exercise-13-9-1",
     "page": "Case study: data structure selection",
-    "title": "Exercise 9",
+    "title": "Exercise 13-9",
     "category": "section",
     "text": "The “rank” of a word is its position in an array of words sorted by frequency: the most common word has rank 1, the second most common has rank 2, etc.Zipf’s law describes a relationship between the ranks and frequencies of words in natural languages (http://en.wikipedia.org/wiki/Zipf\'s_law). Specifically, it predicts that the frequency, f, of the word with rank r is:f = c r^swhere s and c are parameters that depend on the language and the text. If you take the logarithm of both sides of this equation, you get:log f = log c  s log rSo if you plot log f versus log r, you should get a straight line with slope s and intercept log c.Write a program that reads a text from a file, counts word frequencies, and prints one line for each word, in descending order of frequency, with log f and log r.Install a plotting library:Pkg.add(\"Plots\")Its usage is very easy:using Plots\nx = 1:10\ny = x.^2\nplot(x, y)Use the Plots library to plot the results and check whether they form a straight line."
 },
@@ -2122,26 +2122,114 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "chap15.html#",
-    "page": "Types and objects",
-    "title": "Types and objects",
+    "page": "Struct and objects",
+    "title": "Struct and objects",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "chap15.html#Types-and-objects-1",
-    "page": "Types and objects",
-    "title": "Types and objects",
+    "location": "chap15.html#Struct-and-objects-1",
+    "page": "Struct and objects",
+    "title": "Struct and objects",
     "category": "section",
-    "text": "DocTestSetup = quote\n    using ThinkJulia\n\n    struct Point\n      x\n      y\n    end\nendAt this point you know how to use functions to organize code and built-in types to organize data. The next step is to learn how to build your own types to organize both code and data. This is a big topic; it will take a few chapters to get there."
+    "text": "DocTestSetup = quote\n    using ThinkJulia\nendAt this point you know how to use functions to organize code and built-in types to organize data. The next step is to learn how to build your own types to organize both code and data. This is a big topic; it will take a few chapters to get there."
 },
 
 {
     "location": "chap15.html#Composite-types-1",
-    "page": "Types and objects",
+    "page": "Struct and objects",
     "title": "Composite types",
     "category": "section",
-    "text": "We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called Point that represents a point in two-dimensional space.In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, (00) represents the origin, and (xy) represents the point x units to the right and y units up from the origin.There are several ways we might represent points in Julia:We could store the coordinates separately in two variables, x and y.\nWe could store the coordinates as elements in a list or tuple.\nWe could create a new type to represent points as objects.Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.A programmer-defined composite type is also called a struct. The struct definition for a point looks like this:struct Point\n    x\n    y\nendThe header indicates that the new struct is called Point. The body defines the attributes or fields of the struct. The Point struct has two attributes: x and y.Defining a class named Point creates a datatype object:julia> typeof(Point)\nDataTypeA struct is like a factory for creating objects. To create a point, you call Point as if it were a function having as arguments the values of the attributes. When Point is used as a function, it is called a constructor.julia> p = Point(3.0, 4.0)\nPoint(3.0, 4.0)The return value is a reference to a point object, which we assign to p.Creating a new object is called instantiation, and the object is an instance of the type.When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.Every object is an instance of some class, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.A state diagram that shows an object and its attributes is called an object diagram; see Figure 15.1.using ThinkJulia\nfig15_1()<figure>\n  <img src=\"fig151.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.1. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig121}\n\\caption{Object diagram.}\n\\label{fig151}\n\\end{figure}"
+    "text": "We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called Point that represents a point in two-dimensional space.In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, (00) represents the origin, and (xy) represents the point x units to the right and y units up from the origin.There are several ways we might represent points in Julia:We could store the coordinates separately in two variables, x and y.\nWe could store the coordinates as elements in a list or tuple.\nWe could create a new type to represent points as objects.Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.A programmer-defined composite type is also called a struct. The struct definition for a point looks like this:struct Point\n    x\n    y\nendThe header indicates that the new struct is called Point. The body defines the attributes or fields of the struct. The Point struct has two attributes: x and y. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.Defining a type named Point creates a datatype object:julia> typeof(Point)\nDataType\njulia> Point\nThinkJulia.PointBecause Point is defined in the module ThinkJulia, its “full name” is ThinkJulia.Point.A struct is like a factory for creating objects. To create a point, you call Point as if it were a function having as arguments the values of the attributes. When Point is used as a function, it is called a constructor.julia> p = Point(3.0, 4.0)\nThinkJulia.Point(3.0, 4.0)The return value is a reference to a point object, which we assign to p.Creating a new object is called instantiation, and the object is an instance of the type.When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.A state diagram that shows an object and its attributes is called an object diagram; see Figure 15.1.using ThinkJulia\nfig15_1()<figure>\n  <img src=\"fig151.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.1. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig151}\n\\caption{Object diagram.}\n\\label{fig151}\n\\end{figure}"
+},
+
+{
+    "location": "chap15.html#Structs-are-immutable-1",
+    "page": "Struct and objects",
+    "title": "Structs are immutable",
+    "category": "section",
+    "text": "You can get the values of the attributes using . notation:julia> x = p.x\n3.0\njulia> p.y\n4.0The expression p.x means, “Go to the object p refers to and get the value of x.” In the example, we assign that value to a variable named x. There is no conflict between the variable x and the attribute x.You can use dot notation as part of any expression. For example:julia> distance = sqrt(p.x^2 + p.y^2)\n5.0Structs are however by default immutable, after construction the attributes can not change value:julia> p.y = 1.0\nERROR: type Point is immutableThis may seem odd at first, but it has several advantages:It can be more efficient.\nIt is not possible to violate the invariants provided by the type\'s constructors (see later).\nCode using immutable objects can be easier to reason about."
+},
+
+{
+    "location": "chap15.html#Mutable-structs-1",
+    "page": "Struct and objects",
+    "title": "Mutable structs",
+    "category": "section",
+    "text": "Where required, mutable composite types can be declared with the keyword mutable struct. Here is the definition of a mutable point:mutable struct MPoint\n    x\n    y\nendYou can assign values to an instance of a mutable struct using dot notation:julia> blank = MPoint(0.0, 0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> blank.x = 3.0\n3.0\njulia> blank.y = 4.0\n4.0You can pass an instance as an argument in the usual way. For example:function printpoint(p)\n    println(\"($(p.x), $(p.y))\")\nendprintpoint takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass p as an argument:julia> printpoint(blank)\n(3.0, 4.0)As an exercise, write a function called distancebetweenpoints that takes two points as arguments and returns the distance between them."
+},
+
+{
+    "location": "chap15.html#Rectangles-1",
+    "page": "Struct and objects",
+    "title": "Rectangles",
+    "category": "section",
+    "text": "Sometimes it is obvious what the attributes of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What attributes would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.There are at least two possibilities:You could specify one corner of the rectangle (or the center), the width, and the height.\nYou could specify two opposing corners.At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.\"\"\"\nRepresents a rectangle.\n\nattributes: width, height, corner.\n\"\"\"\nstruct Rectangle\n    width\n    height\n    corner\nendThe docstring lists the attributes: width and height are numbers; corner is a point object that specifies the lower-left corner.To represent a rectangle, you have to instantiate a rectangle object:julia> origin = MPoint(0.0, 0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> box = Rectangle(100.0, 200.0, origin)\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))Figure 15.2 shows the state of this object. An object that is an attribute of another object is embedded. Because the corner attribute refers to a mutable object, the latter is drawn outside the rectangle object.using ThinkJulia\nfig15_2()<figure>\n  <img src=\"fig152.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.2. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig152}\n\\caption{Object diagram.}\n\\label{fig152}\n\\end{figure}"
+},
+
+{
+    "location": "chap15.html#Instances-as-return-values-1",
+    "page": "Struct and objects",
+    "title": "Instances as return values",
+    "category": "section",
+    "text": "Functions can return instances. For example, findcenter takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:function findcenter(rect)\n    Point(rect.corner.x, rect.corner.y)\nendThe expression rect.corner.x means, “Go to the object rect refers to and select the attribute named corner; then go to that object and select the attribute named x.”Here is an example that passes box as an argument and assigns the resulting point to center:julia> center = findcenter(box)\nThinkJulia.Point(0.0, 0.0)"
+},
+
+{
+    "location": "chap15.html#Instances-as-arguments-1",
+    "page": "Struct and objects",
+    "title": "Instances as arguments",
+    "category": "section",
+    "text": "If a mutable struct object is passed to a function as an argument, the function can modify the attributes of the object. For example, movepoint takes a mpoint object and two numbers, dx and dy, and adds the numbers to respectively the x and the y attribute of the mpoint:function movepoint!(p, dx, dy)\n    p.x += dx\n    p.y += dy\n    nothing\nendHere is an example that demonstrates the effect:julia> origin = MPoint(0.0,0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> movepoint!(origin, 1.0, 2.0)\n\njulia> origin\nThinkJulia.MPoint(1.0, 2.0)Inside the function, p is an alias for origin, so when the function modifies p, origin changes.Passing an immutable point object to movepoint! causes an error:julia> movepoint!(p, 1.0, 2.0)\nERROR: type is immutableYou can however modify the value of a mutable attribute of an immutable object. For example, moverectangle! has as arguments a rectangle object and two numbers, dx and dy, and uses movepoint! to move the corner of the rectangle:function moverectangle!(rect, dx, dy)\n  movepoint!(rect.corner, dx, dy)\nendNow p in movepoint! is an alias for rect.corner, so when p is modified, rect.corner changes also:julia> box\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))\njulia> moverectangle!(box, 1.0, 2.0)\n\njulia> box\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(1.0, 2.0))Attention you cannot reassign a mutable attribute of an immutable object:julia> box.corner = MPoint(1.0, 2.0)\nERROR: type Rectangle is immutable"
+},
+
+{
+    "location": "chap15.html#Copying-1",
+    "page": "Struct and objects",
+    "title": "Copying",
+    "category": "section",
+    "text": "Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.Copying an object is often an alternative to aliasing. Julia provides a function called deepcopy that can duplicate any object:julia> p1 = MPoint(3.0, 4.0)\nThinkJulia.MPoint(3.0, 4.0)\njulia> p2 = deepcopy(p1)\nThinkJulia.MPoint(3.0, 4.0)\njulia> p1 ≡ p2\nfalse\njulia> p1 == p2\nfalseThe ≡ operator indicates that p1 and p2 are not the same object, which is what we expected. But you might have expected == to yield true because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the == operator is the same as the === operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.As an exercise, create a Point instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object."
+},
+
+{
+    "location": "chap15.html#Debugging-1",
+    "page": "Struct and objects",
+    "title": "Debugging",
+    "category": "section",
+    "text": "When you start working with objects, you are likely to encounter some new exceptions. If you try to access an attribute that doesn’t exist, you get:julia> p = Point(3.0, 4.0)\nThinkJulia.Point(3.0, 4.0)\njulia> p.z = 1.0\nERROR: type Point has no field zIf you are not sure what type an object is, you can ask:julia> typeof(p)\nThinkJulia.PointYou can also use isinstance to check whether an object is an instance of a type:julia> p isa Point\ntrueIf you are not sure whether an object has a particular attribute, you can use the built-in function fieldnames:julia> fieldnames(p)\n2-element Array{Symbol,1}:\n :x\n :yor the function isdefined:julia> isdefined(p, :x)\ntrue\njulia> isdefined(p, :z)\nfalseThe first argument can be any object; the second argument is a symbol, : followed by the name of the attribute.You can also use a try statement to see if the object has the attributes you need:try\n    x = 1.0\ncatch exc\n    x = 0.0\nend"
+},
+
+{
+    "location": "chap15.html#Glossary-1",
+    "page": "Struct and objects",
+    "title": "Glossary",
+    "category": "section",
+    "text": "type: A programmer-defined type. A type definition creates a new type object.type object: An object that contains information about a programmer-defined type. The type object can be used to create instances of the type.instance: An object that belongs to a type.instantiate: To create a new object.attribute or field: One of the named values associated with an object.embedded object: An object that is stored as an attribute of another object.deep copy: To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the deepcopy function in the copy module.object diagram: A diagram that shows objects, their attributes, and the values of the attributes."
+},
+
+{
+    "location": "chap15.html#Exercises-1",
+    "page": "Struct and objects",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap15.html#Exercise-15-1-1",
+    "page": "Struct and objects",
+    "title": "Exercise 15-1",
+    "category": "section",
+    "text": "Write a definition for a type named Circle with attributes center and radius, where center is a point object and radius is a number.\nInstantiate a circle object that represents a circle with its center at (150 100) and radius 75.\nWrite a function named pointincircle that takes a circle object and a point object and returns true if the point lies in or on the boundary of the circle.\nWrite a function named rectincircle that takes a circle object and a rectangle object and returns true if the rectangle lies entirely in or on the boundary of the circle.\nWrite a function named rectcircleoverlap that takes a circle object and a rectangle object and returns true if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return true if any part of the rectangle falls inside the circle."
+},
+
+{
+    "location": "chap15.html#Exercise-15-2-1",
+    "page": "Struct and objects",
+    "title": "Exercise 15-2",
+    "category": "section",
+    "text": "Write a function called drawrect that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.\nWrite a function called drawcircle that takes a turtle object and a circle object and draws the circle."
 },
 
 ]}
