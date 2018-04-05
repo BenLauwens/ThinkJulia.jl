@@ -4,7 +4,7 @@
 DocTestSetup = quote
     using ThinkJulia
     dir = Pkg.dir("ThinkJulia")
-    hist = processfile(dir * "/data/Emma.txt");
+    hist = processfile(dir * "/data/emma.txt");
 end
 ```
 
