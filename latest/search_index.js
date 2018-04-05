@@ -1669,7 +1669,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Dictionaries",
     "title": "Exercise 11-6",
     "category": "section",
-    "text": "Here’s another Puzzler from Car Talk (http://www.cartalk.com/content/puzzlers):This was sent in by a fellow named Dan O’Leary. He came upon a common one-syllable, five-letter word recently that has the following unique property. When you remove the first letter, the remaining letters form a homophone of the original word, that is a word that sounds exactly the same. Replace the first letter, that is, put it back and remove the second letter and the result is yet another homophone of the original word. And the question is, what’s the word? Now I’m going to give you an example that doesn’t work. Let’s look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like to ‘wrack with pain.’ If I remove the first letter, I am left with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see the rack on that buck! It must have been a nine-pointer!’ It’s a perfect homophone. If you put the ‘w’ back, and remove the ‘r,’ instead, you’re left with the word, ‘wack,’ which is a real word, it’s just not a homophone of the other two words. But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?You can use the dictionary from Exercise 11-1 to check whether a string is in the word array.To check whether two words are homophones, you can use the CMU Pronouncing Dictionary. You can download it from http://www.speech.cs.cmu.edu/cgi-bin/cmudict.Write a program that lists all the words that solve the Puzzler."
+    "text": "Here’s another Puzzler from Car Talk (http://www.cartalk.com/content/puzzlers):This was sent in by a fellow named Dan O’Leary. He came upon a common one-syllable, five-letter word recently that has the following unique property. When you remove the first letter, the remaining letters form a homophone of the original word, that is a word that sounds exactly the same. Replace the first letter, that is, put it back and remove the second letter and the result is yet another homophone of the original word. And the question is, what’s the word?Now I’m going to give you an example that doesn’t work. Let’s look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like to ‘wrack with pain.’ If I remove the first letter, I am left with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see the rack on that buck! It must have been a nine-pointer!’ It’s a perfect homophone. If you put the ‘w’ back, and remove the ‘r,’ instead, you’re left with the word, ‘wack,’ which is a real word, it’s just not a homophone of the other two words.But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?You can use the dictionary from Exercise 11-1 to check whether a string is in the word array.To check whether two words are homophones, you can use the CMU Pronouncing Dictionary. You can download it from http://www.speech.cs.cmu.edu/cgi-bin/cmudict.Write a program that lists all the words that solve the Puzzler."
 },
 
 {
@@ -2122,39 +2122,39 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "chap15.html#",
-    "page": "Struct and objects",
-    "title": "Struct and objects",
+    "page": "Structs and objects",
+    "title": "Structs and objects",
     "category": "page",
     "text": ""
 },
 
 {
-    "location": "chap15.html#Struct-and-objects-1",
-    "page": "Struct and objects",
-    "title": "Struct and objects",
+    "location": "chap15.html#Structs-and-objects-1",
+    "page": "Structs and objects",
+    "title": "Structs and objects",
     "category": "section",
     "text": "DocTestSetup = quote\n    using ThinkJulia\nendAt this point you know how to use functions to organize code and built-in types to organize data. The next step is to learn how to build your own types to organize both code and data. This is a big topic; it will take a few chapters to get there."
 },
 
 {
     "location": "chap15.html#Composite-types-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Composite types",
     "category": "section",
-    "text": "We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called Point that represents a point in two-dimensional space.In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, (00) represents the origin, and (xy) represents the point x units to the right and y units up from the origin.There are several ways we might represent points in Julia:We could store the coordinates separately in two variables, x and y.\nWe could store the coordinates as elements in a list or tuple.\nWe could create a new type to represent points as objects.Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.A programmer-defined composite type is also called a struct. The struct definition for a point looks like this:struct Point\n    x\n    y\nendThe header indicates that the new struct is called Point. The body defines the attributes or fields of the struct. The Point struct has two attributes: x and y. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.Defining a type named Point creates a datatype object:julia> typeof(Point)\nDataType\njulia> Point\nThinkJulia.PointBecause Point is defined in the module ThinkJulia, its “full name” is ThinkJulia.Point.A struct is like a factory for creating objects. To create a point, you call Point as if it were a function having as arguments the values of the attributes. When Point is used as a function, it is called a constructor.julia> p = Point(3.0, 4.0)\nThinkJulia.Point(3.0, 4.0)The return value is a reference to a point object, which we assign to p.Creating a new object is called instantiation, and the object is an instance of the type.When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.A state diagram that shows an object and its attributes is called an object diagram; see Figure 15.1.using ThinkJulia\nfig15_1()<figure>\n  <img src=\"fig151.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.1. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig151}\n\\caption{Object diagram.}\n\\label{fig151}\n\\end{figure}"
+    "text": "We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called Point that represents a point in two-dimensional space.In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, (00) represents the origin, and (xy) represents the point x units to the right and y units up from the origin.There are several ways we might represent points in Julia:We could store the coordinates separately in two variables, x and y.\nWe could store the coordinates as elements in a list or tuple.\nWe could create a new type to represent points as objects.Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.A programmer-defined composite type is also called a struct. The struct definition for a point looks like this:struct Point\n    x\n    y\nendThe header indicates that the new struct is called Point. The body defines the attributes or fields of the struct. The Point struct has two fields: x and y. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.Defining a type named Point creates a datatype object:julia> typeof(Point)\nDataType\njulia> Point\nThinkJulia.PointBecause Point is defined in the module ThinkJulia, its “full name” is ThinkJulia.Point.A struct is like a factory for creating objects. To create a point, you call Point as if it were a function having as arguments the values of the fields. When Point is used as a function, it is called a constructor.julia> p = Point(3.0, 4.0)\nThinkJulia.Point(3.0, 4.0)The return value is a reference to a point object, which we assign to p.Creating a new object is called instantiation, and the object is an instance of the type.When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.A state diagram that shows an object and its fields is called an object diagram; see Figure 15.1.using ThinkJulia\nfig15_1()<figure>\n  <img src=\"fig151.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.1. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig151}\n\\caption{Object diagram.}\n\\label{fig151}\n\\end{figure}"
 },
 
 {
     "location": "chap15.html#Structs-are-immutable-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Structs are immutable",
     "category": "section",
-    "text": "You can get the values of the attributes using . notation:julia> x = p.x\n3.0\njulia> p.y\n4.0The expression p.x means, “Go to the object p refers to and get the value of x.” In the example, we assign that value to a variable named x. There is no conflict between the variable x and the attribute x.You can use dot notation as part of any expression. For example:julia> distance = sqrt(p.x^2 + p.y^2)\n5.0Structs are however by default immutable, after construction the attributes can not change value:julia> p.y = 1.0\nERROR: type Point is immutableThis may seem odd at first, but it has several advantages:It can be more efficient.\nIt is not possible to violate the invariants provided by the type\'s constructors (see later).\nCode using immutable objects can be easier to reason about."
+    "text": "You can get the values of the fields using . notation:julia> x = p.x\n3.0\njulia> p.y\n4.0The expression p.x means, “Go to the object p refers to and get the value of x.” In the example, we assign that value to a variable named x. There is no conflict between the variable x and the field x.You can use dot notation as part of any expression. For example:julia> distance = sqrt(p.x^2 + p.y^2)\n5.0Structs are however by default immutable, after construction the fields can not change value:julia> p.y = 1.0\nERROR: type Point is immutableThis may seem odd at first, but it has several advantages:It can be more efficient.\nIt is not possible to violate the invariants provided by the type\'s constructors (see later).\nCode using immutable objects can be easier to reason about."
 },
 
 {
     "location": "chap15.html#Mutable-structs-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Mutable structs",
     "category": "section",
     "text": "Where required, mutable composite types can be declared with the keyword mutable struct. Here is the definition of a mutable point:mutable struct MPoint\n    x\n    y\nendYou can assign values to an instance of a mutable struct using dot notation:julia> blank = MPoint(0.0, 0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> blank.x = 3.0\n3.0\njulia> blank.y = 4.0\n4.0You can pass an instance as an argument in the usual way. For example:function printpoint(p)\n    println(\"($(p.x), $(p.y))\")\nendprintpoint takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass p as an argument:julia> printpoint(blank)\n(3.0, 4.0)As an exercise, write a function called distancebetweenpoints that takes two points as arguments and returns the distance between them."
@@ -2162,31 +2162,31 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "chap15.html#Rectangles-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Rectangles",
     "category": "section",
-    "text": "Sometimes it is obvious what the attributes of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What attributes would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.There are at least two possibilities:You could specify one corner of the rectangle (or the center), the width, and the height.\nYou could specify two opposing corners.At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.\"\"\"\nRepresents a rectangle.\n\nattributes: width, height, corner.\n\"\"\"\nstruct Rectangle\n    width\n    height\n    corner\nendThe docstring lists the attributes: width and height are numbers; corner is a point object that specifies the lower-left corner.To represent a rectangle, you have to instantiate a rectangle object:julia> origin = MPoint(0.0, 0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> box = Rectangle(100.0, 200.0, origin)\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))Figure 15.2 shows the state of this object. An object that is an attribute of another object is embedded. Because the corner attribute refers to a mutable object, the latter is drawn outside the rectangle object.using ThinkJulia\nfig15_2()<figure>\n  <img src=\"fig152.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.2. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig152}\n\\caption{Object diagram.}\n\\label{fig152}\n\\end{figure}"
+    "text": "Sometimes it is obvious what the fields of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What fields would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.There are at least two possibilities:You could specify one corner of the rectangle (or the center), the width, and the height.\nYou could specify two opposing corners.At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.\"\"\"\nRepresents a rectangle.\n\nfields: width, height, corner.\n\"\"\"\nstruct Rectangle\n    width\n    height\n    corner\nendThe docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.To represent a rectangle, you have to instantiate a rectangle object:julia> origin = MPoint(0.0, 0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> box = Rectangle(100.0, 200.0, origin)\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))Figure 15.2 shows the state of this object. An object that is a field of another object is embedded. Because the corner attribute refers to a mutable object, the latter is drawn outside the rectangle object.using ThinkJulia\nfig15_2()<figure>\n  <img src=\"fig152.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.2. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig152}\n\\caption{Object diagram.}\n\\label{fig152}\n\\end{figure}"
 },
 
 {
     "location": "chap15.html#Instances-as-return-values-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Instances as return values",
     "category": "section",
-    "text": "Functions can return instances. For example, findcenter takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:function findcenter(rect)\n    Point(rect.corner.x, rect.corner.y)\nendThe expression rect.corner.x means, “Go to the object rect refers to and select the attribute named corner; then go to that object and select the attribute named x.”Here is an example that passes box as an argument and assigns the resulting point to center:julia> center = findcenter(box)\nThinkJulia.Point(0.0, 0.0)"
+    "text": "Functions can return instances. For example, findcenter takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:function findcenter(rect)\n    Point(rect.corner.x, rect.corner.y)\nendThe expression rect.corner.x means, “Go to the object rect refers to and select the field named corner; then go to that object and select the field named x.”Here is an example that passes box as an argument and assigns the resulting point to center:julia> center = findcenter(box)\nThinkJulia.Point(0.0, 0.0)"
 },
 
 {
     "location": "chap15.html#Instances-as-arguments-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Instances as arguments",
     "category": "section",
-    "text": "If a mutable struct object is passed to a function as an argument, the function can modify the attributes of the object. For example, movepoint takes a mutable point object and two numbers, dx and dy, and adds the numbers to respectively the x and the y attribute of the point:function movepoint!(p, dx, dy)\n    p.x += dx\n    p.y += dy\n    nothing\nendHere is an example that demonstrates the effect:julia> origin = MPoint(0.0,0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> movepoint!(origin, 1.0, 2.0)\n\njulia> origin\nThinkJulia.MPoint(1.0, 2.0)Inside the function, p is an alias for origin, so when the function modifies p, origin changes.Passing an immutable point object to movepoint! causes an error:julia> movepoint!(p, 1.0, 2.0)\nERROR: type is immutableYou can however modify the value of a mutable attribute of an immutable object. For example, moverectangle! has as arguments a rectangle object and two numbers, dx and dy, and uses movepoint! to move the corner of the rectangle:function moverectangle!(rect, dx, dy)\n  movepoint!(rect.corner, dx, dy)\nendNow p in movepoint! is an alias for rect.corner, so when p is modified, rect.corner changes also:julia> box\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))\njulia> moverectangle!(box, 1.0, 2.0)\n\njulia> box\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(1.0, 2.0))Attention you cannot reassign a mutable attribute of an immutable object:julia> box.corner = MPoint(1.0, 2.0)\nERROR: type Rectangle is immutable"
+    "text": "If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, movepoint takes a mutable point object and two numbers, dx and dy, and adds the numbers to respectively the x and the y attribute of the point:function movepoint!(p, dx, dy)\n    p.x += dx\n    p.y += dy\n    nothing\nendHere is an example that demonstrates the effect:julia> origin = MPoint(0.0,0.0)\nThinkJulia.MPoint(0.0, 0.0)\njulia> movepoint!(origin, 1.0, 2.0)\n\njulia> origin\nThinkJulia.MPoint(1.0, 2.0)Inside the function, p is an alias for origin, so when the function modifies p, origin changes.Passing an immutable point object to movepoint! causes an error:julia> movepoint!(p, 1.0, 2.0)\nERROR: type is immutableYou can however modify the value of a mutable attribute of an immutable object. For example, moverectangle! has as arguments a rectangle object and two numbers, dx and dy, and uses movepoint! to move the corner of the rectangle:function moverectangle!(rect, dx, dy)\n  movepoint!(rect.corner, dx, dy)\nendNow p in movepoint! is an alias for rect.corner, so when p is modified, rect.corner changes also:julia> box\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))\njulia> moverectangle!(box, 1.0, 2.0)\n\njulia> box\nThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(1.0, 2.0))Attention you cannot reassign a mutable attribute of an immutable object:julia> box.corner = MPoint(1.0, 2.0)\nERROR: type Rectangle is immutable"
 },
 
 {
     "location": "chap15.html#Copying-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Copying",
     "category": "section",
     "text": "Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.Copying an object is often an alternative to aliasing. Julia provides a function called deepcopy that can duplicate any object:julia> p1 = MPoint(3.0, 4.0)\nThinkJulia.MPoint(3.0, 4.0)\njulia> p2 = deepcopy(p1)\nThinkJulia.MPoint(3.0, 4.0)\njulia> p1 ≡ p2\nfalse\njulia> p1 == p2\nfalseThe ≡ operator indicates that p1 and p2 are not the same object, which is what we expected. But you might have expected == to yield true because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the == operator is the same as the === operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.As an exercise, create a Point instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object."
@@ -2194,23 +2194,23 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "chap15.html#Debugging-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Debugging",
     "category": "section",
-    "text": "When you start working with objects, you are likely to encounter some new exceptions. If you try to access an attribute that doesn’t exist, you get:julia> p = Point(3.0, 4.0)\nThinkJulia.Point(3.0, 4.0)\njulia> p.z = 1.0\nERROR: type Point has no field zIf you are not sure what type an object is, you can ask:julia> typeof(p)\nThinkJulia.PointYou can also use isinstance to check whether an object is an instance of a type:julia> p isa Point\ntrueIf you are not sure whether an object has a particular attribute, you can use the built-in function fieldnames:julia> fieldnames(p)\n2-element Array{Symbol,1}:\n :x\n :yor the function isdefined:julia> isdefined(p, :x)\ntrue\njulia> isdefined(p, :z)\nfalseThe first argument can be any object; the second argument is a symbol, : followed by the name of the attribute.You can also use a try statement to see if the object has the attributes you need:try\n    x = 1.0\ncatch exc\n    x = 0.0\nend"
+    "text": "When you start working with objects, you are likely to encounter some new exceptions. If you try to access a field that doesn’t exist, you get:julia> p = Point(3.0, 4.0)\nThinkJulia.Point(3.0, 4.0)\njulia> p.z = 1.0\nERROR: type Point has no field zIf you are not sure what type an object is, you can ask:julia> typeof(p)\nThinkJulia.PointYou can also use isinstance to check whether an object is an instance of a type:julia> p isa Point\ntrueIf you are not sure whether an object has a particular attribute, you can use the built-in function fieldnames:julia> fieldnames(p)\n2-element Array{Symbol,1}:\n :x\n :yor the function isdefined:julia> isdefined(p, :x)\ntrue\njulia> isdefined(p, :z)\nfalseThe first argument can be any object; the second argument is a symbol, : followed by the name of the field.You can also use a try statement to see if the object has the fields you need:try\n    x = 1.0\ncatch exc\n    x = 0.0\nend"
 },
 
 {
     "location": "chap15.html#Glossary-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Glossary",
     "category": "section",
-    "text": "struct: A composite type. A struct definition creates a new struct object.struct object: An object that contains information about a composite type. The struct object can be used to create instances of the type.instance: An object that belongs to a type.instantiate: To create a new object.attribute or field: One of the named values associated with an object.embedded object: An object that is stored as an attribute of another object.deep copy: To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the deepcopy function.object diagram: A diagram that shows objects, their attributes, and the values of the attributes."
+    "text": "struct: A composite type. A struct definition creates a new struct object.struct object: An object that contains information about a composite type. The struct object can be used to create instances of the type.instance: An object that belongs to a type.instantiate: To create a new object.attribute or field: One of the named values associated with an object.embedded object: An object that is stored as a field of another object.deep copy: To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the deepcopy function.object diagram: A diagram that shows objects, their fields, and the values of the fields."
 },
 
 {
     "location": "chap15.html#Exercises-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Exercises",
     "category": "section",
     "text": ""
@@ -2218,18 +2218,106 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "chap15.html#Exercise-15-1-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Exercise 15-1",
     "category": "section",
-    "text": "Write a definition for a type named Circle with attributes center and radius, where center is a point object and radius is a number.\nInstantiate a circle object that represents a circle with its center at (150 100) and radius 75.\nWrite a function named pointincircle that takes a circle object and a point object and returns true if the point lies in or on the boundary of the circle.\nWrite a function named rectincircle that takes a circle object and a rectangle object and returns true if the rectangle lies entirely in or on the boundary of the circle.\nWrite a function named rectcircleoverlap that takes a circle object and a rectangle object and returns true if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return true if any part of the rectangle falls inside the circle."
+    "text": "Write a definition for a type named Circle with fields center and radius, where center is a point object and radius is a number.\nInstantiate a circle object that represents a circle with its center at (150 100) and radius 75.\nWrite a function named pointincircle that takes a circle object and a point object and returns true if the point lies in or on the boundary of the circle.\nWrite a function named rectincircle that takes a circle object and a rectangle object and returns true if the rectangle lies entirely in or on the boundary of the circle.\nWrite a function named rectcircleoverlap that takes a circle object and a rectangle object and returns true if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return true if any part of the rectangle falls inside the circle."
 },
 
 {
     "location": "chap15.html#Exercise-15-2-1",
-    "page": "Struct and objects",
+    "page": "Structs and objects",
     "title": "Exercise 15-2",
     "category": "section",
     "text": "Write a function called drawrect that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.\nWrite a function called drawcircle that takes a turtle object and a circle object and draws the circle."
+},
+
+{
+    "location": "chap16.html#",
+    "page": "Structs and functions",
+    "title": "Structs and functions",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap16.html#Structs-and-functions-1",
+    "page": "Structs and functions",
+    "title": "Structs and functions",
+    "category": "section",
+    "text": "DocTestSetup = quote\n    using ThinkJulia\nendNow that we know how to create new composite types, the next step is to write functions that take programmer-defined objects as parameters and return them as results. In this chapter I also present “functional programming style” and two new program development plans."
+},
+
+{
+    "location": "chap16.html#Time-1",
+    "page": "Structs and functions",
+    "title": "Time",
+    "category": "section",
+    "text": "As another example of a composite type, we’ll define a mutable struct called DayTime that records the time of day. The struct definition looks like this:\"\"\"\nRepresents the time of day.\n\nfields: hour, minute, second\n\"\"\"\nmutable struct DayTime\n    hour :: Int\n    minute :: Int\n    second :: Int\nendThe name Time is already used in Julia and to avoid a name clash, I have chosen DayTime. We can create a new daytime object:julia> time = DayTime(11, 59, 30)\nThinkJulia.DayTime(11, 59, 30)The state diagram for the daytime object looks like Figure 16.1.using ThinkJulia\nfig16_1()<figure>\n  <img src=\"fig161.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 16.1. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig161}\n\\caption{Object diagram.}\n\\label{fig161}\n\\end{figure}As an exercise, write a function called printtime that takes a daytime object and prints it in the form hour:minute:second. Hint: using the @printf macro the format sequence \'%02d\' prints an integer using at least two digits, including a leading zero if necessary.Write a boolean function called isafter that takes two daytime objects, t1 and t2, and returns true if t1 follows t2 chronologically and false otherwise. Challenge: don’t use an if statement."
+},
+
+{
+    "location": "chap16.html#Pure-functions-1",
+    "page": "Structs and functions",
+    "title": "Pure functions",
+    "category": "section",
+    "text": "In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call prototype and patch, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.Here is a simple prototype of addtime:function addtime(t1, t2)\n  DayTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)\nendDocTestSetup = quote\n  using ThinkJulia\n\n  function addtime(t1, t2)\n    DayTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)\n  end\nendThe function creates a new DayTime object, initializes its fields, and returns a reference to the new object. This is called a pure function because it does not modify any of the objects passed to it as arguments and it has no effect, like displaying a value or getting user input, other than returning a value.To test this function, I’ll create two DayTime objects: start contains the start time of a movie, like Monty Python and the Holy Grail, and duration contains the run time of the movie, which is one hour 35 minutes.addtime figures out when the movie will be done.julia> start = DayTime(9, 45, 0);\n\njulia> duration = DayTime(1, 35, 0);\n\njulia> done = addtime(start, duration);\n\njulia> printtime(done)\n10:80:00The result, 10:80:00 might not be what you were hoping for. The problem is that this function does not deal with cases where the number of seconds or minutes adds up to more than sixty. When that happens, we have to “carry” the extra seconds into the minute column or the extra minutes into the hour column. Here’s an improved version:function addtime(t1, t2)\n    tsum = DayTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)\n    if tsum.second >= 60\n        tsum.second -= 60\n        tsum.minute += 1\n    end\n    if tsum.minute >= 60\n        tsum.minute -= 60\n        tsum.hour += 1\n    end\n    tsum\nendAlthough this function is correct, it is starting to get big. We will see a shorter alternative later."
+},
+
+{
+    "location": "chap16.html#Modifiers-1",
+    "page": "Structs and functions",
+    "title": "Modifiers",
+    "category": "section",
+    "text": "Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called modifiers.increment!, which adds a given number of seconds to a daytime object, can be written naturally as a modifier. Here is a rough draft:function increment!(time, seconds)\n    time.second += seconds\n    if time.second >= 60\n        time.second -= 60\n        time.minute += 1\n    end\n    if time.minute >= 60\n        time.minute -= 60\n        time.hour += 1\n    end\nendThe first line performs the basic operation; the remainder deals with the special cases we saw before.Is this function correct? What happens if seconds is much greater than 60?In that case, it is not enough to carry once; we have to keep doing it until time.second is less than sixty. One solution is to replace the if statements with while statements. That would make the function correct, but not very efficient. As an exercise, write a correct version of increment! that doesn’t contain any loops.Anything that can be done with modifiers can also be done with pure functions. In fact, some programming languages only allow pure functions. There is some evidence that programs that use pure functions are faster to develop and less error-prone than programs that use modifiers. But modifiers are convenient at times, and functional programs tend to be less efficient.In general, I recommend that you write pure functions whenever it is reasonable and resort to modifiers only if there is a compelling advantage. This approach might be called a functional programming style.As an exercise, write a “pure” version of increment! that creates and returns a new daytime object rather than modifying the parameter."
+},
+
+{
+    "location": "chap16.html#Prototyping-versus-planning-1",
+    "page": "Structs and functions",
+    "title": "Prototyping versus planning",
+    "category": "section",
+    "text": "The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.This approach can be effective, especially if you don’t yet have a deep understanding of the problem. But incremental corrections can generate code that is unnecessarily complicated—since it deals with many special cases—and unreliable—since it is hard to know if you have found all the errors.An alternative is designed development, in which high-level insight into the problem can make the programming much easier. In this case, the insight is that a Time object is really a three-digit number in base 60 (see http://en.wikipedia.org/wiki/Sexagesimal)! The second attribute is the “ones column”, the minute attribute is the “sixties column”, and the hour attribute is the “thirty-six hundreds column”.When we wrote addtime and increment!, we were effectively doing addition in base 60, which is why we had to carry from one column to the next.This observation suggests another approach to the whole problem—we can convert Time objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.Here is a function that converts daytimes to integers:function timetoint(time)\n    minutes = time.hour * 60 + time.minute\n    seconds = minutes * 60 + time.second\nendAnd here is a function that converts an integer to a daytime (recall that divrem divides the first argument by the second and returns the quotient and remainder as a tuple):function inttotime(seconds)\n    (minutes, second) = divrem(seconds, 60)\n    hour, minute = divrem(minutes, 60)\n    DayTime(hour, minute, second)\nendYou might have to think a bit, and run some tests, to convince yourself that these functions are correct. One way to test them is to check that timetoint(inttotime(x)) == x for many values of x. This is an example of a consistency check.Once you are convinced they are correct, you can use them to rewrite addtime:function addtime(t1, t2)\n    seconds = timetoint(t1) + timetoint(t2)\n    inttotime(seconds)\nendThis version is shorter than the original, and easier to verify. Rewrite increment! using timetoint and inttotime.In some ways, converting from base 60 to base 10 and back is harder than just dealing with times. Base conversion is more abstract; our intuition for dealing with time values is better.But if we have the insight to treat times as base 60 numbers and make the investment of writing the conversion functions (timetoint and inttotime), we get a program that is shorter, easier to read and debug, and more reliable.It is also easier to add features later. For example, imagine subtracting two daytimes to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.Ironically, sometimes making a problem harder (or more general) makes it easier (because there are fewer special cases and fewer opportunities for error)."
+},
+
+{
+    "location": "chap16.html#Debugging-1",
+    "page": "Structs and functions",
+    "title": "Debugging",
+    "category": "section",
+    "text": "A daytime object is well-formed if the values of minute and second are between 0 and 60 (including 0 but not 60) and if hour is positive. hour and minute should be integral values, but we might allow second to have a fraction part.Requirements like these are called invariants because they should always be true. To put it a different way, if they are not true, something has gone wrong.Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like isvalidtime that takes a daytime object and returns false if it violates an invariant:function isvalidtime(time)\n    if time.hour < 0 || time.minute < 0 || time.second < 0\n        return false\n    end\n    if time.minute >= 60 || time.second >= 60\n        return false\n    end\n    true\nendAt the beginning of each function you could check the arguments to make sure they are valid:function addtime(t1, t2)\n    if isvalidtime(t1) && isvalidtime(t2)\n        error(\"invalid DayTime object in add_time\")\n    end\n    seconds = timetoint(t1) + timetoint(t2)\n    inttotime(seconds)\nendOr you could use an @assert macro, which checks a given invariant and throws an exception if it fails:function addtime(t1, t2)\n    @assert(isvalidtime(t1) && isvalidtime(t2), \"invalid DayTime object in add_time\")\n    seconds = timetoint(t1) + timetoint(t2)\n    inttotime(seconds)\nend@assert macros are useful because they distinguish code that deals with normal conditions from code that checks for errors."
+},
+
+{
+    "location": "chap16.html#Glossary-1",
+    "page": "Structs and functions",
+    "title": "Glossary",
+    "category": "section",
+    "text": "prototype and patch: A development plan that involves writing a rough draft of a program, testing, and correcting errors as they are found.designed development: A development plan that involves high-level insight into the problem and more planning than incremental development or prototype development.pure function: A function that does not modify any of the objects it receives as arguments. Most pure functions are fruitful.modifier: A function that changes one or more of the objects it receives as arguments. Most modifiers are void; that is, they return nothing.functional programming style: A style of program design in which the majority of functions are pure.invariant: A condition that should always be true during the execution of a program.@assert macro: A statement that check a condition and throws an exception if it fails."
+},
+
+{
+    "location": "chap16.html#Exercises-1",
+    "page": "Structs and functions",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap16.html#Exercise-16-1-1",
+    "page": "Structs and functions",
+    "title": "Exercise 16-1",
+    "category": "section",
+    "text": "Write a function called multime that takes a daytime object and a number and returns a new daytime object that contains the product of the original daytime and the number.Then use multime to write a function that takes a daytime object that represents the finishing time in a race, and a number that represents the distance, and returns a daytime object that represents the average pace (time per mile)."
+},
+
+{
+    "location": "chap16.html#Exercise-16-2-1",
+    "page": "Structs and functions",
+    "title": "Exercise 16-2",
+    "category": "section",
+    "text": "Julia provides time objects that are similar to the daytime objects in this chapter, but they provide a rich set of methods and operators. Read the documentation at https://docs.julialang.org/en/latest/stdlib/Dates/#Dates-Functions-1.Write a program that gets the current date and prints the day of the week.\nWrite a program that takes a birthday as input and prints the user’s age and the number of days, hours, minutes and seconds until their next birthday.\nFor two people born on different days, there is a day when one is twice as old as the other. That’s their Double Day. Write a program that takes two birthdays and computes their Double Day.\nFor a little more challenge, write the more general version that computes the day when one person is n times older than the other."
 },
 
 ]}
