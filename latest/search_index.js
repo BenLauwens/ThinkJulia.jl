@@ -989,7 +989,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Strings",
     "title": "Strings",
     "category": "section",
-    "text": "DocTestSetup = quote\n    using ThinkJulia\nendStrings are not like integers, floats, and booleans. A string is a sequence, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia."
+    "text": "DocTestSetup = quote\n    using ThinkJulia\n    using Compat\nendStrings are not like integers, floats, and booleans. A string is a sequence, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia."
 },
 
 {
@@ -1013,7 +1013,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Strings",
     "title": "length",
     "category": "section",
-    "text": "length is a built-in function that returns the number of characters in a string:julia> fruits = \"🍌 🍎 🍐\"\n\"🍌 🍎 🍐\"\njulia> len = length(fruits)\n5To get the last letter of a string, you might be tempted to try something like this:julia> last = fruits[len]\n\' \': ASCII/Unicode U+0020 (category Zs: Separator, space)But you might not get what you expect.Strings are encoded using the UTF-8 encoding. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.The function sizeof gives the number of bytes in a string:julia> sizeof(\"🍌\")\n4Because an emoji is encoded in 4 bytes and string indexing is byte based, the 5th element of fruits is a SPACE.This means also that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string at such an invalid byte index, an error is thrown:julia> fruits[2]\nERROR: UnicodeError: invalid character index 2 (0x9f is a continuation byte)\n[...]In the case of fruits, the character 🍌 is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character\'s index is 5; this next valid index can be computed by nextind(fruit, 1), and the next index after that by nextind(fruit, 5) and so on."
+    "text": "length is a built-in function that returns the number of characters in a string:julia> fruits = \"🍌 🍎 🍐\"\n\"🍌 🍎 🍐\"\njulia> len = length(fruits)\n5To get the last letter of a string, you might be tempted to try something like this:julia> last = fruits[len]\n\' \': ASCII/Unicode U+0020 (category Zs: Separator, space)But you might not get what you expect.Strings are encoded using the UTF-8 encoding. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.The function sizeof gives the number of bytes in a string:julia> sizeof(\"🍌\")\n4Because an emoji is encoded in 4 bytes and string indexing is byte based, the 5th element of fruits is a SPACE.This means also that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string at such an invalid byte index, an error is thrown:julia> fruits[2]\nERROR: UnicodeError: invalid character index 2 (0x9f is a continuation byte)In the case of fruits, the character 🍌 is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character\'s index is 5; this next valid index can be computed by nextind(fruit, 1), and the next index after that by nextind(fruit, 5) and so on."
 },
 
 {
@@ -1093,7 +1093,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Strings",
     "title": "Debugging",
     "category": "section",
-    "text": "When you use indices to traverse the values in a sequence, it is tricky to get the beginning and end of the traversal right. Here is a function that is supposed to compare two words and return true if one of the words is the reverse of the other, but it contains two errors:function isreverse(word1, word2)\n    if length(word1) != length(word2)\n        return false\n    end\n    i = firstindex(word1)\n    j = lastindex(word2)\n    while j >= 0\n        j = prevind(word2, j)\n        if word1[i] != word2[j]\n            return false\n        end\n        i = nextind(word1, i)\n    end\n    true\nendThe first if statement checks whether the words are the same length. If not, we can return false immediately. Otherwise, for the rest of the function, we can assume that the words are the same length. This is an example of the guardian pattern.i and j are indices: i traverses word1 forward while j traverses word2 backward. If we find two letters that don’t match, we can return false immediately. If we get through the whole loop and all the letters match, we return true.The function lastindex returns the last valid byte index of a string and prevind the previous valid index of a character.If we test this function with the words \"pots\" and \"stop\", we expect the return value true, but we get false:DocTestSetup = quote\n    using ThinkJulia\n\n    function isreverse(word1, word2)\n        if length(word1) != length(word2)\n            return false\n        end\n        i = firstindex(word1)\n        j = lastindex(word2)\n        while j >= 0\n            j = prevind(word2, j)\n            if word1[i] != word2[j]\n                return false\n            end\n            i = nextind(word1, i)\n        end\n        true\n    end\nendjulia> isreverse(\"pots\", \"stop\")\nfalseFor debugging this kind of error, my first move is to print the values of the indices:    while j >= 0\n        j = prevind(word2, j)\n        println(\"$i $j\")        # print here\n        if word1[i] != word2[j]DocTestSetup = quote\n    using ThinkJulia\n\n    function isreverse(word1, word2)\n        if length(word1) != length(word2)\n            return false\n        end\n        i = firstindex(word1)\n        j = lastindex(word2)\n        while j >= 0\n            j = prevind(word2, j)\n            println(\"$i $j\")\n            if word1[i] != word2[j]\n                return false\n            end\n            i = nextind(word1, i)\n        end\n        true\n    end\nendNow when I run the program again, I get more information:julia> isreverse(\"pots\", \"stop\")\n1 3\nfalseThe first time through the loop, the value of j is 3, which has to be 4. This can be fixed by moving j = prevind(word2, j) to the end of the while loop.If I fix that error and run the program again, I get:DocTestSetup = quote\n    using ThinkJulia\n\n    function isreverse(word1, word2)\n        if length(word1) != length(word2)\n            return false\n        end\n        i = firstindex(word1)\n        j = lastindex(word2)\n        while j >= 0\n            println(\"$i $j\")\n            if word1[i] != word2[j]\n                return false\n            end\n            i = nextind(word1, i)\n            j = prevind(word2, j)\n        end\n        true\n    end\nendjulia> isreverse(\"pots\", \"stop\")\n1 4\n2 3\n3 2\n4 1\n5 0\nERROR: BoundsError: attempt to access \"pots\"\n  at index [5]\n[...]This time a BoundsError has been thrown. The value of i is 5, which is out a range for the string \"pots\".Run the program on paper, changing the values of i and j during each iteration. Find and fix the second error in this function."
+    "text": "When you use indices to traverse the values in a sequence, it is tricky to get the beginning and end of the traversal right. Here is a function that is supposed to compare two words and return true if one of the words is the reverse of the other, but it contains two errors:function isreverse(word1, word2)\n    if length(word1) != length(word2)\n        return false\n    end\n    i = firstindex(word1)\n    j = lastindex(word2)\n    while j >= 0\n        j = prevind(word2, j)\n        if word1[i] != word2[j]\n            return false\n        end\n        i = nextind(word1, i)\n    end\n    true\nendThe first if statement checks whether the words are the same length. If not, we can return false immediately. Otherwise, for the rest of the function, we can assume that the words are the same length. This is an example of the guardian pattern.i and j are indices: i traverses word1 forward while j traverses word2 backward. If we find two letters that don’t match, we can return false immediately. If we get through the whole loop and all the letters match, we return true.The function lastindex returns the last valid byte index of a string and prevind the previous valid index of a character.If we test this function with the words \"pots\" and \"stop\", we expect the return value true, but we get false:DocTestSetup = quote\n    using ThinkJulia\n    using Compat\n\n    function isreverse(word1, word2)\n        if length(word1) != length(word2)\n            return false\n        end\n        i = firstindex(word1)\n        j = lastindex(word2)\n        while j >= 0\n            j = prevind(word2, j)\n            if word1[i] != word2[j]\n                return false\n            end\n            i = nextind(word1, i)\n        end\n        true\n    end\nendjulia> isreverse(\"pots\", \"stop\")\nfalseFor debugging this kind of error, my first move is to print the values of the indices:    while j >= 0\n        j = prevind(word2, j)\n        println(\"$i $j\")        # print here\n        if word1[i] != word2[j]DocTestSetup = quote\n    using ThinkJulia\n    using Compat\n\n    function isreverse(word1, word2)\n        if length(word1) != length(word2)\n            return false\n        end\n        i = firstindex(word1)\n        j = lastindex(word2)\n        while j >= 0\n            j = prevind(word2, j)\n            println(\"$i $j\")\n            if word1[i] != word2[j]\n                return false\n            end\n            i = nextind(word1, i)\n        end\n        true\n    end\nendNow when I run the program again, I get more information:julia> isreverse(\"pots\", \"stop\")\n1 3\nfalseThe first time through the loop, the value of j is 3, which has to be 4. This can be fixed by moving j = prevind(word2, j) to the end of the while loop.If I fix that error and run the program again, I get:DocTestSetup = quote\n    using ThinkJulia\n    using Compat\n\n    function isreverse(word1, word2)\n        if length(word1) != length(word2)\n            return false\n        end\n        i = firstindex(word1)\n        j = lastindex(word2)\n        while j >= 0\n            println(\"$i $j\")\n            if word1[i] != word2[j]\n                return false\n            end\n            i = nextind(word1, i)\n            j = prevind(word2, j)\n        end\n        true\n    end\nendjulia> isreverse(\"pots\", \"stop\")\n1 4\n2 3\n3 2\n4 1\n5 0\nERROR: BoundsError: attempt to access \"pots\"\n  at index [5]This time a BoundsError has been thrown. The value of i is 5, which is out a range for the string \"pots\".Run the program on paper, changing the values of i and j during each iteration. Find and fix the second error in this function."
 },
 
 {
@@ -1798,6 +1798,350 @@ var documenterSearchIndex = {"docs": [
     "title": "Exercise 4",
     "category": "section",
     "text": "Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):What is the longest English word, that remains a valid English word, as you remove its letters one at a time? Now, letters can be removed from either end, or the middle, but you can’t rearrange any of the letters. Every time you drop a letter, you wind up with another English word. If you do that, you’re eventually going to wind up with one letter and that too is going to be an English word—one that’s found in the dictionary. I want to know what’s the longest word and how many letters does it have? I’m going to give you a little modest example: Sprite. Ok? You start off with sprite, you take a letter off, one from the interior of the word, take the r away, and we’re left with the word spite, then we take the e off the end, we’re left with spit, we take the s off, we’re left with pit, it, and I.Write a program to find all words that can be reduced in this way, and then find the longest one.This exercise is a little more challenging than most, so here are some suggestions:You might want to write a function that takes a word and computes a list of all the words that can be formed by removing one letter. These are the “children” of the word.\nRecursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.\nThe wordlist I provided, words.txt, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.\nTo improve the performance of your program, you might want to memoize the words that are known to be reducible."
+},
+
+{
+    "location": "chap13.html#",
+    "page": "Case study: data structure selection",
+    "title": "Case study: data structure selection",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap13.html#Case-study:-data-structure-selection-1",
+    "page": "Case study: data structure selection",
+    "title": "Case study: data structure selection",
+    "category": "section",
+    "text": "DocTestSetup = quote\n    using ThinkJulia\n    dir = Pkg.dir(\"ThinkJulia\")\n    hist = processfile(dir * \"/data/emma.txt\");\nendAt this point you have learned about Julia’s core data structures, and you have seen some of the algorithms that use them.This chapter presents a case study with exercises that let you think about choosing data structures and practice using them."
+},
+
+{
+    "location": "chap13.html#Word-frequency-analysis-1",
+    "page": "Case study: data structure selection",
+    "title": "Word frequency analysis",
+    "category": "section",
+    "text": "As usual, you should at least attempt the exercises before you read my solutions."
+},
+
+{
+    "location": "chap13.html#Exercise-1-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 1",
+    "category": "section",
+    "text": "Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.Hint: the function isalpha tests whether a character is alphabetic."
+},
+
+{
+    "location": "chap13.html#Exercise-2-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 2",
+    "category": "section",
+    "text": "Go to Project Gutenberg (http://gutenberg.org) and download your favorite out-of-copyright book in plain text format.Modify your program from the previous exercise to read the book you downloaded, skip over the header information at the beginning of the file, and process the rest of the words as before.Then modify the program to count the total number of words in the book, and the number of times each word is used.Print the number of different words used in the book. Compare different books by different authors, written in different eras. Which author uses the most extensive vocabulary?"
+},
+
+{
+    "location": "chap13.html#Exercise-3-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 3",
+    "category": "section",
+    "text": "Modify the program from the previous exercise to print the 20 most frequently used words in the book."
+},
+
+{
+    "location": "chap13.html#Exercise-4-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 4",
+    "category": "section",
+    "text": "Modify the previous program to read a word list and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?"
+},
+
+{
+    "location": "chap13.html#Random-numbers-1",
+    "page": "Case study: data structure selection",
+    "title": "Random numbers",
+    "category": "section",
+    "text": "Given the same inputs, most computer programs generate the same outputs every time, so they are said to be deterministic. Determinism is usually a good thing, since we expect the same calculation to yield the same result. For some applications, though, we want the computer to be unpredictable. Games are an obvious example, but there are more.Making a program truly nondeterministic turns out to be difficult, but there are ways to make it at least seem nondeterministic. One of them is to use algorithms that generate pseudorandom numbers. Pseudorandom numbers are not truly random because they are generated by a deterministic computation, but just by looking at the numbers it is all but impossible to distinguish them from random.The function rand returns a random float between 0.0 and 1.0 (including 0.0 but not 1.0). Each time you call random, you get the next number in a long series. To see a sample, run this loop:for i in 1:10\n    x = rand()\n    println(x)\nendThe function rand can take an iterator or array as argument and returns a random element:for i in 1:10\n    x = rand(1:6)\n    print(x, \" \")\nendThe Distributions module also provides functions to generate random values from discrete or continuous distributions including Gaussian, exponential, gamma, and a few more."
+},
+
+{
+    "location": "chap13.html#Exercise-5-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 5",
+    "category": "section",
+    "text": "Write a function named choosefromhist that takes a histogram as defined in Section 11.2 and returns a random value from the histogram, chosen with probability in proportion to frequency. For example, for this histogram:julia> t = [\'a\', \'a\', \'b\'];\n\njulia> histogram(t)\nDict{Any,Any} with 2 entries:\n  \'b\' => 1\n  \'a\' => 2your function should return \'a\' with probability frac23 and \'b\' with probability frac13."
+},
+
+{
+    "location": "chap13.html#Word-histogram-1",
+    "page": "Case study: data structure selection",
+    "title": "Word histogram",
+    "category": "section",
+    "text": "You should attempt the previous exercises before you go on. You will also need https://github.com/BenLauwens/ThinkJulia.jl/data/emma.txt.Here is a program that reads a file and builds a histogram of the words in the file:function processfile(filename)\n    hist = Dict()\n    for line in eachline(filename)\n        processline(line, hist)\n    end\n    hist\nend\n\nfunction processline(line, hist)\n    line = replace(line, \'-\', \' \')\n    for word in split(line)\n        word = string(filter(isalpha, [word...])...)\n        word = lowercase(word)\n        hist[word] = get!(hist, word, 0) + 1\n    end\nend\n\nhist = processfile(\"emma.txt\")This program reads emma.txt, which contains the text of Emma by Jane Austen.processfile loops through the lines of the file, passing them one at a time to process_line. The histogram hist is being used as an accumulator.processline uses the string method replace to replace hyphens with spaces before using split to break the line into an array of strings. It traverses the array of words and uses filter, isalpha and lowercase to remove punctuation and convert to lower case. (It is a shorthand to say that strings are “converted”; remember that strings are immutable, so a function like lowercase return new strings.)Finally, processline updates the histogram by creating a new item or incrementing an existing one.To count the total number of words in the file, we can add up the frequencies in the histogram:function totalwords(hist)\n    sum(values(hist))\nendThe number of different words is just the number of items in the dictionary:function differentwords(hist)\n    length(hist)\nendHere is some code to print the results:julia> println(\"Total number of words: \", totalwords(hist))\nTotal number of words: 162742\n\njulia> println(\"Number of different words: \", differentwords(hist))\nNumber of different words: 7380"
+},
+
+{
+    "location": "chap13.html#Most-common-words-1",
+    "page": "Case study: data structure selection",
+    "title": "Most common words",
+    "category": "section",
+    "text": "To find the most common words, we can make an array of tuples, where each tuple contains a word and its frequency, and sort it. The following function takes a histogram and returns an array of word-frequency tuples:function mostcommon(hist)\n    t = []\n    for (key, value) in hist\n        push!(t, (value, key))\n    end\n    reverse!(sort!(t))\nendIn each tuple, the frequency appears first, so the resulting array is sorted by frequency. Here is a loop that prints the ten most common words:t = mostcommon(hist)\nprintln(\"The most common words are:\")\nfor (freq, word) in t[1:10]\n    println(word, \"\\t\", freq)\nendI use a tab character (\'\\t\') as a “separator”, rather than a space, so the second column is lined up. Here are the results from Emma:The most common words are:\nto     5295\nthe    5266\nand    4931\nof     4339\ni      3191\na      3155\nit     2546\nher    2483\nwas    2400\nshe    2364This code can be simplified using the rev keyword argument of the sort! function. If you are curious, you can read about it at https://docs.julialang.org/en/stable/stdlib/sort/#Base.sort!."
+},
+
+{
+    "location": "chap13.html#Optional-parameters-1",
+    "page": "Case study: data structure selection",
+    "title": "Optional parameters",
+    "category": "section",
+    "text": "We have seen built-in functions and methods that take optional arguments. It is possible to write programmer-defined functions with optional arguments, too. For example, here is a function that prints the most common words in a histogram:function printmostcommon(hist, num=10)\n    t = most_common(hist)\n    println(\"The most common words are: \")\n    for (freq, word) in t[1:num]\n        println(word, \"\\t\", freq)\n    end\nendThe first parameter is required; the second is optional. The default value of num is 10.If you only provide one argument:printmostcommon(hist)num gets the default value. If you provide two arguments:print_most_common(hist, 20)num gets the value of the argument instead. In other words, the optional argument overrides the default value.If a function has both required and optional parameters, all the required parameters have to come first, followed by the optional ones."
+},
+
+{
+    "location": "chap13.html#Dictionary-subtraction-1",
+    "page": "Case study: data structure selection",
+    "title": "Dictionary subtraction",
+    "category": "section",
+    "text": "Finding the words from the book that are not in the word list from words.txt is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).subtract takes dictionaries d1 and d2 and returns a new dictionary that contains all the keys from d1 that are not in d2. Since we don’t really care about the values, we set them all to nothing.function subtract(d1, d2)\n    res = Dict()\n    for key in keys(d1)\n        if key ∉ keys(d2)\n            res[key] = nothing\n        end\n    end\n    res\nendTo find the words in the book that are not in words.txt, we can use processfile to build a histogram for words.txt, and then subtract:words = processfile(\"words.txt\")\ndiff = subtract(hist, words)\n\nprintln(\"Words in the book that aren\'t in the word list:\")\nfor word in keys(diff)\n    print(word, \" \")\nendHere are some of the results from Emma:Words in the book that aren\'t in the word list:\noutree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons betweens ...Some of these words are names and possessives. Others, like “rencontre”, are no longer in common use. But a few are common words that should really be in the list!"
+},
+
+{
+    "location": "chap13.html#Exercise-6-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 6",
+    "category": "section",
+    "text": "Julia provides a data structure called set that provides many common set operations. You can read about them in Section 19.5, or read the documentation at https://docs.julialang.org/en/stable/stdlib/collections/#Set-Like-Collections-1.Write a program that uses set subtraction to find words in the book that are not in the word list."
+},
+
+{
+    "location": "chap13.html#Random-words-1",
+    "page": "Case study: data structure selection",
+    "title": "Random words",
+    "category": "section",
+    "text": "To choose a random word from the histogram, the simplest algorithm is to build an array with multiple copies of each word, according to the observed frequency, and then choose from the array:function random_word(h)\n    t = []\n    for (word, freq) in h\n        for i in 1:freq\n            push!(t, word)\n        end\n    end\n    rand(t)\nendThis algorithm works, but it is not very efficient; each time you choose a random word, it rebuilds the array, which is as big as the original book. An obvious improvement is to build the array once and then make multiple selections, but the array is still big.An alternative is:Use keys to get an array of the words in the book.\nBuild an array that contains the cumulative sum of the word frequencies (see Exercise 10-2). The last item in this array is the total number of words in the book, n.\nChoose a random number from 1 to n. Use a bisection search (See Exercise 10-10) to find the index where the random number would be inserted in the cumulative sum.\nUse the index to find the corresponding word in the word array."
+},
+
+{
+    "location": "chap13.html#Exercise-7-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 7",
+    "category": "section",
+    "text": "Write a program that uses this algorithm to choose a random word from the book."
+},
+
+{
+    "location": "chap13.html#Markov-analysis-1",
+    "page": "Case study: data structure selection",
+    "title": "Markov analysis",
+    "category": "section",
+    "text": "If you choose words from the book at random, you can get a sense of the vocabulary, but you probably won’t get a sentence:this the small regard harriet which knightley\'s it most thingsA series of random words seldom makes sense because there is no relationship between successive words. For example, in a real sentence you would expect an article like “the” to be followed by an adjective or a noun, and probably not a verb or adverb.One way to measure these kinds of relationships is Markov analysis, which characterizes, for a given sequence of words, the probability of the words that might come next. For example, the song Eric, the Half a Bee begins:\\begin{verse}\nHalf a bee, philosophically,\\\\\nMust, ipso facto, half not be.\\\\\nBut half the bee has got to be\\\\\nVis a vis, its entity. D’you see?\n\nBut can a bee be said to be\\\\\nOr not to be an entire bee\\\\\nWhen half the bee is not a bee\\\\\nDue to some ancient injury?\n\\end{verse}<blockquote class=\"quote\">\nHalf a bee, philosophically, <br>\nMust, ipso facto, half not be. <br>\nBut half the bee has got to be <br>\nVis a vis, its entity. D&#X2019;you see? <br>\n<br>\nBut can a bee be said to be <br>\nOr not to be an entire bee <br>\nWhen half the bee is not a bee <br>\nDue to some ancient injury? <br>\n</blockquote><p>In this text, the phrase “half the” is always followed by the word “bee”, but the phrase “the bee” might be followed by either “has” or “is”.The result of Markov analysis is a mapping from each prefix (like “half the” and “the bee”) to all possible suffixes (like “has” and “is”).Given this mapping, you can generate a random text by starting with any prefix and choosing at random from the possible suffixes. Next, you can combine the end of the prefix and the new suffix to form the next prefix, and repeat.For example, if you start with the prefix “Half a”, then the next word has to be “bee”, because the prefix only appears once in the text. The next prefix is “a bee”, so the next suffix might be “philosophically”, “be” or “due”.In this example the length of the prefix is always two, but you can do Markov analysis with any prefix length."
+},
+
+{
+    "location": "chap13.html#Exercise-8-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 8",
+    "category": "section",
+    "text": "Markov analysis:Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be a list, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.\nAdd a function to the previous program to generate random text based on the Markov analysis. Here is an example from Emma with prefix length 2:\nHe was very clever, be it sweetness or be angry, ashamed or only amused, at such a stroke. She had never thought of Hannah till you were never meant for me?\" \"I cannot make speeches, Emma:\" he soon cut it all himself.\nFor this example, I left the punctuation attached to the words. The result is almost syntactically correct, but not quite. Semantically, it almost makes sense, but not quite.\nWhat happens if you increase the prefix length? Does the random text make more sense?\nOnce your program is working, you might want to try a mash-up: if youCredit: This case study is based on an example from Kernighan and Pike, The Practice of Programming, Addison-Wesley, 1999.You should attempt this exercise before you go on."
+},
+
+{
+    "location": "chap13.html#Data-structures-1",
+    "page": "Case study: data structure selection",
+    "title": "Data structures",
+    "category": "section",
+    "text": "Using Markov analysis to generate random text is fun, but there is also a point to this exercise: data structure selection. In your solution to the previous exercises, you had to choose:How to represent the prefixes.\nHow to represent the collection of possible suffixes.\nHow to represent the mapping from each prefix to the collection of possible suffixes.The last one is easy: a dictionary is the obvious choice for a mapping from keys to corresponding values.For the prefixes, the most obvious options are string, array of strings, or tuple of strings.For the suffixes, one option is an array; another is a histogram (dictionary).How should you choose? The first step is to think about the operations you will need to implement for each data structure. For the prefixes, we need to be able to remove words from the beginning and add to the end. For example, if the current prefix is “Half a”, and the next word is “bee”, you need to be able to form the next prefix, “a bee”.Your first choice might be an array, since it is easy to add and remove elements.For the collection of suffixes, the operations we need to perform include adding a new suffix (or increasing the frequency of an existing one), and choosing a random suffix.Adding a new suffix is equally easy for the array implementation or the histogram. Choosing a random element from a array is easy; choosing from a histogram is harder to do efficiently (see Exercise 13-7).So far we have been talking mostly about ease of implementation, but there are other factors to consider in choosing data structures. One is run time. Sometimes there is a theoretical reason to expect one data structure to be faster than other; for example, I mentioned that the in operator is faster for dictionaries than for lists, at least when the number of elements is large.But often you don’t know ahead of time which implementation will be faster. One option is to implement both of them and see which is better. This approach is called benchmarking. A practical alternative is to choose the data structure that is easiest to implement, and then see if it is fast enough for the intended application. If so, there is no need to go on. If not, there are tools, like the profile module, that can identify the places in a program that take the most time.The other factor to consider is storage space. For example, using a histogram for the collection of suffixes might take less space because you only have to store each word once, no matter how many times it appears in the text. In some cases, saving space can also make your program run faster, and in the extreme, your program might not run at all if you run out of memory. But for many applications, space is a secondary consideration after run time.One final thought: in this discussion, I have implied that we should use one data structure for both analysis and generation. But since these are separate phases, it would also be possible to use one structure for analysis and then convert to another structure for generation. This would be a net win if the time saved during generation exceeded the time spent in conversion."
+},
+
+{
+    "location": "chap13.html#Debugging-1",
+    "page": "Case study: data structure selection",
+    "title": "Debugging",
+    "category": "section",
+    "text": "When you are debugging a program, and especially if you are working on a hard bug, there are five things to try:Reading: Examine your code, read it back to yourself, and check that it says what you meant to say.Running: Experiment by making changes and running different versions. Often if you display the right thing at the right place in the program, the problem becomes obvious, but sometimes you have to build scaffolding.Ruminating: Take some time to think! What kind of error is it: syntax, runtime, or semantic? What information can you get from the error messages, or from the output of the program? What kind of error could cause the problem you’re seeing? What did you change last, before the problem appeared?Rubberducking: If you explain the problem to someone else, you sometimes find the answer before you finish asking the question. Often you don’t need the other person; you could just talk to a rubber duck. And that’s the origin of the well-known strategy called rubber duck debugging. I am not making this up; see https://en.wikipedia.org/wiki/Rubber_duck_debugging.Retreating: At some point, the best thing to do is back off, undoing recent changes, until you get back to a program that works and that you understand. Then you can start rebuilding.Beginning programmers sometimes get stuck on one of these activities and forget the others. Each activity comes with its own failure mode.For example, reading your code might help if the problem is a typographical error, but not if the problem is a conceptual misunderstanding. If you don’t understand what your program does, you can read it 100 times and never see the error, because the error is in your head.Running experiments can help, especially if you run small, simple tests. But if you run experiments without thinking or reading your code, you might fall into a pattern I call “random walk programming”, which is the process of making random changes until the program does the right thing. Needless to say, random walk programming can take a long time.You have to take time to think. Debugging is like an experimental science. You should have at least one hypothesis about what the problem is. If there are two or more possibilities, try to think of a test that would eliminate one of them.But even the best debugging techniques will fail if there are too many errors, or if the code you are trying to fix is too big and complicated. Sometimes the best option is to retreat, simplifying the program until you get to something that works and that you understand.Beginning programmers are often reluctant to retreat because they can’t stand to delete a line of code (even if it’s wrong). If it makes you feel better, copy your program into another file before you start stripping it down. Then you can copy the pieces back one at a time.Finding a hard bug requires reading, running, ruminating, and sometimes retreating. If you get stuck on one of these activities, try the others."
+},
+
+{
+    "location": "chap13.html#Glossary-1",
+    "page": "Case study: data structure selection",
+    "title": "Glossary",
+    "category": "section",
+    "text": "deterministic: Pertaining to a program that does the same thing each time it runs, given the same inputs.pseudorandom: Pertaining to a sequence of numbers that appears to be random, but is generated by a deterministic program.default value: The value given to an optional parameter if no argument is provided.override: To replace a default value with an argument.benchmarking: The process of choosing between data structures by implementing alternatives and testing them on a sample of the possible inputs.rubber duck debugging: Debugging by explaining your problem to an inanimate object such as a rubber duck. Articulating the problem can help you solve it, even if the rubber duck doesn’t know Julia."
+},
+
+{
+    "location": "chap13.html#Exercises-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap13.html#Exercise-9-1",
+    "page": "Case study: data structure selection",
+    "title": "Exercise 9",
+    "category": "section",
+    "text": "The “rank” of a word is its position in an array of words sorted by frequency: the most common word has rank 1, the second most common has rank 2, etc.Zipf’s law describes a relationship between the ranks and frequencies of words in natural languages (http://en.wikipedia.org/wiki/Zipf\'s_law). Specifically, it predicts that the frequency, f, of the word with rank r is:f = c r^swhere s and c are parameters that depend on the language and the text. If you take the logarithm of both sides of this equation, you get:log f = log c  s log rSo if you plot log f versus log r, you should get a straight line with slope s and intercept log c.Write a program that reads a text from a file, counts word frequencies, and prints one line for each word, in descending order of frequency, with log f and log r.Install a plotting library:Pkg.add(\"Plots\")Its usage is very easy:using Plots\nx = 1:10\ny = x.^2\nplot(x, y)Use the Plots library to plot the results and check whether they form a straight line."
+},
+
+{
+    "location": "chap14.html#",
+    "page": "Files",
+    "title": "Files",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap14.html#Files-1",
+    "page": "Files",
+    "title": "Files",
+    "category": "section",
+    "text": "DocTestSetup = quote\n    using ThinkJulia\nendThis chapter introduces the idea of “persistent” programs that keep data in permanent storage, and shows how to use different kinds of permanent storage, like files and databases."
+},
+
+{
+    "location": "chap14.html#Persistence-1",
+    "page": "Files",
+    "title": "Persistence",
+    "category": "section",
+    "text": "Most of the programs we have seen so far are transient in the sense that they run for a short time and produce some output, but when they end, their data disappears. If you run the program again, it starts with a clean slate.Other programs are persistent: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.Examples of persistent programs are operating systems, which run pretty much whenever a computer is on, and web servers, which run all the time, waiting for requests to come in on the network.One of the simplest ways for programs to maintain their data is by reading and writing text files. We have already seen programs that read text files; in this chapter we will see programs that write them.An alternative is to store the state of the program in a database. In this chapter I will present a simple database and a module, JLD2, that makes it easy to store program data."
+},
+
+{
+    "location": "chap14.html#Reading-and-writing-1",
+    "page": "Files",
+    "title": "Reading and writing",
+    "category": "section",
+    "text": "A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in Section 9.1.To write a file, you have to open it with mode \"w\" as a second parameter:julia> fout = open(\"output.txt\", \"w\")\nIOStream(<file output.txt>)If the file already exists, opening it in write mode clears out the old data and starts fresh, so be careful! If the file doesn’t exist, a new one is created. open returns a file object and the write function puts data into the file.julia> line1 = \"This here\'s the wattle,\\n\";\n\njulia> write(fout, line1)\n24The return value is the number of characters that were written. The file object keeps track of where it is, so if you call write again, it adds the new data to the end of the file.julia> line2 = \"the emblem of our land.\\n\";\n\njulia> write(fout, line2)\n24When you are done writing, you should close the file.julia> close(fout)\nIf you don’t close the file, it gets closed for you when the program ends."
+},
+
+{
+    "location": "chap14.html#Formatting-1",
+    "page": "Files",
+    "title": "Formatting",
+    "category": "section",
+    "text": "The argument of write has to be a string, so if we want to put other values in a file, we have to convert them to strings. The easiest way to do that is with string or string interpolation:julia> fout = open(\"output.txt\", \"w\")\nIOStream(<file output.txt>)\njulia> write(fout, string(150))\n3An alternative is to use the print(ln) family of functions.julia> camels = 42\n42\njulia> println(fout, \"I have spotted $camels camels.\")\nA more powerful alternative is the @printf macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/stable/stdlib/io-network/#Base.Printf.@printf"
+},
+
+{
+    "location": "chap14.html#Filenames-and-paths-1",
+    "page": "Files",
+    "title": "Filenames and paths",
+    "category": "section",
+    "text": "Files are organized into directories (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Python looks for it in the current directory.The function pwd returns the name of the current directory:\\begin{minted}{jlcon}\njulia> cwd = pwd()\n\"/home/dinsdale\"\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; cwd = pwd()\n\"/home/dinsdale\"</code></pre>cwd stands for “current working directory”. The result in this example is /home/dinsdale, which is the home directory of a user named dinsdale.A string like \"/home/dinsdale\" that identifies a file or directory is called a path.A simple filename, like memo.txt is also considered a path, but it is a relative path because it relates to the current directory. If the current directory is /home/dinsdale, the filename memo.txt would refer to /home/dinsdale/memo.txt.A path that begins with / does not depend on the current directory; it is called an absolute path. To find the absolute path to a file, you can use abspath:\\begin{minted}{jlcon}\njulia> abspath(\"memo.txt\")\n\"/home/dinsdale/memo.txt\"\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; abspath(\"memo.txt\")\n\"/home/dinsdale/memo.txt\"</code></pre>Julia provides other functions for working with filenames and paths. For example, ispath checks whether a file or directory exists:\\begin{minted}{jlcon}\njulia> ispath(\"memo.txt\")\ntrue\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; ispath(\"memo.txt\")\ntrue</code></pre>If it exists, isdir checks whether it’s a directory:\\begin{minted}{jlcon}\njulia> isdir(\"memo.txt\")\nfalse\njulia> isdir(\"/home/dinsdale\")\ntrue\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; isdir(\"memo.txt\")\nfalse\njulia> isdir(\"/home/dinsdale\")\ntrue</code></pre>Similarly, isfile checks whether it’s a file.readdir returns a list of the files (and other directories) in the given directory:\\begin{minted}{jlcon}\njulia> readdir(cwd)\n3-element Array{String,1}:\n \"memo.txt\"\n \"music\"\n \"photos\"\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; readdir(cwd)\n3-element Array{String,1}:\n \"memo.txt\"\n \"music\"\n \"photos\"</code></pre>To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.function walk(dirname)\n    for name in readdir(dirname)\n        path = joinpath(dirname, name)\n        if isfile(path)\n            println(path)\n        else\n            walk(path)\n        end\n    end\nendjoinpath takes a directory and a file name and joins them into a complete path.Julia provides a function called walkdir (see https://docs.julialang.org/en/stable/stdlib/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories."
+},
+
+{
+    "location": "chap14.html#Catching-exceptions-1",
+    "page": "Files",
+    "title": "Catching exceptions",
+    "category": "section",
+    "text": "A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a SystemError:fin = open(\"bad_file\")If you don’t have permission to access a file:fout = open(\"/etc/passwd\", \"w\")To avoid these errors, you could use functions like ispath and isfile, but it would take a lot of time and code to check all the possibilities.It is better to go ahead and try—and deal with problems if they happen—which is exactly what the try statement does. The syntax is similar to an if statement:try\n    fin = open(\"bad_file.txt\")\ncatch exc\n    println(\"Something went wrong: $exc\")\nendJulia starts by executing the try clause. If all goes well, it skips the catch clause and proceeds. If an exception occurs, it jumps out of the try clause and runs the catch clause.Handling an exception with a try statement is called catching an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The finally keyword provides a way to run some code when a given block of code exits, regardless of how it exits:f = open(\"output.txt\")\ntry\n    line = readline(f)\n    println(line)\nfinally\n    close(f)\nendThe function close will always be executed."
+},
+
+{
+    "location": "chap14.html#Databases-1",
+    "page": "Files",
+    "title": "Databases",
+    "category": "section",
+    "text": "A database is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.The package GDBM provides an interface for creating and updating database files. As an example, I’ll create a database that contains captions for image files.First, we have to install the package GDBM:Pkg.add(\"GDBM\")Opening a database is similar to opening other files:julia> using GDBM\n\njulia> db = DBM(\"captions\", \"c\")\nDBM(<captions>)The mode \"c\" means that the database should be created if it doesn’t already exist. The result is a database object that can be used (for most operations) like a dictionary.When you create a new item, GDBM updates the database file:julia> db[\"cleese.png\"] = \"Photo of John Cleese.\"\n\"Photo of John Cleese.\"When you access one of the items, GDBM reads the file:julia> db[\"cleese.png\"]\n\"Photo of John Cleese.\"If you make another assignment to an existing key, GDBM replaces the old value:julia> db[\"cleese.png\"] = \"Photo of John Cleese doing a silly walk.\"\n\"Photo of John Cleese doing a silly walk.\"\njulia> db[\"cleese.png\"]\n\"Photo of John Cleese doing a silly walk.\"Some functions having a dictionary as argument, like keys and values, don’t work with database objects. But iteration with a for loop works:for (key, value) in db\n    println(key, \": \", value)\nendAs with other files, you should close the database when you are done:julia> close(db)\n"
+},
+
+{
+    "location": "chap14.html#Serialization-1",
+    "page": "Files",
+    "title": "Serialization",
+    "category": "section",
+    "text": "A limitation of GDBM is that the keys and the values have to be strings or byte arrays. If you try to use any other type, you get an error.The functions serialize and deserialize can help. They translate almost any type of object into a byte array suitable for storage in a database, and then translates byte arrays back into objects:julia> io = IOBuffer();\n\njulia> t = [1, 2, 3];\n\njulia> serialize(io, t)\n24\njulia> print(take!(io))\nUInt8[0x15, 0x00, 0x08, 0xc8, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. deserialize reconstitutes the object:julia> io = IOBuffer();\n\njulia> t1 = [1, 2, 3];\n\njulia> serialize(io, t1)\n24\njulia> s = take!(io);\n\njulia> t2 = deserialize(IOBuffer(s));\n\njulia> print(t2)\n[1, 2, 3]serialize and deserialize write to and read from a iobuffer object which represents an in-memory I/O stream. The function take! fetches the contents of the iobuffer as a byte array and resets the iobuffer to its initial state.Although the new object has the same value as the old, it is not (in general) the same object:julia> t1 == t2\ntrue\njulia> t1 ≡ t2\nfalseIn other words, serialization and then deserialization has the same effect as copying the object.You can use this to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a package called JLD(2)."
+},
+
+{
+    "location": "chap14.html#Command-objects-1",
+    "page": "Files",
+    "title": "Command objects",
+    "category": "section",
+    "text": "Most operating systems provide a command-line interface, also known as a shell. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with cd, display the contents of a directory with ls, and launch a web browser by typing (for example) firefox.Any program that you can launch from the shell can also be launched from Julia using a command object:julia> cmd = `echo hello`\n`echo hello`Backticks are used to delimit the command.The function run executes the command:julia> run(cmd)\nhelloThe hello is the output of the echo command, sent to STDOUT. The run function itself returns nothing, and throws an ErrorException if the external command fails to run successfully.If you want to read the output of the external command, readstring can be used instead:julia> a = readstring(cmd)\n\"hello\\n\"For example, most Unix systems provide a command called md5sum that reads the contents of a file and computes a “checksum”. You can read about MD5 at http://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).You can use a command object to run md5sum from Julia and get the result:\\begin{minted}{jlcon}\njulia> filename = \"book.tex\"\n\"book.tex\"\n\njulia> cmd = `md5sum $filename`\n`md5sum book.tex`\n\njulia> res = readstring(cmd)\n\"d41d8cd98f00b204e9800998ecf8427e  book.tex\\n\"\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; julia> filename = \"book.tex\"\n\"book.tex\"\n\njulia&gt; cmd = `md5sum $filename`\n`md5sum book.tex`\n\njulia&gt; res = readstring(cmd)\n\"d41d8cd98f00b204e9800998ecf8427e  book.tex\\n\"</code></pre>"
+},
+
+{
+    "location": "chap14.html#Modules-1",
+    "page": "Files",
+    "title": "Modules",
+    "category": "section",
+    "text": "Any file that contains Julia code can be imported as a module. For example, suppose you have a file named \"wc.jl\" with the following code:function linecount(filename)\n    count = 0\n    for line in readline(filename)\n        count += 1\n    end\n    count\nend\n\nprint(linecount(\"wc.jl\"))If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:\\begin{minted}{jlcon}\njulia> include(\"wc.jl\")\n9\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; include(\"wc.jl\")\n9</code></pre>Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside module ...  end. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else\'s. Within a module, you can control which names from other modules are visible (via importing), and specify which of your names are intended to be public (via exporting).module LineCount\n    export linecount\n\n    function linecount(filename)\n        count = 0\n        for line in eachline(filename)\n            count += 1\n        end\n        count\n    end\nendThe module LineCount object provides linecount:\\begin{minted}{jlcon}\njulia> using LineCount\n\njulia> linecount(\"wc.jl\")\n11\n\\end{minted}<pre><code class=\"language-julia-repl\">julia&gt; using LineCount\n\njulia&gt; linecount(\"wc.jl\")\n11</code></pre>As an exercise, type this example into a file named wc.jl, include it into the REPL and enter using LineCount.Warning: If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.If you want to reload a module, you can use the built-in function reload, but it can be tricky, so the safest thing to do is restart the REPL."
+},
+
+{
+    "location": "chap14.html#Debugging-1",
+    "page": "Files",
+    "title": "Debugging",
+    "category": "section",
+    "text": "When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:julia> s = \"1 2\\t 3\\n 4\";\n\njulia> println(s)\n1 2	 3\n 4The built-in function repr can help. It takes any object as an argument and returns a string representation of the object.This can be helpful for debugging.julia> repr(s)\n\"\\\"1 2\\\\t 3\\\\n 4\\\"\"One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented \\n. Others use a return character, represented \\r. Some use both. If you move files between different systems, these inconsistencies can cause problems.For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at http://en.wikipedia.org/wiki/Newline. Or, of course, you could write one yourself."
+},
+
+{
+    "location": "chap14.html#Glossary-1",
+    "page": "Files",
+    "title": "Glossary",
+    "category": "section",
+    "text": "persistent: Pertaining to a program that runs indefinitely and keeps at least some of its data in permanent storage.text file: A sequence of characters stored in permanent storage like a hard drive.directory: A named collection of files, also called a folder.path: A string that identifies a file.relative path: A path that starts from the current directory.absolute path: A path that starts from the topmost directory in the file system.catch: To prevent an exception from terminating a program using the try ... catch ... finally statements.database: A file whose contents are organized like a dictionary with keys that correspond to values.shell: A program that allows users to type commands and then executes them by starting other programs.command object: An object that represents a shell command, allowing a Julia program to run commands and read the results."
+},
+
+{
+    "location": "chap14.html#Exercises-1",
+    "page": "Files",
+    "title": "Exercises",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "chap14.html#Exercise-14-1-1",
+    "page": "Files",
+    "title": "Exercise 14-1",
+    "category": "section",
+    "text": "Write a function called sed that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit."
+},
+
+{
+    "location": "chap14.html#Exercise-14-2-1",
+    "page": "Files",
+    "title": "Exercise 14-2",
+    "category": "section",
+    "text": "If you have done Exercise 12-2, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, \"opst\" maps to the list [\"opts\", \"post\", \"pots\", \"spot\", \"stop\", \"tops\"].Write a module that imports anagramsets and provides two new functions: storeanagrams should store the anagram dictionary using JLD2; read_anagrams should look up a word and return a list of its anagrams."
+},
+
+{
+    "location": "chap14.html#Exercise-14-3-1",
+    "page": "Files",
+    "title": "Exercise 14-3",
+    "category": "section",
+    "text": "In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.Write a program that searches a directory and all of its subdirectories, recursively, and returns a list of complete paths for all files with a given suffix (like .mp3).\nTo recognize duplicates, you can use md5sum to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.\nTo double-check, you can use the Unix command diff."
+},
+
+{
+    "location": "chap15.html#",
+    "page": "Types and objects",
+    "title": "Types and objects",
+    "category": "page",
+    "text": ""
+},
+
+{
+    "location": "chap15.html#Types-and-objects-1",
+    "page": "Types and objects",
+    "title": "Types and objects",
+    "category": "section",
+    "text": "DocTestSetup = quote\n    using ThinkJulia\n\n    struct Point\n      x\n      y\n    end\nendAt this point you know how to use functions to organize code and built-in types to organize data. The next step is to learn how to build your own types to organize both code and data. This is a big topic; it will take a few chapters to get there."
+},
+
+{
+    "location": "chap15.html#Composite-types-1",
+    "page": "Types and objects",
+    "title": "Composite types",
+    "category": "section",
+    "text": "We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called Point that represents a point in two-dimensional space.In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, (00) represents the origin, and (xy) represents the point x units to the right and y units up from the origin.There are several ways we might represent points in Julia:We could store the coordinates separately in two variables, x and y.\nWe could store the coordinates as elements in a list or tuple.\nWe could create a new type to represent points as objects.Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.A programmer-defined composite type is also called a struct. The struct definition for a point looks like this:struct Point\n    x\n    y\nendThe header indicates that the new struct is called Point. The body defines the attributes or fields of the struct. The Point struct has two attributes: x and y.Defining a class named Point creates a datatype object:julia> typeof(Point)\nDataTypeA struct is like a factory for creating objects. To create a point, you call Point as if it were a function having as arguments the values of the attributes. When Point is used as a function, it is called a constructor.julia> p = Point(3.0, 4.0)\nPoint(3.0, 4.0)The return value is a reference to a point object, which we assign to p.Creating a new object is called instantiation, and the object is an instance of the type.When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.Every object is an instance of some class, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.A state diagram that shows an object and its attributes is called an object diagram; see Figure 15.1.using ThinkJulia\nfig15_1()<figure>\n  <img src=\"fig151.svg\" alt=\"Object diagram.\">\n  <figcaption>Figure 15.1. Object diagram.</figcaption>\n</figure>\\begin{figure}\n\\centering\n\\includegraphics{fig121}\n\\caption{Object diagram.}\n\\label{fig151}\n\\end{figure}"
 },
 
 ]}
