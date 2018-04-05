@@ -1,4 +1,4 @@
-# Struct and objects
+# Structs and objects
 
 ```@meta
 DocTestSetup = quote
@@ -33,7 +33,7 @@ struct Point
 end
 ```
 
-The header indicates that the new struct is called `Point`. The body defines the **attributes** or **fields** of the struct. The `Point` struct has two attributes: `x` and `y`. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
+The header indicates that the new struct is called `Point`. The body defines the **attributes** or **fields** of the struct. The `Point` struct has two fields: `x` and `y`. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
 
 Defining a type named Point creates a datatype object:
 
@@ -46,7 +46,7 @@ ThinkJulia.Point
 
 Because `Point` is defined in the module `ThinkJulia`, its “full name” is `ThinkJulia.Point`.
 
-A struct is like a factory for creating objects. To create a point, you call `Point` as if it were a function having as arguments the values of the attributes. When `Point` is used as a function, it is called a **constructor**.
+A struct is like a factory for creating objects. To create a point, you call `Point` as if it were a function having as arguments the values of the fields. When `Point` is used as a function, it is called a **constructor**.
 
 ```jldoctest chap15
 julia> p = Point(3.0, 4.0)
@@ -61,7 +61,7 @@ When you print an instance, Julia tells you what type it belongs to and what the
 
 Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.
 
-A state diagram that shows an object and its attributes is called an *object diagram*; see Figure 15.1.
+A state diagram that shows an object and its fields is called an *object diagram*; see Figure 15.1.
 
 ```@eval
 using ThinkJulia
@@ -86,7 +86,7 @@ fig15_1()
 
 ## Structs are immutable
 
-You can get the values of the attributes using `.` notation:
+You can get the values of the fields using `.` notation:
 
 ```jldoctest chap15
 julia> x = p.x
@@ -95,7 +95,7 @@ julia> p.y
 4.0
 ```
 
-The expression `p.x` means, “Go to the object `p` refers to and get the value of `x`.” In the example, we assign that value to a variable named `x`. There is no conflict between the variable `x` and the attribute `x`.
+The expression `p.x` means, “Go to the object `p` refers to and get the value of `x`.” In the example, we assign that value to a variable named `x`. There is no conflict between the variable `x` and the field `x`.
 
 You can use dot notation as part of any expression. For example:
 
@@ -104,7 +104,7 @@ julia> distance = sqrt(p.x^2 + p.y^2)
 5.0
 ```
 
-Structs are however by default immutable, after construction the attributes can not change value:
+Structs are however by default immutable, after construction the fields can not change value:
 
 ```jldoctest chap15
 julia> p.y = 1.0
@@ -160,7 +160,7 @@ As an exercise, write a function called `distancebetweenpoints` that takes two p
 
 ## Rectangles
 
-Sometimes it is obvious what the attributes of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What attributes would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.
+Sometimes it is obvious what the fields of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What fields would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.
 
 There are at least two possibilities:
 
@@ -174,7 +174,7 @@ At this point it is hard to say whether either is better than the other, so we�
 """
 Represents a rectangle.
 
-attributes: width, height, corner.
+fields: width, height, corner.
 """
 struct Rectangle
     width
@@ -183,7 +183,7 @@ struct Rectangle
 end
 ```
 
-The docstring lists the attributes: width and height are numbers; corner is a point object that specifies the lower-left corner.
+The docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.
 
 To represent a rectangle, you have to instantiate a rectangle object:
 
@@ -194,7 +194,7 @@ julia> box = Rectangle(100.0, 200.0, origin)
 ThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))
 ```
 
-Figure 15.2 shows the state of this object. An object that is an attribute of another object is **embedded**. Because the `corner` attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+Figure 15.2 shows the state of this object. An object that is a field of another object is **embedded**. Because the `corner` attribute refers to a mutable object, the latter is drawn outside the rectangle object.
 
 ```@eval
 using ThinkJulia
@@ -227,7 +227,7 @@ function findcenter(rect)
 end
 ```
 
-The expression `rect.corner.x` means, “Go to the object `rect` refers to and select the attribute named `corner`; then go to that object and select the attribute named `x`.”
+The expression `rect.corner.x` means, “Go to the object `rect` refers to and select the field named `corner`; then go to that object and select the field named `x`.”
 
 Here is an example that passes `box` as an argument and assigns the resulting point to `center`:
 
@@ -238,7 +238,7 @@ ThinkJulia.Point(0.0, 0.0)
 
 ## Instances as arguments
 
-If a mutable struct object is passed to a function as an argument, the function can modify the attributes of the object. For example, `movepoint` takes a mutable point object and two numbers, `dx` and `dy`, and adds the numbers to respectively the `x` and the `y` attribute of the point:
+If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, `movepoint` takes a mutable point object and two numbers, `dx` and `dy`, and adds the numbers to respectively the `x` and the `y` attribute of the point:
 
 ```julia
 function movepoint!(p, dx, dy)
@@ -317,7 +317,7 @@ As an exercise, create a `Point` instance, make a copy of it and check the equiv
 
 ## Debugging
 
-When you start working with objects, you are likely to encounter some new exceptions. If you try to access an attribute that doesn’t exist, you get:
+When you start working with objects, you are likely to encounter some new exceptions. If you try to access a field that doesn’t exist, you get:
 
 ```jldoctest chap15
 julia> p = Point(3.0, 4.0)
@@ -358,9 +358,9 @@ julia> isdefined(p, :z)
 false
 ```
 
-The first argument can be any object; the second argument is a symbol, `:` followed by the name of the attribute.
+The first argument can be any object; the second argument is a symbol, `:` followed by the name of the field.
 
-You can also use a `try` statement to see if the object has the attributes you need:
+You can also use a `try` statement to see if the object has the fields you need:
 
 ```julia
 try
@@ -388,19 +388,19 @@ To create a new object.
 One of the named values associated with an object.
 
 *embedded object*:
-An object that is stored as an attribute of another object.
+An object that is stored as a field of another object.
 
 *deep copy*:
 To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the `deepcopy` function.
 
 *object diagram*:
-A diagram that shows objects, their attributes, and the values of the attributes.
+A diagram that shows objects, their fields, and the values of the fields.
 
 ## Exercises
 
 ### Exercise 15-1
 
-1. Write a definition for a type named `Circle` with attributes `center` and `radius`, where `center` is a point object and `radius` is a number.
+1. Write a definition for a type named `Circle` with fields `center` and `radius`, where `center` is a point object and `radius` is a number.
 
 2. Instantiate a circle object that represents a circle with its center at ``(150, 100)`` and radius ``75``.
 

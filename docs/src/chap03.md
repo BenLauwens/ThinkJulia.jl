@@ -575,6 +575,6 @@ The output of these statements is `"+ -"` on the same line.
 
 The output from the next print statement would begin on the next line.
 
-1. Write a function that draws a similar grid with four rows and four columns.
+2. Write a function that draws a similar grid with four rows and four columns.
 
 Credit: This exercise is based on an exercise in Oualline, *Practical C Programming*, Third Edition, O’Reilly Media, 1997.

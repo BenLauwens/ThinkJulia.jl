@@ -12,6 +12,7 @@ module ThinkJulia
   export printall
   export processfile, processline, totalwords, differentwords, mostcommon, printmostcommon, subtract
   export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
+  export DayTime, printtime, isafter
 
   export fig00_1
   export fig02_1
@@ -24,6 +25,7 @@ module ThinkJulia
   export fig11_1, fig11_2
   export fig12_1, fig12_2
   export fig15_1, fig15_2
+  export fig16_1
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -36,11 +38,13 @@ module ThinkJulia
   include("code/chap13.jl")
   include("code/chap14.jl")
   include("code/chap15.jl")
+  include("code/chap16.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")
   include("solutions/chap07.jl")
   include("solutions/chap10.jl")
+  include("solutions/chap16.jl")
   include("figures/common.jl")
   include("figures/chap00.jl")
   include("figures/chap02.jl")
@@ -53,4 +57,5 @@ module ThinkJulia
   include("figures/chap11.jl")  
   include("figures/chap12.jl")
   include("figures/chap15.jl")
+  include("figures/chap16.jl")
 end
