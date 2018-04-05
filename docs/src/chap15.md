@@ -362,13 +362,12 @@ The first argument can be any object; the second argument is a symbol, `:` follo
 
 You can also use a `try` statement to see if the object has the attributes you need:
 
-```jldoctest chap15
-julia> try
-       p.z = 1.0
-       catch exc
-       println(exc)
-       end
-ErrorException("type Point has no field z")
+```julia
+try
+    x = 1.0
+catch exc
+    x = 0.0
+end
 ```
 
 ## Glossary
@@ -385,7 +384,7 @@ An object that belongs to a type.
 *instantiate*:
 To create a new object.
 
-*attribute*:
+*attribute* or *field*:
 One of the named values associated with an object.
 
 *embedded object*:
