@@ -463,11 +463,11 @@ An error caused because a value has the wrong shape; that is, the wrong type or 
 
 ## Exercises
 
-### Exercise 1
+### Exercise 12-1
 
 Write a function called `mostfrequent` that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at <http://en.wikipedia.org/wiki/Letter_frequencies>.
 
-### Exercise 2
+### Exercise 12-2
 
 More anagrams!
 
@@ -488,11 +488,11 @@ More anagrams!
 
 3. In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos? Hint: there are seven.
 
-### Exercise 3
+### Exercise 12-3
 
 Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible swaps. Credit: This exercise is inspired by an example at <http://puzzlers.org>.
 
-### Exercise 4
+### Exercise 12-4
 
 Here’s another Car Talk Puzzler (<http://www.cartalk.com/content/puzzlers>):
 

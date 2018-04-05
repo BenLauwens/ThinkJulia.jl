@@ -16,13 +16,13 @@ This chapter presents a case study with exercises that let you think about choos
 
 As usual, you should at least attempt the exercises before you read my solutions.
 
-### Exercise 1
+### Exercise 13-1
 
 Write a program that reads a file, breaks each line into words, strips whitespace and punctuation from the words, and converts them to lowercase.
 
 Hint: the function `isalpha` tests whether a character is alphabetic.
 
-### Exercise 2
+### Exercise 13-2
 
 Go to Project Gutenberg (<http://gutenberg.org>) and download your favorite out-of-copyright book in plain text format.
 
@@ -32,11 +32,11 @@ Then modify the program to count the total number of words in the book, and the 
 
 Print the number of different words used in the book. Compare different books by different authors, written in different eras. Which author uses the most extensive vocabulary?
 
-### Exercise 3
+### Exercise 13-3
 
 Modify the program from the previous exercise to print the 20 most frequently used words in the book.
 
-### Exercise 4
+### Exercise 13-4
 
 Modify the previous program to read a word list and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?
 
@@ -66,7 +66,7 @@ end
 
 The `Distributions` module also provides functions to generate random values from discrete or continuous distributions including Gaussian, exponential, gamma, and a few more.
 
-### Exercise 5
+### Exercise 13-5
 
 Write a function named `choosefromhist` that takes a histogram as defined in Section 11.2 and returns a random value from the histogram, chosen with probability in proportion to frequency. For example, for this histogram:
 
@@ -256,7 +256,7 @@ outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons bet
 
 Some of these words are names and possessives. Others, like “rencontre”, are no longer in common use. But a few are common words that should really be in the list!
 
-### Exercise 6
+### Exercise 13-6
 
 Julia provides a data structure called set that provides many common set operations. You can read about them in Section 19.5, or read the documentation at <https://docs.julialang.org/en/stable/stdlib/collections/#Set-Like-Collections-1>.
 
@@ -290,7 +290,7 @@ An alternative is:
 
 4. Use the index to find the corresponding word in the word array.
 
-### Exercise 7
+### Exercise 13-7
 
 Write a program that uses this algorithm to choose a random word from the book.
 
@@ -344,7 +344,7 @@ For example, if you start with the prefix “Half a”, then the next word has t
 
 In this example the length of the prefix is always two, but you can do Markov analysis with any prefix length.
 
-### Exercise 8
+### Exercise 13-8
 
 Markov analysis:
 
@@ -451,7 +451,7 @@ Debugging by explaining your problem to an inanimate object such as a rubber duc
 
 ## Exercises
 
-### Exercise 9
+### Exercise 13-9
 
 The “rank” of a word is its position in an array of words sorted by frequency: the most common word has rank 1, the second most common has rank 2, etc.
 

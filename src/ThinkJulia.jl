@@ -11,6 +11,7 @@ module ThinkJulia
   export histogram, printhist, reverselookup, invertdict
   export printall
   export processfile, processline, totalwords, differentwords, mostcommon, printmostcommon, subtract
+  export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
 
   export fig00_1
   export fig02_1
@@ -22,7 +23,7 @@ module ThinkJulia
   export fig10_1, fig10_2, fig10_3, fig10_4, fig10_5
   export fig11_1, fig11_2
   export fig12_1, fig12_2
-  export fig15_1
+  export fig15_1, fig15_2
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -34,6 +35,7 @@ module ThinkJulia
   include("code/chap12.jl")
   include("code/chap13.jl")
   include("code/chap14.jl")
+  include("code/chap15.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

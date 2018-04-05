@@ -1,13 +1,8 @@
-# Types and objects
+# Struct and objects
 
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
-
-    struct Point
-      x
-      y
-    end
 end
 ```
 
@@ -38,20 +33,24 @@ struct Point
 end
 ```
 
-The header indicates that the new struct is called `Point`. The body defines the **attributes** or **fields** of the struct. The `Point` struct has two attributes: `x` and `y`.
+The header indicates that the new struct is called `Point`. The body defines the **attributes** or **fields** of the struct. The `Point` struct has two attributes: `x` and `y`. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
 
-Defining a class named Point creates a datatype object:
+Defining a type named Point creates a datatype object:
 
 ```jldoctest
 julia> typeof(Point)
 DataType
+julia> Point
+ThinkJulia.Point
 ```
+
+Because `Point` is defined in the module `ThinkJulia`, its “full name” is `ThinkJulia.Point`.
 
 A struct is like a factory for creating objects. To create a point, you call `Point` as if it were a function having as arguments the values of the attributes. When `Point` is used as a function, it is called a **constructor**.
 
-```jldoctest
+```jldoctest chap15
 julia> p = Point(3.0, 4.0)
-Point(3.0, 4.0)
+ThinkJulia.Point(3.0, 4.0)
 ```
 
 The return value is a reference to a point object, which we assign to `p`.
@@ -60,7 +59,7 @@ Creating a new object is called **instantiation**, and the object is an **instan
 
 When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.
 
-Every object is an instance of some class, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.
+Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.
 
 A state diagram that shows an object and its attributes is called an *object diagram*; see Figure 15.1.
 
@@ -79,8 +78,341 @@ fig15_1()
 ```@raw latex
 \begin{figure}
 \centering
-\includegraphics{fig121}
+\includegraphics{fig151}
 \caption{Object diagram.}
 \label{fig151}
 \end{figure}
 ```
+
+## Structs are immutable
+
+You can get the values of the attributes using `.` notation:
+
+```jldoctest chap15
+julia> x = p.x
+3.0
+julia> p.y
+4.0
+```
+
+The expression `p.x` means, “Go to the object `p` refers to and get the value of `x`.” In the example, we assign that value to a variable named `x`. There is no conflict between the variable `x` and the attribute `x`.
+
+You can use dot notation as part of any expression. For example:
+
+```jldoctest chap15
+julia> distance = sqrt(p.x^2 + p.y^2)
+5.0
+```
+
+Structs are however by default immutable, after construction the attributes can not change value:
+
+```jldoctest chap15
+julia> p.y = 1.0
+ERROR: type Point is immutable
+```
+
+This may seem odd at first, but it has several advantages:
+
+- It can be more efficient.
+
+- It is not possible to violate the invariants provided by the type's constructors (see later).
+
+- Code using immutable objects can be easier to reason about.
+
+## Mutable structs
+
+Where required, mutable composite types can be declared with the keyword `mutable struct`. Here is the definition of a mutable point:
+
+```julia
+mutable struct MPoint
+    x
+    y
+end
+```
+
+You can assign values to an instance of a mutable struct using dot notation:
+
+```jldoctest chap15
+julia> blank = MPoint(0.0, 0.0)
+ThinkJulia.MPoint(0.0, 0.0)
+julia> blank.x = 3.0
+3.0
+julia> blank.y = 4.0
+4.0
+```
+
+You can pass an instance as an argument in the usual way. For example:
+
+```julia
+function printpoint(p)
+    println("($(p.x), $(p.y))")
+end
+```
+
+`printpoint` takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass `p` as an argument:
+
+```jldoctest chap15
+julia> printpoint(blank)
+(3.0, 4.0)
+```
+
+As an exercise, write a function called `distancebetweenpoints` that takes two points as arguments and returns the distance between them.
+
+## Rectangles
+
+Sometimes it is obvious what the attributes of an object should be, but other times you have to make decisions. For example, imagine you are designing a type to represent rectangles. What attributes would you use to specify the location and size of a rectangle? You can ignore angle; to keep things simple, assume that the rectangle is either vertical or horizontal.
+
+There are at least two possibilities:
+
+- You could specify one corner of the rectangle (or the center), the width, and the height.
+
+- You could specify two opposing corners.
+
+At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.
+
+```julia
+"""
+Represents a rectangle.
+
+attributes: width, height, corner.
+"""
+struct Rectangle
+    width
+    height
+    corner
+end
+```
+
+The docstring lists the attributes: width and height are numbers; corner is a point object that specifies the lower-left corner.
+
+To represent a rectangle, you have to instantiate a rectangle object:
+
+```jldoctest chap15
+julia> origin = MPoint(0.0, 0.0)
+ThinkJulia.MPoint(0.0, 0.0)
+julia> box = Rectangle(100.0, 200.0, origin)
+ThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))
+```
+
+Figure 15.2 shows the state of this object. An object that is an attribute of another object is **embedded**. Because the `corner` attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+
+```@eval
+using ThinkJulia
+fig15_2()
+```
+
+```@raw html
+<figure>
+  <img src="fig152.svg" alt="Object diagram.">
+  <figcaption>Figure 15.2. Object diagram.</figcaption>
+</figure>
+```
+
+```@raw latex
+\begin{figure}
+\centering
+\includegraphics{fig152}
+\caption{Object diagram.}
+\label{fig152}
+\end{figure}
+```
+
+## Instances as return values
+
+Functions can return instances. For example, `findcenter` takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
+
+```julia
+function findcenter(rect)
+    Point(rect.corner.x, rect.corner.y)
+end
+```
+
+The expression `rect.corner.x` means, “Go to the object `rect` refers to and select the attribute named `corner`; then go to that object and select the attribute named `x`.”
+
+Here is an example that passes `box` as an argument and assigns the resulting point to `center`:
+
+```jldoctest chap15
+julia> center = findcenter(box)
+ThinkJulia.Point(0.0, 0.0)
+```
+
+## Instances as arguments
+
+If a mutable struct object is passed to a function as an argument, the function can modify the attributes of the object. For example, `movepoint` takes a mpoint object and two numbers, `dx` and `dy`, and adds the numbers to respectively the `x` and the `y` attribute of the mpoint:
+
+```julia
+function movepoint!(p, dx, dy)
+    p.x += dx
+    p.y += dy
+    nothing
+end
+```
+
+Here is an example that demonstrates the effect:
+
+```jldoctest chap15
+julia> origin = MPoint(0.0,0.0)
+ThinkJulia.MPoint(0.0, 0.0)
+julia> movepoint!(origin, 1.0, 2.0)
+
+julia> origin
+ThinkJulia.MPoint(1.0, 2.0)
+```
+
+Inside the function, `p` is an alias for `origin`, so when the function modifies `p`, `origin` changes.
+
+Passing an immutable point object to `movepoint!` causes an error:
+
+```jldoctest chap15
+julia> movepoint!(p, 1.0, 2.0)
+ERROR: type is immutable
+```
+
+You can however modify the value of a mutable attribute of an immutable object. For example, `moverectangle!` has as arguments a rectangle object and two numbers, `dx` and `dy`, and uses `movepoint!` to move the corner of the rectangle:
+
+```julia
+function moverectangle!(rect, dx, dy)
+  movepoint!(rect.corner, dx, dy)
+end
+```
+
+Now `p` in `movepoint!` is an alias for `rect.corner`, so when `p` is modified, `rect.corner` changes also:
+
+```jldoctest chap15
+julia> box
+ThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))
+julia> moverectangle!(box, 1.0, 2.0)
+
+julia> box
+ThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(1.0, 2.0))
+```
+
+Attention you cannot reassign a mutable attribute of an immutable object:
+
+```jldoctest chap15
+julia> box.corner = MPoint(1.0, 2.0)
+ERROR: type Rectangle is immutable
+```
+
+## Copying
+
+Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.
+
+Copying an object is often an alternative to aliasing. Julia provides a function called `deepcopy` that can duplicate any object:
+
+```jldoctest
+julia> p1 = MPoint(3.0, 4.0)
+ThinkJulia.MPoint(3.0, 4.0)
+julia> p2 = deepcopy(p1)
+ThinkJulia.MPoint(3.0, 4.0)
+julia> p1 ≡ p2
+false
+julia> p1 == p2
+false
+```
+
+The `≡` operator indicates that `p1` and `p2` are not the same object, which is what we expected. But you might have expected `==` to yield `true` because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the `==` operator is the same as the `===` operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
+
+As an exercise, create a `Point` instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
+
+## Debugging
+
+When you start working with objects, you are likely to encounter some new exceptions. If you try to access an attribute that doesn’t exist, you get:
+
+```jldoctest chap15
+julia> p = Point(3.0, 4.0)
+ThinkJulia.Point(3.0, 4.0)
+julia> p.z = 1.0
+ERROR: type Point has no field z
+```
+
+If you are not sure what type an object is, you can ask:
+
+```jldoctest chap15
+julia> typeof(p)
+ThinkJulia.Point
+```
+
+You can also use isinstance to check whether an object is an instance of a type:
+
+```jldoctest chap15
+julia> p isa Point
+true
+```
+
+If you are not sure whether an object has a particular attribute, you can use the built-in function `fieldnames`:
+
+```jldoctest chap15
+julia> fieldnames(p)
+2-element Array{Symbol,1}:
+ :x
+ :y
+```
+
+or the function `isdefined`:
+
+```jldoctest chap15
+julia> isdefined(p, :x)
+true
+julia> isdefined(p, :z)
+false
+```
+
+The first argument can be any object; the second argument is a symbol, `:` followed by the name of the attribute.
+
+You can also use a `try` statement to see if the object has the attributes you need:
+
+```jldoctest chap15
+julia> try
+       p.z = 1.0
+       catch exc
+       println(exc)
+       end
+ErrorException("type Point has no field z")
+```
+
+## Glossary
+
+*type*:
+A programmer-defined type. A type definition creates a new type object.
+
+*type object*:
+An object that contains information about a programmer-defined type. The type object can be used to create instances of the type.
+
+*instance*:
+An object that belongs to a type.
+
+*instantiate*:
+To create a new object.
+
+*attribute*:
+One of the named values associated with an object.
+
+*embedded object*:
+An object that is stored as an attribute of another object.
+
+*deep copy*:
+To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the deepcopy function in the copy module.
+
+*object diagram*:
+A diagram that shows objects, their attributes, and the values of the attributes.
+
+## Exercises
+
+### Exercise 15-1
+
+1. Write a definition for a type named `Circle` with attributes `center` and `radius`, where `center` is a point object and `radius` is a number.
+
+2. Instantiate a circle object that represents a circle with its center at ``(150, 100)`` and radius ``75``.
+
+3. Write a function named `pointincircle` that takes a circle object and a point object and returns `true` if the point lies in or on the boundary of the circle.
+
+4. Write a function named `rectincircle` that takes a circle object and a rectangle object and returns `true` if the rectangle lies entirely in or on the boundary of the circle.
+
+5. Write a function named `rectcircleoverlap` that takes a circle object and a rectangle object and returns `true` if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return `true` if any part of the rectangle falls inside the circle.
+
+### Exercise 15-2
+
+1. Write a function called `drawrect` that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.
+
+2. Write a function called `drawcircle` that takes a turtle object and a circle object and draws the circle.

@@ -167,35 +167,35 @@ function julialogo(;action=:fill, color=true)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.796, 0.235, 0.2) # dark red
-    Luxor.circle(Point(240.272, 68.091), Point(205.272, 68.091), :path)
+    Luxor.circle(Luxor.Point(240.272, 68.091), Luxor.Point(205.272, 68.091), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.835, 0.388, 0.361) # light red
-    Luxor.circle(Point(206.772, 68.091), Point(238.772, 68.091), :path)
+    Luxor.circle(Luxor.Point(206.772, 68.091), Luxor.Point(238.772, 68.091), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.251, 0.388, 0.847) # dark blue
-    Luxor.circle(Point(77.954, 68.091), Point(42.954, 68.091), :path)
+    Luxor.circle(Luxor.Point(77.954, 68.091), Luxor.Point(42.954, 68.091), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.4, 0.51, 0.878) # light blue
-    Luxor.circle(Point(44.454, 68.091), Point(76.454, 68.091), :path)
+    Luxor.circle(Luxor.Point(44.454, 68.091), Luxor.Point(76.454, 68.091), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.584, 0.345, 0.698) # dark purple
-    Luxor.circle(Point(282.321, 68.091), Point(247.321, 68.091), :path)
+    Luxor.circle(Luxor.Point(282.321, 68.091), Luxor.Point(247.321, 68.091), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.667, 0.475, 0.757) # lighter purple
-    Luxor.circle(Point(248.821, 68.091), Point(280.821, 68.091), :path)
+    Luxor.circle(Luxor.Point(248.821, 68.091), Luxor.Point(280.821, 68.091), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.22, 0.596, 0.149) # dark green
-    Luxor.circle(Point(261.299, 31.672), Point(226.299, 31.672), :path)
+    Luxor.circle(Luxor.Point(261.299, 31.672), Luxor.Point(226.299, 31.672), :path)
     (action == :clip) ? newsubpath() : do_action(action)
 
     color && setcolor(0.376, 0.678, 0.318) # light green
-    Luxor.circle(Point(227.799, 31.672), Point(259.799, 31.672), :path)
+    Luxor.circle(Luxor.Point(227.799, 31.672), Luxor.Point(259.799, 31.672), :path)
 
     if action == :clip
         clip()
