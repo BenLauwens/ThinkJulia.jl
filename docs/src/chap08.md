@@ -562,7 +562,7 @@ A pattern of traversal that stops when it finds what it is looking for.
 A variable used to count something, usually initialized to zero and then incremented.
 
 *optional argument*:
-A function or method argument that is not required.
+A function argument that is not required.
 
 ## Exercises
 

@@ -279,7 +279,7 @@ Then use `multime` to write a function that takes a daytime object that represen
 
 ### Exercise 16-2
 
-Julia provides time objects that are similar to the daytime objects in this chapter, but they provide a rich set of methods and operators. Read the documentation at <https://docs.julialang.org/en/latest/stdlib/Dates/#Dates-Functions-1>.
+Julia provides time objects that are similar to the daytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at <https://docs.julialang.org/en/latest/stdlib/Dates/#Dates-Functions-1>.
 
 1. Write a program that gets the current date and prints the day of the week.
 

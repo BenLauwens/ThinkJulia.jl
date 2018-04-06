@@ -112,7 +112,7 @@ This program reads `emma.txt`, which contains the text of *Emma* by Jane Austen.
 
 `processfile` loops through the lines of the file, passing them one at a time to process_line. The histogram `hist` is being used as an accumulator.
 
-`processline` uses the string method replace to replace hyphens with spaces before using split to break the line into an array of strings. It traverses the array of words and uses `filter`, `isalpha` and `lowercase` to remove punctuation and convert to lower case. (It is a shorthand to say that strings are “converted”; remember that strings are immutable, so a function like `lowercase` return new strings.)
+`processline` uses the function `replace` to replace hyphens with spaces before using `split` to break the line into an array of strings. It traverses the array of words and uses `filter`, `isalpha` and `lowercase` to remove punctuation and convert to lower case. (It is a shorthand to say that strings are “converted”; remember that strings are immutable, so a function like `lowercase` return new strings.)
 
 Finally, `processline` updates the histogram by creating a new item or incrementing an existing one.
 
@@ -187,7 +187,7 @@ This code can be simplified using the `rev` keyword argument of the `sort!` func
 
 ## Optional parameters
 
-We have seen built-in functions and methods that take optional arguments. It is possible to write programmer-defined functions with optional arguments, too. For example, here is a function that prints the most common words in a histogram:
+We have seen built-in functions that take optional arguments. It is possible to write programmer-defined functions with optional arguments, too. For example, here is a function that prints the most common words in a histogram:
 
 ```julia
 function printmostcommon(hist, num=10)
