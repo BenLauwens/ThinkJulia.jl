@@ -1,5 +1,7 @@
 module ThinkJulia
 
+  import Base.+
+
   export printlyrics, repeatlyrics, printtwice, cattwice
   export rightjustify, printgrid
   export forward, turn, penup, pendown, polyline, polygon, square, arc, cercle
@@ -12,7 +14,8 @@ module ThinkJulia
   export printall
   export processfile, processline, totalwords, differentwords, mostcommon, printmostcommon, subtract
   export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
-  export DayTime, printtime, isafter
+  export MyTime, isafter
+  export inttotime, timetoint, increment, printtime
 
   export fig00_1
   export fig02_1
@@ -39,12 +42,14 @@ module ThinkJulia
   include("code/chap14.jl")
   include("code/chap15.jl")
   include("code/chap16.jl")
+  include("code/chap17.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")
   include("solutions/chap07.jl")
   include("solutions/chap10.jl")
   include("solutions/chap16.jl")
+  include("solutions/chap17.jl")
   include("figures/common.jl")
   include("figures/chap00.jl")
   include("figures/chap02.jl")
