@@ -16,10 +16,10 @@ function +(seconds::Int64, time::MyTime)
   increment(time, seconds)
 end
 
-function printtime(time::MyTime)
-  @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
-end
-
 function printtime(time)
   println("I don't know how to print the argument time.")
+end
+
+function printtime(time::MyTime)
+  @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
 end

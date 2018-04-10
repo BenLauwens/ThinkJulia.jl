@@ -27,9 +27,16 @@ end
 
 The name `Time` is already used in Julia and to avoid a name clash, I have chosen `MyTime`. We can create a new mytime object:
 
-```jldoctest
+```@raw latex
+\begin{minted}{jlcon}
 julia> time = MyTime(11, 59, 30)
-ThinkJulia.MyTime(11, 59, 30)
+ThinkJuliaMyTime(11, 59, 30)
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; julia> time = MyTime(11, 59, 30)
+ThinkJuliaMyTime(11, 59, 30)</code></pre>
 ```
 
 The state diagram for the mytime object looks like Figure 16.1.
@@ -67,17 +74,7 @@ Here is a simple prototype of `addtime`:
 
 ```julia
 function addtime(t1, t2)
-  MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
-end
-```
-
-```@meta
-DocTestSetup = quote
-  using ThinkJulia
-
-  function addtime(t1, t2)
     MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
-  end
 end
 ```
 
@@ -86,6 +83,27 @@ The function creates a new `MyTime` object, initializes its fields, and returns 
 To test this function, I’ll create two `MyTime` objects: `start` contains the start time of a movie, like *Monty Python and the Holy Grail*, and `duration` contains the run time of the movie, which is one hour 35 minutes.
 
 `addtime` figures out when the movie will be done.
+
+```@meta
+DocTestSetup = quote
+    mutable struct MyTime
+        hour 
+        minute
+        second
+        function MyTime(hour=0, minute=0, second=0)
+            new(hour, minute, second)
+        end
+    end
+
+    function printtime(time::MyTime)
+        @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
+    end
+
+    function addtime(t1, t2)
+        MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
+    end
+end
+```
 
 ```jldoctest
 julia> start = MyTime(9, 45, 0);

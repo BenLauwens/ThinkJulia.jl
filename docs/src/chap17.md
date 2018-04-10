@@ -52,7 +52,7 @@ function sinc(x)::Float64
     if x == 0
         return 1
     end
-    sin(pi*x)/(pi*x)
+    sin(x)/(x)
 end
 ```
 
@@ -91,7 +91,7 @@ As you can see, type declaration can also be added to the fields in a struct def
 
 To call this function, you have to pass a mytime object as an argument:
 
-```jldoctest chap17
+```jldoctest chap17a
 julia> start = MyTime(9, 45, 0)
 ThinkJulia.MyTime(9, 45, 0)
 julia> printtime(start)
@@ -108,7 +108,7 @@ end
 
 Calling the function `printtime` with a mytime object yields the same result:
 
-```jldoctest chap17
+```jldoctest chap17a
 julia> printtime(start)
 09:45:00
 ```
@@ -145,7 +145,7 @@ Note that this time, it is a pure function, not a modifier.
 
 Here's how you would invoke increment:
 
-```jldoctest chap17
+```jldoctest chap17a
 julia> start = MyTime(9, 45, 0)
 ThinkJulia.MyTime(9, 45, 0)
 julia> increment(start, 1337)
@@ -154,7 +154,7 @@ ThinkJulia.MyTime(10, 7, 17)
 
 If you put the arguments in the wrong order, you get an error:
 
-```jldoctest chap17
+```jldoctest chap17a
 julia> increment(1337, start)
 ERROR: MethodError: no method matching increment(::Int64, ::ThinkJulia.MyTime)
 ```
@@ -172,16 +172,20 @@ end
 By the way, optional arguments are implemented as syntax for multiple method definitions. For example, this definition:
 
 ```julia
-f(a=1,b=2) = a+2b
+function f(a=1, b=2)
+    a + 2b
+end
 ```
 
 translates to the following three methods:
 
 ```julia
-f(a,b) = a+2b
-f(a) = f(a,2)
-f() = f(1,2)
+f(a, b) = a + 2b
+f(a) = f(a, 2)
+f() = f(1, 2)
 ```
+
+These expressions are valid Julia method definitions. This is a shorthand notation for defining functions/methods.
 
 ## Constructors
 
@@ -208,9 +212,9 @@ While outer constructor methods succeed in addressing the problem of providing a
 
 ```julia
 mutable struct MyTime
-    hour :: Int
-    minute :: Int
-    second :: Int
+    hour :: Int64
+    minute :: Int64
+    second :: Int64
     function MyTime(hour::Int64=0, minute::Int64=0, second::Int64=0)
         @assert(0 ≤ minute < 60, "Minute is between 0 and 60.")
         @assert(0 ≤ second < 60, "Second is between 0 and 60.")
@@ -269,21 +273,18 @@ function Base.show(io::IO, time::MyTime)
 end
 ```
 
+When you print an object, Julia invokes the `Base.show` function:
+
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
-
-    import Base.show
-
-    function show(io::IO, time::MyTime)
-      @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
+    function Base.show(io::IO, time::MyTime)
+        @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
     end
 end
 ```
 
-When you print an object, Julia invokes the `Base.show` function:
-
-```jldoctest
+```jldoctest chap17b
 julia> time = MyTime(9, 45)
 09:45:00
 ```
@@ -311,7 +312,13 @@ The import statement adds the `Base.+` function to the local scope so that metho
 
 And here is how you could use it:
 
-```jldoctest chap17
+```@meta
+DocTestSetup = quote
+    using ThinkJulia
+end
+```
+
+```jldoctest chap17b
 julia> start = MyTime(9, 45)
 09:45:00
 julia> duration = MyTime(1, 35, 0)
@@ -336,7 +343,7 @@ end
 
 Here is an example that use the `+` operator with a mytime object and an integer:
 
-```jldoctest chap17
+```jldoctest chap17b
 julia> start = MyTime(9, 45)
 09:45:00
 julia> start + 1337
@@ -353,7 +360,7 @@ end
 
 And we get the same result:
 
-```jldoctest chap17
+```jldoctest chap17b
 julia> 1337 + start
 10:07:17
 ```
@@ -442,8 +449,8 @@ To know what methods are available, you can use the function `methods`:
 ```jldoctest chap17
 julia> methods(printtime)
 # 2 methods for generic function "printtime":
-printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20
-printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:24
+printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:24
+printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20
 ```
 
 To know which method is called, you can use the `@which` macro:

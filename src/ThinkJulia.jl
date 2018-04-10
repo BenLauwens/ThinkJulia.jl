@@ -16,6 +16,7 @@ module ThinkJulia
   export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
   export MyTime, isafter
   export inttotime, timetoint, increment, printtime
+  export Card
 
   export fig00_1
   export fig02_1
@@ -43,6 +44,7 @@ module ThinkJulia
   include("code/chap15.jl")
   include("code/chap16.jl")
   include("code/chap17.jl")
+  include("code/chap18.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")
