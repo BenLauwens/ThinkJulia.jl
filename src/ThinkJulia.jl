@@ -16,7 +16,7 @@ module ThinkJulia
   export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
   export MyTime, isafter
   export inttotime, timetoint, increment, printtime
-  export Card
+  export CardSet, Card, Deck, Hand, popcard!, addcard!, shuffledeck!, movecards!
 
   export fig00_1
   export fig02_1
@@ -61,7 +61,7 @@ module ThinkJulia
   include("figures/chap06.jl")
   include("figures/chap07.jl")
   include("figures/chap10.jl")
-  include("figures/chap11.jl")  
+  include("figures/chap11.jl")
   include("figures/chap12.jl")
   include("figures/chap15.jl")
   include("figures/chap16.jl")

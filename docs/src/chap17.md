@@ -1,4 +1,4 @@
-# Types and methods
+# Multiple dispatch
 
 ```@meta
 DocTestSetup = quote
@@ -446,11 +446,20 @@ But if you designed the interface carefully, you can change the implementation w
 
 To know what methods are available, you can use the function `methods`:
 
-```jldoctest chap17
+```@raw latex
+\begin{minted}{jlcon}
 julia> methods(printtime)
 # 2 methods for generic function "printtime":
 printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:24
 printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20
+\end{minted}
+```
+
+```@raw html
+<pre><code class="language-julia-repl">julia&gt; julia> methods(printtime)
+# 2 methods for generic function "printtime":
+printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:24
+printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20</code></pre>
 ```
 
 To know which method is called, you can use the `@which` macro:
