@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.4.17)  17 APR 2018 21:37
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.4.17)  17 APR 2018 22:09
  \write18 enabled.
 **fig151
 (./fig151.tex
@@ -1558,8 +1558,8 @@ luaotfload | fonts : saving '/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
 sansmono.lua)(save: /home/travis/.texmf-var/luatex-cache/generic/fonts/otf/dejav
 usansmono.luc)
 luaotfload | load : auto-selecting default features for script: dflt
-luaotfload: font no 21 (DejaVuSansMono) defines feature locl for script latn
-luaotfload: font no 21 (DejaVuSansMono) defines feature locl for script latn
+luaotfload: font no 21 (DejaVuSansMono) defines feature ccmp for script latn
+luaotfload: font no 21 (DejaVuSansMono) defines feature ccmp for script latn
 .................................................
 . fontspec info: "set-scale"
 . 
