@@ -14,7 +14,7 @@ If you don’t play poker, you can read about it at <http://en.wikipedia.org/wik
 
 ## Cards
 
-There are fifty-two cards in a deck, each of which belongs to one of four suits and one of thirteen ranks. The suits are Spades (♠), Hearts (♥), Diamonds (♦), and Clubs (♣). The ranks are Ace (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack (J), Queen (Q), and King (K). Depending on the game that you are playing, an Ace may be higher than King or lower than 2.
+There are fifty-two cards in a deck, each of which belongs to one of four suits and one of thirteen ranks. The suits are Spades (`♠`), Hearts (`♥`), Diamonds (`♦`), and Clubs (`♣`). The ranks are Ace (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack (J), Queen (Q), and King (K). Depending on the game that you are playing, an Ace may be higher than King or lower than 2.
 
 If we want to define a new object to represent a playing card, it is obvious what the attributes should be: rank and suit. It is not as obvious what type the attributes should be. One possibility is to use strings containing words like `"Spade"` for suits and `"Queen"` for ranks. One problem with this implementation is that it would not be easy to compare cards to see which had a higher rank or suit.
 
@@ -22,17 +22,17 @@ An alternative is to use integers to **encode** the ranks and suits. In this con
 
 For example, this table shows the suits and the corresponding integer codes:
 
-- ♠  ↦  4
+- `♠`  ``\mapsto``  4
 
-- ♥  ↦  3
+- `♥`  ``\mapsto``  3
 
-- ♦  ↦  2
+- `♦`  ``\mapsto``  2
 
-- ♣  ↦  1
+- `♣`  ``\mapsto``  1
 
 This code makes it easy to compare cards; because higher suits map to higher numbers, we can compare suits by comparing their codes.
 
-I am using the ↦ symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.
+I am using the ``\mapsto`` symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.
 
 The struct definition for `Card` looks like this:
 
@@ -529,21 +529,29 @@ Write a method called `deal` that takes three parameters, a deck, the number of 
 
 The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
 
-- pair: two cards with the same rank
+*pair*: 
+two cards with the same rank
 
-- two pair: two pairs of cards with the same rank
+*two pair*:
+two pairs of cards with the same rank
 
-- three of a kind: three cards with the same rank
+*three of a kind*:
+three cards with the same rank
 
-- straight: five cards with ranks in sequence (aces can be high or low, so Ace-2-3-4-5 is a straight and so is 10-Jack-Queen-King-Ace, but Queen-King-Ace-2-3 is not.)
+*straight*:
+five cards with ranks in sequence (aces can be high or low, so Ace-2-3-4-5 is a straight and so is 10-Jack-Queen-King-Ace, but Queen-King-Ace-2-3 is not.)
 
-- flush: five cards with the same suit
+*flush*:
+five cards with the same suit
 
-- full house: three cards with one rank, two cards with another
+*full house*:
+three cards with one rank, two cards with another
 
-- four of a kind: four cards with the same rank
+*four of a kind*:
+four cards with the same rank
 
-- straight flush: five cards in sequence (as defined above) and with the same suit
+*straight flush*:
+five cards in sequence (as defined above) and with the same suit
 
 The goal of this exercise is to estimate the probability of drawing these various hands.
 
