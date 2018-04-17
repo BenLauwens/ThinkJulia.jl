@@ -462,13 +462,6 @@ printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/Think
 printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20</code></pre>
 ```
 
-To know which method is called, you can use the `@which` macro:
-
-```jldoctest chap17
-julia> @which +(MyTime(),MyTime())
-+(t1::ThinkJulia.MyTime, t2::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:7
-```
-
 ## Glossary
 
 *type annotation*:

@@ -16,7 +16,7 @@ module ThinkJulia
   export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
   export MyTime, isafter
   export inttotime, timetoint, increment, printtime
-  export CardSet, Card, Deck, Hand, popcard!, addcard!, shuffledeck!, movecards!
+  export CardSet, Card, Deck, Hand, move!
 
   export fig00_1
   export fig02_1
@@ -30,6 +30,7 @@ module ThinkJulia
   export fig12_1, fig12_2
   export fig15_1, fig15_2
   export fig16_1
+  export fig18_1
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -50,6 +51,7 @@ module ThinkJulia
   include("solutions/chap05.jl")
   include("solutions/chap07.jl")
   include("solutions/chap10.jl")
+  include("solutions/chap13.jl")
   include("solutions/chap16.jl")
   include("solutions/chap17.jl")
   include("figures/common.jl")
@@ -65,4 +67,5 @@ module ThinkJulia
   include("figures/chap12.jl")
   include("figures/chap15.jl")
   include("figures/chap16.jl")
+  include("figures/chap18.jl")
 end

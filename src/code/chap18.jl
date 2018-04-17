@@ -40,16 +40,16 @@ function Base.show(io::IO, cs::CardSet)
     end
 end
 
-function popcard!(cs::CardSet)
+function Base.pop!(cs::CardSet)
     pop!(cs.cards)
 end
 
-function addcard!(cs::CardSet, card::Card)
+function Base.push!(cs::CardSet, card::Card)
     push!(cs.cards, card)
     nothing
 end
 
-function shuffledeck!(deck::Deck)
+function Base.shuffle!(deck::Deck)
     shuffle!(deck.cards)
     nothing
 end
@@ -62,11 +62,15 @@ struct Hand <: CardSet
     end
 end
 
-function move_cards!(cs1::CardSet, cs2::CardSet, n::Int)
+function move!(cs1::CardSet, cs2::CardSet, n::Int)
     @assert 1 ≤ n ≤ length(cs1.cards)
     for i in 1:n
-        card = pop_card!(cs1)
-        add_card!(cs2, card)
+        card = pop!(cs1)
+        push!(cs2, card)
     end
     nothing
+end
+
+function Base.sort!(hand::Hand)
+    sort!(hand.cards)
 end
