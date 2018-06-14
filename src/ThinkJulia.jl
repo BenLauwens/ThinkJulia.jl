@@ -17,6 +17,7 @@ module ThinkJulia
   export MyTime, isafter
   export inttotime, timetoint, increment, printtime
   export CardSet, Card, Deck, Hand, move!
+  export MyPoint
 
   export fig00_1
   export fig02_1
@@ -46,6 +47,7 @@ module ThinkJulia
   include("code/chap16.jl")
   include("code/chap17.jl")
   include("code/chap18.jl")
+  include("code/chap19.jl")
   include("solutions/chap03.jl")
   include("solutions/chap04.jl")
   include("solutions/chap05.jl")

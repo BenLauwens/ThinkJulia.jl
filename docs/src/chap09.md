@@ -132,7 +132,7 @@ function usesonly(word, available)
 end
 ```
 
-Instead of a list of forbidden letters, we have a list of available letters. If we find a letter in `word` that is not in `available`, we can return `false`.
+Instead of an array of forbidden letters, we have an array of available letters. If we find a letter in `word` that is not in `available`, we can return `false`.
 
 `usesall` is similar except that we reverse the role of the word and the string of letters:
 

@@ -529,7 +529,7 @@ Write a method called `deal` that takes three parameters, a deck, the number of 
 
 The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
 
-*pair*: 
+*pair*:
 two cards with the same rank
 
 *two pair*:
