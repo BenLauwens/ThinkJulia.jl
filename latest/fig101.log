@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.4.17)  17 APR 2018 22:11
+This is LuaTeX, Version beta-0.76.0-2013121407 (rev 4627)  (format=lualatex 2018.6.14)  14 JUN 2018 20:15
  \write18 enabled.
 **fig101
 (./fig101.tex
@@ -589,7 +589,7 @@ luaotfload:  then use the possibly updated libraries. The merged
 luaotfload:  version is not supported as it is a frozen instance.
 luaotfload:  Problems can be reported to the ConTeXt mailing list."
 luaotfload: pop namespace from font loader -- non-destructive
-luaotfload: fontloader loaded in 0.039 seconds
+luaotfload: fontloader loaded in 0.044 seconds
 luatexbase-mcb: inserting 'luaotfload.node_processor'
 at position 1 in 'pre_linebreak_filter'
 luatexbase-mcb: inserting 'luaotfload.node_processor'
@@ -818,8 +818,8 @@ LaTeX Info: Redefining \upshape on input line 2023.
 luaotfload | load : auto-selecting default features for script: dflt(load luc: /
 home/travis/.texmf-var/luatex-cache/generic/fonts/otf/dejavusansmono.luc)
 luaotfload | load : auto-selecting default features for script: dflt
-luaotfload: font no 21 (DejaVuSansMono) defines feature dlig for script latn
-luaotfload: font no 21 (DejaVuSansMono) defines feature dlig for script latn
+luaotfload: font no 21 (DejaVuSansMono) defines feature mark for script latn
+luaotfload: font no 21 (DejaVuSansMono) defines feature mark for script latn
 .................................................
 . fontspec info: "set-scale"
 . 
