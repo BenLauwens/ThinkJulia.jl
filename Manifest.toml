@@ -1,0 +1,539 @@
+[[AbstractFFTs]]
+deps = ["Compat", "LinearAlgebra"]
+git-tree-sha1 = "8d59c3b1463b5e0ad05a3698167f85fac90e184d"
+uuid = "621f4979-c628-5d54-868e-fcf4e3e8185c"
+version = "0.3.2"
+
+[[AxisAlgorithms]]
+deps = ["WoodburyMatrices"]
+git-tree-sha1 = "5d7f12d7f1a53ee5fd31d5b05b7f09033703fba8"
+uuid = "13072b0f-2c55-5437-9ae7-d433b7a33950"
+version = "0.2.0"
+
+[[AxisArrays]]
+deps = ["Compat", "IntervalSets", "IterTools", "RangeArrays"]
+git-tree-sha1 = "7718ef9c2de099ace56256abf1b3b14012203590"
+uuid = "39de3d68-74b9-583c-8d2d-e117c070f3a9"
+version = "0.2.1"
+
+[[Base64]]
+uuid = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+
+[[BinDeps]]
+deps = ["Compat", "Libdl", "SHA", "URIParser"]
+git-tree-sha1 = "160d5d926e83e0970dd549ad9fe0ac3e8107e83c"
+uuid = "9e28174c-4ba2-5203-b857-d8d62c4213ee"
+version = "0.8.8"
+
+[[BinaryProvider]]
+deps = ["Compat", "Pkg", "SHA"]
+git-tree-sha1 = "94dac52c662ca793008fb689e3daf626b6139943"
+uuid = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
+version = "0.3.3"
+
+[[BufferedStreams]]
+deps = ["Compat", "Pkg", "Test"]
+git-tree-sha1 = "260922227fa4affdce57c59063fabf33a324d50e"
+uuid = "e1450e63-4bb3-523b-b2a4-4ffa8c0fd77d"
+version = "0.4.0"
+
+[[Cairo]]
+deps = ["BinDeps", "Colors", "Compat", "Graphics", "Homebrew", "Libdl", "WinRPM"]
+git-tree-sha1 = "0dbb02f2d0330bdad5a792ea5619899f90516880"
+uuid = "159f3aea-2a34-519c-b102-8c37f9878175"
+version = "0.5.2"
+
+[[Calculus]]
+deps = ["Compat"]
+git-tree-sha1 = "2573aaad07cbbe21526e055bea3e995abc9e7c99"
+uuid = "49dc2e85-a5d0-5ad3-a950-438e2897f1b9"
+version = "0.4.0"
+
+[[CatIndices]]
+deps = ["CustomUnitRanges", "OffsetArrays"]
+git-tree-sha1 = "7bbe9892c2573491aec6897618fd881fd1b92568"
+uuid = "aafaddc9-749c-510e-ac4f-586e18779b91"
+version = "0.1.0"
+
+[[ColorTypes]]
+deps = ["FixedPointNumbers", "Test"]
+git-tree-sha1 = "a463b32844193ee3e595b67bad31aa28bc351bc5"
+uuid = "3da002f7-5984-5a60-b8a6-cbb66c0b333f"
+version = "0.7.1"
+
+[[ColorVectorSpace]]
+deps = ["ColorTypes", "Colors", "FixedPointNumbers", "LinearAlgebra", "SpecialFunctions", "Statistics", "StatsBase", "Test"]
+git-tree-sha1 = "5a66211549bd293fa479e23c15f8f3eb734e5000"
+uuid = "c3611d14-8923-5661-9e6a-0046d554d3a4"
+version = "0.6.0"
+
+[[Colors]]
+deps = ["ColorTypes", "FixedPointNumbers", "InteractiveUtils", "Printf", "Reexport", "Test"]
+git-tree-sha1 = "cec56a50029f40f4c13e4f25bf84964fde31905a"
+uuid = "5ae59095-9a9b-59fe-a467-6f913c188581"
+version = "0.9.0"
+
+[[Compat]]
+deps = ["Base64", "Dates", "DelimitedFiles", "Distributed", "InteractiveUtils", "LibGit2", "Libdl", "LinearAlgebra", "Markdown", "Mmap", "Pkg", "Printf", "REPL", "Random", "Serialization", "SharedArrays", "Sockets", "SparseArrays", "Test", "UUIDs", "Unicode"]
+git-tree-sha1 = "f3e87ca1e2df8e1e4f82ea504fddf0b9b0894f61"
+uuid = "34da2185-b29b-5c13-b0c7-acf172513d20"
+version = "0.69.0"
+
+[[ComputationalResources]]
+git-tree-sha1 = "9f1aaccaaa3658ca0665870c48a3b3e7374dab5b"
+uuid = "ed09eef8-17a6-5b46-8889-db040fac31e3"
+version = "0.2.0"
+
+[[Conda]]
+deps = ["BinDeps", "Compat", "JSON", "Libdl", "VersionParsing"]
+git-tree-sha1 = "6358e179fb9ad0af5ca9cd4d7c691c413cc121f2"
+uuid = "8f4d0f93-b110-5947-807f-2305c1781a2d"
+version = "0.8.1"
+
+[[CoordinateTransformations]]
+deps = ["Compat", "Rotations", "StaticArrays"]
+git-tree-sha1 = "be449915fbc69d995851595960f3a63213050f0b"
+uuid = "150eb455-5306-5404-9cee-2592286d6298"
+version = "0.4.1"
+
+[[CustomUnitRanges]]
+git-tree-sha1 = "745a202720c1e848936c7808177841c36446948c"
+uuid = "dc8bdbbb-1ca9-579f-8c36-e416f6a65cce"
+version = "0.1.0"
+
+[[DataStructures]]
+deps = ["InteractiveUtils", "REPL", "Random", "Serialization", "Test"]
+git-tree-sha1 = "ef6f313c82fd80ab75ab3f784353b6c65ebcaacf"
+uuid = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+version = "0.9.0"
+
+[[Dates]]
+uuid = "ade2ca70-3891-5945-98fb-dc099432e06a"
+
+[[DelimitedFiles]]
+uuid = "8bb1440f-4735-579b-a4ab-409b98df4dab"
+
+[[Distances]]
+deps = ["LinearAlgebra", "Pkg", "Printf", "Random", "Test"]
+git-tree-sha1 = "c8aefc4cc215debdfe5fbba9838ca2a7dbb762ee"
+uuid = "b4f34e82-e78d-54a5-968a-f98e89d6e8f7"
+version = "0.7.0"
+
+[[Distributed]]
+uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+
+[[DocStringExtensions]]
+deps = ["Compat"]
+git-tree-sha1 = "0e9a957a5c1cc5d06e54aab3b8b9c4c495253269"
+uuid = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
+version = "0.4.4"
+
+[[Documenter]]
+deps = ["Compat", "DocStringExtensions", "Logging", "REPL"]
+git-tree-sha1 = "4fc4abdb5ac20ece943ff6e0a7e2a254d148f434"
+uuid = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+version = "0.18.0"
+
+[[DualNumbers]]
+deps = ["Calculus", "Compat", "NaNMath"]
+git-tree-sha1 = "fc9c09319884bdc80f66993197dfc300051781b9"
+uuid = "fa6b7ba4-c1ee-5f82-b5fc-ecf0adba8f74"
+version = "0.4.0"
+
+[[FFTViews]]
+deps = ["Compat", "CustomUnitRanges", "FFTW"]
+git-tree-sha1 = "70b140bd042b0f1b01df2f73c9513d75b2f8c297"
+uuid = "4f61f5a4-77b1-5117-aa51-3ab5ef4ef0cd"
+version = "0.1.0"
+
+[[FFTW]]
+deps = ["AbstractFFTs", "BinaryProvider", "Compat", "Conda", "Libdl", "LinearAlgebra", "Reexport", "Test"]
+git-tree-sha1 = "60346335ad3aa60bfbdc358c6d1468bffbcff071"
+uuid = "7a1cc6ca-52ef-59f5-83cd-3a7055c09341"
+version = "0.2.3"
+
+[[FileIO]]
+deps = ["Compat"]
+git-tree-sha1 = "46d93ad2dc68db0393ae070913407cb6a749ca98"
+uuid = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+version = "0.9.1"
+
+[[FixedPointNumbers]]
+deps = ["Pkg", "Test"]
+git-tree-sha1 = "53fae3f45b6782dad91e932d941b0bf862110641"
+uuid = "53c48c17-4a7d-5ca2-90c5-79b7896eea93"
+version = "0.5.1"
+
+[[Graphics]]
+deps = ["Colors", "Compat", "NaNMath"]
+git-tree-sha1 = "4671f2427ea4494a5d14fd485c4aa61ec1fb7cd2"
+uuid = "a2bd30eb-e257-5431-a919-1863eab51364"
+version = "0.3.0"
+
+[[HTTPClient]]
+deps = ["Compat", "LibCURL"]
+git-tree-sha1 = "161d5776ae8e585ac0b8c20fb81f17ab755b3671"
+uuid = "0862f596-cf2d-50af-8ef4-f2be67dfa83f"
+version = "0.2.1"
+
+[[Hiccup]]
+deps = ["MacroTools", "Test"]
+git-tree-sha1 = "36e060b5319b3fbed9bd401d6df011fa14a8e0d9"
+uuid = "9fb69e20-1954-56bb-a84f-559cc56a8ff7"
+version = "0.2.1"
+
+[[Homebrew]]
+deps = ["BinDeps", "Compat", "JSON", "Libdl", "Unicode"]
+git-tree-sha1 = "3e6d20b90cab32759f38639e2f085b4e5aa17f21"
+uuid = "d9be37ee-ecc9-5288-90f1-b9ca67657a75"
+version = "0.6.3"
+
+[[IdentityRanges]]
+deps = ["OffsetArrays"]
+git-tree-sha1 = "c54d92827edad81348579050b0875287d82339f2"
+uuid = "bbac6d45-d8f3-5730-bfe4-7a449cd117ca"
+version = "0.1.0"
+
+[[ImageAxes]]
+deps = ["AxisArrays", "Colors", "Compat", "FixedPointNumbers", "ImageCore", "MappedArrays", "Reexport", "SimpleTraits"]
+git-tree-sha1 = "79ae0700a5a302a6ba90138c60f799e155791a2b"
+uuid = "2803e5a7-5153-5ecf-9a86-9b4c37f5f5ac"
+version = "0.4.0"
+
+[[ImageCore]]
+deps = ["ColorTypes", "Colors", "Compat", "FFTW", "FixedPointNumbers", "Graphics", "MappedArrays", "OffsetArrays", "PaddedViews", "ShowItLikeYouBuildIt"]
+git-tree-sha1 = "7360cc23f46a52c72ff8608ad4a41498034d3cfe"
+uuid = "a09fc81d-aa75-5fe9-8630-4744c3626534"
+version = "0.6.0"
+
+[[ImageDistances]]
+deps = ["Colors", "Distances", "LinearAlgebra", "ProgressMeter", "Test"]
+git-tree-sha1 = "edcf05e5bc0ea1246e1b4d7465f0ac8bd14e7fea"
+uuid = "51556ac3-7006-55f5-8cb3-34580c88182d"
+version = "0.1.0"
+
+[[ImageFiltering]]
+deps = ["CatIndices", "ColorVectorSpace", "Colors", "Compat", "ComputationalResources", "DataStructures", "FFTViews", "FixedPointNumbers", "ImageCore", "MappedArrays", "OffsetArrays", "StaticArrays", "TiledIteration"]
+git-tree-sha1 = "907e6486c640b414561430209ae955d992d84280"
+uuid = "6a3955dd-da59-5b1f-98d4-e7296123deb5"
+version = "0.3.0"
+
+[[ImageMagick]]
+deps = ["BinDeps", "ColorTypes", "Compat", "FileIO", "FixedPointNumbers", "Homebrew", "Images", "Libdl"]
+git-tree-sha1 = "bd9c39467f5ab79a842f3e27b1525500c7e2f5f6"
+uuid = "6218d12a-5da1-5696-b52f-db25d2ecc6d1"
+version = "0.5.1"
+
+[[ImageMetadata]]
+deps = ["ColorVectorSpace", "Colors", "Compat", "FixedPointNumbers", "ImageAxes", "ImageCore", "IndirectArrays"]
+git-tree-sha1 = "1f546cbff9403aad48dba45dbf57c97e2eda2382"
+uuid = "bc367c6b-8a6b-528e-b4bd-a4b897500b49"
+version = "0.4.0"
+
+[[ImageMorphology]]
+deps = ["ImageCore"]
+git-tree-sha1 = "4f73e673731fc3b22f2307ffe64e2bc811163803"
+uuid = "787d08f9-d448-5407-9aad-5290dd7ab264"
+version = "0.0.2"
+
+[[ImageTransformations]]
+deps = ["AxisAlgorithms", "ColorTypes", "ColorVectorSpace", "Colors", "Compat", "CoordinateTransformations", "FixedPointNumbers", "IdentityRanges", "ImageCore", "Interpolations", "OffsetArrays", "ShowItLikeYouBuildIt", "StaticArrays"]
+git-tree-sha1 = "14090ebb3e281883545d31b91342b876e06527aa"
+uuid = "02fcd773-0e25-5acc-982a-7f6622650795"
+version = "0.4.1"
+
+[[Images]]
+deps = ["AxisArrays", "ColorVectorSpace", "Colors", "Compat", "FileIO", "FixedPointNumbers", "Graphics", "ImageAxes", "ImageCore", "ImageDistances", "ImageFiltering", "ImageMetadata", "ImageMorphology", "ImageTransformations", "IndirectArrays", "MappedArrays", "OffsetArrays", "Reexport", "Requires", "SIUnits", "StaticArrays", "StatsBase"]
+git-tree-sha1 = "a889335449c064bc60d43365edb95fa813ce1d1d"
+uuid = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
+version = "0.14.0"
+
+[[IndirectArrays]]
+deps = ["Compat"]
+git-tree-sha1 = "5346f7e54f86defeacdb781541fe4b703b3c7338"
+uuid = "9b13fd28-a010-5f03-acff-a1bbcff69959"
+version = "0.4.2"
+
+[[InteractiveUtils]]
+uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
+
+[[Interpolations]]
+deps = ["AxisAlgorithms", "Compat", "DualNumbers", "Ratios", "ShowItLikeYouBuildIt", "WoodburyMatrices"]
+git-tree-sha1 = "430c639cdd802f625904023880ea4b2760df9e10"
+uuid = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"
+version = "0.7.3"
+
+[[IntervalSets]]
+deps = ["Compat"]
+git-tree-sha1 = "d488eaaac00c8ea66423773e5a86ac81b9ac03e0"
+uuid = "8197267c-284f-5f27-9208-e0e47529a953"
+version = "0.2.0"
+
+[[IterTools]]
+deps = ["Pkg", "SparseArrays", "Test"]
+git-tree-sha1 = "ed0787e62dc46b8d8c7c3db54391d71e0da5fefd"
+uuid = "c8e1da08-722c-5040-9ed9-7db0dc04731e"
+version = "1.0.0"
+
+[[JSON]]
+deps = ["Dates", "Distributed", "Mmap", "Sockets", "Test", "Unicode"]
+git-tree-sha1 = "723a515212612b2175095fa5fa55da0bb4c377e5"
+uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+version = "0.18.0"
+
+[[Juno]]
+deps = ["Media"]
+git-tree-sha1 = "3519243f4b170061de4c1a96e536850e8bcf688b"
+uuid = "e5e0dc1b-0480-54bc-9374-aad01c23163d"
+version = "0.4.1"
+
+[[LaTeXStrings]]
+deps = ["Compat"]
+git-tree-sha1 = "dc1037473312c432f92b2c7460cb1e01075279b3"
+uuid = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
+version = "1.0.0"
+
+[[LibCURL]]
+deps = ["BinDeps", "Compat", "Libdl", "WinRPM"]
+git-tree-sha1 = "9b431bc66757ad5124f4d206c319996a2dfa2662"
+uuid = "b27032c2-a3e7-50c8-80cd-2d36dbcbfd21"
+version = "0.2.2"
+
+[[LibExpat]]
+deps = ["Compat"]
+git-tree-sha1 = "8ba2ca1635ec1755bcf1432c9a2aa6c91a3fb4fd"
+uuid = "522f3ed2-3f36-55e3-b6df-e94fee9b0c07"
+version = "0.4.2"
+
+[[LibGit2]]
+uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
+
+[[Libdl]]
+uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+
+[[Libz]]
+deps = ["BufferedStreams", "Compat"]
+git-tree-sha1 = "501a8a5b0c500c3a04adb65a3468e3de5ad4e0d9"
+uuid = "2ec943e9-cfe8-584d-b93d-64dcb6d567b7"
+version = "0.2.4"
+
+[[LinearAlgebra]]
+uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
+[[Logging]]
+uuid = "56ddb016-857b-54e1-b83d-db4d58db5568"
+
+[[Luxor]]
+deps = ["Cairo", "Colors", "Dates", "FileIO", "Hiccup", "ImageMagick", "Juno", "QuartzImageIO", "Random", "Test"]
+git-tree-sha1 = "b07bcba8513c42878e667396e6cd6dbcca560790"
+uuid = "ae8d54c2-7ccd-5906-9d76-62fc9837b5bc"
+version = "0.11.0"
+
+[[MacroTools]]
+deps = ["Compat"]
+git-tree-sha1 = "18c17737f3d375b86b495144ba7ab359ab3dca57"
+uuid = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
+version = "0.4.2"
+
+[[MappedArrays]]
+deps = ["Test"]
+git-tree-sha1 = "83d94f577aad33f6241bb6d7932c238226862451"
+uuid = "dbb5928d-eab1-5f90-85c2-b9b0edb7c900"
+version = "0.1.0"
+
+[[Markdown]]
+uuid = "d6f4376e-aef5-505a-96c1-9c027394607a"
+
+[[Media]]
+deps = ["MacroTools", "Test"]
+git-tree-sha1 = "9cc7fc9d0e3e7e4ecb1f1b81209f9dc626e893f1"
+uuid = "e89f7d12-3494-54d1-8411-f7d8b9ae1f27"
+version = "0.4.0"
+
+[[Missings]]
+deps = ["Compat"]
+git-tree-sha1 = "866fb034899be6055dcb6cb1a70fbda379bb0b55"
+uuid = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
+version = "0.2.10"
+
+[[Mmap]]
+uuid = "a63ad114-7e13-5084-954f-fe012c677804"
+
+[[NaNMath]]
+git-tree-sha1 = "3b18ebac4cc5f22fe5af9b4aa63210ae4495507a"
+uuid = "77ba4419-2d1f-58cd-9bb1-8ffee604a2e3"
+version = "0.3.1"
+
+[[OffsetArrays]]
+deps = ["Compat"]
+git-tree-sha1 = "8179fbc4cbf64cd4311fdd0f0ad8f9393c96aec1"
+uuid = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
+version = "0.6.0"
+
+[[PaddedViews]]
+deps = ["OffsetArrays", "Test"]
+git-tree-sha1 = "deab0a286bb0225a94f2b2fff2ef74d6781e0415"
+uuid = "5432bcbf-9aad-5242-b902-cca2824c8663"
+version = "0.4.0"
+
+[[Pkg]]
+uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+
+[[Printf]]
+uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+
+[[ProgressMeter]]
+deps = ["Compat"]
+git-tree-sha1 = "cf807099a343964a3708a74a8ecbff4c0aa2ecb0"
+uuid = "92933f4c-e287-5a05-a399-4b506db050ca"
+version = "0.5.5"
+
+[[QuartzImageIO]]
+deps = ["ColorTypes", "ColorVectorSpace", "FileIO", "FixedPointNumbers", "Images"]
+git-tree-sha1 = "3c6f1d0b78f89c1e38583928df1d3ac0a7739bdd"
+uuid = "dca85d43-d64c-5e67-8c65-017450d5d020"
+version = "0.3.1"
+
+[[REPL]]
+uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
+
+[[Random]]
+uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+
+[[RangeArrays]]
+deps = ["Compat"]
+git-tree-sha1 = "2a1b732926c4eb6ec7cb628a7fc900edebcae0db"
+uuid = "b3c3ace0-ae52-54e7-9d0b-2c1406fd6b9d"
+version = "0.2.0"
+
+[[Ratios]]
+git-tree-sha1 = "68d922178459eeb99a54fef8aad69fc76cc6682f"
+uuid = "c84ed2f1-dad5-54f0-aa8e-dbefe2724439"
+version = "0.2.0"
+
+[[Reexport]]
+git-tree-sha1 = "caba582b2e9ef39b9cfff911aa13c5ca1b9a9896"
+uuid = "189a3867-3050-52da-a836-e630ba90ab69"
+version = "0.1.0"
+
+[[Requires]]
+deps = ["Test"]
+git-tree-sha1 = "36e27b810e096ab501655e4b841b779cd9adaf33"
+uuid = "ae029012-a4dd-5104-9daa-d747884805df"
+version = "0.5.0"
+
+[[Rotations]]
+deps = ["Compat", "StaticArrays"]
+git-tree-sha1 = "79bff0df3dfbbc40fb9a4e7e1c7745e457524002"
+uuid = "6038ab10-8711-5258-84ad-4b1120ba62dc"
+version = "0.7.0"
+
+[[SHA]]
+uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+
+[[SIUnits]]
+deps = ["Compat", "TexExtensions"]
+git-tree-sha1 = "224d83b62711fe7e429454aace2c97eb2cf36031"
+uuid = "b9d75638-96e3-5676-bdf0-e9c958f63a55"
+version = "0.1.0"
+
+[[Serialization]]
+uuid = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
+
+[[SharedArrays]]
+uuid = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
+
+[[ShowItLikeYouBuildIt]]
+git-tree-sha1 = "e562bce4b0df3ed65562ce2ec7f56cb399368daf"
+uuid = "9966252f-7483-59e3-9a4c-8607a6b2a5fe"
+version = "0.2.0"
+
+[[SimpleTraits]]
+deps = ["InteractiveUtils", "MacroTools", "Test"]
+git-tree-sha1 = "316156031d36211d8d4a0d7cbb6bbbdff7d489a7"
+uuid = "699a6c99-e7fa-54fc-8d76-47d257e15c1d"
+version = "0.7.1"
+
+[[Sockets]]
+uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
+
+[[SortingAlgorithms]]
+deps = ["DataStructures", "Random", "Test"]
+git-tree-sha1 = "70840f1a93da48bcc952e71b600f598532372eb0"
+uuid = "a2af1166-a08f-5f64-846c-94a0d3cef48c"
+version = "0.3.0"
+
+[[SparseArrays]]
+uuid = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
+
+[[SpecialFunctions]]
+deps = ["BinDeps", "BinaryProvider", "Compat", "Libdl"]
+git-tree-sha1 = "1cf00baba50536d254f02082c90b98d6e4e1f968"
+uuid = "276daf66-3868-5448-9aa4-cd146d93841b"
+version = "0.6.0"
+
+[[StaticArrays]]
+deps = ["InteractiveUtils", "LinearAlgebra", "Random", "Statistics", "Test"]
+git-tree-sha1 = "acc0208265c71e22f90c83bbd3d92d7a3bc0ea6f"
+uuid = "90137ffa-7385-5640-81b9-e52037218182"
+version = "0.8.0"
+
+[[Statistics]]
+uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[[StatsBase]]
+deps = ["Compat", "DataStructures", "LinearAlgebra", "Missings", "Printf", "Random", "SortingAlgorithms", "SparseArrays", "Test"]
+git-tree-sha1 = "4d633c6e4b7c0b3ecf65146474533f2a2336ca34"
+uuid = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+version = "0.23.1"
+
+[[Test]]
+uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[[TexExtensions]]
+deps = ["Compat"]
+git-tree-sha1 = "092ad55ed044aa5ab31ee800d4ae5bec526a8f09"
+uuid = "9b435220-3ad3-5d4f-b1ea-1e7b29ae9b13"
+version = "0.1.0"
+
+[[TikzPictures]]
+deps = ["LaTeXStrings"]
+git-tree-sha1 = "133141d39d03c67c57175384e48e592d6d2d2575"
+uuid = "37f6aa50-8035-52d0-81c2-5a1d08754b2d"
+version = "1.2.0"
+
+[[TiledIteration]]
+deps = ["OffsetArrays"]
+git-tree-sha1 = "d1e88d5c67b0a22f2df529e4443d53ba1da41a84"
+uuid = "06e1c1a7-607b-532d-9fad-de7d9aa2abac"
+version = "0.1.0"
+
+[[URIParser]]
+deps = ["Compat", "Unicode"]
+git-tree-sha1 = "0f9c5e2d14e03fbd00696f9394e288bdd5adacbc"
+uuid = "30578b45-9adc-5946-b283-645ec420af67"
+version = "0.3.1"
+
+[[UUIDs]]
+uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
+
+[[Unicode]]
+uuid = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
+
+[[VersionParsing]]
+deps = ["Compat"]
+git-tree-sha1 = "e8524bb636735227fd9d750dfa81f98db8bc5b0c"
+uuid = "81def892-9a0e-5fdd-b105-ffc91e053289"
+version = "1.1.1"
+
+[[WinRPM]]
+deps = ["BinDeps", "Compat", "HTTPClient", "LibExpat", "Libdl", "Libz", "SHA", "URIParser"]
+git-tree-sha1 = "43730fcfe2f4921e7cfe1c21a6fdfeabb7ee4d74"
+uuid = "c17dfb99-b4f7-5aad-8812-456da1ad7187"
+version = "0.3.2"
+
+[[WoodburyMatrices]]
+deps = ["LinearAlgebra", "Random", "SparseArrays", "Test"]
+git-tree-sha1 = "742748a6eec707d55c818747a37ed528688b3ad3"
+uuid = "efce3f68-66dc-5838-9240-27a6d6f5f9b6"
+version = "0.4.0"

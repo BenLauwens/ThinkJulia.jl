@@ -1,4 +1,4 @@
-function increment(time::MyTime, seconds::Int64)
+function increment!(time::MyTime, seconds::Int64)
   seconds += timetoint(time)
   inttotime(seconds)
 end
@@ -9,11 +9,11 @@ function +(t1::MyTime, t2::MyTime)
 end
 
 function +(time::MyTime, seconds::Int64)
-  increment(time, seconds)
+  increment!(time, seconds)
 end
 
 function +(seconds::Int64, time::MyTime)
-  increment(time, seconds)
+  increment!(time, seconds)
 end
 
 function printtime(time)

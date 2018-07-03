@@ -105,7 +105,7 @@ This means also that not every byte index into a UTF-8 string is necessarily a v
 
 ```jldoctest chap08
 julia> fruits[2]
-ERROR: UnicodeError: invalid character index 2 (0x9f is a continuation byte)
+ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ```
 
 In the case of `fruits`, the character `🍌` is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by `nextind(fruit, 1)`, and the next index after that by `nextind(fruit, 5)` and so on.
@@ -295,24 +295,24 @@ julia> uppercase("Hello, World!")
 "HELLO, WORLD!"
 ```
 
-As it turns out, there is a function named `search` that is remarkably similar to the function `find` we wrote:
+As it turns out, there is a function named `findfirst` that is remarkably similar to the function `find` we wrote:
 
 ```jldoctest
-julia> search("banana", 'a')
-2
+julia> findfirst("a", "banana")
+2:2
 ```
 
-Actually, the `search` function is more general than our function; it can find substrings, not just characters:
+Actually, the `findfirst` function is more general than our function; it can find substrings, not just characters:
 
 ```jldoctest
-julia> search("banana", "na")
+julia> findfirst("na", "banana")
 3:4
 ```
 
-By default, `search` starts at the beginning of the string, but it can take a third argument, the `index` where it should start:
+By default, `findfirst` starts at the beginning of the string, but the function `findnext` takes a third argument, the `index` where it should start:
 
 ```jldoctest
-julia> search("banana", "na", 4)
+julia> findnext("na", "banana", 4)
 5:6
 ```
 

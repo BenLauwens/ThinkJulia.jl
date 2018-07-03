@@ -3,8 +3,7 @@
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
-    dir = Pkg.dir("ThinkJulia")
-    hist = processfile(dir * "/data/emma.txt");
+    hist = processfile(ThinkJulia.datapath("emma.txt"));
 end
 ```
 
@@ -75,8 +74,8 @@ julia> t = ['a', 'a', 'b'];
 
 julia> histogram(t)
 Dict{Any,Any} with 2 entries:
-  'b' => 1
   'a' => 2
+  'b' => 1
 ```
 
 your function should return `'a'` with probability ``\frac{2}{3}`` and `'b'` with probability ``\frac{1}{3}``.
@@ -97,9 +96,9 @@ function processfile(filename)
 end
 
 function processline(line, hist)
-    line = replace(line, '-', ' ')
+    line = replace(line, '-' => ' ')
     for word in split(line)
-        word = string(filter(isalpha, [word...])...)
+        word = string(filter(isletter, [word...])...)
         word = lowercase(word)
         hist[word] = get!(hist, word, 0) + 1
     end

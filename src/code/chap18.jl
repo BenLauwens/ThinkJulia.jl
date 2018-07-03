@@ -49,7 +49,7 @@ function Base.push!(cs::CardSet, card::Card)
     nothing
 end
 
-function Base.shuffle!(deck::Deck)
+function Random.shuffle!(deck::Deck)
     shuffle!(deck.cards)
     nothing
 end

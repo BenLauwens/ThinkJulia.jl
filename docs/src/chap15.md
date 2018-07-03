@@ -323,7 +323,7 @@ When you start working with objects, you are likely to encounter some new except
 julia> p = Point(3.0, 4.0)
 ThinkJulia.Point(3.0, 4.0)
 julia> p.z = 1.0
-ERROR: type Point has no field z
+ERROR: type Point is immutable
 ```
 
 If you are not sure what type an object is, you can ask:
@@ -343,10 +343,8 @@ true
 If you are not sure whether an object has a particular attribute, you can use the built-in function `fieldnames`:
 
 ```jldoctest chap15
-julia> fieldnames(p)
-2-element Array{Symbol,1}:
- :x
- :y
+julia> fieldnames(Point)
+(:x, :y)
 ```
 
 or the function `isdefined`:

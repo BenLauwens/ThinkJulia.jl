@@ -397,15 +397,17 @@ Void functions might display something on the screen or have some other effect, 
 julia> result = printtwice("Bing")
 Bing
 Bing
-julia> println(result)
+julia> show(result)
 nothing
 ```
+
+To print the value `nothing`, you have to use the function `show` which is like `print` but can handle the value `nothing`.
 
 The value `nothing` is not the same as the string `"nothing"`. It is a special value that has its own type:
 
 ```jldoctest
-julia> typeof(nothing) # Nothing in Julia v0.7
-Void
+julia> typeof(nothing)
+Nothing
 ```
 
 The functions we have written so far are all void. We will start writing fruitful functions in a few chapters.

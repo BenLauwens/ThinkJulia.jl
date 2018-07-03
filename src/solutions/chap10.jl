@@ -25,7 +25,7 @@ function interior(t)
 end
 
 function interior!(t)
-  shift!(t)
+  popfirst!(t)
   pop!(t)
   nothing
 end

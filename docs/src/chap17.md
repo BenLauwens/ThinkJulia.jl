@@ -24,7 +24,7 @@ When appended to an expression computing a value, the `::` operator is read as "
 
 ```jldoctest
 julia> (1 + 2) :: Float64
-ERROR: TypeError: typeassert: expected Float64, got Int64
+ERROR: TypeError: in typeassert, expected Float64, got Int64
 julia> (1 + 2) :: Int64
 3
 ```
@@ -135,7 +135,7 @@ As an exercise, rewrite `timetoint` and `inttotime` (from Section 16.4) to speci
 Here’s a version of `increment!` (from Section 16.3) rewritten to specify its arguments:
 
 ```julia
-function increment(time::MyTime, seconds::Int64)
+function increment!(time::MyTime, seconds::Int64)
     seconds += timetoint(time)
     inttotime(seconds)
 end
@@ -148,15 +148,15 @@ Here's how you would invoke increment:
 ```jldoctest chap17a
 julia> start = MyTime(9, 45, 0)
 ThinkJulia.MyTime(9, 45, 0)
-julia> increment(start, 1337)
+julia> increment!(start, 1337)
 ThinkJulia.MyTime(10, 7, 17)
 ```
 
 If you put the arguments in the wrong order, you get an error:
 
 ```jldoctest chap17a
-julia> increment(1337, start)
-ERROR: MethodError: no method matching increment(::Int64, ::ThinkJulia.MyTime)
+julia> increment!(1337, start)
+ERROR: MethodError: no method matching increment!(::Int64, ::ThinkJulia.MyTime)
 ```
 
 The signature of the method is `printtime(time::ThinkJulia.MyTime, seconds::Int64)` and not `printtime(seconds::Int64, time::ThinkJulia.MyTime)`.
@@ -268,6 +268,8 @@ This allows to construct incompletely initialized objects and self-referential o
 `Base.show` is a special function that is supposed to return a string representation of an object. For example, here is a `Base.show` method for Time objects:
 
 ```julia
+using Printf
+
 function Base.show(io::IO, time::MyTime)
     @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
 end
@@ -278,6 +280,7 @@ When you print an object, Julia invokes the `Base.show` function:
 ```@meta
 DocTestSetup = quote
     using ThinkJulia
+    using Printf
     function Base.show(io::IO, time::MyTime)
         @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
     end
@@ -337,7 +340,7 @@ In the previous section we added two `MyTime` objects, but you also might want t
 
 ```julia
 function +(time::MyTime, seconds::Int64)
-    increment(time, seconds)
+    increment!(time, seconds)
 end
 ```
 
@@ -354,7 +357,7 @@ Addition is a commutative operator so we have to add another method.
 
 ```julia
 function +(seconds::Int64, time::MyTime)
-  increment(time, seconds)
+  increment!(time, seconds)
 end
 ```
 
@@ -450,16 +453,16 @@ To know what methods are available, you can use the function `methods`:
 \begin{minted}{jlcon}
 julia> methods(printtime)
 # 2 methods for generic function "printtime":
-printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:24
-printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20
+printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:24
+printtime(time) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:20
 \end{minted}
 ```
 
 ```@raw html
 <pre><code class="language-julia-repl">julia&gt; julia> methods(printtime)
 # 2 methods for generic function "printtime":
-printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:24
-printtime(time) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap17.jl:20</code></pre>
+printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:24
+printtime(time) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:20</code></pre>
 ```
 
 ## Glossary

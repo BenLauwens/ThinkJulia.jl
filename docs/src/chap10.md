@@ -33,7 +33,7 @@ julia> numbers = [42, 123];
 julia> empty = [];
 
 julia> print(cheeses, " ", numbers, " ", empty)
-String["Cheddar", "Edam", "Gouda"] [42, 123] Any[]
+["Cheddar", "Edam", "Gouda"] [42, 123] Any[]
 ```
 
 The function `typeof` can be used to find out the kind of the array:
@@ -318,7 +318,7 @@ Any Julia function `f` can be applied elementwise to any array with the **dot sy
 julia> t = uppercase.(["abc", "def", "ghi"]);
 
 julia> print(t)
-String["ABC", "DEF", "GHI"]
+["ABC", "DEF", "GHI"]
 ```
 
 This is an elegant way to create a map. The function `capitalizeall` can be implemented by a one-liner:
@@ -355,18 +355,18 @@ julia> print(t)
 ['a', 'b']
 ```
 
-`shift!` deletes and returns the first element:
+`popfirst!` deletes and returns the first element:
 
 ```jldoctest
 julia> t = ['a', 'b', 'c'];
 
-julia> shift!(t)
+julia> popfirst!(t)
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 julia> print(t)
 ['b', 'c']
 ```
 
-The functions `unshift!` and `push!` insert an element at the beginning, respectively at the end of the array.
+The functions `pushfirst!` and `push!` insert an element at the beginning, respectively at the end of the array.
 
 If you don’t need the removed value, you can use the function `deleteat!`:
 
@@ -465,15 +465,6 @@ fig10_2()
 In one case, `a` and `b` refer to two different objects that have the same value. In the second case, they refer to the same object.
 
 To check whether two variables refer to the same object, you can use the `≡` (`\equiv TAB`) or `===` operator.
-
-```@meta
-DocTestSetup = quote
-    if VERSION < v"0.7-"
-        ≡(a::String, b::String) = a == b
-        ≡(a, b) = a === b
-    end
-end
-```
 
 ```jldoctest
 julia> a = "banana"
@@ -588,7 +579,7 @@ When you pass an array to a function, the function gets a reference to the array
 
 ```julia
 function deletehead!(t)
-    shift!(t)
+    popfirst!(t)
 end
 ```
 
@@ -729,7 +720,7 @@ t2 = sort!(t1)
 
 - Pick an idiom and stick with it.
 
-  Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use `pop!`, `shift!`, `delete_at`, or even a slice assignment. To add an element, you can use `push!`, `unshift!`, `insert` or `vcat`. Assuming that `t` is an array and `x` is an array element, these are correct:
+  Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use `pop!`, `shift!`, `delete_at`, or even a slice assignment. To add an element, you can use `push!`, `unpopfirst!`, `insert` or `vcat`. Assuming that `t` is an array and `x` is an array element, these are correct:
 
 ```julia
 insert!(t, 4, x)

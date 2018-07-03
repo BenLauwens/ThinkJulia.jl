@@ -240,19 +240,11 @@ The function `close` will always be executed.
 
 A **database** is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
 
-The package `GDBM` provides an interface for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
-
-First, we have to install the package `GDBM`:
-
-```julia
-Pkg.add("GDBM")
-```
+ThinkJulia provides an interface to `GDBM` for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
 
 Opening a database is similar to opening other files:
 
 ```jldoctest chap14
-julia> using GDBM
-
 julia> db = DBM("captions", "c")
 DBM(<captions>)
 ```
@@ -303,7 +295,9 @@ A limitation of `GDBM` is that the keys and the values have to be strings or byt
 
 The functions `serialize` and `deserialize` can help. They translate almost any type of object into a byte array suitable for storage in a database, and then translates byte arrays back into objects:
 
-```jldoctest
+```jldoctest chap14
+julia> using Serialization
+
 julia> io = IOBuffer();
 
 julia> t = [1, 2, 3];
@@ -311,7 +305,7 @@ julia> t = [1, 2, 3];
 julia> serialize(io, t)
 24
 julia> print(take!(io))
-UInt8[0x15, 0x00, 0x08, 0xc8, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+UInt8[0x37, 0x4a, 0x4c, 0x07, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
 ```
 
 The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. `deserialize` reconstitutes the object:
@@ -362,16 +356,16 @@ Backticks are used to delimit the command.
 The function `run` executes the command:
 
 ```jldoctest chap14
-julia> run(cmd)
+julia> run(cmd);
 hello
 ```
 
-The `hello` is the output of the echo command, sent to `STDOUT`. The `run` function itself returns nothing, and throws an `ErrorException` if the external command fails to run successfully.
+The `hello` is the output of the echo command, sent to `STDOUT`. The `run` function itself returns a process object, and throws an `ErrorException` if the external command fails to run successfully.
 
 If you want to read the output of the external command, `readstring` can be used instead:
 
 ```jldoctest chap14
-julia> a = readstring(cmd)
+julia> a = read(cmd, String)
 "hello\n"
 ```
 

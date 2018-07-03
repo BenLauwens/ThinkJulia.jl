@@ -322,9 +322,9 @@ julia> d = Dict('a'=>1, 'b'=>2, 'c'=>3);
 julia> for (key, value) in d
            println(key, " ", value)
        end
-b 2
 a 1
 c 3
+b 2
 ```
 
 As you should expect from a dictionary, the items are in no particular order.
@@ -336,9 +336,9 @@ julia> t = [('a', 1), ('c', 3), ('b', 2)];
 
 julia> d = Dict(t)
 Dict{Char,Int64} with 3 entries:
-  'b' => 2
   'a' => 1
   'c' => 3
+  'b' => 2
 ```
 
 Combining `Dict` with `zip` yields a concise way to create a dictionary:
@@ -346,9 +346,9 @@ Combining `Dict` with `zip` yields a concise way to create a dictionary:
 ```jldoctest
 julia> d = Dict(zip("abc", 1:3))
 Dict{Char,Int64} with 3 entries:
-  'b' => 2
   'a' => 1
   'c' => 3
+  'b' => 2
 ```
 
 It is common to use tuples as keys in dictionaries. For example, a telephone directory might map from last-name, first-name pairs to telephone numbers. Assuming that we have defined `last`, `first` and `number`, we could write:

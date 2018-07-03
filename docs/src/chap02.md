@@ -55,7 +55,7 @@ If you give a variable an illegal name, you get a syntax error:
 julia> 76trombones = "big parade"
 ERROR: syntax: "76" is not a valid function argument name
 julia> more@ = 1000000
-ERROR: syntax: unexpected "="
+ERROR: syntax: extra token "@" after end of expression
 julia> type = "Advanced Theoretical Zymurgy"
 ERROR: syntax: unexpected "="
 \end{minted}
@@ -65,7 +65,7 @@ ERROR: syntax: unexpected "="
 <pre><code class="language-julia-repl">julia&gt; 76trombones = &quot;big parade&quot;
 ERROR: syntax: "76" is not a valid function argument name
 julia&gt; more@ = 1000000
-ERROR: syntax: unexpected "="
+type = "Advanced Theoretical Zymurgy"
 julia&gt; type = &quot;Advanced Theoretical Zymurgy&quot;
 ERROR: syntax: unexpected "="</code></pre>
 ```

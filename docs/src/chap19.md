@@ -10,7 +10,7 @@ One of my goals for this book has been to teach you as little Julia as possible.
 
 Now I want to go back for some of the good bits that got left behind. Julia provides a number of features that are not really necessary—you can write good code without them—but with them you can sometimes write code that’s more concise, readable or efficient, and sometimes all three.
 
-This chapter is a synthesis of the corresponding parts in the offical Julia documentation: <https://docs.julialang.org/en/stable/>
+Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: <https://docs.julialang.org/en/stable/>
 
 ## Keyword arguments
 
@@ -88,12 +88,12 @@ Functions in Julia are first-class objects: they can be assigned to variables, a
 
 ```jldoctest
 julia> x -> x^2 + 2x - 1
-(::#1) (generic function with 1 method)
+#1 (generic function with 1 method)
 
 julia> function (x)
            x^2 + 2x - 1
        end
-(::#3) (generic function with 1 method)
+#3 (generic function with 1 method)
 ```
 
 This creates a function taking one argument `x` and returning the value of the polynomial ``x^2 + 2x - 1`` at that value. Notice that the result is a generic function, but with a compiler-generated name based on consecutive numbering.
@@ -265,7 +265,7 @@ end
 
 An element can only appear in a set once, so if an element in `t` appears more than once, the set will be smaller than `t`. If there are no duplicates, the set will be the same size as `t`.
 
-We can also use sets to do some of the exercises in Chapter 9. For example, here’s a version of `uses_only` with a loop:
+We can also use sets to do some of the exercises in Chapter 9. For example, here’s a version of `usesonly` with a loop:
 
 ```julia
 function usesonly(word, available)

@@ -1,3 +1,5 @@
+datapath(filename) = joinpath(@__DIR__, "..", "..", "data", filename)
+
 function processfile(filename)
   hist = Dict()
   for line in eachline(filename)
@@ -7,9 +9,9 @@ function processfile(filename)
 end
 
 function processline(line, hist)
-  line = replace(line, '-', ' ')
+  line = replace(line, '-' => ' ')
   for word in split(line)
-      word = string(filter(isalpha, [word...])...)
+      word = string(filter(isletter, [word...])...)
       word = lowercase(word)
       hist[word] = get!(hist, word, 0) + 1
   end

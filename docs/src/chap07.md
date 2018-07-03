@@ -355,14 +355,14 @@ The first column is a number, `a`; the second column is the square root of a com
 
 ### Exercise 7-2
 
-The built-in function `parse` takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function `eval`. For example:
+The built-in function `Meta.parse` takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function `eval`. For example:
 
 ```jldoctest
-julia> expr = parse("1+2*3")
+julia> expr = Meta.parse("1+2*3")
 :(1 + 2 * 3)
 julia> eval(expr)
 7
-julia> expr = parse("sqrt(π)")
+julia> expr = Meta.parse("sqrt(π)")
 :(sqrt(π))
 julia> eval(expr)
 1.7724538509055159

@@ -1,5 +1,5 @@
 function deletehead!(t)
-  shift!(t)
+  popfirst!(t)
 end
 
 function baddeletehead(t)

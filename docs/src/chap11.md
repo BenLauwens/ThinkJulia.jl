@@ -81,7 +81,7 @@ The function `keys` returns an array with the keys of the dictionary:
 julia> ks = keys(eng2sp);
 
 julia> print(ks)
-String["two", "one", "three"]
+["two", "one", "three"]
 ```
 
 Now you can use the `∈` operator to see whether something appears as a *key* in the dictionary:
@@ -146,13 +146,13 @@ Here’s how it works:
 julia> h = histogram("brontosaurus")
 Dict{Any,Any} with 8 entries:
   'n' => 1
-  'b' => 1
-  'o' => 2
-  't' => 1
-  'a' => 1
-  'u' => 2
   's' => 2
+  'a' => 1
   'r' => 2
+  't' => 1
+  'o' => 2
+  'u' => 2
+  'b' => 1
 ```
 
 The histogram indicates that the letters `'a'` and `'b'` appear once; `'o'` appears twice, and so on.
@@ -189,11 +189,11 @@ Here’s what the output looks like:
 julia> h = histogram("parrot");
 
 julia> printhist(h)
-o 1
 a 1
-p 1
-t 1
 r 2
+p 1
+o 1
+t 1
 ```
 
 Again, the keys are in no particular order. To traverse the keys in sorted order, you can combine `sort!` and `collect`:
@@ -246,8 +246,6 @@ And an unsuccessful one:
 ```jldoctest chap11
 julia> key = reverselookup(h, 3)
 ERROR: LookupError
-Stacktrace:
- [1] reverselookup(::Dict{Any,Any}, ::Int64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap11.jl:21
 ```
 
 The effect when you generate an exception is the same as when Julia throws one: it prints a traceback and an error message.
@@ -285,7 +283,7 @@ julia> hist = histogram("parrot");
 julia> inverse = invertdict(hist)
 Dict{Any,Any} with 2 entries:
   2 => ['r']
-  1 => ['o', 'a', 'p', 't']
+  1 => ['a', 'p', 'o', 't']
 ```
 
 ```@eval

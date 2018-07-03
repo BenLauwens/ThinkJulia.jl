@@ -71,7 +71,7 @@ end
 This function is incorrect because if `x` happens to be 0, neither condition is true, and the function ends without hitting a `return` statement. If the flow of execution gets to the end of a function, the return value is `nothing`, which is not the absolute value of 0.
 
 ```jldoctest
-julia> println(absvalue(0))
+julia> show(absvalue(0))
 nothing
 ```
 
@@ -451,12 +451,10 @@ end
 ```
 
 ```jldoctest
-julia> println(fact("fred"))
+julia> fact("fred")
 Factorial is only defined for integers.
-nothing
-julia> println(fact(-2))
+julia> fact(-2)
 Factorial is not defined for negative integers.
-nothing
 ```
 
 If we get past both checks, we know that `n` is positive or zero, so we can prove that the recursion terminates.

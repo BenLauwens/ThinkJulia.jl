@@ -9,8 +9,8 @@ For the exercises in this chapter we need a list of English words. There are lot
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function `open` takes the name of the file as a parameter and returns a **file stream** you can use to read the file.
 
 ```@setup chap09
-dir = Pkg.dir("ThinkJulia")
-fin = open(dir * "/data/words.txt")
+using ThinkJulia
+fin = open(ThinkJulia.datapath("words.txt"))
 ```
 
 ```@raw latex

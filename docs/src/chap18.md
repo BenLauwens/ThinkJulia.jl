@@ -115,7 +115,7 @@ As an exercise, write a `Base.isless` method for mytime objects. You can use tup
 Simple unit testing can be performed with the `@test` macros:
 
 ```jldoctest
-julia> using Base.Test
+julia> using Test
 
 julia> @test isless(Card(1, 4), Card(2, 4))
 Test Passed
@@ -191,10 +191,12 @@ A method like this that uses another method without doing much work is sometimes
 
 In this case `addcard` is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.
 
-As another example, we can write a method named `shuffledeck!` using the function `shuffle!`:
+As another example, we can write a method named `shuffledeck!` using the function `Random.shuffle!`:
 
 ```julia
-function Base.shuffle!(deck::Deck)
+using Random
+
+function Random.shuffle!(deck::Deck)
     shuffle!(deck.cards)
     nothing
 end
@@ -374,11 +376,13 @@ Suppose you are writing a function that works with Hand objects. You would like 
 
 Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If `shuffle!` prints a message that says something like `Running shuffle! Deck`, then as the program runs it traces the flow of execution.
 
-As an alternative, you can also use the `@which` macro:
+As an alternative, you can also use the `InteractiveUtils.@which` macro:
 
 ```jldoctest chap18
+julia> using InteractiveUtils
+
 julia> @which sort!(hand)
-sort!(hand::ThinkJulia.Hand) in ThinkJulia at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap18.jl:75
+sort!(hand::ThinkJulia.Hand) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap18.jl:75
 ```
 
 So the `sort!` method for `hand` is the one having as argument an object of type `ThinkJulia.Hand`.
@@ -425,7 +429,7 @@ function processword(markov::Markov, word::String)
     end
     get!(markov.suffixes, (markov.prefix...), Array{String, 1}())
     push!(markov.suffixes[(markov.prefix...)], word)
-    shift!(markov.prefix)
+    pushfirst!(markov.prefix)
     push!(markov.prefix, word)
 end
 ```

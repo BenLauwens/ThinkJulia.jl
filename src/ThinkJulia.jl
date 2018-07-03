@@ -1,5 +1,9 @@
 module ThinkJulia
 
+  using Printf
+  using Random
+  using InteractiveUtils
+
   import Base.+
 
   export printlyrics, repeatlyrics, printtwice, cattwice
@@ -13,9 +17,10 @@ module ThinkJulia
   export histogram, printhist, reverselookup, invertdict
   export printall
   export processfile, processline, totalwords, differentwords, mostcommon, printmostcommon, subtract
+  export DBM
   export Point, MPoint, Rectangle, printpoint, findcenter, movepoint!, moverectangle!
   export MyTime, isafter
-  export inttotime, timetoint, increment, printtime
+  export inttotime, timetoint, increment!, printtime
   export CardSet, Card, Deck, Hand, move!
   export MyPoint
 
