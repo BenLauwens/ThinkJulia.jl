@@ -36,5 +36,5 @@ deploydocs(
   deps   = nothing,
   make   = nothing,
   julia  = "nightly",
-  osname = "linux"
+  osname = "osx"
 )

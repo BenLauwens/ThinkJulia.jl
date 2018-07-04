@@ -2,7 +2,7 @@
 language: julia
 os:
   - linux
-  #- osx
+  - osx
 julia:
   - 0.7
   - nightly
@@ -10,17 +10,24 @@ notifications:
   email: false
 git:
   depth: 99999999
-addons:
-  apt_packages:
-    - lmodern
-    - fonts-dejavu
-    - ttf-ubuntu-font-family
-    - texlive-luatex
-    - texlive-xetex
-    - texlive-latex-extra
-    - pgf
-    - pdf2svg
-    - libgdbm3
+install:
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install lmodern texlive-luatex texlive-xetex texlive-latex-extra pgf; else brew cask install mactex-no-gui; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install ttf-ubuntu-font-family; else brew cask install font-ubuntu; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install fonts-dejavu; else brew cask install font-dejavu-sans; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install pdf2svg; else brew install pdf2svg; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install libgdbm3; else brew install gdbm; fi
+ 
+#addons:
+#  apt_packages:
+#    - lmodern
+#    - fonts-dejavu
+#    - ttf-ubuntu-font-family
+#    - texlive-luatex
+#    - texlive-xetex
+#    - texlive-latex-extra
+#    - pgf
+#    - pdf2svg
+#    - libgdbm3
 #matrix:
 #  allow_failures:
 #  - julia: nightly
