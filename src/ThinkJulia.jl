@@ -2,7 +2,6 @@ module ThinkJulia
 
   using Printf
   using Random
-  using InteractiveUtils
 
   import Base.+
 
