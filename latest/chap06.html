@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Fruitful functions · Think Julia</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="assets/documenter.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link href="assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><h1>Think Julia</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="search.html"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="chap00.html">Preface</a></li><li><a class="toctext" href="chap01.html">The way of the program</a></li><li><a class="toctext" href="chap02.html">Variables, expressions and statements</a></li><li><a class="toctext" href="chap03.html">Functions</a></li><li><a class="toctext" href="chap04.html">Case study: interface design</a></li><li><a class="toctext" href="chap05.html">Conditionals and recursion</a></li><li class="current"><a class="toctext" href="chap06.html">Fruitful functions</a><ul class="internal"><li><a class="toctext" href="#Return-values-1">Return values</a></li><li><a class="toctext" href="#Incremental-development-1">Incremental development</a></li><li><a class="toctext" href="#Composition-1">Composition</a></li><li><a class="toctext" href="#Boolean-functions-1">Boolean functions</a></li><li><a class="toctext" href="#More-recursion-1">More recursion</a></li><li><a class="toctext" href="#Leap-of-faith-1">Leap of faith</a></li><li><a class="toctext" href="#One-more-example-1">One more example</a></li><li><a class="toctext" href="#Checking-types-1">Checking types</a></li><li><a class="toctext" href="#Debugging-1">Debugging</a></li><li><a class="toctext" href="#Glossary-1">Glossary</a></li><li><a class="toctext" href="#Exercises-1">Exercises</a></li></ul></li><li><a class="toctext" href="chap07.html">Iteration</a></li><li><a class="toctext" href="chap08.html">Strings</a></li><li><a class="toctext" href="chap09.html">Case study: word play</a></li><li><a class="toctext" href="chap10.html">Arrays</a></li><li><a class="toctext" href="chap11.html">Dictionaries</a></li><li><a class="toctext" href="chap12.html">Tuples</a></li><li><a class="toctext" href="chap13.html">Case study: data structure selection</a></li><li><a class="toctext" href="chap14.html">Files</a></li><li><a class="toctext" href="chap15.html">Structs and objects</a></li><li><a class="toctext" href="chap16.html">Structs and functions</a></li><li><a class="toctext" href="chap17.html">Multiple dispatch</a></li><li><a class="toctext" href="chap18.html">Subtyping</a></li><li><a class="toctext" href="chap19.html">The goodies</a></li><li><a class="toctext" href="chap20.html">Debugging</a></li></ul></nav><article id="docs"><header><nav><ul><li><a href="chap06.html">Fruitful functions</a></li></ul><a class="edit-page" href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/docs/src/chap06.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Fruitful functions</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Fruitful-functions-1" href="#Fruitful-functions-1">Fruitful functions</a></h1><p>Many of the Julia functions we have used, such as the math functions, produce return values. But the functions we’ve written are all void: they have an effect, like printing a value or moving a turtle, but they return <code>nothing</code>. In this chapter you will learn to write fruitful functions.</p><h2><a class="nav-anchor" id="Return-values-1" href="#Return-values-1">Return values</a></h2><p>Calling the function generates a return value, which we usually assign to a variable or use as part of an expression.</p><pre><code class="language-julia">e = exp(1.0)
+height = radius * sin(radians)</code></pre><p>The functions we have written so far are void. Speaking casually, they have no return value; more precisely, their return value is <code>nothing</code>. In this chapter, we are (finally) going to write fruitful functions. The first example is <code>area</code>, which returns the area of a circle with the given radius:</p><pre><code class="language-julia">function area(radius)
+    a = π * radius^2
+    return a
+end</code></pre><p>We have seen the <code>return</code> statement before, but in a fruitful function the <code>return</code> statement includes an expression. This statement means: “Return immediately from this function and use the following expression as a return value.” The expression can be arbitrarily complicated, so we could have written this function more concisely:</p><pre><code class="language-julia">function area(radius)
+    π * radius^2
+end</code></pre><p>The value returned by a function is the value of the last expression evaluated, which, by default, is the last expression in the body of the function definition.</p><p>On the other hand, <strong>temporary variables</strong> like <code>a</code> and explicit <code>return</code> statements can make debugging easier.</p><p>Sometimes it is useful to have multiple <code>return</code> statements, one in each branch of a conditional:</p><pre><code class="language-julia">function absvalue(x)
+    if x &lt; 0
+        return -x
+    else
+        return x
+    end
+end</code></pre><p>Since these return statements are in an alternative conditional, only one runs.</p><p>As soon as a <code>return</code> statement runs, the function terminates without executing any subsequent statements. Code that appears after a <code>return</code> statement, or any other place the flow of execution can never reach, is called <strong>dead code</strong>.</p><p>In a fruitful function, it is a good idea to ensure that every possible path through the program hits a return statement. For example:</p><pre><code class="language-julia">function absvalue(x)
+    if x &lt; 0
+        return -x
+    end
+    if x &gt; 0
+        return x
+    end
+end</code></pre><p>This function is incorrect because if <code>x</code> happens to be 0, neither condition is true, and the function ends without hitting a <code>return</code> statement. If the flow of execution gets to the end of a function, the return value is <code>nothing</code>, which is not the absolute value of 0.</p><pre><code class="language-julia-repl">julia&gt; show(absvalue(0))
+nothing</code></pre><p>By the way, Julia provides a built-in function called <code>abs</code> that computes absolute values.</p><p>As an exercise, write a <code>compare</code> function takes two values, <code>x</code> and <code>y</code>, and returns <code>1</code> if <code>x &gt; y</code>, <code>0</code> if <code>x == y</code>, and <code>-1</code> if <code>x &lt; y</code>.</p><h2><a class="nav-anchor" id="Incremental-development-1" href="#Incremental-development-1">Incremental development</a></h2><p>As you write larger functions, you might find yourself spending more time debugging.</p><p>To deal with increasingly complex programs, you might want to try a process called <strong>incremental development</strong>. The goal of incremental development is to avoid long debugging sessions by adding and testing only a small amount of code at a time.</p><p>As an example, suppose you want to find the distance between two points, given by the coordinates <span>$(x_1, y_1)$</span> and <span>$(x_2, y_2)$</span>. By the Pythagorean theorem, the distance is:</p><div>\[d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]</div><p>The first step is to consider what a distance function should look like in Julia. In other words, what are the inputs (parameters) and what is the output (return value)?</p><p>In this case, the inputs are two points, which you can represent using four numbers. The return value is the distance represented by a floating-point value.</p><p>Immediately you can write an outline of the function:</p><pre><code class="language-julia">function distance(x₁, y₁, x₂, y₂)
+    0.0
+end</code></pre><p>Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (<code>\_1 TAB</code>, <code>\_2 TAB</code>, etc.).</p><p>To test the new function, call it with sample arguments:</p><pre><code class="language-julia">distance(1, 2, 4, 6)</code></pre><p>I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.</p><p>At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences <span>$x_2 − x_1$</span> and <span>$y_2 − y_1$</span>. The next version stores those values in temporary variables and prints them.</p><pre><code class="language-julia">function distance(x₁, y₁, x₂, y₂)
+    dx = x₂ - x₁
+    dy = y₂ - y₁
+    println(&quot;dx is &quot;, dx)
+    println(&quot;dy is &quot;, dy)
+    0.0
+end</code></pre><p>If the function is working, it should display <code>dx</code> is 3 and <code>dy</code> is 4. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.</p><p>Next we compute the sum of squares of <code>dx</code> and <code>dy</code>:</p><pre><code class="language-julia">function distance(x₁, y₁, x₂, y₂)
+    dx = x₂ - x₁
+    dy = y₂ - y₁
+    d² = dx^2 + dy^2
+    println(&quot;d² is &quot;, d²)
+    0.0
+end</code></pre><p>Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (<code>\^2 TAB</code>). Finally, you can use <code>sqrt</code> to compute and return the result:</p><pre><code class="language-julia">function distance(x₁, y₁, x₂, y₂)
+    dx = x₂ - x₁
+    dy = y₂ - y₁
+    d² = dx^2 + dy^2
+    sqrt(d²)
+end</code></pre><p>If that works correctly, you are done. Otherwise, you might want to print the value of <code>sqrt(d²)</code> before the <code>return</code> statement.</p><p>The final version of the function doesn’t display anything when it runs; it only returns a value. The print statements we wrote are useful for debugging, but once you get the function working, you should remove them. Code like that is called <strong>scaffolding</strong> because it is helpful for building the program but is not part of the final product.</p><p>When you start out, you should add only a line or two of code at a time. As you gain more experience, you might find yourself writing and debugging bigger chunks. Either way, incremental development can save you a lot of debugging time.</p><p>The key aspects of the process are:</p><ol><li><p>Start with a working program and make small incremental changes. At any point, if there is an error, you should have a good idea where it is.</p></li><li><p>Use variables to hold intermediate values so you can display and check them.</p></li><li><p>Once the program is working, you might want to remove some of the scaffolding or consolidate multiple statements into compound expressions, but only if it does not make the program difficult to read.</p></li></ol><p>As an exercise, use incremental development to write a function called <code>hypotenuse</code> that returns the length of the hypotenuse of a right triangle given the lengths of the other two legs as arguments. Record each stage of the development process as you go.</p><h2><a class="nav-anchor" id="Composition-1" href="#Composition-1">Composition</a></h2><p>As you should expect by now, you can call one function from within another. As an example, we’ll write a function that takes two points, the center of the circle and a point on the perimeter, and computes the area of the circle.</p><p>Assume that the center point is stored in the variables <code>xc</code> and <code>yc</code>, and the perimeter point is in <code>xp</code> and <code>yp</code>. The first step is to find the radius of the circle, which is the distance between the two points. We just wrote a function, distance, that does that:</p><pre><code class="language-julia">radius = distance(xc, yc, xp, yp)</code></pre><p>The next step is to find the area of a circle with that radius; we just wrote that, too:</p><pre><code class="language-julia">result = area(radius)</code></pre><p>Encapsulating these steps in a function, we get:</p><pre><code class="language-julia">function circlearea(xc, yc, xp, yp)
+    radius = distance(xc, yc, xp, yp)
+    result = area(radius)
+    return result
+end</code></pre><p>The temporary variables <code>radius</code> and <code>result</code> are useful for development and debugging, but once the program is working, we can make it more concise by composing the function calls:</p><pre><code class="language-julia">function circlearea(xc, yc, xp, yp)
+    area(distance(xc, yc, xp, yp))
+end</code></pre><h2><a class="nav-anchor" id="Boolean-functions-1" href="#Boolean-functions-1">Boolean functions</a></h2><p>Functions can return booleans, which is often convenient for hiding complicated tests inside functions. For example:</p><pre><code class="language-julia">function isdivisible(x, y)
+    if x % y == 0
+        return true
+    else
+        return false
+    end
+end</code></pre><p>It is common to give boolean functions names that sound like yes/no questions; <code>isdivisible</code> returns either <code>true</code> or <code>false</code> to indicate whether <code>x</code> is divisible by <code>y</code>.</p><p>Here is an example:</p><pre><code class="language-julia-repl">julia&gt; isdivisible(6, 4)
+false
+julia&gt; isdivisible(6, 3)
+true</code></pre><p>The result of the <code>==</code> operator is a boolean, so we can write the function more concisely by returning it directly:</p><pre><code class="language-julia">function isdivisible(x, y)
+    x % y == 0
+end</code></pre><p>Boolean functions are often used in conditional statements:</p><pre><code class="language-julia">if isdivisible(x, y)
+    println(&quot;x is divisible by y&quot;)
+end</code></pre><p>It might be tempting to write something like:</p><pre><code class="language-julia">if isdivisible(x, y) == true
+    println(&quot;x is divisible by y&quot;)
+end</code></pre><p>But the extra comparison is unnecessary.</p><p>As an exercise, write a function <code>isbetween(x, y, z)</code> that returns <code>true</code> if <code>x ≤ y ≤ z</code> or <code>false</code> otherwise.</p><h2><a class="nav-anchor" id="More-recursion-1" href="#More-recursion-1">More recursion</a></h2><p>We have only covered a small subset of Julia, but you might be interested to know that this subset is a <em>complete</em> programming language, which means that anything that can be computed can be expressed in this language. Any program ever written could be rewritten using only the language features you have learned so far (actually, you would need a few commands to control devices like the mouse, disks, etc., but that’s all).</p><p>Proving that claim is a nontrivial exercise first accomplished by Alan Turing, one of the first computer scientists (some would argue that he was a mathematician, but a lot of early computer scientists started as mathematicians). Accordingly, it is known as the Turing Thesis. For a more complete (and accurate) discussion of the Turing Thesis, I recommend Michael Sipser’s book <em>Introduction to the Theory of Computation</em>.</p><p>To give you an idea of what you can do with the tools you have learned so far, we’ll evaluate a few recursively defined mathematical functions. A recursive definition is similar to a circular definition, in the sense that the definition contains a reference to the thing being defined. A truly circular definition is not very useful:</p><p><strong>vorpal</strong>: An adjective used to describe something that is vorpal.</p><p>If you saw that definition in the dictionary, you might be annoyed. On the other hand, if you looked up the definition of the factorial function, denoted with the symbol <span>$!$</span>, you might get something like this:</p><div>\[\begin{aligned}
+  0! &amp; = 1 \\
+  n! &amp; = n (n-1)!
+\end{aligned}\]</div><p>This definition says that the factorial of <span>$0$</span> is <span>$1$</span>, and the factorial of any other value, <span>$n$</span>, is <span>$n$</span> multiplied by the factorial of <span>$n−1$</span>.</p><p>So <span>$3!$</span> is <span>$3$</span> times <span>$2!$</span>, which is <span>$2$</span> times <span>$1!$</span>, which is <span>$1$</span> times <span>$0!$</span>. Putting it all together, <span>$3!$</span> equals <span>$3$</span> times <span>$2$</span> times <span>$1$</span> times <span>$1$</span>, which is <span>$6$</span>.</p><p>If you can write a recursive definition of something, you can write a Julia program to evaluate it. The first step is to decide what the parameters should be. In this case it should be clear that factorial takes an integer:</p><pre><code class="language-julia">function fact(n) end</code></pre><p>If the argument happens to be <code>0</code>, all we have to do is return <code>1</code>:</p><pre><code class="language-julia">function fact(n)
+    if n == 0
+        return 1
+    end
+end</code></pre><p>Otherwise, and this is the interesting part, we have to make a recursive call to find the factorial of <code>n−1</code> and then multiply it by <code>n</code>:</p><pre><code class="language-julia">function fact(n)
+    if n == 0
+        return 1
+    else
+        recurse = fact(n-1)
+        result = n * recurse
+        return result
+    end
+end</code></pre><p>The flow of execution for this program is similar to the flow of <code>countdown</code> in Section 5.8. If we call <code>fact</code> with the value <code>3</code>:</p><p>Since <code>3</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code>...</p><blockquote><p>Since <code>2</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code>...</p><blockquote><p>Since <code>1</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code>...</p><blockquote><p>Since <code>0</code> equals <code>0</code>, we take the first branch and return <code>1</code> without making any more recursive calls.</p></blockquote><p>The return value, <code>1</code>, is multiplied by <code>n</code>, which is <code>1</code>, and the <code>result</code> is returned.</p></blockquote><p>The return value, <code>1</code>, is multiplied by <code>n</code>, which is <code>2</code>, and the <code>result</code> is returned.</p></blockquote><p>The return value <code>2</code> is multiplied by <code>n</code>, which is <code>3</code>, and the result, <code>6</code>, becomes the return value of the function call that started the whole process.</p><figure>
+  <img src="fig61.svg" alt="Stack diagram.">
+  <figcaption>Figure 6.1. Stack diagram.</figcaption>
+</figure><p>Figure 6.1 shows what the stack diagram looks like for this sequence of function calls.</p><p>The return values are shown being passed back up the stack. In each frame, the return value is the value of <code>result</code>, which is the product of <code>n</code> and <code>recurse</code>.</p><p>In the last frame, the local variables <code>recurse</code> and <code>result</code> do not exist, because the branch that creates them does not run.</p><h2><a class="nav-anchor" id="Leap-of-faith-1" href="#Leap-of-faith-1">Leap of faith</a></h2><p>Following the flow of execution is one way to read programs, but it can quickly become overwhelming. An alternative is what I call the “leap of faith”. When you come to a function call, instead of following the flow of execution, you <em>assume</em> that the function works correctly and returns the right result.</p><p>In fact, you are already practicing this leap of faith when you use built-in functions. When you call <code>cos</code> or <code>exp</code>, you don’t examine the bodies of those functions. You just assume that they work because the people who wrote the built-in functions were good programmers.</p><p>The same is true when you call one of your own functions. For example, in Section 6.4, we wrote a function called <code>isdivisible</code> that determines whether one number is divisible by another. Once we have convinced ourselves that this function is correct—by examining the code and testing—we can use the function without looking at the body again.</p><p>The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of <span>$n−1$</span>, can I compute the factorial of <span>$n$</span>?” It is clear that you can, by multiplying by <span>$n$</span>.</p><p>Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!</p><h2><a class="nav-anchor" id="One-more-example-1" href="#One-more-example-1">One more example</a></h2><p>After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see <a href="http://en.wikipedia.org/wiki/Fibonacci_number">http://en.wikipedia.org/wiki/Fibonacci_number</a>):</p><div>\[\begin{aligned}
+    \textit{fib}(0) &amp;= 0 \\
+    \textit{fib}(1) &amp;= 1 \\
+    \textit{fib}(n) &amp;= \textit{fib}(n-1) + \textit{fib}(n-2)
+\end{aligned}\]</div><p>Translated into Julia, it looks like this:</p><pre><code class="language-julia">function fib(n)
+    if n == 0
+        return 0
+    elseif n == 1
+        return 1
+    else
+        return fib(n-1) + fib(n-2)
+    end
+end</code></pre><p>If you try to follow the flow of execution here, even for fairly small values of <code>n</code>, your head explodes. But according to the leap of faith, if you assume that the two recursive calls work correctly, then it is clear that you get the right result by adding them together.</p><h2><a class="nav-anchor" id="Checking-types-1" href="#Checking-types-1">Checking types</a></h2><p>What happens if we call <code>fact</code> and give it <code>1.5</code> as an argument?</p><pre><code class="language-julia-repl">julia&gt; fact(1.5)
+ERROR: StackOverflowError:
+Stacktrace:
+ [1] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:0
+ [2] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:38 (repeats 52402 times)</code></pre><p>It looks like an infinite recursion. How can that be? The function has a base case—when <code>n == 0</code>. But if <code>n</code> is not an integer, we can <em>miss</em> the base case and recurse forever.</p><p>In the first recursive call, the value of <code>n</code> is <code>0.5</code>. In the next, it is <code>-0.5</code>. From there, it gets smaller (more negative), but it will never be <code>0</code>.</p><p>We have two choices. We can try to generalize the factorial function to work with floating-point numbers, or we can make <code>fact</code> check the type of its argument. The first option is called the gamma function and it’s a little beyond the scope of this book. So we’ll go for the second.</p><p>We can use the built-in operator <code>isa</code> to verify the type of the argument. While we’re at it, we can also make sure the argument is positive:</p><pre><code class="language-julia">function fact(n)
+    if !(n isa Int64)
+        println(&quot;Factorial is only defined for integers.&quot;)
+        return
+    elseif n &lt; 0
+        println(&quot;Factorial is not defined for negative integers.&quot;)
+        return
+    elseif n == 0
+        return 1
+    else
+        return n * fact(n-1)
+    end
+end</code></pre><p>The first base case handles nonintegers; the second handles negative integers. In both cases, the program prints an error message and returns <code>nothing</code> to indicate that something went wrong:</p><pre><code class="language-julia-repl">julia&gt; fact(&quot;fred&quot;)
+Factorial is only defined for integers.
+julia&gt; fact(-2)
+Factorial is not defined for negative integers.</code></pre><p>If we get past both checks, we know that <code>n</code> is positive or zero, so we can prove that the recursion terminates.</p><p>This program demonstrates a pattern sometimes called a <strong>guardian</strong>. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.</p><p>In Section 11.4 we will see a more flexible alternative to printing an error message: raising an exception.</p><h2><a class="nav-anchor" id="Debugging-1" href="#Debugging-1">Debugging</a></h2><p>Breaking a large program into smaller functions creates natural checkpoints for debugging. If a function is not working, there are three possibilities to consider:</p><ul><li><p>There is something wrong with the arguments the function is getting; a precondition is violated.</p></li><li><p>There is something wrong with the function; a postcondition is violated.</p></li><li><p>There is something wrong with the return value or the way it is being used.</p></li></ul><p>To rule out the first possibility, you can add a print statement at the beginning of the function and display the values of the parameters (and maybe their types). Or you can write code that checks the preconditions explicitly.</p><p>If the parameters look good, add a print statement before each return statement and display the return value. If possible, check the result by hand. Consider calling the function with values that make it easy to check the result (as in Section 6.2).</p><p>If the function seems to be working, look at the function call to make sure the return value is being used correctly (or used at all!).</p><p>Adding print statements at the beginning and end of a function can help make the flow of execution more visible. For example, here is a version of <code>fact</code> with print statements:</p><pre><code class="language-julia">function fact(n)
+    space = &quot; &quot; ^ (4 * n)
+    println(space, &quot;factorial &quot;, n)
+    if n == 0
+        println(space, &quot;returning 1&quot;)
+        return 1
+    else
+        recurse = fact(n-1)
+        result = n * recurse
+        println(space, &quot;returning &quot;, result)
+        return result
+    end
+end</code></pre><p><code>space</code> is a string of space characters that controls the indentation of the output:</p><div></div><pre><code class="language-julia-repl">julia&gt; fact(4)
+                factorial 4
+            factorial 3
+        factorial 2
+    factorial 1
+factorial 0
+returning 1
+    returning 1
+        returning 2
+            returning 6
+                returning 24
+24</code></pre><p>If you are confused about the flow of execution, this kind of output can be helpful. It takes some time to develop effective scaffolding, but a little bit of scaffolding can save a lot of debugging.</p><h2><a class="nav-anchor" id="Glossary-1" href="#Glossary-1">Glossary</a></h2><p><em>temporary variable</em>: A variable used to store an intermediate value in a complex calculation.</p><p><em>dead code</em>: Part of a program that can never run, often because it appears after a return statement.</p><p><em>incremental development</em>: A program development plan intended to avoid debugging by adding and testing only a small amount of code at a time.</p><p><em>scaffolding</em>: Code that is used during program development but is not part of the final version.</p><p><em>guardian</em>: A programming pattern that uses a conditional statement to check for and handle circumstances that might cause an error.</p><h2><a class="nav-anchor" id="Exercises-1" href="#Exercises-1">Exercises</a></h2><h3><a class="nav-anchor" id="Exercise-6-1-1" href="#Exercise-6-1-1">Exercise 6-1</a></h3><p>Draw a stack diagram for the following program. What does the program print?</p><pre><code class="language-julia">function b(z)
+    prod = a(z, z)
+    println(z, &quot; &quot;, prod)
+    prod
+end
+
+function a(x, y)
+    x = x + 1
+    x * y
+end
+
+function c(x, y, z)
+    total = x + y + z
+    square = b(total)^2
+    square
+end
+
+x = 1
+y = x + 1
+println(c(x, y+3, x+y))</code></pre><h3><a class="nav-anchor" id="Exercise-6-2-1" href="#Exercise-6-2-1">Exercise 6-2</a></h3><p>The Ackermann function, <span>$A(m, n)$</span>, is defined:</p><div>\[A(m, n) =
+\begin{cases}
+              n+1&amp; \textrm{if }  m = 0 \\
+        A(m-1, 1)&amp; \textrm{if }  m &gt; 0 \textrm{ and } n = 0 \\
+A(m-1, A(m, n-1))&amp; \textrm{if }  m &gt; 0 \textrm{ and } n &gt; 0.
+\end{cases}\]</div><p>See <a href="http://en.wikipedia.org/wiki/Ackermann_function">http://en.wikipedia.org/wiki/Ackermann_function</a>. Write a function named <code>ack</code> that evaluates the Ackermann function. Use your function to evaluate <code>ack(3, 4)</code>, which should be 125. What happens for larger values of <code>m</code> and <code>n</code>?</p><h3><a class="nav-anchor" id="Exercise-6-3-1" href="#Exercise-6-3-1">Exercise 6-3</a></h3><p>A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.</p><p>The following are functions that take a string argument and return the first, last, and middle letters:</p><pre><code class="language-julia">function first(word)
+    first = firstindex(word)
+    word[first]
+end
+
+function last(word)
+    last = lastindex(word)
+    word[last]
+end
+
+function middle(word)
+    first = firstindex(word)
+    last = lastindex(word)
+    word[nextind(word, first) : prevind(word, last)]
+end</code></pre><p>We’ll see how they work in chapter 8</p><ol><li><p>Test these functions out. What happens if you call middle with a string with two letters? One letter? What about the empty string, which is written &quot;&quot; and contains no letters?</p></li><li><p>Write a function called <code>ispalindrome</code> that takes a string argument and returns <code>true</code> if it is a palindrome and <code>false</code> otherwise. Remember that you can use the built-in function <code>length</code> to check the length of a string.</p></li></ol><h3><a class="nav-anchor" id="Exercise-6-4-1" href="#Exercise-6-4-1">Exercise 6-4</a></h3><p>A number, <span>$a$</span>, is a power of <span>$b$</span> if it is divisible by <span>$b$</span> and <span>$\frac{a}{b}$</span> is a power of <span>$b$</span>. Write a function called <code>ispower</code> that takes parameters <code>a</code> and <code>b</code> and returns <code>true</code> if <code>a</code> is a power of <code>b</code>. Note: you will have to think about the base case.</p><h3><a class="nav-anchor" id="Exercise-6-5-1" href="#Exercise-6-5-1">Exercise 6-5</a></h3><p>The greatest common divisor (GCD) of <span>$a$</span> and <span>$b$</span> is the largest number that divides both of them with no remainder.</p><p>One way to find the GCD of two numbers is based on the observation that if <span>$r$</span> is the remainder when <span>$a$</span> is divided by <span>$b$</span>, then <code>gcd(a, b) = gcd(b, r)</code>. As a base case, we can use <code>gcd(a, 0) = a</code>.</p><p>Write a function called <code>gcd</code> that takes parameters <code>a</code> and <code>b</code> and returns their greatest common divisor.</p><p>Credit: This exercise is based on an example from Abelson and Sussman’s <em>Structure and Interpretation of Computer Programs</em>.</p><footer><hr/><a class="previous" href="chap05.html"><span class="direction">Previous</span><span class="title">Conditionals and recursion</span></a><a class="next" href="chap07.html"><span class="direction">Next</span><span class="title">Iteration</span></a></footer></article></body></html>

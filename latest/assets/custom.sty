@@ -1,0 +1,152 @@
+\usepackage{newunicodechar, polyglossia}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{fontspec}
+
+\setmainfont{Minion Pro}
+\setsansfont[BoldFont = {Myriad Pro Semibold Condensed}]{MyriadPro-Cond}
+
+%\setmonofont[Scale=MatchLowercase]{Hack}
+%\setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
+\setmonofont[Scale=MatchLowercase]{Ubuntu Mono}
+
+\newfontfamily{\monof}{DejaVu Sans Mono}[Scale=MatchLowercase]
+\newfontfamily{\emoji}{EmojiOne}
+
+\newunicodechar{≤}{\monof≤}
+\newunicodechar{≥}{\monof≥}
+\newunicodechar{÷}{\monof÷}
+\newunicodechar{∈}{\monof∈}
+\newunicodechar{∉}{\monof∉}
+\newunicodechar{≠}{\monof≠}
+\newunicodechar{≡}{\monof≡}
+\newunicodechar{⊆}{\monof⊆}
+\newunicodechar{♠}{\monof♠}
+\newunicodechar{♥}{\monof♥}
+\newunicodechar{♦}{\monof♦}
+\newunicodechar{♣}{\monof♣}
+\newunicodechar{🐢}{\mbox{\emoji🐢}}
+\newunicodechar{🐫}{\mbox{\emoji🐫}}
+\newunicodechar{🍎}{\mbox{\emoji🍎}}
+\newunicodechar{🍐}{\mbox{\emoji🍐}}
+\newunicodechar{🍌}{\mbox{\emoji🍌}}
+
+\usepackage{unicode-math}
+\setmathfont{Minion Math}
+%\usepackage[onlymath,mathlf]{MinionPro}
+
+
+% colours
+\usepackage{xcolor}
+
+\definecolor{light-blue}{HTML}{6b85dd}
+\definecolor{dark-blue}{HTML}{4266d5}
+\definecolor{light-red}{HTML}{d66661}
+\definecolor{dark-red}{HTML}{c93d39}
+\definecolor{light-green}{HTML}{6bab5b}
+\definecolor{dark-green}{HTML}{3b972e}
+\definecolor{light-purple}{HTML}{aa7dc0}
+\definecolor{dark-purple}{HTML}{945bb0}
+%
+
+% listings
+\usepackage{listings, minted}
+
+\lstset{
+    %basicstyle = \ttfamily\small,
+    basicstyle = \ttfamily,
+    breaklines = true,
+    columns = fullflexible,
+    %frame = leftline,
+    keepspaces = true,
+    showstringspaces = false,
+    xleftmargin = 0.5cm
+}
+
+\setminted{
+    breaklines = true,
+    %fontsize = \small,
+    %frame = leftline,
+    xleftmargin = 0.5cm
+}
+%
+
+% tables
+\usepackage{tabulary}
+%
+
+% hyperref
+\usepackage{hyperref}
+\hypersetup{
+    pdfpagelabels,
+    bookmarks,
+    hyperindex,
+    unicode = true,
+    linkcolor = dark-blue,
+    urlcolor = dark-purple,
+    colorlinks = true,
+}
+%
+
+% table of contents
+\maxtocdepth{section}
+%
+
+% paragraphs
+\setlength{\parindent}{0pt}
+\nonzeroparskip
+\setlength\partopsep{-\topsep}
+%\addtolength\partopsep{-\parskip}
+%\addtolength\partopsep{0.5cm}
+%
+
+% adjust margins
+\setstocksize{297mm}{210mm}
+\settrimmedsize{233mm}{177mm}{*}
+\setlrmarginsandblock{25mm}{25mm}{*}
+\setulmarginsandblock{20mm}{25mm}{*}
+\setheaderspaces{0mm}{*}{*}
+
+\checkandfixthelayout
+%
+
+\nouppercaseheads
+\makeevenfoot{headings}{\footnotesize\textsf{\bfseries\thepage\hspace{0.4cm}|\hspace{0.4cm}\leftmark}}{}{}
+\makeoddfoot{headings}{}{}{\footnotesize\textsf{\bfseries\rightmark\hspace{0.4cm}|\hspace{0.4cm}\thepage}}
+\makeevenhead{headings}{}{}{}
+\makeoddhead{headings}{}{}{}
+\makefootrule{headings}{\textwidth}{\normalrulethickness}{0ex}
+\copypagestyle{plainnotice}{plain}
+\makeevenfoot{plainnotice}{\footnotesize\textsf{\bfseries\thepage}}{}{}
+\makeoddfoot{plainnotice}{}{}{\footnotesize\textsf{\bfseries\thepage}}
+\makefootrule{plainnotice}{\textwidth}{\normalrulethickness}{0ex}
+\aliaspagestyle{chapter}{plainnotice}
+
+\makechapterstyle{oreilly}{%
+  \chapterstyle{default}
+  \renewcommand*{\chapnumfont}{\normalfont\huge\sffamily\bfseries}
+  \renewcommand*{\chaptitlefont}{\normalfont\HUGE\sffamily\bfseries}
+  \renewcommand*{\printchaptername}{\chapnumfont CHAPTER\ }
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{\raggedleft \chapnumfont \thechapter}
+  \renewcommand*{\printchaptertitle}[1]{
+    \vspace{-5mm}\hrule\vspace{2mm}\raggedleft {\chaptitlefont ##1}\par\nobreak}
+  \renewcommand*\afterchaptertitle{\par\nobreak\vskip2.75\afterchapskip}}
+\chapterstyle{oreilly}
+
+
+\setsecheadstyle{\normalfont\huge\sffamily\bfseries}
+
+\setsubsecheadstyle{\normalfont\itshape}
+
+\setsecnumdepth{chapter}
+\maxsecnumdepth{chapter}
+
+\renewcommand{\cftchapterfont}{\normalfont\sffamily\bfseries\large}
+\renewcommand{\cftchapterpagefont}{\normalfont\sffamily\bfseries\large}
+\renewcommand*{\cftchapterleader}{\dotfill}
+\renewcommand*{\cftsectionleader}{\hfill}
+
+\addto\captionsenglish{\renewcommand\contentsname{Table of Contents}}
+
+%\usepackage{emojione}
