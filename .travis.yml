@@ -15,7 +15,7 @@ install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install ttf-ubuntu-font-family fonts-dejavu; else brew tap homebrew/cask-fonts; brew cask install font-ubuntu font-dejavu-sans; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install pdf2svg; else brew install pdf2svg; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install libgdbm3; else brew upgrade gdbm; fi
-  - lualatex -v
+  - /usr/local/texlive/2018/bin/x86_64-darwin/lualatex -v
  
 #addons:
 #  apt_packages:
