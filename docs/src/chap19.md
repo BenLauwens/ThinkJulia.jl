@@ -12,6 +12,19 @@ Now I want to go back for some of the good bits that got left behind. Julia prov
 
 Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: <https://docs.julialang.org/en/stable/>
 
+## Named tuples
+
+The components of tuples can optionally be named, in which case a named tuple is constructed:
+
+```jldoctest
+julia> x = (a=1, b=1+1)
+(a = 1, b = 2)
+julia> x.a
+1
+```
+
+Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax.
+
 ## Keyword arguments
 
 Some functions need a large number of arguments. Remembering how to call such functions can be difficult. **Keyword arguments** can make these complex interfaces easier to use and extend by allowing arguments to be identified by name instead of only by position.
