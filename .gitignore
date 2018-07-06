@@ -5,3 +5,4 @@ deps/deps.jl
 docs/build
 docs/captions
 docs/output.txt
+docs/fake_travis.jl

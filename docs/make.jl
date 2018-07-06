@@ -38,3 +38,20 @@ deploydocs(
   julia  = "nightly",
   osname = "osx"
 )
+
+if "deploy" in ARGS
+  fake_travis = "fake_travis.jl"
+  if isfile(fake_travis)
+    include(fake_travis)
+  end
+  deploydocs(
+    repo = "github.com/BenLauwens/ThinkJulia.jl",
+    target = "build",
+    branch = "gh-pages",
+    latest = "master",
+    osname = "osx",
+    julia  = "nightly",
+    deps = nothing,
+    make = nothing,
+  )
+end

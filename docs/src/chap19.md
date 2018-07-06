@@ -111,7 +111,7 @@ julia> function (x)
 
 This creates a function taking one argument `x` and returning the value of the polynomial ``x^2 + 2x - 1`` at that value. Notice that the result is a generic function, but with a compiler-generated name based on consecutive numbering.
 
-The primary use for anonymous functions is passing them to functions which take other functions as arguments. See next sections.
+The primary use for **anonymous functions** is passing them to functions which take other functions as arguments. See next sections.
 
 ## Array comprehensions
 
@@ -404,7 +404,7 @@ Note the distinguishing `@` before the macro name and the lack of commas between
 
 ## Calling C and Fortran code
 
-Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with ccall syntax, which looks like an ordinary function call.
+Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with `ccall` syntax, which looks like an ordinary function call.
 
 ## Glossary
 

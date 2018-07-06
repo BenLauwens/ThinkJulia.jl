@@ -44,7 +44,9 @@ fig02_1()
 
 Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.
 
-Variable names can be as long as you like. They can contain almost all Unicode characters, but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variables names.
+Variable names can be as long as you like. They can contain almost all Unicode characters, but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.
+
+Unicode characters can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
 
 The underscore character, `_`, can appear in a name. It is often used in names with multiple words, such as `your_name` or `airspeed_of_unladen_swallow`.
 
@@ -65,7 +67,7 @@ ERROR: syntax: unexpected "="
 <pre><code class="language-julia-repl">julia&gt; 76trombones = &quot;big parade&quot;
 ERROR: syntax: "76" is not a valid function argument name
 julia&gt; more@ = 1000000
-type = "Advanced Theoretical Zymurgy"
+ERROR: syntax: extra token "@" after end of expression
 julia&gt; type = &quot;Advanced Theoretical Zymurgy&quot;
 ERROR: syntax: unexpected "="</code></pre>
 ```
@@ -190,8 +192,6 @@ When an expression contains more than one operator, the order of evaluation depe
 - Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression `degrees / 2 * π`, the division happens first and the result is multiplied by `π`. To divide by ``2\pi``, you can use parentheses or write `degrees / 2 / π`.
 
 I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
-
-Unicode characters that can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
 
 ## String operations
 
