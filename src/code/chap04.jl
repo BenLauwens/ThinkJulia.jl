@@ -1,5 +1,3 @@
-using Luxor
-
 function forward(t::Turtle, d)
   Forward(t, d)
 end

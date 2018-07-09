@@ -356,24 +356,26 @@ julia> macro sayhello(name)
 Macros have a dedicated character in Julia's syntax: the `@` (at-sign), followed by the unique name declared in a `macro NAME ... end` block. In this example, the compiler will replace all instances of `@sayhello("human")$` with:
 
 ```julia
-:((println)("Hello, ", "human"))
+:((Main.println)("Hello, ", "human"))
 ```
 
 When @sayhello is entered in the REPL, the expression executes immediately, thus we only see the evaluation result:
 
-```repl chap19
-@sayhello "human"
+```jldoctest chap19
+julia> @sayhello "human"
+Hello, human
 ```
 
 We can view the quoted return expression using the macro `@macroexpand`:
 
-```@repl chap19
-@macroexpand @sayhello "human"
+```jldoctest chap19
+julia> @macroexpand @sayhello "human"
+:((Main.println)("Hello, ", "human"))
 ```
 
 We can see that the `"human"` literal has been interpolated into the expression.
 
-We have already seen a function `f(::Expr...) -> Expr` in a previous section. So, why do macros exist?
+Why do macros exist?
 
 Macros are necessary because they execute when code is parsed, therefore, macros allow the programmer to generate and include fragments of customized code before the full program is run. To illustrate the difference, consider the following example:
 
@@ -390,7 +392,7 @@ The first call to `println` is executed when `macroexpand` is called. The result
 ```@repl chap19
 typeof(ex)
 ex
-eval(ex)
+Core.eval(ex)
 ```
 
 Macros are invoked with the following general syntax:
@@ -405,6 +407,25 @@ Note the distinguishing `@` before the macro name and the lack of commas between
 ## Calling C and Fortran code
 
 Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with `ccall` syntax, which looks like an ordinary function call.
+
+In chapter 14 we used a Julia interface to the GDBM library of database functions. The library is written in C. We closed the database with a function call to `close(db)`:
+
+```julia
+Base.close(dbm::DBM) = gdbm_close(dbm.handle)
+
+function gdbm_close(handle::Ptr{Cvoid})
+  ccall((:gdbm_close, "libgdbm"), Cvoid, (Ptr{Cvoid},), handle)
+end
+```
+
+A dbm object has a field `handle` of `Ptr{Cvoid}` type. This field holds a c pointer that refers to the database. To close the database the c function `gdbm_close` has to be called having as only argument the c pointer pointing to the database and no return value. Julia does this directly with the `ccall` function having as arguments:
+
+- a tuple consisting of a symbol holding the name of the function we want to call: `:gdbm_close` and the shared library specified as a string: `"libgdm"`,
+- the return type: `Cvoid`,
+- a tuple of argument types: `(Ptr{Cvoid},)` and
+- the argument values: `handle`.
+
+The complete mapping of the GDBM library can be found as an example in the ThinkJulia sources.
 
 ## Glossary
 

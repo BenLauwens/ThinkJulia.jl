@@ -1,5 +1,3 @@
-using Luxor
-
 function petal(t, r, angle)
   for i in 1:2
     arc(t, r, angle)

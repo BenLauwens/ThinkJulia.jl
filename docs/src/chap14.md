@@ -475,7 +475,7 @@ When you are reading and writing files, you might run into problems with whitesp
 julia> s = "1 2\t 3\n 4";
 
 julia> println(s)
-1 2	 3
+1 2  3
  4
 ```
 

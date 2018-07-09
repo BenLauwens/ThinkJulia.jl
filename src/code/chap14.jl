@@ -80,23 +80,29 @@ function Base.getindex(dbm::DBM, key::Union{String,Array{UInt8,1}})
   value
 end
   
-
 function Base.setindex!(dbm::DBM, value::Union{String,Array{UInt8,1}}, key::Union{String,Array{UInt8,1}})
   gdbm_store(dbm.handle, Datum(key), Datum(value))
   key
 end
 
-Base.start(dbm::DBM) = gdbm_firstkey(dbm.handle)
-
-Base.done(dbm::DBM, state::Datum) = state.dptr == C_NULL
-
-function Base.next(dbm::DBM, prev::Datum)
-  key = unsafe_string(prev.dptr, prev.dsize)
-  datum = gdbm_fetch(dbm.handle, prev)
+function Base.iterate(dbm::DBM)
+  first = gdbm_firstkey(dbm.handle)
+  first.dptr == C_NULL && return nothing
+  key = unsafe_string(first.dptr, first.dsize)
+  datum = gdbm_fetch(dbm.handle, first)
   value = unsafe_string(datum.dptr, datum.dsize)
   libc_free(datum.dptr)
+  ((key, value), first)
+end
+
+function Base.iterate(dbm::DBM, prev::Datum)
   next = gdbm_nextkey(dbm.handle, prev)
   libc_free(prev.dptr)
+  next.dptr == C_NULL && return nothing
+  key = unsafe_string(next.dptr, next.dsize)
+  datum = gdbm_fetch(dbm.handle, next)
+  value = unsafe_string(datum.dptr, datum.dsize)
+  libc_free(datum.dptr)
   ((key, value), next)
 end
 

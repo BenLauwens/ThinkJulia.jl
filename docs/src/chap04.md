@@ -2,22 +2,22 @@
 
 This chapter presents a case study that demonstrates a process for designing functions that work together.
 
-It introduces the `Luxor` module, which allows you to create images using turtle graphics.
+It introduces the `ThinkJulia` module, which allows you to create images using turtle graphics based on the `Luxor` package.
 
 The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document.
 
 ## The Luxor module
 
-A **module** is a file that contains a collection of related functions. Modules can be installed in the REPL:
+A **module** is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key `]`.
 
 ```@raw latex
 \begin{minted}{jlcon}
-julia> Pkg.add("Luxor")
+(v0.7) pkg> add ThinkJulia
 \end{minted}
 ```
 
 ```@raw html
-<pre><code class="language-julia-repl">julia&gt; Pkg.add("Luxor")</code></pre>
+<pre><code class="language-julia-repl">(v0.7) pkg&gt; add ThinkJulia</code></pre>
 ```
 
 This can take some time.
@@ -25,13 +25,13 @@ This can take some time.
 Before we can use the functions in a module, we have to import it with an `using` statement:
 
 ```jldoctest
-julia> using Luxor
+julia> using ThinkJulia
 
 julia> 🐢 = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ```
 
-The `Luxor` module provides a function called `Turtle` that creates a `Luxor.Turtle` object, which we assign to a variable named `🐢` (`\:turtle: TAB`).
+The `ThinkJulia` module provides a function called `Turtle` that creates a `Luxor.Turtle` object, which we assign to a variable named `🐢` (`\:turtle: TAB`).
 
 Once you create a turtle, you can call a function to move it around a drawing. For example, to move the turtle forward:
 

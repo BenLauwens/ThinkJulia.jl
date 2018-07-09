@@ -1,5 +1,3 @@
-using Luxor
-
 function fig04_1()
   draw04_1("svg")
   draw04_1("pdf")

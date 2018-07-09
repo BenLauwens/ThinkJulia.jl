@@ -2,12 +2,13 @@ module ThinkJulia
 
   using Printf
   using Random
+  using Luxor
 
   import Base.+
 
   export printlyrics, repeatlyrics, printtwice, cattwice
   export rightjustify, printgrid
-  export forward, turn, penup, pendown, polyline, polygon, square, arc, cercle
+  export Turtle, forward, turn, penup, pendown, polyline, polygon, square, arc, cercle
   export countdown, printn, recurse
   export area, absvalue, distance, circlearea, isdivisible, fact, fib
   export mysqrt, testsquareroot
