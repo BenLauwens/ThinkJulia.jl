@@ -356,7 +356,7 @@ julia> macro sayhello(name)
 Macros have a dedicated character in Julia's syntax: the `@` (at-sign), followed by the unique name declared in a `macro NAME ... end` block. In this example, the compiler will replace all instances of `@sayhello("human")$` with:
 
 ```julia
-:((Main.println)("Hello, ", "human"))
+:((println)("Hello, ", "human"))
 ```
 
 When @sayhello is entered in the REPL, the expression executes immediately, thus we only see the evaluation result:
@@ -370,7 +370,7 @@ We can view the quoted return expression using the macro `@macroexpand`:
 
 ```jldoctest chap19
 julia> @macroexpand @sayhello "human"
-:((Main.println)("Hello, ", "human"))
+:((println)("Hello, ", "human"))
 ```
 
 We can see that the `"human"` literal has been interpolated into the expression.
