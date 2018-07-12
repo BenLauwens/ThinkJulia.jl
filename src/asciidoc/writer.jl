@@ -1,13 +1,14 @@
 using Markdown
 
 function makeasciidoc(root::String; title="", subtitle="", 
-  authors="Ben Lauwens with Allen Downey", chaps=String[])
-  makebook(joinpath(root, "build", "book.asciidoc"), title, subtitle, authors, chaps)
-  makepreface(joinpath(root, "build", "preface.asciidoc"), joinpath(root, "build", "preface.md"))
+  authors=(("Ben", "Lauwens", "<https://github.com/benlauwens[@benlauwens]>"), ("Allen", "Downey")), chaps=String[])
+  makedocinfo(joinpath(root, "build", "book-docinfo.xml"), authors)
+  makebook(joinpath(root, "build", "book.adoc"), title, subtitle, authors, chaps)
+  makepreface(joinpath(root, "build", "preface.adoc"), joinpath(root, "build", "preface.md"))
   for chap in chaps
-    makechap(joinpath(root, "build", chap[1:end-2]*"asciidoc"), joinpath(root, "build", chap))
+    makechap(joinpath(root, "build", chap[1:end-2]*"adoc"), joinpath(root, "build", chap))
   end
-  makeindex(joinpath(root, "build", "index.asciidoc"))
+  makeindex(joinpath(root, "build", "index.adoc"))
 end
 
 order = 0
@@ -47,11 +48,11 @@ render(io::IO, l::Markdown.LaTeX) = print(io, "latexmath:[", l.formula,"]")
 render(io::IO, l::Markdown.Link) = print(io, l.url)
 function render(io::IO, l::Markdown.List)
   global order += 1
-  tag = l.ordered == -1 ? "*" : "."^order
+  tag = l.ordered == -1 ? "*"^order : "."^order
   for item in l.items
     print(io, tag, " ")
     for (i, elem) in enumerate(item)
-      i > 1 && println(io, "+")
+      i == 1 || elem isa Markdown.List || println(io, "+")
       render(io, elem)
     end
   end
@@ -59,8 +60,8 @@ function render(io::IO, l::Markdown.List)
 end
 render(io::IO, md::Markdown.MD) = map(elem -> render(io, elem), md.content)
 function render(io::IO, p::Markdown.Paragraph)
-  p.content[1] isa String && length(p.content[1]) > 7 && all(isascii, p.content[1]) && p.content[1][1:7] == "<a id='" && return
-  if p.content[1] isa String && length(p.content[1]) > 8 && all(isascii, p.content[1]) && p.content[1][1:8] == "<figure>"
+  p.content[1] isa String && occursin(r"<a id.*</a>", p.content[1]) && return#length(p.content[1]) > 5 && all(isascii, p.content[1][1:5]) && p.content[1][1:5] == "<a id" && return
+  if p.content[1] isa String && occursin(r"<figure>.*</figure>", p.content[1])
     println(io, "[[", match(r"\".*svg", p.content[1]).match[2:end-4],"]]")
     println(io, ".", match(r"alt=\".*\"", p.content[1]).match[6:end-1])
     println(io, "image::", match(r"\".*svg", p.content[1]).match[2:end], "[\"", match(r"alt=\".*\"", p.content[1]).match[6:end-1],"\"]\n")
@@ -106,17 +107,43 @@ function makepreface(file::String, preface::String)
   end
 end
 
-function makebook(file::String, title::String, subtitle::String, authors::String, chaps::Vector{String})
+function makebook(file::String, title::String, subtitle::String, authors, chaps::Vector{String})
   open(file, "w") do io
     print(io, """
 :bookseries: animal
 
 = $title: $subtitle
-$authors
-
-include::preface.asciidoc[]
-
-$(["include::$(chap[1:end-2])asciidoc[]\n\n" for chap in chaps]...)include::index.asciidoc[]    
     """)
+    for (i, author) in enumerate(authors)
+      if length(author) == 2
+        print(io, author[1], " ", author[2])
+      else
+        print(io, author[1], " ", author[2], " ", author[3])
+      end
+      i == length(authors) ? println(io) : print(io, "; ")
+    end
+    println(io, """
+
+Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.
+
+_Think Julia_ is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The author maintains an online version at https://github.com/BenLauwens/ThinkJulia.jl.
+
+include::preface.adoc[]
+
+$(["include::$(chap[1:end-2])adoc[]\n\n" for chap in chaps]...)include::index.adoc[]    
+    """)
+  end
+end
+
+function makedocinfo(file::String, authors)
+  open(file, "w") do io
+    for name in authors
+      println(io, """
+<author>
+  <firstname>$(name[1])</firstname>
+  <surname>$(name[2])</surname>
+</author>
+      """)
+    end
   end
 end

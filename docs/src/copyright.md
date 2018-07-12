@@ -26,16 +26,10 @@ fig00_1()
 \clearpage
 ```
 
-# Think Julia
+Think Julia
 
 by Ben Lauwens with Allen Downey
 
 Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.
 
 *Think Julia* is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The author maintains an online version at <https://github.com/BenLauwens/ThinkJulia.jl>
-
-```@raw latex
-\frontmatter
-\pagestyle{headings}
-\tableofcontents*
-```

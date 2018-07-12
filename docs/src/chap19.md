@@ -12,6 +12,8 @@ Now I want to go back for some of the good bits that got left behind. Julia prov
 
 Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: <https://docs.julialang.org/en/stable/>
 
+## Regex
+
 ## Named tuples
 
 The components of tuples can optionally be named, in which case a named tuple is constructed:

@@ -1,12 +1,12 @@
 using Documenter
 
 makedocs(
-  #format = :latex,
-  format = :html,
+  format = :latex,
+  #format = :html,
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",
   pages = [
-    "Copyright" => "copyright.md",
+    "copyright.md",
     "preface.md",
     "chap01.md",
     "chap02.md",

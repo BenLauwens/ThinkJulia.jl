@@ -3,7 +3,7 @@ using ThinkJulia: makeasciidoc
 
 const title = "Think Julia"
 const subtitle = "How to Think Like a Computer Scientist"
-const authors = "Ben Lauwens with Allen Downey"
+const authors = (("Ben", "Lauwens", "<https://github.com/benlauwens[@benlauwens]>"), ("Allen", "Downey"))
 const root = dirname(@__FILE__)
 const chaps = [
   "chap01.md",
@@ -28,14 +28,15 @@ const chaps = [
   "chap20.md"
 ]
 
-makedocs(
-  source = joinpath(root, "..", "docs", "src"),
-  sitename = title,
-  authors = authors,
-  pages = ["copyright.md", "preface.md", chaps...]
-)
+#makedocs(
+#  source = joinpath(root, "..", "docs", "src"),
+#  sitename = title,
+#  authors = "Ben Lauwens",
+#  pages = ["copyright.md", "preface.md", chaps...]
+#)
 rm(joinpath(root, "build", "assets"); force=true, recursive=true)
 makeasciidoc(root; title=title, subtitle=subtitle, authors=authors, chaps=chaps)
 for file in ["copyright.md", "preface.md", chaps...]
   #rm(joinpath(root, "build", file))
 end
+run(`asciidoctor -d book -b html5 -a linkcss! -a sectanchors -a stem=latexmath -a sectnums -a sectnumlevels=2 -a source-highlighter=highlightjs -a toc -a toc2 -a toc=left -a toclevels=2 -a docinfo -a idprefix! -a idseparator=- build/book.adoc`)

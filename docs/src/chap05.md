@@ -223,13 +223,19 @@ julia> countdown(3)
 3 2 1 Blastoff!
 ```
 
-The execution of `countdown` begins with `n = 3`, and since `n` is greater than 0, it outputs the value 3, and then calls itself...
-> The execution of `countdown` begins with `n = 2`, and since `n` is greater than 0, it outputs the value 2, and then calls itself...
->> The execution of `countdown` begins with `n = 1`, and since `n` is greater than 0, it outputs the value 1, and then calls itself...
->>> The execution of `countdown` begins with `n = 0`, and since `n` is not greater than 0, it outputs the word, `"Blastoff!"` and then returns.
->> The countdown that got `n = 1` returns.
-> The countdown that got `n = 2` returns.
-The countdown that got `n = 3` returns.
+* The execution of `countdown` begins with `n = 3`, and since `n` is greater than 0, it outputs the value 3, and then calls itself...
+
+  * The execution of `countdown` begins with `n = 2`, and since `n` is greater than 0, it outputs the value 2, and then calls itself...
+
+    * The execution of `countdown` begins with `n = 1`, and since `n` is greater than 0, it outputs the value 1, and then calls itself...
+
+      * The execution of `countdown` begins with `n = 0`, and since `n` is not greater than 0, it outputs the word, `"Blastoff!"` and then returns.
+
+    * The countdown that got `n = 1` returns.
+
+  * The countdown that got `n = 2` returns.
+
+* The countdown that got `n = 3` returns.
 
 And then you’re back in `__main__`.
 
@@ -362,9 +368,9 @@ We will see how to handle this kind of error later.
 
 When a syntax or runtime error occurs, the error message contains a lot of information, but it can be overwhelming. The most useful parts are usually:
 
-- What kind of error it was, and
+* What kind of error it was, and
 
-- Where it occurred.
+* Where it occurred.
 
 Syntax errors are usually easy to find, but there are a few gotchas. In general, error messages indicate where the problem was discovered, but the actual error might be earlier in the code, sometimes on a previous line.
 
