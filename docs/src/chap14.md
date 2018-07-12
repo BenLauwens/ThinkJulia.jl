@@ -110,6 +110,7 @@ Julia provides other functions for working with filenames and paths. For example
 ```julia-repl
 julia> ispath("memo.txt")
 true
+```
 
 If it exists, `isdir` checks whether it’s a directory:
 
@@ -399,17 +400,23 @@ If you want to reload a module, you can use the built-in function `reload`, but 
 
 When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:
 
-```jldoctest chap14
+```julia-repl
 julia> s = "1 2\t 3\n 4";
 
 julia> println(s)
-1 2	 3
+1 2     3
  4
 ```
 
 The built-in function `repr` can help. It takes any object as an argument and returns a string representation of the object.
 
 This can be helpful for debugging.
+
+```@meta
+DocTestSetup = quote
+    s = "1 2\t 3\n 4";
+end
+```
 
 ```jldoctest chap14
 julia> repr(s)

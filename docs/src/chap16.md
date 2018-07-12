@@ -80,9 +80,9 @@ To test this function, I’ll create two `MyTime` objects: `start` contains the 
 ```@meta
 DocTestSetup = quote
     using Printf
-    
+
     mutable struct MyTime
-        hour 
+        hour
         minute
         second
         function MyTime(hour=0, minute=0, second=0)

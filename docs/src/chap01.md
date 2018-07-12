@@ -150,7 +150,7 @@ That’s not what we expected at all! Julia parses `1,000,000` as a comma-separa
 
 **Formal languages** are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly:
 
-> *Programming languages are formal languages that have been designed to express computations.*
+*Programming languages are formal languages that have been designed to express computations.*
 
 Formal languages tend to have strict **syntax** rules that govern the structure of statements. For example, in mathematics the statement ``3 + 3 = 6`` has correct syntax, but ``3 + = 3 § 6`` does not. In chemistry ``H_2O`` is a syntactically correct formula, but ``_2Zz`` is not.
 

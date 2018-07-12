@@ -168,7 +168,7 @@ end
 
 I use a tab character (`'\t'`) as a “separator”, rather than a space, so the second column is lined up. Here are the results from *Emma*:
 
-```
+```julia
 The most common words are:
 to     5295
 the    5266
@@ -248,7 +248,7 @@ end
 
 Here are some of the results from *Emma*:
 
-```
+```julia
 Words in the book that aren't in the word list:
 outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons betweens ...
 ```
@@ -297,7 +297,7 @@ Write a program that uses this algorithm to choose a random word from the book.
 
 If you choose words from the book at random, you can get a sense of the vocabulary, but you probably won’t get a sentence:
 
-```
+```julia
 this the small regard harriet which knightley's it most things
 ```
 
@@ -305,21 +305,21 @@ A series of random words seldom makes sense because there is no relationship bet
 
 One way to measure these kinds of relationships is Markov analysis, which characterizes, for a given sequence of words, the probability of the words that might come next. For example, the song *Eric, the Half a Bee* begins:
 
-> Half a bee, philosophically,
+“*Half a bee, philosophically,*
 
-> Must, ipso facto, half not be.
+*Must, ipso facto, half not be.*
 
-> But half the bee has got to be
+*But half the bee has got to be*
 
-> Vis a vis, its entity. D’you see?
+*Vis a vis, its entity. D’you see?*
 
-> But can a bee be said to be
+*But can a bee be said to be*
 
-> Or not to be an entire bee
+*Or not to be an entire bee*
 
-> When half the bee is not a bee
+*When half the bee is not a bee*
 
-> Due to some ancient injury?
+*Due to some ancient injury?*”
 
 In this text, the phrase “half the” is always followed by the word “bee”, but the phrase “the bee” might be followed by either “has” or “is”.
 
@@ -339,7 +339,7 @@ Markov analysis:
 
 2. Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Emma with prefix length 2:
 
-   >He was very clever, be it sweetness or be angry, ashamed or only amused, at such a stroke. She had never thought of Hannah till you were never meant for me?" "I cannot make speeches, Emma:" he soon cut it all himself.
+   “He was very clever, be it sweetness or be angry, ashamed or only amused, at such a stroke. She had never thought of Hannah till you were never meant for me?" "I cannot make speeches, Emma:" he soon cut it all himself.”
 
    For this example, I left the punctuation attached to the words. The result is almost syntactically correct, but not quite. Semantically, it almost makes sense, but not quite.
 
