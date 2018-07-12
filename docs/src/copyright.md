@@ -26,23 +26,16 @@ fig00_1()
 \clearpage
 ```
 
-```@raw html
-<h1>
-<a class="nav-anchor" id="Copyright-1" href="#Copyright-1">Copyright</a>
-</h1>
-```
+# Think Julia
 
-Copyright ©2018 Allen Downey, Ben Lauwens.
+by Ben Lauwens with Allen Downey
 
-Permission is granted to copy, distribute, and/or modify this document under the terms of the Creative Commons Attribution-NonCommercial 3.0 Unported
-License, which is available at <http://creativecommons.org/licenses/by-nc/3.0/>.
+Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.
 
-The Markdown source for this book is available from <https://github.com/BenLauwens/ThinkJulia.jl>
+*Think Julia* is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The author maintains an online version at <https://github.com/BenLauwens/ThinkJulia.jl>
 
 ```@raw latex
 \frontmatter
 \pagestyle{headings}
 \tableofcontents*
 ```
-
-# Preface

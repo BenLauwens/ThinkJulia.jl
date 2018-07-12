@@ -343,12 +343,15 @@ Copy the loop from Section 7.5 and encapsulate it in a function called `mysqrt` 
 
 To test it, write a function named `testsquareroot` that prints a table like this:
 
-```@setup chap07
+```@eval
 using ThinkJulia
-```
-
-```@example chap07
-testsquareroot() # hide
+io = IOBuffer()
+testsquareroot(io)
+out = String(take!(io))
+import Markdown
+Markdown.parse("""```julia
+$(out)\n```
+""")
 ```
 
 The first column is a number, `a`; the second column is the square root of a computed with `mysqrt`; the third column is the square root computed by `sqrt`; the fourth column is the absolute value of the difference between the two estimates.

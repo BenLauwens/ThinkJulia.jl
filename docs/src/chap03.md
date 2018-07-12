@@ -144,16 +144,9 @@ The quotation marks must be “straight quotes”, usually located next to Enter
 
 If you type a function definition in interactive mode, the REPL indents to let you know that the definition isn’t complete:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> function printlyrics()
        println("I'm a lumberjack, and I'm okay.")
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; function printlyrics()
-       println("I'm a lumberjack, and I'm okay.")</code></pre>
 ```
 
 To end the function, you have to enter `end`.

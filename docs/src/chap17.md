@@ -449,20 +449,11 @@ But if you designed the interface carefully, you can change the implementation w
 
 To know what methods are available, you can use the function `methods`:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> methods(printtime)
 # 2 methods for generic function "printtime":
 printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:24
 printtime(time) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:20
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; julia> methods(printtime)
-# 2 methods for generic function "printtime":
-printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:24
-printtime(time) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:20</code></pre>
 ```
 
 ## Glossary

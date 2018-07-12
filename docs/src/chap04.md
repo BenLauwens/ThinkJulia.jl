@@ -10,14 +10,8 @@ The examples in this chapter can be executed in a graphical notebook on JuliaBox
 
 A **module** is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key `]`.
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 (v0.7) pkg> add ThinkJulia
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">(v0.7) pkg&gt; add ThinkJulia</code></pre>
 ```
 
 This can take some time.

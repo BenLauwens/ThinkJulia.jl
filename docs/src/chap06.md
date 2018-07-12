@@ -388,22 +388,12 @@ If you try to follow the flow of execution here, even for fairly small values of
 
 What happens if we call `fact` and give it `1.5` as an argument?
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> fact(1.5)
 ERROR: StackOverflowError:
 Stacktrace:
  [1] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:0
  [2] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:38 (repeats 52402 times)
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; fact(1.5)
-ERROR: StackOverflowError:
-Stacktrace:
- [1] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:0
- [2] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:38 (repeats 52402 times)</code></pre>
 ```
 
 It looks like an infinite recursion. How can that be? The function has a base case—when `n == 0`. But if `n` is not an integer, we can *miss* the base case and recurse forever.

@@ -27,16 +27,9 @@ end
 
 The name `Time` is already used in Julia and to avoid a name clash, I have chosen `MyTime`. We can create a new mytime object:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> time = MyTime(11, 59, 30)
 ThinkJuliaMyTime(11, 59, 30)
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; julia> time = MyTime(11, 59, 30)
-ThinkJuliaMyTime(11, 59, 30)</code></pre>
 ```
 
 The state diagram for the mytime object looks like Figure 16.1.

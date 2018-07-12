@@ -50,16 +50,9 @@ end
 
 To create a `Card`, you call `Card` with the suit and rank of the card you want:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> queen_of_diamonds = Card(2, 12)
 ThinkJulia.Card(2, 12)
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; julia> queen_of_diamonds = Card(2, 12)
-ThinkJulia.Card(2, 12)</code></pre>
 ```
 
 ## Global variables

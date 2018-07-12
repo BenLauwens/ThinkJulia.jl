@@ -38,21 +38,17 @@ In the browser you can run Julia on JuliaBox: <https://www.juliabox.com>. No ins
 
 The Julia **REPL** (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing `julia` on the command line. When it starts, you should see output like this:
 
-```@example
-Base.banner() # hide
+```@eval
+io = IOBuffer()
+Base.banner(io)
+banner = String(take!(io))
+import Markdown
+Markdown.parse("""```julia-repl
+$(banner)\njulia>\n```
+""")
 ```
 
-```@raw latex
-\begin{minted}{jlcon}
-julia>
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt;</code></pre>
-```
-
-The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least `v0.x`.
+The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least `v0.7.0`.
 
 The last line is a **prompt** that indicates that the REPL is ready for you to enter code. If you type a line of code and hit `ENTER`, the REPL displays the result:
 
@@ -156,13 +152,13 @@ That’s not what we expected at all! Julia parses `1,000,000` as a comma-separa
 
 > *Programming languages are formal languages that have been designed to express computations.*
 
-Formal languages tend to have strict **syntax** rules that govern the structure of statements. For example, in mathematics the statement ``3 + 3 = 6`` has correct syntax, but ``3 + = 3 \& 6`` does not. In chemistry ``H_2O`` is a syntactically correct formula, but ``_2Zz`` is not.
+Formal languages tend to have strict **syntax** rules that govern the structure of statements. For example, in mathematics the statement ``3 + 3 = 6`` has correct syntax, but ``3 + = 3 § 6`` does not. In chemistry ``H_2O`` is a syntactically correct formula, but ``_2Zz`` is not.
 
-Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 \& 6`` is that ``\&`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
+Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 § 6`` is that ``§`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
 
-The second type of syntax rule pertains to the way tokens are combined. The equation ``3 += 3`` is illegal because even though ``+`` and ``=`` are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
+The second type of syntax rule pertains to the way tokens are combined. The equation ``3 =+ 3`` is illegal because even though ``+`` and ``=`` are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
 
-This is @ well-structured Engli\$h sentence with invalid t*kens in it. This sentence all valid tokens has, but invalid structure with.
+This is @ well-structured Engli§h sentence with invalid t*kens in it. This sentence all valid tokens has, but invalid structure with.
 
 When you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called **parsing**.
 

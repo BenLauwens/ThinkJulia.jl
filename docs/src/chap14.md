@@ -87,16 +87,9 @@ Files are organized into **directories** (also called “folders”). Every runn
 
 The function `pwd` returns the name of the current directory:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> cwd = pwd()
 "/home/dinsdale"
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; cwd = pwd()
-"/home/dinsdale"</code></pre>
 ```
 
 `cwd` stands for “current working directory”. The result in this example is `/home/dinsdale`, which is the home directory of a user named `dinsdale`.
@@ -107,70 +100,36 @@ A simple filename, like `memo.txt` is also considered a path, but it is a **rela
 
 A path that begins with `/` does not depend on the current directory; it is called an **absolute path**. To find the absolute path to a file, you can use `abspath`:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> abspath("memo.txt")
 "/home/dinsdale/memo.txt"
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; abspath("memo.txt")
-"/home/dinsdale/memo.txt"</code></pre>
 ```
 
 Julia provides other functions for working with filenames and paths. For example, `ispath` checks whether a file or directory exists:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> ispath("memo.txt")
 true
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; ispath("memo.txt")
-true</code></pre>
-```
 
 If it exists, `isdir` checks whether it’s a directory:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> isdir("memo.txt")
 false
 julia> isdir("/home/dinsdale")
 true
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; isdir("memo.txt")
-false
-julia> isdir("/home/dinsdale")
-true</code></pre>
 ```
 
 Similarly, `isfile` checks whether it’s a file.
 
 `readdir` returns a list of the files (and other directories) in the given directory:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> readdir(cwd)
 3-element Array{String,1}:
  "memo.txt"
  "music"
  "photos"
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; readdir(cwd)
-3-element Array{String,1}:
- "memo.txt"
- "music"
- "photos"</code></pre>
 ```
 
 To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.
@@ -373,28 +332,13 @@ For example, most Unix systems provide a command called `md5sum` that reads the 
 
 You can use a command object to run `md5sum` from Julia and get the result:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> filename = "book.tex"
 "book.tex"
-
 julia> cmd = `md5sum $filename`
 `md5sum book.tex`
-
 julia> res = readstring(cmd)
 "d41d8cd98f00b204e9800998ecf8427e  book.tex\n"
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; julia> filename = "book.tex"
-"book.tex"
-
-julia&gt; cmd = `md5sum $filename`
-`md5sum book.tex`
-
-julia&gt; res = readstring(cmd)
-"d41d8cd98f00b204e9800998ecf8427e  book.tex\n"</code></pre>
 ```
 
 ## Modules
@@ -415,16 +359,9 @@ print(linecount("wc.jl"))
 
 If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> include("wc.jl")
 9
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; include("wc.jl")
-9</code></pre>
 ```
 
 Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside `module ...  end`. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else's. Within a module, you can control which names from other modules are visible (via `import`ing), and specify which of your names are intended to be public (via `export`ing).
@@ -445,20 +382,11 @@ end
 
 The module `LineCount` object provides `linecount`:
 
-```@raw latex
-\begin{minted}{jlcon}
+```julia-repl
 julia> using LineCount
 
 julia> linecount("wc.jl")
 11
-\end{minted}
-```
-
-```@raw html
-<pre><code class="language-julia-repl">julia&gt; using LineCount
-
-julia&gt; linecount("wc.jl")
-11</code></pre>
 ```
 
 As an exercise, type this example into a file named `wc.jl`, include it into the REPL and enter `using LineCount`.

@@ -720,7 +720,7 @@ t2 = sort!(t1)
 
 - Pick an idiom and stick with it.
 
-  Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use `pop!`, `shift!`, `delete_at`, or even a slice assignment. To add an element, you can use `push!`, `unpopfirst!`, `insert` or `vcat`. Assuming that `t` is an array and `x` is an array element, these are correct:
+  Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use `pop!`, `popfirst!`, `delete_at`, or even a slice assignment. To add an element, you can use `push!`, `pushfirst!`, `insert` or `vcat`. Assuming that `t` is an array and `x` is an array element, these are correct:
 
 ```julia
 insert!(t, 4, x)

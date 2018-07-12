@@ -45,9 +45,13 @@ If you are not sure, try putting an obvious and deliberate syntax error at the b
 There are a few likely culprits:
 
 - You edited the file and forgot to save the changes before running it again. Some programming environments do this for you, but some don’t.
+
 - You changed the name of the file, but you are still running the old name.
+
 - Something in your development environment is configured incorrectly.
+
 - If you are writing a module and using `using`, make sure you don’t give your module the same name as one of the standard Julia modules.
+
 - If you are using `using` to import a module, remember that you have to restart the REPL or use `reload` to read a modified file. If you import the module again, it doesn’t do anything.
 
 If you get stuck and you can’t figure out what is going on, one approach is to start again with a new program like “Hello, World!”, and make sure you can get a known program to run. Then gradually add the pieces of the original program to the new one.
@@ -69,10 +73,13 @@ If a program stops and seems to be doing nothing, it is “hanging”. Often tha
 - If there is a particular loop that you suspect is the problem, add a print statement immediately before the loop that says “entering the loop” and another immediately after that says “exiting the loop”.
   
   Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to the “Infinite Loop” section below.
+
 - Most of the time, an infinite recursion will cause the program to run for a while and then produce a `ERROR: LoadError: StackOverflowError` error. If that happens, go to the “Infinite Recursion” section below.
   
   If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in the “Infinite Recursion” section.
+
 - If neither of those steps works, start testing other loops and other recursive functions and methods.
+
 - If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to the “Flow of Execution” section below.
 
 #### Infinite Loop
@@ -116,51 +123,39 @@ The traceback identifies the function that is currently running, and then the fu
 The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
 
 - **ArgumentError**:
-
   The parameters to a function call do not match a valid signature.
 
 - **BoundsError**:
-
   An indexing operation into an array tried to access an out-of-bounds element.
 
 - **DivideError**:
-
   Integer division was attempted with a denominator value of 0.
 
 - **DomainError**:
-
   The argument to a function or constructor is outside the valid domain.
 
 - **EOFError**:
-
   No more data was available to read from a file or stream.
 
 - **KeyError**:
-
   An indexing operation into an `AbstractDict` (`Dict`) or `Set` like object tried to access or delete a non-existent element.
 
 - **MethodError**:
-
   A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.
 
 - **OutOfMemoryError**:
-
   An operation allocated too much memory for either the system or the garbage collector to handle properly.
 
 - **OverflowError**:
-
   The result of an expression is too large for the specified type and will cause a wraparound.
 
 - **StackOverflowError**:
-
   The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
 
 - **UndefVarError**:
-
   A symbol in the current scope is not defined.
 
 - **StringIndexError**:
-
   An error occurred when trying to access a string at an index that is not valid.
 
 ### I added so many print statements I get inundated with output

@@ -38,6 +38,8 @@ module ThinkJulia
   export fig16_1
   export fig18_1
 
+  export makeasciidoc
+
   include("code/chap03.jl")
   include("code/chap04.jl")
   include("code/chap05.jl")
@@ -75,4 +77,5 @@ module ThinkJulia
   include("figures/chap15.jl")
   include("figures/chap16.jl")
   include("figures/chap18.jl")
+  include("asciidoc/writer.jl")
 end

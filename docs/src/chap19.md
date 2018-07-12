@@ -39,17 +39,9 @@ end
 
 When the function is called, the semicolon is optional: one can either call `plot(x, y, width=2)` or `plot(x, y; width=2)`.
 
-## Conditional expressions
+## Short-circuit evaluation
 
-The operators `&&` and `||` do a **short-circuit evaluation**: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain. Explicitly, this means that:
-
-- In the expression `a && b`, the subexpression `b` is only evaluated if `a` evaluates to `true`.
-
-- In the expression `a || b`, the subexpression `b` is only evaluated if `a` evaluates to `false`.
-
-Both `&&` and `||` associate to the right, but `&&` has higher precedence than `||` does.
-
-This behavior is frequently used in Julia to form an alternative to very short `if` statements. Instead of `if <cond> <statement> end`, one can write `<cond> && <statement>` (which could be read as: `<cond>` and then `<statement>`). Similarly, instead of `if ! <cond> <statement> end`, one can write `<cond> || <statement>` (which could be read as: `<cond>` or else `<statement>`).
+The operators `&&` and `||` do a **short-circuit evaluation**: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
 
 For example, a recursive factorial routine could be defined like this:
 
@@ -61,6 +53,8 @@ function fact(n::Int)
 end
 ```
 
+## Ternary operator
+
 The so-called "ternary operator", `?:`, is closely related to the `if-elseif-else` syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:
 
 ```julia
@@ -69,33 +63,13 @@ a ? b : c
 
 The expression `a`, before the `?`, is a condition expression, and the ternary operation evaluates the expression `b`, before the `:`, if the condition `a` is true or the expression `c`, after the `:`, if it is false.
 
-```jldoctest
-julia> test(x, y) = println(x < y ? "x is less than y"    :
-                            x > y ? "x is greater than y" : "x is equal to y")
-test (generic function with 1 method)
-julia> test(1, 2)
-x is less than y
-julia> test(2, 1)
-x is greater than y
-julia> test(1, 1)
-x is equal to y
-```
-
-## Functions and more
-
-In the previous example a function `test` is created with a more terse syntax. The function
+A recursive factorial routine could also be defined like this:
 
 ```julia
-function f(x,y)
-    x+y
-end
+fact(n::Int) = n < 0 ? error("n must be non-negative") : n == 0 ? 1 : n * fact(n-1)
 ```
 
-is equivalent to the following compact **assignment form**:
-
-```julia
-f(x,y) = x+y
-```
+## Anonymous functions
 
 Functions in Julia are first-class objects: they can be assigned to variables, and called using the standard function call syntax from the variable they have been assigned to. They can be used as arguments, and they can be returned as values. They can also be created anonymously, without being given a name, using either of these syntaxes:
 
@@ -148,8 +122,8 @@ But, in my defense, array comprehensions are harder to debug because you can’t
 `capitalizeall` can also be written with the `map` function:
 
 ```julia
-function capitalizeall(t)
-    map(uppercase, t)
+function capitalizeall(word)
+    map(uppercase, word)
 end
 ```
 
@@ -158,7 +132,7 @@ end
 `reduce(op, itr)` reduces the given collection `itr` with the given binary operator `op`.
 
 ```jldoctest
-julia> reduce(*, [2; 3; 4])
+julia> reduce(*, [2, 3, 4])
 24
 ```
 
@@ -168,17 +142,17 @@ We could use `any` to rewrite some of the search functions we wrote in Section 9
 
 ```julia
 function avoids(word, forbidden)
-    !any(letter in forbidden for letter in word)
+    !any(letter ∈ forbidden for letter in word)
 end
 ```
 
 The function almost reads like English, “word avoids forbidden if there are not any forbidden letters in word.”
 
-`filter` can be used to filter a collection. For example, this function selects only the elements of t that are upper case, and returns a new array:
+`filter` can be used to filter a collection. For example, this function selects only the elements of `word` that are upper case, and returns a new string:
 
 ```julia
-function onlyupper(t)
-    filter(s->all(isupper, s), t)
+function onlyupper(word)
+    filter(letter->isuppercase(letter), word)
 end
 ```
 
@@ -189,35 +163,37 @@ end
 Passing functions as arguments to other functions is a powerful technique, but the syntax for it is not always convenient. Such calls are especially awkward to write when the function argument requires multiple lines. As an example, consider calling `map` on a function with several cases:
 
 ```julia
-map(x->begin
-           if x < 0 && iseven(x)
-               return 0
-           elseif x == 0
-               return 1
+map(character->begin
+           if isletter(character)
+               return uppercase(character)
+           elseif isnumeric(character)
+               return character
            else
-               return x
+               return '_'
            end
        end,
-    [A, B, C])
+    word)
 ```
+
+A block delimited by `begin` and `end` is used to implement the anonymous function.
 
 Julia provides a reserved word `do` for rewriting this code more clearly:
 
 ```julia
-map([A, B, C]) do x
-    if x < 0 && iseven(x)
-        return 0
-    elseif x == 0
-        return 1
+map(word) do character
+    if isletter(character)
+        return uppercase(character)
+   elseif isnumeric(character)
+        return character
     else
-        return x
+        return '_'
     end
 end
 ```
 
-The `do x` syntax creates an anonymous function with argument `x` and passes it as the first argument to `map`. Similarly, `do a,b` would create a two-argument anonymous function, and a plain `do` would declare that what follows is an anonymous function of the form `() -> ...`.
+The `do character` syntax creates an anonymous function with argument `character` and passes it as the first argument to `map`.
 
-How these arguments are initialized depends on the "outer" function; here, `map` will sequentially set `x` to `A`, `B`, `C`, calling the anonymous function on each, just as would happen in the syntax `map(func, [A, B, C])`.
+How these arguments are initialized depends on the "outer" function; here, `map` will sequentially set `character` to the characters in `word`, calling the anonymous function on each.
 
 This syntax makes it easier to use functions to effectively extend the language, since calls look like normal code blocks.
 
@@ -291,7 +267,7 @@ function usesonly(word, available)
 end
 ```
 
-`uses_only` checks whether all letters in `word` are in `available`. We can rewrite it like this:
+`usesonly` checks whether all letters in `word` are in `available`. We can rewrite it like this:
 
 ```julia
 function usesonly(word, available)
@@ -316,7 +292,7 @@ struct MyPoint{T}
 end
 ```
 
-This declaration defines a new parametric type, `MyPoint{T}`, holding two "coordinates" of type `T`. What, one may ask, is `T`? Well, that's precisely the point of parametric types: it can be any type at all. `MyPoint{Float64}` is a concrete type equivalent to the type defined by replacing `T` in the definition of `MyPoint` with `Float64`.
+This declaration defines a new **parametric type**, `MyPoint{T}`, holding two "coordinates" of type `T`. What, one may ask, is `T`? Well, that's precisely the point of parametric types: it can be any type at all. `MyPoint{Float64}` is a concrete type equivalent to the type defined by replacing `T` in the definition of `MyPoint` with `Float64`.
 
 The type `MyPoint{Float64}` is a point whose coordinates are 64-bit floating-point values.
 
@@ -342,7 +318,7 @@ As you can see, the type of the appended element must match the element type of 
 
 ## Macros
 
-Macros provide a method to include generated code in the final body of a program. A macro maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime `eval` call. Macro arguments may include expressions, literal values, and symbols.
+Macros provide a method to include generated code in the final body of a program. A macro maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime `Core.eval` call. Macro arguments may include expressions, literal values, and symbols.
 
 Here is an extraordinarily simple macro:
 
@@ -353,7 +329,7 @@ julia> macro sayhello(name)
 @sayhello (macro with 1 method)
 ```
 
-Macros have a dedicated character in Julia's syntax: the `@` (at-sign), followed by the unique name declared in a `macro NAME ... end` block. In this example, the compiler will replace all instances of `@sayhello("human")$` with:
+Macros have a dedicated character in Julia's syntax: the `@` (at-sign). In this example, the compiler will replace all instances of `@sayhello("human")` with:
 
 ```julia
 :((println)("Hello, ", "human"))
@@ -392,7 +368,7 @@ The first call to `println` is executed when `macroexpand` is called. The result
 ```@repl chap19
 typeof(ex)
 ex
-Core.eval(ex)
+Core.eval(Main, ex)
 ```
 
 Macros are invoked with the following general syntax:
@@ -404,11 +380,15 @@ Macros are invoked with the following general syntax:
 
 Note the distinguishing `@` before the macro name and the lack of commas between the argument expressions in the first form, and the lack of whitespace after `@name` in the second form. The two styles should not be mixed.
 
+## Multi-dimensional Arrays
+
+Julia, like most technical computing languages, provides a first-class array implementation. Most technical computing languages pay a lot of attention to their array implementation at the expense of other containers. Julia does not treat arrays in any special way. The array library is implemented almost completely in Julia itself, and derives its performance from the compiler, just like any other code written in Julia.
+
 ## Calling C and Fortran code
 
 Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with `ccall` syntax, which looks like an ordinary function call.
 
-In chapter 14 we used a Julia interface to the GDBM library of database functions. The library is written in C. We closed the database with a function call to `close(db)`:
+In chapter 14 I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to `close(db)` has to be made:
 
 ```julia
 Base.close(dbm::DBM) = gdbm_close(dbm.handle)
@@ -434,3 +414,9 @@ arguments identified by name instead of only by position.
 
 *short-circuit evaluation*:
 Evalutation of boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
+
+*anonymous functions*:
+
+*array comprehension*:
+
+*parametric type*:

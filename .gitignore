@@ -6,3 +6,6 @@ docs/build
 docs/captions
 docs/output.txt
 docs/fake_travis.jl
+book/build
+book/captions
+book/output.txt

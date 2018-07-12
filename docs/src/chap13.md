@@ -305,33 +305,21 @@ A series of random words seldom makes sense because there is no relationship bet
 
 One way to measure these kinds of relationships is Markov analysis, which characterizes, for a given sequence of words, the probability of the words that might come next. For example, the song *Eric, the Half a Bee* begins:
 
-```@raw latex
-\begin{verse}
-Half a bee, philosophically,\\
-Must, ipso facto, half not be.\\
-But half the bee has got to be\\
-Vis a vis, its entity. D’you see?
+> Half a bee, philosophically,
 
-But can a bee be said to be\\
-Or not to be an entire bee\\
-When half the bee is not a bee\\
-Due to some ancient injury?
-\end{verse}
-```
+> Must, ipso facto, half not be.
 
-```@raw html
-<blockquote class="quote">
-Half a bee, philosophically, <br>
-Must, ipso facto, half not be. <br>
-But half the bee has got to be <br>
-Vis a vis, its entity. D&#X2019;you see? <br>
-<br>
-But can a bee be said to be <br>
-Or not to be an entire bee <br>
-When half the bee is not a bee <br>
-Due to some ancient injury? <br>
-</blockquote><p>
-```
+> But half the bee has got to be
+
+> Vis a vis, its entity. D’you see?
+
+> But can a bee be said to be
+
+> Or not to be an entire bee
+
+> When half the bee is not a bee
+
+> Due to some ancient injury?
 
 In this text, the phrase “half the” is always followed by the word “bee”, but the phrase “the bee” might be followed by either “has” or “is”.
 
