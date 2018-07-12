@@ -18,7 +18,7 @@ Examples of persistent programs are operating systems, which run pretty much whe
 
 One of the simplest ways for programs to maintain their data is by reading and writing text files. We have already seen programs that read text files; in this chapter we will see programs that write them.
 
-An alternative is to store the state of the program in a database. In this chapter I will present a simple database and a module, `JLD2`, that makes it easy to store program data.
+An alternative is to store the state of the program in a database. In this chapter I will also present how to use a simple database.
 
 ## Reading and writing
 
