@@ -309,13 +309,19 @@ end
 
 The flow of execution for this program is similar to the flow of `countdown` in Section 5.8. If we call `fact` with the value `3`:
 
-Since `3` is not `0`, we take the second branch and calculate the factorial of `n-1`...
-> Since `2` is not `0`, we take the second branch and calculate the factorial of `n-1`...
->> Since `1` is not `0`, we take the second branch and calculate the factorial of `n-1`...
->>> Since `0` equals `0`, we take the first branch and return `1` without making any more recursive calls.
->> The return value, `1`, is multiplied by `n`, which is `1`, and the `result` is returned.
-> The return value, `1`, is multiplied by `n`, which is `2`, and the `result` is returned.
-The return value `2` is multiplied by `n`, which is `3`, and the result, `6`, becomes the return value of the function call that started the whole process.
+* Since `3` is not `0`, we take the second branch and calculate the factorial of `n-1`...
+
+  * Since `2` is not `0`, we take the second branch and calculate the factorial of `n-1`...
+
+    * Since `1` is not `0`, we take the second branch and calculate the factorial of `n-1`...
+
+      * Since `0` equals `0`, we take the first branch and return `1` without making any more recursive calls.
+
+    * The return value, `1`, is multiplied by `n`, which is `1`, and the `result` is returned.
+
+  * The return value, `1`, is multiplied by `n`, which is `2`, and the `result` is returned.
+
+* The return value `2` is multiplied by `n`, which is `3`, and the result, `6`, becomes the return value of the function call that started the whole process.
 
 ```@eval
 using ThinkJulia

@@ -1,5 +1,12 @@
 using Documenter
 using ThinkJulia: makeasciidoc
+using Markdown
+
+function Markdown.plain(io::IO, l::Markdown.LaTeX)
+  println(io, "```math")
+  println(io, l.formula)
+  println(io, "```")
+end
 
 const title = "Think Julia"
 const subtitle = "How to Think Like a Computer Scientist"
@@ -39,4 +46,6 @@ makeasciidoc(root; title=title, subtitle=subtitle, authors=authors, chaps=chaps)
 for file in ["copyright.md", "preface.md", chaps...]
   #rm(joinpath(root, "build", file))
 end
-run(`asciidoctor -d book -b html5 -a linkcss! -a sectanchors -a stem=latexmath -a sectnums -a sectnumlevels=2 -a source-highlighter=highlightjs -a toc -a toc2 -a toc=left -a toclevels=2 -a docinfo -a idprefix! -a idseparator=- build/book.adoc`)
+run(`asciidoctor -d book -b html5 -a linkcss! -a figure-caption! -a sectanchors -a stem=latexmath -a sectnums -a sectnumlevels=2 -a source-highlighter=pygments -a toc -a toc2 -a toc=left -a toclevels=2 -a docinfo -a idprefix! -a idseparator=- build/book.adoc`)
+run(`asciidoctor -d book -b docbook book.adoc`)
+run(`a2x -f pdf --fop book.xml`)

@@ -382,12 +382,18 @@ The same is true of runtime errors. Suppose you are trying to compute a signal-t
 
 In Julia, you might write something like this:
 
-```@example
+```@julia
 signal_power = 9
 noise_power = 10
 ratio = signal_power ÷ noise_power
 decibels = 10 * log10(ratio)
 print(decibels)
+```
+
+And you get:
+
+```@julia
+-Inf
 ```
 
 This is not the result you expected.
