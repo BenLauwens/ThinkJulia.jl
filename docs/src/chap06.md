@@ -463,11 +463,11 @@ In Section 11.4 we will see a more flexible alternative to printing an error mes
 
 Breaking a large program into smaller functions creates natural checkpoints for debugging. If a function is not working, there are three possibilities to consider:
 
-- There is something wrong with the arguments the function is getting; a precondition is violated.
+* There is something wrong with the arguments the function is getting; a precondition is violated.
 
-- There is something wrong with the function; a postcondition is violated.
+* There is something wrong with the function; a postcondition is violated.
 
-- There is something wrong with the return value or the way it is being used.
+* There is something wrong with the return value or the way it is being used.
 
 To rule out the first possibility, you can add a print statement at the beginning of the function and display the values of the parameters (and maybe their types). Or you can write code that checks the preconditions explicitly.
 

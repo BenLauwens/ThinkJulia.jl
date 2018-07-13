@@ -3,12 +3,12 @@ using Markdown
 function makeasciidoc(root::String; title="", subtitle="", 
   authors=(("Ben", "Lauwens", "<https://github.com/benlauwens[@benlauwens]>"), ("Allen", "Downey")), chaps=String[])
   makedocinfo(joinpath(root, "build", "book-docinfo.xml"), authors)
-  makebook(joinpath(root, "build", "book.adoc"), joinpath(root, "build", "copyright.md"), title, subtitle, authors, chaps)
-  makepreface(joinpath(root, "build", "preface.adoc"), joinpath(root, "build", "preface.md"))
+  makebook(joinpath(root, "build", "book.asciidoc"), joinpath(root, "build", "copyright.md"), title, subtitle, authors, chaps)
+  makepreface(joinpath(root, "build", "preface.asciidoc"), joinpath(root, "build", "preface.md"))
   for chap in chaps
-    makechap(joinpath(root, "build", chap[1:end-2]*"adoc"), joinpath(root, "build", chap))
+    makechap(joinpath(root, "build", chap[1:end-2]*"asciidoc"), joinpath(root, "build", chap))
   end
-  makeindex(joinpath(root, "build", "index.adoc"))
+  makeindex(joinpath(root, "build", "index.asciidoc"))
 end
 
 order = 0
@@ -125,9 +125,9 @@ function makebook(file::String, copyright::String, title::String, subtitle::Stri
     println(io)
     render(io, md)
     println(io, """
-include::preface.adoc[]
+include::preface.asciidoc[]
 
-$(["include::$(chap[1:end-2])adoc[]\n\n" for chap in chaps]...)include::index.adoc[]    
+$(["include::$(chap[1:end-2])asciidoc[]\n\n" for chap in chaps]...)include::index.asciidoc[]    
     """)
   end
 end

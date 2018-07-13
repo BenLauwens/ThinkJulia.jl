@@ -35,17 +35,17 @@ const chaps = [
   "chap20.md"
 ]
 
-#makedocs(
-#  source = joinpath(root, "..", "docs", "src"),
-#  sitename = title,
-#  authors = "Ben Lauwens",
-#  pages = ["copyright.md", "preface.md", chaps...]
-#)
+makedocs(
+  source = joinpath(root, "..", "docs", "src"),
+  sitename = title,
+  authors = "Ben Lauwens",
+  pages = ["copyright.md", "preface.md", chaps...]
+)
 rm(joinpath(root, "build", "assets"); force=true, recursive=true)
 makeasciidoc(root; title=title, subtitle=subtitle, authors=authors, chaps=chaps)
 for file in ["copyright.md", "preface.md", chaps...]
   #rm(joinpath(root, "build", file))
 end
-run(`asciidoctor -d book -b html5 -a linkcss! -a figure-caption! -a sectanchors -a stem=latexmath -a sectnums -a sectnumlevels=2 -a source-highlighter=pygments -a toc -a toc2 -a toc=left -a toclevels=2 -a docinfo -a idprefix! -a idseparator=- build/book.adoc`)
-run(`asciidoctor -d book -b docbook book.adoc`)
+run(`asciidoctor -d book -b html5 -a figure-caption! -a stem=latexmath -a sectnums -a sectnumlevels=2 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 -a docinfo -a idprefix! -a idseparator=- build/book.asciidoc`)
+run(`asciidoctor -d book -b docbook -a figure-caption! -a stem=latexmath -a sectnums -a sectnumlevels=2 -a toc=left -a toclevels=2 -a docinfo -a idprefix! -a idseparator=- book.asciidoc`)
 run(`a2x -f pdf --fop book.xml`)
