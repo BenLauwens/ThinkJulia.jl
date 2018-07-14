@@ -5,7 +5,7 @@ var documenterSearchIndex = {"docs": [
     "page": "-",
     "title": "-",
     "category": "page",
-    "text": "using ThinkJulia\nfig00_1()\\pagestyle{empty}\n\\begin{center}\n\\normalfont\\sffamily\\bfseries\n\\vspace*{\\stretch{3}}\n\n\\begin{minipage}{1.25cm}\n\\Huge Think\n\\end{minipage}\n\\begin{minipage}{1.25cm}\n\\includegraphics[scale=0.125]{fig01}\n\\end{minipage} \\\\\n\\vspace*{\\stretch{2}}\n\\Large HOW TO THINK LIKE A COMPUTER SCIENTISTS\\\\\n\\vspace*{\\stretch{3}}\n\\huge Ben Lauwens\\\\\n\\vspace*{\\stretch{1}}\n\\Large with Allen B. Downey\\\\\n\\vspace*{\\stretch{4}}\n\\end{center}\n\\clearpageThink Juliaby Ben Lauwens with Allen DowneyCopyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.Think Julia is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The author maintains an online version at https://github.com/BenLauwens/ThinkJulia.jl"
+    "text": "\\pagestyle{empty}\n\\begin{center}\n\\normalfont\\sffamily\\bfseries\n\\vspace*{\\stretch{3}}\n\n\\begin{minipage}{1.25cm}\n\\Huge Think\n\\end{minipage}\n\\begin{minipage}{1.25cm}\n\\includegraphics[scale=0.125]{images/fig01}\n\\end{minipage} \\\\\n\\vspace*{\\stretch{2}}\n\\Large HOW TO THINK LIKE A COMPUTER SCIENTISTS\\\\\n\\vspace*{\\stretch{3}}\n\\huge Ben Lauwens\\\\\n\\vspace*{\\stretch{1}}\n\\Large with Allen B. Downey\\\\\n\\vspace*{\\stretch{4}}\n\\end{center}\n\\clearpageThink Juliaby Ben Lauwens with Allen DowneyCopyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.Think Julia is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The author maintains an online version at https://github.com/BenLauwens/ThinkJulia.jl"
 },
 
 {
