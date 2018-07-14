@@ -330,26 +330,7 @@ There are several kinds of relationship between types:
 
 - One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a **dependency**.
 
-```@eval
-using ThinkJulia
-fig18_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig181.svg" alt="Type diagram.">
-  <figcaption>Figure 18.1. Type diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig181}
-\caption{Type diagram.}
-\label{fig181}
-\end{figure}
-```
+![Type diagram.](images/fig181.svg)
 
 The arrow with a hollow triangle head represents an IS-A relationship; in this case it indicates that Hand has as supertype CardSet.
 

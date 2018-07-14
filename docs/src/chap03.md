@@ -318,26 +318,7 @@ To keep track of which variables can be used where, it is sometimes useful to dr
 
 Each function is represented by a **frame**. A frame is a box with the name of a function beside it and the parameters and variables of the function inside it. The stack diagram for the previous example is shown in Figure 3.1.
 
-```@eval
-using ThinkJulia
-fig03_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig31.svg" alt="Stack diagram.">
-  <figcaption>Figure 3.1. Stack diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig31}
-\caption{Stack diagram.}
-\label{fig31}
-\end{figure}
-```
+![Stack diagram.](images/fig31.svg)
 
 The frames are arranged in a stack that indicates which function called which, and so on. In this example, `printtwice` was called by `cattwice`, and `cattwice` was called by `__main__`, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to `__main__`.
 

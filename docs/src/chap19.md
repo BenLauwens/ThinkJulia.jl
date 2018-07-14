@@ -160,6 +160,8 @@ end
 
 `filter(function, collection)` returns a copy of collection, removing elements for which function returns `false`. For associative collections, the function is passed two arguments (`key` and `value`).
 
+## Closures
+
 ## `do` syntax
 
 Passing functions as arguments to other functions is a powerful technique, but the syntax for it is not always convenient. Such calls are especially awkward to write when the function argument requires multiple lines. As an example, consider calling `map` on a function with several cases:

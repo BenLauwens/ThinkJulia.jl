@@ -265,26 +265,7 @@ In Section 3.9, we used a stack diagram to represent the state of a program duri
 
 Every time a function gets called, Julia creates a frame to contain the function’s local variables and parameters. For a recursive function, there might be more than one frame on the stack at the same time.
 
-```@eval
-using ThinkJulia
-fig05_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig51.svg" alt="Stack diagram.">
-  <figcaption>Figure 5.1. Stack diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig51}
-\caption{Stack diagram.}
-\label{fig51}
-\end{figure}
-```
+![Stack diagram.](images/fig51.svg)
 
 Figure 5.1 shows a stack diagram for `countdown` called with `n = 3`.
 
@@ -529,26 +510,7 @@ end
 
 ### Exercise 5-6
 
-```@eval
-using ThinkJulia
-fig05_2()
-```
-
-```@raw html
-<figure>
-  <img src="fig52.svg" alt="A Koch curve.">
-  <figcaption>Figure 5.2. A Koch curve.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig52}
-\caption{A Koch curve.}
-\label{fig52}
-\end{figure}
-```
+![A Koch curve.](images/fig52.svg)
 
 The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length ``x``, all you have to do is
 

@@ -19,26 +19,7 @@ This example makes three assignments. The first assigns a string to a new variab
 
 A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a **state diagram** because it shows what state each of the variables is in (think of it as the variable’s state of mind). Figure 2.1 shows the result of the previous example.
 
-```@eval
-using ThinkJulia
-fig02_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig21.svg" alt="State diagram.">
-  <figcaption>Figure 2.1. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig21}
-\caption{State diagram.}
-\label{fig21}
-\end{figure}
-```
+![State diagram.](images/fig21.svg)
 
 ## Variable names
 

@@ -6,7 +6,7 @@ makedocs(
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",
   pages = [
-    "copyright.md",
+    hide("copyright.md"),
     "preface.md",
     "chap01.md",
     "chap02.md",
@@ -30,6 +30,11 @@ makedocs(
     "chap20.md"
   ]
 )
+
+const dir = joinpath("build/images")
+mkpath(dir)
+using ThinkJulia
+cd(makefigs, dir)
 
 deploydocs(
   repo   = "github.com/BenLauwens/ThinkJulia.jl",

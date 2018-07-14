@@ -63,26 +63,7 @@ Every object is an instance of some type, so “object” and “instance” are
 
 A state diagram that shows an object and its fields is called an *object diagram*; see Figure 15.1.
 
-```@eval
-using ThinkJulia
-fig15_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig151.svg" alt="Object diagram.">
-  <figcaption>Figure 15.1. Object diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig151}
-\caption{Object diagram.}
-\label{fig151}
-\end{figure}
-```
+![Object diagram.](images/fig151.svg)
 
 ## Structs are immutable
 
@@ -196,26 +177,7 @@ ThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))
 
 Figure 15.2 shows the state of this object. An object that is a field of another object is **embedded**. Because the `corner` attribute refers to a mutable object, the latter is drawn outside the rectangle object.
 
-```@eval
-using ThinkJulia
-fig15_2()
-```
-
-```@raw html
-<figure>
-  <img src="fig152.svg" alt="Object diagram.">
-  <figcaption>Figure 15.2. Object diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig152}
-\caption{Object diagram.}
-\label{fig152}
-\end{figure}
-```
+![Object diagram.](images/fig152.svg)
 
 ## Instances as return values
 

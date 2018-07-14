@@ -4,7 +4,7 @@ function fig00_1()
   Drawing(330, 240, "fig01.pdf")  
   julialogo() # locate center at 0/0
   finish()
-  Drawing(330, 240, "chap01.svg")  
+  Drawing(330, 240, "fig01.svg")  
   julialogo() # locate center at 0/0
   finish()
   nothing

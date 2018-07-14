@@ -286,26 +286,7 @@ Dict{Any,Any} with 2 entries:
   1 => ['a', 'p', 'o', 't']
 ```
 
-```@eval
-using ThinkJulia
-fig11_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig111.svg" alt="State diagram.">
-  <figcaption>Figure 11.1. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig111}
-\caption{State diagram.}
-\label{fig111}
-\end{figure}
-```
+![State diagram.](images/fig111.svg)
 
 Figure 11.1 is a state diagram showing `hist` and `inverse`. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
 
@@ -319,26 +300,7 @@ If you played with the `fibonacci` function from Section 6.7, you might have not
 
 To understand why, consider Figure 11.2, which shows the **call graph** for `fibonacci` with `n = 4`:
 
-```@eval
-using ThinkJulia
-fig11_2()
-```
-
-```@raw html
-<figure>
-  <img src="fig112.svg" alt="Call graph.">
-  <figcaption>Figure 11.2. Call graph.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig112}
-\caption{Call graph.}
-\label{fig112}
-\end{figure}
-```
+![Call graph.](images/fig112.svg)
 
 A call graph shows a set of function frames, with lines connecting each frame to the frames of the functions it calls. At the top of the graph, `fibonacci` with `n = 4` calls `fibonacci` with  `n = 3` and `n = 2`. In turn, `fibonacci` with `n = 3` calls `fibonacci` with `n = 2` and `n = 1`. And so on.
 

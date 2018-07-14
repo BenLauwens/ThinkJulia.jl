@@ -24,6 +24,7 @@ module ThinkJulia
   export CardSet, Card, Deck, Hand, move!
   export MyPoint
 
+  export makefigs
   export fig00_1
   export fig02_1
   export fig03_1

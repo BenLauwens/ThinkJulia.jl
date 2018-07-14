@@ -35,26 +35,7 @@ Once you create a turtle, you can call a function to move it around a drawing. F
 end
 ```
 
-```@eval
-using ThinkJulia
-fig04_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig41.svg" alt="Moving the turtle forward.">
-  <figcaption>Figure 4.1. Moving the turtle forward.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig41}
-\caption{Moving the turtle forward.}
-\label{fig41}
-\end{figure}
-```
+![Moving the turtle forward.](images/fig41.svg)
 
 The `@svg` keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.
 
@@ -443,51 +424,13 @@ end
 
 Write an appropriately general set of functions that can draw flowers as in Figure 4.2.
 
-```@eval
-using ThinkJulia
-fig04_2()
-```
-
-```@raw html
-<figure>
-  <img src="fig42.svg" alt="Turtle flowers.">
-  <figcaption>Figure 4.2. Turtle flowers.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig42}
-\caption{Turtle flowers.}
-\label{fig42}
-\end{figure}
-```
+![Turtle flowers.](images/fig42.svg)
 
 ### Exercise 4-3
 
 Write an appropriately general set of functions that can draw shapes as in Figure 4.3.
 
-```@eval
-using ThinkJulia
-fig04_3()
-```
-
-```@raw html
-<figure>
-  <img src="fig43.svg" alt="Turtle pies.">
-  <figcaption>Figure 4.3. Turtle pies.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig43}
-\caption{Turtle pies.}
-\label{fig43}
-\end{figure}
-```
+![Turtle pies.](images/fig43.svg)
 
 ### Exercise 4-4
 
@@ -499,23 +442,4 @@ You should write one function for each letter, with names `draw_a`, `draw_b`, et
 
 Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in Figure 4.4.
 
-```@eval
-using ThinkJulia
-fig04_4()
-```
-
-```@raw html
-<figure>
-  <img src="fig44.svg" alt="Archimedian spiral.">
-  <figcaption>Figure 4.4. Archimedian spiral.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig44}
-\caption{Archimedian spiral.}
-\label{fig44}
-\end{figure}
-```
+![Archimedian spiral.](images/fig44.svg)

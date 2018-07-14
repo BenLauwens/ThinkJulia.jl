@@ -71,26 +71,7 @@ The second element of `numbers`, which used to be 123, is now 5.
 
 Figure 10.1 shows the state diagrams for `cheeses`, `numbers` and `empty`.
 
-```@eval
-using ThinkJulia
-fig10_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig101.svg" alt="State diagrams.">
-  <figcaption>Figure 10.1. State diagrams.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig101}
-\caption{State diagrams.}
-\label{fig101}
-\end{figure}
-```
+![State diagram.](images/fig101.svg)
 
 Arrays are represented by boxes and the elements of the array inside. `cheeses` refers to an array with three elements indexed `1`, `2` and `3`. `numbers` contains two elements; the diagram shows that the value of the second element has been reassigned from `123` to `5`. `empty` refers to an array with no elements.
 
@@ -441,26 +422,7 @@ b = "banana"
 
 We know that `a` and `b` both refer to a string, but we don’t know whether they refer to the *same* string. There are two possible states, shown in Figure 10.2.
 
-```@eval
-using ThinkJulia
-fig10_2()
-```
-
-```@raw html
-<figure>
-  <img src="fig102.svg" alt="State diagrams.">
-  <figcaption>Figure 10.2. State diagrams.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig102}
-\caption{State diagrams.}
-\label{fig102}
-\end{figure}
-```
+![State diagrams.](images/fig102.svg)
 
 In one case, `a` and `b` refer to two different objects that have the same value. In the second case, they refer to the same object.
 
@@ -488,26 +450,7 @@ false
 
 So the state diagram looks like Figure 10.3.
 
-```@eval
-using ThinkJulia
-fig10_3()
-```
-
-```@raw html
-<figure>
-  <img src="fig103.svg" alt="State diagram.">
-  <figcaption>Figure 10.3. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig103}
-\caption{State diagram.}
-\label{fig103}
-\end{figure}
-```
+![State diagram.](images/fig103.svg)
 
 In this case we would say that the two arrays are **equivalent**, because they have the same elements, but not **identical**, because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
 
@@ -528,26 +471,7 @@ true
 
 The state diagram looks like Figure 10.4.
 
-```@eval
-using ThinkJulia
-fig10_4()
-```
-
-```@raw html
-<figure>
-  <img src="fig104.svg" alt="State diagram.">
-  <figcaption>Figure 10.4. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig104}
-\caption{State diagram.}
-\label{fig104}
-\end{figure}
-```
+![State diagram.](images/fig104.svg)
 
 The association of a variable with an object is called a **reference**. In this example, there are two references to the same object.
 
@@ -602,26 +526,7 @@ julia> print(letters)
 
 The parameter `t` and the variable `letters` are aliases for the same object. The stack diagram looks like Figure 10.5.
 
-```@eval
-using ThinkJulia
-fig10_5()
-```
-
-```@raw html
-<figure>
-  <img src="fig105.svg" alt="Stack diagram.">
-  <figcaption>Figure 10.5. Stack diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig105}
-\caption{Stack diagram.}
-\label{fig105}
-\end{figure}
-```
+![Stack diagram.](images/fig105.svg)
 
 Since the array is shared by two frames, I drew it between them.
 

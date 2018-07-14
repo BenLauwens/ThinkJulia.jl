@@ -39,6 +39,10 @@ function render(io::IO, h::Markdown.Header{n}, parent=nothing) where{n}
   render(io, h.text, h)
   println(io, "\n")
 end
+function render(io::IO, i::Markdown.Image, parent=nothing)
+  println(io, ".", i.alt)
+  println(io, "image::", i.url, "[\"", i.alt, "\"]")
+end
 function render(io::IO, i::Markdown.Italic, parent=nothing)
   print(io, "_") 
   render(io, i.text, i)
@@ -70,12 +74,6 @@ end
 render(io::IO, md::Markdown.MD) = map(elem -> render(io, elem), md.content)
 function render(io::IO, p::Markdown.Paragraph, parent=nothing)
   p.content[1] isa String && occursin(r"<a id.*</a>", p.content[1]) && return
-  if p.content[1] isa String && occursin(r"<figure>.*</figure>", p.content[1])
-    println(io, "[[", match(r"\".*svg", p.content[1]).match[2:end-4],"]]")
-    println(io, ".", match(r"on>.*[.]<", p.content[1]).match[4:end-1])
-    println(io, "image::", match(r"\".*svg", p.content[1]).match[2:end], "[\"", match(r"alt=\".*\"", p.content[1]).match[6:end-1],"\"]\n")
-    return
-  end
   for elem in p.content
     render(io, elem, p)
   end

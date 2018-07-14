@@ -34,26 +34,7 @@ ThinkJuliaMyTime(11, 59, 30)
 
 The state diagram for the mytime object looks like Figure 16.1.
 
-```@eval
-using ThinkJulia
-fig16_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig161.svg" alt="Object diagram.">
-  <figcaption>Figure 16.1. Object diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig161}
-\caption{Object diagram.}
-\label{fig161}
-\end{figure}
-```
+![State diagram.](images/fig161.svg)
 
 As an exercise, write a function called `printtime` that takes a mytime object and prints it in the form `hour:minute:second`. Hint: using the `@printf` macro the format sequence '%02d' prints an integer using at least two digits, including a leading zero if necessary.
 

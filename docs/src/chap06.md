@@ -323,26 +323,7 @@ The flow of execution for this program is similar to the flow of `countdown` in 
 
 * The return value `2` is multiplied by `n`, which is `3`, and the result, `6`, becomes the return value of the function call that started the whole process.
 
-```@eval
-using ThinkJulia
-fig06_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig61.svg" alt="Stack diagram.">
-  <figcaption>Figure 6.1. Stack diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig61}
-\caption{Stack diagram.}
-\label{fig61}
-\end{figure}
-```
+![Stack diagram.](images/fig61.svg)
 
 Figure 6.1 shows what the stack diagram looks like for this sequence of function calls.
 

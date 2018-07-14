@@ -369,49 +369,11 @@ This loop traverses the key-value pairs in `directory`, which are tuples. It ass
 
 There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple `("Cleese", "John")` would appear as in Figure 12.1.
 
-```@eval
-using ThinkJulia
-fig12_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig121.svg" alt="State diagram.">
-  <figcaption>Figure 12.1. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig121}
-\caption{State diagram.}
-\label{fig121}
-\end{figure}
-```
+![State diagram.](images/fig121.svg)
 
 But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in Figure 12.2.
 
-```@eval
-using ThinkJulia
-fig12_2()
-```
-
-```@raw html
-<figure>
-  <img src="fig122.svg" alt="State diagram.">
-  <figcaption>Figure 12.2. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig122}
-\caption{State diagram.}
-\label{fig122}
-\end{figure}
-```
+![State diagram.](images/fig122.svg)
 
 Here the tuples are shown using Julia syntax as a graphical shorthand. The telephone number in the diagram is the complaints line for the BBC, so please don’t call it.
 

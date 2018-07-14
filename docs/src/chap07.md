@@ -21,26 +21,7 @@ julia> x=7
 
 The first time we display `x`, its value is 5; the second time, its value is 7.
 
-```@eval
-using ThinkJulia
-fig07_1()
-```
-
-```@raw html
-<figure>
-  <img src="fig71.svg" alt="State diagram.">
-  <figcaption>Figure 7.1. State diagram.</figcaption>
-</figure>
-```
-
-```@raw latex
-\begin{figure}
-\centering
-\includegraphics{fig71}
-\caption{State diagram.}
-\label{fig71}
-\end{figure}
-```
+![State diagram.](images/fig71.svg)
 
 Figure 7.1 shows what **reassignment** looks like in a state diagram.
 
