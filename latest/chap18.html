@@ -88,14 +88,14 @@ julia&gt; shuffle!(deck)
 WARNING: importing deprecated binding Base.shuffle! into ex-chap18.
 WARNING: Base.shuffle! is deprecated: it has been moved to the standard library package `Random`.
 Add `using Random` to your imports.
-  likely near /Users/ben/.julia/dev/ThinkJulia/docs/make.jl:4
+  likely near /Users/travis/build/BenLauwens/ThinkJulia.jl/docs/make.jl:4
 
 julia&gt; card = pop!(deck);
 
 julia&gt; push!(hand, card)
 
 julia&gt; hand
-6♥</code></pre><p>A natural next step is to encapsulate this code in a function called <code>move!</code>:</p><pre><code class="language-julia">function move!(cs1::CardSet, cs2::CardSet, n::Int)
+7♠</code></pre><p>A natural next step is to encapsulate this code in a function called <code>move!</code>:</p><pre><code class="language-julia">function move!(cs1::CardSet, cs2::CardSet, n::Int)
     @assert 1 ≤ n ≤ length(cs1.cards)
     for i in 1:n
         card = pop!(cs1)
