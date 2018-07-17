@@ -1,7 +1,7 @@
 function fig16_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east](time) at (-2.5, 0) {\tt time};
-  \node[draw, fill=lightgray, minimum width=3cm, minimum height=1.5cm](MyTime) at(0,0){};
+  \node[draw, fill=mycolor, minimum width=3cm, minimum height=1.5cm](MyTime) at(0,0){};
   \node[anchor=west] at (-1.5, 1) {\tt MyTime};
   \node[anchor=east] (h) at(-0.25, 0.5) {\tt hour};
   \node[anchor=west] (hv) at (0.75, 0.5) {\tt 11};
@@ -13,11 +13,11 @@ function fig16_1(output::Symbol, font::String)
   \draw[-latex] (h) -- (hv);
   \draw[-latex] (m) -- (mv);
   \draw[-latex] (s) -- (sv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  """)
+  \\definecolor{mycolor}{RGB}{220,220,220}""")
   output == :pdf ? save(PDF("fig161"), p) : save(SVG("fig161"), p)
 end

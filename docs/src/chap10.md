@@ -2,7 +2,7 @@
 
 This chapter presents one of Julia’s most useful built-in types, arrays. You will also learn about objects and what can happen when you have more than one name for the same object.
 
-## An array is a sequence
+## An Array is a Sequence
 
 Like a string, an **array** is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called **elements** or sometimes **items**.
 
@@ -49,7 +49,7 @@ Array{Any,1}
 
 The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array `empty` contains values of type `Any`. This is a predefined type that can represent any type.
 
-## Arrays are mutable
+## Arrays Are Mutable
 
 The syntax for accessing the elements of an array is the same as for accessing the characters of a string—the bracket operator. The expression inside the brackets specifies the index. Remember that the indices start at 1:
 
@@ -69,7 +69,7 @@ julia> print(numbers)
 
 The second element of `numbers`, which used to be 123, is now 5.
 
-Figure 10.1 shows the state diagrams for `cheeses`, `numbers` and `empty`.
+Figure 10-1 shows the state diagrams for `cheeses`, `numbers` and `empty`.
 
 ![State diagram.](images/fig101.svg)
 
@@ -92,7 +92,7 @@ julia> "Brie" in cheeses
 false
 ```
 
-## Traversing an array
+## Traversing an Array
 
 The most common way to traverse the elements of an array is with a `for` loop. The syntax is the same as for strings:
 
@@ -126,7 +126,7 @@ Although an array can contain another array, the nested array still counts as a 
 ["spam", 1, ["Brie", "Roquefort", "Camembert"], [1, 2, 3]]
 ```
 
-## Array slices
+## Array Slices
 
 The slice operator also works on arrays:
 
@@ -157,7 +157,7 @@ julia> print(t)
 ['a', 'x', 'y', 'd', 'e', 'f']
 ```
 
-## Array library functions
+## Array Library
 
 Julia provides functions that operate on arrays. For example, `push!` adds a new element to the end of an array:
 
@@ -211,7 +211,7 @@ julia> print(t2)
 
 As a style convention in Julia, `!` is appended to names of functions that modify their arguments.
 
-## Map, filter and reduce
+## Map, Filter and Reduce
 
 To add up all the numbers in an array, you can use a loop like this:
 
@@ -284,7 +284,7 @@ An operation like `onlyupper` is called a **filter** because it selects some of 
 
 Most common array operations can be expressed as a combination of map, filter and reduce.
 
-## Dot syntax
+## Dot Syntax
 
 For every binary operator like `^`, there is a corresponding **dot operator** `.^` that is automatically defined to perform `^` element-by-element on arrays. For example, `[1, 2, 3] ^ 3` is not defined, but `[1, 2, 3] .^ 3` is defined as computing the elementwise result `[1^3, 2^3, 3^3]`:
 
@@ -310,7 +310,7 @@ function capitalizeall(t)
 end
 ```
 
-## Deleting (inserting) elements
+## Deleting (Inserting) Elements
 
 There are several ways to delete elements from an array. If you know the index of the element you want, you can use `splice!`:
 
@@ -367,7 +367,7 @@ julia> print(insert!(t, 2, 'x'))
 ['a', 'x', 'b', 'c']
 ```
 
-## Arrays and strings
+## Arrays and Strings
 
 A string is a sequence of characters and an array is a sequence of values, but an array of characters is not the same as a string. To convert from a string to an array of characters, you can use the function `collect`:
 
@@ -409,7 +409,7 @@ julia> s = join(t, ' ')
 
 In this case the delimiter is a space character. To concatenate strings without spaces, you don't specify a delimiter.
 
-## Objects and values
+## Objects and Values
 
 An **object** is something a variable can refer to. Until now, you could use “object” and “value” interchangeably.
 
@@ -420,7 +420,7 @@ a = "banana"
 b = "banana"
 ```
 
-We know that `a` and `b` both refer to a string, but we don’t know whether they refer to the *same* string. There are two possible states, shown in Figure 10.2.
+We know that `a` and `b` both refer to a string, but we don’t know whether they refer to the *same* string. There are two possible states, shown in Figure 10-2.
 
 ![State diagrams.](images/fig102.svg)
 
@@ -448,7 +448,7 @@ julia> a ≡ b
 false
 ```
 
-So the state diagram looks like Figure 10.3.
+So the state diagram looks like Figure 10-3.
 
 ![State diagram.](images/fig103.svg)
 
@@ -469,7 +469,7 @@ julia> b ≡ a
 true
 ```
 
-The state diagram looks like Figure 10.4.
+The state diagram looks like Figure 10-4.
 
 ![State diagram.](images/fig104.svg)
 
@@ -497,7 +497,7 @@ b = "banana"
 
 It almost never makes a difference whether `a` and `b` refer to the same string or not.
 
-## Array arguments
+## Array Arguments
 
 When you pass an array to a function, the function gets a reference to the array. If the function modifies the array, the caller sees the change. For example, `deletehead!` removes the first element from an array:
 
@@ -524,7 +524,7 @@ julia> print(letters)
 ['b', 'c']
 ```
 
-The parameter `t` and the variable `letters` are aliases for the same object. The stack diagram looks like Figure 10.5.
+The parameter `t` and the variable `letters` are aliases for the same object. The stack diagram looks like Figure 10-5.
 
 ![Stack diagram.](images/fig105.svg)
 

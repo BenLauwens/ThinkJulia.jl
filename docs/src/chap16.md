@@ -1,4 +1,4 @@
-# Structs and functions
+# Structs and Functions
 
 ```@meta
 DocTestSetup = quote
@@ -32,7 +32,7 @@ julia> time = MyTime(11, 59, 30)
 ThinkJuliaMyTime(11, 59, 30)
 ```
 
-The state diagram for the mytime object looks like Figure 16.1.
+The state diagram for the mytime object looks like Figure 16-1.
 
 ![State diagram.](images/fig161.svg)
 
@@ -40,7 +40,7 @@ As an exercise, write a function called `printtime` that takes a mytime object a
 
 Write a boolean function called `isafter` that takes two mytime objects, `t1` and `t2`, and returns `true` if `t1` follows `t2` chronologically and `false` otherwise. Challenge: don’t use an `if` statement.
 
-## Pure functions
+## Pure Functions
 
 In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call **prototype and patch**, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.
 
@@ -144,7 +144,7 @@ In general, I recommend that you write pure functions whenever it is reasonable 
 
 As an exercise, write a “pure” version of `increment!` that creates and returns a new mytime object rather than modifying the parameter.
 
-## Prototyping versus planning
+## Prototyping Versus Planning
 
 The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.
 

@@ -1,4 +1,4 @@
-# Conditionals and recursion
+# Conditionals and Recursion
 
 ```@meta
 DocTestSetup = quote
@@ -8,7 +8,7 @@ end
 
 The main topic of this chapter is the `if` statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: floor division and modulus.
 
-## Floor division and modulus
+## Floor Division and Modulus
 
 The **floor division** operator, `÷` (`\div TAB`), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
 
@@ -44,7 +44,7 @@ The modulus operator is more useful than it seems. For example, you can check wh
 
 Also, you can extract the right-most digit or digits from a number. For example, `x % 10` yields the right-most digit of `x` (in base 10). Similarly `x % 100` yields the last two digits.
 
-## Boolean expressions
+## Boolean Expressions
 
 A **boolean expression** is an expression that is either true or false. The following examples use the operator `==`, which compares two operands and produces `true` if they are equal and `false` otherwise:
 
@@ -79,7 +79,7 @@ The `==` operator is one of the relational operators; the others are:
 
 Although these operations are probably familiar to you, the Julia symbols are different from the mathematical symbols. A common error is to use a single equal sign (`=`) instead of a double equal sign (`==`). Remember that `=` is an assignment operator and `==` is a relational operator. There is no such thing as `=<` or `=>`.
 
-## Logical operators
+## Logical Operators
 
 There are three **logical operators**: `&&` (and), `||` (or), and `!` (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, `x > 0 && x < 10` is true only if `x` is greater than `0` *and* less than `10`.
 
@@ -89,7 +89,7 @@ Both `&&` and `||` associate to the right, but `&&` has higher precedence than `
 
 Finally, the `!` operator negates a boolean expression, so `!(x > y)` is true if `x > y` is false, that is, if `x` is less than or equal to `y`.
 
-## Conditional execution
+## Conditional Execution
 
 In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. **Conditional statements** give us this ability. The simplest form is the `if` statement:
 
@@ -111,7 +111,7 @@ if x < 0
 end
 ```
 
-## Alternative execution
+## Alternative Execution
 
 A second form of the `if` statement is “alternative execution”, in which there are two possibilities and the condition determines which one runs. The syntax looks like this:
 
@@ -125,7 +125,7 @@ end
 
 If the remainder when `x` is divided by 2 is 0, then we know that `x` is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called **branches**, because they are branches in the flow of execution.
 
-## Chained conditionals
+## Chained Conditionals
 
 Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a **chained conditional**:
 
@@ -153,7 +153,7 @@ end
 
 Each condition is checked in order. If the first is false, the next is checked, and so on. If one of them is true, the corresponding branch runs and the statement ends. Even if more than one condition is true, only the first true branch runs.
 
-## Nested conditionals
+## Nested Conditionals
 
 One conditional can also be nested within another. We could have written the example in the previous section like this:
 
@@ -259,7 +259,7 @@ The rest of the function is similar to `countdown`: it displays `s` and then cal
 
 For simple examples like this, it is probably easier to use a `for` loop. But we will see examples later that are hard to write with a `for` loop and easy to write with recursion, so it is good to start early.
 
-## Stack diagrams for recursive functions
+## Stack Diagrams for Recursive Functions
 
 In Section 3.9, we used a stack diagram to represent the state of a program during a function call. The same kind of diagram can help interpret a recursive function.
 
@@ -267,7 +267,7 @@ Every time a function gets called, Julia creates a frame to contain the function
 
 ![Stack diagram.](images/fig51.svg)
 
-Figure 5.1 shows a stack diagram for `countdown` called with `n = 3`.
+Figure 5-1 shows a stack diagram for `countdown` called with `n = 3`.
 
 As usual, the top of the stack is the frame for `__main__`. It is empty because we did not create any variables in `__main__` or pass any arguments to it.
 
@@ -275,7 +275,7 @@ The four `countdown` frames have different values for the parameter `n`. The bot
 
 As an exercise, draw a stack diagram for `printn` called with `s = "Hello"` and `n = 2`. Then write a function called `do_n` that takes a function object and a number, `n`, as arguments, and that calls the given function ``n`` times.
 
-## Infinite recursion
+## Infinite Recursion
 
 If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as **infinite recursion**, and it is generally not a good idea. Here is a minimal program with an infinite recursion:
 
@@ -298,7 +298,7 @@ This traceback is a little bigger than the one we saw in the previous chapter. W
 
 If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
 
-## Keyboard input
+## Keyboard Input
 
 The programs we have written so far accept no input from the user. They just do the same thing every time.
 
@@ -363,7 +363,7 @@ The same is true of runtime errors. Suppose you are trying to compute a signal-t
 
 In Julia, you might write something like this:
 
-```@julia
+```julia
 signal_power = 9
 noise_power = 10
 ratio = signal_power ÷ noise_power
@@ -373,7 +373,7 @@ print(decibels)
 
 And you get:
 
-```@julia
+```julia
 -Inf
 ```
 
@@ -512,7 +512,7 @@ end
 
 ![A Koch curve.](images/fig52.svg)
 
-The Koch curve is a fractal that looks something like Figure 5.2. To draw a Koch curve with length ``x``, all you have to do is
+The Koch curve is a fractal that looks something like Figure 5-2. To draw a Koch curve with length ``x``, all you have to do is
 
 1. Draw a Koch curve with length ``\frac{x}{3}``.
 

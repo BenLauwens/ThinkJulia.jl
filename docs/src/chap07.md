@@ -23,7 +23,7 @@ The first time we display `x`, its value is 5; the second time, its value is 7.
 
 ![State diagram.](images/fig71.svg)
 
-Figure 7.1 shows what **reassignment** looks like in a state diagram.
+Figure 7-1 shows what **reassignment** looks like in a state diagram.
 
 At this point I want to address a common source of confusion. Because Julia uses the equal sign (`=`) for assignment, it is tempting to interpret a statement like `a = b` as a mathematical proposition of equality; that is, the claim that `a` and `b` are equal. But this interpretation is wrong.
 
@@ -47,7 +47,7 @@ The third line changes the value of `a` but does not change the value of `b`, so
 
 Reassigning variables is often useful, but you should use it with caution. If the values of variables change frequently, it can make the code difficult to read and debug.
 
-## Updating variables
+## Updating Variables
 
 A common kind of reassignment is an update, where the new value of the variable depends on the old.
 
@@ -76,7 +76,7 @@ julia> y = y + 1
 
 Updating a variable by adding 1 is called an **increment**; subtracting 1 is called a **decrement**.
 
-## The `while` statement
+## The `while` Statement
 
 Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called **iteration**.
 
@@ -181,7 +181,7 @@ end
 
 If `i` is divisible by 3, the `continue` statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed.
 
-## Square roots
+## Square Roots
 
 Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.
 

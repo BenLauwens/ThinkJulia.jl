@@ -61,7 +61,7 @@ When you print an instance, Julia tells you what type it belongs to and what the
 
 Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.
 
-A state diagram that shows an object and its fields is called an *object diagram*; see Figure 15.1.
+A state diagram that shows an object and its fields is called an *object diagram*; see Figure 15-1.
 
 ![Object diagram.](images/fig151.svg)
 
@@ -175,11 +175,11 @@ julia> box = Rectangle(100.0, 200.0, origin)
 ThinkJulia.Rectangle(100.0, 200.0, ThinkJulia.MPoint(0.0, 0.0))
 ```
 
-Figure 15.2 shows the state of this object. An object that is a field of another object is **embedded**. Because the `corner` attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+Figure 15-2 shows the state of this object. An object that is a field of another object is **embedded**. Because the `corner` attribute refers to a mutable object, the latter is drawn outside the rectangle object.
 
 ![Object diagram.](images/fig152.svg)
 
-## Instances as return values
+## Instances as Return Values
 
 Functions can return instances. For example, `findcenter` takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
 
@@ -198,7 +198,7 @@ julia> center = findcenter(box)
 ThinkJulia.Point(0.0, 0.0)
 ```
 
-## Instances as arguments
+## Instances as Arguments
 
 If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, `movepoint` takes a mutable point object and two numbers, `dx` and `dy`, and adds the numbers to respectively the `x` and the `y` attribute of the point:
 

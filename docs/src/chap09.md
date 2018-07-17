@@ -1,8 +1,8 @@
-# Case study: word play
+# Case Study: Word Play
 
 This chapter presents the second case study, which involves solving word puzzles by searching for words that have certain properties. For example, we’ll find the longest palindromes in English and search for words whose letters appear in alphabetical order. And I will present another program development plan: reduction to a previously solved problem.
 
-## Reading word lists
+## Reading Word Lists
 
 For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see <http://wikipedia.org/wiki/Moby_Project>). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is `113809of.fic`; you can download a copy, with the simpler name `words.txt`, from <https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt>.
 
@@ -152,7 +152,7 @@ end
 
 This is an example of a program development plan called **reduction to a previously solved problem**, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
 
-## Looping with indices
+## Looping with Indices
 
 I wrote the functions in the previous section with `for` loops because I only needed the characters in the strings; I didn’t have to do anything with the indices.
 

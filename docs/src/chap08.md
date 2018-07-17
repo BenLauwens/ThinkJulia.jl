@@ -30,7 +30,7 @@ Char
 
 Emojis are part of the Unicode standard.
 
-## A string is a sequence
+## A String Is a Sequence
 
 A string is a sequence of characters. You can access the characters one at a time with the bracket operator:
 
@@ -165,7 +165,7 @@ end                          # hide
 
 Of course, that’s not quite right because “Ouack” and “Quack” are misspelled. As an exercise, modify the program to fix this error.
 
-## String slices
+## String Slices
 
 A segment of a string is called a **slice**. Selecting a slice is similar to selecting a character:
 
@@ -196,7 +196,7 @@ An empty string contains no characters and has length 0, but other than that, it
 
 Continuing this example, what do you think `str[:]` means? Try it and see.
 
-## Strings are immutable
+## Strings Are Immutable
 
 It is tempting to use the `[]` operator on the left side of an assignment, with the intention of changing a character in a string. For example:
 
@@ -216,7 +216,7 @@ julia> greeting = "J" * greeting[2:end]
 
 This example concatenates a new first letter onto a slice of greeting. It has no effect on the original string.
 
-## String interpolation
+## String Interpolation
 
 Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to `string` or repeated multiplications, Julia allows **string interpolation** using `$`:
 
@@ -265,7 +265,7 @@ This pattern of computation—traversing a sequence and returning when we find w
 
 As an exercise, modify `find` so that it has a third parameter, the index in `word` where it should start looking.
 
-## Looping and counting
+## Looping and Counting
 
 The following program counts the number of times the letter a appears in a string:
 
@@ -286,7 +286,7 @@ As an exercise, encapsulate this code in a function named `count`, and generaliz
 
 Then rewrite the function so that instead of traversing the string, it uses the three-parameter version of `find` from the previous section.
 
-## String library functions
+## String Library
 
 Julia provides functions that perform a variety of useful operations on strings. For example, the function `uppercase` takes a string and returns a new string with all uppercase letters.
 
@@ -318,7 +318,7 @@ julia> findnext("na", "banana", 4)
 
 This is an example of an **optional argument**.
 
-## The `∈` operator
+## The `∈` Operator
 
 The keyword `∈` (`\in TAB`) is a boolean operator that takes a character and a string and returns `true` if the first appears as in the second:
 
@@ -350,7 +350,7 @@ e
 s
 ```
 
-## String comparison
+## String Comparison
 
 The relational operators work on strings. To see if two strings are equal:
 

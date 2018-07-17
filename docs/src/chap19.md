@@ -1,4 +1,4 @@
-# The goodies
+# The Goodies
 
 ```@meta
 DocTestSetup = quote
@@ -14,7 +14,7 @@ Credit: this chapter is a synthesis of the corresponding parts in the offical Ju
 
 ## Regex
 
-## Named tuples
+## Named Tuples
 
 The components of tuples can optionally be named, in which case a named tuple is constructed:
 
@@ -27,7 +27,7 @@ julia> x.a
 
 Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax.
 
-## Keyword arguments
+## Keyword Arguments
 
 Some functions need a large number of arguments. Remembering how to call such functions can be difficult. **Keyword arguments** can make these complex interfaces easier to use and extend by allowing arguments to be identified by name instead of only by position.
 
@@ -41,7 +41,7 @@ end
 
 When the function is called, the semicolon is optional: one can either call `plot(x, y, width=2)` or `plot(x, y; width=2)`.
 
-## Short-circuit evaluation
+## Short-circuit Evaluation
 
 The operators `&&` and `||` do a **short-circuit evaluation**: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
 
@@ -55,7 +55,7 @@ function fact(n::Int)
 end
 ```
 
-## Ternary operator
+## Ternary Operator
 
 The so-called "ternary operator", `?:`, is closely related to the `if-elseif-else` syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:
 
@@ -71,7 +71,7 @@ A recursive factorial routine could also be defined like this:
 fact(n::Int) = n < 0 ? error("n must be non-negative") : n == 0 ? 1 : n * fact(n-1)
 ```
 
-## Anonymous functions
+## Anonymous Functions
 
 Functions in Julia are first-class objects: they can be assigned to variables, and called using the standard function call syntax from the variable they have been assigned to. They can be used as arguments, and they can be returned as values. They can also be created anonymously, without being given a name, using either of these syntaxes:
 
@@ -89,7 +89,7 @@ This creates a function taking one argument `x` and returning the value of the p
 
 The primary use for **anonymous functions** is passing them to functions which take other functions as arguments. See next sections.
 
-## Array comprehensions
+## Array Comprehensions
 
 For example, this function takes an array of strings, maps the string function capitalize to the elements, and returns a new array of strings:
 
@@ -119,7 +119,7 @@ Array comprehensions are concise and easy to read, at least for simple expressio
 
 But, in my defense, array comprehensions are harder to debug because you can’t put a print statement inside the loop. I suggest that you use them only if the computation is simple enough that you are likely to get it right the first time. And for beginners that means never.
 
-## Map, filter and reduce
+## Map, Filter and Reduce
 
 `capitalizeall` can also be written with the `map` function:
 
@@ -162,7 +162,7 @@ end
 
 ## Closures
 
-## `do` syntax
+## `do` Syntax
 
 Passing functions as arguments to other functions is a powerful technique, but the syntax for it is not always convenient. Such calls are especially awkward to write when the function argument requires multiple lines. As an example, consider calling `map` on a function with several cases:
 
@@ -283,7 +283,7 @@ The `⊆` operator checks whether one set is a subset or another, including the 
 
 As an exercise, rewrite `avoids` using sets.
 
-## Parametric types and functions
+## Parametric Types and Functions
 
 An important and powerful feature of Julia's type system is that it is parametric: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.
 
@@ -388,7 +388,7 @@ Note the distinguishing `@` before the macro name and the lack of commas between
 
 Julia, like most technical computing languages, provides a first-class array implementation. Most technical computing languages pay a lot of attention to their array implementation at the expense of other containers. Julia does not treat arrays in any special way. The array library is implemented almost completely in Julia itself, and derives its performance from the compiler, just like any other code written in Julia.
 
-## Calling C and Fortran code
+## Calling C and Fortran Code
 
 Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with `ccall` syntax, which looks like an ordinary function call.
 

@@ -1,4 +1,4 @@
-# Case study: data structure selection
+# Case Study: Data Structure Selection
 
 ```@meta
 DocTestSetup = quote
@@ -11,7 +11,7 @@ At this point you have learned about Julia’s core data structures, and you hav
 
 This chapter presents a case study with exercises that let you think about choosing data structures and practice using them.
 
-## Word frequency analysis
+## Word Frequency Analysis
 
 As usual, you should at least attempt the exercises before you read my solutions.
 
@@ -39,7 +39,7 @@ Modify the program from the previous exercise to print the 20 most frequently us
 
 Modify the previous program to read a word list and then print all the words in the book that are not in the word list. How many of them are typos? How many of them are common words that should be in the word list, and how many of them are really obscure?
 
-## Random numbers
+## Random Numbers
 
 Given the same inputs, most computer programs generate the same outputs every time, so they are said to be **deterministic**. Determinism is usually a good thing, since we expect the same calculation to yield the same result. For some applications, though, we want the computer to be unpredictable. Games are an obvious example, but there are more.
 
@@ -80,7 +80,7 @@ Dict{Any,Any} with 2 entries:
 
 your function should return `'a'` with probability ``\frac{2}{3}`` and `'b'` with probability ``\frac{1}{3}``.
 
-## Word histogram
+## Word Histogram
 
 You should attempt the previous exercises before you go on. You will also need <https://github.com/BenLauwens/ThinkJulia.jl/data/emma.txt>.
 
@@ -141,7 +141,7 @@ julia> println("Number of different words: ", differentwords(hist))
 Number of different words: 7380
 ```
 
-## Most common words
+## Most Common Words
 
 To find the most common words, we can make an array of tuples, where each tuple contains a word and its frequency, and sort it.
 The following function takes a histogram and returns an array of word-frequency tuples:
@@ -184,7 +184,7 @@ she    2364
 
 This code can be simplified using the `rev` keyword argument of the `sort!` function. If you are curious, you can read about it at <https://docs.julialang.org/en/stable/stdlib/sort/#Base.sort!>.
 
-## Optional parameters
+## Optional Parameters
 
 We have seen built-in functions that take optional arguments. It is possible to write programmer-defined functions with optional arguments, too. For example, here is a function that prints the most common words in a histogram:
 
@@ -216,7 +216,7 @@ print_most_common(hist, 20)
 
 If a function has both required and optional parameters, all the required parameters have to come first, followed by the optional ones.
 
-## Dictionary subtraction
+## Dictionary Subtraction
 
 Finding the words from the book that are not in the word list from `words.txt` is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).
 
@@ -261,7 +261,7 @@ Julia provides a data structure called set that provides many common set operati
 
 Write a program that uses set subtraction to find words in the book that are not in the word list.
 
-## Random words
+## Random Words
 
 To choose a random word from the histogram, the simplest algorithm is to build an array with multiple copies of each word, according to the observed frequency, and then choose from the array:
 
@@ -293,7 +293,7 @@ An alternative is:
 
 Write a program that uses this algorithm to choose a random word from the book.
 
-## Markov analysis
+## Markov Analysis
 
 If you choose words from the book at random, you can get a sense of the vocabulary, but you probably won’t get a sentence:
 
@@ -351,7 +351,7 @@ Credit: This case study is based on an example from Kernighan and Pike, The Prac
 
 You should attempt this exercise before you go on.
 
-## Data structures
+## Data Structures
 
 Using Markov analysis to generate random text is fun, but there is also a point to this exercise: data structure selection. In your solution to the previous exercises, you had to choose:
 

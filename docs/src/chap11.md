@@ -8,7 +8,7 @@ end
 
 This chapter presents another built-in type called a dictionary. Dictionaries are one of Julia’s best features; they are the building blocks of many efficient and elegant algorithms.
 
-## A dictionary is a mapping
+## A Dictionary Is a Mapping
 
 A **dictionary** is like an array, but more general. In an array, the indices have to be integers; in a dictionary they can be (almost) any type.
 
@@ -106,7 +106,7 @@ The `∈` operator uses different algorithms for arrays and dictionaries. For ar
 
 For dictionaries, Julia uses an algorithm called a **hashtable** that has a remarkable property: the `∈` operator takes about the same amount of time no matter how many items are in the dictionary.
 
-## Dictionary as a collection of counters
+## Dictionary as a Collection of Counters
 
 Suppose you are given a string and you want to count how many times each letter appears. There are several ways you could do it:
 
@@ -171,7 +171,7 @@ julia> get(h, 'b', 0)
 
 As an exercise, use `get` to write `histogram` more concisely. You should be able to eliminate the `if` statement.
 
-## Looping and dictionaries
+## Looping and Dictionaries
 
 You can traverse the keys of the dictionary in a `for` statement. For example, `printhist` prints each key and the corresponding value:
 
@@ -209,7 +209,7 @@ r 2
 t 1
 ```
 
-## Reverse lookup
+## Reverse Lookup
 
 Given a dictionary `d` and a key `k`, it is easy to find the corresponding value `v = d[k]`. This operation is called a **lookup**.
 
@@ -252,7 +252,7 @@ The effect when you generate an exception is the same as when Julia throws one: 
 
 A reverse lookup is much slower than a forward lookup; if you have to do it often, or if the dictionary gets big, the performance of your program will suffer.
 
-## Dictionaries and arrays
+## Dictionaries and Arrays
 
 Arrays can appear as values in a dictionary. For example, if you are given a dictionary that maps from letters to frequencies, you might want to invert it; that is, create a dictionary that maps from frequencies to letters. Since there might be several letters with the same frequency, each value in the inverted dictionary should be an array of letters.
 
@@ -288,7 +288,7 @@ Dict{Any,Any} with 2 entries:
 
 ![State diagram.](images/fig111.svg)
 
-Figure 11.1 is a state diagram showing `hist` and `inverse`. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
+Figure 11-1 is a state diagram showing `hist` and `inverse`. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
 
 I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be **hashable**.
 
@@ -298,7 +298,7 @@ A **hash** is a function that takes a value (of any kind) and returns an integer
 
 If you played with the `fibonacci` function from Section 6.7, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
 
-To understand why, consider Figure 11.2, which shows the **call graph** for `fibonacci` with `n = 4`:
+To understand why, consider Figure 11-2, which shows the **call graph** for `fibonacci` with `n = 4`:
 
 ![Call graph.](images/fig112.svg)
 
@@ -327,7 +327,7 @@ Whenever `fibonacci` is called, it checks `known`. If the result is already ther
 
 If you run this version of `fibonacci` and compare it with the original, you will find that it is much faster.
 
-## Global variables
+## Global Variables
 
 In the previous example, known is created outside the function, so it belongs to the special frame called `__main__`. Variables in `__main__` are sometimes called **global** because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
 

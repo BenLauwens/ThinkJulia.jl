@@ -92,6 +92,11 @@ end
 render(io::IO, md::Markdown.MD) = map(elem -> render(io, elem), md.content)
 function render(io::IO, p::Markdown.Paragraph, parent=nothing)
   p.content[1] isa String && occursin(r"<a id.*</a>", p.content[1]) && return
+  if length(p.content) == 2 && p.content[1] isa Markdown.Italic
+    println(io, p.content[1].text[1], "::")
+    println(io, p.content[2][3:end])
+    return
+  end
   for elem in p.content
     render(io, elem, p)
   end

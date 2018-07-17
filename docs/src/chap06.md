@@ -1,4 +1,4 @@
-# Fruitful functions
+# Fruitful Functions
 
 ```@meta
 DocTestSetup = quote
@@ -8,7 +8,7 @@ end
 
 Many of the Julia functions we have used, such as the math functions, produce return values. But the functions we’ve written are all void: they have an effect, like printing a value or moving a turtle, but they return `nothing`. In this chapter you will learn to write fruitful functions.
 
-## Return values
+## Return Values
 
 Calling the function generates a return value, which we usually assign to a variable or use as part of an expression.
 
@@ -79,7 +79,7 @@ By the way, Julia provides a built-in function called `abs` that computes absolu
 
 As an exercise, write a `compare` function takes two values, `x` and `y`, and returns `1` if `x > y`, `0` if `x == y`, and `-1` if `x < y`.
 
-## Incremental development
+## Incremental Development
 
 As you write larger functions, you might find yourself spending more time debugging.
 
@@ -200,7 +200,7 @@ function circlearea(xc, yc, xp, yp)
 end
 ```
 
-## Boolean functions
+## Boolean Functions
 
 Functions can return booleans, which is often convenient for hiding complicated tests inside functions. For example:
 
@@ -253,7 +253,7 @@ But the extra comparison is unnecessary.
 
 As an exercise, write a function `isbetween(x, y, z)` that returns `true` if `x ≤ y ≤ z` or `false` otherwise.
 
-## More recursion
+## More Recursion
 
 We have only covered a small subset of Julia, but you might be interested to know that this subset is a *complete* programming language, which means that anything that can be computed can be expressed in this language. Any program ever written could be rewritten using only the language features you have learned so far (actually, you would need a few commands to control devices like the mouse, disks, etc., but that’s all).
 
@@ -326,13 +326,13 @@ The flow of execution for this program is similar to the flow of `countdown` in 
 
 ![Stack diagram.](images/fig61.svg)
 
-Figure 6.1 shows what the stack diagram looks like for this sequence of function calls.
+Figure 6-1 shows what the stack diagram looks like for this sequence of function calls.
 
 The return values are shown being passed back up the stack. In each frame, the return value is the value of `result`, which is the product of `n` and `recurse`.
 
 In the last frame, the local variables `recurse` and `result` do not exist, because the branch that creates them does not run.
 
-## Leap of faith
+## Leap of Faith
 
 Following the flow of execution is one way to read programs, but it can quickly become overwhelming. An alternative is what I call the “leap of faith”. When you come to a function call, instead of following the flow of execution, you *assume* that the function works correctly and returns the right result.
 
@@ -344,7 +344,7 @@ The same is true of recursive programs. When you get to the recursive call, inst
 
 Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!
 
-## One more example
+## One More Example
 
 After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see <http://en.wikipedia.org/wiki/Fibonacci_number>):
 
@@ -373,7 +373,7 @@ end
 
 If you try to follow the flow of execution here, even for fairly small values of `n`, your head explodes. But according to the leap of faith, if you assume that the two recursive calls work correctly, then it is clear that you get the right result by adding them together.
 
-## Checking types
+## Checking Types
 
 What happens if we call `fact` and give it `1.5` as an argument?
 

@@ -52,8 +52,10 @@ if "generate" in ARGS
   end
 end
 makeasciidoc(root; title=title, subtitle=subtitle, authors=authors, chaps=chaps)
-for file in ["copyright.md", "preface.md", chaps...]
-  #rm(joinpath(root, "build", file))
+if "remove" in ARGS
+  for file in ["copyright.md", "preface.md", chaps...]
+    #rm(joinpath(root, "build", file))
+  end
 end
 if "pdf" in ARGS
   run(`asciidoctor-pdf -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a docinfo -a source-highlighter=pygments -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)

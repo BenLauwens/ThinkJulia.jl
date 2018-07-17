@@ -81,7 +81,7 @@ julia> println(fout, "I have spotted $camels camels.")
 
 A more powerful alternative is the `@printf` macro that prints using a C style format specification string, which you can read about at <https://docs.julialang.org/en/stable/stdlib/io-network/#Base.Printf.@printf>
 
-## Filenames and paths
+## Filenames and Paths
 
 Files are organized into **directories** (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
 
@@ -152,7 +152,7 @@ end
 
 Julia provides a function called `walkdir` (see <https://docs.julialang.org/en/stable/stdlib/file/#Base.Filesystem.walkdir>) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 
-## Catching exceptions
+## Catching Exceptions
 
 A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a `SystemError`:
 
@@ -300,7 +300,7 @@ In other words, serialization and then deserialization has the same effect as co
 
 You can use this to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a package called `JLD(2)`.
 
-## Command objects
+## Command Objects
 
 Most operating systems provide a command-line interface, also known as a **shell**. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with `cd`, display the contents of a directory with `ls`, and launch a web browser by typing (for example) `firefox`.
 

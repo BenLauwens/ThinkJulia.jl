@@ -1,4 +1,4 @@
-# Multiple dispatch
+# Multiple Dispatch
 
 ```@meta
 DocTestSetup = quote
@@ -12,7 +12,7 @@ In this chapter I will discuss the use of type declarations in Julia and I will 
 
 Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: <https://docs.julialang.org/en/latest/manual/types/#man-types-1> and <https://docs.julialang.org/en/latest/manual/methods/#Methods-1>.
 
-## Type declarations
+## Type Declarations
 
 The `::` operator can be used to attach **type annotations** to expressions and variables in programs. There are two primary reasons to do this:
 
@@ -66,7 +66,7 @@ Recall from Functions that a function is an object that maps a tuple of argument
 
 To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a **method**. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the **signatures** of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
 
-## Printing objects
+## Printing Objects
 
 In Chapter 16, we defined a struct named `MyTime` and in Section 16.1, you wrote a function named `printtime`:
 
@@ -130,7 +130,7 @@ I don't know how to print the argument time.
 
 As an exercise, rewrite `timetoint` and `inttotime` (from Section 16.4) to specify their argument.
 
-## More examples
+## More Examples
 
 Here’s a version of `increment!` (from Section 16.3) rewritten to specify its arguments:
 
@@ -296,7 +296,7 @@ When I write a new composite type, I almost always start by writing an inner con
 
 As an exercise, write an inner constructor method for the `Point` class that takes `x` and `y` as optional parameters and assigns them to the corresponding fields.
 
-## Operator overloading
+## Operator Overloading
 
 By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named `+` with two `MyTime` arguments, you can use the `+` operator on `MyTime` objects.
 
@@ -334,7 +334,7 @@ When you apply the `+` operator to `MyTime` objects, Julia invokes the newly add
 
 Changing the behavior of an operator so that it works with programmer-defined types is called **operator overloading**.
 
-## Multiple dispatch
+## Multiple Dispatch
 
 In the previous section we added two `MyTime` objects, but you also might want to add an integer to a `MyTime` object:
 
@@ -429,7 +429,7 @@ In general, if all of the operations inside a function work with a given type, t
 
 The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.
 
-## Interface and implementation
+## Interface and Implementation
 
 One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.
 

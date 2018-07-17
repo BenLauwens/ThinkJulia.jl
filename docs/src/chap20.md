@@ -8,7 +8,7 @@ When you are debugging, you should distinguish among different kinds of errors i
 
 - Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result. The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.
 
-## Syntax errors
+## Syntax Errors
 
 Syntax errors are usually easy to fix once you figure out what they are. Unfortunately, the error messages are often not helpful. The most common messages are `ERROR: LoadError: syntax: incomplete: premature end of input` and `ERROR: LoadError: syntax: unexpected "="`, neither of which is very informative.
 
@@ -56,7 +56,7 @@ There are a few likely culprits:
 
 If you get stuck and you can’t figure out what is going on, one approach is to start again with a new program like “Hello, World!”, and make sure you can get a known program to run. Then gradually add the pieces of the original program to the new one.
 
-## Runtime errors
+## Runtime Errors
 
 Once your program is syntactically correct, Julia can read it and at least start running it. What could possibly go wrong?
 
@@ -172,7 +172,7 @@ Often the process of finding the minimal test case leads you to the bug. If you 
 
 Similarly, rewriting a piece of code can help you find subtle bugs. If you make a change that you think shouldn’t affect the program, and it does, that can tip you off.
 
-## Semantic errors
+## Semantic Errors
 
 In some ways, semantic errors are the hardest to debug, because the interpreter provides no information about what is wrong. Only you know what the program is supposed to do.
 

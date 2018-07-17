@@ -12,7 +12,7 @@ const preamble_pdf = """
 \\usetikzlibrary{arrows.meta}
 """
 
-const options_svg = "scale=1.4, transform shape"
+const options_svg = "scale=1.45, transform shape"
 
 const options_pdf = "scale=1.0, transform shape"
 

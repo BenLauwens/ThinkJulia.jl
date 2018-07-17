@@ -55,7 +55,7 @@ julia> queen_of_diamonds = Card(2, 12)
 ThinkJulia.Card(2, 12)
 ```
 
-## Global variables
+## Global Variables
 
 In order to print `Card` objects in a way that people can easily read, we need a mapping from the integer codes to the corresponding ranks and suits. A natural way to do that is with arrays of strings:
 
@@ -83,7 +83,7 @@ julia> Card(3, 11)
 J♥
 ```
 
-## Comparing cards
+## Comparing Cards
 
 For built-in types, there are relational operators (`<`, `>`, `==`, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: `Base.isless`.
 
@@ -101,7 +101,7 @@ end
 
 As an exercise, write a `Base.isless` method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
 
-## Unit testing
+## Unit Testing
 
 **Unit testing** is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
 
@@ -159,7 +159,7 @@ julia> Deck()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
 ```
 
-## Add, remove, shuffle and sort
+## Add, Remove, Shuffle and Sort
 
 To deal cards, we would like a function that removes a card from the deck and returns it. The function `pop!` provides a convenient way to do that:
 
@@ -197,7 +197,7 @@ end
 
 Write a function named `sortdeck!` that uses the function `sort!` to sort the cards in a Deck. `sort!` uses the `Base.isless` method we defined to determine the order.
 
-## Abstract types and subtyping
+## Abstract Types and Subtyping
 
 We want a type to represent a “hand”, that is, the cards held by one player. A hand is similar to a deck: both are made up of a collection of cards, and both require operations like adding and removing cards.
 
@@ -262,7 +262,7 @@ julia> hand.cards
 0-element Array{ThinkJulia.Card,1}
 ```
 
-## Abstract types and functions
+## Abstract Types and Functions
 
 We can now express the common operations between `Deck` and `Hand` as functions having as argument `CardSet`:
 
@@ -316,7 +316,7 @@ end
 
 In some games, cards are moved from one hand to another, or from a hand back to the deck. You can use `move!` for any of these operations: `cs1` and `cs2` can be either a `Deck` or a `Hand`.
 
-## Type diagrams
+## Type Diagrams
 
 So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.
 
@@ -365,7 +365,7 @@ Here’s a design suggestion: when you override a method, the interface of the n
 
 If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
 
-## Data encapsulation
+## Data Encapsulation
 
 The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like `Point`, `Rectangle` and `MyTime`—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).
 

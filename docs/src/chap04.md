@@ -1,4 +1,4 @@
-# Case study: interface design
+# Case Study: Interface Design
 
 This chapter presents a case study that demonstrates a process for designing functions that work together.
 
@@ -6,7 +6,7 @@ It introduces the `ThinkJulia` module, which allows you to create images using t
 
 The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document.
 
-## The Luxor module
+## Turtles
 
 A **module** is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key `]`.
 
@@ -43,7 +43,7 @@ The arguments of `forward` are the turtle and a distance in pixels, so the actua
 
 Another function you can call with a turtle as argument is `turn` for turning. The second argument for `turn` is an angle in degrees.
 
-Also, each turtle is holding a pen, which is either down or up; if the pen is down, the turtle leaves a trail when it moves. Figure 1 shows the trail left behind by the turtle. The functions `penup` and `pendown` stand for “pen up” and “pen down”.
+Also, each turtle is holding a pen, which is either down or up; if the pen is down, the turtle leaves a trail when it moves. Figure 4-1 shows the trail left behind by the turtle. The functions `penup` and `pendown` stand for “pen up” and “pen down”.
 
 To draw a right angle, modify the macro:
 
@@ -58,7 +58,7 @@ end
 
 Now modify the macro to draw a square. Don’t go on until you’ve got it working!
 
-## Simple repetition
+## Simple Repetition
 
 Chances are you wrote something like this:
 
@@ -192,7 +192,7 @@ end
 
 This example draws a 7-sided polygon with side length 70.
 
-## Interface design
+## Interface Design
 
 The next step is to write `circle`, which takes a radius, `r`, as a parameter. Here is a simple solution that uses `polygon` to draw a 50-sided polygon:
 
@@ -287,7 +287,7 @@ This process—rearranging a program to improve interfaces and facilitate code r
 
 If we had planned ahead, we might have written `polyline` first and avoided refactoring, but often you don’t know enough at the beginning of a project to design all the interfaces. Once you start coding, you understand the problem better. Sometimes refactoring is a sign that you have learned something.
 
-## A development plan
+## A Development Plan
 
 A **development plan** is a process for writing programs. The process we used in this case study is “encapsulation and generalization”. The steps of this process are:
 
@@ -422,13 +422,13 @@ end
 
 ### Exercise 4-2
 
-Write an appropriately general set of functions that can draw flowers as in Figure 4.2.
+Write an appropriately general set of functions that can draw flowers as in Figure 4-2.
 
 ![Turtle flowers.](images/fig42.svg)
 
 ### Exercise 4-3
 
-Write an appropriately general set of functions that can draw shapes as in Figure 4.3.
+Write an appropriately general set of functions that can draw shapes as in Figure 4-3.
 
 ![Turtle pies.](images/fig43.svg)
 
@@ -440,6 +440,6 @@ You should write one function for each letter, with names `draw_a`, `draw_b`, et
 
 ### Exercise 4-5
 
-Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in Figure 4.4.
+Read about spirals at <http://en.wikipedia.org/wiki/Spiral>; then write a program that draws an Archimedian spiral as in Figure 4-4.
 
 ![Archimedian spiral.](images/fig44.svg)

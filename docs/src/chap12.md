@@ -10,7 +10,7 @@ This chapter presents one more built-in type, the tuple, and then shows how arra
 
 One note: there is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”.
 
-## Tuples are immutable
+## Tuples Are Immutable
 
 A tuple is a sequence of values. The values can be any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable.
 
@@ -96,7 +96,7 @@ julia> (0, 1, 2000000) < (0, 3, 4)
 true
 ```
 
-## Tuple assignment
+## Tuple Assignment
 
 It is often useful to swap the values of two variables. With conventional assignments, you have to use a temporary variable. For example, to swap a and b:
 
@@ -140,7 +140,7 @@ julia> domain
 "rome"
 ```
 
-## Tuples as return values
+## Tuples as Return Values
 
 Strictly speaking, a function can only return one value, but if the value is a tuple, the effect is the same as returning multiple values. For example, if you want to divide two integers and compute the quotient and remainder, it is inefficient to compute `x ÷ y` and then `x % y`. It is better to compute them both at the same time.
 
@@ -172,7 +172,7 @@ end
 
 `maximum` and `mininimum` are built-in functions that find the largest and smallest elements of a sequence. `min_max` computes both and returns a tuple of two values.
 
-## Variable-length argument tuples
+## Variable-length Argument Tuples
 
 Functions can take a variable number of arguments. A parameter name that ends with `...` **gathers** arguments into a tuple. For example, `printall` takes any number of arguments and prints them:
 
@@ -221,7 +221,7 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 
 As an exercise, write a function called `sumall` that takes any number of arguments and returns their sum.
 
-## Arrays and tuples
+## Arrays and Tuples
 
 `zip` is a built-in function that takes two or more sequences and returns an array of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
 
@@ -312,7 +312,7 @@ julia> for (index, element) in enumerate("abc")
 
 The result from `enumerate` is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence.
 
-## Dictionaries and tuples
+## Dictionaries and Tuples
 
 Dictionaries can be used as iterators that iterates the key-value pairs. You can use it in a `for` loop like this:
 
@@ -367,17 +367,17 @@ end
 
 This loop traverses the key-value pairs in `directory`, which are tuples. It assigns the elements of the key in each tuple to `last` and `first`, and the value to `number`, then prints the name and corresponding telephone number.
 
-There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple `("Cleese", "John")` would appear as in Figure 12.1.
+There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple `("Cleese", "John")` would appear as in Figure 12-1.
 
 ![State diagram.](images/fig121.svg)
 
-But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in Figure 12.2.
+But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in Figure 12-2.
 
 ![State diagram.](images/fig122.svg)
 
 Here the tuples are shown using Julia syntax as a graphical shorthand. The telephone number in the diagram is the complaints line for the BBC, so please don’t call it.
 
-## Sequences of sequences
+## Sequences of Sequences
 
 I have focused on arrays of tuples, but almost all of the examples in this chapter also work with arrays of arrays, tuples of tuples, and tuples of arrays. To avoid enumerating the possible combinations, it is sometimes easier to talk about sequences of sequences.
 
