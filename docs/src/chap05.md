@@ -255,7 +255,7 @@ end
 
 If `n <= 0` the `return` statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
 
-The rest of the function is similar to `countdown`: it displays `s` and then calls itself to display `s` ``n−1`` additional times. So the number of lines of output is ``1 + (n - 1)``, which adds up to ``n``.
+The rest of the function is similar to `countdown`: it displays `s` and then calls itself to display `s` ``n-1`` additional times. So the number of lines of output is ``1 + (n - 1)``, which adds up to ``n``.
 
 For simple examples like this, it is probably easier to use a `for` loop. But we will see examples later that are hard to write with a `for` loop and easy to write with recursion, so it is good to start early.
 
@@ -460,7 +460,7 @@ for any values of ``n`` greater than 2.
 
 If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
 
-> *If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)*
+*If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)*
 
 1. Write a function named `istriangle` that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
 

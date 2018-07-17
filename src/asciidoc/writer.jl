@@ -12,6 +12,8 @@ function makeasciidoc(root::String; title="", subtitle="",
 end
 
 order = 0
+chapter = -1
+fig = 0
 
 function render(io::IO, block::Markdown.BlockQuote, parent=nothing)
   println(io, "[quote,  ]")
@@ -20,28 +22,44 @@ function render(io::IO, block::Markdown.BlockQuote, parent=nothing)
   println(io, "____")
 end
 function render(io::IO, b::Markdown.Bold, parent=nothing)
-  print(io, "*") 
-  render(io, b.text, b)
-  print(io, "*")
+  if b.text isa Vector && length(b.text) == 1 && b.text[1] isa String && length(b.text[1]) == 1
+    print(io, "**") 
+    render(io, b.text, b)
+    print(io, "**")
+  else
+    print(io, "*") 
+    render(io, b.text, b)
+    print(io, "*")
+  end
 end
 function render(io::IO, c::Markdown.Code, parent=nothing)
-  if c.language == ""
-    print(io, "+", c.code, "+")
-  else
+  if parent == nothing
     println(io, "[source,", c.language, "]")
     println(io, "----")
     println(io, replace(c.code, "&gt" => ">"))
     println(io, "----\n")
+  else
+    code = c.code
+    if length(code) == 1
+      code = "+" * code * "+"
+    end
+    print(io, "`", code, "`")
   end
 end
 function render(io::IO, h::Markdown.Header{n}, parent=nothing) where{n}
   print(io, "="^(n+1), " ")
   render(io, h.text, h)
   println(io, "\n")
+  if n == 1
+    global chapter += 1
+    global fig = 0
+  end
 end
 function render(io::IO, i::Markdown.Image, parent=nothing)
   println(io, ".", i.alt)
-  println(io, "image::", i.url, "[\"", i.alt, "\"]")
+  global fig += 1
+  global chapter
+  println(io, "image::", i.url, "[caption=\"Figure $chapter-$fig. \"]")
 end
 function render(io::IO, i::Markdown.Italic, parent=nothing)
   print(io, "_") 
@@ -85,7 +103,7 @@ render(io::IO, vec::Vector, parent=nothing) = map(elem->render(io, elem, vec), v
 
 function makeindex(file::String)
   open(file, "w") do io
-    println(io, "== index")
+    println(io, "== Index")
   end
 end
 

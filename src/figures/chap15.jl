@@ -1,4 +1,4 @@
-function fig15_1()
+function fig15_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east](blank) at (-2.25, 0) {\tt p};
   \node[draw, fill=lightgray, minimum width=2.5cm, minimum height=1cm](Point) at(0,0){};
@@ -10,15 +10,16 @@ function fig15_1()
   \draw[-latex] (blank) -- (Point);
   \draw[-latex] (x) -- (xv);
   \draw[-latex] (y) -- (yv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig151"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig151"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig151"), p) : save(SVG("fig151"), p)
 end
 
-function fig15_2()
+function fig15_2(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east](box) at (-2.75, 0) {\tt box};
   \node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1.5cm](Rectangle) at(0,0){};
@@ -40,10 +41,11 @@ function fig15_2()
   \draw[-latex] (corner) -- (MPoint);
   \draw[-latex] (x) -- (xv);
   \draw[-latex] (y) -- (yv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig152"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig152"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig152"), p) : save(SVG("fig152"), p)
 end

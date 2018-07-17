@@ -1,4 +1,4 @@
-function fig16_1()
+function fig16_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east](time) at (-2.5, 0) {\tt time};
   \node[draw, fill=lightgray, minimum width=3cm, minimum height=1.5cm](MyTime) at(0,0){};
@@ -13,10 +13,11 @@ function fig16_1()
   \draw[-latex] (h) -- (hv);
   \draw[-latex] (m) -- (mv);
   \draw[-latex] (s) -- (sv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig161"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig161"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig161"), p) : save(SVG("fig161"), p)
 end

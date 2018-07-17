@@ -1,9 +1,5 @@
-function fig04_1()
-  draw04_1("svg")
-  draw04_1("pdf")
-end
-
-function draw04_1(ext)
+function fig04_1(output::Symbol, font::String)
+  ext = output == :pdf ? "pdf" : "svg"
   Drawing(102, 10, "fig41.$ext")  
   origin()
   background("white")  
@@ -13,15 +9,10 @@ function draw04_1(ext)
   Penwidth(🐢, 1)
   forward(🐢, 100)
   finish() 
-  nothing
 end
 
-function fig04_2()
-  draw04_2("svg")
-  draw04_2("pdf")
-end
-
-function draw04_2(ext)
+function fig04_2(output::Symbol, font::String)
+  ext = output == :pdf ? "pdf" : "svg"
   Drawing(310, 110, "fig42.$ext")  
   origin()
   background("white")  
@@ -35,15 +26,10 @@ function draw04_2(ext)
   Reposition(🐢, 100, 0)
   flower(🐢, 20, 140.0, 20.0)
   finish() 
-  nothing
 end
 
-function fig04_3()
-  draw04_3("svg")
-  draw04_3("pdf")
-end
-
-function draw04_3(ext)
+function fig04_3(output::Symbol, font::String)
+  ext = output == :pdf ? "pdf" : "svg"
   Drawing(360, 80, "fig43.$ext")  
   origin()
   background("white")  
@@ -57,15 +43,10 @@ function draw04_3(ext)
   drawpie(🐢, 7, size)
   drawpie(🐢, 8, size)
   finish() 
-  nothing
 end
 
-function fig04_4()
-  draw04_4("svg")
-  draw04_4("pdf")
-end
-
-function draw04_4(ext)
+function fig04_4(output::Symbol, font::String)
+  ext = output == :pdf ? "pdf" : "svg"
   Drawing(110, 110, "fig44.$ext")  
   origin()
   background("white")  
@@ -75,5 +56,4 @@ function draw04_4(ext)
   Reposition(🐢, 0, 15)
   spiral(🐢, 230, 3, 0.1, 0.0002)
   finish() 
-  nothing
 end

@@ -58,7 +58,7 @@ If you get stuck and you can’t figure out what is going on, one approach is to
 
 ## Runtime errors
 
-Once your program is syntactically correct, Python can read it and at least start running it. What could possibly go wrong?
+Once your program is syntactically correct, Julia can read it and at least start running it. What could possibly go wrong?
 
 ### My program does absolutely nothing
 

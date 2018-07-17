@@ -8,7 +8,7 @@ end
 
 In the context of programming, a **function** is a named sequence of statements that performs a computation. When you define a function, you specify the name and the sequence of statements. Later, you can “call” the function by name.
 
-## Function calls
+## Function Calls
 
 We have already seen one example of a function call:
 
@@ -57,7 +57,7 @@ julia> string(3.14159)
 "3.14159"
 ```
 
-## Math functions
+## Math Functions
 
 In Julia,  most of the familiar mathematical functions are directly available:
 
@@ -122,7 +122,7 @@ julia> hours * 60 = minutes # wrong!
 ERROR: syntax: "60" is not a valid function argument name
 ```
 
-## Adding new functions
+## Adding New Functions
 
 So far, we have only been using the functions that come with Julia, but it is also possible to add new functions. A **function definition** specifies the name of a new function and the sequence of statements that run when the function is called.
 Here is an example:
@@ -187,7 +187,7 @@ I sleep all night and I work all day.
 
 But that’s not really how the song goes.
 
-## Definitions and uses
+## Definitions and Uses
 
 Pulling together the code fragments from the previous section, the whole program looks like this:
 
@@ -213,7 +213,7 @@ As an exercise, move the last line of this program to the top, so the function c
 
 Now move the function call back to the bottom and move the definition of `printlyrics` after the definition of `repeatlyrics`. What happens when you run this program?
 
-## Flow of execution
+## Flow of Execution
 
 To ensure that a function is defined before its first use, you have to know the order statements run in, which is called the **flow of execution**.
 
@@ -229,7 +229,7 @@ Fortunately, Julia is good at keeping track of where it is, so each time a funct
 
 In summary, when you read a program, you don’t always want to read from top to bottom. Sometimes it makes more sense if you follow the flow of execution.
 
-## Parameters and arguments
+## Parameters and Arguments
 
 Some of the functions we have seen require arguments. For example, when you call `sin` you pass a number as an argument. Some functions take more than one argument: `parse` takes two, a number type and a string.
 
@@ -280,7 +280,7 @@ Eric, the half a bee.
 
 The name of the variable we pass as an argument (`michael`) has nothing to do with the name of the parameter (`bruce`). It doesn’t matter what the value was called back home (in the caller); here in `printtwice`, we call everybody `bruce`.
 
-## Variables and parameters are local
+## Variables and Parameters Are Local
 
 When you create a variable inside a function, it is **local**, which means that it only exists inside the function. For example:
 
@@ -312,7 +312,7 @@ ERROR: UndefVarError: concat not defined
 
 Parameters are also local. For example, outside `printtwice`, there is no such thing as `bruce`.
 
-## Stack diagrams
+## Stack Diagrams
 
 To keep track of which variables can be used where, it is sometimes useful to draw a **stack diagram**. Like state diagrams, stack diagrams show the value of each variable, but they also show the function each variable belongs to.
 
@@ -339,7 +339,7 @@ This list of functions is called a **traceback**. It tells you what program file
 
 The order of the functions in the traceback is the inverse of the order of the frames in the stack diagram. The function that is currently running is at the top.
 
-## Fruitful functions and void functions
+## Fruitful Functions and Void Functions
 
 Some of the functions we have used, such as the math functions, return results; for lack of a better name, I call them **fruitful functions**. Other functions, like `printtwice`, perform an action but don’t return a value. They are called **void functions**.
 
@@ -386,7 +386,7 @@ Nothing
 
 The functions we have written so far are all void. We will start writing fruitful functions in a few chapters.
 
-## Why functions?
+## Why Functions?
 
 It may not be clear why it is worth the trouble to divide a program into functions. There are several reasons:
 

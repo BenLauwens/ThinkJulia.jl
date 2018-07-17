@@ -1,6 +1,6 @@
 using TikzPictures
 
-function fig06_1()
+function fig06_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east] at(-4.2,0){\tt \_\_main\_\_};
   \node[draw, fill=lightgray, minimum width=8cm, minimum height=0.5cm](c0){};
@@ -50,10 +50,11 @@ function fig06_1()
   \node [right of=c3, xshift=3.5cm, yshift=0.375cm] {\tt 1};
   \node [right of=c2, xshift=3.5cm, yshift=0.375cm] {\tt 2};
   \node [right of=c1, xshift=3.5cm, yshift=0.375cm] {\tt 6};
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig61"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig61"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig61"), p) : save(SVG("fig61"), p)
 end

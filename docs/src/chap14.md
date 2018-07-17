@@ -83,7 +83,7 @@ A more powerful alternative is the `@printf` macro that prints using a C style f
 
 ## Filenames and paths
 
-Files are organized into **directories** (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Python looks for it in the current directory.
+Files are organized into **directories** (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
 
 The function `pwd` returns the name of the current directory:
 

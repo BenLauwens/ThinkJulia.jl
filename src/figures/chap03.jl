@@ -1,6 +1,6 @@
 using TikzPictures
 
-function fig03_1()
+function fig03_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east] at(-4,0){\tt \_\_main\_\_};
   \node[draw, fill=lightgray, minimum width=7cm, minimum height=1cm]{};
@@ -26,10 +26,11 @@ function fig03_1()
   \node[anchor=east] (b) at(-2.25, -2.75) {\tt bruce};
   \node[anchor=west] (bv) at (-1.25, -2.75) {\tt "Bing tiddle tiddle bang"};
   \draw[-latex] (b) -- (bv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig31"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig31"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig31"), p) : save(SVG("fig31"), p)
 end

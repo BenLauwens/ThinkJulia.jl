@@ -535,7 +535,7 @@ A character encoding standard for electronic communication specifying 128 charac
 A computing industry standard for the consistent encoding, representation, and handling of text expressed in most of the world's writing systems.
 
 *index*:
-An integer value used to select an item in a sequence, such as a character in a string. In Python indices start from 0.
+An integer value used to select an item in a sequence, such as a character in a string. In Julia indices start from 1.
 
 *UTF-8 encoding*:
 A variable width character encoding capable of encoding all 1112064 valid code points in Unicode using one to four 8-bit bytes.

@@ -1,8 +1,8 @@
-# Variables, expressions and statements
+# Variables, Expressions and Statements
 
 One of the most powerful features of a programming language is the ability to manipulate **variables**. A variable is a name that refers to a value.
 
-## Assignment statements
+## Assignment Statements
 
 An **assignment statement** creates a new variable and gives it a value:
 
@@ -21,7 +21,7 @@ A common way to represent variables on paper is to write the name with an arrow 
 
 ![State diagram.](images/fig21.svg)
 
-## Variable names
+## Variable Names
 
 Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.
 
@@ -60,7 +60,7 @@ using       struct       while
 
 You don’t have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you’ll know.
 
-## Expressions and statements
+## Expressions and Statements
 
 An **expression** is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
 
@@ -88,7 +88,7 @@ The first line is an assignment statement that gives a value to `n`. The second 
 
 When you type a statement, the REPL **executes** it, which means that it does whatever the statement says. In general, statements don’t have values.
 
-## Script mode
+## Script Mode
 
 So far we have run Julia in **interactive mode**, which means that you interact directly with the REPL. Interactive mode is a good way to get started, but if you are working with more than a few lines of code, it can be clumsy.
 
@@ -148,7 +148,7 @@ x + 1
 
 Now put the same statements in a script and run it. What is the output? Modify the script by transforming each expression into a print statement and then run it again.
 
-## Order of operations
+## Order of Operations
 
 When an expression contains more than one operator, the order of evaluation depends on the **order of operations**. For mathematical operators, Julia follows mathematical convention. The acronym **PEMDAS** is a useful way to remember the rules:
 
@@ -162,7 +162,7 @@ When an expression contains more than one operator, the order of evaluation depe
 
 I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
 
-## String operations
+## String Operations
 
 In general, you can’t perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
 

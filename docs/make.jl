@@ -1,12 +1,12 @@
 using Documenter
+using ThinkJulia: makefigs
 
 makedocs(
-  #format = :latex,
-  format = :html,
+  format = "pdf" in ARGS ? :latex : :html,
   sitename = "Think Julia",
   authors = "Ben Lauwens with Allen B. Downey",
   pages = [
-    hide("copyright.md"),
+    "pdf" in ARGS ? "copyright.md" : hide("copyright.md"),
     "preface.md",
     "chap01.md",
     "chap02.md",
@@ -33,8 +33,11 @@ makedocs(
 
 const dir = joinpath("build/images")
 mkpath(dir)
-using ThinkJulia
-cd(makefigs, dir)
+if "pdf" in ARGS
+  cd(()->makefigs(:pdf, "Ubuntu Mono"), dir)
+else
+  cd(()->makefigs(:svg, "DejaVu Sans Mono"), dir)
+end
 
 deploydocs(
   repo   = "github.com/BenLauwens/ThinkJulia.jl",

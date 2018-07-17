@@ -500,7 +500,7 @@ An object that appears in a dictionary as the second part of a key-value pair. T
 A way of performing a computation.
 
 *hashtable*:
-The algorithm used to implement Python dictionaries.
+The algorithm used to implement Julia dictionaries.
 
 *hash function*:
 A function used by a hashtable to compute the location for a key.

@@ -2,7 +2,7 @@
 \mainmatter
 ```
 
-# The way of the program
+# The Way of the Program
 
 The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
 
@@ -10,7 +10,7 @@ The single most important skill for a computer scientist is **problem solving**.
 
 On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.
 
-## What is a program?
+## What is a Program?
 
 A **program** is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching and replacing text in a document or something graphical, like processing an image or playing a video.
 
@@ -59,7 +59,7 @@ julia> 1 + 1
 
 Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.
 
-## The first program
+## The First Program
 
 Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:
 
@@ -74,7 +74,7 @@ The quotation marks in the program mark the beginning and end of the text to be 
 
 The parentheses indicate that `println` is a function. We’ll get to functions in Chapter 3 [Functions](@ref).
 
-## Arithmetic operators
+## Arithmetic Operators
 
 After “Hello, World!”, the next step is arithmetic. Julia provides **operators**, which are special symbols that represent computations like addition and multiplication.
 
@@ -105,7 +105,7 @@ julia> 6^2 + 6
 42
 ```
 
-## Values and types
+## Values and Types
 
 A **value** is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are `2`, `42.0`, and `"Hello, World!"`.
 
@@ -144,7 +144,7 @@ julia> 1,000,000
 
 That’s not what we expected at all! Julia parses `1,000,000` as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
 
-## Formal and natural languages
+## Formal and Natural Languages
 
 **Natural languages** are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
 
@@ -152,9 +152,9 @@ That’s not what we expected at all! Julia parses `1,000,000` as a comma-separa
 
 *Programming languages are formal languages that have been designed to express computations.*
 
-Formal languages tend to have strict **syntax** rules that govern the structure of statements. For example, in mathematics the statement ``3 + 3 = 6`` has correct syntax, but ``3 + = 3 § 6`` does not. In chemistry ``H_2O`` is a syntactically correct formula, but ``_2Zz`` is not.
+Formal languages tend to have strict **syntax** rules that govern the structure of statements. For example, in mathematics the statement ``3 + 3 = 6`` has correct syntax, but ``3 + = 3 \& 6`` does not. In chemistry ``H_2O`` is a syntactically correct formula, but ``_2Zz`` is not.
 
-Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 § 6`` is that ``§`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
+Syntax rules come in two flavors, pertaining to **tokens** and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with ``3 += 3 \& 6`` is that ``\&`` is not a legal token in mathematics (at least as far as I know). Similarly, ``_2Zz`` is not legal because there is no element with the abbreviation ``Zz``.
 
 The second type of syntax rule pertains to the way tokens are combined. The equation ``3 =+ 3`` is illegal because even though ``+`` and ``=`` are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
 

@@ -442,19 +442,19 @@ Debugging by explaining your problem to an inanimate object such as a rubber duc
 
 The “rank” of a word is its position in an array of words sorted by frequency: the most common word has rank 1, the second most common has rank 2, etc.
 
-Zipf’s law describes a relationship between the ranks and frequencies of words in natural languages (<http://en.wikipedia.org/wiki/Zipf's_law>). Specifically, it predicts that the frequency, ``f``, of the word with rank ``r`` is:
+Zipf’s law describes a relationship between the ranks and frequencies of words in natural languages (`http://en.wikipedia.org/wiki/Zipf's_law`). Specifically, it predicts that the frequency, ``f``, of the word with rank ``r`` is:
 
 ```math
-f = c r^{−s}
+f = c r^{-s}
 ```
 
 where ``s`` and ``c`` are parameters that depend on the language and the text. If you take the logarithm of both sides of this equation, you get:
 
 ```math
-\log f = \log c − s \log r
+\log f = \log c - s \log r
 ```
 
-So if you plot ``\log f`` versus ``\log r``, you should get a straight line with slope ``−s`` and intercept ``\log c``.
+So if you plot ``\log f`` versus ``\log r``, you should get a straight line with slope ``-s`` and intercept ``\log c``.
 
 Write a program that reads a text from a file, counts word frequencies, and prints one line for each word, in descending order of frequency, with ``\log f`` and ``\log r``.
 

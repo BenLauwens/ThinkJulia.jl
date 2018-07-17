@@ -9,3 +9,5 @@ docs/fake_travis.jl
 book/build
 book/captions
 book/output.txt
+book/fonts
+book/lib

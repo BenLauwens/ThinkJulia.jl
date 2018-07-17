@@ -35,20 +35,29 @@ const chaps = [
   "chap20.md"
 ]
 
-makedocs(
-  source = joinpath(root, "..", "docs", "src"),
-  sitename = title,
-  authors = "Ben Lauwens",
-  pages = ["copyright.md", "preface.md", chaps...]
-)
-rm(joinpath(root, "build", "assets"); force=true, recursive=true)
-const dir = joinpath("build/images")
-mkpath(dir)
-cd(makefigs, dir)
+if "generate" in ARGS
+  makedocs(
+    source = joinpath(root, "..", "docs", "src"),
+    sitename = title,
+    authors = "Ben Lauwens",
+    pages = ["copyright.md", "preface.md", chaps...]
+  )
+  rm(joinpath(root, "build", "assets"); force=true, recursive=true)
+  const dir = joinpath("build/images")
+  mkpath(dir)
+  if "pdf" in ARGS
+    cd(()->makefigs(:svg, "Ubuntu Mono"), dir)
+  else
+    cd(()->makefigs(:svg, "DejaVu Sans Mono"), dir)
+  end
+end
 makeasciidoc(root; title=title, subtitle=subtitle, authors=authors, chaps=chaps)
 for file in ["copyright.md", "preface.md", chaps...]
   #rm(joinpath(root, "build", file))
 end
-run(`asciidoctor -d book -b html5 -a figure-caption! -a stem=latexmath -a sectnums -a sectnumlevels=2 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
-run(`asciidoctor -d book -b docbook -a stem=latexmath -a sectnums -a sectnumlevels=2 -a toc -a toclevels=2 -a docinfo build/book.asciidoc`)
-run(`a2x -f pdf --fop build/book.xml`)
+if "pdf" in ARGS
+  run(`asciidoctor-pdf -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a docinfo -a source-highlighter=pygments -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
+else
+  run(`asciidoctor -d book -b html5 -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
+  run(`asciidoctor -d book -b docbook -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a docinfo build/book.asciidoc`)
+end

@@ -1,8 +1,3 @@
-```@eval
-using ThinkJulia
-fig00_1()
-```
-
 ```@raw latex
 \pagestyle{empty}
 \begin{center}
@@ -13,7 +8,7 @@ fig00_1()
 \Huge Think
 \end{minipage}
 \begin{minipage}{1.25cm}
-\includegraphics[scale=0.125]{fig01}
+\includegraphics[scale=0.125]{images/fig01}
 \end{minipage} \\
 \vspace*{\stretch{2}}
 \Large HOW TO THINK LIKE A COMPUTER SCIENTISTS\\

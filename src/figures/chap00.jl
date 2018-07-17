@@ -1,13 +1,9 @@
 using Luxor
 
-function fig00_1()
-  Drawing(330, 240, "fig01.pdf")  
+function fig00_1(output::Symbol, font::String)
+  output == :pdf ? Drawing(330, 240, "fig01.pdf") : Drawing(330, 240, "fig01.svg")  
   julialogo() # locate center at 0/0
   finish()
-  Drawing(330, 240, "fig01.svg")  
-  julialogo() # locate center at 0/0
-  finish()
-  nothing
 end
 
 # the current julia logo and graphics

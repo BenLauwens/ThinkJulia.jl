@@ -268,7 +268,7 @@ Newton’s method is an example of an **algorithm**: it is a mechanical process 
 
 To understand what an algorithm is, it might help to start with something that is not an algorithm. When you learned to multiply single-digit numbers, you probably memorized the multiplication table. In effect, you memorized 100 specific solutions. That kind of knowledge is not algorithmic.
 
-But if you were “lazy”, you might have learned a few tricks. For example, to find the product of $n$ and $9$, you can write $n−1$ as the first digit and $10−n$ as the second digit. This trick is a general solution for multiplying any single-digit number by $9$. That’s an algorithm!
+But if you were “lazy”, you might have learned a few tricks. For example, to find the product of $n$ and $9$, you can write $n-1$ as the first digit and $10-n$ as the second digit. This trick is a general solution for multiplying any single-digit number by $9$. That’s an algorithm!
 
 Similarly, the techniques you learned for addition with carrying, subtraction with borrowing, and long division are all algorithms. One of the characteristics of algorithms is that they do not require any intelligence to carry out. They are mechanical processes where each step follows from the last according to a simple set of rules.
 
@@ -362,4 +362,4 @@ The mathematician Srinivasa Ramanujan found an infinite series that can be used 
 \frac{1}{\pi}=\frac{2\sqrt2}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}
 ```
 
-Write a function called `estimatepi` that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than `1e-15` (which is Julia notation for ``10^{−15}``). You can check the result by comparing it to `π`.
+Write a function called `estimatepi` that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than `1e-15` (which is Julia notation for ``10^{-15}``). You can check the result by comparing it to `π`.

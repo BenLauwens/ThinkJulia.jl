@@ -1,6 +1,6 @@
 using TikzPictures
 
-function fig10_1()
+function fig10_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east](ch) at(-2.75, 0) {\tt cheeses};
   \node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1.5cm](chv){};
@@ -28,15 +28,16 @@ function fig10_1()
   \node[anchor=east](em) at(-2.75, -3) {\tt empty};
   \node[draw, fill=lightgray, minimum width=0.5cm, minimum height=0.5cm](emv) at(-1.5, -3){};
   \draw[-latex] (em) -- (emv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig101"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig101"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig101"), p) : save(SVG("fig101"), p)
 end
 
-function fig10_2()
+function fig10_2(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1cm] at(-2,0){};
   \node[anchor=east] (a) at(-3, 0.25) {\tt a};
@@ -51,15 +52,16 @@ function fig10_2()
   \node[anchor=east] (bb) at(1, -0.25) {\tt b};
   \draw[-latex] (aa) -- (v);
   \draw[-latex] (bb) -- (v);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig102"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig102"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig102"), p) : save(SVG("fig102"), p)
 end
 
-function fig10_3()
+function fig10_3(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1cm] at(0,0){};
   \node[anchor=east] (a) at(-1.25, 0.25) {\tt a};
@@ -68,15 +70,16 @@ function fig10_3()
   \node[anchor=west] (bv) at (-0.25, -0.25) {\tt [1, 2, 3]};
   \draw[-latex] (a) -- (av);
   \draw[-latex] (b) -- (bv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig103"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig103"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig103"), p) : save(SVG("fig103"), p)
 end
 
-function fig10_4()
+function fig10_4(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1cm] at(0,0){};
   \node[anchor=east] (a) at(-1.25, 0.25) {\tt a};
@@ -84,15 +87,16 @@ function fig10_4()
   \node[anchor=east] (b) at(-1.25, -0.25) {\tt b};
   \draw[-latex] (a) -- (v);
   \draw[-latex] (b) -- (v);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig104"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig104"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig104"), p) : save(SVG("fig104"), p)
 end
 
-function fig10_5()
+function fig10_5(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east] at(-1.2,0){\tt \_\_main\_\_};
   \node[draw, fill=lightgray, minimum width=2cm, minimum height=0.5cm] at(0,0){};
@@ -112,10 +116,11 @@ function fig10_5()
   \draw[-latex] (i3) -- (v3);
   \draw[-latex] (l.east) -- (a);
   \draw[-latex] (t.east) -- (a);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig105"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig105"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig105"), p) : save(SVG("fig105"), p)
 end

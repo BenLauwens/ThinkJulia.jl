@@ -1,7 +1,7 @@
 using TikzPictures
 using Luxor
 
-function fig05_1()
+function fig05_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[anchor=east] at(-1.5,0){\tt \_\_main\_\_};
   \node[draw, fill=lightgray, minimum width=2cm, minimum height=0.5cm]{};
@@ -25,15 +25,17 @@ function fig05_1()
   \node[anchor=east] (n4) at(-0.5, -3) {\tt n};
   \node[anchor=west] (n4v) at (0.5, -3) {\tt 0};
   \draw[-latex] (n4) -- (n4v);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig51"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig51"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig51"), p) : save(SVG("fig51"), p)
 end
 
-function draw05_2(ext)
+function fig05_2(output::Symbol, font::String)
+  ext = output == :pdf ? "pdf" : "svg"
   Drawing(200, 70, "fig52.$ext")  
   origin()
   background("white")  
@@ -43,10 +45,4 @@ function draw05_2(ext)
   Reposition(🐢, -100, 30)
   koch(🐢, 200)
   finish() 
-  nothing
-end
-
-function fig05_2()
-  draw05_2("svg")
-  draw05_2("pdf")
 end

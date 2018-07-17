@@ -113,7 +113,7 @@ distance(1, 2, 4, 6)
 
 I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.
 
-At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences ``x_2 − x_1`` and ``y_2 − y_1``. The next version stores those values in temporary variables and prints them.
+At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences ``x_2 - x_1`` and ``y_2 - y_1``. The next version stores those values in temporary variables and prints them.
 
 ```julia
 function distance(x₁, y₁, x₂, y₂)
@@ -267,13 +267,14 @@ An adjective used to describe something that is vorpal.
 If you saw that definition in the dictionary, you might be annoyed. On the other hand, if you looked up the definition of the factorial function, denoted with the symbol ``!``, you might get something like this:
 
 ```math
-\begin{aligned}
-  0! & = 1 \\
-  n! & = n (n-1)!
-\end{aligned}
+n! = 
+\begin{cases}
+  1& \textrm{if }  n = 0 \\
+  n (n-1)!& \textrm{if }  n > 0
+\end{cases}
 ```
 
-This definition says that the factorial of ``0`` is ``1``, and the factorial of any other value, ``n``, is ``n`` multiplied by the factorial of ``n−1``.
+This definition says that the factorial of ``0`` is ``1``, and the factorial of any other value, ``n``, is ``n`` multiplied by the factorial of ``n-1``.
 
 So ``3!`` is ``3`` times ``2!``, which is ``2`` times ``1!``, which is ``1`` times ``0!``. Putting it all together, ``3!`` equals ``3`` times ``2`` times ``1`` times ``1``, which is ``6``.
 
@@ -293,7 +294,7 @@ function fact(n)
 end
 ```
 
-Otherwise, and this is the interesting part, we have to make a recursive call to find the factorial of `n−1` and then multiply it by `n`:
+Otherwise, and this is the interesting part, we have to make a recursive call to find the factorial of `n-1` and then multiply it by `n`:
 
 ```julia
 function fact(n)
@@ -339,7 +340,7 @@ In fact, you are already practicing this leap of faith when you use built-in fun
 
 The same is true when you call one of your own functions. For example, in Section 6.4, we wrote a function called `isdivisible` that determines whether one number is divisible by another. Once we have convinced ourselves that this function is correct—by examining the code and testing—we can use the function without looking at the body again.
 
-The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of ``n−1``, can I compute the factorial of ``n``?” It is clear that you can, by multiplying by ``n``.
+The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of ``n-1``, can I compute the factorial of ``n``?” It is clear that you can, by multiplying by ``n``.
 
 Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!
 
@@ -348,11 +349,12 @@ Of course, it’s a bit strange to assume that the function works correctly when
 After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see <http://en.wikipedia.org/wiki/Fibonacci_number>):
 
 ```math
-\begin{aligned}
-    \textit{fib}(0) &= 0 \\
-    \textit{fib}(1) &= 1 \\
-    \textit{fib}(n) &= \textit{fib}(n-1) + \textit{fib}(n-2)
-\end{aligned}
+\textit{fib}(n) =
+\begin{cases}
+    0& \textrm{if }  n = 0 \\
+    1& \textrm{if }  n = 1 \\
+    \textit{fib}(n-1) + \textit{fib}(n-2)& \textrm{if }  n > 1 
+\end{cases}
 ```
 
 Translated into Julia, it looks like this:

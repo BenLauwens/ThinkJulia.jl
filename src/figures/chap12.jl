@@ -1,4 +1,4 @@
-function fig12_1()
+function fig12_1(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node[draw, fill=lightgray, minimum width=3.5cm, minimum height=1cm] at(0,0){};
   \node[anchor=east] (a) at(-1.25, 0.25) {\tt 1};
@@ -7,15 +7,16 @@ function fig12_1()
   \node[anchor=west] (bv) at (-0.25, -0.25) {\tt "John"};
   \draw[-latex] (a) -- (av);
   \draw[-latex] (b) -- (bv);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig121"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig121"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig121"), p) : save(SVG("fig121"), p)
 end
 
-function fig12_2()
+function fig12_2(output::Symbol, font::String)
   p = TikzPicture(L"""
   \node(hist) [draw, fill=lightgray, minimum width=7.5cm, minimum height=3cm]{};
   \node[anchor=east](nc) at(-0.25,1.25) {\tt ("Cleese","John")};
@@ -36,10 +37,11 @@ function fig12_2()
   \node[anchor=east](np) at(-0.25,-1.25) {\tt ("Palin","Michael")};
   \node[anchor=west](p) at(0.75,-1.25) {\tt "08700 100 222"};
   \draw[-latex](np)--(p);
-  """; options=options_svg, preamble=preamble_svg)
-  save(SVG("fig122"), p)
-  p.options=options_pdf
-  p.preamble=preamble_pdf
-  save(PDF("fig122"), p)
-  nothing
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+  \\usepackage{cancel}
+  \\usepackage{fontspec}
+  \\setmonofont[Scale=MatchLowercase]{$font}
+  \\usetikzlibrary{arrows.meta}
+  """)
+  output == :pdf ? save(PDF("fig122"), p) : save(SVG("fig122"), p)
 end

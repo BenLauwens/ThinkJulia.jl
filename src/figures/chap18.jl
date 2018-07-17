@@ -1,4 +1,4 @@
-function fig18_1()
+function fig18_1(output::Symbol, font::String)
     p = TikzPicture(L"""
         \node(cs) [draw, fill=lightgray, minimum width=1.5cm, minimum height=1cm]{\tt CardSet};
         \node(de) [draw, fill=lightgray, minimum width=1.5cm, minimum height=1cm] at(-2, -1.5) {\tt Deck};
@@ -10,10 +10,11 @@ function fig18_1()
         \draw[arrows = {-Straight Barb[length=5pt, width=5pt]}] (ha)--(ca);
         \node at(-0.6, -2.4){*};
         \node at(0.6, -2.4){*};
-    """; options=options_svg, preamble=preamble_svg)
-    save(SVG("fig181"), p)
-    p.options=options_pdf
-    p.preamble=preamble_pdf
-    save(PDF("fig181"), p)
-    nothing
+        """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.4, transform shape", preamble="""
+        \\usepackage{cancel}
+        \\usepackage{fontspec}
+        \\setmonofont[Scale=MatchLowercase]{$font}
+        \\usetikzlibrary{arrows.meta}
+        """)
+        output == :pdf ? save(PDF("fig181"), p) : save(SVG("fig181"), p)
 end
