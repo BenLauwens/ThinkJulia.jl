@@ -40,12 +40,12 @@ function fig11_1(output::Symbol, font::String)
   \draw[-latex](t3)--(v3);
   \draw[-latex](t4)--(v4);
   \draw[-latex](tt1)--(vv1);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig111"), p) : save(SVG("fig111"), p)
 end
 
@@ -104,11 +104,11 @@ function fig11_2(output::Symbol, font::String)
   \draw[-latex] (fib2)--(fib0);
   \draw[-latex] (fib22)--(fib111);
   \draw[-latex] (fib22)--(fib00);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig112"), p) : save(SVG("fig112"), p)
 end

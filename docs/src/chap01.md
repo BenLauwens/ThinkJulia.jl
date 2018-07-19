@@ -16,15 +16,15 @@ A **program** is a sequence of instructions that specifies how to perform a comp
 
 The details look different in different languages, but a few basic instructions appear in just about every language:
 
-- *input*: Get data from the keyboard, a file, the network, or some other device.
+*input*: Get data from the keyboard, a file, the network, or some other device.
 
-- *output*: Display data on the screen, save it in a file, send it over the network, etc.
+*output*: Display data on the screen, save it in a file, send it over the network, etc.
 
-- *math*: Perform basic mathematical operations like addition and multiplication.
+*math*: Perform basic mathematical operations like addition and multiplication.
 
-- *conditional execution*: Check for certain conditions and run the appropriate code.
+*conditional execution*: Check for certain conditions and run the appropriate code.
 
-- *repetition*: Perform some action repeatedly, usually with some variation.
+*repetition*: Perform some action repeatedly, usually with some variation.
 
 Believe it or not, that’s pretty much all there is to it. Every program you’ve ever used, no matter how complicated, is made up of instructions that look pretty much like these. So you can think of programming as the process of breaking a large, complex task into smaller and smaller subtasks until the subtasks are simple enough to be performed with one of these basic instructions.
 
@@ -164,19 +164,19 @@ When you read a sentence in English or a statement in a formal language, you hav
 
 Although formal and natural languages have many features in common—tokens, structure, and syntax—there are some differences:
 
-- ambiguity: Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.
+*ambiguity*: Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.
 
-- redundancy: In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.
+*redundancy*: In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.
 
-- literalness: Natural languages are full of idiom and metaphor. If I say, “The penny dropped”, there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
+*literalness*: Natural languages are full of idiom and metaphor. If I say, “The penny dropped”, there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
 
 Because we all grow up speaking natural languages, it is sometimes hard to adjust to formal languages. The difference between formal and natural language is like the difference between poetry and prose, but more so:
 
-- Poetry: Words are used for their sounds as well as for their meaning, and the whole poem together creates an effect or emotional response. Ambiguity is not only common but often deliberate.
+*Poetry*: Words are used for their sounds as well as for their meaning, and the whole poem together creates an effect or emotional response. Ambiguity is not only common but often deliberate.
 
-- Prose: The literal meaning of words is more important, and the structure contributes more meaning. Prose is more amenable to analysis than poetry but still often ambiguous.
+*Prose*: The literal meaning of words is more important, and the structure contributes more meaning. Prose is more amenable to analysis than poetry but still often ambiguous.
 
-- Programs: The meaning of a computer program is unambiguous and literal, and can be understood entirely by analysis of the tokens and structure.
+*Programs*: The meaning of a computer program is unambiguous and literal, and can be understood entirely by analysis of the tokens and structure.
 
 Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal language.
 

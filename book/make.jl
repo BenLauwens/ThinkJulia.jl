@@ -1,65 +1,51 @@
-using Documenter
-using ThinkJulia: makeasciidoc, makefigs
-using Markdown
+using ThinkJulia: makefigs, expandcodeblocks
 
-function Markdown.plain(io::IO, l::Markdown.LaTeX)
-  println(io, "```math")
-  println(io, l.formula)
-  println(io, "```")
-end
-
-const title = "Think Julia"
-const subtitle = "How to Think Like a Computer Scientist"
-const authors = (("Ben", "Lauwens", "<https://github.com/benlauwens[@benlauwens]>"), ("Allen", "Downey"))
 const root = dirname(@__FILE__)
+const src = joinpath(root, "src")
+const dst = joinpath(root, "build")
+const img = joinpath(dst, "images")
 const chaps = [
-  "chap01.md",
-  "chap02.md",
-  "chap03.md",
-  "chap04.md",
-  "chap05.md",
-  "chap06.md",
-  "chap07.md",
-  "chap08.md",
-  "chap09.md",
-  "chap10.md",
-  "chap11.md",
-  "chap12.md",
-  "chap13.md",
-  "chap14.md",
-  "chap15.md",
-  "chap16.md",
-  "chap17.md",
-  "chap18.md",
-  "chap19.md",
-  "chap20.md"
+  "book.asciidoc",
+  "preface.asciidoc",
+  "chap01.asciidoc",
+  "chap02.asciidoc",
+  "chap03.asciidoc",
+  "chap04.asciidoc",
+  "chap05.asciidoc",
+  "chap06.asciidoc",
+  "chap07.asciidoc",
+  "chap08.asciidoc",
+  # "chap09.asciidoc",
+  # "chap10.asciidoc",
+  # "chap11.asciidoc",
+  # "chap12.asciidoc",
+  # "chap13.asciidoc",
+  # "chap14.asciidoc",
+  # "chap15.asciidoc",
+  # "chap16.asciidoc",
+  # "chap17.asciidoc",
+  # "chap18.asciidoc",
+  # "chap19.asciidoc",
+  # "chap20.asciidoc",
+  "index.asciidoc"
 ]
-
-if "generate" in ARGS
-  makedocs(
-    source = joinpath(root, "..", "docs", "src"),
-    sitename = title,
-    authors = "Ben Lauwens",
-    pages = ["copyright.md", "preface.md", chaps...]
-  )
-  rm(joinpath(root, "build", "assets"); force=true, recursive=true)
-  const dir = joinpath("build/images")
-  mkpath(dir)
+mkpath("build/images")
+if "images"  in ARGS
   if "pdf" in ARGS
-    cd(()->makefigs(:svg, "Ubuntu Mono"), dir)
+    cd(()->makefigs(:svg, "Ubuntu Mono"), img)
   else
-    cd(()->makefigs(:svg, "DejaVu Sans Mono"), dir)
+    cd(()->makefigs(:svg, "DejaVu Sans Mono"), img)
   end
 end
-makeasciidoc(root; title=title, subtitle=subtitle, authors=authors, chaps=chaps)
-if "remove" in ARGS
-  for file in ["copyright.md", "preface.md", chaps...]
-    #rm(joinpath(root, "build", file))
-  end
+for chap in chaps
+  expandcodeblocks(root, joinpath("src", chap), joinpath("build", chap))
 end
 if "pdf" in ARGS
-  run(`asciidoctor-pdf -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a docinfo -a source-highlighter=pygments -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
+  run(`asciidoctor-pdf -a compat-mode -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a source-highlighter=rouge -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
+elseif "latex" in ARGS
+  run(`asciidoctor-latex -a compat-mode -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2  build/book.asciidoc`)
 else
-  run(`asciidoctor -d book -b html5 -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
-  run(`asciidoctor -d book -b docbook -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a docinfo build/book.asciidoc`)
+  run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
+  run(`asciidoctor -d book -b docbook -a compat-mode -a toc build/book.asciidoc`)
 end
+  

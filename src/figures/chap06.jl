@@ -50,11 +50,11 @@ function fig06_1(output::Symbol, font::String)
   \node [right of=c3, xshift=3.5cm, yshift=0.375cm] {\tt 1};
   \node [right of=c2, xshift=3.5cm, yshift=0.375cm] {\tt 2};
   \node [right of=c1, xshift=3.5cm, yshift=0.375cm] {\tt 6};
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig61"), p) : save(SVG("fig61"), p)
 end

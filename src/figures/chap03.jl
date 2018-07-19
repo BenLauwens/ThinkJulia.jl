@@ -26,11 +26,11 @@ function fig03_1(output::Symbol, font::String)
   \node[anchor=east] (b) at(-2.25, -2.75) {\tt bruce};
   \node[anchor=west] (bv) at (-1.25, -2.75) {\tt "Bing tiddle tiddle bang"};
   \draw[-latex] (b) -- (bv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig31"), p) : save(SVG("fig31"), p)
 end

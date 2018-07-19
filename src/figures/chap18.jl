@@ -10,11 +10,11 @@ function fig18_1(output::Symbol, font::String)
         \draw[arrows = {-Straight Barb[length=5pt, width=5pt]}] (ha)--(ca);
         \node at(-0.6, -2.4){*};
         \node at(0.6, -2.4){*};
-        """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+        """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
         \\usepackage{cancel}
         \\usepackage{fontspec}
         \\setmonofont[Scale=MatchLowercase]{$font}
         \\usetikzlibrary{arrows.meta}
-        \\definecolor{mycolor}{RGB}{220,220,220}""")
+        \\definecolor{mycolor}{RGB}{247,247,248}""")
         output == :pdf ? save(PDF("fig181"), p) : save(SVG("fig181"), p)
 end

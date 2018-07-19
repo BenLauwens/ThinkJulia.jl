@@ -47,8 +47,8 @@ page:
   margin: [20mm, 25mm, 20mm, 25mm]
   margin_inner: 25mm
   margin_outer: 25mm
-  size: [177mm, 233mm]
-  #size: A4
+  #size: [177mm, 233mm]
+  size: A4
 base:
   align: justify
   # color as hex string (leading # is optional)
@@ -110,7 +110,7 @@ title_page:
     top: 55%
     font_size: $heading_h1_font_size
     font_color: 999999
-    line_height: 0.9
+    line_height: 1
   subtitle:
     font_size: $heading_h3_font_size
     font_style: bold_italic
@@ -134,7 +134,7 @@ caption:
   margin_outside: 0
 lead:
   font_size: $base_font_size_large
-  line_height: 1.4
+  line_height: 1
 abstract:
   font_color: 5c6266
   font_size: $lead_font_size
@@ -172,9 +172,9 @@ blockquote:
 code:
   font_color: $base_font_color
   font_family: UbuntuMono
-  font_size: 9
+  font_size: 8.5
   padding: $code_font_size
-  line_height: 1.15
+  line_height: 1
   # line_gap is an experimental property to control how a background color is applied to an inline block element
   line_gap: 3.8
   background_color: f5f5f5
@@ -185,7 +185,7 @@ conum:
   font_family: M+ 1mn
   font_color: $literal_font_color
   font_size: $base_font_size
-  line_height: 4 / 3
+  line_height: 1
 example:
   border_color: $base_border_color
   border_radius: $base_border_radius
@@ -244,7 +244,7 @@ toc:
     content: ". "
     levels: 1
 toc_h2:
-  line_height: 2
+  line_height: 1
   font_family: MyriadPro
   font_style: bold
   font_size: $base_font_size_large

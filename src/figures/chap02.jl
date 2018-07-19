@@ -12,11 +12,11 @@ function fig02_1(output::Symbol, font::String)
   \node[anchor=east] (pi) at(-3.75, -0.5) {\tt π};
   \node[anchor=west] (piv) at (-2.75, -0.5) {\tt 3.141592653589793};
   \draw[-latex] (pi) -- (piv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig21"), p) : save(SVG("fig21"), p)
 end

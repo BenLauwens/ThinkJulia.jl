@@ -25,12 +25,12 @@ function fig05_1(output::Symbol, font::String)
   \node[anchor=east] (n4) at(-0.5, -3) {\tt n};
   \node[anchor=west] (n4v) at (0.5, -3) {\tt 0};
   \draw[-latex] (n4) -- (n4v);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig51"), p) : save(SVG("fig51"), p)
 end
 

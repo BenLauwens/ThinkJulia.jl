@@ -13,11 +13,11 @@ function fig16_1(output::Symbol, font::String)
   \draw[-latex] (h) -- (hv);
   \draw[-latex] (m) -- (mv);
   \draw[-latex] (s) -- (sv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.45, transform shape", preamble="""
+  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
   \\usetikzlibrary{arrows.meta}
-  \\definecolor{mycolor}{RGB}{220,220,220}""")
+  \\definecolor{mycolor}{RGB}{247,247,248}""")
   output == :pdf ? save(PDF("fig161"), p) : save(SVG("fig161"), p)
 end

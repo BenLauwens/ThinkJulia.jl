@@ -2,13 +2,13 @@ using Markdown
 
 function makeasciidoc(root::String; title="", subtitle="", 
   authors=(("Ben", "Lauwens", "<https://github.com/benlauwens[@benlauwens]>"), ("Allen", "Downey")), chaps=String[])
-  makedocinfo(joinpath(root, "build", "book-docinfo.xml"), authors)
-  makebook(joinpath(root, "build", "book.asciidoc"), joinpath(root, "build", "copyright.md"), title, subtitle, authors, chaps)
-  makepreface(joinpath(root, "build", "preface.asciidoc"), joinpath(root, "build", "preface.md"))
+  makedocinfo(joinpath(root, "book-docinfo.xml"), authors)
+  makebook(joinpath(root, "book.asciidoc"), joinpath(root, "copyright.md"), title, subtitle, authors, chaps)
+  makepreface(joinpath(root, "preface.asciidoc"), joinpath(root, "preface.md"))
   for chap in chaps
-    makechap(joinpath(root, "build", chap[1:end-2]*"asciidoc"), joinpath(root, "build", chap))
+    makechap(joinpath(root, chap[1:end-2]*"asciidoc"), joinpath(root, chap))
   end
-  makeindex(joinpath(root, "build", "index.asciidoc"))
+  makeindex(joinpath(root, "index.asciidoc"))
 end
 
 order = 0
@@ -34,7 +34,22 @@ function render(io::IO, b::Markdown.Bold, parent=nothing)
 end
 function render(io::IO, c::Markdown.Code, parent=nothing)
   if parent == nothing
-    println(io, "[source,", c.language, "]")
+    elems = split(c.language, " ")
+    mod = length(elems) == 2 ? " " * elems[2] : ""
+    language = if occursin("jldoctest", c.language)
+      "@julia-repl-test" * mod
+    elseif occursin("@setup", c.language) || occursin("@meta", c.language) || occursin("@eval", c.language)
+      "@julia-setup" * mod
+    elseif occursin("@eval", c.language)
+      "@julia" * mod
+    elseif occursin("@repl", c.language)
+      "@julia-repl" * mod
+    elseif occursin("@raw", c.language)
+      return
+    else
+      c.language
+    end
+    println(io, "[source,", language, "]")
     println(io, "----")
     println(io, replace(c.code, "&gt" => ">"))
     println(io, "----\n")
@@ -47,6 +62,7 @@ function render(io::IO, c::Markdown.Code, parent=nothing)
   end
 end
 function render(io::IO, h::Markdown.Header{n}, parent=nothing) where{n}
+  n == 2 && println(io)
   print(io, "="^(n+1), " ")
   render(io, h.text, h)
   println(io, "\n")
@@ -92,9 +108,14 @@ end
 render(io::IO, md::Markdown.MD) = map(elem -> render(io, elem), md.content)
 function render(io::IO, p::Markdown.Paragraph, parent=nothing)
   p.content[1] isa String && occursin(r"<a id.*</a>", p.content[1]) && return
-  if length(p.content) == 2 && p.content[1] isa Markdown.Italic
-    println(io, p.content[1].text[1], "::")
-    println(io, p.content[2][3:end])
+  if length(p.content) > 1 && p.content[1] isa Markdown.Italic #&& p.content[2][1] == ":"
+    println(io, p.content[1].text[1], ": ::")
+    render(io, p.content[2][3:end], p)
+    for i in 3:length(p.content)
+      render(io, p.content[i], p)
+    end
+    println(io)
+    println(io)
     return
   end
   for elem in p.content

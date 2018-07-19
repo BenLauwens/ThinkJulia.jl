@@ -2,6 +2,7 @@ module ThinkJulia
 
   using Printf
   using Random
+  using REPL
   using Luxor
 
   import Base.+
@@ -40,6 +41,7 @@ module ThinkJulia
   export fig18_1
 
   export makeasciidoc
+  export expandcodeblocks
 
   include("code/chap03.jl")
   include("code/chap04.jl")
@@ -78,5 +80,7 @@ module ThinkJulia
   include("figures/chap15.jl")
   include("figures/chap16.jl")
   include("figures/chap18.jl")
-  include("asciidoc/writer.jl")
+  include("asciidoc/md2asciidoc.jl")
+  include("asciidoc/expanders.jl")
+  include("asciidoc/runners.jl")
 end
