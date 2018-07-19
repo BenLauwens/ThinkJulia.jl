@@ -1,6 +1,6 @@
 using TikzPictures
 
-function fig03_1(output::Symbol, font::String)
+function fig03_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east] at(-4,0){\tt \_\_main\_\_};
   \node[draw, fill=mycolor, minimum width=7cm, minimum height=1cm]{};
@@ -26,7 +26,7 @@ function fig03_1(output::Symbol, font::String)
   \node[anchor=east] (b) at(-2.25, -2.75) {\tt bruce};
   \node[anchor=west] (bv) at (-1.25, -2.75) {\tt "Bing tiddle tiddle bang"};
   \draw[-latex] (b) -- (bv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}

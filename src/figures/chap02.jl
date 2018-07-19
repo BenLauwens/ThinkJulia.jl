@@ -1,6 +1,6 @@
 using TikzPictures
 
-function fig02_1(output::Symbol, font::String)
+function fig02_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[draw, fill=mycolor, minimum width=10.5cm, minimum height=1.5cm]{};
   \node[anchor=east] (me) at(-3.75, 0.5) {\tt message};
@@ -12,7 +12,7 @@ function fig02_1(output::Symbol, font::String)
   \node[anchor=east] (pi) at(-3.75, -0.5) {\tt π};
   \node[anchor=west] (piv) at (-2.75, -0.5) {\tt 3.141592653589793};
   \draw[-latex] (pi) -- (piv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}

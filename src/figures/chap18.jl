@@ -1,4 +1,4 @@
-function fig18_1(output::Symbol, font::String)
+function fig18_1(output::Symbol, font::String, scale::Float64)
     p = TikzPicture(L"""
         \node(cs) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm]{\tt CardSet};
         \node(de) [draw, fill=mycolor, minimum width=1.5cm, minimum height=1cm] at(-2, -1.5) {\tt Deck};
@@ -10,7 +10,7 @@ function fig18_1(output::Symbol, font::String)
         \draw[arrows = {-Straight Barb[length=5pt, width=5pt]}] (ha)--(ca);
         \node at(-0.6, -2.4){*};
         \node at(0.6, -2.4){*};
-        """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+        """; options= "scale=$scale, transform shape", preamble="""
         \\usepackage{cancel}
         \\usepackage{fontspec}
         \\setmonofont[Scale=MatchLowercase]{$font}

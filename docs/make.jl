@@ -34,9 +34,9 @@ makedocs(
 const dir = joinpath("build/images")
 mkpath(dir)
 if "pdf" in ARGS
-  cd(()->makefigs(:pdf, "Ubuntu Mono"), dir)
+  cd(()->makefigs(:pdf, "Ubuntu Mono", 1.0), dir)
 else
-  cd(()->makefigs(:svg, "DejaVu Sans Mono"), dir)
+  cd(()->makefigs(:svg, "DejaVu Sans Mono", 1.3), dir)
 end
 
 deploydocs(

@@ -1,4 +1,4 @@
-function fig16_1(output::Symbol, font::String)
+function fig16_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east](time) at (-2.5, 0) {\tt time};
   \node[draw, fill=mycolor, minimum width=3cm, minimum height=1.5cm](MyTime) at(0,0){};
@@ -13,7 +13,7 @@ function fig16_1(output::Symbol, font::String)
   \draw[-latex] (h) -- (hv);
   \draw[-latex] (m) -- (mv);
   \draw[-latex] (s) -- (sv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}

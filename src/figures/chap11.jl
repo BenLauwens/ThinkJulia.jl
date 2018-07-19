@@ -1,4 +1,4 @@
-function fig11_1(output::Symbol, font::String)
+function fig11_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east](h) at(-1.55, 0) {\tt hist};
   \node[draw, fill=mycolor, minimum width=2.5cm, minimum height=2.5cm](hv) at(0,0){};
@@ -40,7 +40,7 @@ function fig11_1(output::Symbol, font::String)
   \draw[-latex](t3)--(v3);
   \draw[-latex](t4)--(v4);
   \draw[-latex](tt1)--(vv1);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
@@ -49,7 +49,7 @@ function fig11_1(output::Symbol, font::String)
   output == :pdf ? save(PDF("fig111"), p) : save(SVG("fig111"), p)
 end
 
-function fig11_2(output::Symbol, font::String)
+function fig11_2(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node(fib4) [draw, fill=mycolor, minimum width=2cm, minimum height=1cm]{};
   \node at (0,0.25){\tt fibonacci};
@@ -104,7 +104,7 @@ function fig11_2(output::Symbol, font::String)
   \draw[-latex] (fib2)--(fib0);
   \draw[-latex] (fib22)--(fib111);
   \draw[-latex] (fib22)--(fib00);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}

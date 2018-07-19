@@ -1,4 +1,4 @@
-function fig15_1(output::Symbol, font::String)
+function fig15_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east](blank) at (-2.25, 0) {\tt p};
   \node[draw, fill=mycolor, minimum width=2.5cm, minimum height=1cm](Point) at(0,0){};
@@ -10,7 +10,7 @@ function fig15_1(output::Symbol, font::String)
   \draw[-latex] (blank) -- (Point);
   \draw[-latex] (x) -- (xv);
   \draw[-latex] (y) -- (yv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
@@ -19,7 +19,7 @@ function fig15_1(output::Symbol, font::String)
   output == :pdf ? save(PDF("fig151"), p) : save(SVG("fig151"), p)
 end
 
-function fig15_2(output::Symbol, font::String)
+function fig15_2(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east](box) at (-2.75, 0) {\tt box};
   \node[draw, fill=mycolor, minimum width=3.5cm, minimum height=1.5cm](Rectangle) at(0,0){};
@@ -41,7 +41,7 @@ function fig15_2(output::Symbol, font::String)
   \draw[-latex] (corner) -- (MPoint);
   \draw[-latex] (x) -- (xv);
   \draw[-latex] (y) -- (yv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}

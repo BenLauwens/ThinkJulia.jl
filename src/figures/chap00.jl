@@ -1,6 +1,6 @@
 using Luxor
 
-function fig00_1(output::Symbol, font::String)
+function fig00_1(output::Symbol, font::String, scale::Float64)
   output == :pdf ? Drawing(330, 240, "fig01.pdf") : Drawing(330, 240, "fig01.svg")  
   julialogo() # locate center at 0/0
   finish()

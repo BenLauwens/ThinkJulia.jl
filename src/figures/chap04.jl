@@ -1,4 +1,4 @@
-function fig04_1(output::Symbol, font::String)
+function fig04_1(output::Symbol, font::String, scale::Float64)
   ext = output == :pdf ? "pdf" : "svg"
   Drawing(102, 10, "fig41.$ext")  
   origin()
@@ -11,7 +11,7 @@ function fig04_1(output::Symbol, font::String)
   finish() 
 end
 
-function fig04_2(output::Symbol, font::String)
+function fig04_2(output::Symbol, font::String, scale::Float64)
   ext = output == :pdf ? "pdf" : "svg"
   Drawing(310, 110, "fig42.$ext")  
   origin()
@@ -28,7 +28,7 @@ function fig04_2(output::Symbol, font::String)
   finish() 
 end
 
-function fig04_3(output::Symbol, font::String)
+function fig04_3(output::Symbol, font::String, scale::Float64)
   ext = output == :pdf ? "pdf" : "svg"
   Drawing(360, 80, "fig43.$ext")  
   origin()
@@ -45,7 +45,7 @@ function fig04_3(output::Symbol, font::String)
   finish() 
 end
 
-function fig04_4(output::Symbol, font::String)
+function fig04_4(output::Symbol, font::String, scale::Float64)
   ext = output == :pdf ? "pdf" : "svg"
   Drawing(110, 110, "fig44.$ext")  
   origin()

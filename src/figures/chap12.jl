@@ -1,4 +1,4 @@
-function fig12_1(output::Symbol, font::String)
+function fig12_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[draw, fill=mycolor, minimum width=3.5cm, minimum height=1cm] at(0,0){};
   \node[anchor=east] (a) at(-1.25, 0.25) {\tt 1};
@@ -7,7 +7,7 @@ function fig12_1(output::Symbol, font::String)
   \node[anchor=west] (bv) at (-0.25, -0.25) {\tt "John"};
   \draw[-latex] (a) -- (av);
   \draw[-latex] (b) -- (bv);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
@@ -16,7 +16,7 @@ function fig12_1(output::Symbol, font::String)
   output == :pdf ? save(PDF("fig121"), p) : save(SVG("fig121"), p)
 end
 
-function fig12_2(output::Symbol, font::String)
+function fig12_2(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node(hist) [draw, fill=mycolor, minimum width=7.5cm, minimum height=3cm]{};
   \node[anchor=east](nc) at(-0.25,1.25) {\tt ("Cleese","John")};
@@ -37,7 +37,7 @@ function fig12_2(output::Symbol, font::String)
   \node[anchor=east](np) at(-0.25,-1.25) {\tt ("Palin","Michael")};
   \node[anchor=west](p) at(0.75,-1.25) {\tt "08700 100 222"};
   \draw[-latex](np)--(p);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}

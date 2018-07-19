@@ -1,7 +1,7 @@
 using TikzPictures
 using Luxor
 
-function fig05_1(output::Symbol, font::String)
+function fig05_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east] at(-1.5,0){\tt \_\_main\_\_};
   \node[draw, fill=mycolor, minimum width=2cm, minimum height=0.5cm]{};
@@ -25,7 +25,7 @@ function fig05_1(output::Symbol, font::String)
   \node[anchor=east] (n4) at(-0.5, -3) {\tt n};
   \node[anchor=west] (n4v) at (0.5, -3) {\tt 0};
   \draw[-latex] (n4) -- (n4v);
-  """; options= output == :pdf ? "scale=1, transform shape" : "scale=1.0, transform shape", preamble="""
+  """; options= "scale=$scale, transform shape", preamble="""
   \\usepackage{cancel}
   \\usepackage{fontspec}
   \\setmonofont[Scale=MatchLowercase]{$font}
@@ -34,7 +34,7 @@ function fig05_1(output::Symbol, font::String)
   output == :pdf ? save(PDF("fig51"), p) : save(SVG("fig51"), p)
 end
 
-function fig05_2(output::Symbol, font::String)
+function fig05_2(output::Symbol, font::String, scale::Float64)
   ext = output == :pdf ? "pdf" : "svg"
   Drawing(200, 70, "fig52.$ext")  
   origin()

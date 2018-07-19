@@ -32,7 +32,7 @@ const chaps = [
 mkpath("build/images")
 if "images"  in ARGS
   if "pdf" in ARGS
-    cd(()->makefigs(:svg, "Ubuntu Mono"), img)
+    cd(()->makefigs(:svg, "Ubuntu Mono", 1.3), img)
   else
     cd(()->makefigs(:svg, "DejaVu Sans Mono"), img)
   end
