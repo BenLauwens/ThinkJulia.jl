@@ -95,7 +95,7 @@ julia&gt; card = pop!(deck);
 julia&gt; push!(hand, card)
 
 julia&gt; hand
-10♠</code></pre><p>A natural next step is to encapsulate this code in a function called <code>move!</code>:</p><pre><code class="language-julia">function move!(cs1::CardSet, cs2::CardSet, n::Int)
+9♦</code></pre><p>A natural next step is to encapsulate this code in a function called <code>move!</code>:</p><pre><code class="language-julia">function move!(cs1::CardSet, cs2::CardSet, n::Int)
     @assert 1 ≤ n ≤ length(cs1.cards)
     for i in 1:n
         card = pop!(cs1)
