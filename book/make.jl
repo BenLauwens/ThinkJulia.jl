@@ -15,18 +15,20 @@ const chaps = [
   "chap06.asciidoc",
   "chap07.asciidoc",
   "chap08.asciidoc",
-  # "chap09.asciidoc",
-  # "chap10.asciidoc",
-  # "chap11.asciidoc",
-  # "chap12.asciidoc",
-  # "chap13.asciidoc",
-  # "chap14.asciidoc",
-  # "chap15.asciidoc",
-  # "chap16.asciidoc",
-  # "chap17.asciidoc",
-  # "chap18.asciidoc",
-  # "chap19.asciidoc",
-  # "chap20.asciidoc",
+  "chap09.asciidoc",
+  "chap10.asciidoc",
+  "chap11.asciidoc",
+  "chap12.asciidoc",
+  "chap13.asciidoc",
+  "chap14.asciidoc",
+  "chap15.asciidoc",
+  "chap16.asciidoc",
+  "chap17.asciidoc",
+  "chap18.asciidoc",
+  "chap19.asciidoc",
+  "chap20.asciidoc",
+  "chap21.asciidoc",
+  "chap22.asciidoc",
   "index.asciidoc"
 ]
 mkpath("build/images")
@@ -34,7 +36,7 @@ if "images"  in ARGS
   if "pdf" in ARGS
     cd(()->makefigs(:svg, "Ubuntu Mono", 1.3), img)
   else
-    cd(()->makefigs(:svg, "DejaVu Sans Mono"), img)
+    cd(()->makefigs(:svg, "DejaVu Sans Mono", 1.0), img)
   end
 end
 for chap in chaps

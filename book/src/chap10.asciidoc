@@ -78,9 +78,10 @@ julia> print(numbers)
 
 The second element of +numbers+, which used to be 123, is now 5.
 
-Figure 10-1 shows the state diagrams for +cheeses+, +numbers+ and +empty+.
+<<fig10-1>> shows the state diagrams for +cheeses+, +numbers+ and +empty+.
 
-.State diagram.
+[[fig10-1]]
+.State diagram
 image::images/fig101.svg[]
 
 
@@ -109,7 +110,7 @@ false
 
 The most common way to traverse the elements of an array is with a +for+ loop. The syntax is the same as for strings:
 
-[source,julia]
+[source,@julia-setup chap10]
 ----
 for cheese in cheeses
     println(cheese)
@@ -118,7 +119,7 @@ end
 
 This works well if you only need to read the elements of the array. But if you want to write or update the elements, you need the indices. A common way to do that is to use the built-in function +length+:
 
-[source,julia]
+[source,@julia-setup chap10]
 ----
 for i in 1:length(numbers)
     numbers[i] = numbers[i] * 2
@@ -129,7 +130,7 @@ This loop traverses the array and updates each element. +length+ returns the num
 
 A +for+ loop over an empty array never runs the body:
 
-[source,julia]
+[source,@julia-setup]
 ----
 for x in []
     println("This can never happens.")
@@ -138,7 +139,7 @@ end
 
 Although an array can contain another array, the nested array still counts as a single element. The length of this array is four:
 
-[source,julia]
+[source,@julia-setup]
 ----
 ["spam", 1, ["Brie", "Roquefort", "Camembert"], [1, 2, 3]]
 ----
@@ -242,7 +243,7 @@ As a style convention in Julia, +!+ is appended to names of functions that modif
 
 To add up all the numbers in an array, you can use a loop like this:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function addall(t)
     total = 0
@@ -283,7 +284,7 @@ An operation like this that combines a sequence of elements into a single value 
 
 Sometimes you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function capitalizeall(t)
     res = []
@@ -300,7 +301,7 @@ An operation like +capitalizeall+ is sometimes called a *map* because it “maps
 
 Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns a array that contains only the uppercase strings:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function onlyupper(t)
     res = []
@@ -340,7 +341,7 @@ julia> print(t)
 
 This is an elegant way to create a map. The function +capitalizeall+ can be implemented by a one-liner:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function capitalizeall(t)
     uppercase.(t)
@@ -435,7 +436,7 @@ julia> print(t)
 SubString{String}["pining", "for", "the", "fjords"]
 ----
 
-An optional argument called a *delimiter* specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
+An *optional argument* called a *delimiter* specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
 
 [source,@julia-repl-test]
 ----
@@ -486,7 +487,7 @@ julia> a = "banana"
 "banana"
 julia> b = "banana"
 "banana"
-julia> a ≡ b        # false for Julia v0.6
+julia> a ≡ b
 true
 ----
 
@@ -502,9 +503,10 @@ julia> a ≡ b
 false
 ----
 
-So the state diagram looks like Figure 10-3.
+So the state diagram looks like <<fig10-3>>.
 
-.State diagram.
+[[fig10-3]]
+.State diagram
 image::images/fig103.svg[]
 
 
@@ -527,9 +529,10 @@ julia> b ≡ a
 true
 ----
 
-The state diagram looks like Figure 10-4.
+The state diagram looks like <<fig10-4>>.
 
-.State diagram.
+[[fig10-4]]
+.State diagram
 image::images/fig104.svg[]
 
 
@@ -551,7 +554,7 @@ Although this behavior can be useful, it is error-prone. In general, it is safer
 
 For immutable objects like strings, aliasing is not as much of a problem. In this example:
 
-[source,julia]
+[source,@julia-setup]
 ----
 a = "banana"
 b = "banana"
@@ -564,7 +567,7 @@ It almost never makes a difference whether +a+ and +b+ refer to the same string 
 
 When you pass an array to a function, the function gets a reference to the array. If the function modifies the array, the caller sees the change. For example, +deletehead!+ removes the first element from an array:
 
-[source,julia]
+[source,@julia-setup chap10]
 ----
 function deletehead!(t)
     popfirst!(t)
@@ -573,14 +576,7 @@ end
 
 Here’s how it is used:
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> letters = ['a', 'b', 'c'];
 
@@ -590,11 +586,11 @@ julia> print(letters)
 ['b', 'c']
 ----
 
-The parameter +t+ and the variable +letters+ are aliases for the same object. The stack diagram looks like Figure 10-5.
+The parameter +t+ and the variable +letters+ are aliases for the same object. The stack diagram looks like <<fig10-5>>.
 
-.Stack diagram.
+[[fig10-5]]
+.Stack diagram
 image::images/fig105.svg[]
-
 
 Since the array is shared by two frames, I drew it between them.
 
@@ -632,7 +628,7 @@ This difference is important when you write functions that are supposed to modif
 
 For example, this function _does not_ delete the head of a array:
 
-[source,julia]
+[source,@julia-setup chap10]
 ----
 function baddeletehead(t)
     t[2:end]                # WRONG!
@@ -655,7 +651,7 @@ At the beginning of +baddeletehead+, +t+ and +t3+ refer to the same array. At th
 
 An alternative is to write a function that creates and returns a new array. For example, +tail+ returns all but the first element of an array:
 
-[source,julia]
+[source,@julia-setup chap10]
 ----
 function tail(t)
     t[2:end]
@@ -664,7 +660,7 @@ end
 
 This function leaves the original array unmodified. Here’s how it is used:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> letters = ['a', 'b', 'c'];
 
@@ -680,40 +676,38 @@ julia> print(rest)
 Careless use of arrays (and other mutable objects) can lead to long hours of debugging. Here are some common pitfalls and ways to avoid them:
 
 * Most array functions modify the argument. This is the opposite of the string functions, which return a new string and leave the original alone.
-
 +
 If you are used to writing string code like this:
-
++
 [source,julia]
 ----
 new_word = strip(word)
 ----
-
++
 It is tempting to write array code like this:
-
++
 [source,julia]
 ----
 t2 = sort!(t1)
 ----
-
++
 Because +sort!+ returns the modified original array +t1+, +t2+ is an alias of +t1+.
-
++
 Before using array functions and operators, you should read the documentation carefully and then test them in interactive mode.
 
 * Pick an idiom and stick with it.
-
 +
 Part of the problem with arrays is that there are too many ways to do things. For example, to remove an element from an array, you can use +pop!+, +popfirst!+, +delete_at+, or even a slice assignment. To add an element, you can use +push!+, +pushfirst!+, +insert+ or +vcat+. Assuming that +t+ is an array and +x+ is an array element, these are correct:
-
++
 [source,julia]
 ----
 insert!(t, 4, x)
 push!(t, x)
 append!(t, [x])
 ----
-
++
 And these are wrong:
-
++
 [source,julia]
 ----
 insert!(t, 4, [x])         # WRONG!
@@ -722,10 +716,8 @@ vcat(t, [x])               # WRONG!
 ----
 
 * Make copies to avoid aliasing.
-
 +
 If you want to use a function like +sort!+ that modifies the argument, but you need to keep the original array as well, you can make a copy:
-
 [source,@julia-repl-test chap10]
 ----
 julia> t = [3, 1, 2];
@@ -739,9 +731,9 @@ julia> print(t)
 julia> print(t2)
 [1, 2, 3]
 ----
-
++
 In this example you could also use the built-in function +sort+, which returns a new, sorted array and leaves the original alone:
-
++
 [source,@julia-repl-test chap10]
 ----
 julia> t2 = sort(t);
@@ -800,17 +792,56 @@ The association between a variable and its value.
 aliasing::
 A circumstance where two or more variables refer to the same object.
 
+optional arguments::
+arguments that are not required.
+
 delimiter::
 A character or string used to indicate where a string should be split.
 
 
 === Exercises
 
+[source,@julia-eval chap10]
+----
+function nestedsum(t)
+  total = 0
+  for nested in t
+    total += sum(nested)
+  end
+  total
+end;
+
+function cumulsum(t)
+  total = 0
+  res = []
+  for x in t
+    total += x
+    push!(res, total)
+  end
+  res
+end;
+
+function interior(t)
+  t[2:end-1]
+end;
+
+function interior!(t)
+  popfirst!(t)
+  pop!(t)
+  nothing
+end;
+
+function issort(t)
+  t == sort(t)
+end;
+----
+
+[[ex10-1]]
 ==== Exercise 10-1
 
 Write a function called +nestedsum+ that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> t = [[1, 2], [3], [4, 5, 6]];
 
@@ -818,11 +849,12 @@ julia> nestedsum(t)
 21
 ----
 
+[[ex10-2]]
 ==== Exercise 10-2
 
 Write a function called +cumulsum+ that takes an array of numbers and returns the cumulative sum; that is, a new array where the latexmath:[i]th element is the sum of the first latexmath:[i+1] elements from the original array. For example:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> t = [1, 2, 3];
 
@@ -830,11 +862,12 @@ julia> print(cumulsum(t))
 Any[1, 3, 6]
 ----
 
+[[ex10-3]]
 ==== Exercise 10-3
 
 Write a function called +interior+ that takes an array and returns a new array that contains all but the first and last elements. For example:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> t = [1, 2, 3, 4];
 
@@ -842,11 +875,12 @@ julia> print(interior(t))
 [2, 3]
 ----
 
+[[ex10-4]]
 ==== Exercise 10-4
 
 Write a function called +interior!+ that takes an array, modifies it by removing the first and last elements, and returns +nothing+. For example:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> t = [1, 2, 3, 4];
 
@@ -856,11 +890,12 @@ julia> print(t)
 [2, 3]
 ----
 
+[[ex10-5]]
 ==== Exercise 10-5
 
 Write a function called +issort+ that takes an array as a parameter and returns +true+ if the array is sorted in ascending order and +false+ otherwise. For example:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap10]
 ----
 julia> issort([1, 2, 2])
 true
@@ -868,24 +903,29 @@ julia> issort(['b', 'a'])
 false
 ----
 
+[[ex10-6]]
 ==== Exercise 10-6
 
 Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called +isanagram+ that takes two strings and returns +true+ if they are anagrams.
 
+[[ex10-7]]
 ==== Exercise 10-7
 
 Write a function called +hasduplicates+ that takes an array and returns +true+ if there is any element that appears more than once. It should not modify the original array.
 
+[[ex10-8]]
 ==== Exercise 10-8
 
 This exercise pertains to the so-called Birthday Paradox, which you can read about at http://en.wikipedia.org/wiki/Birthday_paradox.
 
 If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches. Hint: you can generate random birthdays with +rand(1:365)+.
 
+[[ex10-9]]
 ==== Exercise 10-9
 
 Write a function that reads the file +words.txt+ and builds an array with one element per word. Write two versions of this function, one using +push!+ and the other using the idiom +t = [t..., x]+. Which one takes longer to run? Why?
 
+[[ex10-10]]
 ==== Exercise 10-10
 
 To check whether a word is in the word array, you could use the +∈+ operator, but it would be slow because it searches through the words in order.
@@ -896,10 +936,12 @@ Either way, you cut the remaining search space in half. If the word array has 11
 
 Write a function called +inbisect+ that takes a sorted array and a target value and returns +true+ if the word is in the array and +false+ if it’s not.
 
+[[ex10-11]]
 ==== Exercise 10-11
 
 Two words are a “reverse pair” if each is the reverse of the other. Write a program that finds all the reverse pairs in the word array.
 
+[[ex10-12]]
 ==== Exercise 10-12
 
 Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”.

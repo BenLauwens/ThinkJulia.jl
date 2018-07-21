@@ -1,0 +1,297 @@
+[[chap22]]
+== Debugging
+
+When you are debugging, you should distinguish among different kinds of errors in order to track them down more quickly:
+
+* Syntax errors are discovered by the interpreter when it is translating the source code into byte code. They indicate that there is something wrong with the structure of the program. Example: Omitting the +end+ keyword at the end of a function block generates the somewhat redundant message +ERROR: LoadError: syntax: incomplete: function requires end+.
+
+* Runtime errors are produced by the interpreter if something goes wrong while the program is running. Most runtime error messages include information about where the error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error +ERROR: LoadError: StackOverflowError+.
+
+* Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result. The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.
+
+
+=== Syntax Errors
+
+Syntax errors are usually easy to fix once you figure out what they are. Unfortunately, the error messages are often not helpful. The most common messages are +ERROR: LoadError: syntax: incomplete: premature end of input+ and +ERROR: LoadError: syntax: unexpected "="+, neither of which is very informative.
+
+On the other hand, the message does tell you where in the program the problem occurred. Actually, it tells you where Julia noticed a problem, which is not necessarily where the error is. Sometimes the error is prior to the location of the error message, often on the preceding line.
+
+If you are building the program incrementally, you should have a good idea about where the error is. It will be in the last line you added.
+
+If you are copying code from a book, start by comparing your code to the book’s code very carefully. Check every character. At the same time, remember that the book might be wrong, so if you see something that looks like a syntax error, it might be.
+
+Here are some ways to avoid the most common syntax errors:
+
+. Make sure you are not using a Julia keyword for a variable name.
+
+. Check that you have the +end+ keyword at the end of every compound statement, including +for+, +while+, +if+, and +function+ blocks.
+
+. Make sure that any strings in the code have matching quotation marks. Make sure that all quotation marks are “straight quotes”, not “curly quotes”.
+
+. If you have multiline strings with triple quotes , make sure you have terminated the string properly. An unterminated string may cause an invalid token error at the end of your program, or it may treat the following part of the program as a string until it comes to the next string. In the second case, it might not produce an error message at all!
+
+. An unclosed opening operator—+(+, +{+, or +[+—makes Julia continue with the next line as part of the current statement. Generally, an error occurs almost immediately in the next line.
+
+. Check for the classic +=+ instead of +==+ inside a conditional.
+
+. If you have non-ASCII characters in the code (including strings and comments), that might cause a problem, although Julia usually handles non-ASCII characters. Be careful if you paste in text from a web page or other source.
+
+If nothing works, move on to the next section...
+
+==== I keep making changes and it makes no difference
+
+If the REPL says there is an error and you don’t see it, that might be because you and the REPL are not looking at the same code. Check your programming environment to make sure that the program you are editing is the one Julia is trying to run.
+
+If you are not sure, try putting an obvious and deliberate syntax error at the beginning of the program. Now run it again. If the REPL doesn’t find the new error, you are not running the new code.
+
+There are a few likely culprits:
+
+* You edited the file and forgot to save the changes before running it again. Some programming environments do this for you, but some don’t.
+
+* You changed the name of the file, but you are still running the old name.
+
+* Something in your development environment is configured incorrectly.
+
+* If you are writing a module and using +using+, make sure you don’t give your module the same name as one of the standard Julia modules.
+
+* If you are using +using+ to import a module, remember that you have to restart the REPL or use +reload+ to read a modified file. If you import the module again, it doesn’t do anything.
+
+If you get stuck and you can’t figure out what is going on, one approach is to start again with a new program like “Hello, World!”, and make sure you can get a known program to run. Then gradually add the pieces of the original program to the new one.
+
+
+=== Runtime Errors
+
+Once your program is syntactically correct, Julia can read it and at least start running it. What could possibly go wrong?
+
+==== My program does absolutely nothing
+
+This problem is most common when your file consists of functions and classes but does not actually invoke a function to start execution. This may be intentional if you only plan to import this module to supply classes and functions.
+
+If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see “Flow of Execution” below).
+
+==== My program hangs
+
+If a program stops and seems to be doing nothing, it is “hanging”. Often that means that it is caught in an infinite loop or infinite recursion.
+
+* If there is a particular loop that you suspect is the problem, add a print statement immediately before the loop that says “entering the loop” and another immediately after that says “exiting the loop”.
++
+Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <<infinite_loop>> below.
+
+* Most of the time, an infinite recursion will cause the program to run for a while and then produce a +ERROR: LoadError: StackOverflowError+ error. If that happens, go to <<infinite_recursion>> below.
++
+If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <<infinite_recursion>>.
+
+* If neither of those steps works, start testing other loops and other recursive functions and methods.
+
+* If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to <<flow_of_execution>> below.
+
+[[infinite_loop]]
+===== Infinite Loop
+
+If you think you have an infinite loop and you think you know what loop is causing the problem, add a print statement at the end of the loop that prints the values of the variables in the condition and the value of the condition.
+
+For example:
+
+[source,julia]
+----
+while x > 0 && y < 0
+  # do something to x
+  # do something to y
+  println("x: ", x)
+  println("y: ", y)
+  println("condition: ", (x > 0 && y < 0))
+end
+----
+
+Now when you run the program, you will see three lines of output for each time through the loop. The last time through the loop, the condition should be +false+. If the loop keeps going, you will be able to see the values of +x+ and +y+, and you might figure out why they are not being updated correctly.
+
+[[infinite_recursion]]
+===== Infinite Recursion
+
+Most of the time, infinite recursion causes the program to run for a while and then produce a +ERROR: LoadError: StackOverflowError+ error.
+
+If you suspect that a function is causing an infinite recursion, make sure that there is a base case. There should be some condition that causes the function to return without making a recursive invocation. If not, you need to rethink the algorithm and identify a base case.
+
+If there is a base case but the program doesn’t seem to be reaching it, add a print statement at the beginning of the function that prints the parameters. Now when you run the program, you will see a few lines of output every time the function is invoked, and you will see the parameter values. If the parameters are not moving toward the base case, you will get some ideas about why not.
+
+[[flow_of_execution]]
+===== Flow of Execution
+
+If you are not sure how the flow of execution is moving through your program, add print statements to the beginning of each function with a message like “entering function foo”, where foo is the name of the function.
+
+Now when you run the program, it will print a trace of each function as it is invoked.
+
+==== When I run the program I get an exception
+
+If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a traceback.
+
+The traceback identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.
+
+The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
+
+ArgumentError:: 
+The parameters to a function call do not match a valid signature.
+
+BoundsError:: 
+An indexing operation into an array tried to access an out-of-bounds element.
+
+DivideError:: 
+Integer division was attempted with a denominator value of 0.
+
+DomainError:: 
+The argument to a function or constructor is outside the valid domain.
+
+EOFError:: 
+No more data was available to read from a file or stream.
+
+KeyError:: 
+An indexing operation into an +AbstractDict+ (+Dict+) or +Set+ like object tried to access or delete a non-existent element.
+
+MethodError:: 
+A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.
+
+OutOfMemoryError:: 
+An operation allocated too much memory for either the system or the garbage collector to handle properly.
+
+OverflowError:: 
+The result of an expression is too large for the specified type and will cause a wraparound.
+
+StackOverflowError:: 
+The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
+
+UndefVarError:: 
+A symbol in the current scope is not defined.
+
+StringIndexError::
+ An error occurred when trying to access a string at an index that is not valid.
+
+==== I added so many print statements I get inundated with output
+
+One of the problems with using print statements for debugging is that you can end up buried in output. There are two ways to proceed: simplify the output or simplify the program.
+
+To simplify the output, you can remove or comment out print statements that aren’t helping, or combine them, or format the output so it is easier to understand.
+
+To simplify the program, there are several things you can do. First, scale down the problem the program is working on. For example, if you are searching a list, search a small list. If the program takes input from the user, give it the simplest input that causes the problem.
+
+Second, clean up the program. Remove dead code and reorganize the program to make it as easy to read as possible. For example, if you suspect that the problem is in a deeply nested part of the program, try rewriting that part with simpler structure. If you suspect a large function, try splitting it into smaller functions and testing them separately.
+
+Often the process of finding the minimal test case leads you to the bug. If you find that a program works in one situation but not in another, that gives you a clue about what is going on.
+
+Similarly, rewriting a piece of code can help you find subtle bugs. If you make a change that you think shouldn’t affect the program, and it does, that can tip you off.
+
+
+=== Semantic Errors
+
+In some ways, semantic errors are the hardest to debug, because the interpreter provides no information about what is wrong. Only you know what the program is supposed to do.
+
+The first step is to make a connection between the program text and the behavior you are seeing. You need a hypothesis about what the program is actually doing. One of the things that makes that hard is that computers run so fast.
+
+You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often short compared to setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.
+
+==== My program doesn’t work
+
+You should ask yourself these questions:
+
+* Is there something the program was supposed to do but which doesn’t seem to be happening? Find the section of the code that performs that function and make sure it is executing when you think it should.
+
+* Is something happening that shouldn’t? Find code in your program that performs that function and see if it is executing when it shouldn’t.
+
+* Is a section of code producing an effect that is not what you expected? Make sure that you understand the code in question, especially if it involves functions or methods in other Julia modules. Read the documentation for the functions you call. Try them out by writing simple test cases and checking the results.
+
+In order to program, you need a mental model of how programs work. If you write a program that doesn’t do what you expect, often the problem is not in the program; it’s in your mental model.
+
+The best way to correct your mental model is to break the program into its components (usually the functions and methods) and test each component independently. Once you find the discrepancy between your model and reality, you can solve the problem.
+
+Of course, you should be building and testing components as you develop the program. If you encounter a problem, there should be only a small amount of new code that is not known to be correct.
+
+==== I’ve got a big hairy expression and it doesn’t do what I expect
+
+Writing complex expressions is fine as long as they are readable, but they can be hard to debug. It is often a good idea to break a complex expression into a series of assignments to temporary variables.
+
+For example:
+
+[source,julia]
+----
+addcard(game.hands[i], popcard(game.hands[findneighbor(game, i)]))
+----
+
+This can be rewritten as:
+
+[source,julia]
+----
+neighbor = findneighbor(game, i)
+pickedcard = popcard(game.hands[neighbor])
+addcard(game.hands[i], pickedcard)
+----
+
+The explicit version is easier to read because the variable names provide additional documentation, and it is easier to debug because you can check the types of the intermediate variables and display their values.
+
+Another problem that can occur with big expressions is that the order of evaluation may not be what you expect. For example, if you are translating the expression latexmath:[\frac{x}{2\pi}] into Julia, you might write:
+
+[source,julia]
+----
+y = x / 2 * π
+----
+
+That is not correct because multiplication and division have the same precedence and are evaluated from left to right. So this expression computes latexmath:[\frac{x\pi}{2}].
+
+A good way to debug expressions is to add parentheses to make the order of evaluation explicit:
+
+[source,julia]
+----
+y = x / (2 * π)
+----
+
+Whenever you are not sure of the order of evaluation, use parentheses. Not only will the program be correct (in the sense of doing what you intended), it will also be more readable for other people who haven’t memorized the order of operations.
+
+==== I’ve got a function that doesn’t return what I expect
+
+If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:
+
+[source,julia]
+----
+return removematches(game.hands[i])
+----
+
+you could write:
+
+[source,julia]
+----
+count = removematches(game.hands[i])
+return count
+----
+
+Now you have the opportunity to display the value of +count+ before returning.
+
+==== I’m really, really stuck and I need help
+
+First, try getting away from the computer for a few minutes. Computers emit waves that affect the brain, causing these symptoms:
+
+* Frustration and rage.
+
+* Superstitious beliefs (“the computer hates me”) and magical thinking (“the program only works when I wear my hat backward”).
+
+* Random walk programming (the attempt to program by writing every possible program and choosing the one that does the right thing).
+
+If you find yourself suffering from any of these symptoms, get up and go for a walk. When you are calm, think about the program. What is it doing? What are some possible causes of that behavior? When was the last time you had a working program, and what did you do next?
+
+Sometimes it just takes time to find a bug. I often find bugs when I am away from the computer and let my mind wander. Some of the best places to find bugs are trains, showers, and in bed, just before you fall asleep.
+
+==== No, I really need help
+
+It happens. Even the best programmers occasionally get stuck. Sometimes you work on a program so long that you can’t see the error. You need a fresh pair of eyes.
+
+Before you bring someone else in, make sure you are prepared. Your program should be as simple as possible, and you should be working on the smallest input that causes the error. You should have print statements in the appropriate places (and the output they produce should be comprehensible). You should understand the problem well enough to describe it concisely.
+
+When you bring someone in to help, be sure to give them the information they need:
+
+* If there is an error message, what is it and what part of the program does it indicate?
+
+* What was the last thing you did before this error occurred? What were the last lines of code that you wrote, or what is the new test case that fails?
+
+* What have you tried so far, and what have you learned?
+
+When you find the bug, take a second to think about what you could have done to find it faster. Next time you see something similar, you will be able to find the bug more quickly.
+
+Remember, the goal is not just to make the program work. The goal is to learn how to make the program work.
+

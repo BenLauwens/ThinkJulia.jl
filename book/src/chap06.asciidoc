@@ -372,7 +372,7 @@ The same is true of recursive programs. When you get to the recursive call, inst
 
 Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!
 
-
+[[one_more_example]]
 === One More Example
 
 After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see http://en.wikipedia.org/wiki/Fibonacci_number):
@@ -414,8 +414,7 @@ What happens if we call +fact+ and give it +1.5+ as an argument?
 julia> fact(1.5)
 ERROR: StackOverflowError:
 Stacktrace:
- [1] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:0
- [2] fact(::Float64) at /Users/ben/.julia/v0.6/ThinkJulia/src/code/chap06.jl:38 (repeats 52402 times)
+ [1] fact(::Float64) at ./REPL[3]:2
 ----
 
 It looks like an infinite recursion. How can that be? The function has a base case—when +n == 0+. But if +n+ is not an integer, we can _miss_ the base case and recurse forever.
@@ -457,9 +456,9 @@ If we get past both checks, we know that +n+ is positive or zero, so we can prov
 
 This program demonstrates a pattern sometimes called a *guardian*. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.
 
-In <<sec14-5>> we will see a more flexible alternative to printing an error message: raising an exception.
+In <<catching_exceptions>> we will see a more flexible alternative to printing an error message: raising an exception.
 
-
+[[deb06]]
 === Debugging
 
 Breaking a large program into smaller functions creates natural checkpoints for debugging. If a function is not working, there are three possibilities to consider:

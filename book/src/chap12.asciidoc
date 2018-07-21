@@ -1,13 +1,6 @@
 [[chap12]]
 == Tuples
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
 This chapter presents one more built-in type, the tuple, and then shows how arrays, dictionaries, and tuples work together. I also present a useful feature for variable-length argument arrays, the gather and scatter operators.
 
 One note: there is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”.
@@ -186,7 +179,7 @@ julia> println(rem)
 
 Here is an example of a function that returns a tuple:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function min_max(t)
     minimum(t), maximum(t)
@@ -200,7 +193,7 @@ end
 
 Functions can take a variable number of arguments. A parameter name that ends with +...+ *gathers* arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
 
-[source,julia]
+[source,@julia-setup chap12]
 ----
 function printall(args...)
     println(args)
@@ -209,7 +202,7 @@ end
 
 The gather parameter can have any name you like, but args is conventional. Here’s how the function works:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap12]
 ----
 julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
@@ -322,9 +315,9 @@ julia> for (letter, number) in t
 
 Each time through the loop, Julia selects the next tuple in the array and assigns the elements to letter and number. The parentheses around +(letter, number)+ are compulsory.
 
-If you combine +zip+, +for+ and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, +hasmatch+ takes two sequences, +t1+ and +t2+, and returns +true+ if there is an index +i+ such that +t1[i] == t2[i]+:
+If you combine +zip+, +for+ and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, +has_match+ takes two sequences, +t1+ and +t2+, and returns +true+ if there is an index +i+ such that +t1[i] == t2[i]+:
 
-[source,julia]
+[source,@julia-setup chap12]
 ----
 function has_match(t1, t2)
     for (x, y) in zip(t1, t2)
@@ -338,7 +331,7 @@ end
 
 If you need to traverse the elements of a sequence and their indices, you can use the built-in function +enumerate+:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap12]
 ----
 julia> for (index, element) in enumerate("abc")
            println(index, " ", element)
@@ -411,15 +404,17 @@ end
 
 This loop traverses the key-value pairs in +directory+, which are tuples. It assigns the elements of the key in each tuple to +last+ and +first+, and the value to +number+, then prints the name and corresponding telephone number.
 
-There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple +("Cleese", "John")+ would appear as in Figure 12-1.
+There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple +("Cleese", "John")+ would appear as in <<fig12-1>>.
 
-.State diagram.
+[[fig12-1]]
+.State diagram
 image::images/fig121.svg[]
 
 
-But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in Figure 12-2.
+But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in <<fig12-2>>.
 
-.State diagram.
+[[fig12-2]]
+.State diagram
 image::images/fig122.svg[]
 
 
@@ -477,19 +472,19 @@ An error caused because a value has the wrong shape; that is, the wrong type or 
 
 === Exercises
 
+[[ex12-1]]
 ==== Exercise 12-1
 
 Write a function called +mostfrequent+ that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at http://en.wikipedia.org/wiki/Letter_frequencies.
 
+[[ex12-2]]
 ==== Exercise 12-2
 
 More anagrams!
 
-. Write a program that reads a word list from a file (see Section 9.1) and prints all the sets of words that are anagrams.
-
+. Write a program that reads a word list from a file (see <<reading_word_lists>>) and prints all the sets of words that are anagrams.
 +
 Here is an example of what the output might look like:
-
 [source,julia]
 ----
 ["deltas", "desalt", "lasted", "salted", "slated", "staled"]
@@ -497,17 +492,18 @@ Here is an example of what the output might look like:
 ["generating", "greatening"]
 ["resmelts", "smelters", "termless"]
 ----
-
 Hint: you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
 
 . Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.
 
 . In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos? Hint: there are seven.
 
+[[ex12-3]]
 ==== Exercise 12-3
 
 Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible swaps. Credit: This exercise is inspired by an example at http://puzzlers.org.
 
+[[ex12-4]]
 ==== Exercise 12-4
 
 Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):
@@ -526,7 +522,7 @@ This exercise is a little more challenging than most, so here are some suggestio
 
 . Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.
 
-. The wordlist I provided, +words.txt+, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.
+. The wordlist I provided, _words.txt_, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.
 
 . To improve the performance of your program, you might want to memoize the words that are known to be reducible.
 

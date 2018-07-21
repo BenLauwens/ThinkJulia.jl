@@ -275,7 +275,7 @@ function printn(s, n)
 end
 ----
 
-If +n <= 0+ the +return+ statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
+If +n pass:[&lt;]= 0+ the +return+ statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
 
 The rest of the function is similar to +countdown+: it displays +s+ and then calls itself to display +s+ latexmath:[n-1] additional times. So the number of lines of output is latexmath:[1 + (n - 1)], which adds up to latexmath:[n].
 

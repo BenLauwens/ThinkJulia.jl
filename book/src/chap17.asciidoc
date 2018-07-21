@@ -1,13 +1,6 @@
 [[chap17]]
 == Multiple Dispatch
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
 In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is also dynamic, meaning that only at run-time it can be checked that a function supports an object as argument. But Julia gains some of the advantages of static type systems for which every type has to been known at compile time, by making it possible to indicate that certain values are of specific types. This can be of great assistance in generating efficient code, but even more significantly, it allows method dispatch on the types of function arguments to be deeply integrated with the language.
 
 In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.
@@ -52,7 +45,7 @@ Float64
 
 Declarations can also be attached to function definitions:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function sinc(x)::Float64
     if x == 0
@@ -76,15 +69,12 @@ To facilitate using many different implementations of the same concept smoothly,
 
 === Printing Objects
 
-In Chapter 16, we defined a struct named +MyTime+ and in Section 16.1, you wrote a function named +printtime+:
+In <<chap16>>, we defined a struct named +MyTime+ and in <<time>>, you wrote a function named +printtime+:
 
-[source,julia]
+[source,@julia-setup chap17a]
 ----
-"""
-Represents the time of day.
+using Printf
 
-fields: hour, minute, second
-"""
 mutable struct MyTime
     hour :: Int64
     minute :: Int64
@@ -103,14 +93,14 @@ To call this function, you have to pass a mytime object as an argument:
 [source,@julia-repl-test chap17a]
 ----
 julia> start = MyTime(9, 45, 0)
-ThinkJulia.MyTime(9, 45, 0)
+MyTime(9, 45, 0)
 julia> printtime(start)
 09:45:00
 ----
 
 To add a method to the function +printtime+ that only accepts as argument a mytime object, all we have to do is append +::+ followed by +MyTime+ to the argument +time+ in the function definition:
 
-[source,julia]
+[source,@julia-setup chap17a]
 ----
 function printtime(time::MyTime)
     @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
@@ -127,7 +117,7 @@ julia> printtime(start)
 
 We can now redefine the first method without the +::+ type annotation allowing an argument of any type:
 
-[source,julia]
+[source,@julia-setup chap17a]
 ----
 function printtime(time)
     println("I don't know how to print the argument time.")
@@ -136,20 +126,33 @@ end
 
 If you call the function +printtime+ with an object different from mytime, you get now:
 
-[source,@julia-repl-test chap17]
+[source,@julia-repl-test chap17a]
 ----
 julia> printtime(150)
 I don't know how to print the argument time.
 ----
 
-As an exercise, rewrite +timetoint+ and +inttotime+ (from Section 16.4) to specify their argument.
+As an exercise, rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
 
+[source,@julia-eval chap17a]
+----
+function timetoint(time)
+    minutes = time.hour * 60 + time.minute
+    seconds = minutes * 60 + time.second
+end;
+
+function inttotime(seconds)
+    (minutes, second) = divrem(seconds, 60)
+    hour, minute = divrem(minutes, 60)
+    MyTime(hour, minute, second)
+end;
+----
 
 === More Examples
 
-Here’s a version of +increment!+ (from Section 16.3) rewritten to specify its arguments:
+Here’s a version of +increment!+ (from <<modifiers>>) rewritten to specify its arguments:
 
-[source,julia]
+[source,@julia-setup chap17a]
 ----
 function increment!(time::MyTime, seconds::Int64)
     seconds += timetoint(time)
@@ -164,9 +167,9 @@ Here's how you would invoke increment:
 [source,@julia-repl-test chap17a]
 ----
 julia> start = MyTime(9, 45, 0)
-ThinkJulia.MyTime(9, 45, 0)
+MyTime(9, 45, 0)
 julia> increment!(start, 1337)
-ThinkJulia.MyTime(10, 7, 17)
+MyTime(10, 7, 17)
 ----
 
 If you put the arguments in the wrong order, you get an error:
@@ -174,14 +177,14 @@ If you put the arguments in the wrong order, you get an error:
 [source,@julia-repl-test chap17a]
 ----
 julia> increment!(1337, start)
-ERROR: MethodError: no method matching increment!(::Int64, ::ThinkJulia.MyTime)
+ERROR: MethodError: no method matching increment!(::Int64, ::MyTime)
 ----
 
-The signature of the method is +printtime(time::ThinkJulia.MyTime, seconds::Int64)+ and not +printtime(seconds::Int64, time::ThinkJulia.MyTime)+.
+The signature of the method is +printtime(time::MyTime, seconds::Int64)+ and not +printtime(seconds::Int64, time::MyTime)+.
 
 Rewriting +isafter+to act only on mytime objects ia as easy:
 
-[source,julia]
+[source,@julia-setup chap17a]
 ----
 function isafter(t1::MyTime, t2::MyTime)
     (t1.hour, t1.minute, t1.second) > (t2.hour, t2.minute, t2.second)
@@ -190,7 +193,7 @@ end
 
 By the way, optional arguments are implemented as syntax for multiple method definitions. For example, this definition:
 
-[source,julia]
+[source,@julia-setup]
 ----
 function f(a=1, b=2)
     a + 2b
@@ -199,7 +202,7 @@ end
 
 translates to the following three methods:
 
-[source,julia]
+[source,@julia-setup]
 ----
 f(a, b) = a + 2b
 f(a) = f(a, 2)
@@ -223,7 +226,7 @@ The former is a convenience method to allow implicit conversions.
 
 We can also add our own *outer constructor* methods:
 
-[source,julia]
+[source,@julia-setup chap17a]
 ----
 function MyTime(time::MyTime)
     MyTime(time.hour, time.minute, time.second)
@@ -234,7 +237,7 @@ This method is called a *copy constructor* because the new mytime object is a co
 
 While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need *inner constructor* methods:
 
-[source,julia]
+[source,@julia-setup chap17b]
 ----
 mutable struct MyTime
     hour :: Int64
@@ -270,7 +273,7 @@ If any inner constructor method is defined, no default constructor method is pro
 
 A second method without arguments of the local function +new+ exists:
 
-[source,julia]
+[source,@julia-setup chap17c]
 ----
 mutable struct MyTime
     hour :: Int
@@ -295,7 +298,7 @@ This allows to construct incompletely initialized objects and self-referential o
 
 +Base.show+ is a special function that is supposed to return a string representation of an object. For example, here is a +Base.show+ method for Time objects:
 
-[source,julia]
+[source,@julia-setup chap17b]
 ----
 using Printf
 
@@ -305,17 +308,6 @@ end
 ----
 
 When you print an object, Julia invokes the +Base.show+ function:
-
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-    using Printf
-    function Base.show(io::IO, time::MyTime)
-        @printf(io, "%02d:%02d:%02d", time.hour, time.minute, time.second)
-    end
-end
-----
 
 [source,@julia-repl-test chap17b]
 ----
@@ -327,6 +319,24 @@ When I write a new composite type, I almost always start by writing an inner con
 
 As an exercise, write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
 
+[source,@julia-eval chap17b]
+----
+function timetoint(time)
+    minutes = time.hour * 60 + time.minute
+    seconds = minutes * 60 + time.second
+end;
+
+function inttotime(seconds)
+    (minutes, second) = divrem(seconds, 60)
+    hour, minute = divrem(minutes, 60)
+    MyTime(hour, minute, second)
+end;
+
+function increment!(time::MyTime, seconds::Int64)
+    seconds += timetoint(time)
+    inttotime(seconds)
+end;
+----
 
 === Operator Overloading
 
@@ -334,7 +344,7 @@ By defining operator methods, you can specify the behavior of operators on progr
 
 Here is what the definition might look like:
 
-[source,julia]
+[source,@julia-setup chap17b]
 ----
 import Base.+
 
@@ -348,12 +358,6 @@ The import statement adds the +Base.+ function to the local scope so that method
 
 And here is how you could use it:
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
 
 [source,@julia-repl-test chap17b]
 ----
@@ -365,7 +369,7 @@ julia> start + duration
 11:20:00
 ----
 
-When you apply the ++ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +Base.show+. So there is a lot happening behind the scenes!
+When you apply the +pass[+]+ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +Base.show+. So there is a lot happening behind the scenes!
 
 Changing the behavior of an operator so that it works with programmer-defined types is called *operator overloading*.
 
@@ -374,7 +378,7 @@ Changing the behavior of an operator so that it works with programmer-defined ty
 
 In the previous section we added two +MyTime+ objects, but you also might want to add an integer to a +MyTime+ object:
 
-[source,julia]
+[source,@julia-setup chap17b]
 ----
 function +(time::MyTime, seconds::Int64)
     increment!(time, seconds)
@@ -393,7 +397,7 @@ julia> start + 1337
 
 Addition is a commutative operator so we have to add another method.
 
-[source,julia]
+[source,@julia-setup chap17b]
 ----
 function +(seconds::Int64, time::MyTime)
   increment!(time, seconds)
@@ -421,9 +425,9 @@ As an exercise, write ++ methods for point objects:
 
 Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.
 
-Many of the functions we wrote for strings also work for other sequence types. For example, in Section 11.2 we used +histogram+ to count the number of times each letter appears in a word.
+Many of the functions we wrote for strings also work for other sequence types. For example, in <<dictionary_collection_counters>> we used +histogram+ to count the number of times each letter appears in a word.
 
-[source,julia]
+[source,@julia-setup chap17]
 ----
 function histogram(s)
     d = Dict()
@@ -455,9 +459,9 @@ Functions that work with several types are called *polymorphic*. Polymorphism ca
 
 For example, the built-in function +sum+, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
 
-Since a ++ method is provided for mytime objects, they work with +sum+:
+Since a +pass:[+]+ method is provided for mytime objects, they work with +sum+:
 
-[source,@julia-repl-test chap17]
+[source,@julia-repl-test chap17b]
 ----
 julia> t1 = MyTime(1, 7, 2)
 01:07:02
@@ -480,7 +484,7 @@ One of the goals of multiple dispatch is to make software more maintainable, whi
 
 A design principle that helps achieve that goal is to keep interfaces separate from implementations. For objects, that means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
 
-For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include +timetoint+, +isafter+, and ++.
+For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include +timetoint+, +isafter+, and +pass:[+]+.
 
 We could implement those methods in several ways. The details of the implementation depend on how we represent +MyTime+. In this chapter, the fields of a mytime object are +hour+, +minute+, and +second+.
 
@@ -499,8 +503,8 @@ To know what methods are available, you can use the function +methods+:
 ----
 julia> methods(printtime)
 # 2 methods for generic function "printtime":
-printtime(time::ThinkJulia.MyTime) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:24
-printtime(time) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap17.jl:20
+[1] printtime(time::MyTime) in Main at REPL[3]:2
+[2] printtime(time) in Main at REPL[4]:2
 ----
 
 
@@ -542,10 +546,12 @@ Pertaining to a function that can work with more than one type.
 
 === Exercises
 
+[[ex17-1]]
 ==== Exercise 17-1
 
 Change the fields of +MyTime+ to be a single integer representing seconds since midnight. Then modify the methods defined in this chapter to work with the new implementation.
 
+[[ex17-2]]
 ==== Exercise 17-2
 
 Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:

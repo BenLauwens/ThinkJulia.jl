@@ -1,21 +1,14 @@
 [[chap16]]
 == Structs and Functions
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
 Now that we know how to create new composite types, the next step is to write functions that take programmer-defined objects as parameters and return them as results. In this chapter I also present “functional programming style” and two new program development plans.
 
-
+[[time]]
 === Time
 
 As another example of a composite type, we’ll define a +mutable struct+ called +MyTime+ that records the time of day. The struct definition looks like this:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 """
 Represents the time of day.
@@ -31,15 +24,16 @@ end
 
 The name +Time+ is already used in Julia and to avoid a name clash, I have chosen +MyTime+. We can create a new mytime object:
 
-[source,julia-repl]
+[source,@julia-repl-test chap16]
 ----
 julia> time = MyTime(11, 59, 30)
-ThinkJuliaMyTime(11, 59, 30)
+MyTime(11, 59, 30)
 ----
 
-The state diagram for the mytime object looks like Figure 16-1.
+The state diagram for the mytime object looks like <<fig16-1>>.
 
-.State diagram.
+[[fig16-1]]
+.State diagram
 image::images/fig161.svg[]
 
 
@@ -54,7 +48,7 @@ In the next few sections, we’ll write two functions that add time values. They
 
 Here is a simple prototype of +addtime+:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
     MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
@@ -67,31 +61,14 @@ To test this function, I’ll create two +MyTime+ objects: +start+ contains the 
 
 +addtime+ figures out when the movie will be done.
 
-[source,@julia-setup]
+[source,@julia-eval chap16]
 ----
-DocTestSetup = quote
-    using Printf
-
-    mutable struct MyTime
-        hour
-        minute
-        second
-        function MyTime(hour=0, minute=0, second=0)
-            new(hour, minute, second)
-        end
-    end
-
-    function printtime(time::MyTime)
-        @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
-    end
-
-    function addtime(t1, t2)
-        MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
-    end
-end
+function printtime(time::MyTime)
+    @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
+end;
 ----
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap16]
 ----
 julia> start = MyTime(9, 45, 0);
 
@@ -105,7 +82,7 @@ julia> printtime(done)
 
 The result, +10:80:00+ might not be what you were hoping for. The problem is that this function does not deal with cases where the number of seconds or minutes adds up to more than sixty. When that happens, we have to “carry” the extra seconds into the minute column or the extra minutes into the hour column. Here’s an improved version:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
     tsum = MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
@@ -123,14 +100,14 @@ end
 
 Although this function is correct, it is starting to get big. We will see a shorter alternative later.
 
-
+[[modifiers]]
 === Modifiers
 
 Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called *modifiers*.
 
 +increment!+, which adds a given number of seconds to a mytime object, can be written naturally as a modifier. Here is a rough draft:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function increment!(time, seconds)
     time.second += seconds
@@ -157,7 +134,7 @@ In general, I recommend that you write pure functions whenever it is reasonable 
 
 As an exercise, write a “pure” version of +increment!+ that creates and returns a new mytime object rather than modifying the parameter.
 
-
+[[prototyping_versus_planning]]
 === Prototyping Versus Planning
 
 The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.
@@ -172,7 +149,7 @@ This observation suggests another approach to the whole problem—we can convert
 
 Here is a function that converts mytimes to integers:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function timetoint(time)
     minutes = time.hour * 60 + time.minute
@@ -182,7 +159,7 @@ end
 
 And here is a function that converts an integer to a mytime (recall that +divrem+ divides the first argument by the second and returns the quotient and remainder as a tuple):
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function inttotime(seconds)
     (minutes, second) = divrem(seconds, 60)
@@ -195,7 +172,7 @@ You might have to think a bit, and run some tests, to convince yourself that the
 
 Once you are convinced they are correct, you can use them to rewrite +addtime+:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
     seconds = timetoint(t1) + timetoint(t2)
@@ -222,7 +199,7 @@ Requirements like these are called *invariants* because they should always be tr
 
 Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like +isvalidtime+ that takes a mytime object and returns +false+ if it violates an invariant:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function isvalidtime(time)
     if time.hour < 0 || time.minute < 0 || time.second < 0
@@ -237,7 +214,7 @@ end
 
 At the beginning of each function you could check the arguments to make sure they are valid:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
     if isvalidtime(t1) && isvalidtime(t2)
@@ -250,7 +227,7 @@ end
 
 Or you could use an *+@assert+ macro*, which checks a given invariant and throws an exception if it fails:
 
-[source,julia]
+[source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
     @assert(isvalidtime(t1) && isvalidtime(t2), "invalid MyTime object in add_time")
@@ -282,17 +259,19 @@ A style of program design in which the majority of functions are pure.
 invariant::
 A condition that should always be true during the execution of a program.
 
-+@assert+ _macro_: A statement that check a condition and throws an exception if it fails.
++@assert+ macro:: A statement that check a condition and throws an exception if it fails.
 
 
 === Exercises
 
+[[ex16-1]]
 ==== Exercise 16-1
 
 Write a function called +multime+ that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.
 
 Then use +multime+ to write a function that takes a mytime object that represents the finishing time in a race, and a number that represents the distance, and returns a mytime object that represents the average pace (time per mile).
 
+[[ex16-2]]
 ==== Exercise 16-2
 
 Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/latest/stdlib/Dates/#Dates-Functions-1.

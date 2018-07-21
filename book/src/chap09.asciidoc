@@ -3,17 +3,17 @@
 
 This chapter presents the second case study, which involves solving word puzzles by searching for words that have certain properties. For example, we’ll find the longest palindromes in English and search for words whose letters appear in alphabetical order. And I will present another program development plan: reduction to a previously solved problem.
 
-
+[[reading_word_lists]]
 === Reading Word Lists
 
-For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see http://wikipedia.org/wiki/Moby_Project). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is +113809of.fic+; you can download a copy, with the simpler name +words.txt+, from https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt.
+For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see http://wikipedia.org/wiki/Moby_Project). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is _113809of.fic_; you can download a copy, with the simpler name _words.txt_, from https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt.
 
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a *file stream* you can use to read the file.
 
-[source,@julia-setup chap09]
+[source,@julia-eval chap09]
 ----
 using ThinkJulia
-fin = open(ThinkJulia.datapath("words.txt"))
+fin = open(ThinkJulia.datapath("words.txt"));
 ----
 
 [source,julia-repl]
@@ -52,10 +52,12 @@ end
 
 === Exercises
 
+[[ex09-1]]
 ==== Exercise 9-1
 
 Write a program that reads +words.txt+ and prints only the words with more than 20 characters (not counting whitespace).
 
+[[ex09-2]]
 ==== Exercise 9-2
 
 In 1939 Ernest Vincent Wright published a 50,000 word novel called Gadsby that does not contain the letter +'e'+. Since +'e'+ is the most common letter in English, that’s not easy to do.
@@ -68,20 +70,24 @@ Write a function called +hasno_e+ that returns +true+ if the given word doesn’
 
 Modify your program from the previous section to print only the words that have no +'e'+ and compute the percentage of the words in the list that have no +'e'+.
 
+[[ex09-3]]
 ==== Exercise 9-3
 
 Write a function named +avoids+ that takes a word and a string of forbidden letters, and that returns +true+ if the word doesn’t use any of the forbidden letters.
 
 Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
 
+[[ex09-4]]
 ==== Exercise 9-4
 
 Write a function named +usesonly+ that takes a word and a string of letters, and that returns +true+ if the word contains only letters in the list. Can you make a sentence using only the letters +acefhlo+? Other than +"Hoe alfalfa?"+
 
+[[ex09-5]]
 ==== Exercise 9-5
 
 Write a function named +usesall+ that takes a word and a string of required letters, and that returns +true+ if the word uses all the required letters at least once. How many words are there that use all the vowels +aeiou+? How about +aeiouy+?
 
+[[ex09-6]]
 ==== Exercise 9-6
 
 Write a function called +isabecedarian+ that returns +true+ if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
@@ -91,7 +97,7 @@ Write a function called +isabecedarian+ that returns +true+ if the letters in a 
 
 All of the exercises in the previous section have something in common; they can be solved with the search pattern. The simplest example is:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function hasno_e(word)
     for letter in word
@@ -109,7 +115,7 @@ You could write this function more concisely using the +∉+ (+\notin TAB+) oper
 
 +avoids+ is a more general version of +hasno_e+ but it has the same structure:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function avoids(word, forbidden)
     for letter in word
@@ -125,7 +131,7 @@ We can return +false+ as soon as we find a forbidden letter; if we get to the en
 
 +usesonly+ is similar except that the sense of the condition is reversed:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function usesonly(word, available)
     for letter in word
@@ -141,7 +147,7 @@ Instead of an array of forbidden letters, we have an array of available letters.
 
 +usesall+ is similar except that we reverse the role of the word and the string of letters:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function usesall(word, required)
     for letter in required
@@ -157,7 +163,7 @@ Instead of traversing the letters in word, the loop traverses the required lette
 
 If you were really thinking like a computer scientist, you would have recognized that +usesall+ was an instance of a previously solved problem, and you would have written:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function usesall(word, required)
     usesonly(required, word)
@@ -173,7 +179,7 @@ I wrote the functions in the previous section with +for+ loops because I only ne
 
 For +isabecedarian+ we have to compare adjacent letters, which is a little tricky with a +for+ loop:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function isabecedarian(word)
     i = firstindex(word)
@@ -191,7 +197,7 @@ end
 
 An alternative is to use recursion:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function isabecedarian(word)
     if length(word) <= 1
@@ -208,7 +214,7 @@ end
 
 Another option is to use a +while+ loop:
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function isabecedarian(word)
     i = firstindex(word)
@@ -232,7 +238,7 @@ If we get to the end of the loop without finding a fault, then the word passes t
 
 Here is a version of +ispalindrome+ that uses two indices; one starts at the beginning and goes up; the other starts at the end and goes down.
 
-[source,julia]
+[source,@julia-setup chap09]
 ----
 function ispalindrome(word)
     i = firstindex(word)
@@ -250,14 +256,14 @@ end
 
 Or we could reduce to a previously solved problem and write:
 
-[source,julia]
+[source,@julia-setup chap08]
 ----
 function ispalindrome(word)
     isreverse(word, word)
 end
 ----
 
-Using isreverse from Section 8.13.
+Using +isreverse+ from <<deb08>>.
 
 
 === Debugging
@@ -272,12 +278,9 @@ In addition to the test cases you generate, you can also test your program with 
 
 In general, testing can help you find bugs, but it is not easy to generate a good set of test cases, and even if you do, you can’t be sure your program is correct. According to a legendary computer scientist:
 
-[quote,  ]
+[quote,  Edsger W. Dijkstra]
 ____
 Program testing can be used to show the presence of bugs, but never to show their absence!
-
-— Edsger W. Dijkstra
-
 ____
 
 === Glossary
@@ -294,6 +297,7 @@ A test case that is atypical or non-obvious (and less likely to be handled corre
 
 === Exercises
 
+[[ex09-7]]
 ==== Exercise 9-7
 
 This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (http://www.cartalk.com/content/puzzlers):
@@ -302,11 +306,12 @@ _Give me a word with three consecutive double letters. I’ll give you a couple 
 
 Write a program to find it.
 
+[[ex09-8]]
 ==== Exercise 9-8
 
 Here’s another _Car Talk_ Puzzler (http://www.cartalk.com/content/puzzlers):
 
-*I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0.
+_I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0._
 
 _Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5._
 
@@ -316,6 +321,7 @@ _The question is, what was on the odometer when I first looked?_
 
 Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements.
 
+[[ex09-9]]
 ==== Exercise 9-9
 
 Here’s another _Car Talk_ Puzzler you can solve with a search (http://www.cartalk.com/content/puzzlers):

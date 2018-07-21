@@ -245,7 +245,7 @@ julia> "1 + 2 = $(1 + 2)"
 "1 + 2 = 3"
 ----
 
-
+[[searching]]
 === Searching
 
 What does the following function do?
@@ -407,7 +407,7 @@ end
 
 A common way to address this problem is to convert strings to a standard format, such as all lowercase, before performing the comparison. Keep that in mind in case you have to defend yourself against a man armed with a Pineapple.
 
-
+[[deb08]]
 === Debugging
 
 When you use indices to traverse the values in a sequence, it is tricky to get the beginning and end of the traversal right. Here is a function that is supposed to compare two words and return +true+ if one of the words is the reverse of the other, but it contains two errors:

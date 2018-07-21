@@ -1,15 +1,7 @@
 :bookseries: animal
 
 = Think Julia: How to Think Like a Computer Scientist
-Ben Lauwens <https://github.com/benlauwens[@benlauwens]>; Allen Downey
-
-Think Julia
-
-by Ben Lauwens with Allen Downey
-
-Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.
-
-_Think Julia_ is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The author maintains an online version at https://github.com/BenLauwens/ThinkJulia.jl
+Ben Lauwens; Allen Downey
 
 include::preface.asciidoc[]
 
@@ -52,6 +44,10 @@ include::chap18.asciidoc[]
 include::chap19.asciidoc[]
 
 include::chap20.asciidoc[]
+
+include::chap21.asciidoc[]
+
+include::chap22.asciidoc[]
 
 include::index.asciidoc[]    
     

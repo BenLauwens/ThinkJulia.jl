@@ -251,7 +251,7 @@ Now the number of segments is an integer near +circumference/3+, so the length o
 
 Adding 3 to +n+ guarantees that the polygon has at least 3 sides.
 
-[[refactoring]
+[[refactoring]]
 === Refactoring
 
 When I wrote +circle+, I was able to re-use +polygon+ because a many-sided polygon is a good approximation of a circle. But +arc+ is not as cooperative; we can’t use +polygon+ or +circle+ to draw an arc.

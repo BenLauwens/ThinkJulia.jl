@@ -1,13 +1,6 @@
 [[chap18]]
 == Subtyping
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
 In the previous chapter we introduced the multiple dispatch mechanism and polymorphic methods. Not specifying the type of the arguments results in a method that can be called with arguments of any type. Specifying a subset of allowed types in the signature of a method is a logical next step.
 
 In this chapter I demonstrate subtyping using types that represent playing cards, decks of cards, and poker hands.
@@ -39,7 +32,7 @@ I am using the latexmath:[\mapsto] symbol to make it clear that these mappings a
 
 The struct definition for +Card+ looks like this:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 struct Card
     suit :: Int64
@@ -54,10 +47,10 @@ end
 
 To create a +Card+, you call +Card+ with the suit and rank of the card you want:
 
-[source,julia-repl]
+[source,@julia-repl-test chap18]
 ----
 julia> queen_of_diamonds = Card(2, 12)
-ThinkJulia.Card(2, 12)
+Card(2, 12)
 ----
 
 
@@ -65,7 +58,7 @@ ThinkJulia.Card(2, 12)
 
 In order to print +Card+ objects in a way that people can easily read, we need a mapping from the integer codes to the corresponding ranks and suits. A natural way to do that is with arrays of strings:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 const suit_names = ["♣", "♦", "♥", "♠"]
 const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -75,7 +68,7 @@ Variables like +suit_names+ and +rank_names+, which are defined outside of a typ
 
 Now we can implement an appropriate +show+ method:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 function Base.show(io::IO, card::Card)
     print(io, rank_names[card.rank], suit_names[card.suit])
@@ -86,7 +79,7 @@ The expression +rank_names[car.rank]+ means “use the field +rank+ from the obj
 
 With the methods we have so far, we can create and print cards:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap18]
 ----
 julia> Card(3, 11)
 J♥
@@ -103,7 +96,7 @@ The answer might depend on what game you are playing, but to keep things simple,
 
 With that decided, we can write +Base.isless+:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 function Base.isless(c1::Card, c2::Card)
     isless((c1.suit, c1.rank), (c2.suit, c2.rank))
@@ -119,7 +112,7 @@ As an exercise, write a +Base.isless+ method for mytime objects. You can use tup
 
 Simple unit testing can be performed with the +@test+ macros:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap18]
 ----
 julia> using Test
 
@@ -138,7 +131,7 @@ Now that we have Cards, the next step is to define Decks. Since a deck is made u
 
 The following is a struct definition for +Deck+. The constructor creates the fields cards and generates the standard set of fifty-two cards:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 struct Deck
     cards :: Array{Card, 1}
@@ -158,7 +151,7 @@ The easiest way to populate the deck is with a nested loop. The outer loop enume
 
 Here is a +Base.show+ method for +Deck+:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 function Base.show(io::IO, deck::Deck)
     for card in deck.cards
@@ -170,7 +163,7 @@ end
 
 Here’s what the result looks like:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap18]
 ----
 julia> Deck()
 A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠
@@ -181,7 +174,7 @@ A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦
 
 To deal cards, we would like a function that removes a card from the deck and returns it. The function +pop!+ provides a convenient way to do that:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 function Base.pop!(deck::Deck)
     pop!(deck.cards)
@@ -192,7 +185,7 @@ Since +pop!+ removes the last card in the array, we are dealing from the bottom 
 
 To add a card, we can use the function +push!+:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 function Base.push!(deck::Deck, card::Card)
     push!(deck.cards, card)
@@ -206,7 +199,7 @@ In this case +addcard+ is a “thin” method that expresses an array operation 
 
 As another example, we can write a method named +shuffledeck!+ using the function +Random.shuffle!+:
 
-[source,julia]
+[source,@julia-setup chap18]
 ----
 using Random
 
@@ -229,7 +222,20 @@ So we need a way to group related *concrete types*. In Julia this is done by def
 
 Let's call this abstract type +CardSet+:
 
-[source,julia]
+[source,@julia-eval chap18a]
+----
+struct Card
+    suit :: Int64
+    rank :: Int64
+    function Card(suit::Int64, rank::Int64)
+        @assert(1 ≤ suit ≤ 4, "suit is between 1 and 4")
+        @assert(1 ≤ rank ≤ 13, "rank is between 1 and 13")
+        new(suit, rank)
+    end
+end;
+----
+
+[source,@julia-setup chap18a]
 ----
 abstract type CardSet end
 ----
@@ -240,7 +246,7 @@ When no *supertype* is given, the default supertype is +Any+ – a predefined ab
 
 We can now express that +Deck+ is a descendant of +CardSet+:
 
-[source,julia]
+[source,@julia-setup chap18a]
 ----
 struct Deck <: CardSet
     cards :: Array{Card, 1}
@@ -258,7 +264,7 @@ end
 
 The operator +isa+ checks whether an object is of a given type:
 
-[source,@julia-repl-test]
+[source,@julia-repl-test chap18a]
 ----
 julia> deck = Deck();
 
@@ -268,7 +274,7 @@ true
 
 A hand is also a kind of +CardSet+:
 
-[source,julia]
+[source,@julia-setup chap18a]
 ----
 struct Hand <: CardSet
     cards :: Array{Card, 1}
@@ -281,12 +287,10 @@ end
 
 Instead of populating the hand with 52 new cards, the constructor for +Hand+ initializes +cards+ with an empty array. An optional argument can be passed to the constructor giving a label to the +Hand+.
 
-[source,@julia-repl-test chap18]
+[source,@julia-repl-test chap18a]
 ----
 julia> hand = Hand("new hand")
-
-julia> hand.cards
-0-element Array{ThinkJulia.Card,1}
+Hand(Card[], "new hand")
 ----
 
 
@@ -294,7 +298,7 @@ julia> hand.cards
 
 We can now express the common operations between +Deck+ and +Hand+ as functions having as argument +CardSet+:
 
-[source,julia]
+[source,@julia-setup chap18a]
 ----
 function Base.show(io::IO, cs::CardSet)
     for card in cs.cards
@@ -314,14 +318,7 @@ end
 
 We can use +pop!+ and +push!+ to deal a card:
 
-[source,@julia-setup chap18]
-----
-using ThinkJulia
-
-hand = Hand("new hand")
-----
-
-[source,@julia-repl chap18]
+[source,@julia-repl-test chap18a]
 ----
 deck = Deck();
 shuffle!(deck)
@@ -332,7 +329,7 @@ hand
 
 A natural next step is to encapsulate this code in a function called +move!+:
 
-[source,julia]
+[source,@julia-setup chap18a]
 ----
 function move!(cs1::CardSet, cs2::CardSet, n::Int)
     @assert 1 ≤ n ≤ length(cs1.cards)
@@ -363,15 +360,15 @@ There are several kinds of relationship between types:
 
 * One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a *dependency*.
 
-.Type diagram.
+[[fig18-1]]
+.Type diagram
 image::images/fig181.svg[]
-
 
 The arrow with a hollow triangle head represents an IS-A relationship; in this case it indicates that Hand has as supertype CardSet.
 
 The standard arrow head represents a HAS-A relationship; in this case a Deck has references to Card objects.
 
-The star (+*+) near the arrow head is a *multiplicity*; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
+The star (+pass:[*]+) near the arrow head is a *multiplicity*; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
 
 There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.
 
@@ -388,15 +385,20 @@ Any time you are unsure about the flow of execution through your program, the si
 
 As an alternative, you can also use the +InteractiveUtils.@which+ macro:
 
-[source,@julia-repl-test chap18]
+[source,@julia-eval chap18a]
+----
+function sort!(hand::Hand) end;
+----
+
+[source,julia-repl]
 ----
 julia> using InteractiveUtils
 
 julia> @which sort!(hand)
-sort!(hand::ThinkJulia.Hand) in ThinkJulia at /Users/ben/.julia/dev/ThinkJulia/src/code/chap18.jl:75
+sort!(hand::Hand) in Main at REPL[5]:1
 ----
 
-So the +sort!+ method for +hand+ is the one having as argument an object of type +ThinkJulia.Hand+.
+So the +sort!+ method for +hand+ is the one having as argument an object of type +Hand+.
 
 Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like an +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
 
@@ -409,9 +411,9 @@ The previous chapters demonstrate a development plan we might call “type-orien
 
 But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by *data encapsulation*.
 
-Markov analysis, from Section 13.8, provides a good example. If you download my code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
+Markov analysis, from <<markov_analysis>>, provides a good example. If you download my code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
 
-[source,julia]
+[source,@julia-setup]
 ----
 suffixes = Dict()
 prefix = []
@@ -421,11 +423,11 @@ Because these variables are global, we can only run one analysis at a time. If w
 
 To run multiple analyses, and keep them separate, we can encapsulate the state of each analysis in an object. Here’s what that looks like:
 
-[source,julia]
+[source,@julia-setup chap18b]
 ----
 struct Markov
     order :: Int64
-    suffixes :: Dict{NTuple{String,}, Array{String, 1}}
+    suffixes :: Dict{String, Array{String, 1}}
     prefix :: Array{String, 1}
     function Markov(order::Int64=2)
         new(order, Dict{String, Array{String, 1}}(), Array{String, 1}())
@@ -435,21 +437,21 @@ end
 
 Next, we transform the functions into methods. For example, here’s +processword+:
 
-[source,julia]
+[source,@julia-setup chap18b]
 ----
 function processword(markov::Markov, word::String)
     if length(markov.prefix) < markov.order
         push!(markov.prefix, word)
         return
     end
-    get!(markov.suffixes, (markov.prefix...), Array{String, 1}())
-    push!(markov.suffixes[(markov.prefix...)], word)
+    get!(markov.suffixes, (markov.prefix...,), Array{String, 1}())
+    push!(markov.suffixes[(markov.prefix...,)], word)
     pushfirst!(markov.prefix)
     push!(markov.prefix, word)
 end
 ----
 
-Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see Section 4.7).
+Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see <<refactoring>>).
 
 This example suggests a development plan for designing types:
 
@@ -514,6 +516,7 @@ A program development plan that involves a prototype using global variables and 
 
 === Exercises
 
+[[ex18-1]]
 ==== Exercise 18-1
 
 For the following program, draw a type diagram that shows these types and the relationships among them.
@@ -543,10 +546,12 @@ ping = Ping(pong)
 addping(pong, ping)
 ----
 
+[[ex18-2]]
 ==== Exercise 18-2
 
 Write a method called +deal+ that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
 
+[[ex18-3]]
 ==== Exercise 18-3
 
 The following are the possible hands in poker, in increasing order of value and decreasing order of probability:

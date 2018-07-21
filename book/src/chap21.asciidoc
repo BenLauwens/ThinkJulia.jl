@@ -1,0 +1,44 @@
+[[chap21]]
+== The Goodies: Standard Library
+
+As in the previous chapter, only small examples are given. Further information can be found in the official Julia documentation.
+
+To use module functions:
+
+* use +import _Module_+ to import the module, and +_Module.fn_(x)+ to use the functions
+* alternatively, +using _Module_+ will import all exported +_Module_+ functions into the current namespace.
+
+=== Dates
+
+=== Delimited Files
+
+=== Distributed Computing
+
+=== Interactive Utilities
+
+=== Linear Algebra
+
+=== Logging
+
+=== Printf
+
+=== Profiling
+
+=== Random Numbers
+
+The +Distributions+ package also provides functions to generate random values from discrete or continuous distributions including Gaussian, exponential, gamma, and a few more.
+
+=== Serialization
+
+=== Shared Arrays
+
+=== Sockets
+
+=== Sparse Arrays
+
+=== Statistics
+
+=== Unit Testing
+
+
+=== Glossary

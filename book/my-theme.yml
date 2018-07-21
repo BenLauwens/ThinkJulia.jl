@@ -74,7 +74,7 @@ base:
 vertical_rhythm: $base_line_height_length
 horizontal_rhythm: $base_line_height_length
 # QUESTION should vertical_spacing be block_spacing instead?
-vertical_spacing: $vertical_rhythm
+vertical_spacing: $vertical_rhythm / 2
 link:
   font_color: 428bca
   font_family: UbuntuMono
@@ -100,8 +100,8 @@ heading:
   h5_font_size: $base_font_size
   h6_font_size: $base_font_size_small
   line_height: 1
-  margin_top: $vertical_rhythm * 0.4
-  margin_bottom: $vertical_rhythm * 0.9
+  margin_top: $vertical_rhythm * 0.2
+  margin_bottom: $vertical_rhythm * 0.4
 title_page:
   align: right
   logo:
@@ -123,7 +123,7 @@ title_page:
     margin_top: $base_font_size * 1.25
 block:
   margin_top: 0
-  margin_bottom: $vertical_rhythm
+  margin_bottom: $vertical_rhythm * 0.5
 caption:
   align: left
   font_size: $base_font_size * 0.95
@@ -219,13 +219,13 @@ thematic_break:
   margin_bottom: $vertical_rhythm * 1.5
 description_list:
   term_font_style: italic
-  term_spacing: $vertical_rhythm / 4
+  term_spacing: $vertical_rhythm * 0
   description_indent: $horizontal_rhythm * 1.25
 outline_list:
   indent: $horizontal_rhythm * 1.5
   #marker_font_color: 404040
   # NOTE outline_list_item_spacing applies to list items that do not have complex content
-  item_spacing: $vertical_rhythm / 2
+  item_spacing: $vertical_rhythm / 4
 table:
   background_color: $page_background_color
   #head_background_color: <hex value>
@@ -278,7 +278,7 @@ footer:
     #columns: "<50% =0% >50%"
     right:
       #content: '{page-number}'
-      content: '{section-or-chapter-title} | {page-number}'
+      content: '{section-or-chapter-title}  |  {page-number}'
       #content: '{document-title} | {page-number}'
     #center:
     #  content: '{page-number}'
@@ -286,6 +286,6 @@ footer:
     #columns: $footer_recto_columns
     left:
       #content: $footer_recto_right_content
-      content: '{page-number} | {chapter-title}'
+      content: '{page-number}  |  {chapter-title}'
     #center:
     #  content: '{page-number}'

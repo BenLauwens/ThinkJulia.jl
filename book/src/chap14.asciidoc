@@ -1,13 +1,6 @@
 [[chap14]]
 == Files
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
 This chapter introduces the idea of “persistent” programs that keep data in permanent storage, and shows how to use different kinds of permanent storage, like files and databases.
 
 
@@ -26,7 +19,7 @@ An alternative is to store the state of the program in a database. In this chapt
 
 === Reading and writing
 
-A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in Section 9.1.
+A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <<reading_word_lists>>.
 
 To write a file, you have to open it with mode +"w"+ as a second parameter:
 
@@ -151,7 +144,7 @@ julia> readdir(cwd)
 
 To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.
 
-[source,julia]
+[source,@julia-setup chap14]
 ----
 function walk(dirname)
     for name in readdir(dirname)
@@ -169,34 +162,37 @@ end
 
 Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/stable/stdlib/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 
-
+[[catching_exceptions]]
 === Catching Exceptions
 
 A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a +SystemError+:
 
-[source,@julia-repl]
+[source,@julia-repl-test]
 ----
-fin = open("bad_file")
+julia> fin = open("bad_file")
+ERROR: SystemError: opening file bad_file: No such file or directory
 ----
 
 If you don’t have permission to access a file:
 
-[source,@julia-repl]
+[source,@julia-repl-test]
 ----
-fout = open("/etc/passwd", "w")
+julia> fout = open("/etc/passwd", "w")
+ERROR: SystemError: opening file /etc/passwd: Permission denied
 ----
 
 To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
 
 It is better to go ahead and try—and deal with problems if they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
 
-[source,julia]
+[source,@julia-repl-test]
 ----
-try
-    fin = open("bad_file.txt")
-catch exc
-    println("Something went wrong: $exc")
-end
+julia> try
+           fin = open("bad_file.txt")
+       catch exc
+           println("Something went wrong: $exc")
+       end
+Something went wrong: SystemError("opening file bad_file.txt", 2, nothing)
 ----
 
 Julia starts by executing the +try+ clause. If all goes well, it skips the +catch+ clause and proceeds. If an exception occurs, it jumps out of the +try+ clause and runs the +catch+ clause.
@@ -229,6 +225,8 @@ Opening a database is similar to opening other files:
 
 [source,@julia-repl-test chap14]
 ----
+julia> using ThinkJulia
+
 julia> db = DBM("captions", "c")
 DBM(<captions>)
 ----
@@ -342,8 +340,8 @@ Any program that you can launch from the shell can also be launched from Julia u
 
 [source,@julia-repl-test chap14]
 ----
-julia> cmd = +echo hello+
-+echo hello+
+julia> cmd = `echo hello`
+`echo hello`
 ----
 
 Backticks are used to delimit the command.
@@ -366,18 +364,15 @@ julia> a = read(cmd, String)
 "hello\n"
 ----
 
-For example, most Unix systems provide a command called +md5sum+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at http://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
+For example, most Unix systems provide a command called +md5sum+ or +md5+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at http://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
 
-You can use a command object to run +md5sum+ from Julia and get the result:
+You can use a command object to run +md5+ from Julia and get the result:
 
-[source,julia-repl]
+[source,@julia-repl]
 ----
-julia> filename = "book.tex"
-"book.tex"
-julia> cmd = +md5sum $filename+
-+md5sum book.tex+
-julia> res = readstring(cmd)
-"d41d8cd98f00b204e9800998ecf8427e  book.tex\n"
+filename = "output.txt"
+cmd = `md5 $filename`
+res = read(cmd, String)
 ----
 
 
@@ -389,7 +384,7 @@ Any file that contains Julia code can be imported as a module. For example, supp
 ----
 function linecount(filename)
     count = 0
-    for line in readline(filename)
+    for line in eachline(filename)
         count += 1
     end
     count
@@ -398,12 +393,26 @@ end
 print(linecount("wc.jl"))
 ----
 
+[source,@julia-eval]
+----
+file = open("wc.jl", "w")
+print(file, """function linecount(filename)
+    count = 0
+    for line in eachline(filename)
+        count += 1
+    end
+    count
+end
+
+print(linecount("wc.jl"))""")
+close(file)
+----
+
 If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:
 
-[source,julia-repl]
+[source,@julia-repl]
 ----
-julia> include("wc.jl")
-9
+include("wc.jl")
 ----
 
 Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside +module ...  end+. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else's. Within a module, you can control which names from other modules are visible (via +import+ing), and specify which of your names are intended to be public (via +export+ing).
@@ -425,7 +434,7 @@ end
 
 The module +LineCount+ object provides +linecount+:
 
-[source,julia-repl]
+[source,julia]
 ----
 julia> using LineCount
 
@@ -433,7 +442,7 @@ julia> linecount("wc.jl")
 11
 ----
 
-As an exercise, type this example into a file named +wc.jl+, include it into the REPL and enter +using LineCount+.
+As an exercise, type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
 
 Warning: If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.
 
@@ -457,11 +466,9 @@ The built-in function +repr+ can help. It takes any object as an argument and re
 
 This can be helpful for debugging.
 
-[source,@julia-setup]
+[source,@julia-eval chap14]
 ----
-DocTestSetup = quote
-    s = "1 2\t 3\n 4";
-end
+s = "1 2\t 3\n 4";
 ----
 
 [source,@julia-repl-test chap14]
@@ -510,25 +517,28 @@ An object that represents a shell command, allowing a Julia program to run comma
 
 === Exercises
 
+[[ex14-1]]
 ==== Exercise 14-1
 
 Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
 
 If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
 
+[[ex14-2]]
 ==== Exercise 14-2
 
-If you have done Exercise 12-2, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "+opst"+ maps to the list +["opts", "post", "pots", "spot", "stop", "tops"]+.
+If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "+opst"+ maps to the list +["opts", "post", "pots", "spot", "stop", "tops"]+.
 
 Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +read_anagrams+ should look up a word and return a list of its anagrams.
 
+[[ex14-3]]
 ==== Exercise 14-3
 
 In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
 
-. Write a program that searches a directory and all of its subdirectories, recursively, and returns a list of complete paths for all files with a given suffix (like .mp3).
+. Write a program that searches a directory and all of its subdirectories, recursively, and returns a list of complete paths for all files with a given suffix (like _.mp3_).
 
-. To recognize duplicates, you can use +md5sum+ to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.
+. To recognize duplicates, you can use +md5sum+ or +md5+ to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.
 
 . To double-check, you can use the Unix command +diff+.
 

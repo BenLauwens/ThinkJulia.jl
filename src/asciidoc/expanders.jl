@@ -1,4 +1,5 @@
 function expandcodeblocks(root, src, dst)
+  println("Expand: ", src)
   lines = open(src, "r") do in
     readlines(in)
   end

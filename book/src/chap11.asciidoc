@@ -1,13 +1,6 @@
 [[chap11]]
 == Dictionaries
 
-[source,@julia-setup]
-----
-DocTestSetup = quote
-    using ThinkJulia
-end
-----
-
 This chapter presents another built-in type called a dictionary. Dictionaries are one of Julia’s best features; they are the building blocks of many efficient and elegant algorithms.
 
 
@@ -115,11 +108,11 @@ julia> "uno" ∈ vs
 true
 ----
 
-The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in Section 8.6. As the array gets longer, the search time gets longer in direct proportion.
+The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <<searching>>. As the array gets longer, the search time gets longer in direct proportion.
 
 For dictionaries, Julia uses an algorithm called a *hashtable* that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
 
-
+[[dictionary_collection_counters]]
 === Dictionary as a Collection of Counters
 
 Suppose you are given a string and you want to count how many times each letter appears. There are several ways you could do it:
@@ -136,7 +129,7 @@ An *implementation* is a way of performing a computation; some implementations a
 
 Here is what the code might look like:
 
-[source,julia]
+[source,@julia-setup chap11]
 ----
 function histogram(s)
     d = Dict()
@@ -193,7 +186,7 @@ As an exercise, use +get+ to write +histogram+ more concisely. You should be abl
 
 You can traverse the keys of the dictionary in a +for+ statement. For example, +printhist+ prints each key and the corresponding value:
 
-[source,julia]
+[source,@julia-setup chap11]
 ----
 function printhist(h)
     for c in keys(h)
@@ -239,7 +232,7 @@ But what if you have +v+ and you want to find +k+? You have two problems: first,
 
 Here is a function that takes a value and returns the first key that maps to that value:
 
-[source,julia]
+[source,@julia-setup chap11]
 ----
 function reverselookup(d, v)
     for k in keys(d)
@@ -284,7 +277,7 @@ Arrays can appear as values in a dictionary. For example, if you are given a dic
 
 Here is a function that inverts a dictionary:
 
-[source,julia]
+[source,@julia-setup chap11]
 ----
 function invertdict(d)
     inverse = Dict()
@@ -314,11 +307,12 @@ Dict{Any,Any} with 2 entries:
   1 => ['a', 'p', 'o', 't']
 ----
 
-.State diagram.
+[[fig11-1]]
+.State diagram
 image::images/fig111.svg[]
 
 
-Figure 11-1 is a state diagram showing +hist+ and +inverse+. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
+<<fig11-1>> is a state diagram showing +hist+ and +inverse+. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
 
 I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be *hashable*.
 
@@ -327,11 +321,12 @@ A *hash* is a function that takes a value (of any kind) and returns an integer. 
 
 === Memos
 
-If you played with the +fibonacci+ function from Section 6.7, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
+If you played with the +fibonacci+ function from <<one_more_example>>, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
 
-To understand why, consider Figure 11-2, which shows the *call graph* for +fibonacci+ with +n = 4+:
+To understand why, consider <<fig11-2>>, which shows the *call graph* for +fibonacci+ with +n = 4+:
 
-.Call graph.
+[[fig11-2]]
+.Call graph
 image::images/fig112.svg[]
 
 
@@ -341,7 +336,7 @@ Count how many times +fibonacci(0)+ and +fibonacci(1)+ are called. This is an in
 
 One solution is to keep track of values that have already been computed by storing them in a dictionary. A previously computed value that is stored for later use is called a *memo*. Here is a “memoized” version of fibonacci:
 
-[source,julia]
+[source,@julia-setup]
 ----
 known = Dict(0=>0, 1=>1)
 
@@ -368,7 +363,7 @@ In the previous example, known is created outside the function, so it belongs to
 
 It is common to use global variables for *flags*; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:
 
-[source,julia]
+[source,@julia-setup]
 ----
 verbose = true
 
@@ -381,7 +376,7 @@ end
 
 If you try to reassign a global variable, you might be surprised. The following example is supposed to keep track of whether the function has been called:
 
-[source,julia]
+[source,@julia-setup]
 ----
 been_called = false
 
@@ -394,7 +389,7 @@ But if you run it you will see that the value of +been_called+ doesn’t change.
 
 To reassign a global variable inside a function you have to *declare* the global variable before you use it:
 
-[source,julia]
+[source,@julia-setup]
 ----
 been_called = false
 
@@ -408,7 +403,7 @@ The *global statement* tells the interpreter something like, “In this function
 
 Here’s an example that tries to update a global variable:
 
-[source,julia]
+[source,@julia-setup chap11]
 ----
 count = 0
 
@@ -419,14 +414,15 @@ end
 
 If you run it you get:
 
-[source,julia]
+[source,@julia-repl-test chap11]
 ----
+julia> example3()
 ERROR: UndefVarError: count not defined
 ----
 
 Julia assumes that +count+ is local, and under that assumption you are reading it before writing it. The solution, again, is to declare +count+ global.
 
-[source,julia]
+[source,@julia-setup]
 ----
 count = 0
 
@@ -438,7 +434,7 @@ end
 
 If a global variable refers to a mutable value, you can modify the value without declaring the variable:
 
-[source,julia]
+[source,@julia-setup]
 ----
 known = Dict(0=>0, 1=>1)
 
@@ -449,7 +445,7 @@ end
 
 So you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it:
 
-[source,julia]
+[source,@julia-setup]
 ----
 known = Dict(0=>0, 1=>1)
 
@@ -463,7 +459,7 @@ Global variables can be useful, but if you have a lot of them, and you modify th
 
 In almost all code (and particularly performance sensitive code) global variables should be declared constant:
 
-[source,julia]
+[source,@julia-setup]
 ----
 const known = Dict(0=>0, 1=>1)
 
@@ -477,7 +473,7 @@ end
 
 Here is a function that tries to reassign a *constant global variable*:
 
-[source,julia]
+[source,@julia-setup chap11]
 ----
 const known = Dict(0=>0, 1=>1)
 
@@ -489,8 +485,9 @@ end
 
 If you run this an exception is generated:
 
-[source,julia]
+[source,@julia-repl-test chap11]
 ----
+julia> example5()
 ERROR: invalid redefinition of constant known
 ----
 
@@ -499,39 +496,27 @@ ERROR: invalid redefinition of constant known
 
 As you work with bigger datasets it can become unwieldy to debug by printing and checking the output by hand. Here are some suggestions for debugging large datasets:
 
-* Scale down the input::
-
-
+* Scale down the input:
 +
 If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find. You can either edit the files themselves, or (better) modify the program so it reads only the first n lines.
-
 +
 If there is an error, you can reduce n to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.
 
-* Check summaries and types::
-
-
+* Check summaries and types:
 +
 Instead of printing and checking the entire dataset, consider printing summaries of the data: for example, the number of items in a dictionary or the total of an array of numbers.
-
 +
 A common cause of runtime errors is a value that is not the right type. For debugging this kind of error, it is often enough to print the type of a value.
 
-* Write self-checks::
-
-
+* Write self-checks:
 +
 Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check” because it detects results that are “insane”.
-
 +
 Another kind of check compares the results of two different computations to see if they are consistent. This is called a “consistency check”.
 
-* Format the output::
-
-
+* Format the output:
 +
-Formatting debugging output can make it easier to spot an error. We saw an example in Section 6.9.
-
+Formatting debugging output can make it easier to spot an error. We saw an example in <<deb06>>.
 +
 Again, time you spend building scaffolding can reduce the time you spend debugging.
 
@@ -601,32 +586,38 @@ A global variable that can not be reassigned.
 
 === Exercises
 
+[[ex11-1]]
 ==== Exercise 11-1
 
-Write a function that reads the words in +words.txt+ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
+Write a function that reads the words in _words.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
 
-If you did Exercise 10-10, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
+If you did <<ex10-10>>, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
 
+[[ex11-2]]
 ==== Exercise 11-2
 
 Read the documentation of the dictionary function +get!+ and use it to write a more concise version of invert_dict.
 
+[[ex11-3]]
 ==== Exercise 11-3
 
-Memoize the Ackermann function from Exercise 6-2 and see if memoization makes it possible to evaluate the function with bigger arguments. Hint: no.
+Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments. Hint: no.
 
+[[ex11-4]]
 ==== Exercise 11-4
 
-If you did Exercise 10-7, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
+If you did <<ex10-7>>, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
 
 Use a dictionary to write a faster, simpler version of +hasduplicates+.
 
+[[ex11-5]]
 ==== Exercise 11-5
 
-Two words are “rotate pairs” if you can rotate one of them and get the other (see +rotateword+ in Exercise 8.5).
+Two words are “rotate pairs” if you can rotate one of them and get the other (see +rotateword+ in <<ex08-5>>).
 
 Write a program that reads a word array and finds all the rotate pairs.
 
+[[ex11-6]]
 ==== Exercise 11-6
 
 Here’s another Puzzler from Car Talk (http://www.cartalk.com/content/puzzlers):
@@ -637,7 +628,7 @@ _Now I’m going to give you an example that doesn’t work. Let’s look at the
 
 _But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?_
 
-You can use the dictionary from Exercise 11-1 to check whether a string is in the word array.
+You can use the dictionary from <<ex11-1>> to check whether a string is in the word array.
 
 To check whether two words are homophones, you can use the CMU Pronouncing Dictionary. You can download it from http://www.speech.cs.cmu.edu/cgi-bin/cmudict.
 

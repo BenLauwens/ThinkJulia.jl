@@ -19,9 +19,10 @@ function parseblock(code::String; keywords = true)
           (QuoteNode(keyword), cursor + lastindex(line) + offset)
         else
           try
-              Meta.parse(code, cursor)
+            Meta.parse(code, cursor)
           catch err
-              error("Failed to parse expression.", err)
+            println(code)
+            error("Failed to parse expression.", err)
           end
         end
       push!(results, (ex, SubString(code, cursor, prevind(code, ncursor))))
@@ -117,7 +118,10 @@ function scriptrun(code::String, name::String, dir::String)
         Core.eval(mod, Expr(:(=), :ans, ex))
       end
     end
-    !success && error("failed to run code block.\n\n$(result)")
+    if !success 
+      println(code)
+      error("failed to run code block.\n\n$(result)")
+    end
     print(buffer, text)
   end
   result_to_string(buffer, result)
