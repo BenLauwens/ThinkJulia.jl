@@ -38,4 +38,4 @@ after_success:
   #- cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
   #- cp ~/.julia/v0.7/ThinkJulia/fonts/* ~/.fonts
   #- luaotfload-tool --update
-  - julia -e 'cd(joinpath(Pkg.dir("ThinkJulia"), "book"))); ARGS=("images",); include("make.jl")'
+  - julia -e 'cd(joinpath(Pkg.dir("ThinkJulia"), "book")); ARGS=("images",); include("make.jl")'
