@@ -16,7 +16,7 @@ install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install pdf2svg; else brew install pdf2svg; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install libgdbm3; else brew upgrade gdbm; fi
   - if [ $TRAVIS_OS_NAME = osx ]; then export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin; fi
- 
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install asciidoctor; else brew install asciidoctor; fi
 #addons:
 #  apt_packages:
 #    - lmodern
@@ -38,4 +38,4 @@ after_success:
   #- cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
   #- cp ~/.julia/v0.7/ThinkJulia/fonts/* ~/.fonts
   #- luaotfload-tool --update
-  - julia -e 'cd(Pkg.dir("ThinkJulia")); include(joinpath("book", "make.jl"))'
+  - julia -e 'cd(joinpath(Pkg.dir("ThinkJulia"), "book"))); ARGS=("images",); include("make.jl")'

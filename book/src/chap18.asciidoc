@@ -381,14 +381,16 @@ Subtyping can make debugging difficult because when you call a function with an 
 
 Suppose you are writing a function that works with Hand objects. You would like it to work with all kinds of Hands, like PokerHands, BridgeHands, etc. If you invoke a method like +sort!+, you might get the one defined for an abstract type +Hand+, but if a method +sort!+ with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.
 
+[source,@julia-setup chap18a]
+----
+function Base.sort!(hand::Hand)
+    sort!(hand.cards)
+end
+----
+
 Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If +shuffle!+ prints a message that says something like +Running shuffle! Deck+, then as the program runs it traces the flow of execution.
 
 As an alternative, you can also use the +InteractiveUtils.@which+ macro:
-
-[source,@julia-eval chap18a]
-----
-function sort!(hand::Hand) end;
-----
 
 [source,julia-repl]
 ----

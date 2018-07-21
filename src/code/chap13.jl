@@ -1,5 +1,3 @@
-datapath(filename) = joinpath(@__DIR__, "..", "..", "data", filename)
-
 function processfile(filename)
   hist = Dict()
   for line in eachline(filename)
