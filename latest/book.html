@@ -646,11 +646,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#chap14">14. Files</a>
 <ul class="sectlevel2">
 <li><a href="#_persistence">Persistence</a></li>
-<li><a href="#_reading_and_writing">Reading and writing</a></li>
+<li><a href="#reading_and_writing">Reading and writing</a></li>
 <li><a href="#_formatting">Formatting</a></li>
 <li><a href="#_filenames_and_paths">Filenames and Paths</a></li>
 <li><a href="#catching_exceptions">Catching Exceptions</a></li>
-<li><a href="#_databases">Databases</a></li>
+<li><a href="#databases">Databases</a></li>
 <li><a href="#_serialization">Serialization</a></li>
 <li><a href="#_command_objects">Command Objects</a></li>
 <li><a href="#_modules">Modules</a></li>
@@ -724,6 +724,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_control_flow">Control Flow</a></li>
 <li><a href="#_types">Types</a></li>
 <li><a href="#_methods_2">Methods</a></li>
+<li><a href="#_constructors_2">Constructors</a></li>
+<li><a href="#_conversion_and_promotion">Conversion and Promotion</a></li>
 <li><a href="#_metaprogramming">Metaprogramming</a></li>
 <li><a href="#_missing_values">Missing Values</a></li>
 <li><a href="#_calling_c_and_fortran_code">Calling C and Fortran Code</a></li>
@@ -866,7 +868,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
   | | |_| | | | (_| |  |  Version 0.7.0-beta2.6 (2018-07-14 20:16 UTC)
- _/ |\__'_|_|_|\__'_|  |  Commit faee1df893* (8 days old master)
+ _/ |\__'_|_|_|\__'_|  |  Commit faee1df893* (9 days old master)
 |__/                   |  x86_64-apple-darwin14.5.0
 
 julia&gt;</pre>
@@ -3647,7 +3649,7 @@ print(decibels)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; time()
-1.532335834071201e9</code></pre>
+1.532377401201365e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9343,7 +9345,7 @@ plot(x, y)</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_reading_and_writing">Reading and writing</h3>
+<h3 id="reading_and_writing">Reading and writing</h3>
 <div class="paragraph">
 <p>A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <a href="#reading_word_lists">Reading Word Lists</a>.</p>
 </div>
@@ -9567,7 +9569,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_databases">Databases</h3>
+<h3 id="databases">Databases</h3>
 <div class="paragraph">
 <p>A <strong>database</strong> is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.</p>
 </div>
@@ -12205,76 +12207,669 @@ addping(pong, ping)</code></pre>
 <div class="sect2">
 <h3 id="_functions">Functions</h3>
 <div class="sect3">
-<h4 id="_named_tuples">Named Tuples</h4>
+<h4 id="_anonymous_functions">Anonymous Functions</h4>
+<div class="paragraph">
+<p>Functions can be defined without being given a name, using either of these syntaxes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; f = x -&gt; x^2 + 2x - 1
+#1 (generic function with 1 method)
+julia&gt; f = function (x)
+           x^2 + 2x - 1
+       end
+#3 (generic function with 1 method)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>f</code> is an <strong>anonymous function</strong> that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; using Plots
 
+julia&gt; plot(0.0:0.1:10.0, f)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_named_tuples">Named Tuples</h4>
+<div class="paragraph">
+<p>The components of tuples can optionally be named, in which case a <strong>named tuple</strong> is constructed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; x = (a=1, b=1+1)
+(a = 1, b = 2)
+julia&gt; x.a
+1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax <code>(x.a)</code>.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_keyword_arguments">Keyword Arguments</h4>
-
+<div class="paragraph">
+<p>Function arguments can also be specified by keyword:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; function plot(x, y; style="solid", width=1, color="black")
+           ###
+       end
+plot (generic function with 1 method)
+julia&gt; plot(0:10, 0:10; style="dotted", color="blue")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Functions with <strong>keyword arguments</strong> are defined using a semicolon in the signature. When the function is called, the semicolon is optional.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_do_block"><code>do</code> Block</h4>
-
+<div class="paragraph">
+<p>In <a href="#reading_and_writing">Reading and writing</a> we had to close the file after when where done writing. This can be done automatically using a <strong><code>do</code> block</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; data = "This here's the wattle,\nthe emblem of our land.\n"
+"This here's the wattle,\nthe emblem of our land.\n"
+julia&gt; open("output.txt", "w") do fout
+           write(fout, data)
+       end
+48</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is functionally equivalent to</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; f = (fout) -&gt; begin
+           write(fout, data)
+       end
+#3 (generic function with 1 method)
+julia&gt; open(f, "output.txt", "w")
+48</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The anonymous function is used as first argument of the function <code>open</code>:</p>
+</div>
+<div class="paragraph">
+<p>[source,julia}</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>function open(f::Function, args...)
+    io = open(args...)
+    try
+        f(io)
+    finally
+        close(io)
+    end
+end</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A <code>do</code> block can "capture" variables from its enclosing scope. For example, the variable <code>data</code> in the above example of <code>open&#8230;&#8203;do</code> is captured from the outer scope.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_control_flow">Control Flow</h3>
 <div class="sect3">
 <h4 id="_ternary_operator">Ternary Operator</h4>
-
+<div class="paragraph">
+<p>The so-called <strong>ternary operator</strong>, <code>?:</code>, is closely related to the <code>if-elseif-else</code> syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; a = 150
+150
+julia&gt; a % 2 == 0 ? println("even") : println("odd")
+even</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The expression before the <code>?</code>, is a condition expression. If the condition is <code>true</code>, the expression before the <code>:</code> is evaluated, otherwise, the expression after the <code>:</code> is evaluated.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_short_circuit_evaluation">Short-Circuit Evaluation</h4>
-
+<div class="paragraph">
+<p>The operators <code>&amp;&amp;</code> and <code>||</code> do a <strong>short-circuit evaluation</strong>: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.</p>
+</div>
+<div class="paragraph">
+<p>For example, a recursive factorial routine could be defined like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; function fact(n::Int)
+           n &gt;= 0 || error("n must be non-negative")
+           n == 0 &amp;&amp; return 1
+           n * fact(n-1)
+       end
+fact (generic function with 1 method)</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_tasks">Tasks</h4>
-
+<h4 id="_tasks_aka_coroutines">Tasks (aka Coroutines)</h4>
+<div class="paragraph">
+<p><strong>Tasks</strong> are a control flow feature that allows computations to be suspended and resumed in a flexible manner. This feature is sometimes called by other names, such as symmetric coroutines, lightweight threads, cooperative multitasking, or one-shot continuations.</p>
+</div>
+<div class="paragraph">
+<p>When a piece of computing work (in practice, executing a particular function) is designated as a <code>Task</code>, it becomes possible to interrupt it by switching to another <code>Task</code>. The original <code>Task</code> can later be resumed, at which point it will pick up right where it left off. At first, this may seem similar to a function call. However there are two key differences. First, switching tasks does not use any space, so any number of task switches can occur without consuming the call stack. Second, switching among tasks can occur in any order, unlike function calls, where the called function must finish executing before control returns to the calling function.</p>
+</div>
+<div class="paragraph">
+<p>Details can be found in <a href="https://docs.julialang.org/en/latest/manual/control-flow/#man-tasks-1" class="bare">https://docs.julialang.org/en/latest/manual/control-flow/#man-tasks-1</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_types">Types</h3>
 <div class="sect3">
 <h4 id="_primitive_types">Primitive Types</h4>
-
+<div class="paragraph">
+<p>A <strong>primitive type</strong> is a concrete type whose data consists of plain old bits. Classic examples of primitive types are integers and floating-point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in ones. In fact, the standard primitive types are all defined in the language itself:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">primitive type Float64 &lt;: AbstractFloat 64 end
+primitive type Bool &lt;: Integer 8 end
+primitive type Char &lt;: AbstractChar 32 end
+primitive type Int64 &lt;: Signed 64 end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The number in the statements specifies how much storage the type requires.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_type_unions">Type Unions</h4>
-
+<div class="paragraph">
+<p>A <strong>type union</strong> is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special <code>Union</code> keyword:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; IntOrString = Union{Int,AbstractString}
+Union{Int64, AbstractString}
+julia&gt; 1 :: IntOrString
+1</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_parametric_types">Parametric Types</h4>
-
+<div class="paragraph">
+<p>An important and powerful feature of Julia&#8217;s type system is that it is <strong>parametric</strong>: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.</p>
+</div>
+<div class="paragraph">
+<p>Type parameters are introduced immediately after the type name, surrounded by curly braces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">struct Point{T&lt;:Real}
+    x::T
+    y::T
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This declaration defines a new parametric type, <code>Point{T&lt;:Real}</code>, holding two "coordinates" of type <code>T</code>. What, one may ask, is <code>T</code>? Well, that&#8217;s precisely the point of parametric types: it can be any type having <code>Real</code> as supertype.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; Point{Float64}
+Point{Float64}
+julia&gt; Point{Int64}
+Point{Int64}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_methods_2">Methods</h3>
 <div class="sect3">
 <h4 id="_parametric_methods">Parametric Methods</h4>
-
+<div class="paragraph">
+<p>Method definitions can optionally have type parameters qualifying the signature:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; isintpoint(p::Point{T}) where {T} = T === Int64
+isintpoint (generic function with 1 method)
+julia&gt; p = Point(1, 2)
+Point{Int64}(1, 2)
+julia&gt; isintpoint(p)
+true</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="_parametric_constructors">Parametric Constructors</h4>
+<h4 id="_function_like_objects">Function-like Objects</h4>
+<div class="paragraph">
+<p>Methods are associated with types, so it is possible to make any arbitrary Julia object “callable“ by adding methods to its type. Such “callable“ objects are sometimes called <strong>functors</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">struct Polynomial{R}
+    coeffs::Vector{R}
+end
 
+function (p::Polynomial)(x)
+    v = p.coeffs[end]
+    for i = (length(p.coeffs)-1):-1:1
+        v = v*x + p.coeffs[i]
+    end
+    v
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example we can evaluate a polynomial by calling it:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; p = Polynomial([1,10,100])
+Polynomial{Int64}([1, 10, 100])
+julia&gt; p(3)
+931</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_constructors_2">Constructors</h3>
+<div class="paragraph">
+<p>Parametric types add a few wrinkles to the constructor story. Instances of parametric composite types can be constructed either with explicitly given type parameters or with type parameters implied by the types of the arguments given to the constructor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; Point(1,2) ## implicit T ##
+Point{Int64}(1, 2)
+julia&gt; Point{Int64}(1, 2) ## explicit T ##
+Point{Int64}(1, 2)
+julia&gt; Point(1,2.5) ## implicit T ##
+ERROR: MethodError: no method matching Point(::Int64, ::Float64)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>What&#8217;s going on here? A default constructor is specified for each <code>T</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">struct Point{T&lt;:Real}
+    x::T
+    y::T
+    Point{T}(x,y) where {T&lt;:Real} = new(x,y)
+end
+
+Point(x::T, y::T) where {T&lt;:Real} = Point{T}(x,y);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and both <code>x</code> and <code>y</code> have to be of the same type.</p>
+</div>
+<div class="paragraph">
+<p>To solve this problem following outer constructor can be used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">Point(x::Real, y::Real) = Point(promote(x,y)...);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>promote</code> function is detailed in the next section.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conversion_and_promotion">Conversion and Promotion</h3>
+<div class="paragraph">
+<p>Julia has a system for promoting arguments of mathematical operators to a common type. This system is not automatic but extensible.</p>
+</div>
+<div class="sect3">
+<h4 id="_conversion">Conversion</h4>
+<div class="paragraph">
+<p>It can be convenient to convert a value from one type to another without the programmer asking for it explicitly. This is called <strong>conversion</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; x = 12
+12
+julia&gt; typeof(x)
+Int64
+julia&gt; convert(UInt8, x)
+0x0c
+julia&gt; typeof(ans)
+UInt8</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can add our own <code>convert</code> methods:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; Base.convert(::Type{Point{T}}, x::Array{T, 1}) where {T&lt;:Real} = Point(x...)
+julia&gt; convert(Point{Int64}, [1, 2])
+Point{Int64}(1, 2)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_promotion">Promotion</h4>
+<div class="paragraph">
+<p>Promotion refers to converting values of mixed types to a single common type:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; promote(1, 2.5, 3)
+(1.0, 2.5, 3.0)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Although one could, in principle, define methods for the <code>promote</code> function directly, this would require many redundant definitions for all possible permutations of argument types. Instead, the behavior of <code>promote</code> is defined in terms of an auxiliary function called <code>promote_rule</code>, which one can provide methods for.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">promote_rule(::Type{Float64}, ::Type{Int32}) = Float64</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>promote_rule</code> function is used as a building block to define a second function called <code>promote_type</code>, which, given any number of type objects, returns the common type to which those values, as arguments to promote should be promoted:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; promote_type(Float32, Float64)
+Float64</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_metaprogramming">Metaprogramming</h3>
-
+<div class="paragraph">
+<p>Julia represents its own code as a data structure of the language itself. Since code is represented by objects that can be created and manipulated from within the language, it is possible for a program to transform and generate its own code.</p>
+</div>
+<div class="sect3">
+<h4 id="_expressions">Expressions</h4>
+<div class="paragraph">
+<p>Every Julia program starts life as a string:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; prog = "1 + 2"
+"1 + 2"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The next step is to parse each string into an object called an <strong>expression</strong>, represented by the Julia type <code>Expr</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; ex = Meta.parse(prog)
+:(1 + 2)
+julia&gt; typeof(ex)
+Expr
+julia&gt; dump(ex)
+Expr
+  head: Symbol call
+  args: Array{Any}((3,))
+    1: Symbol +
+    2: Int64 1
+    3: Int64 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>dump</code> function provides indented and annotated display of <code>Expr</code> objects.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eval"><code>eval</code></h4>
+<div class="paragraph">
+<p>Given an expression object, one can cause Julia to evaluate (execute) it at global scope using <code>eval</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; Core.eval(Main, ex)
+3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Every module has its own <code>eval</code> function that evaluates expressions in its global scope.</p>
+</div>
+<div class="paragraph">
+<p>When you are using a lot of calls to the function <code>eval</code>, often this means that something is wrong. <code>eval</code> is considered “evil“.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_macros">Macros</h4>
+<div class="paragraph">
+<p>Macros provide a method to include generated code in the final body of a program. A <strong>macro</strong> maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime <code>eval</code> call.</p>
+</div>
+<div class="paragraph">
+<p>Here is a simple macro:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">macro sayhello(name)
+    return :( println("Hello, ", $name, "!") )
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Macros have a dedicated character in Julia&#8217;s syntax: the <code>@</code> (at-sign). The compiler will replace all instances of <code>@sayhello("World")</code> with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">:((Main.println)("Hello, ", "World", "!"))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This expression is returned by <code>@macroexpand @sayhello "World"</code> which is extremely useful for debugging macros.</p>
+</div>
+<div class="paragraph">
+<p>Why macros?</p>
+</div>
+<div class="paragraph">
+<p>Macros are necessary because they execute when code is parsed, therefore, macros allow the programmer to generate and include fragments of customized code <em>before</em> the full program is run.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_generated_functions">Generated Functions</h4>
+<div class="paragraph">
+<p>A very special macro is <code>@generated</code>, which allows you to define so-called <strong>generated functions</strong>. These have the capability to generate specialized code depending on the types of their arguments with more flexibility and/or less code than what can be achieved with multiple dispatch. While macros work with expressions at parse time and cannot access the types of their inputs, a generated function gets expanded at a time when the types of the arguments are known, but the function is not yet compiled.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s easiest to illustrate this with an example. We can declare a generated function <code>foo</code> as</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">@generated function foo(x)
+    println(x)
+    :(x * x)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the body returns a quoted expression, namely <code>:(x * x)</code>, rather than just the value of <code>x * x</code>.</p>
+</div>
+<div class="paragraph">
+<p>From the caller&#8217;s perspective, this is identical to a regular function; in fact, you don&#8217;t have to know whether you&#8217;re calling a regular or generated function. Let&#8217;s see how <code>foo</code> behaves:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; x = foo(2); # note: output is from println() statement in the body
+Int64
+julia&gt; x           # now we print x
+4
+julia&gt; y = foo("bar");
+String
+julia&gt; y
+"barbar"</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_missing_values">Missing Values</h3>
-
+<div class="paragraph">
+<p>Julia provides support for representing <strong>missing values</strong> in the statistical sense, that is for situations where no value is available for a variable in an observation, but a valid value theoretically exists. Missing values are represented via the <code>missing</code> object, which is the singleton instance of the type <code>Missing</code>.</p>
+</div>
+<div class="paragraph">
+<p>Arrays containing missing values can be created like other arrays:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; a = [1, missing]
+2-element Array{Union{Missing, Int64},1}:
+ 1
+  missing</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As this example shows, the element type of such arrays is <code>Union{Missing, T}</code>, with <code>T</code> the type of the non-missing values.</p>
+</div>
+<div class="paragraph">
+<p>Since missing values propagate with standard mathematical operators, reduction functions return missing when called on arrays which contain missing values</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; sum(a)
+missing</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this situation, use the skipmissing function to skip missing values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; sum(skipmissing([1, missing]))
+1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This convenience function returns an iterator which filters out <code>missing</code> values efficiently.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_calling_c_and_fortran_code">Calling C and Fortran Code</h3>
+<div class="paragraph">
+<p>Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with <code>ccall</code> syntax, which looks like an ordinary function call.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="#databases">Databases</a> I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to <code>close(db)</code> has to be made:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">Base.close(dbm::DBM) = gdbm_close(dbm.handle)
 
+function gdbm_close(handle::Ptr{Cvoid})
+    ccall((:gdbm_close, "libgdbm"), Cvoid, (Ptr{Cvoid},), handle)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A dbm object has a field <code>handle</code> of <code>Ptr{Cvoid}</code> type. This field holds a C pointer that refers to the database. To close the database the C function <code>gdbm_close</code> has to be called having as only argument the C pointer pointing to the database and no return value. Julia does this directly with the <code>ccall</code> function having as arguments:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a tuple consisting of a symbol holding the name of the function we want to call: <code>:gdbm_close</code> and the shared library specified as a string: <code>"libgdm"</code>,</p>
+</li>
+<li>
+<p>the return type: <code>Cvoid</code>,</p>
+</li>
+<li>
+<p>a tuple of argument types: <code>(Ptr{Cvoid},)</code> and</p>
+</li>
+<li>
+<p>the argument values: <code>handle</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The complete mapping of the GDBM library can be found as an example in the ThinkJulia sources.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_glossary_19">Glossary</h3>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Regex</dt>
+<dt class="hdlist1">anonymous function</dt>
+<dd>
+<p>Function defined without being given a name.</p>
+</dd>
+<dt class="hdlist1">named tuple</dt>
+<dd>
+<p>Tuple with named components.</p>
+</dd>
+<dt class="hdlist1">keyword arguments</dt>
+<dd>
+<p>Arguments identified by name instead of only by position.</p>
+</dd>
+<dt class="hdlist1"><code>do</code> block</dt>
+<dd>
+<p>Syntax construction used to define and call an anonymous function which looks like a normal code block.</p>
+</dd>
+<dt class="hdlist1">ternary operator</dt>
+<dd>
+<p>Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields <code>true</code> and an expression to be executed when the condition yields <code>false</code>.</p>
+</dd>
+<dt class="hdlist1">short-circuit evaluation</dt>
+<dd>
+<p>Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.</p>
+</dd>
+<dt class="hdlist1">task (aka coroutine)</dt>
+<dd>
+<p>Control flow feature that allows computations to be suspended and resumed in a flexible manner.</p>
+</dd>
+<dt class="hdlist1">primitive type</dt>
+<dd>
+<p>Concrete type whose data consists of plain old bits.</p>
+</dd>
+<dt class="hdlist1">type union</dt>
+<dd>
+<p>Abstract type which includes as objects all instances of any of its argument types.</p>
+</dd>
+<dt class="hdlist1">parametric type</dt>
+<dd>
+<p>Type that can be parameterized.</p>
+</dd>
+<dt class="hdlist1">functor</dt>
+<dd>
+<p>Type with an associated method, so that it looks callable.</p>
+</dd>
+<dt class="hdlist1">conversion</dt>
+<dd>
+<p>Convert a value from one type to another without the programmer asking for it explicitly.</p>
+</dd>
+<dt class="hdlist1">promotion</dt>
+<dd>
+<p>Converting values of mixed types to a single common type</p>
+</dd>
+<dt class="hdlist1">expression</dt>
+<dd>
+<p>Julia type that holds a language construct.</p>
+</dd>
+<dt class="hdlist1">macro</dt>
+<dd>
+<p>Method to include generated code in the final body of a program.</p>
+</dd>
+<dt class="hdlist1">generated functions</dt>
+<dd>
+<p>Functions capable of generating specialized code depending on the types of their arguments.</p>
+</dd>
+<dt class="hdlist1">missing values</dt>
+<dd>
+<p>Instances that represent data points with no value.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -12318,16 +12913,19 @@ addping(pong, ping)</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_interfaces">Interfaces</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck.</p>
+</div>
+</blockquote>
+</div>
 <div class="sect3">
 <h4 id="_iterators">Iterators</h4>
 
 </div>
 <div class="sect3">
 <h4 id="_indexing">Indexing</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_conversion_and_promotion">Conversion and Promotion</h4>
 
 </div>
 </div>
@@ -12874,7 +13472,7 @@ return count</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-23 10:50:30 CEST
+Last updated 2018-07-23 22:23:18 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
