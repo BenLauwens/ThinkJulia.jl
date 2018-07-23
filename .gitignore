@@ -12,3 +12,5 @@ book/output.txt
 book/fonts
 book/lib
 book/my-theme.yml
+book/fake_travis.jl
+site

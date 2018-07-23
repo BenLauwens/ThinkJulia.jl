@@ -28,7 +28,7 @@ module ThinkJulia
   export makefigs
 
   #export makeasciidoc
-  export expandcodeblocks
+  export expandcodeblocks, deploybook
 
   #include("code/chap03.jl")
   include("code/chap04.jl")
