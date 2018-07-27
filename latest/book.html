@@ -573,7 +573,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#reading_word_lists">Reading Word Lists</a></li>
 <li><a href="#_exercises_10">Exercises</a></li>
-<li><a href="#_search">Search</a></li>
+<li><a href="#search">Search</a></li>
 <li><a href="#_looping_with_indices">Looping with Indices</a></li>
 <li><a href="#_debugging_7">Debugging</a></li>
 <li><a href="#_glossary_9">Glossary</a></li>
@@ -634,7 +634,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_word_histogram">Word Histogram</a></li>
 <li><a href="#_most_common_words">Most Common Words</a></li>
 <li><a href="#_optional_parameters">Optional Parameters</a></li>
-<li><a href="#_dictionary_subtraction">Dictionary Subtraction</a></li>
+<li><a href="#dictionary_subtraction">Dictionary Subtraction</a></li>
 <li><a href="#_random_words">Random Words</a></li>
 <li><a href="#markov_analysis">Markov Analysis</a></li>
 <li><a href="#_data_structures">Data Structures</a></li>
@@ -735,11 +735,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#chap20">20. The Goodies: Base</a>
 <ul class="sectlevel2">
 <li><a href="#_collections_and_data_structures">Collections and Data Structures</a></li>
-<li><a href="#_mathematical_functions">Mathematical Functions</a></li>
+<li><a href="#_mathematics">Mathematics</a></li>
 <li><a href="#_strings">Strings</a></li>
 <li><a href="#_arrays">Arrays</a></li>
-<li><a href="#_streams_and_networking">Streams and Networking</a></li>
-<li><a href="#_sorting">Sorting</a></li>
 <li><a href="#_interfaces">Interfaces</a></li>
 <li><a href="#_glossary_20">Glossary</a></li>
 </ul>
@@ -748,20 +746,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_dates">Dates</a></li>
 <li><a href="#_delimited_files">Delimited Files</a></li>
-<li><a href="#_distributed_computing">Distributed Computing</a></li>
+<li><a href="#_distributed_computing_and_shared_arrays">Distributed Computing and Shared Arrays</a></li>
 <li><a href="#_interactive_utilities">Interactive Utilities</a></li>
 <li><a href="#_linear_algebra">Linear Algebra</a></li>
 <li><a href="#_logging">Logging</a></li>
-<li><a href="#_printf">Printf</a></li>
 <li><a href="#_profiling">Profiling</a></li>
-<li><a href="#_random_numbers_2">Random Numbers</a></li>
-<li><a href="#_serialization_2">Serialization</a></li>
-<li><a href="#_shared_arrays">Shared Arrays</a></li>
 <li><a href="#_sockets">Sockets</a></li>
 <li><a href="#_sparse_arrays">Sparse Arrays</a></li>
 <li><a href="#_statistics">Statistics</a></li>
-<li><a href="#_unit_testing_2">Unit Testing</a></li>
-<li><a href="#_glossary_21">Glossary</a></li>
 </ul>
 </li>
 <li><a href="#chap22">22. Debugging</a>
@@ -868,7 +860,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
   | | |_| | | | (_| |  |  Version 0.7.0-beta2.6 (2018-07-14 20:16 UTC)
- _/ |\__'_|_|_|\__'_|  |  Commit faee1df893* (9 days old master)
+ _/ |\__'_|_|_|\__'_|  |  Commit faee1df893* (12 days old master)
 |__/                   |  x86_64-apple-darwin14.5.0
 
 julia&gt;</pre>
@@ -3649,7 +3641,7 @@ print(decibels)</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; time()
-1.532377926542912e9</code></pre>
+1.532701489397368e9</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5944,7 +5936,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_search">Search</h3>
+<h3 id="search">Search</h3>
 <div class="paragraph">
 <p>All of the exercises in the previous section have something in common; they can be solved with the search pattern. The simplest example is:</p>
 </div>
@@ -8951,7 +8943,7 @@ end</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_dictionary_subtraction">Dictionary Subtraction</h3>
+<h3 id="dictionary_subtraction">Dictionary Subtraction</h3>
 <div class="paragraph">
 <p>Finding the words from the book that are not in the word list from <code>words.txt</code> is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).</p>
 </div>
@@ -10524,14 +10516,6 @@ end</code></pre>
 </div>
 <div class="paragraph">
 <p><code>addtime</code> figures out when the movie will be done.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>WARNING: importing deprecated binding Base.@printf into chap16.
-WARNING: Base.@printf is deprecated: it has been moved to the standard library package `Printf`.
-Add `using Printf` to your imports.
-  likely near /Users/ben/.julia/dev/ThinkJulia/book/make.jl:43</pre>
-</div>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12882,37 +12866,335 @@ end</code></pre>
 <p>Julia <code>Base</code> contains a range of functions, types and macros appropriate for performing scientific and numerical computing, but is also as broad as those of many general purpose programming languages. Additional functionality is available from the Standard Library and a growing collection of available packages.</p>
 </div>
 <div class="paragraph">
-<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.</p>
-</div>
-<div class="paragraph">
-<p>The structure of this chapter mimics the corresponding part of the official Julia documentation.</p>
+<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/latest/base/base/" class="bare">https://docs.julialang.org/en/latest/base/base/</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_collections_and_data_structures">Collections and Data Structures</h3>
-
+<div class="paragraph">
+<p>In <a href="#dictionary_subtraction">Dictionary Subtraction</a> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes <code>d1</code>, which contains the words from the document as keys, and <code>d2</code>, which contains the array of words. It returns a dictionary that contains the keys from <code>d1</code> that are not in <code>d2</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function subtract(d1, d2)
+    res = Dict()
+    for key in keys(d1)
+        if key ∉ keys(d2)
+            res[key] = nothing
+        end
+    end
+    res
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In all of these dictionaries, the values are <code>nothing</code> because we never use them. As a result, we waste some storage space.</p>
+</div>
+<div class="paragraph">
+<p>Julia provides another built-in type, called a set, that behaves like a collection of dictionary keys with no values. Adding elements to a set is fast; so is checking membership. And sets provide functions and operators to compute common set operations.</p>
+</div>
+<div class="paragraph">
+<p>For example, set subtraction is available as a function called <code>setdiff</code>. So we can rewrite <code>subtract</code> like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function subtract(d1, d2)
+    setdiff(d1, d2)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is a set instead of a dictionary.</p>
+</div>
+<div class="paragraph">
+<p>Some of the exercises in this book can be done concisely and efficiently with sets. For example, here is a solution to <code>hasduplicates</code>, from <a href="#ex10-7">Exercise 10-7</a>, that uses a dictionary:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function hasduplicates(t)
+    d = Dict()
+    for x in t
+        if x ∈ d
+            return true
+        end
+        d[x] = nothing
+    end
+    false
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When an element appears for the first time, it is added to the dictionary. If the same element appears again, the function returns <code>true</code>.</p>
+</div>
+<div class="paragraph">
+<p>Using sets, we can write the same function like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function hasduplicates(t)
+    length(Set(t)) &lt; length(t)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An element can only appear in a set once, so if an element in <code>t</code> appears more than once, the set will be smaller than <code>t</code>. If there are no duplicates, the set will be the same size as <code>t</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can also use sets to do some of the exercises in <a href="#chap09">Case Study: Word Play</a>. For example, here’s a version of <code>usesonly</code> with a loop:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function usesonly(word, available)
+    for letter in word
+        if letter ∉ available
+            return false
+        end
+    end
+    true
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>usesonly</code> checks whether all letters in <code>word</code> are in <code>available</code>. We can rewrite it like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function usesonly(word, available)
+    Set(word) ⊆ Set(available)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>⊆</code> operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in <code>word</code> appear in <code>available</code>.</p>
+</div>
+<div class="paragraph">
+<p>As an exercise, rewrite <code>avoids</code> using sets.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_mathematical_functions">Mathematical Functions</h3>
-
+<h3 id="_mathematics">Mathematics</h3>
+<div class="paragraph">
+<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \(i\), representing the principal square root of \(-1\).</p>
+</div>
+<div class="paragraph">
+<p>We can now verify the Euler&#8217;s identity:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; ℯ^(im*π)+1
+0.0 + 1.2246467991473532e-16im</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The symbol <code>ℯ</code> (+\euler TAB) is the base of the natural logarithm.</p>
+</div>
+<div class="paragraph">
+<p>The full gamut of other elementary operators and functions is also defined for complex numbers.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s illustrate the complex nature of trigonometric functions:</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\cos\left(x\right)=\frac{\mathrm{e}^{\mathrm{i}x}+\mathrm{e}^{-\mathrm{i}x}}{2}\,.\]
+</div>
+</div>
+<div class="paragraph">
+<p>We can test this formula for different values of \(x\).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; x = 0:0.1:2π
+0.0:0.1:6.2
+julia&gt; cos.(x) == 0.5*(ℯ.^(im*x)+ℯ.^(-im*x))
+true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, another example of the <code>.</code> operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in <code>2π</code>.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_strings">Strings</h3>
-
+<div class="paragraph">
+<p>In <a href="#chap08">Strings</a> and <a href="#chap09">Case Study: Word Play</a>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (<strong>regexes</strong>), which eases the task of finding complex patterns in string objets.</p>
+</div>
+<div class="paragraph">
+<p>The <code>usesonly</code> function can be implemented as a regex:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">function usesonly(word, available)
+  r = Regex("[^$(available)]")
+  !occursin(r, word)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The regex looks for a character that is not in the <code>available</code> string and <code>occursin</code> returns <code>true</code> if the pattern is found in <code>word</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; usesonly("banana", "abn")
+true
+julia&gt; usesonly("bananas", "abn")
+false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Regexes can also be constructed as non-standard string literals prefixed with <code>r</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; match(r"^\s*(?:#|$)", "not a comment")
+julia&gt; m = match(r"^\s*(?:#|$)", "# a comment")
+RegexMatch("#")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>String interpolation is not allowed in this case. The <code>match</code> function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.</p>
+</div>
+<div class="paragraph">
+<p>We can extract the following info from a regexmatch object:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the entire substring matched: <code>m.match</code></p>
+</li>
+<li>
+<p>the captured substrings as an array of strings: <code>m.captures</code></p>
+</li>
+<li>
+<p>the offset at which the whole match begins: <code>m.offset</code></p>
+</li>
+<li>
+<p>the offsets of the captured substrings as a vector: <code>m.offsets</code></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; m.match
+"#"
+julia&gt; m.offset
+1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Regexes are extremely powerful and the PERL manpage <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> provides all the details to construct the most exotic searches.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_arrays">Arrays</h3>
-
+<div class="paragraph">
+<p>In <a href="#chap10">Arrays</a> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.</p>
 </div>
-<div class="sect2">
-<h3 id="_streams_and_networking">Streams and Networking</h3>
-
+<div class="paragraph">
+<p>Let&#8217;s create a 2-by-3 zero matrix:</p>
 </div>
-<div class="sect2">
-<h3 id="_sorting">Sorting</h3>
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; z = zeros(Float64, 2, 3)
+2×3 Array{Float64,2}:
+ 0.0  0.0  0.0
+ 0.0  0.0  0.0
+julia&gt; typeof(z)
+Array{Float64,2}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>De type of this matrix is an array holding floating points and having 2 dimensions.</p>
+</div>
+<div class="paragraph">
+<p>The <code>size</code> function returns a tuple with as elements the number of elements in each dimension:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; size(z)
+(2, 3)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The function <code>ones</code> constructs a matrix with unit value elements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; s = ones(String, 1, 3)
+1×3 Array{String,2}:
+ ""  ""  ""</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The string unit element is an empty string. Attention <code>s</code> is not a one-dimensional array:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; t = ["", "", ""]
+3-element Array{String,1}:
+ ""
+ ""
+ ""
+julia&gt; s == t
+false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>s</code> is a row matrix and <code>t</code> is a column matrix.</p>
+</div>
+<div class="paragraph">
+<p>A matrix can be entered directly using a space to separate elements in a row and a semicolon <code>;</code> to separate rows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; a = [1 2 3; 4 5 6]
+2×3 Array{Int64,2}:
+ 1  2  3
+ 4  5  6</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can use index as usual to address indivual elements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; z[1,2] = 1
+1
+julia&gt; z[2,3] = 1
+1
+julia&gt; z
+2×3 Array{Float64,2}:
+ 0.0  1.0  0.0
+ 0.0  0.0  1.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Slices can be used for each dimension to select a subgroup of elements:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; u = z[:,2:end]
+2×2 Array{Float64,2}:
+ 1.0  0.0
+ 0.0  1.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>.</code> operator broadcasts to all dimensions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; ℯ.^(im*u)
+2×2 Array{Complex{Float64},2}:
+ 0.540302+0.841471im       1.0+0.0im
+      1.0+0.0im       0.540302+0.841471im</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_interfaces">Interfaces</h3>
+<div class="paragraph">
+<p>A lot of the power and extensibility in Julia comes from a collection of informal interfaces. By extending a few specific methods to work for a custom type, objects of that type not only receive those functionalities, but they are also able to be used in other methods that are written to generically build upon those behaviors.</p>
+</div>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
@@ -12922,16 +13204,106 @@ end</code></pre>
 </div>
 <div class="sect3">
 <h4 id="_iterators">Iterators</h4>
+<div class="paragraph">
+<p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s make an iterator that returns lazily the Fibonnaci sequence:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">struct Fibonnaci{T&lt;:Real} end
+Fibonnaci(d::DataType) = d&lt;:Real ? Fibonnaci{d}() : error("No Real type!")
 
+Base.iterate(::Fibonnaci{T}) where {T&lt;:Real} = (zero(T), (one(T), one(T)))
+Base.iterate(::Fibonnaci{T}, state::Tuple{T, T}) where {T&lt;:Real} = (state[1], (state[2], state[1] + state[2]))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>I implemented a parametric type with no fields <code>Fibonnaci</code>, an outer constructor and two methods <code>Base.iterate</code>. The first is called to initialize the iterator an returns a tuple consisting of the first value, \(0\), and a state. The state in this case is a tuple containing the second and the third value, \(1\) and \(1\).</p>
+</div>
+<div class="paragraph">
+<p>The second is called to get the next value of the Fibonnaci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.</p>
+</div>
+<div class="paragraph">
+<p>We can use <code>Fibonnaci</code> now in a <code>for</code> loop:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; for e in Fibonnaci(Int64)
+           e &gt; 100 &amp;&amp; break
+           print(e, " ")
+       end
+0 1 1 2 3 5 8 13 21 34 55 89</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It looks like magic has happened but the explanation is simple. A <code>for</code> loop in Julia</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">for i in iter
+    # body
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is translated into:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">next = iterate(iter)
+while next !== nothing
+    (i, state) = next
+    # body
+    next = iterate(iter, state)
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_indexing">Indexing</h4>
-
+<div class="paragraph">
+<p>What is an array? In Julia an array is defined as a type having as supertype an <code>AbstractArray</code> and implementing the indexing interface:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>getindex(X, i)</code></dt>
+<dd>
+<p><code>X[i]</code>, indexed element access</p>
+</dd>
+<dt class="hdlist1"><code>setindex!(X, v, i)</code></dt>
+<dd>
+<p><code>X[i] = v</code>, indexed assignment</p>
+</dd>
+<dt class="hdlist1"><code>firstindex(X)</code></dt>
+<dd>
+<p>The first index</p>
+</dd>
+<dt class="hdlist1"><code>lastindex(X)</code></dt>
+<dd>
+<p>The last index, used in <code>X[end]</code></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>This is all it takes to implements your own array-like type and to reuse all the goodies provided in Julia.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_glossary_20">Glossary</h3>
-
+<div class="dlist">
+<dl>
+<dt class="hdlist1">regex</dt>
+<dd>
+<p>Regular expression, a sequence of characters that define a search pattern.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 </div>
@@ -12939,7 +13311,7 @@ end</code></pre>
 <h2 id="chap21">21. The Goodies: Standard Library</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>As in the previous chapter, only small examples are given. Further information can be found in the official Julia documentation.</p>
+<p>As in the previous chapter, only small examples are given. Only the modules not yet mentioned in the other chapters are discussed. Further information can be found in the official Julia documentation.</p>
 </div>
 <div class="paragraph">
 <p>To use module functions:</p>
@@ -12956,69 +13328,317 @@ end</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_dates">Dates</h3>
-
+<div class="paragraph">
+<p>The <code>Dates</code> module provides two types for working with dates: <code>Date</code> and <code>DateTime</code>, representing day and millisecond precision, respectively.</p>
+</div>
+<div class="paragraph">
+<p>In <a href="#chap16">Structs and Functions</a> I defined a time type. We can also use the <code>Dates</code> module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; using Dates
+julia&gt; d1 = Date(2015, 6, 23)
+2015-06-23
+julia&gt; d2 = Date(2017, 6, 16)
+2017-06-16
+julia&gt; d2 - d1
+724 days</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So the difference in age between my 2 sons is \(724\) days.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_delimited_files">Delimited Files</h3>
-
+<div class="paragraph">
+<p>Often we want to read or write data from or to a file in a structured way. The <code>DelimitedFiles</code> module allows us to store values row by row as lines in a file with elements separated by the given delimiter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; using DelimitedFiles
+julia&gt; x = [1; 2; 3; 4];
+julia&gt; y = [5; 6; 7; 8];
+julia&gt; open("delim_file.txt", "w") do io
+           writedlm(io, [x y])
+       end
+julia&gt; readdlm("delim_file.txt", '\t', Int, '\n')
+4×2 Array{Int64,2}:
+ 1  5
+ 2  6
+ 3  7
+ 4  8</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_distributed_computing">Distributed Computing</h3>
-
+<h3 id="_distributed_computing_and_shared_arrays">Distributed Computing and Shared Arrays</h3>
+<div class="paragraph">
+<p>Julia provides a module <code>Distributed</code> to distribute the workload over multiple cores or remote machines. A clustermanager or the ssh protocol can be used to communicate between remote machines.</p>
+</div>
+<div class="paragraph">
+<p>The shared arrays or the <code>SharedArrays</code> module use system shared memory to map the same array across many processes. A shared array is a good choice when you want to have a large amount of data jointly accessible to two or more processes on the same machine.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_interactive_utilities">Interactive Utilities</h3>
-
+<div class="paragraph">
+<p>We have already met the <code>InteractiveUtils</code> module in <a href="#chap18">Subtyping</a>. The <code>@which</code> macro is only the tip of the iceberg.</p>
+</div>
+<div class="paragraph">
+<p>Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s give a simple example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">@noinline function squaresum(a::Float64, b::Float64)
+    a^2 + b^2
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>@noinline</code> macro prohibits the inlining of the function call.</p>
+</div>
+<div class="paragraph">
+<p>The first step is to look at the lowered code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; using InteractiveUtils
+julia&gt; @code_lowered squaresum(3.0, 4.0)
+CodeInfo(
+  1 ─      :($(Expr(:meta, :noinline)))
+2 │   %2 = Core.apply_type(Base.Val, 2)::Any
+  │   %3 = %2()::Any
+  │   %4 = Base.literal_pow(:^, %%a, %3)::Any
+  │   %5 = Core.apply_type(Base.Val, 2)::Any
+  │   %6 = %5()::Any
+  │   %7 = Base.literal_pow(:^, %%b, %6)::Any
+  │   %8 = :+(%4, %7)::Any
+  └──      return %8
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>code_lowered</code> macro returns an array of an intermediate representation of the code that is used by the compiler to generate optimised code.</p>
+</div>
+<div class="paragraph">
+<p>The next step adds type information:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; @code_typed squaresum(3.0, 4.0)
+CodeInfo(
+2 1 ─ %1 = Base.mul_float(%%a, %%a)::Float64
+  │   %2 = Base.mul_float(%%b, %%b)::Float64
+  │   %3 = Base.add_float(%1, %2)::Float64
+  └──      return %3
+) =&gt; Float64</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We see that the type of the intermediate results and the return value is correctly inferred.</p>
+</div>
+<div class="paragraph">
+<p>This representation of the code is transformed in LLVM code:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; @code_llvm squaresum(3.0, 4.0)
+; Function squaresum
+; Location: none:2
+define double @julia_squaresum_36084(double, double) {
+top:
+; Function literal_pow; {
+; Location: intfuncs.jl:243
+; Function *; {
+; Location: float.jl:399
+  %2 = fmul double %0, %0
+  %3 = fmul double %1, %1
+;}}
+; Function +; {
+; Location: float.jl:395
+  %4 = fadd double %2, %3
+;}
+  ret double %4
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And finally the machinecode is generated:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; @code_native squaresum(3.0, 4.0)
+	.section	__TEXT,__text,regular,pure_instructions
+; Function squaresum {
+; Location: none:2
+; Function literal_pow; {
+; Location: intfuncs.jl:243
+; Function *; {
+; Location: none:2
+	vmulsd	%xmm0, %xmm0, %xmm0
+	vmulsd	%xmm1, %xmm1, %xmm1
+;}}
+; Function +; {
+; Location: float.jl:395
+	vaddsd	%xmm1, %xmm0, %xmm0
+;}
+	retl
+	nopl	(%eax)
+;}</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_linear_algebra">Linear Algebra</h3>
-
+<div class="paragraph">
+<p>The <code>LinearAlgebra</code> modules provides native implementations of many common and useful linear algebra operations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; using LinearAlgebra
+julia&gt; A = [1 2 3; 4 1 6; 7 8 1]
+3×3 Array{Int64,2}:
+ 1  2  3
+ 4  1  6
+ 7  8  1
+julia&gt; tr(A)
+3
+julia&gt; det(A)
+104.0
+julia&gt; inv(A)
+3×3 Array{Float64,2}:
+ -0.451923   0.211538    0.0865385
+  0.365385  -0.192308    0.0576923
+  0.240385   0.0576923  -0.0673077</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_logging">Logging</h3>
-
+<div class="paragraph">
+<p>The <code>Logging</code> module provides a way to record the history and progress of a computation as a log of events. Events are created by inserting a logging statement into the source code, for example:</p>
 </div>
-<div class="sect2">
-<h3 id="_printf">Printf</h3>
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; @warn "Abandon printf debugging, all ye who enter here!"
+┌ Warning: Abandon printf debugging, all ye who enter here!
+└ @ Main REPL[1]:1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The system provides several advantages over peppering your source code with calls to <code>println</code>. It allows you to control the visibility and presentation of messages without editing the source code. For example, in contrast to the <code>@warn</code> above</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; @debug "The sum of some values $(sum(rand(100)))"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will produce no output by default. Furthermore, it&#8217;s very cheap to leave debug statements like this in the source code because the system avoids evaluating the message if it would later be ignored. In this case <code>sum(rand(100))</code> and the associated string processing will never be executed unless debug logging is enabled.</p>
+</div>
+<div class="paragraph">
+<p>The level of logging can be selected by an environment variable <code>JULIA_DEBUG</code>, for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
+┌ Debug: The sum of some values 47.116520814555024
+└ @ Main none:1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, I have used <code>all</code> to get all debug information, but you can also select to generate only output for a specific file or module.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_profiling">Profiling</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_random_numbers_2">Random Numbers</h3>
 <div class="paragraph">
-<p>The <code>Distributions</code> package also provides functions to generate random values from discrete or continuous distributions including Gaussian, exponential, gamma, and a few more.</p>
+<p>The <code>Profile</code> module provides tools to help developers improve the performance of their code. When used, it takes measurements on running code, and produces output that helps you understand how much time is spent on individual line(s). The most common usage is to identify "bottlenecks" as targets for optimization.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_serialization_2">Serialization</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_shared_arrays">Shared Arrays</h3>
-
 </div>
 <div class="sect2">
 <h3 id="_sockets">Sockets</h3>
+<div class="paragraph">
+<p>We used the standard IO streams in <a href="#chap14">Files</a> to read and write to a file. Julia provides also network streams to communicate over the internet.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s create a server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia" data-lang="julia">using Sockets
 
+@async begin
+    server = listen(2000)
+    while true
+        sock = accept(server)
+        println("Hello World\n")
+    end
+end</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To those familiar with the Unix socket API, the method names will feel familiar, though their usage is somewhat simpler than the raw Unix socket API. The first call to <code>listen</code> will create a server waiting for incoming connections on the specified port (2000) in this case.</p>
+</div>
+<div class="paragraph">
+<p>The <code>accept</code> function retrieves a connection to the client that is connecting to the server we just created, while the <code>connect</code> function takes the same arguments as <code>listen</code>, so, assuming the environment (i.e. host, cwd, etc.) is the same you should be able to pass the same arguments to connect as you did to listen to establish the connection. So let&#8217;s try that out:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; conn = connect(2000)
+Hello World
+Sockets.TCPSocket(RawFD(0x00000019) open, 0 bytes waiting)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As expected we saw <code>"Hello World"</code> printed. So, let&#8217;s actually analyze what happened behind the scenes. When we called <code>connect</code>, we connect to the server we had just created. Meanwhile, the <code>accept</code> function returns a server-side connection to the newly created socket and prints <code>"Hello World"</code> to indicate that the connection was successful.</p>
+</div>
+<div class="paragraph">
+<p>Once we have established a connection with the server, we can use the <code>read</code> and <code>write</code> functions to communicate.</p>
+</div>
+<div class="paragraph">
+<p>As with other streams, <code>close</code> is used to disconnect the socket:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; close(conn)</code></pre>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_sparse_arrays">Sparse Arrays</h3>
-
+<div class="paragraph">
+<p>Julia has support for sparse vectors and sparse matrices in the <code>SparseArrays</code> module. Sparse arrays are arrays that contain enough zeros that storing them in a special data structure leads to savings in space and execution time, compared to dense arrays.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_statistics">Statistics</h3>
-
+<div class="paragraph">
+<p>The <code>Statistics</code> module contains basic statistics functionality.</p>
 </div>
-<div class="sect2">
-<h3 id="_unit_testing_2">Unit Testing</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-julia-repl" data-lang="julia-repl">julia&gt; using Statistics
 
+julia&gt; data = rand(100);
+
+julia&gt; mean(data)
+0.4653206876448169
+julia&gt; median(data)
+0.4449296373479631
+julia&gt; std(data)
+0.2794859135916336
+julia&gt; quantile(data, [0.25,0.5, 0.75])
+3-element Array{Float64,1}:
+ 0.26176145742656
+ 0.4449296373479631
+ 0.7031069804883248</code></pre>
 </div>
-<div class="sect2">
-<h3 id="_glossary_21">Glossary</h3>
-
+</div>
 </div>
 </div>
 </div>
@@ -13472,7 +14092,7 @@ return count</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-07-23 22:32:03 CEST
+Last updated 2018-07-27 16:24:46 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
