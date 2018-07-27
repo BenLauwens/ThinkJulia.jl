@@ -92,7 +92,7 @@ Write a function named +usesall+ that takes a word and a string of required lett
 
 Write a function called +isabecedarian+ that returns +true+ if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
 
-
+[[search]]
 === Search
 
 All of the exercises in the previous section have something in common; they can be solved with the search pattern. The simplest example is:

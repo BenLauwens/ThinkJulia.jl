@@ -2,6 +2,7 @@ module ThinkJulia
 
   using Printf
   using Random
+  using Base64
   using REPL
   using Luxor
 
@@ -67,9 +68,11 @@ module ThinkJulia
   include("figures/chap15.jl")
   include("figures/chap16.jl")
   include("figures/chap18.jl")
+  #include("figures/chap19.jl")
   #include("asciidoc/md2asciidoc.jl")
   include("asciidoc/expanders.jl")
   include("asciidoc/runners.jl")
+  include("asciidoc/deploy.jl")
 
   datapath(filename) = joinpath(@__DIR__, "..", "data", filename)
 end

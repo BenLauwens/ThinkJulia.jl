@@ -15,40 +15,545 @@ Credit: this chapter is a synthesis of the corresponding parts in the offical Ju
 
 === Functions
 
+==== Anonymous Functions
+
+Functions can be defined without being given a name, using either of these syntaxes:
+
+[source,@julia-repl-test]
+----
+julia> f = x -> x^2 + 2x - 1
+#1 (generic function with 1 method)
+julia> f = function (x)
+           x^2 + 2x - 1
+       end
+#3 (generic function with 1 method)
+----
+
++f+ is an *anonymous function* that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:
+
+[source,julia-repl]
+----
+julia> using Plots
+
+julia> plot(0.0:0.1:10.0, f)
+
+----
+
+
 ==== Named Tuples
+
+The components of tuples can optionally be named, in which case a *named tuple* is constructed:
+
+[source,@julia-repl-test]
+----
+julia> x = (a=1, b=1+1)
+(a = 1, b = 2)
+julia> x.a
+1
+----
+
+Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax +(x.a)+.
 
 ==== Keyword Arguments
 
+Function arguments can also be specified by keyword:
+
+[source,@julia-repl-test]
+----
+julia> function plot(x, y; style="solid", width=1, color="black")
+           ###
+       end
+plot (generic function with 1 method)
+julia> plot(0:10, 0:10; style="dotted", color="blue")
+
+----
+
+Functions with *keyword arguments* are defined using a semicolon in the signature. When the function is called, the semicolon is optional.
+
 ==== +do+ Block
+
+In <<reading_and_writing>> we had to close the file after when where done writing. This can be done automatically using a *+do+ block*:
+
+[source,@julia-repl-test chap19]
+----
+julia> data = "This here's the wattle,\nthe emblem of our land.\n"
+"This here's the wattle,\nthe emblem of our land.\n"
+julia> open("output.txt", "w") do fout
+           write(fout, data)
+       end
+48
+----
+
+This is functionally equivalent to
+
+[source,@julia-repl-test chap19]
+----
+julia> f = (fout) -> begin
+           write(fout, data)
+       end
+#3 (generic function with 1 method)
+julia> open(f, "output.txt", "w")
+48
+----
+
+The anonymous function is used as first argument of the function +open+:
+
+[source,julia}
+----
+function open(f::Function, args...)
+    io = open(args...)
+    try
+        f(io)
+    finally
+        close(io)
+    end
+end
+----
+
+A +do+ block can "capture" variables from its enclosing scope. For example, the variable +data+ in the above example of +open...do+ is captured from the outer scope.
 
 === Control Flow
 
 ==== Ternary Operator
 
+The so-called *ternary operator*, +?:+, is closely related to the +if-elseif-else+ syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:
+
+[source,@julia-repl-test]
+----
+julia> a = 150
+150
+julia> a % 2 == 0 ? println("even") : println("odd")
+even
+----
+
+The expression before the +?+, is a condition expression. If the condition is +true+, the expression before the +:+ is evaluated, otherwise, the expression after the +:+ is evaluated.
+
 ==== Short-Circuit Evaluation
 
-==== Tasks
+The operators +&&+ and +||+ do a *short-circuit evaluation*: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
+
+For example, a recursive factorial routine could be defined like this:
+
+[source,@julia-repl-test]
+----
+julia> function fact(n::Int)
+           n >= 0 || error("n must be non-negative")
+           n == 0 && return 1
+           n * fact(n-1)
+       end
+fact (generic function with 1 method)
+----
+
+==== Tasks (aka Coroutines)
+
+*Tasks* are a control flow feature that allows computations to be suspended and resumed in a flexible manner. This feature is sometimes called by other names, such as symmetric coroutines, lightweight threads, cooperative multitasking, or one-shot continuations.
+
+When a piece of computing work (in practice, executing a particular function) is designated as a +Task+, it becomes possible to interrupt it by switching to another +Task+. The original +Task+ can later be resumed, at which point it will pick up right where it left off. At first, this may seem similar to a function call. However there are two key differences. First, switching tasks does not use any space, so any number of task switches can occur without consuming the call stack. Second, switching among tasks can occur in any order, unlike function calls, where the called function must finish executing before control returns to the calling function.
+
+Details can be found in https://docs.julialang.org/en/latest/manual/control-flow/#man-tasks-1.
 
 === Types
 
 ==== Primitive Types
 
+A *primitive type* is a concrete type whose data consists of plain old bits. Classic examples of primitive types are integers and floating-point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in ones. In fact, the standard primitive types are all defined in the language itself:
+
+[source,julia]
+----
+primitive type Float64 <: AbstractFloat 64 end
+primitive type Bool <: Integer 8 end
+primitive type Char <: AbstractChar 32 end
+primitive type Int64 <: Signed 64 end
+----
+
+The number in the statements specifies how much storage the type requires.
+
 ==== Type Unions
 
+A *type union* is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special +Union+ keyword:
+
+[source,@julia-repl-test]
+----
+julia> IntOrString = Union{Int,AbstractString}
+Union{Int64, AbstractString}
+julia> 1 :: IntOrString
+1
+----
+
 ==== Parametric Types
+
+An important and powerful feature of Julia's type system is that it is *parametric*: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.
+
+Type parameters are introduced immediately after the type name, surrounded by curly braces:
+
+[source,@julia-setup chap19]
+----
+struct Point{T<:Real}
+    x::T
+    y::T
+end
+----
+
+This declaration defines a new parametric type, +Point{T<:Real}+, holding two "coordinates" of type +T+. What, one may ask, is +T+? Well, that's precisely the point of parametric types: it can be any type having +Real+ as supertype.
+
+[source,@julia-repl-test chap19]
+----
+julia> Point{Float64}
+Point{Float64}
+julia> Point{Int64}
+Point{Int64}
+----
+
+Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.
 
 === Methods
 
 ==== Parametric Methods
 
-==== Parametric Constructors
+Method definitions can optionally have type parameters qualifying the signature:
+
+[source,@julia-repl-test chap19]
+----
+julia> isintpoint(p::Point{T}) where {T} = T === Int64
+isintpoint (generic function with 1 method)
+julia> p = Point(1, 2)
+Point{Int64}(1, 2)
+julia> isintpoint(p)
+true
+----
+
+==== Function-like Objects
+
+Methods are associated with types, so it is possible to make any arbitrary Julia object “callable“ by adding methods to its type. Such “callable“ objects are sometimes called *functors*.
+
+[source,@julia-setup chap19]
+----
+struct Polynomial{R}
+    coeffs::Vector{R}
+end
+
+function (p::Polynomial)(x)
+    v = p.coeffs[end]
+    for i = (length(p.coeffs)-1):-1:1
+        v = v*x + p.coeffs[i]
+    end
+    v
+end
+----
+
+In this example we can evaluate a polynomial by calling it:
+
+[source,@julia-repl-test chap19]
+----
+julia> p = Polynomial([1,10,100])
+Polynomial{Int64}([1, 10, 100])
+julia> p(3)
+931
+----
+
+=== Constructors
+
+Parametric types add a few wrinkles to the constructor story. Instances of parametric composite types can be constructed either with explicitly given type parameters or with type parameters implied by the types of the arguments given to the constructor:
+
+[source,@julia-repl-test chap19]
+----
+julia> Point(1,2) ## implicit T ##
+Point{Int64}(1, 2)
+julia> Point{Int64}(1, 2) ## explicit T ##
+Point{Int64}(1, 2)
+julia> Point(1,2.5) ## implicit T ##
+ERROR: MethodError: no method matching Point(::Int64, ::Float64)
+----
+
+What's going on here? A default constructor is specified for each +T+:
+
+[source,julia]
+----
+struct Point{T<:Real}
+    x::T
+    y::T
+    Point{T}(x,y) where {T<:Real} = new(x,y)
+end
+
+Point(x::T, y::T) where {T<:Real} = Point{T}(x,y);
+----
+
+and both +x+ and +y+ have to be of the same type.
+
+To solve this problem following outer constructor can be used:
+
+[source,@julia-setup chap19]
+----
+Point(x::Real, y::Real) = Point(promote(x,y)...);
+----
+
+The +promote+ function is detailed in the next section.
+
+=== Conversion and Promotion
+
+Julia has a system for promoting arguments of mathematical operators to a common type. This system is not automatic but extensible.
+
+==== Conversion
+
+It can be convenient to convert a value from one type to another without the programmer asking for it explicitly. This is called *conversion*:
+
+[source,@julia-repl-test]
+----
+julia> x = 12
+12
+julia> typeof(x)
+Int64
+julia> convert(UInt8, x)
+0x0c
+julia> typeof(ans)
+UInt8
+----
+
+We can add our own +convert+ methods:
+[source,@julia-repl-test chap19]
+----
+julia> Base.convert(::Type{Point{T}}, x::Array{T, 1}) where {T<:Real} = Point(x...)
+
+julia> convert(Point{Int64}, [1, 2])
+Point{Int64}(1, 2)
+----
+
+==== Promotion
+
+Promotion refers to converting values of mixed types to a single common type:
+[source,@julia-repl-test]
+----
+julia> promote(1, 2.5, 3)
+(1.0, 2.5, 3.0)
+----
+
+Although one could, in principle, define methods for the +promote+ function directly, this would require many redundant definitions for all possible permutations of argument types. Instead, the behavior of +promote+ is defined in terms of an auxiliary function called +promote_rule+, which one can provide methods for.
+
+[source,julia]
+----
+promote_rule(::Type{Float64}, ::Type{Int32}) = Float64
+----
+
+The +promote_rule+ function is used as a building block to define a second function called +promote_type+, which, given any number of type objects, returns the common type to which those values, as arguments to promote should be promoted:
+
+[source,@julia-repl-test]
+----
+julia> promote_type(Float32, Float64)
+Float64
+----
 
 === Metaprogramming
 
+Julia represents its own code as a data structure of the language itself. Since code is represented by objects that can be created and manipulated from within the language, it is possible for a program to transform and generate its own code. 
+
+==== Expressions
+
+Every Julia program starts life as a string:
+
+[source,@julia-repl-test chap19]
+----
+julia> prog = "1 + 2"
+"1 + 2"
+----
+
+The next step is to parse each string into an object called an *expression*, represented by the Julia type +Expr+:
+
+[source,@julia-repl-test chap19]
+----
+julia> ex = Meta.parse(prog)
+:(1 + 2)
+julia> typeof(ex)
+Expr
+julia> dump(ex)
+Expr
+  head: Symbol call
+  args: Array{Any}((3,))
+    1: Symbol +
+    2: Int64 1
+    3: Int64 2
+----
+
+The +dump+ function provides indented and annotated display of +Expr+ objects.
+
+==== +eval+
+
+Given an expression object, one can cause Julia to evaluate (execute) it at global scope using +eval+:
+[source,julia-repl]
+----
+julia> Core.eval(Main, ex)
+3
+----
+
+Every module has its own +eval+ function that evaluates expressions in its global scope.
+
+When you are using a lot of calls to the function +eval+, often this means that something is wrong. +eval+ is considered “evil“.
+
+==== Macros
+
+Macros provide a method to include generated code in the final body of a program. A *macro* maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime +eval+ call.
+
+Here is a simple macro:
+
+[source,@julia-setup chap19]
+----
+macro sayhello(name)
+    return :( println("Hello, ", $name, "!") )
+end
+----
+
+Macros have a dedicated character in Julia's syntax: the +@+ (at-sign). The compiler will replace all instances of +@sayhello("World")+ with:
+
+[source,julia]
+----
+:((Main.println)("Hello, ", "World", "!"))
+----
+
+This expression is returned by +@macroexpand @sayhello "World"+ which is extremely useful for debugging macros.
+
+Why macros?
+
+Macros are necessary because they execute when code is parsed, therefore, macros allow the programmer to generate and include fragments of customized code _before_ the full program is run.
+
+==== Generated Functions
+
+A very special macro is +@generated+, which allows you to define so-called *generated functions*. These have the capability to generate specialized code depending on the types of their arguments with more flexibility and/or less code than what can be achieved with multiple dispatch. While macros work with expressions at parse time and cannot access the types of their inputs, a generated function gets expanded at a time when the types of the arguments are known, but the function is not yet compiled.
+
+It's easiest to illustrate this with an example. We can declare a generated function +foo+ as
+
+[source,@julia-setup chap19]
+----
+@generated function foo(x)
+    println(x)
+    :(x * x)
+end
+----
+
+Note that the body returns a quoted expression, namely +pass:[:(x * x)]+, rather than just the value of +pass:[x * x]+.
+
+From the caller's perspective, this is identical to a regular function; in fact, you don't have to know whether you're calling a regular or generated function. Let's see how +foo+ behaves:
+
+[source,@julia-repl-test chap19]
+----
+julia> x = foo(2); # note: output is from println() statement in the body
+Int64
+julia> x           # now we print x
+4
+julia> y = foo("bar");
+String
+julia> y
+"barbar"
+----
+
 === Missing Values
+
+Julia provides support for representing *missing values* in the statistical sense, that is for situations where no value is available for a variable in an observation, but a valid value theoretically exists. Missing values are represented via the +missing+ object, which is the singleton instance of the type +Missing+.
+
+Arrays containing missing values can be created like other arrays:
+
+[source,@julia-repl-test chap19]
+----
+julia> a = [1, missing]
+2-element Array{Union{Missing, Int64},1}:
+ 1
+  missing
+----
+
+As this example shows, the element type of such arrays is +Union{Missing, T}+, with +T+ the type of the non-missing values.
+
+Since missing values propagate with standard mathematical operators, reduction functions return missing when called on arrays which contain missing values
+
+[source,@julia-repl-test chap19]
+----
+julia> sum(a)
+missing
+----
+
+In this situation, use the skipmissing function to skip missing values:
+
+[source,@julia-repl-test chap19]
+----
+julia> sum(skipmissing([1, missing]))
+1
+----
+
+This convenience function returns an iterator which filters out +missing+ values efficiently.
 
 === Calling C and Fortran Code
 
+Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with +ccall+ syntax, which looks like an ordinary function call.
+
+In <<databases>> I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to +close(db)+ has to be made:
+
+[source,julia]
+----
+Base.close(dbm::DBM) = gdbm_close(dbm.handle)
+
+function gdbm_close(handle::Ptr{Cvoid})
+    ccall((:gdbm_close, "libgdbm"), Cvoid, (Ptr{Cvoid},), handle)
+end
+----
+
+A dbm object has a field +handle+ of +Ptr{Cvoid}+ type. This field holds a C pointer that refers to the database. To close the database the C function +gdbm_close+ has to be called having as only argument the C pointer pointing to the database and no return value. Julia does this directly with the +ccall+ function having as arguments:
+
+* a tuple consisting of a symbol holding the name of the function we want to call: +:gdbm_close+ and the shared library specified as a string: +"libgdm"+,
+
+* the return type: +Cvoid+,
+
+* a tuple of argument types: +(Ptr{Cvoid},)+ and
+
+* the argument values: +handle+.
+
+The complete mapping of the GDBM library can be found as an example in the ThinkJulia sources.
+
 === Glossary
 
-Regex::
+anonymous function::
+Function defined without being given a name.
+
+named tuple::
+Tuple with named components.
+
+keyword arguments::
+Arguments identified by name instead of only by position.
+
++do+ block::
+Syntax construction used to define and call an anonymous function which looks like a normal code block.
+
+ternary operator::
+Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields +true+ and an expression to be executed when the condition yields +false+.
+
+short-circuit evaluation::
+Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
+
+task (aka coroutine)::
+Control flow feature that allows computations to be suspended and resumed in a flexible manner.
+
+primitive type::
+Concrete type whose data consists of plain old bits.
+
+type union::
+Abstract type which includes as objects all instances of any of its argument types.
+
+parametric type::
+Type that can be parameterized.
+
+functor::
+Type with an associated method, so that it looks callable.
+
+conversion::
+Convert a value from one type to another without the programmer asking for it explicitly.
+
+promotion::
+Converting values of mixed types to a single common type
+
+expression::
+Julia type that holds a language construct.
+
+macro::
+Method to include generated code in the final body of a program.
+
+generated functions::
+Functions capable of generating specialized code depending on the types of their arguments.
+
+missing values::
+Instances that represent data points with no value.

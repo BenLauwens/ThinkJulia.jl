@@ -23,4 +23,5 @@ function makefigs(output::Symbol, font::String, scale::Float64)
   fig15_2(output, font, scale)
   fig16_1(output, font, scale)
   fig18_1(output, font, scale)
+  #fig19_1(output, font, scale)
 end

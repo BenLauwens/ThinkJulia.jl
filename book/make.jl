@@ -1,4 +1,4 @@
-using ThinkJulia: makefigs, expandcodeblocks
+using ThinkJulia: makefigs, expandcodeblocks, deploybook
 
 const root = dirname(@__FILE__)
 const src = joinpath(root, "src")
@@ -54,15 +54,10 @@ end
 if "deploy" in ARGS
   isdir(target) || mkpath(target)
   cp(joinpath(dst, "book.html"), joinpath(target, "book.html"), force=true)
-  for (dir, dirs, files) in walkdir(img)
-    for file in files
-      occursin(file, "stem-") && cp(joinpath(dir, file), joinpath(target, file), force=true)
-    end
-  end
   isdir(joinpath(target, "images")) || mkpath(joinpath(target, "images"))
   for (dir, dirs, files) in walkdir(img)
     for file in files
-      occursin(file, ".svg") && cp(joinpath(dir, file), joinpath(target, "images", file), force=true)
+      occursin(".svg", file) && cp(joinpath(dir, file), joinpath(target, "images", file), force=true)
     end
   end
   fake_travis = "fake_travis.jl"

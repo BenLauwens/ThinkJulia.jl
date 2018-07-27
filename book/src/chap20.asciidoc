@@ -3,31 +3,362 @@
 
 Julia +Base+ contains a range of functions, types and macros appropriate for performing scientific and numerical computing, but is also as broad as those of many general purpose programming languages. Additional functionality is available from the Standard Library and a growing collection of available packages.
 
-This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive. 
-
-The structure of this chapter mimics the corresponding part of the official Julia documentation.
+This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/latest/base/base/.
 
 === Collections and Data Structures
 
-=== Mathematical Functions
+In <<dictionary_subtraction>> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes +d1+, which contains the words from the document as keys, and +d2+, which contains the array of words. It returns a dictionary that contains the keys from +d1+ that are not in +d2+.
+
+[source,@julia-setup]
+----
+function subtract(d1, d2)
+    res = Dict()
+    for key in keys(d1)
+        if key ∉ keys(d2)
+            res[key] = nothing
+        end
+    end
+    res
+end
+----
+
+In all of these dictionaries, the values are +nothing+ because we never use them. As a result, we waste some storage space.
+
+Julia provides another built-in type, called a set, that behaves like a collection of dictionary keys with no values. Adding elements to a set is fast; so is checking membership. And sets provide functions and operators to compute common set operations.
+
+For example, set subtraction is available as a function called +setdiff+. So we can rewrite +subtract+ like this:
+
+[source,@julia-setup]
+----
+function subtract(d1, d2)
+    setdiff(d1, d2)
+end
+----
+
+The result is a set instead of a dictionary.
+
+Some of the exercises in this book can be done concisely and efficiently with sets. For example, here is a solution to +hasduplicates+, from <<ex10-7>>, that uses a dictionary:
+
+[source,@julia-setup]
+----
+function hasduplicates(t)
+    d = Dict()
+    for x in t
+        if x ∈ d
+            return true
+        end
+        d[x] = nothing
+    end
+    false
+end
+----
+
+When an element appears for the first time, it is added to the dictionary. If the same element appears again, the function returns +true+.
+
+Using sets, we can write the same function like this:
+
+[source,@julia-setup]
+----
+function hasduplicates(t)
+    length(Set(t)) < length(t)
+end
+----
+
+An element can only appear in a set once, so if an element in +t+ appears more than once, the set will be smaller than +t+. If there are no duplicates, the set will be the same size as +t+.
+
+We can also use sets to do some of the exercises in <<chap09>>. For example, here’s a version of +usesonly+ with a loop:
+
+[source,@julia-setup]
+----
+function usesonly(word, available)
+    for letter in word
+        if letter ∉ available
+            return false
+        end
+    end
+    true
+end
+----
+
++usesonly+ checks whether all letters in +word+ are in +available+. We can rewrite it like this:
+
+[source,@julia-setup]
+----
+function usesonly(word, available)
+    Set(word) ⊆ Set(available)
+end
+----
+
+The +⊆+ operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+.
+
+As an exercise, rewrite +avoids+ using sets.
+
+=== Mathematics
+
+Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[i], representing the principal square root of latexmath:[-1].
+
+We can now verify the Euler's identity:
+
+[source,@julia-repl-test]
+----
+julia> ℯ^(im*π)+1
+0.0 + 1.2246467991473532e-16im
+----
+
+The symbol +ℯ+ (+\euler TAB) is the base of the natural logarithm.
+
+The full gamut of other elementary operators and functions is also defined for complex numbers. 
+
+Let's illustrate the complex nature of trigonometric functions:
+
+[latexmath]
+++++
+\cos\left(x\right)=\frac{\mathrm{e}^{\mathrm{i}x}+\mathrm{e}^{-\mathrm{i}x}}{2}\,.
+++++
+
+We can test this formula for different values of latexmath:[x].
+
+[source,@julia-repl-test]
+----
+julia> x = 0:0.1:2π
+0.0:0.1:6.2
+julia> cos.(x) == 0.5*(ℯ.^(im*x)+ℯ.^(-im*x))
+true
+----
+
+Here, another example of the +.+ operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in +2π+.
 
 === Strings
 
+In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (*regexes*), which eases the task of finding complex patterns in string objets.
+
+The +usesonly+ function can be implemented as a regex:
+
+[source,@julia-setup chap20]
+----
+function usesonly(word, available)
+  r = Regex("[^$(available)]")
+  !occursin(r, word)
+end
+----
+
+The regex looks for a character that is not in the +available+ string and +occursin+ returns +true+ if the pattern is found in +word+.
+
+[source,@julia-repl-test chap20]
+----
+julia> usesonly("banana", "abn")
+true
+julia> usesonly("bananas", "abn")
+false
+----
+
+Regexes can also be constructed as non-standard string literals prefixed with +r+:
+
+[source,@julia-repl-test chap20]
+----
+julia> match(r"^\s*(?:#|$)", "not a comment")
+
+julia> m = match(r"^\s*(?:#|$)", "# a comment")
+RegexMatch("#")
+----
+
+String interpolation is not allowed in this case. The +match+ function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.
+
+We can extract the following info from a regexmatch object:
+
+* the entire substring matched: +m.match+
+* the captured substrings as an array of strings: +m.captures+
+* the offset at which the whole match begins: +m.offset+
+* the offsets of the captured substrings as a vector: +m.offsets+
+
+[source,@julia-repl-test chap20]
+----
+julia> m.match
+"#"
+julia> m.offset
+1
+----
+
+Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perlre.html provides all the details to construct the most exotic searches.
+
 === Arrays
 
-=== Streams and Networking
+In <<chap10>> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
 
-=== Sorting
+Let's create a 2-by-3 zero matrix:
+
+[source,@julia-repl-test chap20]
+----
+julia> z = zeros(Float64, 2, 3)
+2×3 Array{Float64,2}:
+ 0.0  0.0  0.0
+ 0.0  0.0  0.0
+julia> typeof(z)
+Array{Float64,2}
+----
+
+De type of this matrix is an array holding floating points and having 2 dimensions.
+
+The +size+ function returns a tuple with as elements the number of elements in each dimension:
+
+[source,@julia-repl-test chap20]
+----
+julia> size(z)
+(2, 3)
+----
+
+The function +ones+ constructs a matrix with unit value elements:
+
+[source,@julia-repl-test chap20]
+----
+julia> s = ones(String, 1, 3)
+1×3 Array{String,2}:
+ ""  ""  ""
+----
+
+The string unit element is an empty string. Attention +s+ is not a one-dimensional array:
+
+[source,@julia-repl-test chap20]
+----
+julia> t = ["", "", ""]
+3-element Array{String,1}:
+ ""
+ ""
+ ""
+julia> s == t
+false
+----
+
++s+ is a row matrix and +t+ is a column matrix.
+
+A matrix can be entered directly using a space to separate elements in a row and a semicolon +;+ to separate rows:
+
+[source,@julia-repl-test chap20]
+----
+julia> a = [1 2 3; 4 5 6]
+2×3 Array{Int64,2}:
+ 1  2  3
+ 4  5  6
+----
+
+You can use index as usual to address indivual elements:
+
+[source,@julia-repl-test chap20]
+----
+julia> z[1,2] = 1
+1
+julia> z[2,3] = 1
+1
+julia> z
+2×3 Array{Float64,2}:
+ 0.0  1.0  0.0
+ 0.0  0.0  1.0
+----
+
+Slices can be used for each dimension to select a subgroup of elements:
+
+[source,@julia-repl-test chap20]
+----
+julia> u = z[:,2:end]
+2×2 Array{Float64,2}:
+ 1.0  0.0
+ 0.0  1.0
+----
+
+The +.+ operator broadcasts to all dimensions:
+
+[source,@julia-repl-test chap20]
+----
+julia> ℯ.^(im*u)
+2×2 Array{Complex{Float64},2}:
+ 0.540302+0.841471im       1.0+0.0im
+      1.0+0.0im       0.540302+0.841471im
+----
 
 === Interfaces
 
+A lot of the power and extensibility in Julia comes from a collection of informal interfaces. By extending a few specific methods to work for a custom type, objects of that type not only receive those functionalities, but they are also able to be used in other methods that are written to generically build upon those behaviors.
+
+[quote]
+____
+If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
+____
+
 ==== Iterators
+
+In <<one_more_example>> I implemented the +fib+ function returning the latexmath:[n]th element of the Fibonnaci sequence.
+
+Let's make an iterator that returns lazily the Fibonnaci sequence:
+
+[source,@julia-setup chap20]
+----
+struct Fibonnaci{T<:Real} end
+Fibonnaci(d::DataType) = d<:Real ? Fibonnaci{d}() : error("No Real type!")
+
+Base.iterate(::Fibonnaci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
+Base.iterate(::Fibonnaci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
+----
+
+I implemented a parametric type with no fields +Fibonnaci+, an outer constructor and two methods +Base.iterate+. The first is called to initialize the iterator an returns a tuple consisting of the first value, latexmath:[0], and a state. The state in this case is a tuple containing the second and the third value, latexmath:[1] and latexmath:[1].
+
+The second is called to get the next value of the Fibonnaci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
+
+We can use +Fibonnaci+ now in a +for+ loop:
+
+[source,@julia-repl-test chap20]
+----
+julia> for e in Fibonnaci(Int64)
+           e > 100 && break
+           print(e, " ")
+       end
+0 1 1 2 3 5 8 13 21 34 55 89
+----
+
+It looks like magic has happened but the explanation is simple. A +for+ loop in Julia
+
+[source,julia]
+----
+for i in iter
+    # body
+end
+----
+
+is translated into:
+
+[source,julia]
+----
+next = iterate(iter)
+while next !== nothing
+    (i, state) = next
+    # body
+    next = iterate(iter, state)
+end
+----
+
+This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.
 
 ==== Indexing
 
-==== Conversion and Promotion
+What is an array? In Julia an array is defined as a type having as supertype an +AbstractArray+ and implementing the indexing interface:
+
++getindex(X, i)+::
++X[i]+, indexed element access
+
++setindex!(X, v, i)+::
++X[i] = v+, indexed assignment
+
++firstindex(X)+::
+The first index
+
++lastindex(X)+::
+The last index, used in +X[end]+
+
+This is all it takes to implements your own array-like type and to reuse all the goodies provided in Julia.
 
 === Glossary
+
+regex::
+Regular expression, a sequence of characters that define a search pattern.
 
 
 

@@ -16,7 +16,7 @@ One of the simplest ways for programs to maintain their data is by reading and w
 
 An alternative is to store the state of the program in a database. In this chapter I will also present how to use a simple database.
 
-
+[[reading_and_writing]]
 === Reading and writing
 
 A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <<reading_word_lists>>.
@@ -214,7 +214,7 @@ end
 
 The function +close+ will always be executed.
 
-
+[[databases]]
 === Databases
 
 A *database* is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.

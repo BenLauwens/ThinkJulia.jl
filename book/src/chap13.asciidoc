@@ -246,7 +246,7 @@ printmostcommon(hist, 20)
 
 If a function has both required and optional parameters, all the required parameters have to come first, followed by the optional ones.
 
-
+[[dictionary_subtraction]]
 === Dictionary Subtraction
 
 Finding the words from the book that are not in the word list from +words.txt+ is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).

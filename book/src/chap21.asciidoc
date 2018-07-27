@@ -1,7 +1,7 @@
 [[chap21]]
 == The Goodies: Standard Library
 
-As in the previous chapter, only small examples are given. Further information can be found in the official Julia documentation.
+As in the previous chapter, only small examples are given. Only the modules not yet mentioned in the other chapters are discussed. Further information can be found in the official Julia documentation.
 
 To use module functions:
 
@@ -10,35 +10,283 @@ To use module functions:
 
 === Dates
 
+The +Dates+ module provides two types for working with dates: +Date+ and +DateTime+, representing day and millisecond precision, respectively.
+
+In <<chap16>> I defined a time type. We can also use the +Dates+ module:
+
+[source,@julia-repl-test]
+----
+julia> using Dates
+
+julia> d1 = Date(2015, 6, 23)
+2015-06-23
+julia> d2 = Date(2017, 6, 16)
+2017-06-16
+julia> d2 - d1
+724 days
+----
+
+So the difference in age between my 2 sons is latexmath:[724] days.
+
 === Delimited Files
 
-=== Distributed Computing
+Often we want to read or write data from or to a file in a structured way. The +DelimitedFiles+ module allows us to store values row by row as lines in a file with elements separated by the given delimiter.
+
+[source,@julia-repl-test]
+----
+julia> using DelimitedFiles
+
+julia> x = [1; 2; 3; 4];
+
+julia> y = [5; 6; 7; 8];
+
+julia> open("delim_file.txt", "w") do io
+           writedlm(io, [x y])
+       end
+
+julia> readdlm("delim_file.txt", '\t', Int, '\n')
+4×2 Array{Int64,2}:
+ 1  5
+ 2  6
+ 3  7
+ 4  8
+----
+
+=== Distributed Computing and Shared Arrays
+
+Julia provides a module +Distributed+ to distribute the workload over multiple cores or remote machines. A clustermanager or the ssh protocol can be used to communicate between remote machines.
+
+The shared arrays or the +SharedArrays+ module use system shared memory to map the same array across many processes. A shared array is a good choice when you want to have a large amount of data jointly accessible to two or more processes on the same machine.
 
 === Interactive Utilities
 
+We have already met the +InteractiveUtils+ module in <<chap18>>. The +@which+ macro is only the tip of the iceberg.
+
+Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.
+
+Let's give a simple example:
+
+[source,@julia-setup chap21]
+----
+@noinline function squaresum(a::Float64, b::Float64)
+    a^2 + b^2
+end
+----
+
+The +@noinline+ macro prohibits the inlining of the function call.
+
+The first step is to look at the lowered code:
+
+[source,@julia-repl-test chap21]
+----
+julia> using InteractiveUtils
+
+julia> @code_lowered squaresum(3.0, 4.0)
+CodeInfo(
+  1 ─      :($(Expr(:meta, :noinline)))
+2 │   %2 = Core.apply_type(Base.Val, 2)::Any
+  │   %3 = %2()::Any
+  │   %4 = Base.literal_pow(:^, %%a, %3)::Any
+  │   %5 = Core.apply_type(Base.Val, 2)::Any
+  │   %6 = %5()::Any
+  │   %7 = Base.literal_pow(:^, %%b, %6)::Any
+  │   %8 = :+(%4, %7)::Any
+  └──      return %8
+)
+----
+
+The +code_lowered+ macro returns an array of an intermediate representation of the code that is used by the compiler to generate optimised code.
+
+The next step adds type information:
+
+[source,@julia-repl-test chap21]
+----
+julia> @code_typed squaresum(3.0, 4.0)
+CodeInfo(
+2 1 ─ %1 = Base.mul_float(%%a, %%a)::Float64
+  │   %2 = Base.mul_float(%%b, %%b)::Float64
+  │   %3 = Base.add_float(%1, %2)::Float64
+  └──      return %3
+) => Float64
+----
+
+We see that the type of the intermediate results and the return value is correctly inferred.
+
+This representation of the code is transformed in LLVM code:
+
+[source,@julia-repl-test chap21]
+----
+julia> @code_llvm squaresum(3.0, 4.0)
+
+; Function squaresum
+; Location: none:2
+define double @julia_squaresum_36084(double, double) {
+top:
+; Function literal_pow; {
+; Location: intfuncs.jl:243
+; Function *; {
+; Location: float.jl:399
+  %2 = fmul double %0, %0
+  %3 = fmul double %1, %1
+;}}
+; Function +; {
+; Location: float.jl:395
+  %4 = fadd double %2, %3
+;}
+  ret double %4
+}
+----
+
+And finally the machinecode is generated:
+
+[source,@julia-repl-test chap21]
+----
+julia> @code_native squaresum(3.0, 4.0)
+	.section	__TEXT,__text,regular,pure_instructions
+; Function squaresum {
+; Location: none:2
+; Function literal_pow; {
+; Location: intfuncs.jl:243
+; Function *; {
+; Location: none:2
+	vmulsd	%xmm0, %xmm0, %xmm0
+	vmulsd	%xmm1, %xmm1, %xmm1
+;}}
+; Function +; {
+; Location: float.jl:395
+	vaddsd	%xmm1, %xmm0, %xmm0
+;}
+	retl
+	nopl	(%eax)
+;}
+----
+
 === Linear Algebra
+
+The +LinearAlgebra+ modules provides native implementations of many common and useful linear algebra operations.
+
+[source,@julia-repl-test]
+----
+julia> using LinearAlgebra
+
+julia> A = [1 2 3; 4 1 6; 7 8 1]
+3×3 Array{Int64,2}:
+ 1  2  3
+ 4  1  6
+ 7  8  1
+julia> tr(A)
+3
+julia> det(A)
+104.0
+julia> inv(A)
+3×3 Array{Float64,2}:
+ -0.451923   0.211538    0.0865385
+  0.365385  -0.192308    0.0576923
+  0.240385   0.0576923  -0.0673077
+----
 
 === Logging
 
-=== Printf
+The +Logging+ module provides a way to record the history and progress of a computation as a log of events. Events are created by inserting a logging statement into the source code, for example:
+
+[source,julia-repl]
+----
+julia> @warn "Abandon printf debugging, all ye who enter here!"
+┌ Warning: Abandon printf debugging, all ye who enter here!
+└ @ Main REPL[1]:1
+----
+
+The system provides several advantages over peppering your source code with calls to +println+. It allows you to control the visibility and presentation of messages without editing the source code. For example, in contrast to the +@warn+ above
+
+[source,julia-repl]
+----
+julia> @debug "The sum of some values $(sum(rand(100)))"
+
+----
+
+will produce no output by default. Furthermore, it's very cheap to leave debug statements like this in the source code because the system avoids evaluating the message if it would later be ignored. In this case +sum(rand(100))+ and the associated string processing will never be executed unless debug logging is enabled.
+
+The level of logging can be selected by an environment variable +JULIA_DEBUG+, for example:
+
+[source]
+----
+$ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
+┌ Debug: The sum of some values 47.116520814555024
+└ @ Main none:1
+----
+
+Here, I have used +all+ to get all debug information, but you can also select to generate only output for a specific file or module.
 
 === Profiling
 
-=== Random Numbers
-
-The +Distributions+ package also provides functions to generate random values from discrete or continuous distributions including Gaussian, exponential, gamma, and a few more.
-
-=== Serialization
-
-=== Shared Arrays
+The +Profile+ module provides tools to help developers improve the performance of their code. When used, it takes measurements on running code, and produces output that helps you understand how much time is spent on individual line(s). The most common usage is to identify "bottlenecks" as targets for optimization.
 
 === Sockets
 
+We used the standard IO streams in <<chap14>> to read and write to a file. Julia provides also network streams to communicate over the internet.
+
+Let's create a server:
+
+[source,@julia-setup chap21]
+----
+using Sockets
+
+@async begin
+    server = listen(2000)
+    while true
+        sock = accept(server)
+        println("Hello World\n")
+    end
+end
+----
+
+To those familiar with the Unix socket API, the method names will feel familiar, though their usage is somewhat simpler than the raw Unix socket API. The first call to +listen+ will create a server waiting for incoming connections on the specified port (2000) in this case.
+
+The +accept+ function retrieves a connection to the client that is connecting to the server we just created, while the +connect+ function takes the same arguments as +listen+, so, assuming the environment (i.e. host, cwd, etc.) is the same you should be able to pass the same arguments to connect as you did to listen to establish the connection. So let's try that out:
+
+[source,@julia-repl-test chap21]
+----
+julia> conn = connect(2000)
+
+Hello World
+Sockets.TCPSocket(RawFD(0x00000019) open, 0 bytes waiting)
+----
+
+As expected we saw +"Hello World"+ printed. So, let's actually analyze what happened behind the scenes. When we called +connect+, we connect to the server we had just created. Meanwhile, the +accept+ function returns a server-side connection to the newly created socket and prints +"Hello World"+ to indicate that the connection was successful.
+
+Once we have established a connection with the server, we can use the +read+ and +write+ functions to communicate.
+
+As with other streams, +close+ is used to disconnect the socket:
+
+[source,@julia-repl-test chap21]
+----
+julia> close(conn)
+
+----
+
 === Sparse Arrays
+
+Julia has support for sparse vectors and sparse matrices in the +SparseArrays+ module. Sparse arrays are arrays that contain enough zeros that storing them in a special data structure leads to savings in space and execution time, compared to dense arrays.
 
 === Statistics
 
-=== Unit Testing
+The +Statistics+ module contains basic statistics functionality.
 
+[source,julia-repl]
+----
+julia> using Statistics
 
-=== Glossary
+julia> data = rand(100);
+
+julia> mean(data)
+0.4653206876448169
+julia> median(data)
+0.4449296373479631
+julia> std(data)
+0.2794859135916336
+julia> quantile(data, [0.25,0.5, 0.75])
+3-element Array{Float64,1}:
+ 0.26176145742656
+ 0.4449296373479631
+ 0.7031069804883248
+----

@@ -63,6 +63,7 @@ To test this function, I’ll create two +MyTime+ objects: +start+ contains the 
 
 [source,@julia-eval chap16]
 ----
+using Printf
 function printtime(time::MyTime)
     @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
 end;
