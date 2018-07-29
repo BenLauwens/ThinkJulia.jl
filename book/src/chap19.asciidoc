@@ -39,6 +39,11 @@ julia> plot(0.0:0.1:10.0, f)
 
 ----
 
+<<fig19-1>> shows the output of the plotting command.
+
+[[fig19-1]]
+.Plot
+image::images/fig191.svg[pdfwidth="10cm"]
 
 ==== Named Tuples
 
@@ -110,7 +115,7 @@ function open(f::Function, args...)
 end
 ----
 
-A +do+ block can "capture" variables from its enclosing scope. For example, the variable +data+ in the above example of +open...do+ is captured from the outer scope.
+A +do+ block can “capture“ variables from its enclosing scope. For example, the variable +data+ in the above example of +open...do+ is captured from the outer scope.
 
 === Control Flow
 

@@ -215,11 +215,11 @@ $ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
 └ @ Main none:1
 ----
 
-Here, I have used +all+ to get all debug information, but you can also select to generate only output for a specific file or module.
+Here, I have used +all+ to get all debug information, but you can also choose to generate only output for a specific file or module.
 
 === Profiling
 
-The +Profile+ module provides tools to help developers improve the performance of their code. When used, it takes measurements on running code, and produces output that helps you understand how much time is spent on individual line(s). The most common usage is to identify "bottlenecks" as targets for optimization.
+The +Profile+ module provides tools to help developers improve the performance of their code. When used, it takes measurements on running code, and produces output that helps you understand how much time is spent on individual line(s). The most common usage is to identify “bottlenecks“ as targets for optimization.
 
 === Sockets
 

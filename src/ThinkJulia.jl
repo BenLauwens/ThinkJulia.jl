@@ -68,7 +68,7 @@ module ThinkJulia
   include("figures/chap15.jl")
   include("figures/chap16.jl")
   include("figures/chap18.jl")
-  #include("figures/chap19.jl")
+  include("figures/chap19.jl")
   #include("asciidoc/md2asciidoc.jl")
   include("asciidoc/expanders.jl")
   include("asciidoc/runners.jl")
