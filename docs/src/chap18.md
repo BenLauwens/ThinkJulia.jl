@@ -401,8 +401,8 @@ function processword(markov::Markov, word::String)
         push!(markov.prefix, word)
         return
     end
-    get!(markov.suffixes, (markov.prefix...), Array{String, 1}())
-    push!(markov.suffixes[(markov.prefix...)], word)
+    get!(markov.suffixes, (markov.prefix...,), Array{String, 1}())
+    push!(markov.suffixes[(markov.prefix...,)], word)
     pushfirst!(markov.prefix)
     push!(markov.prefix, word)
 end
