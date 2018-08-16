@@ -83,14 +83,14 @@ julia> using InteractiveUtils
 
 julia> @code_lowered squaresum(3.0, 4.0)
 CodeInfo(
-  1 ─      :($(Expr(:meta, :noinline)))
-2 │   %2 = Core.apply_type(Base.Val, 2)::Any
-  │   %3 = %2()::Any
-  │   %4 = Base.literal_pow(:^, %%a, %3)::Any
-  │   %5 = Core.apply_type(Base.Val, 2)::Any
-  │   %6 = %5()::Any
-  │   %7 = Base.literal_pow(:^, %%b, %6)::Any
-  │   %8 = :+(%4, %7)::Any
+  1 ─      $(Expr(:meta, :noinline))
+2 │   %2 = (Core.apply_type)(Base.Val, 2)
+  │   %3 = (%2)()
+  │   %4 = (Base.literal_pow)(:^, a, %3)
+  │   %5 = (Core.apply_type)(Base.Val, 2)
+  │   %6 = (%5)()
+  │   %7 = (Base.literal_pow)(:^, b, %6)
+  │   %8 = %4 + %7
   └──      return %8
 )
 ----
@@ -101,11 +101,10 @@ The next step adds type information:
 
 [source,@julia-repl-test chap21]
 ----
-julia> @code_typed squaresum(3.0, 4.0)
 CodeInfo(
-2 1 ─ %1 = Base.mul_float(%%a, %%a)::Float64
-  │   %2 = Base.mul_float(%%b, %%b)::Float64
-  │   %3 = Base.add_float(%1, %2)::Float64
+2 1 ─ %1 = (Base.mul_float)(a, a)::Float64
+  │   %2 = (Base.mul_float)(b, b)::Float64
+  │   %3 = (Base.add_float)(%1, %2)::Float64
   └──      return %3
 ) => Float64
 ----
@@ -120,7 +119,7 @@ julia> @code_llvm squaresum(3.0, 4.0)
 
 ; Function squaresum
 ; Location: none:2
-define double @julia_squaresum_36084(double, double) {
+define double @julia_squaresum_39479(double, double) {
 top:
 ; Function literal_pow; {
 ; Location: intfuncs.jl:243

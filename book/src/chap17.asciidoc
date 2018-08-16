@@ -5,12 +5,12 @@ In Julia you have the ability to write code that can operate on different types.
 
 In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.
 
-Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: https://docs.julialang.org/en/latest/manual/types/#man-types-1 and https://docs.julialang.org/en/latest/manual/methods/#Methods-1.
+Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: https://docs.julialang.org/en/stable/manual/types/#Type-Declarations-1 and hhttps://docs.julialang.org/en/stable/manual/methods/#Methods-1.
 
 
 === Type Declarations
 
-The +::+ operator can be used to attach *type annotations* to expressions and variables in programs. There are two primary reasons to do this:
+The +::+ operator can be used to attach _type annotations_ to expressions and variables in programs. There are two primary reasons to do this:
 
 . As an assertion to help confirm that your program works the way you expect,
 
@@ -64,7 +64,7 @@ The default behavior in Julia when types are omitted is to allow values to be of
 
 Recall from Functions that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the ++ function.
 
-To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a *method*. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the *signatures* of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
+To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a _method_. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the _signatures_ of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
 
 
 === Printing Objects
@@ -214,7 +214,7 @@ These expressions are valid Julia method definitions. This is a shorthand notati
 
 === Constructors
 
-A *constructor* is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of +MyTime+ have the following signatures:
+A _constructor_ is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of +MyTime+ have the following signatures:
 
 [source,julia]
 ----
@@ -224,7 +224,7 @@ MyTime(hour::Int64, minute::Int64, second::Int64)
 
 The former is a convenience method to allow implicit conversions.
 
-We can also add our own *outer constructor* methods:
+We can also add our own _outer constructor_ methods:
 
 [source,@julia-setup chap17a]
 ----
@@ -233,9 +233,9 @@ function MyTime(time::MyTime)
 end
 ----
 
-This method is called a *copy constructor* because the new mytime object is a copy of argument.
+This method is called a _copy constructor_ because the new mytime object is a copy of argument.
 
-While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need *inner constructor* methods:
+While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need _inner constructor_ methods:
 
 [source,@julia-setup chap17b]
 ----
@@ -371,7 +371,7 @@ julia> start + duration
 
 When you apply the +pass[+]+ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +Base.show+. So there is a lot happening behind the scenes!
 
-Changing the behavior of an operator so that it works with programmer-defined types is called *operator overloading*.
+Changing the behavior of an operator so that it works with programmer-defined types is called _operator overloading_.
 
 
 === Multiple Dispatch
@@ -412,7 +412,7 @@ julia> 1337 + start
 10:07:17
 ----
 
-The choice of which method to execute when a function is applied is called *dispatch*. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as *multiple dispatch*.
+The choice of which method to execute when a function is applied is called _dispatch_. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as _multiple dispatch_.
 
 As an exercise, write ++ methods for point objects:
 
@@ -455,7 +455,7 @@ Dict{Any,Any} with 3 entries:
   "egg"   => 1
 ----
 
-Functions that work with several types are called *polymorphic*. Polymorphism can facilitate code reuse.
+Functions that work with several types are called _polymorphic_. Polymorphism can facilitate code reuse.
 
 For example, the built-in function +sum+, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
 
@@ -547,12 +547,12 @@ Pertaining to a function that can work with more than one type.
 === Exercises
 
 [[ex17-1]]
-==== Exercise 17-1
+===== Exercise 17-1
 
 Change the fields of +MyTime+ to be a single integer representing seconds since midnight. Then modify the methods defined in this chapter to work with the new implementation.
 
 [[ex17-2]]
-==== Exercise 17-2
+===== Exercise 17-2
 
 Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:
 

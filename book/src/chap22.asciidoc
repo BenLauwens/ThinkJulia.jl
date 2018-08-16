@@ -226,14 +226,14 @@ addcard(game.hands[i], pickedcard)
 
 The explicit version is easier to read because the variable names provide additional documentation, and it is easier to debug because you can check the types of the intermediate variables and display their values.
 
-Another problem that can occur with big expressions is that the order of evaluation may not be what you expect. For example, if you are translating the expression latexmath:[\frac{x}{2\pi}] into Julia, you might write:
+Another problem that can occur with big expressions is that the order of evaluation may not be what you expect. For example, if you are translating the expression latexmath:[\(\frac{x}{2\pi}\)] into Julia, you might write:
 
 [source,julia]
 ----
 y = x / 2 * π
 ----
 
-That is not correct because multiplication and division have the same precedence and are evaluated from left to right. So this expression computes latexmath:[\frac{x\pi}{2}].
+That is not correct because multiplication and division have the same precedence and are evaluated from left to right. So this expression computes latexmath:[\(\frac{x\pi}{2}\)].
 
 A good way to debug expressions is to add parentheses to make the order of evaluation explicit:
 

@@ -11,7 +11,7 @@ This chapter and the two following discuss the things I have left out in the pre
 * functions, types and macros directly available in +Base+
 * functions, types and macros in the Standard Library
 
-Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: https://docs.julialang.org
+Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: https://docs.julialang.org/en/stable/
 
 === Functions
 
@@ -29,7 +29,7 @@ julia> f = function (x)
 #3 (generic function with 1 method)
 ----
 
-+f+ is an *anonymous function* that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:
++f+ is an _anonymous function_ that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:
 
 [source,julia-repl]
 ----
@@ -47,7 +47,7 @@ image::images/fig191.svg[pdfwidth="10cm"]
 
 ==== Named Tuples
 
-The components of tuples can optionally be named, in which case a *named tuple* is constructed:
+The components of tuples can optionally be named, in which case a _named tuple_ is constructed:
 
 [source,@julia-repl-test]
 ----
@@ -73,11 +73,11 @@ julia> plot(0:10, 0:10; style="dotted", color="blue")
 
 ----
 
-Functions with *keyword arguments* are defined using a semicolon in the signature. When the function is called, the semicolon is optional.
+Functions with _keyword arguments_ are defined using a semicolon in the signature. When the function is called, the semicolon is optional.
 
 ==== +do+ Block
 
-In <<reading_and_writing>> we had to close the file after when where done writing. This can be done automatically using a *+do+ block*:
+In <<reading_and_writing>> we had to close the file after when where done writing. This can be done automatically using a _+do+ block_:
 
 [source,@julia-repl-test chap19]
 ----
@@ -121,7 +121,7 @@ A +do+ block can “capture“ variables from its enclosing scope. For example, 
 
 ==== Ternary Operator
 
-The so-called *ternary operator*, +?:+, is closely related to the +if-elseif-else+ syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:
+The so-called _ternary operator_, +?:+, is closely related to the +if-elseif-else+ syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:
 
 [source,@julia-repl-test]
 ----
@@ -135,7 +135,7 @@ The expression before the +?+, is a condition expression. If the condition is +t
 
 ==== Short-Circuit Evaluation
 
-The operators +&&+ and +||+ do a *short-circuit evaluation*: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
+The operators +&&+ and +||+ do a _short-circuit evaluation_: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
 
 For example, a recursive factorial routine could be defined like this:
 
@@ -151,7 +151,7 @@ fact (generic function with 1 method)
 
 ==== Tasks (aka Coroutines)
 
-*Tasks* are a control flow feature that allows computations to be suspended and resumed in a flexible manner. This feature is sometimes called by other names, such as symmetric coroutines, lightweight threads, cooperative multitasking, or one-shot continuations.
+_Tasks_ are a control flow feature that allows computations to be suspended and resumed in a flexible manner. This feature is sometimes called by other names, such as symmetric coroutines, lightweight threads, cooperative multitasking, or one-shot continuations.
 
 When a piece of computing work (in practice, executing a particular function) is designated as a +Task+, it becomes possible to interrupt it by switching to another +Task+. The original +Task+ can later be resumed, at which point it will pick up right where it left off. At first, this may seem similar to a function call. However there are two key differences. First, switching tasks does not use any space, so any number of task switches can occur without consuming the call stack. Second, switching among tasks can occur in any order, unlike function calls, where the called function must finish executing before control returns to the calling function.
 
@@ -161,7 +161,7 @@ Details can be found in https://docs.julialang.org/en/latest/manual/control-flow
 
 ==== Primitive Types
 
-A *primitive type* is a concrete type whose data consists of plain old bits. Classic examples of primitive types are integers and floating-point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in ones. In fact, the standard primitive types are all defined in the language itself:
+A _primitive type_ is a concrete type whose data consists of plain old bits. Classic examples of primitive types are integers and floating-point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in ones. In fact, the standard primitive types are all defined in the language itself:
 
 [source,julia]
 ----
@@ -175,7 +175,7 @@ The number in the statements specifies how much storage the type requires.
 
 ==== Type Unions
 
-A *type union* is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special +Union+ keyword:
+A _type union_ is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special +Union+ keyword:
 
 [source,@julia-repl-test]
 ----
@@ -187,7 +187,7 @@ julia> 1 :: IntOrString
 
 ==== Parametric Types
 
-An important and powerful feature of Julia's type system is that it is *parametric*: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.
+An important and powerful feature of Julia's type system is that it is _parametric_: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.
 
 Type parameters are introduced immediately after the type name, surrounded by curly braces:
 
@@ -229,7 +229,7 @@ true
 
 ==== Function-like Objects
 
-Methods are associated with types, so it is possible to make any arbitrary Julia object “callable“ by adding methods to its type. Such “callable“ objects are sometimes called *functors*.
+Methods are associated with types, so it is possible to make any arbitrary Julia object “callable“ by adding methods to its type. Such “callable“ objects are sometimes called _functors_.
 
 [source,@julia-setup chap19]
 ----
@@ -300,7 +300,7 @@ Julia has a system for promoting arguments of mathematical operators to a common
 
 ==== Conversion
 
-It can be convenient to convert a value from one type to another without the programmer asking for it explicitly. This is called *conversion*:
+It can be convenient to convert a value from one type to another without the programmer asking for it explicitly. This is called _conversion_:
 
 [source,@julia-repl-test]
 ----
@@ -361,7 +361,7 @@ julia> prog = "1 + 2"
 "1 + 2"
 ----
 
-The next step is to parse each string into an object called an *expression*, represented by the Julia type +Expr+:
+The next step is to parse each string into an object called an _expression_, represented by the Julia type +Expr+:
 
 [source,@julia-repl-test chap19]
 ----
@@ -395,7 +395,7 @@ When you are using a lot of calls to the function +eval+, often this means that 
 
 ==== Macros
 
-Macros provide a method to include generated code in the final body of a program. A *macro* maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime +eval+ call.
+Macros provide a method to include generated code in the final body of a program. A _macro_ maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime +eval+ call.
 
 Here is a simple macro:
 
@@ -421,7 +421,7 @@ Macros are necessary because they execute when code is parsed, therefore, macros
 
 ==== Generated Functions
 
-A very special macro is +@generated+, which allows you to define so-called *generated functions*. These have the capability to generate specialized code depending on the types of their arguments with more flexibility and/or less code than what can be achieved with multiple dispatch. While macros work with expressions at parse time and cannot access the types of their inputs, a generated function gets expanded at a time when the types of the arguments are known, but the function is not yet compiled.
+A very special macro is +@generated+, which allows you to define so-called _generated functions_. These have the capability to generate specialized code depending on the types of their arguments with more flexibility and/or less code than what can be achieved with multiple dispatch. While macros work with expressions at parse time and cannot access the types of their inputs, a generated function gets expanded at a time when the types of the arguments are known, but the function is not yet compiled.
 
 It's easiest to illustrate this with an example. We can declare a generated function +foo+ as
 
@@ -451,7 +451,7 @@ julia> y
 
 === Missing Values
 
-Julia provides support for representing *missing values* in the statistical sense, that is for situations where no value is available for a variable in an observation, but a valid value theoretically exists. Missing values are represented via the +missing+ object, which is the singleton instance of the type +Missing+.
+Julia provides support for representing _missing values_ in the statistical sense, that is for situations where no value is available for a variable in an observation, but a valid value theoretically exists. Missing values are represented via the +missing+ object, which is the singleton instance of the type +Missing+.
 
 Arrays containing missing values can be created like other arrays:
 

@@ -44,7 +44,7 @@ Write a boolean function called +isafter+ that takes two mytime objects, +t1+ an
 
 === Pure Functions
 
-In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call *prototype and patch*, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.
+In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call _prototype and patch_, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.
 
 Here is a simple prototype of +addtime+:
 
@@ -55,7 +55,7 @@ function addtime(t1, t2)
 end
 ----
 
-The function creates a new +MyTime+ object, initializes its fields, and returns a reference to the new object. This is called a *pure function* because it does not modify any of the objects passed to it as arguments and it has no effect, like displaying a value or getting user input, other than returning a value.
+The function creates a new +MyTime+ object, initializes its fields, and returns a reference to the new object. This is called a _pure function_ because it does not modify any of the objects passed to it as arguments and it has no effect, like displaying a value or getting user input, other than returning a value.
 
 To test this function, I’ll create two +MyTime+ objects: +start+ contains the start time of a movie, like _Monty Python and the Holy Grail_, and +duration+ contains the run time of the movie, which is one hour 35 minutes.
 
@@ -104,7 +104,7 @@ Although this function is correct, it is starting to get big. We will see a shor
 [[modifiers]]
 === Modifiers
 
-Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called *modifiers*.
+Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called _modifiers_.
 
 +increment!+, which adds a given number of seconds to a mytime object, can be written naturally as a modifier. Here is a rough draft:
 
@@ -125,13 +125,13 @@ end
 
 The first line performs the basic operation; the remainder deals with the special cases we saw before.
 
-Is this function correct? What happens if seconds is much greater than latexmath:[60]?
+Is this function correct? What happens if seconds is much greater than latexmath:[\(60\)]?
 
 In that case, it is not enough to carry once; we have to keep doing it until +time.second+ is less than sixty. One solution is to replace the +if+ statements with +while+ statements. That would make the function correct, but not very efficient. As an exercise, write a correct version of +increment!+ that doesn’t contain any loops.
 
 Anything that can be done with modifiers can also be done with pure functions. In fact, some programming languages only allow pure functions. There is some evidence that programs that use pure functions are faster to develop and less error-prone than programs that use modifiers. But modifiers are convenient at times, and functional programs tend to be less efficient.
 
-In general, I recommend that you write pure functions whenever it is reasonable and resort to modifiers only if there is a compelling advantage. This approach might be called a *functional programming style*.
+In general, I recommend that you write pure functions whenever it is reasonable and resort to modifiers only if there is a compelling advantage. This approach might be called a _functional programming style_.
 
 As an exercise, write a “pure” version of +increment!+ that creates and returns a new mytime object rather than modifying the parameter.
 
@@ -142,9 +142,9 @@ The development plan I am demonstrating is called “prototype and patch”. For
 
 This approach can be effective, especially if you don’t yet have a deep understanding of the problem. But incremental corrections can generate code that is unnecessarily complicated—since it deals with many special cases—and unreliable—since it is hard to know if you have found all the errors.
 
-An alternative is *designed development*, in which high-level insight into the problem can make the programming much easier. In this case, the insight is that a Time object is really a three-digit number in base 60 (see http://en.wikipedia.org/wiki/Sexagesimal)! The second attribute is the “ones column”, the minute attribute is the “sixties column”, and the hour attribute is the “thirty-six hundreds column”.
+An alternative is _designed development_, in which high-level insight into the problem can make the programming much easier. In this case, the insight is that a Time object is really a three-digit number in base 60 (see https://en.wikipedia.org/wiki/Sexagesimal)! The second attribute is the “ones column”, the minute attribute is the “sixties column”, and the hour attribute is the “thirty-six hundreds column”.
 
-When we wrote +addtime+ and +increment!+, we were effectively doing addition in base latexmath:[60], which is why we had to carry from one column to the next.
+When we wrote +addtime+ and +increment!+, we were effectively doing addition in base latexmath:[\(60\)], which is why we had to carry from one column to the next.
 
 This observation suggests another approach to the whole problem—we can convert Time objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.
 
@@ -183,9 +183,9 @@ end
 
 This version is shorter than the original, and easier to verify. Rewrite +increment!+ using +timetoint+ and +inttotime+.
 
-In some ways, converting from base latexmath:[60] to base latexmath:[10] and back is harder than just dealing with times. Base conversion is more abstract; our intuition for dealing with time values is better.
+In some ways, converting from base latexmath:[60] to base latexmath:[\(10\)] and back is harder than just dealing with times. Base conversion is more abstract; our intuition for dealing with time values is better.
 
-But if we have the insight to treat times as base latexmath:[60] numbers and make the investment of writing the conversion functions (+timetoint+ and +inttotime+), we get a program that is shorter, easier to read and debug, and more reliable.
+But if we have the insight to treat times as base latexmath:[\(60\)] numbers and make the investment of writing the conversion functions (+timetoint+ and +inttotime+), we get a program that is shorter, easier to read and debug, and more reliable.
 
 It is also easier to add features later. For example, imagine subtracting two mytimes to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.
 
@@ -196,7 +196,7 @@ Ironically, sometimes making a problem harder (or more general) makes it easier 
 
 A mytime object is well-formed if the values of +minute+ and +second+ are between 0 and 60 (including 0 but not 60) and if +hour+ is positive. +hour+ and +minute+ should be integral values, but we might allow +second+ to have a fraction part.
 
-Requirements like these are called *invariants* because they should always be true. To put it a different way, if they are not true, something has gone wrong.
+Requirements like these are called _invariants_ because they should always be true. To put it a different way, if they are not true, something has gone wrong.
 
 Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like +isvalidtime+ that takes a mytime object and returns +false+ if it violates an invariant:
 
@@ -226,7 +226,7 @@ function addtime(t1, t2)
 end
 ----
 
-Or you could use an *+@assert+ macro*, which checks a given invariant and throws an exception if it fails:
+Or you could use an _+@assert+ macro_, which checks a given invariant and throws an exception if it fails:
 
 [source,@julia-setup chap16]
 ----
@@ -266,16 +266,16 @@ A condition that should always be true during the execution of a program.
 === Exercises
 
 [[ex16-1]]
-==== Exercise 16-1
+===== Exercise 16-1
 
 Write a function called +multime+ that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.
 
 Then use +multime+ to write a function that takes a mytime object that represents the finishing time in a race, and a number that represents the distance, and returns a mytime object that represents the average pace (time per mile).
 
 [[ex16-2]]
-==== Exercise 16-2
+===== Exercise 16-2
 
-Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/latest/stdlib/Dates/#Dates-Functions-1.
+Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/stable/stdlib/Dates/.
 
 . Write a program that gets the current date and prints the day of the week.
 
@@ -283,5 +283,5 @@ Julia provides time objects that are similar to the mytime objects in this chapt
 
 . For two people born on different days, there is a day when one is twice as old as the other. That’s their Double Day. Write a program that takes two birthdays and computes their Double Day.
 
-. For a little more challenge, write the more general version that computes the day when one person is latexmath:[n] times older than the other.
+. For a little more challenge, write the more general version that computes the day when one person is latexmath:[\(n\)] times older than the other.
 

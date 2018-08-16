@@ -3,7 +3,7 @@
 
 Julia +Base+ contains a range of functions, types and macros appropriate for performing scientific and numerical computing, but is also as broad as those of many general purpose programming languages. Additional functionality is available from the Standard Library and a growing collection of available packages.
 
-This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/latest/base/base/.
+This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/base/base/.
 
 === Collections and Data Structures
 
@@ -130,7 +130,7 @@ Here, another example of the +.+ operator is shown. Julia also allows numeric li
 
 === Strings
 
-In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (*regexes*), which eases the task of finding complex patterns in string objets.
+In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (_regexes_), which eases the task of finding complex patterns in string objets.
 
 The +usesonly+ function can be implemented as a regex:
 

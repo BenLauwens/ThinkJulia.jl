@@ -8,7 +8,7 @@ This chapter introduces the idea of “persistent” programs that keep data in 
 
 Most of the programs we have seen so far are transient in the sense that they run for a short time and produce some output, but when they end, their data disappears. If you run the program again, it starts with a clean slate.
 
-Other programs are *persistent*: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.
+Other programs are _persistent_: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.
 
 Examples of persistent programs are operating systems, which run pretty much whenever a computer is on, and web servers, which run all the time, waiting for requests to come in on the network.
 
@@ -82,12 +82,12 @@ julia> println(fout, "I have spotted $camels camels.")
 
 ----
 
-A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/stable/stdlib/io-network/#Base.Printf.@printf
+A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/stable/stdlib/Printf/
 
 
 === Filenames and Paths
 
-Files are organized into *directories* (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
+Files are organized into _directories_ (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
 
 The function +pwd+ returns the name of the current directory:
 
@@ -99,11 +99,11 @@ julia> cwd = pwd()
 
 +cwd+ stands for “current working directory”. The result in this example is +/home/dinsdale+, which is the home directory of a user named +dinsdale+.
 
-A string like +"/home/dinsdale"+ that identifies a file or directory is called a *path*.
+A string like +"/home/dinsdale"+ that identifies a file or directory is called a _path_.
 
-A simple filename, like +memo.txt+ is also considered a path, but it is a *relative path* because it relates to the current directory. If the current directory is +/home/dinsdale+, the filename +memo.txt+ would refer to +/home/dinsdale/memo.txt+.
+A simple filename, like +memo.txt+ is also considered a path, but it is a _relative path_ because it relates to the current directory. If the current directory is +/home/dinsdale+, the filename +memo.txt+ would refer to +/home/dinsdale/memo.txt+.
 
-A path that begins with +/+ does not depend on the current directory; it is called an *absolute path*. To find the absolute path to a file, you can use +abspath+:
+A path that begins with +/+ does not depend on the current directory; it is called an _absolute path_. To find the absolute path to a file, you can use +abspath+:
 
 [source,julia-repl]
 ----
@@ -160,7 +160,7 @@ end
 
 +joinpath+ takes a directory and a file name and joins them into a complete path.
 
-Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/stable/stdlib/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 
 [[catching_exceptions]]
 === Catching Exceptions
@@ -197,7 +197,7 @@ Something went wrong: SystemError("opening file bad_file.txt", 2, nothing)
 
 Julia starts by executing the +try+ clause. If all goes well, it skips the +catch+ clause and proceeds. If an exception occurs, it jumps out of the +try+ clause and runs the +catch+ clause.
 
-Handling an exception with a +try+ statement is called *catching* an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.
+Handling an exception with a +try+ statement is called _catching_ an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.
 
 In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The +finally+ keyword provides a way to run some code when a given block of code exits, regardless of how it exits:
 
@@ -217,7 +217,7 @@ The function +close+ will always be executed.
 [[databases]]
 === Databases
 
-A *database* is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
+A _database_ is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
 
 ThinkJulia provides an interface to +GDBM+ for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
 
@@ -334,9 +334,9 @@ You can use this to store non-strings in a database. In fact, this combination i
 
 === Command Objects
 
-Most operating systems provide a command-line interface, also known as a *shell*. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with +cd+, display the contents of a directory with +ls+, and launch a web browser by typing (for example) +firefox+.
+Most operating systems provide a command-line interface, also known as a _shell_. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with +cd+, display the contents of a directory with +ls+, and launch a web browser by typing (for example) +firefox+.
 
-Any program that you can launch from the shell can also be launched from Julia using a *command object*:
+Any program that you can launch from the shell can also be launched from Julia using a _command object_:
 
 [source,@julia-repl-test chap14]
 ----
@@ -364,7 +364,7 @@ julia> a = read(cmd, String)
 "hello\n"
 ----
 
-For example, most Unix systems provide a command called +md5sum+ or +md5+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at http://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
+For example, most Unix systems provide a command called +md5sum+ or +md5+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at https://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
 
 You can use a command object to run +md5+ from Julia and get the result:
 
@@ -479,7 +479,7 @@ julia> repr(s)
 
 One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented +\n+. Others use a return character, represented +\r+. Some use both. If you move files between different systems, these inconsistencies can cause problems.
 
-For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at http://en.wikipedia.org/wiki/Newline. Or, of course, you could write one yourself.
+For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at https://en.wikipedia.org/wiki/Newline. Or, of course, you could write one yourself.
 
 
 === Glossary
@@ -518,21 +518,21 @@ An object that represents a shell command, allowing a Julia program to run comma
 === Exercises
 
 [[ex14-1]]
-==== Exercise 14-1
+===== Exercise 14-1
 
 Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
 
 If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
 
 [[ex14-2]]
-==== Exercise 14-2
+===== Exercise 14-2
 
 If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "+opst"+ maps to the list +["opts", "post", "pots", "spot", "stop", "tops"]+.
 
 Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +read_anagrams+ should look up a word and return a list of its anagrams.
 
 [[ex14-3]]
-==== Exercise 14-3
+===== Exercise 14-3
 
 In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
 

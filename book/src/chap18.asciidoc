@@ -5,7 +5,7 @@ In the previous chapter we introduced the multiple dispatch mechanism and polymo
 
 In this chapter I demonstrate subtyping using types that represent playing cards, decks of cards, and poker hands.
 
-If you don’t play poker, you can read about it at http://en.wikipedia.org/wiki/Poker, but you don’t have to; I’ll tell you what you need to know for the exercises.
+If you don’t play poker, you can read about it at https://en.wikipedia.org/wiki/Poker, but you don’t have to; I’ll tell you what you need to know for the exercises.
 
 
 === Cards
@@ -14,21 +14,21 @@ There are fifty-two cards in a deck, each of which belongs to one of four suits 
 
 If we want to define a new object to represent a playing card, it is obvious what the attributes should be: rank and suit. It is not as obvious what type the attributes should be. One possibility is to use strings containing words like +"Spade"+ for suits and +"Queen"+ for ranks. One problem with this implementation is that it would not be easy to compare cards to see which had a higher rank or suit.
 
-An alternative is to use integers to *encode* the ranks and suits. In this context, “encode” means that we are going to define a mapping between numbers and suits, or between numbers and ranks. This kind of encoding is not meant to be a secret (that would be “encryption”).
+An alternative is to use integers to _encode_ the ranks and suits. In this context, “encode” means that we are going to define a mapping between numbers and suits, or between numbers and ranks. This kind of encoding is not meant to be a secret (that would be “encryption”).
 
 For example, this table shows the suits and the corresponding integer codes:
 
-* +♠+  latexmath:[\mapsto]  4
+* +♠+  latexmath:[\(\mapsto\)]  4
 
-* +♥+  latexmath:[\mapsto]  3
+* +♥+  latexmath:[\(\mapsto\)]  3
 
-* +♦+  latexmath:[\mapsto]  2
+* +♦+  latexmath:[\(\mapsto\)]  2
 
-* +♣+  latexmath:[\mapsto]  1
+* +♣+  latexmath:[\(\mapsto\)]  1
 
 This code makes it easy to compare cards; because higher suits map to higher numbers, we can compare suits by comparing their codes.
 
-I am using the latexmath:[\mapsto] symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.
+I am using the latexmath:[\(\mapsto\)] symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.
 
 The struct definition for +Card+ looks like this:
 
@@ -64,7 +64,7 @@ const suit_names = ["♣", "♦", "♥", "♠"]
 const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 ----
 
-Variables like +suit_names+ and +rank_names+, which are defined outside of a type definition or of any method, are called *global variables*. The +const+ declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
+Variables like +suit_names+ and +rank_names+, which are defined outside of a type definition or of any method, are called _global variables_. The +const+ declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
 
 Now we can implement an appropriate +show+ method:
 
@@ -108,7 +108,7 @@ As an exercise, write a +Base.isless+ method for mytime objects. You can use tup
 
 === Unit Testing
 
-*Unit testing* is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
+_Unit testing_ is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
 
 Simple unit testing can be performed with the +@test+ macros:
 
@@ -193,7 +193,7 @@ function Base.push!(deck::Deck, card::Card)
 end
 ----
 
-A method like this that uses another method without doing much work is sometimes called a *veneer*. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.
+A method like this that uses another method without doing much work is sometimes called a _veneer_. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.
 
 In this case +addcard+ is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.
 
@@ -218,7 +218,7 @@ We want a type to represent a “hand”, that is, the cards held by one player.
 
 A hand is also different from a deck; there are operations we want for hands that don’t make sense for a deck. For example, in poker we might compare two hands to see which one wins. In bridge, we might compute a score for a hand in order to make a bid.
 
-So we need a way to group related *concrete types*. In Julia this is done by defining an *abstract type* that serves as a parent for both +Deck+ and +Hand+. This is called *subtyping*
+So we need a way to group related _concrete types_. In Julia this is done by defining an _abstract type_ that serves as a parent for both +Deck+ and +Hand+. This is called _subtyping_
 
 Let's call this abstract type +CardSet+:
 
@@ -240,9 +240,9 @@ end;
 abstract type CardSet end
 ----
 
-The +abstract type+ keyword introduces a new abstract type. The name can be optionally followed by +<:+ and an already-existing abstract type, indicating that the newly declared abstract type is a *subtype* of this “parent” type.
+The +abstract type+ keyword introduces a new abstract type. The name can be optionally followed by +<:+ and an already-existing abstract type, indicating that the newly declared abstract type is a _subtype_ of this “parent” type.
 
-When no *supertype* is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are subtypes of.
+When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are subtypes of.
 
 We can now express that +Deck+ is a descendant of +CardSet+:
 
@@ -350,15 +350,15 @@ In some games, cards are moved from one hand to another, or from a hand back to 
 
 So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.
 
-They are also highly detailed; for some purposes, too detailed. A *type diagram* is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
+They are also highly detailed; for some purposes, too detailed. A _type diagram_ is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
 
 There are several kinds of relationship between types:
 
-* Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called *HAS-A*, as in, “a Rectangle has a Point.
+* Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point.
 
-* One type might has supertype an abstract type. This relationship is called *IS-A*, as in, “a Hand is a kind of a CardSet.”
+* One type might has supertype an abstract type. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
 
-* One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a *dependency*.
+* One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a _dependency_.
 
 [[fig18-1]]
 .Type diagram
@@ -368,7 +368,7 @@ The arrow with a hollow triangle head represents an IS-A relationship; in this c
 
 The standard arrow head represents a HAS-A relationship; in this case a Deck has references to Card objects.
 
-The star (+pass:[*]+) near the arrow head is a *multiplicity*; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
+The star (+pass:[*]+) near the arrow head is a _multiplicity_; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
 
 There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.
 
@@ -411,7 +411,7 @@ If you violate this rule, which is called the “Liskov substitution principle�
 
 The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like +Point+, +Rectangle+ and +MyTime+—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).
 
-But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by *data encapsulation*.
+But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by _data encapsulation_.
 
 Markov analysis, from <<markov_analysis>>, provides a good example. If you download my code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
 
@@ -519,7 +519,7 @@ A program development plan that involves a prototype using global variables and 
 === Exercises
 
 [[ex18-1]]
-==== Exercise 18-1
+===== Exercise 18-1
 
 For the following program, draw a type diagram that shows these types and the relationships among them.
 
@@ -549,12 +549,12 @@ addping(pong, ping)
 ----
 
 [[ex18-2]]
-==== Exercise 18-2
+===== Exercise 18-2
 
 Write a method called +deal+ that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
 
 [[ex18-3]]
-==== Exercise 18-3
+===== Exercise 18-3
 
 The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
 
@@ -590,5 +590,5 @@ The goal of this exercise is to estimate the probability of drawing these variou
 
 . When you are convinced that your classification methods are working, the next step is to estimate the probabilities of the various hands. Write a function that shuffles a deck of cards, divides it into hands, classifies the hands, and counts the number of times various classifications appear.
 
-. Print a table of the classifications and their probabilities. Run your program with larger and larger numbers of hands until the output values converge to a reasonable degree of accuracy. Compare your results to the values at http://en.wikipedia.org/wiki/Hand_rankings.
+. Print a table of the classifications and their probabilities. Run your program with larger and larger numbers of hands until the output values converge to a reasonable degree of accuracy. Compare your results to the values at https://en.wikipedia.org/wiki/Hand_rankings.
 

@@ -47,7 +47,7 @@ if "pdf" in ARGS
   run(`asciidoctor-pdf -a compat-mode -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a source-highlighter=rouge -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
 elseif "latex" in ARGS
   run(`asciidoctor-latex -a compat-mode -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2  build/book.asciidoc`)
-else
+elseif "html" in ARGS
   #run(`asciidoctor -d book -b html5 -a stylesheet=/Users/ben/Source/asciidoctor-stylesheet-factory/stylesheets/oreilly.css -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   run(`asciidoctor -d book -b html5 -a stylesheet=./../oreilly.css -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge build/book.asciidoc`)
   #run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
