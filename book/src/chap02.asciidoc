@@ -1,12 +1,15 @@
 [[chap02]]
 == Variables, Expressions and Statements
 
-One of the most powerful features of a programming language is the ability to manipulate *variables*. A variable is a name that refers to a value.
+One of the most powerful features of a programming language is the ability to manipulate _variables_. A variable is a name that refers to a value.
+(((variable)))
 
 
 === Assignment Statements
 
-An *assignment statement* creates a new variable and gives it a value:
+An _assignment statement_ creates a new variable and gives it a value:
+(((assignment statement)))
+(((statement, assignment)))
 
 [source,@julia-repl-test chap02]
 ----
@@ -18,9 +21,11 @@ julia> π = 3.141592653589793
 3.141592653589793
 ----
 
-This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\pi] to +π+.
+This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +π+.
 
-A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a *state diagram* because it shows what state each of the variables is in (think of it as the variable’s state of mind). <<fig02-1>> shows the result of the previous example.
+A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a _state diagram_ because it shows what state each of the variables is in (think of it as the variable’s state of mind). <<fig02-1>> shows the result of the previous example.
+(((state diagram)))
+(((diagram, state)))
 
 [[fig02-1]]
 .State diagram
@@ -28,6 +33,7 @@ image::images/fig21.svg[]
 
 
 === Variable Names
+(((variable)))
 
 Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.
 
@@ -36,6 +42,7 @@ Variable names can be as long as you like. They can contain almost all Unicode c
 Unicode characters can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
 
 The underscore character, +_+, can appear in a name. It is often used in names with multiple words, such as +your_name+ or +airspeed_of_unladen_swallow+.
+(((underscore character)))
 
 If you give a variable an illegal name, you get a syntax error:
 
@@ -51,7 +58,8 @@ ERROR: syntax: unexpected "="
 
 +76trombones+ is illegal because it begins with a number. +more@+ is illegal because it contains an illegal character, +@+. But what’s wrong with +type+?
 
-It turns out that +type+ is one of Julia’s *keywords*. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+It turns out that +type+ is one of Julia’s _keywords_. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+(((keyword)))
 
 Julia has these keywords:
 
@@ -70,7 +78,8 @@ You don’t have to memorize this list. In most development environments, keywor
 
 === Expressions and Statements
 
-An *expression* is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
+An _expression_ is a combination of values, variables, and operators. A value all by itself is considered an expression, and so is a variable, so the following are all legal expressions:
+(((expression)))
 
 [source,@julia-repl-test chap02]
 ----
@@ -82,9 +91,11 @@ julia> n + 25
 42
 ----
 
-When you type an expression at the prompt, the REPL *evaluates* it, which means that it finds the value of the expression. In this example, +n+ has the value 17 and +n + 25+ has the value 42.
+When you type an expression at the prompt, the REPL _evaluates_ it, which means that it finds the value of the expression. In this example, +n+ has the value 17 and +n + 25+ has the value 42.
+(((evaluate)))
 
-A *statement* is a unit of code that has an effect, like creating a variable or displaying a value.
+A _statement_ is a unit of code that has an effect, like creating a variable or displaying a value.
+(((statement)))
 
 [source,@julia-repl-test chap02]
 ----
@@ -96,16 +107,21 @@ julia> println(n)
 
 The first line is an assignment statement that gives a value to +n+. The second line is a print statement that displays the value of +n+.
 
-When you type a statement, the REPL *executes* it, which means that it does whatever the statement says. In general, statements don’t have values.
+When you type a statement, the REPL _executes_ it, which means that it does whatever the statement says. In general, statements don’t have values.
+(((execute)))
 
 
 === Script Mode
 
-So far we have run Julia in *interactive mode*, which means that you interact directly with the REPL. Interactive mode is a good way to get started, but if you are working with more than a few lines of code, it can be clumsy.
+So far we have run Julia in _interactive mode_, which means that you interact directly with the REPL. Interactive mode is a good way to get started, but if you are working with more than a few lines of code, it can be clumsy.
+(((interactive mode)))
 
-The alternative is to save code in a file called a *script* and then run the REPL in *script mode* to execute the script. By convention, Julia scripts have names that end with +.jl+.
+The alternative is to save code in a file called a _script_ and then run the REPL in _script mode_ to execute the script. By convention, Julia scripts have names that end with +.jl+.
+(((script)))
+(((script mode)))
 
 If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+julia name_of_the_script.jl+*.
+(((extension, .jl)))
 
 Because Julia provides both modes, you can test bits of code in interactive mode before you put them in a script. But there are differences between interactive mode and script mode that can be confusing.
 
@@ -166,21 +182,25 @@ Now put the same statements in a script and run it. What is the output? Modify t
 
 
 === Order of Operations
+(((order of operations)))
+(((PEMDAS)))
 
-When an expression contains more than one operator, the order of evaluation depends on the *order of operations*. For mathematical operators, Julia follows mathematical convention. The acronym *PEMDAS* is a useful way to remember the rules:
+When an expression contains more than one operator, the order of evaluation depends on the _order of operations_. For mathematical operators, Julia follows mathematical convention. The acronym _PEMDAS_ is a useful way to remember the rules:
 
-* **P**arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, +2*(3-1)+ is 4, and +pass:[(1+1)^(5-2)]+ is 8. You can also use parentheses to make an expression easier to read, as in +(minute * 100) / 60+, even if it doesn’t change the result.
+* __P__arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, +2*(3-1)+ is 4, and +pass:[(1+1)^(5-2)]+ is 8. You can also use parentheses to make an expression easier to read, as in +(minute * 100) / 60+, even if it doesn’t change the result.
 
-* **E**xponentiation has the next highest precedence, so +pass:[1+2^3]+ is 9, not 27, and +2*3^2+ is 18, not 36.
+* __E__xponentiation has the next highest precedence, so +pass:[1+2^3]+ is 9, not 27, and +2*3^2+ is 18, not 36.
 
-* **M**ultiplication and **D**ivision have higher precedence than **A**ddition and **S**ubtraction. So +2*3-1+ is 5, not 4, and +pass:[6+4/2]+ is 8, not 5.
+* __M__ultiplication and __D__ivision have higher precedence than __A__ddition and __S__ubtraction. So +2*3-1+ is 5, not 4, and +pass:[6+4/2]+ is 8, not 5.
 
-* Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[2\pi], you can use parentheses or write +degrees / 2 / π+.
+* Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[\(2\pi\)], you can use parentheses or write +degrees / 2 / π+.
 
 I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
 
 
 === String Operations
+(((string operation)))
+(((operator, string)))
 
 In general, you can’t perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
 
@@ -189,9 +209,10 @@ In general, you can’t perform mathematical operations on strings, even if the 
 "2" - "1"    "eggs" / "easy"    "third" + "a charm"
 ----
 
-But there are two exceptions, +*+ and +^+.
+But there are two exceptions, +*+ and +pass:[^]+.
 
-The +pass:[*]+ operator performs *string concatenation*, which means it joins the strings by linking them end-to-end. For example:
+The +pass:[*]+ operator performs _string concatenation_, which means it joins the strings by linking them end-to-end. For example:
+(((string, concatenation)))
 
 [source,@julia-repl-test]
 ----
@@ -203,16 +224,17 @@ julia> first * second
 "throatwarbler"
 ----
 
-The +^+ operator also works on strings; it performs repetition. For example, +"Spam"^3+ is +"SpamSpamSpam"+. If one of the values is a string, the other has to be an integer.
+The +^+ operator also works on strings; it performs repetition. For example, +"Spam"pass:[^]3+ is +"SpamSpamSpam"+. If one of the values is a string, the other has to be an integer.
 
-This use of +pass:[*]+ and +^+ makes sense by analogy with multiplication and exponentiation. Just as +4^3+ is equivalent to +4*4*4+, we expect +"Spam"^3+ to be the same as +pass:["Spam"*"Spam"*"Spam"]+, and it is.
+This use of +pass:[*]+ and +^+ makes sense by analogy with multiplication and exponentiation. Just as +4pass:[^]3+ is equivalent to +4*4*4+, we expect +"Spam"pass:[^]3+ to be the same as +pass:["Spam"*"Spam"*"Spam"]+, and it is.
 
 
 === Comments
+(((comment)))
 
 As programs get bigger and more complicated, they get more difficult to read. Formal languages are dense, and it is often difficult to look at a piece of code and figure out what it is doing, or why.
 
-For this reason, it is a good idea to add notes to your programs to explain in natural language what the program is doing. These notes are called *comments*, and they start with the +#+ symbol:
+For this reason, it is a good idea to add notes to your programs to explain in natural language what the program is doing. These notes are called _comments_, and they start with the +#+ symbol:
 
 [source,julia]
 ----
@@ -249,6 +271,8 @@ Good variable names can reduce the need for comments, but long names can make co
 
 
 === Debugging
+(((debugging)))
+(((bug)))
 
 Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful to distinguish between them in order to track them down more quickly.
 
@@ -256,82 +280,109 @@ Syntax error::
 “Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so +(1 + 2)+ is legal, but +8)+ is a syntax error.
 +
 If there is a syntax error anywhere in your program, Julia displays an error message and quits, and you will not be able to run the program. During the first few weeks of your programming career, you might spend a lot of time tracking down syntax errors. As you gain experience, you will make fewer errors and find them faster.
+(((syntax error)))
+(((error, syntax)))
+(((error message)))
 
 Runtime error:: 
-The second type of error is a runtime error, so called because the error does not appear until after the program has started running. These errors are also called *exceptions* because they usually indicate that something exceptional (and bad) has happened.
+The second type of error is a runtime error, so called because the error does not appear until after the program has started running. These errors are also called _exceptions_ because they usually indicate that something exceptional (and bad) has happened.
 +
 Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a while before you encounter one.
+(((runtime error)))
+(((error, runtime)))
+(((exception)))
 
 Semantic error:: 
 The third type of error is “semantic”, which means related to meaning. If there is a semantic error in your program, it will run without generating error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do.
 +
 Identifying semantic errors can be tricky because it requires you to work backward by looking at the output of the program and trying to figure out what it is doing.
-
+(((semantic error)))
+(((error, semantic)))
+(((error message)))
 
 === Glossary
 
 variable::
 A name that refers to a value.
+(((variable)))
 
 assignment::
 A statement that assigns a value to a variable
+(((assignment)))
 
 state diagram::
 A graphical representation of a set of variables and the values they refer to.
+(((state diagram)))
 
 keyword::
 A reserved word that is used to parse a program; you cannot use keywords like +if+, +function+, and +while+ as variable names.
+(((keyword)))
 
 operand::
 One of the values on which an operator operates.
+(((operand)))
 
 expression::
 A combination of variables, operators, and values that represents a single result.
+(((expression)))
 
 evaluate::
 To simplify an expression by performing the operations in order to yield a single value.
+(((evaluate)))
 
 statement::
 A section of code that represents a command or action. So far, the statements we have seen are assignments and print statements.
+(((statement)))
 
 execute::
 To run a statement and do what it says.
+(((execute)))
 
 interactive mode::
 A way of using the Julia REPL by typing code at the prompt.
+(((interactive mode)))
 
 script mode::
 A way of using the Julia REPL to read code from a script and run it.
+(((script mode)))
 
 script::
 A program stored in a file.
+(((script)))
 
 order of operations::
 Rules governing the order in which expressions involving multiple operators and operands are evaluated.
+(((order of operations)))
 
 concatenate::
 To join two operands end-to-end.
+(((concatenate)))
 
 comment::
 Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
+(((comment)))
 
 syntax error::
 An error in a program that makes it impossible to parse (and therefore impossible to interpret).
+(((syntax error)))
 
 exception::
 An error that is detected while the program is running.
+(((exception)))
 
 semantics::
 The meaning of a program.
+(((semantics)))
 
 semantic error::
 An error in a program that makes it do something other than what the programmer intended.
+(((semantic error)))
 
 
 === Exercises
 
 [[ex02-1]]
-==== Exercise 2-1
+===== Exercise 2-1
 
 Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.
 
@@ -346,11 +397,12 @@ Repeating my advice from the previous chapter, whenever you learn a new feature,
 . In math notation you can multiply +x+ and +y+ like this: +x y+. What happens if you try that in Julia?
 
 [[ex02-2]]
-==== Exercise 2-2
+===== Exercise 2-2
 
 Practice using the Julia REPL as a calculator:
+(((calculator)))
 
-. The volume of a sphere with radius latexmath:[r] is latexmath:[\frac{4}{3} \pi r^3]. What is the volume of a sphere with radius 5?
+. The volume of a sphere with radius latexmath:[\(r\)] is latexmath:[\(\frac{4}{3} \pi r^3\)]. What is the volume of a sphere with radius 5?
 
 . Suppose the cover price of a book is € 24.95, but bookstores get a 40 % discount. Shipping costs € 3 for the first copy and 75 cents for each additional copy. What is the total wholesale cost for 60 copies?
 

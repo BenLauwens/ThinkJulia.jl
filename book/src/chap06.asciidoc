@@ -36,7 +36,7 @@ end
 
 The value returned by a function is the value of the last expression evaluated, which, by default, is the last expression in the body of the function definition.
 
-On the other hand, *temporary variables* like +a+ and explicit +return+ statements can make debugging easier.
+On the other hand, _temporary variables_ like +a+ and explicit +return+ statements can make debugging easier.
 
 Sometimes it is useful to have multiple +return+ statements, one in each branch of a conditional:
 
@@ -53,7 +53,7 @@ end
 
 Since these return statements are in an alternative conditional, only one runs.
 
-As soon as a +return+ statement runs, the function terminates without executing any subsequent statements. Code that appears after a +return+ statement, or any other place the flow of execution can never reach, is called *dead code*.
+As soon as a +return+ statement runs, the function terminates without executing any subsequent statements. Code that appears after a +return+ statement, or any other place the flow of execution can never reach, is called _dead code_.
 
 In a fruitful function, it is a good idea to ensure that every possible path through the program hits a return statement. For example:
 
@@ -86,13 +86,15 @@ As an exercise, write a +compare+ function takes two values, +x+ and +y+, and re
 
 As you write larger functions, you might find yourself spending more time debugging.
 
-To deal with increasingly complex programs, you might want to try a process called *incremental development*. The goal of incremental development is to avoid long debugging sessions by adding and testing only a small amount of code at a time.
+To deal with increasingly complex programs, you might want to try a process called _incremental development_. The goal of incremental development is to avoid long debugging sessions by adding and testing only a small amount of code at a time.
 
-As an example, suppose you want to find the distance between two points, given by the coordinates latexmath:[(x_1, y_1)] and latexmath:[(x_2, y_2)]. By the Pythagorean theorem, the distance is:
+As an example, suppose you want to find the distance between two points, given by the coordinates latexmath:[\(\left(x_1, y_1\right)\)] and latexmath:[\(\left(x_2, y_2\right)\)]. By the Pythagorean theorem, the distance is:
 
 [latexmath]
 ++++
-d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+\begin{equation}
+{d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}}
+\end{equation}
 ++++
 
 The first step is to consider what a distance function should look like in Julia. In other words, what are the inputs (parameters) and what is the output (return value)?
@@ -119,7 +121,7 @@ distance(1, 2, 4, 6)
 
 I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.
 
-At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences latexmath:[x_2 - x_1] and latexmath:[y_2 - y_1]. The next version stores those values in temporary variables and prints them.
+At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences latexmath:[\(x_2 - x_1\)] and latexmath:[\(y_2 - y_1\)]. The next version stores those values in temporary variables and prints them.
 
 [source,@julia-setup]
 ----
@@ -161,7 +163,7 @@ end
 
 If that works correctly, you are done. Otherwise, you might want to print the value of +sqrt(d²)+ before the +return+ statement.
 
-The final version of the function doesn’t display anything when it runs; it only returns a value. The print statements we wrote are useful for debugging, but once you get the function working, you should remove them. Code like that is called *scaffolding* because it is helpful for building the program but is not part of the final product.
+The final version of the function doesn’t display anything when it runs; it only returns a value. The print statements we wrote are useful for debugging, but once you get the function working, you should remove them. Code like that is called _scaffolding_ because it is helpful for building the program but is not part of the final product.
 
 When you start out, you should add only a line or two of code at a time. As you gain more experience, you might find yourself writing and debugging bigger chunks. Either way, incremental development can save you a lot of debugging time.
 
@@ -285,19 +287,21 @@ To give you an idea of what you can do with the tools you have learned so far, w
 vorpal::
 An adjective used to describe something that is vorpal.
 
-If you saw that definition in the dictionary, you might be annoyed. On the other hand, if you looked up the definition of the factorial function, denoted with the symbol latexmath:[!], you might get something like this:
+If you saw that definition in the dictionary, you might be annoyed. On the other hand, if you looked up the definition of the factorial function, denoted with the symbol latexmath:[\(!\)], you might get something like this:
 
 [latexmath]
 ++++
-n! = 
+\begin{equation}
+{n! = 
 \begin{cases}
-  1& \textrm{if }  n = 0 \\
-  n (n-1)!& \textrm{if }  n > 0
-\end{cases}
+  1& \textrm{if}\  n = 0 \\
+  n (n-1)!& \textrm{if}\  n > 0
+\end{cases}}
+\end{equation}
 ++++
-This definition says that the factorial of latexmath:[0] is latexmath:[1], and the factorial of any other value, latexmath:[n], is latexmath:[n] multiplied by the factorial of latexmath:[n-1].
+This definition says that the factorial of latexmath:[\(0\)] is latexmath:[\(1\)], and the factorial of any other value, latexmath:[\(n\)], is latexmath:[\(n\)] multiplied by the factorial of latexmath:[\(n-1\)].
 
-So latexmath:[3!] is latexmath:[3] times latexmath:[2!], which is latexmath:[2] times latexmath:[1!], which is latexmath:[1] times latexmath:[0!]. Putting it all together, latexmath:[3!] equals latexmath:[3] times latexmath:[2] times latexmath:[1] times latexmath:[1], which is latexmath:[6].
+So latexmath:[\(3!\)] is latexmath:[\(3\)] times latexmath:[\(2!\)], which is latexmath:[\(2\)] times latexmath:[\(1!\)], which is latexmath:[\(1\)] times latexmath:[\(0!\)]. Putting it all together, latexmath:[\(3!\)] equals latexmath:[\(3\)] times latexmath:[\(2\)] times latexmath:[\(1\)] times latexmath:[\(1\)], which is latexmath:[\(6\)].
 
 If you can write a recursive definition of something, you can write a Julia program to evaluate it. The first step is to decide what the parameters should be. In this case it should be clear that factorial takes an integer:
 
@@ -334,19 +338,19 @@ end
 
 The flow of execution for this program is similar to the flow of +countdown+ in <<recursion>>. If we call +fact+ with the value +3+:
 
-* Since +3+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
+. Since +3+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
 
-** Since +2+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
+.. Since +2+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
 
-*** Since +1+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
+... Since +1+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
 
-**** Since +0+ equals +0+, we take the first branch and return +1+ without making any more recursive calls.
+.... Since +0+ equals +0+, we take the first branch and return +1+ without making any more recursive calls.
 
-*** The return value, +1+, is multiplied by +n+, which is +1+, and the +result+ is returned.
+... The return value, +1+, is multiplied by +n+, which is +1+, and the +result+ is returned.
 
-** The return value, +1+, is multiplied by +n+, which is +2+, and the +result+ is returned.
+.. The return value, +1+, is multiplied by +n+, which is +2+, and the +result+ is returned.
 
-* The return value +2+ is multiplied by +n+, which is +3+, and the result, +6+, becomes the return value of the function call that started the whole process.
+. The return value +2+ is multiplied by +n+, which is +3+, and the result, +6+, becomes the return value of the function call that started the whole process.
 
 [[fig06-1]]
 .Stack diagram
@@ -368,23 +372,25 @@ In fact, you are already practicing this leap of faith when you use built-in fun
 
 The same is true when you call one of your own functions. For example, in <<boolean_functions>>, we wrote a function called +isdivisible+ that determines whether one number is divisible by another. Once we have convinced ourselves that this function is correct—by examining the code and testing—we can use the function without looking at the body again.
 
-The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of latexmath:[n-1], can I compute the factorial of latexmath:[n]?” It is clear that you can, by multiplying by latexmath:[n].
+The same is true of recursive programs. When you get to the recursive call, instead of following the flow of execution, you should assume that the recursive call works (returns the correct result) and then ask yourself, “Assuming that I can find the factorial of latexmath:[\(n-1\)], can I compute the factorial of latexmath:[\(n\)]?” It is clear that you can, by multiplying by latexmath:[\(n\)].
 
 Of course, it’s a bit strange to assume that the function works correctly when you haven’t finished writing it, but that’s why it’s called a leap of faith!
 
 [[one_more_example]]
 === One More Example
 
-After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see http://en.wikipedia.org/wiki/Fibonacci_number):
+After factorial, the most common example of a recursively defined mathematical function is fibonacci, which has the following definition (see https://en.wikipedia.org/wiki/Fibonacci_number):
 
 [latexmath]
 ++++
-\textit{fib}(n) =
+\begin{equation}
+{fib(n) =
 \begin{cases}
-    0& \textrm{if }  n = 0 \\
-    1& \textrm{if }  n = 1 \\
-    \textit{fib}(n-1) + \textit{fib}(n-2)& \textrm{if }  n > 1 
-\end{cases}
+    0& \textrm{if}\  n = 0 \\
+    1& \textrm{if}\  n = 1 \\
+    fib(n-1) + fib(n-2)& \textrm{if}\  n > 1 
+\end{cases}}
+\end{equation}
 ++++
 
 Translated into Julia, it looks like this:
@@ -409,7 +415,7 @@ If you try to follow the flow of execution here, even for fairly small values of
 
 What happens if we call +fact+ and give it +1.5+ as an argument?
 
-[source,julia-repl chap06]
+[source,julia-repl]
 ----
 julia> fact(1.5)
 ERROR: StackOverflowError:
@@ -454,7 +460,7 @@ Factorial is not defined for negative integers.
 
 If we get past both checks, we know that +n+ is positive or zero, so we can prove that the recursion terminates.
 
-This program demonstrates a pattern sometimes called a *guardian*. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.
+This program demonstrates a pattern sometimes called a _guardian_. The first two conditionals act as guardians, protecting the code that follows from values that might cause an error. The guardians make it possible to prove the correctness of the code.
 
 In <<catching_exceptions>> we will see a more flexible alternative to printing an error message: raising an exception.
 
@@ -525,7 +531,7 @@ A programming pattern that uses a conditional statement to check for and handle 
 === Exercises
 
 [[ex06-1]]
-==== Exercise 6-1
+===== Exercise 6-1
 
 Draw a stack diagram for the following program. What does the program print?
 
@@ -554,23 +560,25 @@ println(c(x, y+3, x+y))
 ----
 
 [[ex06-2]]
-==== Exercise 6-2
+===== Exercise 6-2
 
-The Ackermann function, latexmath:[A(m, n)], is defined:
+The Ackermann function, latexmath:[\(A(m, n)\)], is defined:
 
 [latexmath]
 ++++
-A(m, n) =
+\begin{equation}
+{A(m, n) =
 \begin{cases}
-              n+1& \textrm{if }  m = 0 \\
-        A(m-1, 1)& \textrm{if }  m > 0 \textrm{ and } n = 0 \\
-A(m-1, A(m, n-1))& \textrm{if }  m > 0 \textrm{ and } n > 0.
-\end{cases}
+              n+1& \textrm{if}\ m = 0 \\
+        A(m-1, 1)& \textrm{if}\ m > 0\ \textrm{and}\ n = 0 \\
+A(m-1, A(m, n-1))& \textrm{if}\ m > 0\ \textrm{and}\ n > 0.
+\end{cases}}
+\end{equation}
 ++++
-See http://en.wikipedia.org/wiki/Ackermann_function. Write a function named +ack+ that evaluates the Ackermann function. Use your function to evaluate +ack(3, 4)+, which should be 125. What happens for larger values of +m+ and +n+?
+See https://en.wikipedia.org/wiki/Ackermann_function. Write a function named +ack+ that evaluates the Ackermann function. Use your function to evaluate +ack(3, 4)+, which should be 125. What happens for larger values of +m+ and +n+?
 
 [[ex06-3]]
-==== Exercise 6-3
+===== Exercise 6-3
 
 A palindrome is a word that is spelled the same backward and forward, like “noon” and “redivider”. Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.
 
@@ -602,16 +610,16 @@ We’ll see how they work in <<chap08>>
 . Write a function called +ispalindrome+ that takes a string argument and returns +true+ if it is a palindrome and +false+ otherwise. Remember that you can use the built-in function +length+ to check the length of a string.
 
 [[ex06-4]]
-==== Exercise 6-4
+===== Exercise 6-4
 
-A number, latexmath:[a], is a power of latexmath:[b] if it is divisible by latexmath:[b] and latexmath:[\frac{a}{b}] is a power of latexmath:[b]. Write a function called +ispower+ that takes parameters +a+ and +b+ and returns +true+ if +a+ is a power of +b+. Note: you will have to think about the base case.
+A number, latexmath:[\(a\)], is a power of latexmath:[\(b\)] if it is divisible by latexmath:[\(b\)] and latexmath:[\(\frac{a}{b}\)] is a power of latexmath:[\(b\)]. Write a function called +ispower+ that takes parameters +a+ and +b+ and returns +true+ if +a+ is a power of +b+. Note: you will have to think about the base case.
 
 [[ex06-5]]
-==== Exercise 6-5
+===== Exercise 6-5
 
-The greatest common divisor (GCD) of latexmath:[a] and latexmath:[b] is the largest number that divides both of them with no remainder.
+The greatest common divisor (GCD) of latexmath:[\(a\)] and latexmath:[\(b\)] is the largest number that divides both of them with no remainder.
 
-One way to find the GCD of two numbers is based on the observation that if latexmath:[r] is the remainder when latexmath:[a] is divided by latexmath:[b], then +gcd(a, b) = gcd(b, r)+. As a base case, we can use +gcd(a, 0) = a+.
+One way to find the GCD of two numbers is based on the observation that if latexmath:[\(r\)] is the remainder when latexmath:[\(a\)] is divided by latexmath:[\(b\)], then +gcd(a, b) = gcd(b, r)+. As a base case, we can use +gcd(a, 0) = a+.
 
 Write a function called +gcd+ that takes parameters +a+ and +b+ and returns their greatest common divisor.
 

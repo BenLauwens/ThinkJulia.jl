@@ -10,7 +10,7 @@ The examples in this chapter can be executed in a graphical notebook on JuliaBox
 
 === Turtles
 
-A *module* is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
+A _module_ is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
 
 [source,julia-repl]
 ----
@@ -116,7 +116,7 @@ end
 
 The syntax of a +for+ statement is similar to a function definition. It has a header and a body that ends with the keyword +end+. The body can contain any number of statements.
 
-A +for+ statement is also called a *loop* because the flow of execution runs through the body and then loops back to the top. In this case, it runs the body four times.
+A +for+ statement is also called a _loop_ because the flow of execution runs through the body and then loops back to the top. In this case, it runs the body four times.
 
 This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the turtle back in the starting position, facing in the starting direction.
 
@@ -127,17 +127,35 @@ The following is a series of exercises using turtles. They are meant to be fun, 
 
 The following sections have solutions to the exercises, so don’t look until you have finished (or at least tried).
 
-. Write a function called +square+ that takes a parameter named +t+, which is a turtle. It should use the turtle to draw a square.
+[[ex04-1]]
+===== Exercise 4-1
 
-. Write a function call that passes +t+ as an argument to +square+, and then run the macro again.
+Write a function called +square+ that takes a parameter named +t+, which is a turtle. It should use the turtle to draw a square.
 
-. Add another parameter, named +len+, to square. Modify the body so length of the sides is +len+, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for +len+.
+[[ex04-2]]
+===== Exercise 4-2
 
-. Make a copy of +square+ and change the name to +polygon+. Add another parameter named +n+ and modify the body so it draws an latexmath:[n]-sided regular polygon. Hint: The exterior angles of an latexmath:[n]-sided regular polygon are latexmath:[\frac{360}{n}] degrees.
+Write a function call that passes +t+ as an argument to +square+, and then run the macro again.
 
-. Write a function called +circle+ that takes a turtle, +t+, and radius, +r+, as parameters and that draws an approximate circle by calling +polygon+ with an appropriate length and number of sides. Test your function with a range of values of +r+. Hint: figure out the circumference of the circle and make sure that +len * n == circumference+.
+[[ex04-3]]
+===== Exercise 4-3
 
-. Make a more general version of +circle+ called +arc+ that takes an additional parameter +angle+, which determines what fraction of a circle to draw. +angle+ is in units of degrees, so when +angle=360+, +arc+ should draw a complete circle.
+Add another parameter, named +len+, to square. Modify the body so length of the sides is +len+, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for +len+.
+
+[[ex04-4]]
+===== Exercise 4-4
+
+Make a copy of +square+ and change the name to +polygon+. Add another parameter named +n+ and modify the body so it draws an latexmath:[\(n\)]-sided regular polygon. Hint: The exterior angles of an latexmath:[\(n\)]-sided regular polygon are latexmath:[\(\frac{360}{n}\)] degrees.
+
+[[ex04-5]]
+===== Exercise 4-5
+
+Write a function called +circle+ that takes a turtle, +t+, and radius, +r+, as parameters and that draws an approximate circle by calling +polygon+ with an appropriate length and number of sides. Test your function with a range of values of +r+. Hint: figure out the circumference of the circle and make sure that +len * n == circumference+.
+
+[[ex04-6]]
+===== Exercise 4-6
+
+Make a more general version of +circle+ called +arc+ that takes an additional parameter +angle+, which determines what fraction of a circle to draw. +angle+ is in units of degrees, so when +angle=360+, +arc+ should draw a complete circle.
 
 
 === Encapsulation
@@ -170,7 +188,7 @@ Inside the function, +t+ refers to the same turtle +🐢+, so +turn(t, -90)+ has
 end
 ----
 
-Wrapping a piece of code up in a function is called *encapsulation*. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!
+Wrapping a piece of code up in a function is called _encapsulation_. One of the benefits of encapsulation is that it attaches a name to the code, which serves as a kind of documentation. Another advantage is that if you re-use the code, it is more concise to call a function twice than to copy and paste the body!
 
 
 === Generalization
@@ -191,7 +209,7 @@ end
 end
 ----
 
-Adding a parameter to a function is called *generalization* because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.
+Adding a parameter to a function is called _generalization_ because it makes the function more general: in the previous version, the square is always the same size; in this version it can be any size.
 
 The next step is also a generalization. Instead of drawing squares, +polygon+ draws regular polygons with any number of sides. Here is a solution:
 
@@ -227,11 +245,11 @@ function circle(t, r)
 end
 ----
 
-The first line computes the circumference of a circle with radius latexmath:[r] using the formula latexmath:[2 π r]. +n+ is the number of line segments in our approximation of a circle, so +len+ is the length of each segment. Thus, +polygon+ draws a 50-sided polygon that approximates a circle with radius +r+.
+The first line computes the circumference of a circle with radius latexmath:[\(r\)] using the formula latexmath:[\(2 \pi r\)]. +n+ is the number of line segments in our approximation of a circle, so +len+ is the length of each segment. Thus, +polygon+ draws a 50-sided polygon that approximates a circle with radius +r+.
 
 One limitation of this solution is that +n+ is a constant, which means that for very big circles, the line segments are too long, and for small circles, we waste time drawing very small segments. One solution would be to generalize the function by taking +n+ as a parameter. This would give the user (whoever calls circle) more control, but the interface would be less clean.
 
-The *interface* of a function is a summary of how it is used: what are the parameters? What does the function do? And what is the return value? An interface is “clean” if it allows the caller to do what they want without dealing with unnecessary details.
+The _interface_ of a function is a summary of how it is used: what are the parameters? What does the function do? And what is the return value? An interface is “clean” if it allows the caller to do what they want without dealing with unnecessary details.
 
 In this example, +r+ belongs in the interface because it specifies the circle to be drawn. +n+ is less appropriate because it pertains to the details of how the circle should be rendered.
 
@@ -311,14 +329,14 @@ function circle(t, r)
 end
 ----
 
-This process—rearranging a program to improve interfaces and facilitate code re-use—is called *refactoring*. In this case, we noticed that there was similar code in +arc+ and +polygon+, so we “factored it out” into +polyline+.
+This process—rearranging a program to improve interfaces and facilitate code re-use—is called _refactoring_. In this case, we noticed that there was similar code in +arc+ and +polygon+, so we “factored it out” into +polyline+.
 
 If we had planned ahead, we might have written +polyline+ first and avoided refactoring, but often you don’t know enough at the beginning of a project to design all the interfaces. Once you start coding, you understand the problem better. Sometimes refactoring is a sign that you have learned something.
 
 
 === A Development Plan
 
-A *development plan* is a process for writing programs. The process we used in this case study is “encapsulation and generalization”. The steps of this process are:
+A _development plan_ is a process for writing programs. The process we used in this case study is “encapsulation and generalization”. The steps of this process are:
 
 . Start by writing a small program with no function definitions.
 
@@ -335,7 +353,7 @@ This process has some drawbacks—we will see alternatives later—but it can be
 
 === Docstring
 
-A *docstring* is a string before a function that explains the interface (“doc” is short for “documentation”). Here is an example:
+A _docstring_ is a string before a function that explains the interface (“doc” is short for “documentation”). Here is an example:
 
 [source,julia]
 ----
@@ -377,7 +395,7 @@ An interface is like a contract between a function and a caller. The caller agre
 
 For example, +polyline+ requires four arguments: +t+ has to be a turtle; +n+ has to be an integer; +len+ should be a positive number; and +angle+ has to be a number, which is understood to be in degrees.
 
-These requirements are called *preconditions* because they are supposed to be true before the function starts executing. Conversely, conditions at the end of the function are *postconditions*. Postconditions include the intended effect of the function (like drawing line segments) and any side effects (like moving the turtle or making other changes).
+These requirements are called _preconditions_ because they are supposed to be true before the function starts executing. Conversely, conditions at the end of the function are _postconditions_. Postconditions include the intended effect of the function (like drawing line segments) and any side effects (like moving the turtle or making other changes).
 
 Preconditions are the responsibility of the caller. If the caller violates a (properly documented!) precondition and the function doesn’t work correctly, the bug is in the caller, not the function.
 
@@ -422,8 +440,8 @@ A requirement that should be satisfied by the function before it ends.
 
 === Exercises
 
-[[ex04-1]]
-==== Exercise 4-1
+[[ex04-7]]
+===== Exercise 4-7
 
 Enter the code in this chapter in a notebook.
 
@@ -456,8 +474,8 @@ function arc(t, r, angle)
 end
 ----
 
-[[ex04-2]]
-==== Exercise 4-2
+[[ex04-8]]
+===== Exercise 4-8
 
 Write an appropriately general set of functions that can draw flowers as in <<fig04-2>>.
 
@@ -465,8 +483,8 @@ Write an appropriately general set of functions that can draw flowers as in <<fi
 .Turtle flowers
 image::images/fig42.svg[]
 
-[[ex04-3]]
-==== Exercise 4-3
+[[ex04-9]]
+===== Exercise 4-9
 
 Write an appropriately general set of functions that can draw shapes as in <<fig04-3>>.
 
@@ -474,17 +492,17 @@ Write an appropriately general set of functions that can draw shapes as in <<fig
 .Turtle pies
 image::images/fig43.svg[]
 
-[[ex04-4]]
-==== Exercise 4-4
+[[ex04-10]]
+===== Exercise 4-10
 
 The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.
 
 You should write one function for each letter, with names +draw_a+, +draw_b+, etc., and put your functions in a file named _letters.jl_.
 
-[[ex04-5]]
-==== Exercise 4-5
+[[ex04-11]]
+===== Exercise 4-11
 
-Read about spirals at http://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in <<fig04-4>>.
+Read about spirals at https://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in <<fig04-4>>.
 
 [[fig04-4]]
 .Archimedian spiral

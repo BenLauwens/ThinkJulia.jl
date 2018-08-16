@@ -191,7 +191,7 @@ end
 
 === Variable-length Argument Tuples
 
-Functions can take a variable number of arguments. A parameter name that ends with +...+ *gathers* arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
+Functions can take a variable number of arguments. A parameter name that ends with +...+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
 
 [source,@julia-setup chap12]
 ----
@@ -208,7 +208,7 @@ julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
-The complement of gather is *scatter*. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +...+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
+The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +...+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
 
 [source,@julia-repl-test chap12]
 ----
@@ -261,7 +261,7 @@ julia> zip(s, t)
 Base.Iterators.Zip2{String,Array{Int64,1}}("abc", [1, 2, 3])
 ----
 
-The result is a *zip object* that knows how to iterate through the pairs. The most common use of +zip+ is in a +for+ loop:
+The result is a _zip object_ that knows how to iterate through the pairs. The most common use of +zip+ is in a +for+ loop:
 
 [source,@julia-repl-test chap12]
 ----
@@ -273,7 +273,7 @@ julia> for pair in zip(s, t)
 ('c', 3)
 ----
 
-A zip object is a kind of *iterator*, which is any object that iterates through a sequence. Iterators are similar to arrays in some ways, but unlike arrays, you can’t use an index to select an element from an iterator.
+A zip object is a kind of _iterator_, which is any object that iterates through a sequence. Iterators are similar to arrays in some ways, but unlike arrays, you can’t use an index to select an element from an iterator.
 
 If you want to use array operators and functions, you can use a zip object to make an array:
 
@@ -440,7 +440,7 @@ Because tuples are immutable, they don’t provide function like +sort!+ and +re
 
 === Debugging
 
-Arrays, dictionaries and tuples are examples of *data structures*; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call *shape errors*; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
+Arrays, dictionaries and tuples are examples of _data structures_; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call _shape errors_; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
 
 
 === Glossary
@@ -473,12 +473,12 @@ An error caused because a value has the wrong shape; that is, the wrong type or 
 === Exercises
 
 [[ex12-1]]
-==== Exercise 12-1
+===== Exercise 12-1
 
-Write a function called +mostfrequent+ that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at http://en.wikipedia.org/wiki/Letter_frequencies.
+Write a function called +mostfrequent+ that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at https://en.wikipedia.org/wiki/Letter_frequencies.
 
 [[ex12-2]]
-==== Exercise 12-2
+===== Exercise 12-2
 
 More anagrams!
 
@@ -499,20 +499,23 @@ Hint: you might want to build a dictionary that maps from a collection of letter
 . In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos? Hint: there are seven.
 
 [[ex12-3]]
-==== Exercise 12-3
+===== Exercise 12-3
 
 Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible swaps. Credit: This exercise is inspired by an example at http://puzzlers.org.
 
 [[ex12-4]]
-==== Exercise 12-4
+===== Exercise 12-4
 
-Here’s another Car Talk Puzzler (http://www.cartalk.com/content/puzzlers):
+Here’s another Car Talk Puzzler (https://www.cartalk.com/puzzler/browse):
 
-_What is the longest English word, that remains a valid English word, as you remove its letters one at a time?_
+[quote]
+____
+What is the longest English word, that remains a valid English word, as you remove its letters one at a time?
 
-_Now, letters can be removed from either end, or the middle, but you can’t rearrange any of the letters. Every time you drop a letter, you wind up with another English word. If you do that, you’re eventually going to wind up with one letter and that too is going to be an English word—one that’s found in the dictionary. I want to know what’s the longest word and how many letters does it have?_
+Now, letters can be removed from either end, or the middle, but you can’t rearrange any of the letters. Every time you drop a letter, you wind up with another English word. If you do that, you’re eventually going to wind up with one letter and that too is going to be an English word—one that’s found in the dictionary. I want to know what’s the longest word and how many letters does it have?
 
-_I’m going to give you a little modest example: Sprite. Ok? You start off with sprite, you take a letter off, one from the interior of the word, take the r away, and we’re left with the word spite, then we take the e off the end, we’re left with spit, we take the s off, we’re left with pit, it, and I._
+I’m going to give you a little modest example: Sprite. Ok? You start off with sprite, you take a letter off, one from the interior of the word, take the r away, and we’re left with the word spite, then we take the e off the end, we’re left with spit, we take the s off, we’re left with pit, it, and I.
+____
 
 Write a program to find all words that can be reduced in this way, and then find the longest one.
 

@@ -201,3 +201,7 @@ p code {
   margin: 10px 0;
   text-align: center;
 }
+
+@media print {
+    h2 {page-break-before: right;}
+}

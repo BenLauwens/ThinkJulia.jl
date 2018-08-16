@@ -6,7 +6,7 @@ The main topic of this chapter is the +if+ statement, which executes different c
 
 === Floor Division and Modulus
 
-The *floor division* operator, +÷+ (+\div TAB+), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
+The _floor division_ operator, +÷+ (+\div TAB+), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
 
 [source,@julia-repl-test chap05]
 ----
@@ -32,7 +32,7 @@ julia> remainder = minutes - hours * 60
 45
 ----
 
-An alternative is to use the *modulus operator*, +%+, which divides two numbers and returns the remainder.
+An alternative is to use the _modulus operator_, +%+, which divides two numbers and returns the remainder.
 
 [source,@julia-repl-test chap05]
 ----
@@ -47,7 +47,7 @@ Also, you can extract the right-most digit or digits from a number. For example,
 
 === Boolean Expressions
 
-A *boolean expression* is an expression that is either true or false. The following examples use the operator +==+, which compares two operands and produces +true+ if they are equal and +false+ otherwise:
+A _boolean expression_ is an expression that is either true or false. The following examples use the operator +==+, which compares two operands and produces +true+ if they are equal and +false+ otherwise:
 
 [source,@julia-repl-test]
 ----
@@ -86,7 +86,7 @@ Although these operations are probably familiar to you, the Julia symbols are di
 
 === Logical Operators
 
-There are three *logical operators*: +&&+ (and), +||+ (or), and +!+ (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, +x > 0 && x < 10+ is true only if +x+ is greater than +0+ _and_ less than +10+.
+There are three _logical operators_: +&&+ (and), +||+ (or), and +!+ (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, +x > 0 && x < 10+ is true only if +x+ is greater than +0+ _and_ less than +10+.
 
 +n % 2 == 0 || n % 3 == 0+ is true if _either or both_ of the conditions is true, that is, if the number is divisible by 2 _or_ 3.
 
@@ -97,7 +97,7 @@ Finally, the +!+ operator negates a boolean expression, so +!(x > y)+ is true if
 
 === Conditional Execution
 
-In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. *Conditional statements* give us this ability. The simplest form is the +if+ statement:
+In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. _Conditional statements_ give us this ability. The simplest form is the +if+ statement:
 
 [source,julia]
 ----
@@ -106,9 +106,9 @@ if x > 0
 end
 ----
 
-The boolean expression after +if+ is called the *condition*. If it is true, the indented statement runs. If not, nothing happens.
+The boolean expression after +if+ is called the _condition_. If it is true, the indented statement runs. If not, nothing happens.
 
-+if+ statements have the same structure as function definitions: a header followed by body terminated with the keyword +end+. Statements like this are called *compound statements*.
++if+ statements have the same structure as function definitions: a header followed by body terminated with the keyword +end+. Statements like this are called _compound statements_.
 
 There is no limit on the number of statements that can appear in the body. Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet).
 
@@ -133,12 +133,12 @@ else
 end
 ----
 
-If the remainder when +x+ is divided by 2 is 0, then we know that +x+ is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called *branches*, because they are branches in the flow of execution.
+If the remainder when +x+ is divided by 2 is 0, then we know that +x+ is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called _branches_, because they are branches in the flow of execution.
 
 
 === Chained Conditionals
 
-Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a *chained conditional*:
+Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a _chained conditional_:
 
 [source,julia]
 ----
@@ -186,7 +186,7 @@ end
 
 The outer conditional contains two branches. The first branch contains a simple statement. The second branch contains another +if+ statement, which has two branches of its own. Those two branches are both simple statements, although they could have been conditional statements as well.
 
-Although the non-compulsory indentation of the statements makes the structure apparent, *nested conditionals* become difficult to read very quickly. It is a good idea to avoid them when you can.
+Although the non-compulsory indentation of the statements makes the structure apparent, _nested conditionals_ become difficult to read very quickly. It is a good idea to avoid them when you can.
 
 Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:
 
@@ -244,25 +244,25 @@ julia> countdown(3)
 3 2 1 Blastoff!
 ----
 
-* The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself...
+. The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself...
 
-** The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, it outputs the value 2, and then calls itself...
+.. The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, it outputs the value 2, and then calls itself...
 
-*** The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, it outputs the value 1, and then calls itself...
+... The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, it outputs the value 1, and then calls itself...
 
-**** The execution of +countdown+ begins with +n = 0+, and since +n+ is not greater than 0, it outputs the word, +"Blastoff!"+ and then returns.
+.... The execution of +countdown+ begins with +n = 0+, and since +n+ is not greater than 0, it outputs the word, +"Blastoff!"+ and then returns.
 
-*** The countdown that got +n = 1+ returns.
+... The countdown that got +n = 1+ returns.
 
-** The countdown that got +n = 2+ returns.
+.. The countdown that got +n = 2+ returns.
 
-* The countdown that got +n = 3+ returns.
+. The countdown that got +n = 3+ returns.
 
 And then you’re back in +pass:[__main__]+.
 
-A function that calls itself is *recursive*; the process of executing it is called *recursion*.
+A function that calls itself is _recursive_; the process of executing it is called _recursion_.
 
-As another example, we can write a function that prints a string latexmath:[n] times.
+As another example, we can write a function that prints a string latexmath:[\(n\)] times.
 
 [source,julia]
 ----
@@ -277,7 +277,7 @@ end
 
 If +n pass:[&lt;]= 0+ the +return+ statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
 
-The rest of the function is similar to +countdown+: it displays +s+ and then calls itself to display +s+ latexmath:[n-1] additional times. So the number of lines of output is latexmath:[1 + (n - 1)], which adds up to latexmath:[n].
+The rest of the function is similar to +countdown+: it displays +s+ and then calls itself to display +s+ latexmath:[\(n-1\)] additional times. So the number of lines of output is latexmath:[\(1 + (n - 1)\)], which adds up to latexmath:[\(n\)].
 
 For simple examples like this, it is probably easier to use a +for+ loop. But we will see examples later that are hard to write with a +for+ loop and easy to write with recursion, so it is good to start early.
 
@@ -296,14 +296,14 @@ image::images/fig51.svg[]
 
 As usual, the top of the stack is the frame for +pass:[__main__]+. It is empty because we did not create any variables in +pass:[__main__]+ or pass any arguments to it.
 
-The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the *base case*. It does not make a recursive call, so there are no more frames.
+The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
 
-As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[n] times.
+As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
 
 
 === Infinite Recursion
 
-If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as *infinite recursion*, and it is generally not a good idea. Here is a minimal program with an infinite recursion:
+If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as _infinite recursion_, and it is generally not a good idea. Here is a minimal program with an infinite recursion:
 
 [source,julia]
 ----
@@ -393,8 +393,11 @@ The same is true of runtime errors. Suppose you are trying to compute a signal-t
 
 [latexmath]
 ++++
-\textit{SNR}_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .
+\begin{equation}
+{SNR_{\mathrm{db}} = 10 \log_{10} \frac{P_{\mathrm{signal}}}{P_{\mathrm{noise}}}\ .}
+\end{equation}
 ++++
+
 In Julia, you might write something like this:
 
 [source,julia]
@@ -471,7 +474,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 === Exercises
 
 [[ex05-1]]
-==== Exercise 5-1
+===== Exercise 5-1
 
 The function +time+ returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
 
@@ -483,33 +486,39 @@ time()
 Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch.
 
 [[ex05-2]]
-==== Exercise 5-2
+===== Exercise 5-2
 
-Fermat’s Last Theorem says that there are no positive integers latexmath:[a], latexmath:[b], and latexmath:[c] such that
+Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] such that
 
 [latexmath]
 ++++
-a^n + b^n = c^n
+\begin{equation}
+{a^n + b^n = c^n}
+\end{equation}
 ++++
-for any values of latexmath:[n] greater than 2.
 
-. Write a function named +checkfermat+ that takes four parameters—+a+, +b+, +c+ and +n+—and checks to see if Fermat’s theorem holds. If +n+ is greater than 2 and +a^n + b^n == c^n+ the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
+for any values of latexmath:[\(n\)] greater than 2.
+
+. Write a function named +checkfermat+ that takes four parameters—+a+, +b+, +c+ and +n+—and checks to see if Fermat’s theorem holds. If +n+ is greater than 2 and +pass:[a^n + b^n == c^n]+ the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
 
 . Write a function that prompts the user to input values for +a+, +b+, +c+ and +n+, converts them to integers, and uses +checkfermat+ to check whether they violate Fermat’s theorem.
 
 [[ex05-3]]
-==== Exercise 5-3
+===== Exercise 5-3
 
 If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
 
-_If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)_
+[quote]
+____
+If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)
+____
 
 . Write a function named +istriangle+ that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
 
 . Write a function that prompts the user to input three stick lengths, converts them to integers, and uses +istriangle+ to check whether sticks with the given lengths can form a triangle.
 
 [[ex05-4]]
-==== Exercise 5-4
+===== Exercise 5-4
 
 What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
 
@@ -530,10 +539,10 @@ recurse(3, 0)
 
 . Write a docstring that explains everything someone would need to know in order to use this function (and nothing else).
 
-The following exercises use the +Luxor+ module, described in <<chap04>>:
+The following exercises use the +ThinkJulia+ module, described in <<chap04>>:
 
 [[ex05-5]]
-==== Exercise 5-5
+===== Exercise 5-5
 
 Read the following function and see if you can figure out what it does (see the examples in <<chap04>>). Then run it and see if you got it right.
 
@@ -555,34 +564,34 @@ end
 ----
 
 [[ex05-6]]
-==== Exercise 5-6
+===== Exercise 5-6
 
 [[fig05-2]]
 .A Koch curve
 image::images/fig52.svg[]
 
 
-The Koch curve is a fractal that looks something like <<fig05-2>>. To draw a Koch curve with length latexmath:[x], all you have to do is
+The Koch curve is a fractal that looks something like <<fig05-2>>. To draw a Koch curve with length latexmath:[\(x\)], all you have to do is
 
-. Draw a Koch curve with length latexmath:[\frac{x}{3}].
+. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
 
 . Turn left 60 degrees.
 
-. Draw a Koch curve with length latexmath:[\frac{x}{3}].
+. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
 
 . Turn right 120 degrees.
 
-. Draw a Koch curve with length latexmath:[\frac{x}{3}].
+. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
 
 . Turn left 60 degrees.
 
-. Draw a Koch curve with length latexmath:[\frac{x}{3}].
+. Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
 
-The exception is if latexmath:[x] is less than 3: in that case, you can just draw a straight line with length latexmath:[x].
+The exception is if latexmath:[\(x\)] is less than 3: in that case, you can just draw a straight line with length latexmath:[\(x\)].
 
 . Write a function called +koch+ that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
 
 . Write a function called +snowflake+ that draws three Koch curves to make the outline of a snowflake.
 
-. The Koch curve can be generalized in several ways. See http://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite.
+. The Koch curve can be generalized in several ways. See https://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite.
 

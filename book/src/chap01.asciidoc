@@ -1,16 +1,18 @@
 [[chap01]]
 == The Way of the Program
 
-The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.((("problem solving")))
+The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.
 
-The single most important skill for a computer scientist is *problem solving*. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That’s why this chapter is called, “The way of the program”.
+The single most important skill for a computer scientist is _problem solving_. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That’s why this chapter is called, “The way of the program”.
+((("problem solving")))
 
 On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.
 
 
 === What is a Program?
 
-A *program* is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching and replacing text in a document or something graphical, like processing an image or playing a video.((("program")))
+A _program_ is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching and replacing text in a document or something graphical, like processing an image or playing a video.
+((("program")))
 
 The details look different in different languages, but a few basic instructions appear in just about every language:
 
@@ -35,12 +37,15 @@ Believe it or not, that’s pretty much all there is to it. Every program you’
 === Running Julia
 
 One of the challenges of getting started with Julia is that you might have to install Julia and related software on your computer. If you are familiar with your operating system, and especially if you are comfortable with the command-line interface, you will have no trouble installing Julia. But for beginners, it can be painful to learn about system administration and programming at the same time.
+(((running Julia)))
+(((Julia, running)))
 
-To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
+To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.(((Julia in a browser)))
 
 In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing.
+(((JuliaBox)))
 
-The Julia *REPL* (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
+The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:(((REPL)))
 
 [source,@julia-eval]
 ----
@@ -50,9 +55,10 @@ banner = String(take!(io))
 println("$(banner)julia>")
 ----
 
-The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least +v0.7.0+.
+The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least +0.7.0+.
 
-The last line is a *prompt* that indicates that the REPL is ready for you to enter code. If you type a line of code and hit +ENTER+, the REPL displays the result:
+The last line is a _prompt_ that indicates that the REPL is ready for you to enter code. If you type a line of code and hit +ENTER+, the REPL displays the result:
+(((prompt)))
 
 [source,@julia-repl-test]
 ----
@@ -66,6 +72,7 @@ Now you’re ready to get started. From here on, I assume that you know how to s
 === The First Program
 
 Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:
+((("Hello, World!")))
 
 [source,@julia-repl-test]
 ----
@@ -73,16 +80,23 @@ julia> println("Hello, World!")
 Hello, World!
 ----
 
-This is an example of a *print statement*, although it doesn’t actually print anything on paper. It displays a result on the screen.
+This is an example of a _print statement_, although it doesn’t actually print anything on paper. It displays a result on the screen.
+(((print statement)))
+(((statement, print)))
 
 The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
+(((quotation mark)))
 
 The parentheses indicate that +println+ is a function. We’ll get to functions in <<chap03>>.
+(((function)))
+(((function, println)))
 
 
 === Arithmetic Operators
+(((arithmetic operator)))
+(((operator, arithmetic)))
 
-After “Hello, World!”, the next step is arithmetic. Julia provides *operators*, which are special symbols that represent computations like addition and multiplication.
+After “Hello, World!”, the next step is arithmetic. Julia provides _operators_, which are special symbols that represent computations like addition and multiplication.
 
 The operators +pass:[+]+, +-+, and +*+ perform addition, subtraction, and multiplication, as in the following examples:
 
@@ -116,10 +130,15 @@ julia> 6^2 + 6
 
 
 === Values and Types
+(((value)))
+(((type)))
 
-A *value* is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are +2+, +42.0+, and +"Hello, World!"+.
+A _value_ is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are +2+, +42.0+, and +"Hello, World!"+.
 
-These values belong to different *types*: +2+ is an *integer*, +42.0+ is a *floating-point number*, and +"Hello, World!"+ is a *string*, so-called because the letters it contains are strung together.
+These values belong to different _types_: +2+ is an _integer_, +42.0+ is a _floating-point number_, and +"Hello, World!"+ is a _string_, so-called because the letters it contains are strung together.
+(((integer)))
+(((floating-point)))
+(((string)))
 
 If you are not sure what type a value has, the REPL can tell you:
 
@@ -156,44 +175,60 @@ julia> 1,000,000
 ----
 
 That’s not what we expected at all! Julia parses +1,000,000+ as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
+(((sequence)))
 
 
 === Formal and Natural Languages
+(((formal language)))
+(((language, formal)))
+(((natural language)))
+(((language, natural)))
 
-*Natural languages* are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
+_Natural languages_ are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
 
-*Formal languages* are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly:
+_Formal languages_ are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly:
 
-_Programming languages are formal languages that have been designed to express computations._
+[quote]
+____
+Programming languages are formal languages that have been designed to express computations.
+____
 
-Formal languages tend to have strict *syntax* rules that govern the structure of statements. For example, in mathematics the statement latexmath:[3 + 3 = 6] has correct syntax, but latexmath:[3 + = 3 \& 6] does not. In chemistry latexmath:[H_2O] is a syntactically correct formula, but latexmath:[_2Zz] is not.
+Formal languages tend to have strict _syntax_ rules that govern the structure of statements. For example, in mathematics the statement latexmath:[\(3 + 3 = 6\)] has correct syntax, but latexmath:[\(3 += 3 \$ 6\)] does not. In chemistry latexmath:[\(H_2O\)] is a syntactically correct formula, but latexmath:[\(_2Zz\)] is not.
+(((syntax)))
 
-Syntax rules come in two flavors, pertaining to *tokens* and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[3 += 3 \& 6] is that latexmath:[\&] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[_2Zz] is not legal because there is no element with the abbreviation latexmath:[Zz].
+Syntax rules come in two flavors, pertaining to _tokens_ and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[\(3 += 3 \$ 6\)] is that latexmath:[\(\$\)] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[\(_2Zz\)] is not legal because there is no element with the abbreviation latexmath:[\(Zz\)].
+(((token)))
 
-The second type of syntax rule pertains to the way tokens are combined. The equation latexmath:[3 =+ 3] is illegal because even though latexmath:[+] and latexmath:[=] are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
+The second type of syntax rule pertains to the way tokens are combined. The equation latexmath:[\(3 += 3\)] is illegal because even though latexmath:[\(+\)] and latexmath:[\(=\)] are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
 
 This is @ well-structured Engli$h sentence with invalid t*kens in it. This sentence all valid tokens has, but invalid structure with.
 
-When you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called *parsing*.
+When you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called _parsing_.
+(((parse)))
 
 Although formal and natural languages have many features in common—tokens, structure, and syntax—there are some differences:
 
 ambiguity::
 Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.
+(((ambiguity)))
 
 redundancy::
 In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.
+(((redundancy)))
 
 literalness::
 Natural languages are full of idiom and metaphor. If I say, “The penny dropped”, there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
+(((literalness)))
 
 Because we all grow up speaking natural languages, it is sometimes hard to adjust to formal languages. The difference between formal and natural language is like the difference between poetry and prose, but more so:
 
 Poetry::
 Words are used for their sounds as well as for their meaning, and the whole poem together creates an effect or emotional response. Ambiguity is not only common but often deliberate.
+(((poetry)))
 
 Prose::
 The literal meaning of words is more important, and the structure contributes more meaning. Prose is more amenable to analysis than poetry but still often ambiguous.
+(((prose)))
 
 Programs::
 The meaning of a computer program is unambiguous and literal, and can be understood entirely by analysis of the tokens and structure.
@@ -202,12 +237,16 @@ Formal languages are more dense than natural languages, so it takes longer to re
 
 
 === Debugging
+(((debugging)))
 
-Programmers make mistakes. For whimsical reasons, programming errors are called *bugs* and the process of tracking them down is called *debugging*.
+Programmers make mistakes. For whimsical reasons, programming errors are called _bugs_ and the process of tracking them down is called _debugging_.
 
 Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent, or embarrassed.
+(((bug)))
 
 There is evidence that people naturally respond to computers as if they were people. When they work well, we think of them as teammates, and when they are obstinate or rude, we respond to them the same way we respond to rude, obstinate people (Reeves and Nass, _The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places_).
+(((debugging,emotional response)))
+(((emotional debugging)))
 
 Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture.
 
@@ -220,78 +259,88 @@ Learning to debug can be frustrating, but it is a valuable skill that is useful 
 
 problem solving::
 The process of formulating a problem, finding a solution, and expressing it.
-
-high-level language::
-A programming language like Julia that is designed to be easy for humans to read and write.
-
-low-level language::
-A programming language that is designed to be easy for a computer to run; also called “machine language” or “assembly language”.
-
-portability::
-A property of a program that can run on more than one kind of computer.
+(((problem solving)))
 
 REPL::
 A program that reads another program and executes it.
+(((REPL)))
 
 prompt::
 Characters displayed by the REPL to indicate that it is ready to take input from the user.
+(((prompt)))
 
 program::
 A sequence of instructions that specifies a computation.
+(((program)))
 
 print statement::
 An instruction that causes the Julia REPL to display a value on the screen.
+(((print statement)))
+(((statement, print)))
 
 operator::
 A special symbol that represents a simple computation like addition, multiplication, or string concatenation.
+(((operator)))
 
 value::
 One of the basic units of data, like a number or string, that a program manipulates.
+(((value)))
 
 type::
 A category of values. The types we have seen so far are integers (+Int64+), floating-point numbers (+Float64+), and strings (+String+).
+(((type)))
 
 integer::
 A type that represents whole numbers.
+(((integer)))
 
 floating-point::
 A type that represents numbers with fractional parts.
+(((floating-point)))
 
 string::
 A type that represents sequences of characters.
+(((string)))
 
 natural language::
 Any one of the languages that people speak that evolved naturally.
+(((natural language)))
 
 formal language::
 Any one of the languages that people have designed for specific purposes, such as representing mathematical ideas or computer programs; all programming languages are formal languages.
+(((formal language)))
 
 token::
 One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.
+(((token)))
 
 syntax::
 The rules that govern the structure of a program.
+(((syntax)))
 
 parse::
 To examine a program and analyze the syntactic structure.
+(((parse)))
 
 bug::
 An error in a program.
+(((bug)))
 
 debugging::
 The process of finding and correcting bugs.
+(((debugging)))
 
 
 === Exercises
 
 [[ex01-1]]
-==== Exercise 1-1
-
+===== Exercise 1-1
 It is a good idea to read this book in front of a computer so you can try out the examples as you go.
 
 Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the “Hello, World!” program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell +println+ wrong?
 
 This kind of experiment helps you remember what you read; it also helps when you are programming, because you get to know what the error messages mean. It is better to make mistakes now and on purpose than later and accidentally.
+(((error message)))
 
 . In a print statement, what happens if you leave out one of the parentheses, or both?
 
@@ -303,10 +352,12 @@ This kind of experiment helps you remember what you read; it also helps when you
 
 . What happens if you have two values with no operator between them?
 
+
 [[ex01-2]]
-==== Exercise 1-2
+===== Exercise 1-2
 
 Start the Julia REPL and use it as a calculator.
+(((calculator)))
 
 . How many seconds are there in 42 minutes 42 seconds?
 

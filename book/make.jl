@@ -35,7 +35,7 @@ const chaps = [
 mkpath(img)
 if "images"  in ARGS
   if "pdf" in ARGS
-    cd(()->makefigs(:svg, "Ubuntu Mono", 1.3), img)
+    cd(()->makefigs(:svg, "Ubuntu Mono", 1.0), img)
   else
     cd(()->makefigs(:svg, "DejaVu Sans Mono", 1.0), img)
   end
@@ -49,8 +49,8 @@ elseif "latex" in ARGS
   run(`asciidoctor-latex -a compat-mode -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2  build/book.asciidoc`)
 else
   #run(`asciidoctor -d book -b html5 -a stylesheet=/Users/ben/Source/asciidoctor-stylesheet-factory/stylesheets/oreilly.css -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
-  #run(`asciidoctor -d book -b html5 -a stylesheet=./../oreilly.css -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
-  run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
+  run(`asciidoctor -d book -b html5 -a stylesheet=./../oreilly.css -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge build/book.asciidoc`)
+  #run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=rouge -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   run(`asciidoctor -d book -b docbook -a compat-mode -a toc build/book.asciidoc`)
 end
 if "deploy" in ARGS

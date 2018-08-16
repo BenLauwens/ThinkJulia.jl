@@ -1,16 +1,16 @@
 [[chap08]]
 == Strings
 
-Strings are not like integers, floats, and booleans. A string is a *sequence*, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia.
+Strings are not like integers, floats, and booleans. A string is a _sequence_, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia.
 
 
 === Characters
 
-The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the *ASCII standard*.
+The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the _ASCII standard_.
 
 There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean.
 
-The *Unicode standard* tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.
+The _Unicode standard_ tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.
 
 A +Char+ value represents a single character and is surrounded by single quotes:
 
@@ -41,7 +41,7 @@ julia> letter = fruit[1]
 
 The second statement selects character number 1 from +fruit+ and assigns it to +letter+.
 
-The expression in brackets is called an *index*. The index indicates which character in the sequence you want (hence the name).
+The expression in brackets is called an _index_. The index indicates which character in the sequence you want (hence the name).
 
 All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index +end+:
 
@@ -94,7 +94,7 @@ julia> last = fruits[len]
 
 But you might not get what you expect.
 
-Strings are encoded using the *UTF-8 encoding*. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.
+Strings are encoded using the _UTF-8 encoding_. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.
 
 The function +sizeof+ gives the number of bytes in a string:
 
@@ -119,7 +119,7 @@ In the case of +fruits+, the character +🍌+ is a four-byte character, so the i
 
 === Traversal with a +for+ loop
 
-A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a *traversal*. One way to write a traversal is with a +while+ loop:
+A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a _traversal_. One way to write a traversal is with a +while+ loop:
 
 [source,julia]
 ----
@@ -165,7 +165,7 @@ Of course, that’s not quite right because “Ouack” and “Quack” are miss
 
 === String Slices
 
-A segment of a string is called a *slice*. Selecting a slice is similar to selecting a character:
+A segment of a string is called a _slice_. Selecting a slice is similar to selecting a character:
 
 [source,@julia-repl-test chap08]
 ----
@@ -185,7 +185,7 @@ julia> str[8:end]
 "Caesar"
 ----
 
-If the first index is greater than the second the result is an *empty string*, represented by two quotation marks:
+If the first index is greater than the second the result is an _empty string_, represented by two quotation marks:
 
 [source,@julia-repl-test chap08]
 ----
@@ -210,7 +210,7 @@ julia> greeting[0] = 'J'
 ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ----
 
-The reason for the error is that strings are *immutable*, which means you can’t change an existing string. The best you can do is create a new string that is a variation on the original:
+The reason for the error is that strings are _immutable_, which means you can’t change an existing string. The best you can do is create a new string that is a variation on the original:
 
 [source,@julia-repl-test chap08]
 ----
@@ -223,7 +223,7 @@ This example concatenates a new first letter onto a slice of greeting. It has no
 
 === String Interpolation
 
-Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to +string+ or repeated multiplications, Julia allows *string interpolation* using +$+:
+Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to +string+ or repeated multiplications, Julia allows _string interpolation_ using +$+:
 
 [source,@julia-repl-test]
 ----
@@ -270,7 +270,7 @@ This is the first example we have seen of a return statement inside a loop. If +
 
 If the character doesn’t appear in the string, the program exits the loop normally and returns -1.
 
-This pattern of computation—traversing a sequence and returning when we find what we are looking for—is called a *search*.
+This pattern of computation—traversing a sequence and returning when we find what we are looking for—is called a _search_.
 
 As an exercise, modify +find+ so that it has a third parameter, the index in +word+ where it should start looking.
 
@@ -291,7 +291,7 @@ end
 println(count)
 ----
 
-This program demonstrates another pattern of computation called a *counter*. The variable +count+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, count contains the result—the total number of +a+’s.
+This program demonstrates another pattern of computation called a _counter_. The variable +count+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, count contains the result—the total number of +a+’s.
 
 As an exercise, encapsulate this code in a function named +count+, and generalize it so that it accepts the string and the letter as arguments.
 
@@ -567,19 +567,19 @@ A variable used to count something, usually initialized to zero and then increme
 === Exercises
 
 [[ex08-1]]
-==== Exercise 8-1
+===== Exercise 8-1
 
-Read the documentation of the string functions at https://docs.julialang.org/en/stable/stdlib/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
+Read the documentation of the string functions at https://docs.julialang.org/en/stable/base/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
 
 The documentation uses a syntax that might be confusing. For example, in +search(string::AbstractString, chars::Chars, [start::Integer])+, the brackets indicate optional arguments. So +string+ and +chars+ are required, but +start+ is optional.
 
 [[ex08-2]]
-==== Exercise 8-2
+===== Exercise 8-2
 
 There is a builtin function called +count+ that is similar to the function in <<looping_and_counting>>. Read the documentation of this function and use it to count the number of +a+’s in "banana".
 
 [[ex08-3]]
-==== Exercise 8-3
+===== Exercise 8-3
 
 A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
 
@@ -596,7 +596,7 @@ A step size of -1 goes through the word backwards, so the slice +[end:-1:1]+ gen
 Use this idiom to write a one-line version of +ispalindrome+ from Exercise 6.3.
 
 [[ex08-4]]
-==== Exercise 8-4
+===== Exercise 8-4
 
 The following functions are all _intended_ to check whether a string contains any lowercase letters, but at least some of them are wrong. For each function, describe what the function actually does (assuming that the parameter is a string).
 
@@ -648,7 +648,7 @@ end
 ----
 
 [[ex08-5]]
-==== Exercise 8-5
+===== Exercise 8-5
 
 A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so +’A’+ rotated by 3 is +’D’+ and +’Z’+ rotated by 1 is +’A’+.
 

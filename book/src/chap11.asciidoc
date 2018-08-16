@@ -6,11 +6,11 @@ This chapter presents another built-in type called a dictionary. Dictionaries ar
 
 === A Dictionary Is a Mapping
 
-A *dictionary* is like an array, but more general. In an array, the indices have to be integers; in a dictionary they can be (almost) any type.
+A _dictionary_ is like an array, but more general. In an array, the indices have to be integers; in a dictionary they can be (almost) any type.
 
-A dictionary contains a collection of indices, which are called *keys*, and a collection of values. Each key is associated with a single value. The association of a key and a value is called a *key-value pair* or sometimes an item.
+A dictionary contains a collection of indices, which are called _keys_, and a collection of values. Each key is associated with a single value. The association of a key and a value is called a _key-value pair_ or sometimes an item.
 
-In mathematical language, a dictionary represents a *mapping* from keys to values, so you can also say that each key “maps to” a value. As an example, we’ll build a dictionary that maps from English to Spanish words, so the keys and the values are all strings.
+In mathematical language, a dictionary represents a _mapping_ from keys to values, so you can also say that each key “maps to” a value. As an example, we’ll build a dictionary that maps from English to Spanish words, so the keys and the values are all strings.
 
 The function +Dict+ creates a new dictionary with no items. Because +Dict+ is the name of a built-in function, you should avoid using it as a variable name.
 
@@ -110,7 +110,7 @@ true
 
 The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <<searching>>. As the array gets longer, the search time gets longer in direct proportion.
 
-For dictionaries, Julia uses an algorithm called a *hashtable* that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
+For dictionaries, Julia uses an algorithm called a _hashtable_ that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
 
 [[dictionary_collection_counters]]
 === Dictionary as a Collection of Counters
@@ -125,7 +125,7 @@ Suppose you are given a string and you want to count how many times each letter 
 
 Each of these options performs the same computation, but each of them implements that computation in a different way.
 
-An *implementation* is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.
+An _implementation_ is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.
 
 Here is what the code might look like:
 
@@ -226,9 +226,9 @@ t 1
 
 === Reverse Lookup
 
-Given a dictionary +d+ and a key +k+, it is easy to find the corresponding value +v = d[k]+. This operation is called a *lookup*.
+Given a dictionary +d+ and a key +k+, it is easy to find the corresponding value +v = d[k]+. This operation is called a _lookup_.
 
-But what if you have +v+ and you want to find +k+? You have two problems: first, there might be more than one key that maps to the value +v+. Depending on the application, you might be able to pick one, or you might have to make an array that contains all of them. Second, there is no simple syntax to do a *reverse lookup*; you have to search.
+But what if you have +v+ and you want to find +k+? You have two problems: first, there might be more than one key that maps to the value +v+. Depending on the application, you might be able to pick one, or you might have to make an array that contains all of them. Second, there is no simple syntax to do a _reverse lookup_; you have to search.
 
 Here is a function that takes a value and returns the first key that maps to that value:
 
@@ -293,7 +293,7 @@ function invertdict(d)
 end
 ----
 
-Each time through the loop, +key+ gets a key from +d+ and +val+ gets the corresponding value. If +val+ is not in +inverse+, that means we haven’t seen it before, so we create a new item and initialize it with a *singleton* (an array that contains a single element). Otherwise we have seen this value before, so we append the corresponding key to the array.
+Each time through the loop, +key+ gets a key from +d+ and +val+ gets the corresponding value. If +val+ is not in +inverse+, that means we haven’t seen it before, so we create a new item and initialize it with a _singleton_ (an array that contains a single element). Otherwise we have seen this value before, so we append the corresponding key to the array.
 
 Here is an example:
 
@@ -314,16 +314,16 @@ image::images/fig111.svg[]
 
 <<fig11-1>> is a state diagram showing +hist+ and +inverse+. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
 
-I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be *hashable*.
+I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be _hashable_.
 
-A *hash* is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs.
+A _hash_ is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs.
 
 
 === Memos
 
 If you played with the +fibonacci+ function from <<one_more_example>>, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
 
-To understand why, consider <<fig11-2>>, which shows the *call graph* for +fibonacci+ with +n = 4+:
+To understand why, consider <<fig11-2>>, which shows the _call graph_ for +fibonacci+ with +n = 4+:
 
 [[fig11-2]]
 .Call graph
@@ -334,7 +334,7 @@ A call graph shows a set of function frames, with lines connecting each frame to
 
 Count how many times +fibonacci(0)+ and +fibonacci(1)+ are called. This is an inefficient solution to the problem, and it gets worse as the argument gets bigger.
 
-One solution is to keep track of values that have already been computed by storing them in a dictionary. A previously computed value that is stored for later use is called a *memo*. Here is a “memoized” version of fibonacci:
+One solution is to keep track of values that have already been computed by storing them in a dictionary. A previously computed value that is stored for later use is called a _memo_. Here is a “memoized” version of fibonacci:
 
 [source,@julia-setup]
 ----
@@ -359,9 +359,9 @@ If you run this version of +fibonacci+ and compare it with the original, you wil
 
 === Global Variables
 
-In the previous example, known is created outside the function, so it belongs to the special frame called +__main__+. Variables in +__main__+ are sometimes called *global* because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
+In the previous example, known is created outside the function, so it belongs to the special frame called +__main__+. Variables in +__main__+ are sometimes called _global_ because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
 
-It is common to use global variables for *flags*; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:
+It is common to use global variables for _flags_; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:
 
 [source,@julia-setup]
 ----
@@ -387,7 +387,7 @@ end
 
 But if you run it you will see that the value of +been_called+ doesn’t change. The problem is that +example2+ creates a new local variable named +been_called+. The local variable goes away when the function ends, and has no effect on the global variable.
 
-To reassign a global variable inside a function you have to *declare* the global variable before you use it:
+To reassign a global variable inside a function you have to _declare_ the global variable before you use it:
 
 [source,@julia-setup]
 ----
@@ -399,7 +399,7 @@ function example2()
 end
 ----
 
-The *global statement* tells the interpreter something like, “In this function, when I say +been_called+, I mean the global variable; don’t create a local one.”
+The _global statement_ tells the interpreter something like, “In this function, when I say +been_called+, I mean the global variable; don’t create a local one.”
 
 Here’s an example that tries to update a global variable:
 
@@ -471,7 +471,7 @@ function fibonacci(n)
 end
 ----
 
-Here is a function that tries to reassign a *constant global variable*:
+Here is a function that tries to reassign a _constant global variable_:
 
 [source,@julia-setup chap11]
 ----
@@ -587,46 +587,49 @@ A global variable that can not be reassigned.
 === Exercises
 
 [[ex11-1]]
-==== Exercise 11-1
+===== Exercise 11-1
 
 Write a function that reads the words in _words.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
 
 If you did <<ex10-10>>, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
 
 [[ex11-2]]
-==== Exercise 11-2
+===== Exercise 11-2
 
 Read the documentation of the dictionary function +get!+ and use it to write a more concise version of invert_dict.
 
 [[ex11-3]]
-==== Exercise 11-3
+===== Exercise 11-3
 
 Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments. Hint: no.
 
 [[ex11-4]]
-==== Exercise 11-4
+===== Exercise 11-4
 
 If you did <<ex10-7>>, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
 
 Use a dictionary to write a faster, simpler version of +hasduplicates+.
 
 [[ex11-5]]
-==== Exercise 11-5
+===== Exercise 11-5
 
 Two words are “rotate pairs” if you can rotate one of them and get the other (see +rotateword+ in <<ex08-5>>).
 
 Write a program that reads a word array and finds all the rotate pairs.
 
 [[ex11-6]]
-==== Exercise 11-6
+===== Exercise 11-6
 
-Here’s another Puzzler from Car Talk (http://www.cartalk.com/content/puzzlers):
+Here’s another Puzzler from Car Talk (https://www.cartalk.com/puzzler/browse):
 
-_This was sent in by a fellow named Dan O’Leary. He came upon a common one-syllable, five-letter word recently that has the following unique property. When you remove the first letter, the remaining letters form a homophone of the original word, that is a word that sounds exactly the same. Replace the first letter, that is, put it back and remove the second letter and the result is yet another homophone of the original word. And the question is, what’s the word?_
+[quote]
+____
+This was sent in by a fellow named Dan O’Leary. He came upon a common one-syllable, five-letter word recently that has the following unique property. When you remove the first letter, the remaining letters form a homophone of the original word, that is a word that sounds exactly the same. Replace the first letter, that is, put it back and remove the second letter and the result is yet another homophone of the original word. And the question is, what’s the word?
 
-_Now I’m going to give you an example that doesn’t work. Let’s look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like to ‘wrack with pain.’ If I remove the first letter, I am left with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see the rack on that buck! It must have been a nine-pointer!’ It’s a perfect homophone. If you put the ‘w’ back, and remove the ‘r,’ instead, you’re left with the word, ‘wack,’ which is a real word, it’s just not a homophone of the other two words._
+Now I’m going to give you an example that doesn’t work. Let’s look at the five-letter word, ‘wrack.’ W-R-A-C-K, you know like to ‘wrack with pain.’ If I remove the first letter, I am left with a four-letter word, ’R-A-C-K.’ As in, ‘Holy cow, did you see the rack on that buck! It must have been a nine-pointer!’ It’s a perfect homophone. If you put the ‘w’ back, and remove the ‘r,’ instead, you’re left with the word, ‘wack,’ which is a real word, it’s just not a homophone of the other two words.
 
-_But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?_
+But there is, however, at least one word that Dan and we know of, which will yield two homophones if you remove either of the first two letters to make two, new four-letter words. The question is, what’s the word?
+____
 
 You can use the dictionary from <<ex11-1>> to check whether a string is in the word array.
 

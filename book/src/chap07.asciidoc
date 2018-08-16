@@ -22,13 +22,13 @@ The first time we display +x+, its value is 5; the second time, its value is 7.
 .State diagram
 image::images/fig71.svg[]
 
-<<fig07-1>> shows what *reassignment* looks like in a state diagram.
+<<fig07-1>> shows what _reassignment_ looks like in a state diagram.
 
 At this point I want to address a common source of confusion. Because Julia uses the equal sign (+=+) for assignment, it is tempting to interpret a statement like +a = b+ as a mathematical proposition of equality; that is, the claim that +a+ and +b+ are equal. But this interpretation is wrong.
 
-First, equality is a symmetric relationship and assignment is not. For example, in mathematics, if latexmath:[a=7] then latexmath:[7=a]. But in Julia, the statement +a = 7+ is legal and +7 = a+ is not.
+First, equality is a symmetric relationship and assignment is not. For example, in mathematics, if latexmath:[\(a=7\)] then latexmath:[\(7=a\)]. But in Julia, the statement +a = 7+ is legal and +7 = a+ is not.
 
-Also, in mathematics, a proposition of equality is either true or false for all time. If latexmath:[a=b] now, then latexmath:[a] will always equal latexmath:[b]. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:
+Also, in mathematics, a proposition of equality is either true or false for all time. If latexmath:[\(a=b\)] now, then latexmath:[\(a\)] will always equal latexmath:[\(b\)]. In Julia, an assignment statement can make two variables equal, but they don’t have to stay that way:
 
 [source,@julia-repl-test]
 ----
@@ -78,12 +78,12 @@ julia> y = y + 1
 1
 ----
 
-Updating a variable by adding 1 is called an *increment*; subtracting 1 is called a *decrement*.
+Updating a variable by adding 1 is called an _increment_; subtracting 1 is called a _decrement_.
 
 
 === The +while+ Statement
 
-Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called *iteration*.
+Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called _iteration_.
 
 We have already seen two functions, +countdown+ and +printn+, that iterate using recursion. Because iteration is so common, Julia provides language features to make it easier. One is the +for+ statement we saw in <<simple_repetition>>. We’ll get back to that later.
 
@@ -112,7 +112,7 @@ More formally, here is the flow of execution for a +while+ statement:
 
 This type of flow is called a loop because the third step loops back around to the top.
 
-The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an *infinite loop*. An endless source of amusement for computer scientists is the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite loop.
+The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an _infinite loop_. An endless source of amusement for computer scientists is the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite loop.
 
 In the case of +countdown+, we can prove that the loop terminates: if +n+ is zero or negative, the loop never runs. Otherwise, +n+ gets smaller each time through the loop, so eventually we have to get to 0.
 
@@ -134,11 +134,11 @@ end
 
 The condition for this loop is +n != 1+, so the loop will continue until +n+ is 1, which makes the condition false.
 
-Each time through the loop, the program outputs the value of +n+ and then checks whether it is even or odd. If it is even, +n+ is divided by 2. If it is odd, the value of +n+ is replaced with +n*3 + 1+. For example, if the argument passed to sequence is 3, the resulting values of +n+ are 3, 10, 5, 16, 8, 4, 2, 1.
+Each time through the loop, the program outputs the value of +n+ and then checks whether it is even or odd. If it is even, +n+ is divided by 2. If it is odd, the value of +n+ is replaced with +pass:[n*3 + 1]+. For example, if the argument passed to sequence is 3, the resulting values of +n+ are 3, 10, 5, 16, 8, 4, 2, 1.
 
 Since +n+ sometimes increases and sometimes decreases, there is no obvious proof that +n+ will ever reach 1, or that the program terminates. For some particular values of +n+, we can prove termination. For example, if the starting value is a power of two, +n+ will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.
 
-The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See http://en.wikipedia.org/wiki/Collatz_conjecture.)
+The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture.)
 
 As an exercise, rewrite the function +printn+ from <<recursion>> using iteration instead of recursion.
 
@@ -198,13 +198,15 @@ If +i+ is divisible by 3, the +continue+ statement stops the current iteration a
 
 Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.
 
-For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of latexmath:[a]. If you start with almost any estimate, latexmath:[x], you can compute a better estimate with the following formula:
+For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of latexmath:[\(a\)]. If you start with almost any estimate, latexmath:[\(x\)], you can compute a better estimate with the following formula:
 
 [latexmath]
 ++++
-y = \frac{1}{2}\left(x + \frac{a}{x}\right)
+\begin{equation}
+{y = \frac{1}{2}\left(x + \frac{a}{x}\right)}
+\end{equation}
 ++++
-For example, if latexmath:[a] is 4 and latexmath:[x] is 3:
+For example, if latexmath:[\(a\)] is 4 and latexmath:[\(x\)] is 3:
 
 [source,@julia-repl-test chap07]
 ----
@@ -216,7 +218,7 @@ julia> y = (x + a/x) / 2
 2.1666666666666665
 ----
 
-The result is closer to the correct answer (latexmath:[\sqrt 4 = 2]). If we repeat the process with the new estimate, it gets even closer:
+The result is closer to the correct answer (latexmath:[\(\sqrt 4 = 2\)]). If we repeat the process with the new estimate, it gets even closer:
 
 [source,@julia-repl-test chap07]
 ----
@@ -268,7 +270,7 @@ while true
 end
 ----
 
-For most values of a this works fine, but in general it is dangerous to test float equality. Floating-point values are only approximately right: most rational numbers, like latexmath:[\frac{1}{3}], and irrational numbers, like latexmath:[\sqrt 2], can’t be represented exactly with a +Float64+.
+For most values of a this works fine, but in general it is dangerous to test float equality. Floating-point values are only approximately right: most rational numbers, like latexmath:[\(\frac{1}{3}\)], and irrational numbers, like latexmath:[\(\sqrt 2\)], can’t be represented exactly with a +Float64+.
 
 Rather than checking whether +x+ and +y+ are exactly equal, it is safer to use the built-in function +abs+ to compute the absolute value, or magnitude, of the difference between them:
 
@@ -284,11 +286,11 @@ Where +ε+ (+\varepsilon TAB+) has a value like +0.0000001+ that determines how 
 
 === Algorithms
 
-Newton’s method is an example of an *algorithm*: it is a mechanical process for solving a category of problems (in this case, computing square roots).
+Newton’s method is an example of an _algorithm_: it is a mechanical process for solving a category of problems (in this case, computing square roots).
 
 To understand what an algorithm is, it might help to start with something that is not an algorithm. When you learned to multiply single-digit numbers, you probably memorized the multiplication table. In effect, you memorized 100 specific solutions. That kind of knowledge is not algorithmic.
 
-But if you were “lazy”, you might have learned a few tricks. For example, to find the product of latexmath:[n] and latexmath:[9], you can write latexmath:[n-1] as the first digit and latexmath:[10-n] as the second digit. This trick is a general solution for multiplying any single-digit number by latexmath:[9]. That’s an algorithm!
+But if you were “lazy”, you might have learned a few tricks. For example, to find the product of latexmath:[\(n\)] and latexmath:[\(9\)], you can write latexmath:[\(n-1\)] as the first digit and latexmath:[\(10-n\)] as the second digit. This trick is a general solution for multiplying any single-digit number by latexmath:[\(9\)]. That’s an algorithm!
 
 Similarly, the techniques you learned for addition with carrying, subtraction with borrowing, and long division are all algorithms. One of the characteristics of algorithms is that they do not require any intelligence to carry out. They are mechanical processes where each step follows from the last according to a simple set of rules.
 
@@ -342,7 +344,7 @@ A general process for solving a category of problems.
 === Exercises
 
 [[ex07-1]]
-==== Exercise 7-1
+===== Exercise 7-1
 
 Copy the loop from <<square_roots>> and encapsulate it in a function called +mysqrt+ that takes +a+ as a parameter, chooses a reasonable value of +x+, and returns an estimate of the square root of +a+.
 
@@ -360,7 +362,7 @@ println(out)
 The first column is a number, +a+; the second column is the square root of a computed with +mysqrt+; the third column is the square root computed by +sqrt+; the fourth column is the absolute value of the difference between the two estimates.
 
 [[ex07-2]]
-==== Exercise 7-2
+===== Exercise 7-2
 
 The built-in function +Meta.parse+ takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function +Core.eval+. For example:
 
@@ -379,14 +381,16 @@ julia> Core.eval(Main, expr)
 Write a function called +evalloop+ that iteratively prompts the user, takes the resulting input and evaluates it using +eval+, and prints the result. It should continue until the user enters +done+, and then return the value of the last expression it evaluated.
 
 [[ex07-3]]
-==== Exercise 7-3
+===== Exercise 7-3
 
 The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of latexmath:[\frac{1}{\pi}]:
 
 [latexmath]
 ++++
-\frac{1}{\pi}=\frac{2\sqrt2}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}
+\begin{equation}
+{\frac{1}{\pi}=\frac{2\sqrt2}{9801}\sum_{k=0}^\infty\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}}
+\end{equation}
 ++++
 
-Write a function called +estimatepi+ that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than +1e-15+ (which is Julia notation for latexmath:[10^{-15}]). You can check the result by comparing it to +π+.
+Write a function called +estimatepi+ that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than +1e-15+ (which is Julia notation for latexmath:[\(10^{-15}\)]). You can check the result by comparing it to +π+.
 

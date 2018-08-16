@@ -6,9 +6,9 @@ This chapter presents the second case study, which involves solving word puzzles
 [[reading_word_lists]]
 === Reading Word Lists
 
-For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see http://wikipedia.org/wiki/Moby_Project). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is _113809of.fic_; you can download a copy, with the simpler name _words.txt_, from https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt.
+For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see https://wikipedia.org/wiki/Moby_Project). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is _113809of.fic_; you can download a copy, with the simpler name _words.txt_, from https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt.
 
-This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a *file stream* you can use to read the file.
+This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a _file stream_ you can use to read the file.
 
 [source,@julia-eval chap09]
 ----
@@ -53,12 +53,12 @@ end
 === Exercises
 
 [[ex09-1]]
-==== Exercise 9-1
+===== Exercise 9-1
 
 Write a program that reads +words.txt+ and prints only the words with more than 20 characters (not counting whitespace).
 
 [[ex09-2]]
-==== Exercise 9-2
+===== Exercise 9-2
 
 In 1939 Ernest Vincent Wright published a 50,000 word novel called Gadsby that does not contain the letter +'e'+. Since +'e'+ is the most common letter in English, that’s not easy to do.
 
@@ -71,24 +71,24 @@ Write a function called +hasno_e+ that returns +true+ if the given word doesn’
 Modify your program from the previous section to print only the words that have no +'e'+ and compute the percentage of the words in the list that have no +'e'+.
 
 [[ex09-3]]
-==== Exercise 9-3
+===== Exercise 9-3
 
 Write a function named +avoids+ that takes a word and a string of forbidden letters, and that returns +true+ if the word doesn’t use any of the forbidden letters.
 
 Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
 
 [[ex09-4]]
-==== Exercise 9-4
+===== Exercise 9-4
 
 Write a function named +usesonly+ that takes a word and a string of letters, and that returns +true+ if the word contains only letters in the list. Can you make a sentence using only the letters +acefhlo+? Other than +"Hoe alfalfa?"+
 
 [[ex09-5]]
-==== Exercise 9-5
+===== Exercise 9-5
 
 Write a function named +usesall+ that takes a word and a string of required letters, and that returns +true+ if the word uses all the required letters at least once. How many words are there that use all the vowels +aeiou+? How about +aeiouy+?
 
 [[ex09-6]]
-==== Exercise 9-6
+===== Exercise 9-6
 
 Write a function called +isabecedarian+ that returns +true+ if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
 
@@ -170,7 +170,7 @@ function usesall(word, required)
 end
 ----
 
-This is an example of a program development plan called *reduction to a previously solved problem*, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
+This is an example of a program development plan called _reduction to a previously solved problem_, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
 
 
 === Looping with Indices
@@ -272,7 +272,7 @@ Testing programs is hard. The functions in this chapter are relatively easy to t
 
 Taking +hasno_e+ as an example, there are two obvious cases to check: words that have an +'e'+ should return +false+, and words that don’t should return +true+. You should have no trouble coming up with one of each.
 
-Within each case, there are some less obvious subcases. Among the words that have an “e”, you should test words with an “e” at the beginning, the end, and somewhere in the middle. You should test long words, short words, and very short words, like the empty string. The empty string is an example of a *special case*, which is one of the non-obvious cases where errors often lurk.
+Within each case, there are some less obvious subcases. Among the words that have an “e”, you should test words with an “e” at the beginning, the end, and somewhere in the middle. You should test long words, short words, and very short words, like the empty string. The empty string is an example of a _special case_, which is one of the non-obvious cases where errors often lurk.
 
 In addition to the test cases you generate, you can also test your program with a word list like +words.txt+. By scanning the output, you might be able to catch errors, but be careful: you might catch one kind of error (words that should not be included, but are) and not another (words that should be included, but aren’t).
 
@@ -298,37 +298,46 @@ A test case that is atypical or non-obvious (and less likely to be handled corre
 === Exercises
 
 [[ex09-7]]
-==== Exercise 9-7
+===== Exercise 9-7
 
-This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (http://www.cartalk.com/content/puzzlers):
+This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (https://www.cartalk.com/puzzler/browse):
 
-_Give me a word with three consecutive double letters. I’ll give you a couple of words that almost qualify, but don’t. For example, the word committee, c-o-m-m-i-t-t-e-e. It would be great except for the 'i' that sneaks in there. Or Mississippi: M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would work. But there is a word that has three consecutive pairs of letters and to the best of my knowledge this may be the only word. Of course there are probably 500 more but I can only think of one. What is the word?_
+[quote]
+____
+Give me a word with three consecutive double letters. I’ll give you a couple of words that almost qualify, but don’t. For example, the word committee, c-o-m-m-i-t-t-e-e. It would be great except for the 'i' that sneaks in there. Or Mississippi: M-i-s-s-i-s-s-i-p-p-i. If you could take out those i’s it would work. But there is a word that has three consecutive pairs of letters and to the best of my knowledge this may be the only word. Of course there are probably 500 more but I can only think of one. What is the word?
+____
 
 Write a program to find it.
 
 [[ex09-8]]
-==== Exercise 9-8
+===== Exercise 9-8
 
-Here’s another _Car Talk_ Puzzler (http://www.cartalk.com/content/puzzlers):
+Here’s another _Car Talk_ Puzzler (https://www.cartalk.com/puzzler/browse):
 
-_I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0._
+[quote]
+____
+I was driving on the highway the other day and I happened to notice my odometer. Like most odometers, it shows six digits, in whole miles only. So, if my car had 300000 miles, for example, I’d see 3-0-0-0-0-0.
 
-_Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5._
+Now, what I saw that day was very interesting. I noticed that the last 4 digits were palindromic; that is, they read the same forward as backward. For example, 5-4-4-5 is a palindrome, so my odometer could have read 3-1-5-4-4-5.
 
-_“One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6. One mile after that, the middle 4 out of 6 numbers were palindromic. And you ready for this? One mile later, all 6 were palindromic!_
+One mile later, the last 5 numbers were palindromic. For example, it could have read 3-6-5-4-5-6. One mile after that, the middle 4 out of 6 numbers were palindromic. And you ready for this? One mile later, all 6 were palindromic!
 
-_The question is, what was on the odometer when I first looked?_
+The question is, what was on the odometer when I first looked?
+____
 
 Write a Julia program that tests all the six-digit numbers and prints any numbers that satisfy these requirements.
 
 [[ex09-9]]
-==== Exercise 9-9
+===== Exercise 9-9
 
-Here’s another _Car Talk_ Puzzler you can solve with a search (http://www.cartalk.com/content/puzzlers):
+Here’s another _Car Talk_ Puzzler you can solve with a search (https://www.cartalk.com/puzzler/browse):
 
-_Recently I had a visit with my mom and we realized that the two digits that make up my age when reversed resulted in her age. For example, if she’s 73, I’m 37. We wondered how often this has happened over the years but we got sidetracked with other topics and we never came up with an answer._
+[quote]
+____
+Recently I had a visit with my mom and we realized that the two digits that make up my age when reversed resulted in her age. For example, if she’s 73, I’m 37. We wondered how often this has happened over the years but we got sidetracked with other topics and we never came up with an answer.
 
-_When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?_
+When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?
+____
 
 Write a Julia program that searches for solutions to this Puzzler. Hint: you might find the function +lpad+ useful.
 

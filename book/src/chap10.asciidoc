@@ -6,7 +6,7 @@ This chapter presents one of Julia’s most useful built-in types, arrays. You w
 
 === An Array is a Sequence
 
-Like a string, an *array* is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called *elements* or sometimes *items*.
+Like a string, an _array_ is a sequence of values. In a string, the values are characters; in an array, they can be any type. The values in an array are called _elements_ or sometimes _items_.
 
 There are several ways to create a new array; the simplest is to enclose the elements in square brackets (+[ ]+):
 
@@ -23,7 +23,7 @@ The first example is an array of four integers. The second is an array of three 
 ["spam", 2.0, 5, [10, 20]]
 ----
 
-An array within another array is *nested*.
+An array within another array is _nested_.
 
 An array that contains no elements is called an empty array; you can create one with empty brackets, +[]+.
 
@@ -66,7 +66,7 @@ julia> cheeses[1]
 "Cheddar"
 ----
 
-Unlike strings, arrays are *mutable*. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:
+Unlike strings, arrays are _mutable_. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:
 
 [source,@julia-repl-test chap10]
 ----
@@ -254,7 +254,7 @@ function addall(t)
 end
 ----
 
-+total+ is initialized to 0. Each time through the loop, +x+ gets one element from the array. The +=+ operator provides a short way to update a variable. This *augmented assignment statement*,
++total+ is initialized to 0. Each time through the loop, +x+ gets one element from the array. The +=+ operator provides a short way to update a variable. This _augmented assignment statement_,
 
 [source,julia]
 ----
@@ -268,7 +268,7 @@ is equivalent to
 total = total + x
 ----
 
-As the loop runs, +total+ accumulates the sum of the elements; a variable used this way is sometimes called an *accumulator*.
+As the loop runs, +total+ accumulates the sum of the elements; a variable used this way is sometimes called an _accumulator_.
 
 Adding up the elements of an array is such a common operation that Julia provides it as a built-in function, +sum+:
 
@@ -280,7 +280,7 @@ julia> sum(t)
 10
 ----
 
-An operation like this that combines a sequence of elements into a single value is sometimes called *reduce*.
+An operation like this that combines a sequence of elements into a single value is sometimes called _reduce_.
 
 Sometimes you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
 
@@ -297,7 +297,7 @@ end
 
 +res+ is initialized with an empty array; each time through the loop, we append the next element. So +res+ is another kind of accumulator.
 
-An operation like +capitalizeall+ is sometimes called a *map* because it “maps” a function (in this case +uppercase+) onto each of the elements in a sequence.
+An operation like +capitalizeall+ is sometimes called a _map_ because it “maps” a function (in this case +uppercase+) onto each of the elements in a sequence.
 
 Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns a array that contains only the uppercase strings:
 
@@ -314,14 +314,14 @@ function onlyupper(t)
 end
 ----
 
-An operation like +onlyupper+ is called a *filter* because it selects some of the elements and filters out the others.
+An operation like +onlyupper+ is called a _filter_ because it selects some of the elements and filters out the others.
 
 Most common array operations can be expressed as a combination of map, filter and reduce.
 
 
 === Dot Syntax
 
-For every binary operator like +^+, there is a corresponding *dot operator* +.^+ that is automatically defined to perform +^+ element-by-element on arrays. For example, +[1, 2, 3] ^ 3+ is not defined, but +[1, 2, 3] .^ 3+ is defined as computing the elementwise result +[1^3, 2^3, 3^3]+:
+For every binary operator like +pass:[^]+, there is a corresponding _dot operator_ pass:[<code>.^</code>] that is automatically defined to perform +pass:[^]+ element-by-element on arrays. For example, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] is not defined, but pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] is defined as computing the elementwise result pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
 
 [source,@julia-repl-test]
 ----
@@ -329,7 +329,7 @@ julia> print([1, 2, 3] .^ 3)
 [1, 8, 27]
 ----
 
-Any Julia function +f+ can be applied elementwise to any array with the *dot syntax*. For example to capitalize an array of strings, we don't need a loop:
+Any Julia function +f+ can be applied elementwise to any array with the _dot syntax_. For example to capitalize an array of strings, we don't need a loop:
 
 [source,@julia-repl-test]
 ----
@@ -436,7 +436,7 @@ julia> print(t)
 SubString{String}["pining", "for", "the", "fjords"]
 ----
 
-An *optional argument* called a *delimiter* specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
+An _optional argument_ called a _delimiter_ specifies which characters to use as word boundaries. The following example uses a hyphen as a delimiter:
 
 [source,@julia-repl-test]
 ----
@@ -461,7 +461,7 @@ In this case the delimiter is a space character. To concatenate strings without 
 
 === Objects and Values
 
-An *object* is something a variable can refer to. Until now, you could use “object” and “value” interchangeably.
+An _object_ is something a variable can refer to. Until now, you could use “object” and “value” interchangeably.
 
 If we run these assignment statements:
 
@@ -510,7 +510,7 @@ So the state diagram looks like <<fig10-3>>.
 image::images/fig103.svg[]
 
 
-In this case we would say that the two arrays are *equivalent*, because they have the same elements, but not *identical*, because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
+In this case we would say that the two arrays are _equivalent_, because they have the same elements, but not _identical_, because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
 
 To be precise an object has a value. If you evaluate +[1, 2, 3]+, you get an array object whose value is a sequence of integers. If another array has the same elements, we say it has the same value, but it is not the same object.
 
@@ -536,9 +536,9 @@ The state diagram looks like <<fig10-4>>.
 image::images/fig104.svg[]
 
 
-The association of a variable with an object is called a *reference*. In this example, there are two references to the same object.
+The association of a variable with an object is called a _reference_. In this example, there are two references to the same object.
 
-An object with more than one reference has more than one name, so we say that the object is *aliased*.
+An object with more than one reference has more than one name, so we say that the object is _aliased_.
 
 If the aliased object is mutable, changes made with one alias affect the other:
 
@@ -837,7 +837,7 @@ end;
 ----
 
 [[ex10-1]]
-==== Exercise 10-1
+===== Exercise 10-1
 
 Write a function called +nestedsum+ that takes an array of arrays of integers and adds up the elements from all of the nested arrays. For example:
 
@@ -850,9 +850,9 @@ julia> nestedsum(t)
 ----
 
 [[ex10-2]]
-==== Exercise 10-2
+===== Exercise 10-2
 
-Write a function called +cumulsum+ that takes an array of numbers and returns the cumulative sum; that is, a new array where the latexmath:[i]th element is the sum of the first latexmath:[i+1] elements from the original array. For example:
+Write a function called +cumulsum+ that takes an array of numbers and returns the cumulative sum; that is, a new array where the latexmath:[\(i\)]th element is the sum of the first latexmath:[\(i+1\)] elements from the original array. For example:
 
 [source,@julia-repl-test chap10]
 ----
@@ -863,7 +863,7 @@ Any[1, 3, 6]
 ----
 
 [[ex10-3]]
-==== Exercise 10-3
+===== Exercise 10-3
 
 Write a function called +interior+ that takes an array and returns a new array that contains all but the first and last elements. For example:
 
@@ -876,7 +876,7 @@ julia> print(interior(t))
 ----
 
 [[ex10-4]]
-==== Exercise 10-4
+===== Exercise 10-4
 
 Write a function called +interior!+ that takes an array, modifies it by removing the first and last elements, and returns +nothing+. For example:
 
@@ -891,7 +891,7 @@ julia> print(t)
 ----
 
 [[ex10-5]]
-==== Exercise 10-5
+===== Exercise 10-5
 
 Write a function called +issort+ that takes an array as a parameter and returns +true+ if the array is sorted in ascending order and +false+ otherwise. For example:
 
@@ -904,29 +904,29 @@ false
 ----
 
 [[ex10-6]]
-==== Exercise 10-6
+===== Exercise 10-6
 
 Two words are anagrams if you can rearrange the letters from one to spell the other. Write a function called +isanagram+ that takes two strings and returns +true+ if they are anagrams.
 
 [[ex10-7]]
-==== Exercise 10-7
+===== Exercise 10-7
 
 Write a function called +hasduplicates+ that takes an array and returns +true+ if there is any element that appears more than once. It should not modify the original array.
 
 [[ex10-8]]
-==== Exercise 10-8
+===== Exercise 10-8
 
-This exercise pertains to the so-called Birthday Paradox, which you can read about at http://en.wikipedia.org/wiki/Birthday_paradox.
+This exercise pertains to the so-called Birthday Paradox, which you can read about at https://en.wikipedia.org/wiki/Birthday_paradox.
 
 If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches. Hint: you can generate random birthdays with +rand(1:365)+.
 
 [[ex10-9]]
-==== Exercise 10-9
+===== Exercise 10-9
 
 Write a function that reads the file +words.txt+ and builds an array with one element per word. Write two versions of this function, one using +push!+ and the other using the idiom +t = [t..., x]+. Which one takes longer to run? Why?
 
 [[ex10-10]]
-==== Exercise 10-10
+===== Exercise 10-10
 
 To check whether a word is in the word array, you could use the +∈+ operator, but it would be slow because it searches through the words in order.
 
@@ -937,12 +937,12 @@ Either way, you cut the remaining search space in half. If the word array has 11
 Write a function called +inbisect+ that takes a sorted array and a target value and returns +true+ if the word is in the array and +false+ if it’s not.
 
 [[ex10-11]]
-==== Exercise 10-11
+===== Exercise 10-11
 
 Two words are a “reverse pair” if each is the reverse of the other. Write a program that finds all the reverse pairs in the word array.
 
 [[ex10-12]]
-==== Exercise 10-12
+===== Exercise 10-12
 
 Two words “interlock” if taking alternating letters from each forms a new word. For example, “shoe” and “cold” interlock to form “schooled”.
 
