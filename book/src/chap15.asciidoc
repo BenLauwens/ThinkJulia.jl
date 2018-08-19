@@ -1,10 +1,10 @@
 [[chap15]]
-== Structs and objects
+== Structs and Objects
 
 At this point you know how to use functions to organize code and built-in types to organize data. The next step is to learn how to build your own types to organize both code and data. This is a big topic; it will take a few chapters to get there.
 
 
-=== Composite types
+=== Composite Types
 
 We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called +Point+ that represents a point in two-dimensional space.
 
@@ -63,7 +63,7 @@ A state diagram that shows an object and its fields is called an _object diagram
 image::images/fig151.svg[]
 
 
-=== Structs are immutable
+=== Structs are Immutable
 
 You can get the values of the fields using +.+ notation:
 
@@ -102,7 +102,7 @@ This may seem odd at first, but it has several advantages:
 * Code using immutable objects can be easier to reason about.
 
 
-=== Mutable structs
+=== Mutable Structs
 
 Where required, mutable composite types can be declared with the keyword +mutable struct+. Here is the definition of a mutable point:
 

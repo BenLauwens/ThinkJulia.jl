@@ -17,7 +17,7 @@ One of the simplest ways for programs to maintain their data is by reading and w
 An alternative is to store the state of the program in a database. In this chapter I will also present how to use a simple database.
 
 [[reading_and_writing]]
-=== Reading and writing
+=== Reading and Writing
 
 A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <<reading_word_lists>>.
 

@@ -3,10 +3,6 @@
 = Think Julia: How to Think Like a Computer Scientist
 Ben Lauwens; Allen Downey
 
-Think Julia
-
-by Ben Lauwens with Allen Downey
-
 Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.
 
 _Think Julia_ is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The authors maintain an online version at https://github.com/BenLauwens/ThinkJulia.jl
@@ -56,6 +52,8 @@ include::chap20.asciidoc[]
 include::chap21.asciidoc[]
 
 include::chap22.asciidoc[]
+
+include::appa.asciidoc[]
 
 include::index.asciidoc[]    
     

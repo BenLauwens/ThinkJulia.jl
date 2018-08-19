@@ -2,14 +2,13 @@
 == Variables, Expressions and Statements
 
 One of the most powerful features of a programming language is the ability to manipulate _variables_. A variable is a name that refers to a value.
-(((variable)))
+(((variable)))(((value)))
 
 
 === Assignment Statements
 
 An _assignment statement_ creates a new variable and gives it a value:
-(((assignment statement)))
-(((statement, assignment)))
+(((assignment statement)))((("statement", "assignment", see="assignment statement")))(((pass:[=], see="assignment statement"))))(((pi)))((("π", see="pi")))
 
 [source,@julia-repl-test chap02]
 ----
@@ -21,11 +20,10 @@ julia> π = 3.141592653589793
 3.141592653589793
 ----
 
-This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +π+.
+This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +π+ (*+\pi TAB+*).
 
 A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a _state diagram_ because it shows what state each of the variables is in (think of it as the variable’s state of mind). <<fig02-1>> shows the result of the previous example.
-(((state diagram)))
-(((diagram, state)))
+(((state diagram)))((("diagram", "state", see="state diagram")))
 
 [[fig02-1]]
 .State diagram
@@ -40,11 +38,13 @@ Programmers generally choose names for their variables that are meaningful—the
 Variable names can be as long as you like. They can contain almost all Unicode characters, but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.
 
 Unicode characters can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
+(((Unicode character)))
 
 The underscore character, +_+, can appear in a name. It is often used in names with multiple words, such as +your_name+ or +airspeed_of_unladen_swallow+.
-(((underscore character)))
+(((underscore character)))(((LaTeX-like abbreviations)))
 
 If you give a variable an illegal name, you get a syntax error:
+(((syntax error)))((("error", "base", "syntax", see="syntax error")))
 
 [source,julia-repl]
 ----
@@ -116,12 +116,11 @@ When you type a statement, the REPL _executes_ it, which means that it does what
 So far we have run Julia in _interactive mode_, which means that you interact directly with the REPL. Interactive mode is a good way to get started, but if you are working with more than a few lines of code, it can be clumsy.
 (((interactive mode)))
 
-The alternative is to save code in a file called a _script_ and then run the REPL in _script mode_ to execute the script. By convention, Julia scripts have names that end with +.jl+.
-(((script)))
-(((script mode)))
+The alternative is to save code in a file called a _script_ and then run the REPL in _script mode_ to execute the script. By convention, Julia scripts have names that end with _.jl_.
+(((script)))(((script mode)))
 
 If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+julia name_of_the_script.jl+*.
-(((extension, .jl)))
+(((extension, .jl)))(((JuliaBox)))
 
 Because Julia provides both modes, you can test bits of code in interactive mode before you put them in a script. But there are differences between interactive mode and script mode that can be confusing.
 
@@ -135,7 +134,7 @@ julia> miles * 1.61
 42.182
 ----
 
-The first line assigns a value to +miles+, but it has no visible effect. The second line is an expression, so the REPL evaluates it and displays the result. It turns out that a marathon is about 42 kilometers.
+The first line assigns a value to +miles+ and displays the value. The second line is an expression, so the REPL evaluates it and displays the result. It turns out that a marathon is about 42 kilometers.
 
 But if you type the same code into a script and run it, you get no output at all. In script mode an expression, all by itself, has no visible effect. Julia actually evaluates the expression, but it doesn’t display the value unless you tell it to:
 
@@ -169,6 +168,8 @@ println(x)
 
 The assignment statement produces no output.
 
+[TIP]
+====
 To check your understanding, type the following statements in the Julia REPL and see what they do:
 
 [source,julia]
@@ -179,30 +180,33 @@ x + 1
 ----
 
 Now put the same statements in a script and run it. What is the output? Modify the script by transforming each expression into a print statement and then run it again.
-
+====
 
 === Order of Operations
-(((order of operations)))
-(((PEMDAS)))
 
 When an expression contains more than one operator, the order of evaluation depends on the _order of operations_. For mathematical operators, Julia follows mathematical convention. The acronym _PEMDAS_ is a useful way to remember the rules:
+(((order of operations)))(((PEMDAS)))
 
 * __P__arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, +2*(3-1)+ is 4, and +pass:[(1+1)^(5-2)]+ is 8. You can also use parentheses to make an expression easier to read, as in +(minute * 100) / 60+, even if it doesn’t change the result.
+(((parentheses)))
 
 * __E__xponentiation has the next highest precedence, so +pass:[1+2^3]+ is 9, not 27, and +2*3^2+ is 18, not 36.
+(((pass:[^])))
 
 * __M__ultiplication and __D__ivision have higher precedence than __A__ddition and __S__ubtraction. So +2*3-1+ is 5, not 4, and +pass:[6+4/2]+ is 8, not 5.
+(((pass:[*])))(((pass:[/])))(((pass:[+])))(((pass:[-])))
 
 * Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[\(2\pi\)], you can use parentheses or write +degrees / 2 / π+.
 
+[NOTE]
+====
 I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
-
+====
 
 === String Operations
-(((string operation)))
-(((operator, string)))
 
 In general, you can’t perform mathematical operations on strings, even if the strings look like numbers, so the following are illegal:
+(((string operation)))(((operator, string)))
 
 [source,julia]
 ----
@@ -210,9 +214,10 @@ In general, you can’t perform mathematical operations on strings, even if the 
 ----
 
 But there are two exceptions, +*+ and +pass:[^]+.
+(((pass:[*])))(((pass:[^])))
 
 The +pass:[*]+ operator performs _string concatenation_, which means it joins the strings by linking them end-to-end. For example:
-(((string, concatenation)))
+((("string", "concatenation", see="concatenate")))((("concatenate")))
 
 [source,@julia-repl-test]
 ----
@@ -225,16 +230,17 @@ julia> first * second
 ----
 
 The +^+ operator also works on strings; it performs repetition. For example, +"Spam"pass:[^]3+ is +"SpamSpamSpam"+. If one of the values is a string, the other has to be an integer.
+((("string", "repetition", see="repetition")))((("repetition")))
 
 This use of +pass:[*]+ and +^+ makes sense by analogy with multiplication and exponentiation. Just as +4pass:[^]3+ is equivalent to +4*4*4+, we expect +"Spam"pass:[^]3+ to be the same as +pass:["Spam"*"Spam"*"Spam"]+, and it is.
 
 
 === Comments
-(((comment)))
 
 As programs get bigger and more complicated, they get more difficult to read. Formal languages are dense, and it is often difficult to look at a piece of code and figure out what it is doing, or why.
 
 For this reason, it is a good idea to add notes to your programs to explain in natural language what the program is doing. These notes are called _comments_, and they start with the +#+ symbol:
+(((comment)))((("pass:[#]", see="comment")))
 
 [source,julia]
 ----
@@ -267,38 +273,34 @@ This comment contains useful information that is not in the code:
 v = 5   # velocity in meters/second.
 ----
 
+[WARNING]
+====
 Good variable names can reduce the need for comments, but long names can make complex expressions hard to read, so there is a tradeoff.
+====
 
 
 === Debugging
-(((debugging)))
-(((bug)))
 
 Three kinds of errors can occur in a program: syntax errors, runtime errors, and semantic errors. It is useful to distinguish between them in order to track them down more quickly.
+(((debugging)))
 
 Syntax error:: 
 “Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so +(1 + 2)+ is legal, but +8)+ is a syntax error.
 +
 If there is a syntax error anywhere in your program, Julia displays an error message and quits, and you will not be able to run the program. During the first few weeks of your programming career, you might spend a lot of time tracking down syntax errors. As you gain experience, you will make fewer errors and find them faster.
-(((syntax error)))
-(((error, syntax)))
-(((error message)))
+(((syntax error)))(((error message)))
 
 Runtime error:: 
 The second type of error is a runtime error, so called because the error does not appear until after the program has started running. These errors are also called _exceptions_ because they usually indicate that something exceptional (and bad) has happened.
 +
 Runtime errors are rare in the simple programs you will see in the first few chapters, so it might be a while before you encounter one.
-(((runtime error)))
-(((error, runtime)))
-(((exception)))
+(((runtime error)))((("error", "runtime", see="runtime error")))(((exception, see="runtime error")))
 
 Semantic error:: 
 The third type of error is “semantic”, which means related to meaning. If there is a semantic error in your program, it will run without generating error messages, but it will not do the right thing. It will do something else. Specifically, it will do what you told it to do.
 +
 Identifying semantic errors can be tricky because it requires you to work backward by looking at the output of the program and trying to figure out what it is doing.
-(((semantic error)))
-(((error, semantic)))
-(((error message)))
+(((semantic error)))((("error", "semantic", see="semantic error")))
 
 === Glossary
 
@@ -356,7 +358,7 @@ Rules governing the order in which expressions involving multiple operators and 
 
 concatenate::
 To join two operands end-to-end.
-(((concatenate)))
+(((string concatenation)))
 
 comment::
 Information in a program that is meant for other programmers (or anyone reading the source code) and has no effect on the execution of the program.
@@ -366,9 +368,9 @@ syntax error::
 An error in a program that makes it impossible to parse (and therefore impossible to interpret).
 (((syntax error)))
 
-exception::
+runtime error or exception::
 An error that is detected while the program is running.
-(((exception)))
+(((runtime error)))
 
 semantics::
 The meaning of a program.
@@ -391,6 +393,7 @@ Repeating my advice from the previous chapter, whenever you learn a new feature,
 . How about +x = y = 1+?
 
 . In some languages every statement ends with a semi-colon, +;+. What happens if you put a semi-colon at the end of a Julia statement?
+(((pass:[;])))
 
 . What if you put a period at the end of a statement?
 
@@ -404,7 +407,7 @@ Practice using the Julia REPL as a calculator:
 
 . The volume of a sphere with radius latexmath:[\(r\)] is latexmath:[\(\frac{4}{3} \pi r^3\)]. What is the volume of a sphere with radius 5?
 
-. Suppose the cover price of a book is € 24.95, but bookstores get a 40 % discount. Shipping costs € 3 for the first copy and 75 cents for each additional copy. What is the total wholesale cost for 60 copies?
+. Suppose the cover price of a book is $ 24.95, but bookstores get a 40 % discount. Shipping costs $ 3 for the first copy and 75 cents for each additional copy. What is the total wholesale cost for 60 copies?
 
 . If I leave my house at 6:52 am and run 1 mile at an easy pace (8:15 per mile), then 3 miles at tempo (7:12 per mile) and 1 mile at easy pace again, what time do I get home for breakfast?
 

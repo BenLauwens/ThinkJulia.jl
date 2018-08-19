@@ -37,15 +37,16 @@ Believe it or not, that’s pretty much all there is to it. Every program you’
 === Running Julia
 
 One of the challenges of getting started with Julia is that you might have to install Julia and related software on your computer. If you are familiar with your operating system, and especially if you are comfortable with the command-line interface, you will have no trouble installing Julia. But for beginners, it can be painful to learn about system administration and programming at the same time.
-(((running Julia)))
-(((Julia, running)))
+(((Running Julia)))
 
-To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.(((Julia in a browser)))
+To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
+((("Julia in a browser", see="JuliaBox")))
 
 In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing.
 (((JuliaBox)))
 
-The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:(((REPL)))
+The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
+(((REPL)))((("Read-Eval-Print Loop", see="REPL")))
 
 [source,@julia-eval]
 ----
@@ -55,7 +56,7 @@ banner = String(take!(io))
 println("$(banner)julia>")
 ----
 
-The first lines contain information about the REPL and the operating system it’s running on, so it might be different for you. But you should check that the version number is at least +0.7.0+.
+The first lines contain information about the REPL, so it might be different for you. But you should check that the version number is at least +0.7.0+.
 
 The last line is a _prompt_ that indicates that the REPL is ready for you to enter code. If you type a line of code and hit +ENTER+, the REPL displays the result:
 (((prompt)))
@@ -72,7 +73,7 @@ Now you’re ready to get started. From here on, I assume that you know how to s
 === The First Program
 
 Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:
-((("Hello, World!")))
+((("Hello, World!")))(((println)))((("function", "base", "println", see="println")))
 
 [source,@julia-repl-test]
 ----
@@ -81,24 +82,22 @@ Hello, World!
 ----
 
 This is an example of a _print statement_, although it doesn’t actually print anything on paper. It displays a result on the screen.
-(((print statement)))
-(((statement, print)))
+(((print statement)))((("statement", "print", see="print")))
 
 The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
 (((quotation mark)))
 
 The parentheses indicate that +println+ is a function. We’ll get to functions in <<chap03>>.
-(((function)))
-(((function, println)))
+(((parentheses)))(((function)))
 
 
 === Arithmetic Operators
-(((arithmetic operator)))
-(((operator, arithmetic)))
 
 After “Hello, World!”, the next step is arithmetic. Julia provides _operators_, which are special symbols that represent computations like addition and multiplication.
+(((operator)))(((arithmetic operator)))(((operator, arithmetic)))
 
 The operators +pass:[+]+, +-+, and +*+ perform addition, subtraction, and multiplication, as in the following examples:
+(((pass:[+])))((("operator", "base", "pass:[+]", see="pass:[+]")))((("addition", see="pass:[+]")))(((pass:[*])))((("operator", "base", "pass:[*]", see="pass:[*]")))((("multiplication", see="pass:[*]")))((("-")))((("operator", "base", "-", see="pass:[-]")))((("subtraction", see="pass:[-]")))
 
 [source,@julia-repl-test]
 ----
@@ -111,6 +110,7 @@ julia> 6 * 7
 ----
 
 The operator +/+ performs division:
+((("/")))((("operator", "base", "/", see="pass:[/]")))((("division", see="pass:[/]")))
 
 [source,@julia-repl-test]
 ----
@@ -121,6 +121,7 @@ julia> 84 / 2
 You might wonder why the result is +42.0+ instead of +42+. I’ll explain in the next section.
 
 Finally, the operator +^+ performs exponentiation; that is, it raises a number to a power:
+(((pass:[^])))((("operator", "base", "pass:[^]", , see="pass:[^]")))((("exponentiation", see="pass:[^]")))
 
 [source,@julia-repl-test]
 ----
@@ -130,17 +131,15 @@ julia> 6^2 + 6
 
 
 === Values and Types
-(((value)))
-(((type)))
 
 A _value_ is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are +2+, +42.0+, and +"Hello, World!"+.
+(((value)))(((type)))
 
 These values belong to different _types_: +2+ is an _integer_, +42.0+ is a _floating-point number_, and +"Hello, World!"+ is a _string_, so-called because the letters it contains are strung together.
-(((integer)))
-(((floating-point)))
-(((string)))
+(((integer)))(((floating-point)))(((string)))
 
 If you are not sure what type a value has, the REPL can tell you:
+(((typeof)))((("function", "base", "typeof", see="typeof")))
 
 [source,@julia-repl-test]
 ----
@@ -153,6 +152,7 @@ String
 ----
 
 Not surprisingly, integers belong to the type +Int64+, strings belong to +String+ and floating-point numbers belong to +Float64+.
+(((Int64)))((("type", "base", "Int64", see="Int64")))(((Float64)))((("type", "base", "Float64", see="Float64")))(((String)))((("type", "base", "String", see="String")))
 
 What about values like +"2"+ and +"42.0"+? They look like numbers, but they are in quotation marks like strings.
 
@@ -179,25 +179,23 @@ That’s not what we expected at all! Julia parses +1,000,000+ as a comma-separa
 
 
 === Formal and Natural Languages
-(((formal language)))
-(((language, formal)))
-(((natural language)))
-(((language, natural)))
 
 _Natural languages_ are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
+(((natural language)))(((language, natural)))
 
 _Formal languages_ are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly:
+(((formal language)))(((language, formal)))
 
-[quote]
-____
+[NOTE]
+====
 Programming languages are formal languages that have been designed to express computations.
-____
+====
 
 Formal languages tend to have strict _syntax_ rules that govern the structure of statements. For example, in mathematics the statement latexmath:[\(3 + 3 = 6\)] has correct syntax, but latexmath:[\(3 += 3 \$ 6\)] does not. In chemistry latexmath:[\(H_2O\)] is a syntactically correct formula, but latexmath:[\(_2Zz\)] is not.
 (((syntax)))
 
-Syntax rules come in two flavors, pertaining to _tokens_ and structure. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[\(3 += 3 \$ 6\)] is that latexmath:[\(\$\)] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[\(_2Zz\)] is not legal because there is no element with the abbreviation latexmath:[\(Zz\)].
-(((token)))
+Syntax rules come in two flavors, pertaining to _tokens_ and _structure_. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[\(3 += 3 \$ 6\)] is that latexmath:[\(\$\)] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[\(_2Zz\)] is not legal because there is no element with the abbreviation latexmath:[\(Zz\)].
+(((token)))(((structure)))
 
 The second type of syntax rule pertains to the way tokens are combined. The equation latexmath:[\(3 += 3\)] is illegal because even though latexmath:[\(+\)] and latexmath:[\(=\)] are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
 
@@ -233,20 +231,20 @@ The literal meaning of words is more important, and the structure contributes mo
 Programs::
 The meaning of a computer program is unambiguous and literal, and can be understood entirely by analysis of the tokens and structure.
 
+[WARNING]
+====
 Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal language.
+====
 
 
 === Debugging
-(((debugging)))
 
 Programmers make mistakes. For whimsical reasons, programming errors are called _bugs_ and the process of tracking them down is called _debugging_.
+(((bug)))(((debugging)))
 
 Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent, or embarrassed.
-(((bug)))
 
 There is evidence that people naturally respond to computers as if they were people. When they work well, we think of them as teammates, and when they are obstinate or rude, we respond to them the same way we respond to rude, obstinate people (Reeves and Nass, _The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places_).
-(((debugging,emotional response)))
-(((emotional debugging)))
 
 Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture.
 
@@ -276,7 +274,6 @@ A sequence of instructions that specifies a computation.
 print statement::
 An instruction that causes the Julia REPL to display a value on the screen.
 (((print statement)))
-(((statement, print)))
 
 operator::
 A special symbol that represents a simple computation like addition, multiplication, or string concatenation.
@@ -314,6 +311,10 @@ token::
 One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.
 (((token)))
 
+structure::
+The way tokens are combined.
+(((structure)))
+
 syntax::
 The rules that govern the structure of a program.
 (((syntax)))
@@ -333,9 +334,13 @@ The process of finding and correcting bugs.
 
 === Exercises
 
+[TIP]
+====
+It is a good idea to read this book in front of a computer so you can try out the examples as you go.
+====
+
 [[ex01-1]]
 ===== Exercise 1-1
-It is a good idea to read this book in front of a computer so you can try out the examples as you go.
 
 Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the “Hello, World!” program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell +println+ wrong?
 
@@ -346,7 +351,7 @@ This kind of experiment helps you remember what you read; it also helps when you
 
 . If you are trying to print a string, what happens if you leave out one of the quotation marks, or both?
 
-. You can use a minus sign to make a negative number like +-2+. What happens if you put a plus sign before a number? What about +pass:[2+2]+?
+. You can use a minus sign to make a negative number like +-2+. What happens if you put a plus sign before a number? What about +pass:[2++2]+?
 
 . In math notation, leading zeros are ok, as in +02+. What happens if you try this in Julia?
 
