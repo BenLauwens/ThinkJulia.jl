@@ -44,7 +44,7 @@ The underscore character, +_+, can appear in a name. It is often used in names w
 (((underscore character)))(((LaTeX-like abbreviations)))
 
 If you give a variable an illegal name, you get a syntax error:
-(((syntax error)))((("error", "base", "syntax", see="syntax error")))
+(((syntax error)))((("error", "syntax", see="syntax error")))
 
 [source,julia-repl]
 ----
