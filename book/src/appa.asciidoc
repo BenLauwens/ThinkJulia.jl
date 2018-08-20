@@ -7,6 +7,14 @@ The following table lists Unicode characters that can be entered via tab complet
 [options="header"]
 |====
 |Character|Tab completion sequence|ASCII representation
+|+²+|*+\^2+*| 
+|+₁+|*+\_1+*| 
+|+₂+|*+\_2+*| 
+|+🐫+|*+\:camel:+*|
+|+🐢+|*+\:turtle:+*| 
+|+≥+|*+\ge+*|+>=+
+|+≤+|*+\le+*|+pass:[&lt;=]+
+|+≠+|*+\ne+*|+!=+
 |+π+|*+\pi+*|+pi+
-|+🐢+|*+\:turtle:+*|
+|+ε+|*+\varepsilon+*| 
 |====

@@ -7,6 +7,7 @@ The main topic of this chapter is the +if+ statement, which executes different c
 === Floor Division and Modulus
 
 The _floor division_ operator, +÷+ (+\div TAB+), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
+(((floor division operator)))((("operator", "base", "÷", see="floor division operator")))((("÷", see="floor division operator")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -33,6 +34,7 @@ julia> remainder = minutes - hours * 60
 ----
 
 An alternative is to use the _modulus operator_, +%+, which divides two numbers and returns the remainder.
+(((modulus operator)))((("operator", "base", "%", see="modulus operator")))((("%", see="modulus operator)))
 
 [source,@julia-repl-test chap05]
 ----
@@ -40,14 +42,18 @@ julia> remainder = minutes % 60
 45
 ----
 
+[NOTE]
+====
 The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if +x % y+ is zero, then +x+ is divisible by +y+.
 
 Also, you can extract the right-most digit or digits from a number. For example, +x % 10+ yields the right-most digit of +x+ (in base 10). Similarly +x % 100+ yields the last two digits.
+====
 
 
 === Boolean Expressions
 
 A _boolean expression_ is an expression that is either true or false. The following examples use the operator +==+, which compares two operands and produces +true+ if they are equal and +false+ otherwise:
+(((boolean expression)))(((true)))(((false)))((("keyword", "true", see="true")))((("keyword", "false", see="false")))
 
 [source,@julia-repl-test]
 ----
@@ -58,6 +64,7 @@ false
 ----
 
 +true+ and +false+ are special values that belong to the type +Bool+; they are not strings:
+(((Bool)))((("type", "base", "Bool")))
 
 [source,@julia-repl-test]
 ----
@@ -68,6 +75,7 @@ Bool
 ----
 
 The +==+ operator is one of the relational operators; the others are:
+(((relational operator)))(((==)))((("operator", "base", "==", see="==")))
 
 [source,julia]
 ----
@@ -81,12 +89,17 @@ The +==+ operator is one of the relational operators; the others are:
       x ≤ y                # (\le TAB)
 ----
 
+[WARNING]
+====
 Although these operations are probably familiar to you, the Julia symbols are different from the mathematical symbols. A common error is to use a single equal sign (+=+) instead of a double equal sign (+==+). Remember that +=+ is an assignment operator and +==+ is a relational operator. There is no such thing as +=<+ or +pass:[=>]+.
+(((≠)))((("operator", "base", "≠", see="≠")))((("!=", see="≠")))((("operator", "base", "!=", see="≠")))(((>)))((("operator", "base", ">", see=">")))(((<)))((("operator", "base", "<", see="<")))(((≥)))((("operator", "base", "≥", see="≥")))(((">=", see="≥")))((("operator", "base", ">=", see="≥")))(((≤)))((("operator", "base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operator", "base", "pass:[&lt;=]", see="≤")))
+====
 
 
 === Logical Operators
 
 There are three _logical operators_: +&&+ (and), +||+ (or), and +!+ (not). The semantics (meaning) of these operators is similar to their meaning in English. For example, +x > 0 && x < 10+ is true only if +x+ is greater than +0+ _and_ less than +10+.
+(((logical operator)))(((&&)))(((||)))(((!)))
 
 +n % 2 == 0 || n % 3 == 0+ is true if _either or both_ of the conditions is true, that is, if the number is divisible by 2 _or_ 3.
 
@@ -98,6 +111,7 @@ Finally, the +!+ operator negates a boolean expression, so +!(x > y)+ is true if
 === Conditional Execution
 
 In order to write useful programs, we almost always need the ability to check conditions and change the behavior of the program accordingly. _Conditional statements_ give us this ability. The simplest form is the +if+ statement:
+(((conditional statement)))(((if)))((("keyword", "if", see="if")))(((if statement)))((("statement", "if", see="if statement")))
 
 [source,julia]
 ----
@@ -107,8 +121,10 @@ end
 ----
 
 The boolean expression after +if+ is called the _condition_. If it is true, the indented statement runs. If not, nothing happens.
+(((condition)))
 
 +if+ statements have the same structure as function definitions: a header followed by body terminated with the keyword +end+. Statements like this are called _compound statements_.
+(((compound statement)))(((end)))
 
 There is no limit on the number of statements that can appear in the body. Occasionally, it is useful to have a body with no statements (usually as a place keeper for code you haven’t written yet).
 
@@ -123,6 +139,7 @@ end
 === Alternative Execution
 
 A second form of the +if+ statement is “alternative execution”, in which there are two possibilities and the condition determines which one runs. The syntax looks like this:
+(((alternative execution)))(((else)))((("keyword", "else", see="else")))
 
 [source,julia]
 ----
@@ -134,11 +151,13 @@ end
 ----
 
 If the remainder when +x+ is divided by 2 is 0, then we know that +x+ is even, and the program displays an appropriate message. If the condition is false, the second set of statements runs. Since the condition must be true or false, exactly one of the alternatives will run. The alternatives are called _branches_, because they are branches in the flow of execution.
+(((branch)))
 
 
 === Chained Conditionals
 
 Sometimes there are more than two possibilities and we need more than two branches. One way to express a computation like that is a _chained conditional_:
+(((chained conditional)))(((elseif)))((("keyword", "elseif", see="elseif")))
 
 [source,julia]
 ----
@@ -170,6 +189,7 @@ Each condition is checked in order. If the first is false, the next is checked, 
 === Nested Conditionals
 
 One conditional can also be nested within another. We could have written the example in the previous section like this:
+(((nested conditional)))
 
 [source,julia]
 ----
@@ -187,6 +207,7 @@ end
 The outer conditional contains two branches. The first branch contains a simple statement. The second branch contains another +if+ statement, which has two branches of its own. Those two branches are both simple statements, although they could have been conditional statements as well.
 
 Although the non-compulsory indentation of the statements makes the structure apparent, _nested conditionals_ become difficult to read very quickly. It is a good idea to avoid them when you can.
+(((indentation)
 
 Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:
 
@@ -217,15 +238,17 @@ if 0 < x < 10
 end
 ----
 
+
 [[recursion]]
 === Recursion
 
 It is legal for one function to call another; it is also legal for a function to call itself. It may not be obvious why that is a good thing, but it turns out to be one of the most magical things a program can do. For example, look at the following function:
+(((countdown)))((("function", "programmer-defined", "countdown", see="countdown")))
 
 [source,@julia-setup chap05]
 ----
 function countdown(n)
-    if n <= 0
+    if n ≤ 0
         println("Blastoff!")
     else
         print(n, " ")
@@ -261,13 +284,15 @@ julia> countdown(3)
 And then you’re back in +pass:[__main__]+.
 
 A function that calls itself is _recursive_; the process of executing it is called _recursion_.
+(((recursive function)))(((recursion)))
 
 As another example, we can write a function that prints a string latexmath:[\(n\)] times.
+(((printn)))((("function", "programmer-defined", "printn", see="printn")))
 
 [source,julia]
 ----
 function printn(s, n)
-    if n <= 0
+    if n ≤ 0
         return
     end
     println(s)
@@ -276,6 +301,7 @@ end
 ----
 
 If +n pass:[&lt;]= 0+ the +return+ statement exits the function. The flow of execution immediately returns to the caller, and the remaining lines of the function don’t run.
+(((return)))((("keyword", "return", see="return")))(((return statement)))((("statement", "return", see="return statement")))
 
 The rest of the function is similar to +countdown+: it displays +s+ and then calls itself to display +s+ latexmath:[\(n-1\)] additional times. So the number of lines of output is latexmath:[\(1 + (n - 1)\)], which adds up to latexmath:[\(n\)].
 
@@ -284,8 +310,10 @@ For simple examples like this, it is probably easier to use a +for+ loop. But we
 === Stack Diagrams for Recursive Functions
 
 In <<stack_diagrams>>, we used a stack diagram to represent the state of a program during a function call. The same kind of diagram can help interpret a recursive function.
+(((stack diagram)))
 
 Every time a function gets called, Julia creates a frame to contain the function’s local variables and parameters. For a recursive function, there might be more than one frame on the stack at the same time.
+(((frame)))
 
 [[fig05-1]]
 .Stack diagram
@@ -297,13 +325,18 @@ image::images/fig51.svg[]
 As usual, the top of the stack is the frame for +pass:[__main__]+. It is empty because we did not create any variables in +pass:[__main__]+ or pass any arguments to it.
 
 The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
+(((base case)))
 
+[TIP]
+====
 As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
+====
 
 
 === Infinite Recursion
 
 If a recursion never reaches a base case, it goes on making recursive calls forever, and the program never terminates. This is known as _infinite recursion_, and it is generally not a good idea. Here is a minimal program with an infinite recursion:
+(((infinite recursion)))(((recurse)))((("function", "programmer-defined", "recurse", see="recurse")))
 
 [source,julia]
 ----
@@ -323,6 +356,7 @@ Stacktrace:
 ----
 
 This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 +recurse+ frames on the stack!
+(((traceback)))(((StackOverflowError)))((("error", "base", "StackOverflowError", see="StackOverflowError")))
 
 If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
 
@@ -331,7 +365,8 @@ If you encounter an infinite recursion by accident, review your function to conf
 
 The programs we have written so far accept no input from the user. They just do the same thing every time.
 
-Julia provides a built-in function called input that stops the program and waits for the user to type something. When the user presses +RETURN+ or +ENTER+, the program resumes and +readline+ returns what the user typed as a string.
+Julia provides a built-in function called +readline+ that stops the program and waits for the user to type something. When the user presses +RETURN+ or +ENTER+, the program resumes and +readline+ returns what the user typed as a string.
+(((readline)))((("function", "base", "readline", see="readline")))
 
 [source,julia-repl]
 ----
@@ -341,6 +376,7 @@ What are you waiting for?
 ----
 
 Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
+(((prompt)))
 
 [source,julia-repl]
 ----
@@ -350,6 +386,7 @@ What...is your name? Arthur, King of the Britons!
 ----
 
 A semi-colon +;+ allows to put multiple statements on the same line. In the REPL only the last statement returns its value.
+(((;)))
 
 If you expect the user to type an integer, you can try to convert the return value to +Int64+:
 
@@ -364,6 +401,7 @@ julia> parse(Int64, speed)
 ----
 
 But if the user types something other than a string of digits, you get an error:
+(((parse)))
 
 [source,julia-repl]
 ----
@@ -377,11 +415,13 @@ ERROR: ArgumentError: invalid base 10 digit 'W' in "What do you mean, an African
 ----
 
 We will see how to handle this kind of error later.
+(((ArgumentError)))
 
 
 === Debugging
 
 When a syntax or runtime error occurs, the error message contains a lot of information, but it can be overwhelming. The most useful parts are usually:
+(((debugging)))
 
 * What kind of error it was, and
 
@@ -420,55 +460,73 @@ This is not the result you expected.
 
 To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses floor division instead of floating-point division.
 
+[WARNING]
+====
 You should take the time to read error messages carefully, but don’t assume that everything they say is correct.
+====
 
 
 === Glossary
 
 floor division::
 An operator, denoted +÷+, that divides two numbers and rounds down (toward negative infinity) to an integer.
+(((floor division)))
 
 modulus operator::
 An operator, denoted with a percent sign (%), that works on integers and returns the remainder when one number is divided by another.
+(((modulus operator)))
 
 boolean expression::
 An expression whose value is either +true+ or +false+.
+(((boolean expression)))
 
 relational operator::
 One of the operators that compares its operands: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+<=+).
+(((relational operator)))
 
 logical operator::
 One of the operators that combines boolean expressions: +&&+ (and), +||+ (or), and +!+ (not).
+(((logical operator)))
 
 conditional statement::
 A statement that controls the flow of execution depending on some condition.
+(((conditional statement)))
 
 condition::
 The boolean expression in a conditional statement that determines which branch runs.
+(((condition)))
 
 compound statement::
 A statement that consists of a header and a body. The body is terminated with the keyword +end+.
+(((compound statement)))
 
 branch::
 One of the alternative sequences of statements in a conditional statement.
+(((branch)))
 
 chained conditional::
 A conditional statement with a series of alternative branches.
+(((chained conditional)))
 
 nested conditional::
 A conditional statement that appears in one of the branches of another conditional statement.
+(((nested conditional)))
 
 return statement::
 A statement that causes a function to end immediately and return to the caller.
+(((return statement)))
 
 recursion::
 The process of calling the function that is currently executing.
+(((recursion)))
 
 base case::
 A conditional branch in a recursive function that does not make a recursive call.
+(((base case)))
 
 infinite recursion::
 A recursion that doesn’t have a base case, or never reaches it. Eventually, an infinite recursion causes a runtime error.
+(((infinite recursion)))
 
 
 === Exercises
@@ -477,6 +535,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 ===== Exercise 5-1
 
 The function +time+ returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
+(((time)))((("function", "base", "time")))
 
 [source,@julia-repl]
 ----
@@ -489,6 +548,7 @@ Write a script that reads the current time and converts it to a time of day in h
 ===== Exercise 5-2
 
 Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] such that
+(((Fermat's last theorem)))
 
 [latexmath]
 ++++
@@ -500,6 +560,7 @@ Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\
 for any values of latexmath:[\(n\)] greater than 2.
 
 . Write a function named +checkfermat+ that takes four parameters—+a+, +b+, +c+ and +n+—and checks to see if Fermat’s theorem holds. If +n+ is greater than 2 and +pass:[a^n + b^n == c^n]+ the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
+(((checkfermat)))((("function", "programmer-defined", "checkfermat", see="checkfermat")))
 
 . Write a function that prompts the user to input values for +a+, +b+, +c+ and +n+, converts them to integers, and uses +checkfermat+ to check whether they violate Fermat’s theorem.
 
@@ -508,12 +569,13 @@ for any values of latexmath:[\(n\)] greater than 2.
 
 If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
 
-[quote]
-____
+[TIP]
+====
 If any of the three lengths is greater than the sum of the other two, then you cannot form a triangle. Otherwise, you can. (If the sum of two lengths equals the third, they form what is called a “degenerate” triangle.)
-____
+====
 
 . Write a function named +istriangle+ that takes three integers as arguments, and that prints either “Yes” or “No”, depending on whether you can or cannot form a triangle from sticks with the given lengths.
+(((istriangle)))((("function", "programmer-defined", "istriangle", see="istriangle")))
 
 . Write a function that prompts the user to input three stick lengths, converts them to integers, and uses +istriangle+ to check whether sticks with the given lengths can form a triangle.
 
@@ -521,6 +583,7 @@ ____
 ===== Exercise 5-4
 
 What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
+(((stack diagram)))(((recurse)))
 
 [source,julia]
 ----
@@ -572,6 +635,7 @@ image::images/fig52.svg[]
 
 
 The Koch curve is a fractal that looks something like <<fig05-2>>. To draw a Koch curve with length latexmath:[\(x\)], all you have to do is
+(((Koch curve)))(((fractal)))
 
 . Draw a Koch curve with length latexmath:[\(\frac{x}{3}\)].
 
@@ -590,8 +654,10 @@ The Koch curve is a fractal that looks something like <<fig05-2>>. To draw a Koc
 The exception is if latexmath:[\(x\)] is less than 3: in that case, you can just draw a straight line with length latexmath:[\(x\)].
 
 . Write a function called +koch+ that takes a turtle and a length as parameters, and that uses the turtle to draw a Koch curve with the given length.
+(((koch)))((("function", "programmer-defined", "koch", see="koch")))
 
 . Write a function called +snowflake+ that draws three Koch curves to make the outline of a snowflake.
+(((snowflake)))((("function", "programmer-defined", "snowflake", see="snowflake")))
 
 . The Koch curve can be generalized in several ways. See https://en.wikipedia.org/wiki/Koch_snowflake for examples and implement your favorite.
 

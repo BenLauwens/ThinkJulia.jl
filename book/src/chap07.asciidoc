@@ -2,6 +2,7 @@
 == Iteration
 
 This chapter is about iteration, which is the ability to run a block of statements repeatedly. We saw a kind of iteration, using recursion, in <<recursion>>. We saw another kind, using a +for+ loop, in <<simple_repetition>>. In this chapter we’ll see yet another kind, using a +while+ statement. But first I want to say a little more about variable assignment.
+(((iteration)))(((recursion)))(((for statement)))
 
 
 === Reassignment
@@ -23,8 +24,10 @@ The first time we display +x+, its value is 5; the second time, its value is 7.
 image::images/fig71.svg[]
 
 <<fig07-1>> shows what _reassignment_ looks like in a state diagram.
+(((reassignment)))(((state diagram)))
 
 At this point I want to address a common source of confusion. Because Julia uses the equal sign (+=+) for assignment, it is tempting to interpret a statement like +a = b+ as a mathematical proposition of equality; that is, the claim that +a+ and +b+ are equal. But this interpretation is wrong.
+(((assignment statement)))
 
 First, equality is a symmetric relationship and assignment is not. For example, in mathematics, if latexmath:[\(a=7\)] then latexmath:[\(7=a\)]. But in Julia, the statement +a = 7+ is legal and +7 = a+ is not.
 
@@ -40,17 +43,20 @@ julia> a = 3    # a and b are no longer equal
 3
 julia> b
 5
-
 ----
 
 The third line changes the value of +a+ but does not change the value of +b+, so they are no longer equal.
 
+[WARNING]
+====
 Reassigning variables is often useful, but you should use it with caution. If the values of variables change frequently, it can make the code difficult to read and debug.
+====
 
 
 === Updating Variables
 
 A common kind of reassignment is an update, where the new value of the variable depends on the old.
+(((update)))
 
 [source,@julia-repl-test chap07]
 ----
@@ -61,6 +67,7 @@ julia> x = x + 1
 This means “get the current value of +x+, add one, and then update +x+ with the new value.”
 
 If you try to update a variable that doesn’t exist, you get an error, because Julia evaluates the right side before it assigns a value to +x+:
+(((UndefVarError)))
 
 [source,@julia-repl-test]
 ----
@@ -69,6 +76,7 @@ ERROR: UndefVarError: y not defined
 ----
 
 Before you can update a variable, you have to initialize it, usually with a simple assignment:
+(((initialization)))
 
 [source,@julia-repl-test]
 ----
@@ -79,15 +87,19 @@ julia> y = y + 1
 ----
 
 Updating a variable by adding 1 is called an _increment_; subtracting 1 is called a _decrement_.
+(((increment)))(((decrement)))
 
 
 === The +while+ Statement
 
 Computers are often used to automate repetitive tasks. Repeating identical or similar tasks without making errors is something that computers do well and people do poorly. In a computer program, repetition is also called _iteration_.
+(((iteration)))
 
 We have already seen two functions, +countdown+ and +printn+, that iterate using recursion. Because iteration is so common, Julia provides language features to make it easier. One is the +for+ statement we saw in <<simple_repetition>>. We’ll get back to that later.
+(((recursion)))(((for statement)))
 
-Another is the +while+ statement. Here is a version of +countdown+ that uses a +while+ statement:
+Another is the _+while+ statement_. Here is a version of +countdown+ that uses a +while+ statement:
+(((while)))((("keyword", "while", see="while")))(((while statement)))((("statement", "while", see="while statement")))
 
 [source,@julia-setup]
 ----
@@ -101,8 +113,10 @@ end
 ----
 
 You can almost read the +while+ statement as if it were English. It means, “While +n+ is greater than 0, display the value of +n+ and then decrement +n+. When you get to 0, display the word Blastoff!”
+(((countdown)))
 
 More formally, here is the flow of execution for a +while+ statement:
+(((flow of execution)))
 
 . Determine whether the condition is true or false.
 
@@ -111,16 +125,19 @@ More formally, here is the flow of execution for a +while+ statement:
 . If the condition is true, run the body and then go back to step 1.
 
 This type of flow is called a loop because the third step loops back around to the top.
+(((loop)))
 
 The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an _infinite loop_. An endless source of amusement for computer scientists is the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite loop.
+(((infinite loop)))
 
 In the case of +countdown+, we can prove that the loop terminates: if +n+ is zero or negative, the loop never runs. Otherwise, +n+ gets smaller each time through the loop, so eventually we have to get to 0.
 
 For some other loops, it is not so easy to tell. For example:
+(((seq)))((("function", "programmer-defined", "seq", see="seq")))
 
 [source,@julia-setup]
 ----
-function sequence(n)
+function seq(n)
     while n != 1
         println(n)
         if n % 2 == 0        # n is even
@@ -139,15 +156,21 @@ Each time through the loop, the program outputs the value of +n+ and then checks
 Since +n+ sometimes increases and sometimes decreases, there is no obvious proof that +n+ will ever reach 1, or that the program terminates. For some particular values of +n+, we can prove termination. For example, if the starting value is a power of two, +n+ will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.
 
 The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture.)
+(((Collatz conjecture)))
 
+[TIP]
+====
 As an exercise, rewrite the function +printn+ from <<recursion>> using iteration instead of recursion.
+====
 
 
 === +break+
 
-Sometimes you don’t know it’s time to end a loop until you get half way through the body. In that case you can use the break statement to jump out of the loop.
+Sometimes you don’t know it’s time to end a loop until you get half way through the body. In that case you can use the _+break+ statement_ to jump out of the loop.
+
 
 For example, suppose you want to take input from the user until they type done. You could write:
+(((readline)))
 
 [source,julia]
 ----
@@ -179,7 +202,7 @@ This way of writing +while+ loops is common because you can check the condition 
 
 === +continue+
 
-The +break+ statement exits the loop. When a +continue+ statement is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:
+The +break+ statement exits the loop. When a _+continue+ statement_ is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:
 
 [source,@julia]
 ----
@@ -199,6 +222,7 @@ If +i+ is divisible by 3, the +continue+ statement stops the current iteration a
 Loops are often used in programs that compute numerical results by starting with an approximate answer and iteratively improving it.
 
 For example, one way of computing square roots is Newton’s method. Suppose that you want to know the square root of latexmath:[\(a\)]. If you start with almost any estimate, latexmath:[\(x\)], you can compute a better estimate with the following formula:
+(((Newton's method)))
 
 [latexmath]
 ++++
@@ -273,6 +297,7 @@ end
 For most values of a this works fine, but in general it is dangerous to test float equality. Floating-point values are only approximately right: most rational numbers, like latexmath:[\(\frac{1}{3}\)], and irrational numbers, like latexmath:[\(\sqrt 2\)], can’t be represented exactly with a +Float64+.
 
 Rather than checking whether +x+ and +y+ are exactly equal, it is safer to use the built-in function +abs+ to compute the absolute value, or magnitude, of the difference between them:
+(((abs)))
 
 [source,julia]
 ----
@@ -287,10 +312,11 @@ Where +ε+ (+\varepsilon TAB+) has a value like +0.0000001+ that determines how 
 === Algorithms
 
 Newton’s method is an example of an _algorithm_: it is a mechanical process for solving a category of problems (in this case, computing square roots).
+(((algorithm)))
 
 To understand what an algorithm is, it might help to start with something that is not an algorithm. When you learned to multiply single-digit numbers, you probably memorized the multiplication table. In effect, you memorized 100 specific solutions. That kind of knowledge is not algorithmic.
 
-But if you were “lazy”, you might have learned a few tricks. For example, to find the product of latexmath:[\(n\)] and latexmath:[\(9\)], you can write latexmath:[\(n-1\)] as the first digit and latexmath:[\(10-n\)] as the second digit. This trick is a general solution for multiplying any single-digit number by latexmath:[\(9\)]. That’s an algorithm!
+But if you were “lazy”, you might have learned a few tricks. For example, to find the product of latexmath:[\(n\)] and 9, you can write latexmath:[\(n-1\)] as the first digit and latexmath:[\(10-n\)] as the second digit. This trick is a general solution for multiplying any single-digit number by 9. That’s an algorithm!
 
 Similarly, the techniques you learned for addition with carrying, subtraction with borrowing, and long division are all algorithms. One of the characteristics of algorithms is that they do not require any intelligence to carry out. They are mechanical processes where each step follows from the last according to a simple set of rules.
 
@@ -302,10 +328,13 @@ Some of the things that people do naturally, without difficulty or conscious tho
 === Debugging
 
 As you start writing bigger programs, you might find yourself spending more time debugging. More code means more chances to make an error and more places for bugs to hide.
+(((debugging)))
 
 One way to cut your debugging time is “debugging by bisection”. For example, if there are 100 lines in your program and you check them one at a time, it would take 100 steps.
+(((debugging by bisection)))
 
 Instead, try to break the problem in half. Look at the middle of the program, or near it, for an intermediate value you can check. Add a print statement (or something else that has a verifiable effect) and run the program.
+(((print statement)))
 
 If the mid-point check is incorrect, there must be a problem in the first half of the program. If it is correct, the problem is in the second half.
 
@@ -318,27 +347,47 @@ In practice it is not always clear what the “middle of the program” is and n
 
 reassignment::
 Assigning a new value to a variable that already exists.
+(((reassignment)))
 
 update::
 An assignment where the new value of the variable depends on the old.
+(((update)))
 
 initialization::
 An assignment that gives an initial value to a variable that will be updated.
+(((initialization)))
 
 increment::
 An update that increases the value of a variable (often by one).
+(((increment)))
 
 decrement::
 An update that decreases the value of a variable.
+(((decrement)))
 
 iteration::
 Repeated execution of a set of statements using either a recursive function call or a loop.
+(((iteration)))
+
++while+ statement::
+Statement that allows iterations controlled by a condition.
+(((while statement)))
+
++break+ statement::
+Statement allowing to jump out of a loop.
+(((break statement)))
+
++continue+ statement::
+Statement inside a loop that jumps to the beginning of the loop for the next iteration.
+(((continue statement)))
 
 infinite loop::
 A loop in which the terminating condition is never satisfied.
+(((infinite loop)))
 
 algorithm::
 A general process for solving a category of problems.
+(((algorithm)))
 
 
 === Exercises
@@ -347,8 +396,10 @@ A general process for solving a category of problems.
 ===== Exercise 7-1
 
 Copy the loop from <<square_roots>> and encapsulate it in a function called +mysqrt+ that takes +a+ as a parameter, chooses a reasonable value of +x+, and returns an estimate of the square root of +a+.
+(((mysqrt)))((("function", "programmer-defined", "mysqrt", see="mysqrt")))
 
 To test it, write a function named +testsquareroot+ that prints a table like this:
+(((testsquareroot)))((("function", "programmer-defined", "testsquareroot", see="testsquareroot")))
 
 [source,@julia-eval]
 ----
@@ -365,6 +416,7 @@ The first column is a number, +a+; the second column is the square root of a com
 ===== Exercise 7-2
 
 The built-in function +Meta.parse+ takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function +Core.eval+. For example:
+(((parse)))((("function", "Meta", "parse", see="parse")))(((eval)))((("function", "Core", "eval", see="eval")))
 
 [source,@julia-repl-test]
 ----
@@ -378,12 +430,14 @@ julia> Core.eval(Main, expr)
 1.7724538509055159
 ----
 
-Write a function called +evalloop+ that iteratively prompts the user, takes the resulting input and evaluates it using +eval+, and prints the result. It should continue until the user enters +done+, and then return the value of the last expression it evaluated.
+Write a function called +evalloop+ that iteratively prompts the user, takes the resulting input and evaluates it using +Core.eval+, and prints the result. It should continue until the user enters +done+, and then return the value of the last expression it evaluated.
+
+(((evalloop)))((("function", "programmer-defined", "evalloop", see="evalloop")))
 
 [[ex07-3]]
 ===== Exercise 7-3
 
-The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of latexmath:[\frac{1}{\pi}]:
+The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of latexmath:[\(\frac{1}{\pi}\)]:
 
 [latexmath]
 ++++
@@ -393,4 +447,4 @@ The mathematician Srinivasa Ramanujan found an infinite series that can be used 
 ++++
 
 Write a function called +estimatepi+ that uses this formula to compute and return an estimate of π. It should use a while loop to compute terms of the summation until the last term is smaller than +1e-15+ (which is Julia notation for latexmath:[\(10^{-15}\)]). You can check the result by comparing it to +π+.
-
+(((estimatepi)))((("function", "programmer-defined", "estimatepi", see="estimatepi")))

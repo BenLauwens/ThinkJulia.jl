@@ -77,7 +77,7 @@ Now modify the macro to draw a square. Don’t go on until you’ve got it worki
 ====
 
 
-[[simple-repetition]]
+[[simple_repetition]]
 === Simple Repetition
 
 Chances are you wrote something like this:
