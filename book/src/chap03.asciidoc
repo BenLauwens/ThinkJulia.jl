@@ -168,7 +168,7 @@ The empty parentheses after the name indicate that this function doesn’t take 
 (((parentheses, empty)))
 
 The first line of the function definition is called the _header_; the rest is called the _body_. The body is terminated with the keyword +end+ and it can contain any number of statements. For readability the body of the function can be indented. So just do it.
-(((header)))(((body)))(((end)))((("keyword", "end", see="end")))
+(((header)))(((body)))(((end)))((("keyword", "end", see="end")))(((indentation)))
 
 The quotation marks must be “straight quotes”, usually located next to Enter on the keyboard. “Curly quotes”, like the ones in this sentence, are not legal in Julia.
 (((quotation mark)))
@@ -642,7 +642,7 @@ dotwice(printspam)
 . Use the modified version of +dotwice+ to call +printtwice+ twice, passing +"spam"+ as an argument.
 
 . Define a new function called +dofour+ that takes a function object and a value and calls the function four times, passing the value as a parameter. There should be only two statements in the body of this function, not four.
-(((dofour)))((("function", "programmer-defined", "dofour", see="dofour")
+(((dofour)))((("function", "programmer-defined", "dofour", see="dofour")))
 
 [[ex03-3]]
 ===== Exercise 3-3

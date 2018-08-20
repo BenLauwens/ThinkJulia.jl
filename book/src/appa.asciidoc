@@ -8,4 +8,5 @@ The following table lists Unicode characters that can be entered via tab complet
 |====
 |Character|Tab completion sequence|ASCII representation
 |+π+|*+\pi+*|+pi+
+|+🐢+|*+\:turtle:+*|
 |====

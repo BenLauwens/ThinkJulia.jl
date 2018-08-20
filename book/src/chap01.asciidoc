@@ -46,7 +46,7 @@ In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No insta
 (((JuliaBox)))
 
 The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
-(((REPL)))((("Read-Eval-Print Loop", see="REPL")))
+(((REPL)))((("Read-Eval-Print Loop", see="REPL")))(((JuliaBox, terminal)))
 
 [source,@julia-eval]
 ----
@@ -85,7 +85,7 @@ This is an example of a _print statement_, although it doesn’t actually print 
 (((print statement)))((("statement", "print", see="print")))
 
 The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
-(((quotation mark)))
+(((quotation mark)))((("pass:[&quot;]", see="quotation mark")))
 
 The parentheses indicate that +println+ is a function. We’ll get to functions in <<chap03>>.
 (((parentheses)))(((function)))
