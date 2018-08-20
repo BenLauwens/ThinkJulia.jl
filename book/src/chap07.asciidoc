@@ -166,8 +166,8 @@ As an exercise, rewrite the function +printn+ from <<recursion>> using iteration
 
 === +break+
 
-Sometimes you don’t know it’s time to end a loop until you get half way through the body. In that case you can use the _+break+ statement_ to jump out of the loop.
-
+Sometimes you don’t know it’s time to end a loop until you get half way through the body. In that case you can use the _break statement_ to jump out of the loop.
+(((break)))((("keyword", "break", see="break")))(((break statement)))((("statement", "break", see="break statement")))
 
 For example, suppose you want to take input from the user until they type done. You could write:
 (((readline)))
@@ -185,9 +185,9 @@ end
 println("Done!")
 ----
 
-The loop condition is +true+, which is always true, so the loop runs until it hits the +break+ statement.
+The loop condition is +true+, which is always true, so the loop runs until it hits the break statement.
 
-Each time through, it prompts the user with an angle bracket. If the user types +done+, the +break+ statement exits the loop. Otherwise the program echoes whatever the user types and goes back to the top of the loop. Here’s a sample run:
+Each time through, it prompts the user with an angle bracket. If the user types +done+, the break statement exits the loop. Otherwise the program echoes whatever the user types and goes back to the top of the loop. Here’s a sample run:
 
 [source]
 ----
@@ -197,12 +197,13 @@ not done
 Done!
 ----
 
-This way of writing +while+ loops is common because you can check the condition anywhere in the loop (not just at the top) and you can express the stop condition affirmatively (“stop when this happens”) rather than negatively (“keep going until that happens”).
+This way of writing while loops is common because you can check the condition anywhere in the loop (not just at the top) and you can express the stop condition affirmatively (“stop when this happens”) rather than negatively (“keep going until that happens”).
 
 
 === +continue+
 
-The +break+ statement exits the loop. When a _+continue+ statement_ is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:
+The break statement exits the loop. When a _continue statement_ is encountered inside a loop, control jumps to the beginning of the loop for the next iteration, skipping the execution of statements inside the body of the loop for the current iteration. For example:
+(((continue)))((("keyword", "continue", see="continue")))(((continue statement)))((("statement", "continue", see="continue statement")))
 
 [source,@julia]
 ----
@@ -214,7 +215,7 @@ for i in 1:10
 end
 ----
 
-If +i+ is divisible by 3, the +continue+ statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed.
+If +i+ is divisible by 3, the continue statement stops the current iteration and the next iteration starts. Only the numbers in the range 1 to 10 not divisible by 3 are printed.
 
 [[square_roots]]
 === Square Roots
@@ -369,15 +370,15 @@ iteration::
 Repeated execution of a set of statements using either a recursive function call or a loop.
 (((iteration)))
 
-+while+ statement::
+while statement::
 Statement that allows iterations controlled by a condition.
 (((while statement)))
 
-+break+ statement::
+break statement::
 Statement allowing to jump out of a loop.
 (((break statement)))
 
-+continue+ statement::
+continue statement::
 Statement inside a loop that jumps to the beginning of the loop for the next iteration.
 (((continue statement)))
 

@@ -20,7 +20,7 @@ A _module_ is a file that contains a collection of related functions. Modules ca
 This can take some time.
 
 Before we can use the functions in a module, we have to import it with an +using+ statement:
-(((using statement)))((("statement", "using", see="using statement")))
+(((using)))((("keyword", "using", see="using")))(((using statement)))((("statement", "using", see="using statement")))
 
 [source,@julia-repl-test]
 ----
