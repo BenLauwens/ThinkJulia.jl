@@ -507,7 +507,7 @@ Write a program that reads a text from a file, counts word frequencies, and prin
 
 Install a plotting library:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 pkg> add Plots
 ----

@@ -188,7 +188,7 @@ julia> inv(A)
 
 The +Logging+ module provides a way to record the history and progress of a computation as a log of events. Events are created by inserting a logging statement into the source code, for example:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> @warn "Abandon printf debugging, all ye who enter here!"
 ┌ Warning: Abandon printf debugging, all ye who enter here!
@@ -197,7 +197,7 @@ julia> @warn "Abandon printf debugging, all ye who enter here!"
 
 The system provides several advantages over peppering your source code with calls to +println+. It allows you to control the visibility and presentation of messages without editing the source code. For example, in contrast to the +@warn+ above
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> @debug "The sum of some values $(sum(rand(100)))"
 
@@ -271,7 +271,7 @@ Julia has support for sparse vectors and sparse matrices in the +SparseArrays+ m
 
 The +Statistics+ module contains basic statistics functionality.
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> using Statistics
 

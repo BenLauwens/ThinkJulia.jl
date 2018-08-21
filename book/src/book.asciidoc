@@ -1,5 +1,3 @@
-:bookseries: animal
-
 = Think Julia: How to Think Like a Computer Scientist
 Ben Lauwens; Allen Downey
 

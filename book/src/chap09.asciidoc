@@ -16,7 +16,7 @@ using ThinkJulia
 fin = open(ThinkJulia.datapath("words.txt"));
 ----
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> fin = open("words.txt")
 IOStream(<file words.txt>)

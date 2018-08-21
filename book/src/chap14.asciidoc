@@ -91,7 +91,7 @@ Files are organized into _directories_ (also called “folders”). Every runnin
 
 The function +pwd+ returns the name of the current directory:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> cwd = pwd()
 "/home/dinsdale"
@@ -105,7 +105,7 @@ A simple filename, like +memo.txt+ is also considered a path, but it is a _relat
 
 A path that begins with +/+ does not depend on the current directory; it is called an _absolute path_. To find the absolute path to a file, you can use +abspath+:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> abspath("memo.txt")
 "/home/dinsdale/memo.txt"
@@ -113,7 +113,7 @@ julia> abspath("memo.txt")
 
 Julia provides other functions for working with filenames and paths. For example, +ispath+ checks whether a file or directory exists:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> ispath("memo.txt")
 true
@@ -121,7 +121,7 @@ true
 
 If it exists, +isdir+ checks whether it’s a directory:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> isdir("memo.txt")
 false
@@ -133,7 +133,7 @@ Similarly, +isfile+ checks whether it’s a file.
 
 +readdir+ returns a list of the files (and other directories) in the given directory:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> readdir(cwd)
 3-element Array{String,1}:
@@ -453,7 +453,7 @@ If you want to reload a module, you can use the built-in function +reload+, but 
 
 When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> s = "1 2\t 3\n 4";
 

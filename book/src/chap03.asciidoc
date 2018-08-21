@@ -175,7 +175,7 @@ The quotation marks must be “straight quotes”, usually located next to Enter
 
 If you type a function definition in interactive mode, the REPL indents to let you know that the definition isn’t complete:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> function printlyrics()
        println("I'm a lumberjack, and I'm okay.")

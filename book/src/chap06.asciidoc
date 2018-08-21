@@ -465,7 +465,7 @@ If you try to follow the flow of execution here, even for fairly small values of
 What happens if we call +fact+ and give it +1.5+ as an argument?
 (((StackOverflowError)))
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> fact(1.5)
 ERROR: StackOverflowError:

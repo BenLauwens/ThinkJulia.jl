@@ -9,7 +9,8 @@ The following table lists Unicode characters that can be entered via tab complet
 |Character|Tab completion sequence|ASCII representation
 |+²+|*+\^2+*| 
 |+₁+|*+\_1+*| 
-|+₂+|*+\_2+*| 
+|+₂+|*+\_2+*|
+|+🍌+|*+\:banana:+*|
 |+🐫+|*+\:camel:+*|
 |+🐢+|*+\:turtle:+*| 
 |+≥+|*+\ge+*|+>=+

@@ -46,7 +46,7 @@ The underscore character, +_+, can appear in a name. It is often used in names w
 If you give a variable an illegal name, you get a syntax error:
 (((syntax error)))((("error", "syntax", see="syntax error")))
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> 76trombones = "big parade"
 ERROR: syntax: "76" is not a valid function argument name

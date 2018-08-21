@@ -2,17 +2,21 @@
 == Strings
 
 Strings are not like integers, floats, and booleans. A string is a _sequence_, which means it is an ordered collection of other values. In this chapter you’ll see how to access the characters that make up a string, and you’ll learn about some of the string helper functions provided by Julia.
+(((string)))(((sequence)))
 
 
 === Characters
 
 The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the _ASCII standard_.
+(((ASCII standard)))
 
 There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean.
 
 The _Unicode standard_ tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.
+(((Unicode standard)))
 
 A +Char+ value represents a single character and is surrounded by single quotes:
+(((Char)))((("type", "base", "Char", see="Char")))
 
 [source,@julia-repl-test]
 ----
@@ -25,11 +29,13 @@ Char
 ----
 
 Emojis are part of the Unicode standard.
+(((emoji)))
 
 
 === A String Is a Sequence
 
 A string is a sequence of characters. You can access the characters one at a time with the bracket operator:
+(((string)))(((String)))(((sequence)))(((bracket operator)))((("[]", see="bracket operator")))((("operator", "[]", see="bracket operator")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -42,8 +48,10 @@ julia> letter = fruit[1]
 The second statement selects character number 1 from +fruit+ and assigns it to +letter+.
 
 The expression in brackets is called an _index_. The index indicates which character in the sequence you want (hence the name).
+(((index)))
 
 All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index +end+:
+(((end)))
 
 [source,@julia-repl-test chap08]
 ----
@@ -64,6 +72,7 @@ julia> fruit[end-1]
 ----
 
 But the value of the index has to be an integer. Otherwise you get:
+(((MethodError)))((("error", "base", "MethodError", see="MethodError")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -75,6 +84,7 @@ ERROR: MethodError: no method matching getindex(::String, ::Float64)
 === +length+
 
 +length+ is a built-in function that returns the number of characters in a string:
+(((length)))
 
 [source,@julia-repl-test chap08]
 ----

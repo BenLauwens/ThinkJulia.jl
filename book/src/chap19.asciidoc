@@ -31,7 +31,7 @@ julia> f = function (x)
 
 +f+ is an _anonymous function_ that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> using Plots
 
@@ -383,7 +383,7 @@ The +dump+ function provides indented and annotated display of +Expr+ objects.
 ==== +eval+
 
 Given an expression object, one can cause Julia to evaluate (execute) it at global scope using +eval+:
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> Core.eval(Main, ex)
 3

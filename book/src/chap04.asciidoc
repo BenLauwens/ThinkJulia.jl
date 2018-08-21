@@ -12,7 +12,7 @@ The examples in this chapter can be executed in a graphical notebook on JuliaBox
 A _module_ is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
 (((module)))(((pass:[&#93;])))
 
-[source,julia-repl]
+[source,jlcon]
 ----
 (v0.7) pkg> add ThinkJulia
 ----

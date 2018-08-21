@@ -347,7 +347,7 @@ end
 
 In most programming environments, a program with infinite recursion does not really run forever. Julia reports an error message when the maximum recursion depth is reached:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> recurse()
 ERROR: StackOverflowError:
@@ -368,7 +368,7 @@ The programs we have written so far accept no input from the user. They just do 
 Julia provides a built-in function called +readline+ that stops the program and waits for the user to type something. When the user presses +RETURN+ or +ENTER+, the program resumes and +readline+ returns what the user typed as a string.
 (((readline)))((("function", "base", "readline", see="readline")))
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> text = readline()
 What are you waiting for?
@@ -378,7 +378,7 @@ What are you waiting for?
 Before getting input from the user, it is a good idea to print a prompt telling the user what to type:
 (((prompt)))
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> print("What...is your name? "); readline()
 What...is your name? Arthur, King of the Britons!
@@ -390,7 +390,7 @@ A semi-colon +;+ allows to put multiple statements on the same line. In the REPL
 
 If you expect the user to type an integer, you can try to convert the return value to +Int64+:
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> println("What...is the airspeed velocity of an unladen swallow?"); speed = readline()
 What...is the airspeed velocity of an unladen swallow?
@@ -403,7 +403,7 @@ julia> parse(Int64, speed)
 But if the user types something other than a string of digits, you get an error:
 (((parse)))
 
-[source,julia-repl]
+[source,jlcon]
 ----
 julia> println("What...is the airspeed velocity of an unladen swallow? "); speed = readline()
 What...is the airspeed velocity of an unladen swallow?
