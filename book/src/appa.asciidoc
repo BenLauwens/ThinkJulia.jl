@@ -10,9 +10,12 @@ The following table lists Unicode characters that can be entered via tab complet
 |+²+|*+\^2+*| 
 |+₁+|*+\_1+*| 
 |+₂+|*+\_2+*|
+|+🍎+|*+\:apple:+*|
+|+🍐+|*+\:pear:+*|
 |+🍌+|*+\:banana:+*|
 |+🐫+|*+\:camel:+*|
-|+🐢+|*+\:turtle:+*| 
+|+🐢+|*+\:turtle:+*|
+|+∈+|*+\in+*|+in+
 |+≥+|*+\ge+*|+>=+
 |+≤+|*+\le+*|+pass:[&lt;=]+
 |+≠+|*+\ne+*|+!=+

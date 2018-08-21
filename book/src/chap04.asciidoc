@@ -98,7 +98,7 @@ end
 ----
 
 We can do the same thing more concisely with a +for+ statement:
-(((for statement)))((("statement", "for", see="for statement)))(((for)))((("keyword", "for", see="for")))
+(((for statement)))((("statement", "for", see="for statement)))(((for)))((("keyword", "for", see="for")))(((in)))((("keyword", "in", see="in")))
 
 [source,@julia-repl-test]
 ----
