@@ -4230,7 +4230,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535037628598627e9</span></code></pre>
+<span class="tok-go">1.535048789596011e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9145,7 +9145,7 @@ Qack</pre>
 <p>Format the output:</p>
 <div class="paragraph">
 <p>Formatting debugging output can make it easier to spot an error. We saw an example in <a href="#deb06">Debugging</a>.
-(formatting)))</p>
+</p>
 </div>
 <div class="paragraph">
 <p>Again, time you spend building scaffolding can reduce the time you spend debugging.
@@ -9765,11 +9765,12 @@ Qack</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>If you combine <code>zip</code>, <code>for</code> and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, <code>has_match</code> takes two sequences, <code>t1</code> and <code>t2</code>, and returns <code>true</code> if there is an index <code>i</code> such that <code>t1[i] == t2[i]</code>:</p>
+<p>If you combine <code>zip</code>, <code>for</code> and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, <code>hasmatch</code> takes two sequences, <code>t1</code> and <code>t2</code>, and returns <code>true</code> if there is an index <code>i</code> such that <code>t1[i] == t2[i]</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">has_match</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-n">t2</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">hasmatch</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-n">t2</span><span class="tok-p">)</span>
     <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">)</span> <span class="tok-kp">in</span> <span class="tok-n">zip</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-n">t2</span><span class="tok-p">)</span>
         <span class="tok-k">if</span> <span class="tok-n">x</span> <span class="tok-o">==</span> <span class="tok-n">y</span>
             <span class="tok-k">return</span> <span class="tok-kc">true</span>
@@ -9794,8 +9795,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The result from <code>enumerate</code> is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence.
-</p>
+<p>The result from <code>enumerate</code> is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence.</p>
 </div>
 </div>
 <div class="sect2">
@@ -15665,7 +15665,7 @@ end</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-23 17:20:23 CEST
+Last updated 2018-08-23 20:26:25 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
