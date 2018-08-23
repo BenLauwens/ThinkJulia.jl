@@ -15,10 +15,12 @@ The following table lists Unicode characters that can be entered via tab complet
 |+🍌+|*+\:banana:+*|
 |+🐫+|*+\:camel:+*|
 |+🐢+|*+\:turtle:+*|
+|+≡+|*+\equiv+*|+===+
 |+∈+|*+\in+*|+in+
 |+≥+|*+\ge+*|+>=+
 |+≤+|*+\le+*|+pass:[&lt;=]+
 |+≠+|*+\ne+*|+!=+
+|+∉+|*+\notin+*| 
 |+π+|*+\pi+*|+pi+
 |+ε+|*+\varepsilon+*| 
 |====

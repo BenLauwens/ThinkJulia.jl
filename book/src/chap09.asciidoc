@@ -7,8 +7,10 @@ This chapter presents the second case study, which involves solving word puzzles
 === Reading Word Lists
 
 For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see https://wikipedia.org/wiki/Moby_Project). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is _113809of.fic_; you can download a copy, with the simpler name _words.txt_, from https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt.
+(((Mobi lexicon)))
 
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a _file stream_ you can use to read the file.
+(((open)))((("function", "base", "open", see="open")))
 
 [source,@julia-eval chap09]
 ----
@@ -23,6 +25,7 @@ IOStream(<file words.txt>)
 ----
 
 +fin+ is a common name for a file stream used for input. Julia provides several function for reading, including +readline+, which reads characters from the file until it gets to a +NEWLINE+ and returns the result as a string:
+(((file stream)))(((input)))(((readline)))((("function", "base", "readline", see="readline")))
 
 [source,@julia-repl chap09]
 ----
@@ -41,6 +44,7 @@ readline(fin)
 The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like that.
 
 You can also use a file as part of a +for+ loop. This program reads +words.txt+ and prints each word, one per line:
+(((for statement)))(((eachline)))((("function", "base", "eachline", see="eachline")))
 
 [source,julia]
 ----
@@ -61,12 +65,14 @@ Write a program that reads +words.txt+ and prints only the words with more than 
 ===== Exercise 9-2
 
 In 1939 Ernest Vincent Wright published a 50,000 word novel called Gadsby that does not contain the letter +'e'+. Since +'e'+ is the most common letter in English, that’s not easy to do.
+(((Wright, Ernest Vincent)))
 
 In fact, it is difficult to construct a solitary thought without using that most common symbol. It is slow going at first, but with caution and hours of training you can gradually gain facility.
 
 All right, I’ll stop now.
 
 Write a function called +hasno_e+ that returns +true+ if the given word doesn’t have the letter +'e'+ in it.
+(((hasno_e)))((("function", "programmer-defined", "hasno_e", see="hasno_e")))
 
 Modify your program from the previous section to print only the words that have no +'e'+ and compute the percentage of the words in the list that have no +'e'+.
 
@@ -74,6 +80,7 @@ Modify your program from the previous section to print only the words that have 
 ===== Exercise 9-3
 
 Write a function named +avoids+ that takes a word and a string of forbidden letters, and that returns +true+ if the word doesn’t use any of the forbidden letters.
+(((avoids)))((("function", "programmer-defined", "avoids", see="avoids")))
 
 Modify your program to prompt the user to enter a string of forbidden letters and then print the number of words that don’t contain any of them. Can you find a combination of 5 forbidden letters that excludes the smallest number of words?
 
@@ -81,21 +88,25 @@ Modify your program to prompt the user to enter a string of forbidden letters an
 ===== Exercise 9-4
 
 Write a function named +usesonly+ that takes a word and a string of letters, and that returns +true+ if the word contains only letters in the list. Can you make a sentence using only the letters +acefhlo+? Other than +"Hoe alfalfa?"+
+(((usesonly)))((("function", "programmer-defined", "usesonly", see="usesonly")))
 
 [[ex09-5]]
 ===== Exercise 9-5
 
 Write a function named +usesall+ that takes a word and a string of required letters, and that returns +true+ if the word uses all the required letters at least once. How many words are there that use all the vowels +aeiou+? How about +aeiouy+?
+(((usesall)))((("function", "programmer-defined", "usesall", see="usesall")))
 
 [[ex09-6]]
 ===== Exercise 9-6
 
 Write a function called +isabecedarian+ that returns +true+ if the letters in a word appear in alphabetical order (double letters are ok). How many abecedarian words are there?
+(((isabecedarian)))((("function", "programmer-defined", "isabecedarian", see="isabecedarian")))
 
 [[search]]
 === Search
 
 All of the exercises in the previous section have something in common; they can be solved with the search pattern. The simplest example is:
+(((search)))(((hasno_e)))
 
 [source,@julia-setup chap09]
 ----
@@ -112,8 +123,10 @@ end
 The +for+ loop traverses the characters in word. If we find the letter +'e'+, we can immediately return +false+; otherwise we have to go to the next letter. If we exit the loop normally, that means we didn’t find an +'e'+, so we return +true+.
 
 You could write this function more concisely using the +∉+ (+\notin TAB+) operator, but I started with this version because it demonstrates the logic of the search pattern.
+(((∉)))((("operator", "base", "∉", see="∉")))
 
 +avoids+ is a more general version of +hasno_e+ but it has the same structure:
+(((avoids)))
 
 [source,@julia-setup chap09]
 ----
@@ -130,6 +143,7 @@ end
 We can return +false+ as soon as we find a forbidden letter; if we get to the end of the loop, we return +true+.
 
 +usesonly+ is similar except that the sense of the condition is reversed:
+(((usesonly)))
 
 [source,@julia-setup chap09]
 ----
@@ -146,6 +160,7 @@ end
 Instead of an array of forbidden letters, we have an array of available letters. If we find a letter in +word+ that is not in +available+, we can return +false+.
 
 +usesall+ is similar except that we reverse the role of the word and the string of letters:
+(((usesall)))
 
 [source,@julia-setup chap09]
 ----
@@ -171,6 +186,7 @@ end
 ----
 
 This is an example of a program development plan called _reduction to a previously solved problem_, which means that you recognize the problem you are working on as an instance of a solved problem and apply an existing solution.
+(((program development plan)))(((reduction to a previously solved problem)))
 
 
 === Looping with Indices
@@ -178,6 +194,7 @@ This is an example of a program development plan called _reduction to a previous
 I wrote the functions in the previous section with +for+ loops because I only needed the characters in the strings; I didn’t have to do anything with the indices.
 
 For +isabecedarian+ we have to compare adjacent letters, which is a little tricky with a +for+ loop:
+(((isabecedarian)))(((for statement)))
 
 [source,@julia-setup chap09]
 ----
@@ -196,6 +213,7 @@ end
 ----
 
 An alternative is to use recursion:
+(((recursion)))
 
 [source,@julia-setup chap09]
 ----
@@ -213,6 +231,7 @@ end
 ----
 
 Another option is to use a +while+ loop:
+(((while statement)))
 
 [source,@julia-setup chap09]
 ----
@@ -237,6 +256,7 @@ If the next character is less than (alphabetically before) the current one, then
 If we get to the end of the loop without finding a fault, then the word passes the test. To convince yourself that the loop ends correctly, consider an example like +"flossy"+.
 
 Here is a version of +ispalindrome+ that uses two indices; one starts at the beginning and goes up; the other starts at the end and goes down.
+(((ispalindrome)))
 
 [source,@julia-setup chap09]
 ----
@@ -264,19 +284,23 @@ end
 ----
 
 Using +isreverse+ from <<deb08>>.
+(((isreverse)))
 
 
 === Debugging
 
 Testing programs is hard. The functions in this chapter are relatively easy to test because you can check the results by hand. Even so, it is somewhere between difficult and impossible to choose a set of words that test for all possible errors.
+(((debugging)))
 
 Taking +hasno_e+ as an example, there are two obvious cases to check: words that have an +'e'+ should return +false+, and words that don’t should return +true+. You should have no trouble coming up with one of each.
 
 Within each case, there are some less obvious subcases. Among the words that have an “e”, you should test words with an “e” at the beginning, the end, and somewhere in the middle. You should test long words, short words, and very short words, like the empty string. The empty string is an example of a _special case_, which is one of the non-obvious cases where errors often lurk.
+(((special case)))
 
 In addition to the test cases you generate, you can also test your program with a word list like +words.txt+. By scanning the output, you might be able to catch errors, but be careful: you might catch one kind of error (words that should not be included, but are) and not another (words that should be included, but aren’t).
 
 In general, testing can help you find bugs, but it is not easy to generate a good set of test cases, and even if you do, you can’t be sure your program is correct. According to a legendary computer scientist:
+(((Dijkstra, Edsger W.)))
 
 [quote,  Edsger W. Dijkstra]
 ____
@@ -287,12 +311,15 @@ ____
 
 file stream::
 A value that represents an open file.
+(((file stream)))
 
 reduction to a previously solved problem::
 A way of solving a problem by expressing it as an instance of a previously solved problem.
+(((reduction to a previously solved problem)))
 
 special case::
 A test case that is atypical or non-obvious (and less likely to be handled correctly).
+(((special case)))
 
 
 === Exercises
@@ -301,6 +328,7 @@ A test case that is atypical or non-obvious (and less likely to be handled corre
 ===== Exercise 9-7
 
 This question is based on a Puzzler that was broadcast on the radio program _Car Talk_ (https://www.cartalk.com/puzzler/browse):
+(((Car Talk)))
 
 [quote]
 ____
@@ -339,5 +367,11 @@ Recently I had a visit with my mom and we realized that the two digits that make
 When I got home I figured out that the digits of our ages have been reversible six times so far. I also figured out that if we’re lucky it would happen again in a few years, and if we’re really lucky it would happen one more time after that. In other words, it would have happened 8 times over all. So the question is, how old am I now?
 ____
 
-Write a Julia program that searches for solutions to this Puzzler. Hint: you might find the function +lpad+ useful.
+Write a Julia program that searches for solutions to this Puzzler.
+
+[TIP]
+====
+You might find the function +lpad+ useful.
+(((lpad)))((("function", "base", "lpad", see="lpad")))
+====
 

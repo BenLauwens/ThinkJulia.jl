@@ -580,7 +580,7 @@ Part of a program that can never run, often because it appears after a return st
 
 incremental development::
 A program development plan intended to avoid debugging by adding and testing only a small amount of code at a time.
-(((incremental development)))
+(((incremental development)))(((program development plan)))
 
 scaffolding::
 Code that is used during program development but is not part of the final version.
