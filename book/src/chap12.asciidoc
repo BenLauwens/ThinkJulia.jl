@@ -9,6 +9,7 @@ One note: there is no consensus on how to pronounce “tuple”. Some people say
 === Tuples Are Immutable
 
 A tuple is a sequence of values. The values can be any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable.
+(((tuple)))(((immutable)))
 
 Syntactically, a tuple is a comma-separated list of values:
 
@@ -19,6 +20,7 @@ julia> t = 'a', 'b', 'c', 'd', 'e'
 ----
 
 Although it is not necessary, it is common to enclose tuples in parentheses:
+(((parentheses)))
 
 [source,@julia-repl-test]
 ----
@@ -27,6 +29,7 @@ julia> t = ('a', 'b', 'c', 'd', 'e')
 ----
 
 To create a tuple with a single element, you have to include a final comma:
+(((final comma)))(((typeof)))(((Tuple)))((("type", "base", "Tuple", see="Tuple")))
 
 [source,@julia-repl-test]
 ----
@@ -36,6 +39,8 @@ julia> typeof(t1)
 Tuple{Char}
 ----
 
+[WARNING]
+====
 A value in parentheses is not a tuple:
 
 [source,@julia-repl-test]
@@ -46,7 +51,10 @@ julia> typeof(t2)
 Char
 ----
 
+====
+
 Another way to create a tuple is the built-in function tuple. With no argument, it creates an empty tuple:
+(((tuple)))((("function", "base", "tuple", see="tuple")))
 
 [source,@julia-repl-test]
 ----
@@ -65,6 +73,7 @@ julia> t3 = tuple(1, 'a', pi)
 Because tuple is the name of a built-in function, you should avoid using it as a variable name.
 
 Most array operators also work on tuples. The bracket operator indexes an element:
+(((bracket operator)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -75,6 +84,7 @@ julia> t[1]
 ----
 
 And the slice operator selects a range of elements:
+(((slice operator)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -83,6 +93,7 @@ julia> t[2:4]
 ----
 
 But if you try to modify one of the elements of the tuple, you get an error:
+(((MethodError)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -93,6 +104,7 @@ ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int
 Because tuples are immutable, you can’t modify the elements.
 
 The relational operators work with tuples and other sequences; Julia starts by comparing the first element from each sequence. If they are equal, it goes on to the next elements, and so on, until it finds elements that differ. Subsequent elements are not considered (even if they are really big).
+(((relational operator)))
 
 [source,@julia-repl-test]
 ----
@@ -106,6 +118,7 @@ true
 === Tuple Assignment
 
 It is often useful to swap the values of two variables. With conventional assignments, you have to use a temporary variable. For example, to swap a and b:
+(((assignment)))
 
 [source,julia]
 ----
@@ -115,6 +128,7 @@ b = temp
 ----
 
 This solution is cumbersome; tuple assignment is more elegant:
+(((tuple assignment)))
 
 [source,julia]
 ----
@@ -124,6 +138,7 @@ a, b = b, a
 The left side is a tuple of variables; the right side is a tuple of expressions. Each value is assigned to its respective variable. All the expressions on the right side are evaluated before any of the assignments.
 
 The number of variables on the left and the number of values on the right have to be the same:
+(((BoundsError)))
 
 [source,@julia-repl-test]
 ----
@@ -133,6 +148,7 @@ ERROR: BoundsError: attempt to access (1, 2)
 ----
 
 More generally, the right side can be any kind of sequence (string, array or tuple). For example, to split an email address into a user name and a domain, you could write:
+(((split)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -156,8 +172,10 @@ julia> domain
 === Tuples as Return Values
 
 Strictly speaking, a function can only return one value, but if the value is a tuple, the effect is the same as returning multiple values. For example, if you want to divide two integers and compute the quotient and remainder, it is inefficient to compute +x ÷ y+ and then +x % y+. It is better to compute them both at the same time.
+(((÷)))(((%)))
 
 The built-in function +divrem+ takes two arguments and returns a tuple of two values, the quotient and remainder. You can store the result as a tuple:
+(((divrem)))((("function", "base", "divrem", see="divrem")))
 
 [source,@julia-repl-test]
 ----
@@ -187,11 +205,13 @@ end
 ----
 
 +maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +min_max+ computes both and returns a tuple of two values.
+(((maximum)))(((minimum)))((("function", "base", "maximum", see="maximum")))((("function", "base", "minimum", see="minimum")))
 
 
 === Variable-length Argument Tuples
 
 Functions can take a variable number of arguments. A parameter name that ends with +...+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
+(((gather)))(((...)))(((printall)))((("function", "programmer-defined", "printall", see="printall")))
 
 [source,@julia-setup chap12]
 ----
@@ -200,7 +220,7 @@ function printall(args...)
 end
 ----
 
-The gather parameter can have any name you like, but args is conventional. Here’s how the function works:
+The gather parameter can have any name you like, but +args+ is conventional. Here’s how the function works:
 
 [source,@julia-repl-test chap12]
 ----
@@ -209,6 +229,7 @@ julia> printall(1, 2.0, '3')
 ----
 
 The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +...+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
+(((scatter)))(((MethodError)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -227,6 +248,7 @@ julia> divrem(t...)
 ----
 
 Many of the built-in functions use variable-length argument tuples. For example, +max+ and +min+ can take any number of arguments:
+(((max)))(((min)))((("function", "base", "max", see="max")))((("function", "base", "min", see="min")))
 
 [source,@julia-repl-test]
 ----
@@ -235,6 +257,7 @@ julia> max(1, 2, 3)
 ----
 
 But +sum+ does not:
+(((sum)))
 
 [source,@julia-repl-test]
 ----
@@ -242,12 +265,16 @@ julia> sum(1, 2, 3)
 ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 ----
 
+[TIP]
+====
 As an exercise, write a function called +sumall+ that takes any number of arguments and returns their sum.
-
+(((sumall)))((("function", "programmer-defined", "sumall", see="sumall")))
+====
 
 === Arrays and Tuples
 
 +zip+ is a built-in function that takes two or more sequences and returns an array of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
+(((zip)))((("function", "base", "zip", see="zip")))
 
 This example zips a string and an array:
 
@@ -262,6 +289,7 @@ Base.Iterators.Zip2{String,Array{Int64,1}}("abc", [1, 2, 3])
 ----
 
 The result is a _zip object_ that knows how to iterate through the pairs. The most common use of +zip+ is in a +for+ loop:
+(((zip object)))(((for statement)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -274,8 +302,10 @@ julia> for pair in zip(s, t)
 ----
 
 A zip object is a kind of _iterator_, which is any object that iterates through a sequence. Iterators are similar to arrays in some ways, but unlike arrays, you can’t use an index to select an element from an iterator.
+(((iterator)))
 
 If you want to use array operators and functions, you can use a zip object to make an array:
+(((collect)))
 
 [source,@julia-repl-test chap12]
 ----
@@ -300,6 +330,7 @@ julia> collect(zip("Anne", "Elk"))
 ----
 
 You can use tuple assignment in a +for+ loop to traverse an array of tuples:
+(((tuple assignment)))
 
 [source,@julia-repl-test]
 ----
@@ -314,6 +345,7 @@ julia> for (letter, number) in t
 ----
 
 Each time through the loop, Julia selects the next tuple in the array and assigns the elements to letter and number. The parentheses around +(letter, number)+ are compulsory.
+(((parentheses)))
 
 If you combine +zip+, +for+ and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, +has_match+ takes two sequences, +t1+ and +t2+, and returns +true+ if there is an index +i+ such that +t1[i] == t2[i]+:
 
@@ -330,6 +362,7 @@ end
 ----
 
 If you need to traverse the elements of a sequence and their indices, you can use the built-in function +enumerate+:
+(((enumerate)))((("function", "base", "enumerate", see="enumerate")))
 
 [source,@julia-repl-test chap12]
 ----
@@ -342,11 +375,13 @@ julia> for (index, element) in enumerate("abc")
 ----
 
 The result from +enumerate+ is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence.
+(((enumerate object)))
 
 
 === Dictionaries and Tuples
 
 Dictionaries can be used as iterators that iterates the key-value pairs. You can use it in a +for+ loop like this:
+(((key-value pair)))(((for statement)))
 
 [source,@julia-repl-test]
 ----
@@ -376,6 +411,7 @@ Dict{Char,Int64} with 3 entries:
 ----
 
 Combining +Dict+ with +zip+ yields a concise way to create a dictionary:
+(((zip)))
 
 [source,@julia-repl-test]
 ----
@@ -405,6 +441,7 @@ end
 This loop traverses the key-value pairs in +directory+, which are tuples. It assigns the elements of the key in each tuple to +last+ and +first+, and the value to +number+, then prints the name and corresponding telephone number.
 
 There are two ways to represent tuples in a state diagram. The more detailed version shows the indices and elements just as they appear in an array. For example, the tuple +("Cleese", "John")+ would appear as in <<fig12-1>>.
+(((state diagram)))
 
 [[fig12-1]]
 .State diagram
@@ -412,6 +449,7 @@ image::images/fig121.svg[]
 
 
 But in a larger diagram you might want to leave out the details. For example, a diagram of the telephone directory might appear as in <<fig12-2>>.
+(((state diagram)))
 
 [[fig12-2]]
 .State diagram
@@ -424,50 +462,67 @@ Here the tuples are shown using Julia syntax as a graphical shorthand. The telep
 === Sequences of Sequences
 
 I have focused on arrays of tuples, but almost all of the examples in this chapter also work with arrays of arrays, tuples of tuples, and tuples of arrays. To avoid enumerating the possible combinations, it is sometimes easier to talk about sequences of sequences.
+(((sequence of sequences)))
 
 In many contexts, the different kinds of sequences (strings, arrays and tuples) can be used interchangeably. So how should you choose one over the others?
+(((string)))(((array)))(((tuple)))
 
 To start with the obvious, strings are more limited than other sequences because the elements have to be characters. They are also immutable. If you need the ability to change the characters in a string (as opposed to creating a new string), you might want to use an array of characters instead.
+(((immutable)))
 
 Arrays are more common than tuples, mostly because they are mutable. But there are a few cases where you might prefer tuples:
+(((mutable)))
 
 * In some contexts, like a return statement, it is syntactically simpler to create a tuple than an array.
 
 * If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
+(((aliasing)))
 
 Because tuples are immutable, they don’t provide function like +sort!+ and +reverse!+, which modify existing arrays. But Julia provides the built-in function +sort+, which takes an array and returns a new array with the same elements in sorted order, and +reverse+, which takes any sequence and returns a sequence of the same type in reverse order.
+(((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("function", "base", "reverse", see="reverse")))(((zip)))((("function", "base", "reverse!", see="reverse!")))
 
 
 === Debugging
 
 Arrays, dictionaries and tuples are examples of _data structures_; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call _shape errors_; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
+(debugging)))(((data structures)))(((shape error)))
+
+Julia allows to attach a type to elements of a sequence. How this is done, is detailed in [[chap17]]. Specifying the type eliminates a lot of shape errors.
 
 
 === Glossary
 
 tuple::
 An immutable sequence of elements.
+(((tuple)))
 
 tuple assignment::
 An assignment with a sequence on the right side and a tuple of variables on the left. The right side is evaluated and then its elements are assigned to the variables on the left.
+(((tuple assignment)))
 
 gather::
 The operation of assembling a variable-length argument tuple.
+(((gather)))
 
 scatter::
 The operation of treating a sequence as a list of arguments.
+(((scatter)))
 
 zip object::
 The result of calling a built-in function zip; an object that iterates through a sequence of tuples.
+(((zip object)))
 
 iterator::
 An object that can iterate through a sequence, but which does not provide array operators and functions.
+(((iterator)))
 
 data structure::
 A collection of related values, often organized in array, dictionaries, tuples, etc.
+(((data structure)))
 
 shape error::
 An error caused because a value has the wrong shape; that is, the wrong type or size.
+(((shape error)))
 
 
 === Exercises
@@ -476,6 +531,7 @@ An error caused because a value has the wrong shape; that is, the wrong type or 
 ===== Exercise 12-1
 
 Write a function called +mostfrequent+ that takes a string and prints the letters in decreasing order of frequency. Find text samples from several different languages and see how letter frequency varies between languages. Compare your results with the tables at https://en.wikipedia.org/wiki/Letter_frequencies.
+(((mostfrequent)))((("function", "programmer-defined", "mostfrequent", see="mostfrequent")))
 
 [[ex12-2]]
 ===== Exercise 12-2
@@ -485,6 +541,7 @@ More anagrams!
 . Write a program that reads a word list from a file (see <<reading_word_lists>>) and prints all the sets of words that are anagrams.
 +
 Here is an example of what the output might look like:
++
 [source,julia]
 ----
 ["deltas", "desalt", "lasted", "salted", "slated", "staled"]
@@ -492,21 +549,39 @@ Here is an example of what the output might look like:
 ["generating", "greatening"]
 ["resmelts", "smelters", "termless"]
 ----
-Hint: you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
++
+[TIP]
+====
+you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
+====
 
 . Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.
 
-. In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos? Hint: there are seven.
+. In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos?
++
+[TIP]
+====
+There are seven.
+====
 
 [[ex12-3]]
 ===== Exercise 12-3
 
-Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary. Hint: don’t test all pairs of words, and don’t test all possible swaps. Credit: This exercise is inspired by an example at http://puzzlers.org.
+Two words form a “metathesis pair” if you can transform one into the other by swapping two letters; for example, “converse” and “conserve”. Write a program that finds all of the metathesis pairs in the dictionary.
+(((metathesis pair)))
+
+[TIP]
+====
+Don’t test all pairs of words, and don’t test all possible swaps. 
+====
+
+Credit: This exercise is inspired by an example at http://puzzlers.org.
 
 [[ex12-4]]
 ===== Exercise 12-4
 
 Here’s another Car Talk Puzzler (https://www.cartalk.com/puzzler/browse):
+(((Car Talk)))
 
 [quote]
 ____
@@ -519,13 +594,18 @@ ____
 
 Write a program to find all words that can be reduced in this way, and then find the longest one.
 
+[TIP]
+====
 This exercise is a little more challenging than most, so here are some suggestions:
 
 . You might want to write a function that takes a word and computes a list of all the words that can be formed by removing one letter. These are the “children” of the word.
 
 . Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.
+(((reducible)))
 
 . The wordlist I provided, _words.txt_, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.
 
 . To improve the performance of your program, you might want to memoize the words that are known to be reducible.
+(((memo)))
+====
 

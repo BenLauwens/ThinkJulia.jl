@@ -7,12 +7,16 @@ This chapter presents another built-in type called a dictionary. Dictionaries ar
 === A Dictionary Is a Mapping
 
 A _dictionary_ is like an array, but more general. In an array, the indices have to be integers; in a dictionary they can be (almost) any type.
+(((dictionary)))
 
 A dictionary contains a collection of indices, which are called _keys_, and a collection of values. Each key is associated with a single value. The association of a key and a value is called a _key-value pair_ or sometimes an item.
+(((key)))(((value)))(((key-value pair)))(((item)))
 
 In mathematical language, a dictionary represents a _mapping_ from keys to values, so you can also say that each key “maps to” a value. As an example, we’ll build a dictionary that maps from English to Spanish words, so the keys and the values are all strings.
+(((mapping)))
 
 The function +Dict+ creates a new dictionary with no items. Because +Dict+ is the name of a built-in function, you should avoid using it as a variable name.
+(((Dict)))((("type", "base", "Dict", see="Dict")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -21,8 +25,10 @@ Dict{Any,Any} with 0 entries
 ----
 
 The kind of dictionary is surrounded by curly brackets: the keys are of type +Any+ and also the values are of type +Any+.
+(((curly brackets)))((("{}"= see="curly brackets")))(((Any)))((("type", "base", "Any", see="Any")))
 
 The dictionary is empty. To add items to the dictionary, you can use square brackets:
+(((square brackets)))
 
 [source,@julia-repl-test chap11]
 ----
@@ -30,7 +36,8 @@ julia> eng2sp["one"] = "uno";
 
 ----
 
-This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow "=>" between the key and value:
+This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow "pass:[=&gt;]" between the key and value:
+(((pass:[=&gt;])))
 
 [source,@julia-repl-test chap11]
 ----
@@ -50,7 +57,10 @@ Dict{String,String} with 3 entries:
   "three" => "tres"
 ----
 
+[WARNING]
+====
 The order of the key-value pairs might not be the same. If you type the same example on your computer, you might get a different result. In general, the order of items in a dictionary is unpredictable.
+====
 
 But that’s not a problem because the elements of a dictionary are never indexed with integer indices. Instead, you use the keys to look up the corresponding values:
 
@@ -63,6 +73,7 @@ julia> eng2sp["two"]
 The key "two" always maps to the value "dos" so the order of the items doesn’t matter.
 
 If the key isn’t in the dictionary, you get an exception:
+(((KeyError)))((("error", "base", "KeyError", see="KeyError")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -71,6 +82,7 @@ ERROR: KeyError: key "four" not found
 ----
 
 The +length+ function works on dictionaries; it returns the number of key-value pairs:
+(((length)))
 
 [source,@julia-repl-test chap11]
 ----
@@ -79,6 +91,7 @@ julia> length(eng2sp)
 ----
 
 The function +keys+ returns an array with the keys of the dictionary:
+(((keys)))((("function", "base", "keys", see="keys")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -89,6 +102,7 @@ julia> print(ks)
 ----
 
 Now you can use the +∈+ operator to see whether something appears as a _key_ in the dictionary:
+(((in)))
 
 [source,@julia-repl-test chap11]
 ----
@@ -99,6 +113,7 @@ false
 ----
 
 To see whether something appears as a value in a dictionary, you can use the function +values+, which returns a collection of values, and then use the +∈+ operator:
+(((values)))((("function", "base", "values", see="values")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -111,6 +126,7 @@ true
 The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <<searching>>. As the array gets longer, the search time gets longer in direct proportion.
 
 For dictionaries, Julia uses an algorithm called a _hashtable_ that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
+(((hastable)))
 
 [[dictionary_collection_counters]]
 === Dictionary as a Collection of Counters
@@ -126,6 +142,7 @@ Suppose you are given a string and you want to count how many times each letter 
 Each of these options performs the same computation, but each of them implements that computation in a different way.
 
 An _implementation_ is a way of performing a computation; some implementations are better than others. For example, an advantage of the dictionary implementation is that we don’t have to know ahead of time which letters appear in the string and we only have to make room for the letters that do appear.
+(((implementation)))
 
 Here is what the code might look like:
 
@@ -145,6 +162,7 @@ end
 ----
 
 The name of the function is +histogram+, which is a statistical term for a collection of counters (or frequencies).
+(((histogram)))((("function", "programmer-defined", "histogram", see="histogram")))
 
 The first line of the function creates an empty dictionary. The +for+ loop traverses the string. Each time through the loop, if the character +c+ is not in the dictionary, we create a new item with key +c+ and the initial value +1+ (since we have seen this letter once). If +c+ is already in the dictionary we increment +d[c]+.
 
@@ -167,6 +185,7 @@ Dict{Any,Any} with 8 entries:
 The histogram indicates that the letters +'a'+ and +'b'+ appear once; +'o'+ appears twice, and so on.
 
 Dictionaries have a function called +get+ that takes a key and a default value. If the key appears in the dictionary, +get+ returns the corresponding value; otherwise it returns the default value. For example:
+(((get)))((("function", "base", "get", see="get")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -179,12 +198,16 @@ julia> get(h, 'b', 0)
 0
 ----
 
+[TIP]
+====
 As an exercise, use +get+ to write +histogram+ more concisely. You should be able to eliminate the +if+ statement.
+====
 
 
 === Looping and Dictionaries
 
 You can traverse the keys of the dictionary in a +for+ statement. For example, +printhist+ prints each key and the corresponding value:
+(((printhist)))((("function", "programmer-defined", "printhist", see="printhist")))
 
 [source,@julia-setup chap11]
 ----
@@ -209,11 +232,12 @@ o 1
 t 1
 ----
 
-Again, the keys are in no particular order. To traverse the keys in sorted order, you can combine +sort!+ and +collect+:
+Again, the keys are in no particular order. To traverse the keys in sorted order, you can combine +sort+ and +collect+:
+(((sort)))(((collect)))
 
 [source,@julia-repl-test chap11]
 ----
-julia> for c in sort!(collect(keys(h)))
+julia> for c in sort(collect(keys(h)))
            println(c, " ", h[c])
        end
 a 1
@@ -227,8 +251,10 @@ t 1
 === Reverse Lookup
 
 Given a dictionary +d+ and a key +k+, it is easy to find the corresponding value +v = d[k]+. This operation is called a _lookup_.
+(((lookup)))
 
 But what if you have +v+ and you want to find +k+? You have two problems: first, there might be more than one key that maps to the value +v+. Depending on the application, you might be able to pick one, or you might have to make an array that contains all of them. Second, there is no simple syntax to do a _reverse lookup_; you have to search.
+(((reverse lookup)))
 
 Here is a function that takes a value and returns the first key that maps to that value:
 
@@ -245,6 +271,7 @@ end
 ----
 
 This function is yet another example of the search pattern, but it uses a function we haven’t seen before, +error+. The +error+ function is used to produce an +ErrorException+ that interrupts the normal flow of control. In this case it has the message +"LookupError"+, indicating that a key does not exist.
+(((error)))((("function", "base", "error", see="error")))
 
 If we get to the end of the loop, that means +v+ doesn’t appear in the dictionary as a value, so we throw an exception.
 
@@ -268,7 +295,10 @@ ERROR: LookupError
 
 The effect when you generate an exception is the same as when Julia throws one: it prints a traceback and an error message.
 
+[WARNING]
+====
 A reverse lookup is much slower than a forward lookup; if you have to do it often, or if the dictionary gets big, the performance of your program will suffer.
+====
 
 
 === Dictionaries and Arrays
@@ -276,6 +306,7 @@ A reverse lookup is much slower than a forward lookup; if you have to do it ofte
 Arrays can appear as values in a dictionary. For example, if you are given a dictionary that maps from letters to frequencies, you might want to invert it; that is, create a dictionary that maps from frequencies to letters. Since there might be several letters with the same frequency, each value in the inverted dictionary should be an array of letters.
 
 Here is a function that inverts a dictionary:
+(((invertdict)))((("function", "programmer-defined", "invertdict", see="invertdict")))
 
 [source,@julia-setup chap11]
 ----
@@ -294,6 +325,7 @@ end
 ----
 
 Each time through the loop, +key+ gets a key from +d+ and +val+ gets the corresponding value. If +val+ is not in +inverse+, that means we haven’t seen it before, so we create a new item and initialize it with a _singleton_ (an array that contains a single element). Otherwise we have seen this value before, so we append the corresponding key to the array.
+(((singleton)))
 
 Here is an example:
 
@@ -313,17 +345,25 @@ image::images/fig111.svg[]
 
 
 <<fig11-1>> is a state diagram showing +hist+ and +inverse+. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
+(((state-diagram)))
 
+[NOTE]
+====
 I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be _hashable_.
+(((hashable)))
 
 A _hash_ is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs.
+(((hash)))
+====
 
 
 === Memos
 
 If you played with the +fibonacci+ function from <<one_more_example>>, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
+(((fibonnaci)))
 
 To understand why, consider <<fig11-2>>, which shows the _call graph_ for +fibonacci+ with +n = 4+:
+(((call graph)))
 
 [[fig11-2]]
 .Call graph
@@ -335,6 +375,7 @@ A call graph shows a set of function frames, with lines connecting each frame to
 Count how many times +fibonacci(0)+ and +fibonacci(1)+ are called. This is an inefficient solution to the problem, and it gets worse as the argument gets bigger.
 
 One solution is to keep track of values that have already been computed by storing them in a dictionary. A previously computed value that is stored for later use is called a _memo_. Here is a “memoized” version of fibonacci:
+(((memo)))
 
 [source,@julia-setup]
 ----
@@ -359,9 +400,11 @@ If you run this version of +fibonacci+ and compare it with the original, you wil
 
 === Global Variables
 
-In the previous example, known is created outside the function, so it belongs to the special frame called +__main__+. Variables in +__main__+ are sometimes called _global_ because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
+In the previous example, known is created outside the function, so it belongs to the special frame called +pass:[__main__]+. Variables in +pass:[__main__]+ are sometimes called _global_ because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
+(((global)))((("keyword", "global", see="global")))(((global variable)))
 
 It is common to use global variables for _flags_; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:
+(((flag)))
 
 [source,@julia-setup]
 ----
@@ -388,6 +431,7 @@ end
 But if you run it you will see that the value of +been_called+ doesn’t change. The problem is that +example2+ creates a new local variable named +been_called+. The local variable goes away when the function ends, and has no effect on the global variable.
 
 To reassign a global variable inside a function you have to _declare_ the global variable before you use it:
+(((declaration)))(((reassignment)))
 
 [source,@julia-setup]
 ----
@@ -400,6 +444,7 @@ end
 ----
 
 The _global statement_ tells the interpreter something like, “In this function, when I say +been_called+, I mean the global variable; don’t create a local one.”
+(((global statement)))((("statement", "global", see="global statement")))
 
 Here’s an example that tries to update a global variable:
 
@@ -413,6 +458,7 @@ end
 ----
 
 If you run it you get:
+(((UndefVarError)))
 
 [source,@julia-repl-test chap11]
 ----
@@ -455,9 +501,13 @@ function example5()
 end
 ----
 
+[WARNING]
+====
 Global variables can be useful, but if you have a lot of them, and you modify them frequently, they can make programs hard to debug and perform badly.
+====
 
 In almost all code (and particularly performance sensitive code) global variables should be declared constant:
+(((const)))((("keyword", "const", see="const))))
 
 [source,@julia-setup]
 ----
@@ -472,6 +522,7 @@ end
 ----
 
 Here is a function that tries to reassign a _constant global variable_:
+(((constant global variable)))(((reassignment)))
 
 [source,@julia-setup chap11]
 ----
@@ -495,93 +546,120 @@ ERROR: invalid redefinition of constant known
 === Debugging
 
 As you work with bigger datasets it can become unwieldy to debug by printing and checking the output by hand. Here are some suggestions for debugging large datasets:
+(((debugging)))
 
 * Scale down the input:
 +
-If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find. You can either edit the files themselves, or (better) modify the program so it reads only the first n lines.
+If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find. You can either edit the files themselves, or (better) modify the program so it reads only the first latexmath:[\(n\)] lines.
+(((scale down)))
 +
-If there is an error, you can reduce n to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.
+If there is an error, you can reduce latexmath:[\(n\)] to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.
 
 * Check summaries and types:
 +
 Instead of printing and checking the entire dataset, consider printing summaries of the data: for example, the number of items in a dictionary or the total of an array of numbers.
+(((check)))
 +
 A common cause of runtime errors is a value that is not the right type. For debugging this kind of error, it is often enough to print the type of a value.
 
 * Write self-checks:
 +
 Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check” because it detects results that are “insane”.
+(((self-check)))(((sanity check)))
 +
 Another kind of check compares the results of two different computations to see if they are consistent. This is called a “consistency check”.
+(((consistency check)))
 
 * Format the output:
 +
 Formatting debugging output can make it easier to spot an error. We saw an example in <<deb06>>.
+(formatting)))
 +
 Again, time you spend building scaffolding can reduce the time you spend debugging.
+(((scaffolding)))(((debugging)))
 
 
 === Glossary
 
 mapping::
 A relationship in which each element of one set corresponds to an element of another set.
+(((mapping)))
 
 dictionary::
 A mapping from keys to their corresponding values.
+(((dictionary)))
 
 key-value pair::
 The representation of the mapping from a key to a value.
+(((key-value pair)))
 
 item::
 In a dictionary, another name for a key-value pair.
+(((item)))
 
 key::
 An object that appears in a dictionary as the first part of a key-value pair.
+(((key)))
 
 value::
 An object that appears in a dictionary as the second part of a key-value pair. This is more specific than our previous use of the word “value”.
+(((value)))
 
 implementation::
 A way of performing a computation.
+(((implementation)))
 
 hashtable::
 The algorithm used to implement Julia dictionaries.
+(((hashtable)))
 
 hash function::
 A function used by a hashtable to compute the location for a key.
+(((hash function)))
 
 hashable::
 A type that has a hash function. Immutable types like integers, floats and strings are hashable; mutable types like arrays and dictionaries are not.
+(((hashable)))
 
 lookup::
 A dictionary operation that takes a key and finds the corresponding value.
+(((lookup)))
 
 reverse lookup::
 A dictionary operation that takes a value and finds one or more keys that map to it.
+(((reverse lookup)))
 
 singleton::
 An array (or other sequence) with a single element.
+(((singleton)))
 
 call graph::
 A diagram that shows every frame created during the execution of a program, with an arrow from each caller to each callee.
+(((call graph)))
 
 memo::
 A computed value stored to avoid unnecessary future computation.
+(((memo)))
 
 global variable::
 A variable defined outside a function. Global variables can be accessed from any function.
+(((global variable)))
 
 global statement::
 A statement that declares a variable name global.
+(((global statement)))
 
 flag::
 A boolean variable used to indicate whether a condition is true.
+(((flag)))
 
 declaration::
 A statement like +global+ that tells the interpreter something about a variable.
+(((declaration)))
 
 constant global variable::
 A global variable that can not be reassigned.
+(((constant global variable)))
 
 
 === Exercises
@@ -590,23 +668,32 @@ A global variable that can not be reassigned.
 ===== Exercise 11-1
 
 Write a function that reads the words in _words.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
+(((in)))
 
 If you did <<ex10-10>>, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
 
 [[ex11-2]]
 ===== Exercise 11-2
 
-Read the documentation of the dictionary function +get!+ and use it to write a more concise version of invert_dict.
+Read the documentation of the dictionary function +get!+ and use it to write a more concise version of +invertdict+.
+(((get!)))((("function", "base", "get!", see="get!")))
 
 [[ex11-3]]
 ===== Exercise 11-3
 
-Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments. Hint: no.
+Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments.
+(((memo)))(((Ackermann function)))
+
+[TIP]
+====
+No.
+====
 
 [[ex11-4]]
 ===== Exercise 11-4
 
 If you did <<ex10-7>>, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
+(((hasduplicates)))
 
 Use a dictionary to write a faster, simpler version of +hasduplicates+.
 
@@ -614,6 +701,7 @@ Use a dictionary to write a faster, simpler version of +hasduplicates+.
 ===== Exercise 11-5
 
 Two words are “rotate pairs” if you can rotate one of them and get the other (see +rotateword+ in <<ex08-5>>).
+(((rotateword)))
 
 Write a program that reads a word array and finds all the rotate pairs.
 
@@ -621,6 +709,7 @@ Write a program that reads a word array and finds all the rotate pairs.
 ===== Exercise 11-6
 
 Here’s another Puzzler from Car Talk (https://www.cartalk.com/puzzler/browse):
+(((Car Talk)))
 
 [quote]
 ____
@@ -633,7 +722,10 @@ ____
 
 You can use the dictionary from <<ex11-1>> to check whether a string is in the word array.
 
+[TIP]
+====
 To check whether two words are homophones, you can use the CMU Pronouncing Dictionary. You can download it from http://www.speech.cs.cmu.edu/cgi-bin/cmudict.
+====
 
 Write a program that lists all the words that solve the Puzzler.
 
