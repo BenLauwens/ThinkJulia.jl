@@ -2825,6 +2825,7 @@ Stacktrace:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">ThinkJulia</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">🐢</span> <span class="tok-o">=</span> <span class="tok-n">Turtle</span><span class="tok-p">()</span>
 <span class="tok-go">Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))</span></code></pre>
 </div>
@@ -4230,7 +4231,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535125163837971e9</span></code></pre>
+<span class="tok-go">1.535125942446455e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6157,6 +6158,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">str</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Julius Caesar&quot;</span><span class="tok-p">;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">str</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">6</span><span class="tok-p">]</span>
 <span class="tok-go">&quot;Julius&quot;</span></code></pre>
 </div>
@@ -7295,8 +7297,11 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">cheeses</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;Cheddar&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Edam&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;Gouda&quot;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">numbers</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">42</span><span class="tok-p">,</span> <span class="tok-mi">123</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">empty</span> <span class="tok-o">=</span> <span class="tok-p">[];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">cheeses</span><span class="tok-p">,</span> <span class="tok-s">&quot; &quot;</span><span class="tok-p">,</span> <span class="tok-n">numbers</span><span class="tok-p">,</span> <span class="tok-s">&quot; &quot;</span><span class="tok-p">,</span> <span class="tok-n">empty</span><span class="tok-p">)</span>
 <span class="tok-go">[&quot;Cheddar&quot;, &quot;Edam&quot;, &quot;Gouda&quot;] [42, 123] Any[]</span></code></pre>
 </div>
@@ -7446,6 +7451,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;d&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;e&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;f&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">3</span><span class="tok-p">])</span>
 <span class="tok-go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;]</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">3</span><span class="tok-o">:</span><span class="tok-k">end</span><span class="tok-p">])</span>
@@ -7471,6 +7477,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-o">:</span><span class="tok-mi">3</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;x&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;y&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;a&#39;, &#39;x&#39;, &#39;y&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;]</span></code></pre>
 </div>
@@ -7485,7 +7492,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-sc">&#39;d&#39;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]</span></code></pre>
 </div>
@@ -7497,8 +7506,11 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;d&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;e&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">append!</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-n">t2</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span></code></pre>
 </div>
@@ -7513,7 +7525,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;d&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;e&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;a&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">sort!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]</span></code></pre>
 </div>
@@ -7525,7 +7539,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;d&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;e&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;a&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">sort</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;d&#39;, &#39;c&#39;, &#39;e&#39;, &#39;b&#39;, &#39;a&#39;]</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
@@ -7592,6 +7608,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">sum</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">10</span></code></pre>
 </div>
@@ -7666,6 +7683,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-n">uppercase</span><span class="tok-o">.</span><span class="tok-p">([</span><span class="tok-s">&quot;abc&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;def&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;ghi&quot;</span><span class="tok-p">]);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[&quot;ABC&quot;, &quot;DEF&quot;, &quot;GHI&quot;]</span></code></pre>
 </div>
@@ -7691,6 +7709,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">splice!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)</span>
 <span class="tok-go">&#39;b&#39;: ASCII/Unicode U+0062 (category Ll: Letter, lowercase)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
@@ -7707,6 +7726,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">&#39;c&#39;: ASCII/Unicode U+0063 (category Ll: Letter, lowercase)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
@@ -7720,6 +7740,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">popfirst!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
@@ -7737,6 +7758,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">deleteat!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">))</span>
 <span class="tok-go">[&#39;a&#39;, &#39;c&#39;]</span></code></pre>
 </div>
@@ -7748,6 +7770,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">insert!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-sc">&#39;x&#39;</span><span class="tok-p">))</span>
 <span class="tok-go">[&#39;a&#39;, &#39;x&#39;, &#39;b&#39;, &#39;c&#39;]</span></code></pre>
 </div>
@@ -7762,6 +7785,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-n">collect</span><span class="tok-p">(</span><span class="tok-s">&quot;spam&quot;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;s&#39;, &#39;p&#39;, &#39;a&#39;, &#39;m&#39;]</span></code></pre>
 </div>
@@ -7776,6 +7800,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-n">split</span><span class="tok-p">(</span><span class="tok-s">&quot;pining for the fjords&quot;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">SubString{String}[&quot;pining&quot;, &quot;for&quot;, &quot;the&quot;, &quot;fjords&quot;]</span></code></pre>
 </div>
@@ -7787,6 +7812,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-n">split</span><span class="tok-p">(</span><span class="tok-s">&quot;spam-spam-spam&quot;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;-&#39;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">SubString{String}[&quot;spam&quot;, &quot;spam&quot;, &quot;spam&quot;]</span></code></pre>
 </div>
@@ -7798,6 +7824,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s">&quot;pining&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;for&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;the&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;fjords&quot;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">s</span> <span class="tok-o">=</span> <span class="tok-n">join</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-sc">&#39; &#39;</span><span class="tok-p">)</span>
 <span class="tok-go">&quot;pining for the fjords&quot;</span></code></pre>
 </div>
@@ -7854,7 +7881,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">a</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">b</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">a</span> <span class="tok-o">≡</span> <span class="tok-n">b</span>
 <span class="tok-go">false</span></code></pre>
 </div>
@@ -7885,7 +7914,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">a</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">b</span> <span class="tok-o">=</span> <span class="tok-n">a</span><span class="tok-p">;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">b</span> <span class="tok-o">≡</span> <span class="tok-n">a</span>
 <span class="tok-go">true</span></code></pre>
 </div>
@@ -7965,7 +7996,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">letters</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">deletehead!</span><span class="tok-p">(</span><span class="tok-n">letters</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">letters</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;b&#39;, &#39;c&#39;]</span></code></pre>
 </div>
@@ -7993,7 +8026,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span>
 <span class="tok-go">[1, 2, 3]</span></code></pre>
 </div>
@@ -8007,6 +8042,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t3</span> <span class="tok-o">=</span> <span class="tok-n">vcat</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-mi">4</span><span class="tok-p">]);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span>
 <span class="tok-go">[1, 2, 3]</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t3</span><span class="tok-p">)</span>
@@ -8037,6 +8073,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t4</span> <span class="tok-o">=</span> <span class="tok-n">baddeletehead</span><span class="tok-p">(</span><span class="tok-n">t3</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t3</span><span class="tok-p">)</span>
 <span class="tok-go">[1, 2, 3, 4]</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t4</span><span class="tok-p">)</span>
@@ -8063,7 +8100,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">letters</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">rest</span> <span class="tok-o">=</span> <span class="tok-n">tail</span><span class="tok-p">(</span><span class="tok-n">letters</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">rest</span><span class="tok-p">)</span>
 <span class="tok-go">[&#39;b&#39;, &#39;c&#39;]</span></code></pre>
 </div>
@@ -8147,8 +8186,11 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-o">:</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">sort!</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[3, 1, 2]</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
@@ -8162,6 +8204,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">sort</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[3, 1, 2]</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
@@ -8275,6 +8318,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">3</span><span class="tok-p">],</span> <span class="tok-p">[</span><span class="tok-mi">4</span><span class="tok-p">,</span> <span class="tok-mi">5</span><span class="tok-p">,</span> <span class="tok-mi">6</span><span class="tok-p">]];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">nestedsum</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">21</span></code></pre>
 </div>
@@ -8289,6 +8333,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">cumulsum</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">))</span>
 <span class="tok-go">Any[1, 3, 6]</span></code></pre>
 </div>
@@ -8303,6 +8348,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">interior</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">))</span>
 <span class="tok-go">[2, 3]</span></code></pre>
 </div>
@@ -8317,7 +8363,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">interior!</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">[2, 3]</span></code></pre>
 </div>
@@ -8563,6 +8611,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">ks</span> <span class="tok-o">=</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">eng2sp</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">ks</span><span class="tok-p">)</span>
 <span class="tok-go">[&quot;two&quot;, &quot;one&quot;, &quot;three&quot;]</span></code></pre>
 </div>
@@ -8586,6 +8635,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">vs</span> <span class="tok-o">=</span> <span class="tok-n">values</span><span class="tok-p">(</span><span class="tok-n">eng2sp</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-s">&quot;uno&quot;</span> <span class="tok-o">∈</span> <span class="tok-n">vs</span>
 <span class="tok-go">true</span></code></pre>
 </div>
@@ -8719,6 +8769,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">h</span> <span class="tok-o">=</span> <span class="tok-n">histogram</span><span class="tok-p">(</span><span class="tok-s">&quot;parrot&quot;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">printhist</span><span class="tok-p">(</span><span class="tok-n">h</span><span class="tok-p">)</span>
 <span class="tok-go">a 1</span>
 <span class="tok-go">r 2</span>
@@ -8782,6 +8833,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">h</span> <span class="tok-o">=</span> <span class="tok-n">histogram</span><span class="tok-p">(</span><span class="tok-s">&quot;parrot&quot;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">key</span> <span class="tok-o">=</span> <span class="tok-n">reverselookup</span><span class="tok-p">(</span><span class="tok-n">h</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)</span>
 <span class="tok-go">&#39;r&#39;: ASCII/Unicode U+0072 (category Ll: Letter, lowercase)</span></code></pre>
 </div>
@@ -8848,6 +8900,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">hist</span> <span class="tok-o">=</span> <span class="tok-n">histogram</span><span class="tok-p">(</span><span class="tok-s">&quot;parrot&quot;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">inverse</span> <span class="tok-o">=</span> <span class="tok-n">invertdict</span><span class="tok-p">(</span><span class="tok-n">hist</span><span class="tok-p">)</span>
 <span class="tok-go">Dict{Any,Any} with 2 entries:</span>
 <span class="tok-go">  2 =&gt; [&#39;r&#39;]</span>
@@ -9462,6 +9515,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;d&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;e&#39;</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span>
 <span class="tok-go">&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)</span></code></pre>
 </div>
@@ -9583,6 +9637,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">quot</span><span class="tok-p">,</span> <span class="tok-n">rem</span> <span class="tok-o">=</span> <span class="tok-n">divrem</span><span class="tok-p">(</span><span class="tok-mi">7</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">quot</span><span class="tok-p">)</span>
 <span class="tok-go">2</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">rem</span><span class="tok-p">)</span>
@@ -9633,6 +9688,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-mi">7</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">divrem</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-gr">ERROR: MethodError: no method matching divrem(::Tuple{Int64,Int64})</span></code></pre>
 </div>
@@ -9694,7 +9750,9 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">s</span> <span class="tok-o">=</span> <span class="tok-s">&quot;abc&quot;</span><span class="tok-p">;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">zip</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">,</span> <span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">Base.Iterators.Zip2{String,Array{Int64,1}}(&quot;abc&quot;, [1, 2, 3])</span></code></pre>
 </div>
@@ -9752,6 +9810,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[(</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-sc">&#39;c&#39;</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">)];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-n">letter</span><span class="tok-p">,</span> <span class="tok-n">number</span><span class="tok-p">)</span> <span class="tok-kp">in</span> <span class="tok-n">t</span>
            <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">number</span><span class="tok-p">,</span> <span class="tok-s">&quot; &quot;</span><span class="tok-p">,</span> <span class="tok-n">letter</span><span class="tok-p">)</span>
        <span class="tok-k">end</span>
@@ -9807,6 +9866,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">d</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">(</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-o">=&gt;</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-o">=&gt;</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-sc">&#39;c&#39;</span><span class="tok-o">=&gt;</span><span class="tok-mi">3</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-n">key</span><span class="tok-p">,</span> <span class="tok-n">value</span><span class="tok-p">)</span> <span class="tok-kp">in</span> <span class="tok-n">d</span>
            <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">key</span><span class="tok-p">,</span> <span class="tok-s">&quot; &quot;</span><span class="tok-p">,</span> <span class="tok-n">value</span><span class="tok-p">)</span>
        <span class="tok-k">end</span>
@@ -9824,6 +9884,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[(</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-sc">&#39;c&#39;</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-sc">&#39;b&#39;</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">d</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">Dict{Char,Int64} with 3 entries:</span>
 <span class="tok-go">  &#39;a&#39; =&gt; 1</span>
@@ -10235,6 +10296,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;a&#39;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;b&#39;</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">histogram</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">Dict{Any,Any} with 2 entries:</span>
 <span class="tok-go">  &#39;a&#39; =&gt; 2</span>
@@ -10324,6 +10386,7 @@ Qack</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Total number of words: &quot;</span><span class="tok-p">,</span> <span class="tok-n">totalwords</span><span class="tok-p">(</span><span class="tok-n">hist</span><span class="tok-p">))</span>
 <span class="tok-go">Total number of words: 162742</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Number of different words: &quot;</span><span class="tok-p">,</span> <span class="tok-n">differentwords</span><span class="tok-p">(</span><span class="tok-n">hist</span><span class="tok-p">))</span>
 <span class="tok-go">Number of different words: 7380</span></code></pre>
 </div>
@@ -10892,6 +10955,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">line1</span> <span class="tok-o">=</span> <span class="tok-s">&quot;This here&#39;s the wattle,</span><span class="tok-se">\n</span><span class="tok-s">&quot;</span><span class="tok-p">;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">write</span><span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">,</span> <span class="tok-n">line1</span><span class="tok-p">)</span>
 <span class="tok-go">24</span></code></pre>
 </div>
@@ -10902,6 +10966,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">line2</span> <span class="tok-o">=</span> <span class="tok-s">&quot;the emblem of our land.</span><span class="tok-se">\n</span><span class="tok-s">&quot;</span><span class="tok-p">;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">write</span><span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">,</span> <span class="tok-n">line2</span><span class="tok-p">)</span>
 <span class="tok-go">24</span></code></pre>
 </div>
@@ -11154,6 +11219,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">ThinkJulia</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">db</span> <span class="tok-o">=</span> <span class="tok-n">DBM</span><span class="tok-p">(</span><span class="tok-s">&quot;captions&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;c&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">DBM(&lt;captions&gt;)</span></code></pre>
 </div>
@@ -11225,8 +11291,11 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Serialization</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">io</span> <span class="tok-o">=</span> <span class="tok-kt">IOBuffer</span><span class="tok-p">();</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">serialize</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">,</span> <span class="tok-n">t</span><span class="tok-p">)</span>
 <span class="tok-go">24</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">))</span>
@@ -11240,11 +11309,15 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">io</span> <span class="tok-o">=</span> <span class="tok-kt">IOBuffer</span><span class="tok-p">();</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t1</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">serialize</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">,</span> <span class="tok-n">t1</span><span class="tok-p">)</span>
 <span class="tok-go">24</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">s</span> <span class="tok-o">=</span> <span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">deserialize</span><span class="tok-p">(</span><span class="tok-kt">IOBuffer</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">));</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
 <span class="tok-go">[1, 2, 3]</span></code></pre>
 </div>
@@ -11338,8 +11411,10 @@ suffix)</p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">filename</span> <span class="tok-o">=</span> <span class="tok-s">&quot;output.txt&quot;</span>
 <span class="tok-go">&quot;output.txt&quot;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">cmd</span> <span class="tok-o">=</span> <span class="tok-sb">`md5 </span><span class="tok-si">$filename</span><span class="tok-sb">`</span>
 <span class="tok-go">`md5 output.txt`</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-n">read</span><span class="tok-p">(</span><span class="tok-n">cmd</span><span class="tok-p">,</span> <span class="tok-n">String</span><span class="tok-p">)</span>
 <span class="tok-go">&quot;MD5 (output.txt) = d41d8cd98f00b204e9800998ecf8427e\n&quot;</span></code></pre>
 </div>
@@ -11903,6 +11978,7 @@ suffix)</p>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">origin</span> <span class="tok-o">=</span> <span class="tok-n">MPoint</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span><span class="tok-mf">0.0</span><span class="tok-p">)</span>
 <span class="tok-go">MPoint(0.0, 0.0)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">movepoint!</span><span class="tok-p">(</span><span class="tok-n">origin</span><span class="tok-p">,</span> <span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mf">2.0</span><span class="tok-p">)</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">origin</span>
 <span class="tok-go">MPoint(1.0, 2.0)</span></code></pre>
 </div>
@@ -11938,6 +12014,7 @@ suffix)</p>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">box</span>
 <span class="tok-go">Rectangle(100.0, 200.0, MPoint(0.0, 0.0))</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">moverectangle!</span><span class="tok-p">(</span><span class="tok-n">box</span><span class="tok-p">,</span> <span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mf">2.0</span><span class="tok-p">)</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">box</span>
 <span class="tok-go">Rectangle(100.0, 200.0, MPoint(1.0, 2.0))</span></code></pre>
 </div>
@@ -12269,8 +12346,11 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">start</span> <span class="tok-o">=</span> <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-mi">9</span><span class="tok-p">,</span> <span class="tok-mi">45</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">duration</span> <span class="tok-o">=</span> <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">35</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">done</span> <span class="tok-o">=</span> <span class="tok-n">addtime</span><span class="tok-p">(</span><span class="tok-n">start</span><span class="tok-p">,</span> <span class="tok-n">duration</span><span class="tok-p">);</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">printtime</span><span class="tok-p">(</span><span class="tok-n">done</span><span class="tok-p">)</span>
 <span class="tok-go">10:80:00</span></code></pre>
 </div>
@@ -13397,6 +13477,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Test</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-nd">@test</span> <span class="tok-n">isless</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">),</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">))</span>
 <span class="tok-go">Test Passed</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-nd">@test</span> <span class="tok-n">isless</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">),</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">))</span>
@@ -13556,6 +13637,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">();</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-n">isa</span> <span class="tok-n">CardSet</span>
 <span class="tok-go">true</span></code></pre>
 </div>
@@ -14364,6 +14446,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">convert</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-kt">Type</span><span class="tok-p">{</span><span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">}},</span> <span class="tok-n">x</span><span class="tok-o">::</span><span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-o">...</span><span class="tok-p">)</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">convert</span><span class="tok-p">(</span><span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-kt">Int64</span><span class="tok-p">},</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">])</span>
 <span class="tok-go">Point{Int64}(1, 2)</span></code></pre>
 </div>
@@ -14869,6 +14952,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">r&quot;^\s*(?:#|$)&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;not a comment&quot;</span><span class="tok-p">)</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">m</span> <span class="tok-o">=</span> <span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">r&quot;^\s*(?:#|$)&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;# a comment&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">RegexMatch(&quot;#&quot;)</span></code></pre>
 </div>
@@ -15160,6 +15244,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Dates</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">d1</span> <span class="tok-o">=</span> <span class="tok-kt">Date</span><span class="tok-p">(</span><span class="tok-mi">2015</span><span class="tok-p">,</span> <span class="tok-mi">6</span><span class="tok-p">,</span> <span class="tok-mi">23</span><span class="tok-p">)</span>
 <span class="tok-go">2015-06-23</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">d2</span> <span class="tok-o">=</span> <span class="tok-kt">Date</span><span class="tok-p">(</span><span class="tok-mi">2017</span><span class="tok-p">,</span> <span class="tok-mi">6</span><span class="tok-p">,</span> <span class="tok-mi">16</span><span class="tok-p">)</span>
@@ -15180,11 +15265,15 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">DelimitedFiles</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">;</span> <span class="tok-mi">2</span><span class="tok-p">;</span> <span class="tok-mi">3</span><span class="tok-p">;</span> <span class="tok-mi">4</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">5</span><span class="tok-p">;</span> <span class="tok-mi">6</span><span class="tok-p">;</span> <span class="tok-mi">7</span><span class="tok-p">;</span> <span class="tok-mi">8</span><span class="tok-p">];</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;delim_file.txt&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span> <span class="tok-k">do</span> <span class="tok-n">io</span>
            <span class="tok-n">writedlm</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-n">x</span> <span class="tok-n">y</span><span class="tok-p">])</span>
        <span class="tok-k">end</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">readdlm</span><span class="tok-p">(</span><span class="tok-s">&quot;delim_file.txt&quot;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;\t&#39;</span><span class="tok-p">,</span> <span class="tok-kt">Int</span><span class="tok-p">,</span> <span class="tok-sc">&#39;\n&#39;</span><span class="tok-p">)</span>
 <span class="tok-go">4×2 Array{Int64,2}:</span>
 <span class="tok-go"> 1  5</span>
@@ -15230,6 +15319,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">InteractiveUtils</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_lowered</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">CodeInfo(</span>
 <span class="tok-go">  1 ─      $(Expr(:meta, :noinline))</span>
@@ -15269,6 +15359,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
+
 <span class="tok-go">; Function squaresum</span>
 <span class="tok-go">; Location: none:2</span>
 <span class="tok-go">define double @julia_squaresum_39479(double, double) {</span>
@@ -15322,6 +15413,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">LinearAlgebra</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">A</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span><span class="tok-p">;</span> <span class="tok-mi">4</span> <span class="tok-mi">1</span> <span class="tok-mi">6</span><span class="tok-p">;</span> <span class="tok-mi">7</span> <span class="tok-mi">8</span> <span class="tok-mi">1</span><span class="tok-p">]</span>
 <span class="tok-go">3×3 Array{Int64,2}:</span>
 <span class="tok-go"> 1  2  3</span>
@@ -15412,6 +15504,7 @@ end</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">conn</span> <span class="tok-o">=</span> <span class="tok-n">connect</span><span class="tok-p">(</span><span class="tok-mi">2000</span><span class="tok-p">)</span>
+
 <span class="tok-go">Hello World</span>
 <span class="tok-go">Sockets.TCPSocket(RawFD(0x00000019) open, 0 bytes waiting)</span></code></pre>
 </div>
@@ -16019,7 +16112,7 @@ end</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-24 17:39:19 CEST
+Last updated 2018-08-24 17:52:17 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
