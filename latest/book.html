@@ -4230,7 +4230,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535117978784857e9</span></code></pre>
+<span class="tok-go">1.535125163837971e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11104,12 +11104,11 @@ suffix)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">try</span>
-           <span class="tok-n">fin</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;bad_file.txt&quot;</span><span class="tok-p">)</span>
-       <span class="tok-k">catch</span> <span class="tok-n">exc</span>
-           <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Something went wrong: </span><span class="tok-si">$exc</span><span class="tok-s">&quot;</span><span class="tok-p">)</span>
-       <span class="tok-k">end</span>
-<span class="tok-go">Something went wrong: SystemError(&quot;opening file bad_file.txt&quot;, 2, nothing)</span></code></pre>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">try</span>
+    <span class="tok-n">fin</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;bad_file.txt&quot;</span><span class="tok-p">)</span>
+<span class="tok-k">catch</span> <span class="tok-n">exc</span>
+    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Something went wrong: </span><span class="tok-si">$exc</span><span class="tok-s">&quot;</span><span class="tok-p">)</span>
+<span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11590,7 +11589,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_composite_types">Composite Types</h3>
 <div class="paragraph">
-<p>We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called <code>Point</code> that represents a point in two-dimensional space.</p>
+<p>We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called <code>Point</code> that represents a point in two-dimensional space.
+</p>
 </div>
 <div class="paragraph">
 <p>In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, \(\left(0,0\right)\) represents the origin, and \(\left(x,y\right)\) represents the point \(x\) units to the right and \(y\) units up from the origin.</p>
@@ -11615,7 +11615,8 @@ suffix)</p>
 <p>Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.</p>
 </div>
 <div class="paragraph">
-<p>A programmer-defined <em>composite type</em> is also called a <em>struct</em>. The <code>struct</code> definition for a point looks like this:</p>
+<p>A programmer-defined <em>composite type</em> is also called a <em>struct</em>. The <code>struct</code> definition for a point looks like this:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11626,21 +11627,22 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The header indicates that the new struct is called <code>Point</code>. The body defines the <em>attributes</em> or <em>fields</em> of the struct. The <code>Point</code> struct has two fields: <code>x</code> and <code>y</code>. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.</p>
+<p>The header indicates that the new struct is called <code>Point</code>. The body defines the <em>attributes</em> or <em>fields</em> of the struct. The <code>Point</code> struct has two fields: <code>x</code> and <code>y</code>. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
+</p>
 </div>
 <div class="paragraph">
-<p>Defining a type named Point creates a datatype object:</p>
+<p>Defining a type named Point creates a datatype object:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">typeof</span><span class="tok-p">(</span><span class="tok-n">Point</span><span class="tok-p">)</span>
-<span class="tok-go">DataType</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span>
-<span class="tok-go">Main.chap15.Point</span></code></pre>
+<span class="tok-go">DataType</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A struct is like a factory for creating objects. To create a point, you call <code>Point</code> as if it were a function having as arguments the values of the fields. When <code>Point</code> is used as a function, it is called a <em>constructor</em>.</p>
+<p>A struct is like a factory for creating objects. To create a point, you call <code>Point</code> as if it were a function having as arguments the values of the fields. When <code>Point</code> is used as a function, it is called a <em>constructor</em>.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11649,10 +11651,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The return value is a reference to a point object, which we assign to <code>p</code>.</p>
+<p>The return value is a reference to a point object, which we assign to <code>p</code>.
+</p>
 </div>
 <div class="paragraph">
-<p>Creating a new object is called <em>instantiation</em>, and the object is an <em>instance</em> of the type.</p>
+<p>Creating a new object is called <em>instantiation</em>, and the object is an <em>instance</em> of the type.
+</p>
 </div>
 <div class="paragraph">
 <p>When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.</p>
@@ -11661,7 +11665,8 @@ suffix)</p>
 <p>Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.</p>
 </div>
 <div class="paragraph">
-<p>A state diagram that shows an object and its fields is called an <em>object diagram</em>; see <a href="#fig15-1">Object diagram</a>.</p>
+<p>A state diagram that shows an object and its fields is called an <em>object diagram</em>; see <a href="#fig15-1">Object diagram</a>.
+</p>
 </div>
 <div id="fig15-1" class="imageblock">
 <div class="content">
@@ -11673,7 +11678,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_structs_are_immutable">Structs are Immutable</h3>
 <div class="paragraph">
-<p>You can get the values of the fields using <code>.</code> notation:</p>
+<p>You can get the values of the fields using <code>.</code> notation:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11696,7 +11702,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Structs are however by default immutable, after construction the fields can not change value:</p>
+<p>Structs are however by default immutable, after construction the fields can not change value:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11724,7 +11731,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_mutable_structs">Mutable Structs</h3>
 <div class="paragraph">
-<p>Where required, mutable composite types can be declared with the keyword <code>mutable struct</code>. Here is the definition of a mutable point:</p>
+<p>Where required, mutable composite types can be declared with the keyword <code>mutable struct</code>. Here is the definition of a mutable point:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11735,7 +11743,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can assign values to an instance of a mutable struct using dot notation:</p>
+<p>You can assign values to an instance of a mutable struct using dot notation:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11748,7 +11757,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can pass an instance as an argument in the usual way. For example:</p>
+<p>You can pass an instance as an argument in the usual way. For example:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11766,8 +11776,20 @@ suffix)</p>
 <span class="tok-go">(3.0, 4.0)</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>As an exercise, write a function called <code>distancebetweenpoints</code> that takes two points as arguments and returns the distance between them.</p>
+<p>As an exercise, write a function called <code>distancebetweenpoints</code> that takes two points as arguments and returns the distance between them.
+</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -11789,7 +11811,8 @@ suffix)</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.</p>
+<p>At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11806,7 +11829,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.</p>
+<p>The docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.
+</p>
 </div>
 <div class="paragraph">
 <p>To represent a rectangle, you have to instantiate a rectangle object:</p>
@@ -11820,7 +11844,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#fig15-2">Object diagram</a> shows the state of this object. An object that is a field of another object is <em>embedded</em>. Because the <code>corner</code> attribute refers to a mutable object, the latter is drawn outside the rectangle object.</p>
+<p><a href="#fig15-2">Object diagram</a> shows the state of this object. An object that is a field of another object is <em>embedded</em>. Because the <code>corner</code> attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+</p>
 </div>
 <div id="fig15-2" class="imageblock">
 <div class="content">
@@ -11832,7 +11857,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_instances_as_return_values">Instances as Return Values</h3>
 <div class="paragraph">
-<p>Functions can return instances. For example, <code>findcenter</code> takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:</p>
+<p>Functions can return instances. For example, <code>findcenter</code> takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11857,7 +11883,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_instances_as_arguments">Instances as Arguments</h3>
 <div class="paragraph">
-<p>If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, <code>movepoint</code> takes a mutable point object and two numbers, <code>dx</code> and <code>dy</code>, and adds the numbers to respectively the <code>x</code> and the <code>y</code> attribute of the point:</p>
+<p>If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, <code>movepoint!</code> takes a mutable point object and two numbers, <code>dx</code> and <code>dy</code>, and adds the numbers to respectively the <code>x</code> and the <code>y</code> attribute of the point:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11881,7 +11908,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Inside the function, <code>p</code> is an alias for <code>origin</code>, so when the function modifies <code>p</code>, <code>origin</code> changes.</p>
+<p>Inside the function, <code>p</code> is an alias for <code>origin</code>, so when the function modifies <code>p</code>, <code>origin</code> changes.
+</p>
 </div>
 <div class="paragraph">
 <p>Passing an immutable point object to <code>movepoint!</code> causes an error:</p>
@@ -11914,8 +11942,16 @@ suffix)</p>
 <span class="tok-go">Rectangle(100.0, 200.0, MPoint(1.0, 2.0))</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Attention you cannot reassign a mutable attribute of an immutable object:</p>
+<p>Attention you cannot reassign a mutable attribute of an immutable object:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11923,14 +11959,20 @@ suffix)</p>
 <span class="tok-gr">ERROR: type Rectangle is immutable</span></code></pre>
 </div>
 </div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_copying">Copying</h3>
 <div class="paragraph">
-<p>Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.</p>
+<p>Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.
+</p>
 </div>
 <div class="paragraph">
-<p>Copying an object is often an alternative to aliasing. Julia provides a function called <code>deepcopy</code> that can duplicate any object:</p>
+<p>Copying an object is often an alternative to aliasing. Julia provides a function called <code>deepcopy</code> that can duplicate any object:
+(deep copy)))</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11945,16 +11987,29 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>≡</code> operator indicates that <code>p1</code> and <code>p2</code> are not the same object, which is what we expected. But you might have expected <code>==</code> to yield <code>true</code> because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the <code>==</code> operator is the same as the <code>===</code> operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.</p>
+<p>The <code>≡</code> operator indicates that <code>p1</code> and <code>p2</code> are not the same object, which is what we expected. But you might have expected <code>==</code> to yield <code>true</code> because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the <code>==</code> operator is the same as the <code>===</code> operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
+</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>As an exercise, create a <code>Point</code> instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_debugging_13">Debugging</h3>
 <div class="paragraph">
-<p>When you start working with objects, you are likely to encounter some new exceptions. If you try to access a field that doesn’t exist, you get:</p>
+<p>When you start working with objects, you are likely to encounter some new exceptions. If you try to access a field that doesn’t exist, you get:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11968,7 +12023,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you are not sure what type an object is, you can ask:</p>
+<p>If you are not sure what type an object is, you can ask:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11977,7 +12033,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use isinstance to check whether an object is an instance of a type:</p>
+<p>You can also use isinstance to check whether an object is an instance of a type:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11986,7 +12043,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you are not sure whether an object has a particular attribute, you can use the built-in function <code>fieldnames</code>:</p>
+<p>If you are not sure whether an object has a particular attribute, you can use the built-in function <code>fieldnames</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11995,7 +12053,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>or the function <code>isdefined</code>:</p>
+<p>or the function <code>isdefined</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12006,10 +12065,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The first argument can be any object; the second argument is a symbol, <code>:</code> followed by the name of the field.</p>
+<p>The first argument can be any object; the second argument is a symbol, <code>:</code> followed by the name of the field.
+</p>
 </div>
 <div class="paragraph">
-<p>You can also use a <code>try</code> statement to see if the object has the fields you need:</p>
+<p>You can also use a <code>try</code> statement to see if the object has the fields you need:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12027,35 +12088,43 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">struct</dt>
 <dd>
-<p>A composite type. A struct definition creates a new struct object.</p>
+<p>A composite type. A struct definition creates a new struct object.
+</p>
 </dd>
 <dt class="hdlist1">struct object</dt>
 <dd>
-<p>An object that contains information about a composite type. The struct object can be used to create instances of the type.</p>
+<p>An object that contains information about a composite type. The struct object can be used to create instances of the type.
+</p>
 </dd>
 <dt class="hdlist1">instance</dt>
 <dd>
-<p>An object that belongs to a type.</p>
+<p>An object that belongs to a type.
+</p>
 </dd>
 <dt class="hdlist1">instantiate</dt>
 <dd>
-<p>To create a new object.</p>
+<p>To create a new object.
+</p>
 </dd>
 <dt class="hdlist1">attribute or field</dt>
 <dd>
-<p>One of the named values associated with an object.</p>
+<p>One of the named values associated with an object.
+</p>
 </dd>
 <dt class="hdlist1">embedded object</dt>
 <dd>
-<p>An object that is stored as a field of another object.</p>
+<p>An object that is stored as a field of another object.
+</p>
 </dd>
 <dt class="hdlist1">deep copy</dt>
 <dd>
-<p>To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the <code>deepcopy</code> function.</p>
+<p>To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the <code>deepcopy</code> function.
+</p>
 </dd>
 <dt class="hdlist1">object diagram</dt>
 <dd>
-<p>A diagram that shows objects, their fields, and the values of the fields.</p>
+<p>A diagram that shows objects, their fields, and the values of the fields.
+</p>
 </dd>
 </dl>
 </div>
@@ -12067,19 +12136,23 @@ suffix)</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Write a definition for a type named <code>Circle</code> with fields <code>center</code> and <code>radius</code>, where <code>center</code> is a point object and <code>radius</code> is a number.</p>
+<p>Write a definition for a type named <code>Circle</code> with fields <code>center</code> and <code>radius</code>, where <code>center</code> is a point object and <code>radius</code> is a number.
+</p>
 </li>
 <li>
-<p>Instantiate a circle object that represents a circle with its center at \(\left(150, 100\right)\) and radius \(75\).</p>
+<p>Instantiate a circle object that represents a circle with its center at \(\left(150, 100\right)\) and radius 75.</p>
 </li>
 <li>
-<p>Write a function named <code>pointincircle</code> that takes a circle object and a point object and returns <code>true</code> if the point lies in or on the boundary of the circle.</p>
+<p>Write a function named <code>pointincircle</code> that takes a circle object and a point object and returns <code>true</code> if the point lies in or on the boundary of the circle.
+</p>
 </li>
 <li>
-<p>Write a function named <code>rectincircle</code> that takes a circle object and a rectangle object and returns <code>true</code> if the rectangle lies entirely in or on the boundary of the circle.</p>
+<p>Write a function named <code>rectincircle</code> that takes a circle object and a rectangle object and returns <code>true</code> if the rectangle lies entirely in or on the boundary of the circle.
+</p>
 </li>
 <li>
-<p>Write a function named <code>rectcircleoverlap</code> that takes a circle object and a rectangle object and returns <code>true</code> if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return <code>true</code> if any part of the rectangle falls inside the circle.</p>
+<p>Write a function named <code>rectcircleoverlap</code> that takes a circle object and a rectangle object and returns <code>true</code> if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return <code>true</code> if any part of the rectangle falls inside the circle.
+</p>
 </li>
 </ol>
 </div>
@@ -12089,10 +12162,12 @@ suffix)</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Write a function called <code>drawrect</code> that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.</p>
+<p>Write a function called <code>drawrect</code> that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.
+</p>
 </li>
 <li>
-<p>Write a function called <code>drawcircle</code> that takes a turtle object and a circle object and draws the circle.</p>
+<p>Write a function called <code>drawcircle</code> that takes a turtle object and a circle object and draws the circle.
+</p>
 </li>
 </ol>
 </div>
@@ -12109,7 +12184,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="time">Time</h3>
 <div class="paragraph">
-<p>As another example of a composite type, we’ll define a <code>mutable struct</code> called <code>MyTime</code> that records the time of day. The struct definition looks like this:</p>
+<p>As another example of a composite type, we’ll define a <code>mutable struct</code> called <code>MyTime</code> that records the time of day. The struct definition looks like this:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12126,7 +12202,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The name <code>Time</code> is already used in Julia and to avoid a name clash, I have chosen <code>MyTime</code>. We can create a new mytime object:</p>
+<p>The name <code>Time</code> is already used in Julia and to avoid a name clash, I have chosen <code>MyTime</code>. We can create a new mytime object:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12135,28 +12212,43 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The state diagram for the mytime object looks like <a href="#fig16-1">State diagram</a>.</p>
+<p>The object diagram for the mytime object looks like <a href="#fig16-1">Object diagram</a>.</p>
 </div>
 <div id="fig16-1" class="imageblock">
 <div class="content">
 <img src="images/fig161.svg" alt="fig161">
 </div>
-<div class="title">Figure 22. State diagram</div>
+<div class="title">Figure 22. Object diagram</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As an exercise, write a function called <code>printtime</code> that takes a mytime object and prints it in the form <code>hour:minute:second</code>. The <code>@printf</code> macro of the StdLib module <code>Printf</code> prints an integer with the format sequence <em>%02d</em> using at least two digits, including a leading zero if necessary.
+</p>
 </div>
 <div class="paragraph">
-<p>As an exercise, write a function called <code>printtime</code> that takes a mytime object and prints it in the form <code>hour:minute:second</code>. Hint: using the <code>@printf</code> macro the format sequence <em>%02d</em> prints an integer using at least two digits, including a leading zero if necessary.</p>
+<p>Write a boolean function called <code>isafter</code> that takes two mytime objects, <code>t1</code> and <code>t2</code>, and returns <code>true</code> if <code>t1</code> follows <code>t2</code> chronologically and <code>false</code> otherwise. Challenge: don’t use an <code>if</code> statement.
+</p>
 </div>
-<div class="paragraph">
-<p>Write a boolean function called <code>isafter</code> that takes two mytime objects, <code>t1</code> and <code>t2</code>, and returns <code>true</code> if <code>t1</code> follows <code>t2</code> chronologically and <code>false</code> otherwise. Challenge: don’t use an <code>if</code> statement.</p>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_pure_functions">Pure Functions</h3>
 <div class="paragraph">
-<p>In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call <em>prototype and patch</em>, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.</p>
+<p>In the next few sections, we’ll write two functions that add time values. They demonstrate two kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call <em>prototype and patch</em>, which is a way of tackling a complex problem by starting with a simple prototype and incrementally dealing with the complications.
+</p>
 </div>
 <div class="paragraph">
-<p>Here is a simple prototype of <code>addtime</code>:</p>
+<p>Here is a simple prototype of <code>addtime</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12209,10 +12301,12 @@ suffix)</p>
 <div class="sect2">
 <h3 id="modifiers">Modifiers</h3>
 <div class="paragraph">
-<p>Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called <em>modifiers</em>.</p>
+<p>Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called <em>modifiers</em>.
+</p>
 </div>
 <div class="paragraph">
-<p><code>increment!</code>, which adds a given number of seconds to a mytime object, can be written naturally as a modifier. Here is a rough draft:</p>
+<p><code>increment!</code>, which adds a given number of seconds to a mytime object, can be written naturally as a modifier. Here is a rough draft:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12233,40 +12327,69 @@ suffix)</p>
 <p>The first line performs the basic operation; the remainder deals with the special cases we saw before.</p>
 </div>
 <div class="paragraph">
-<p>Is this function correct? What happens if seconds is much greater than \(60\)?</p>
+<p>Is this function correct? What happens if seconds is much greater than 60?</p>
 </div>
 <div class="paragraph">
-<p>In that case, it is not enough to carry once; we have to keep doing it until <code>time.second</code> is less than sixty. One solution is to replace the <code>if</code> statements with <code>while</code> statements. That would make the function correct, but not very efficient. As an exercise, write a correct version of <code>increment!</code> that doesn’t contain any loops.</p>
+<p>In that case, it is not enough to carry once; we have to keep doing it until <code>time.second</code> is less than sixty. One solution is to replace the <code>if</code> statements with <code>while</code> statements. That would make the function correct, but not very efficient.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>As an exercise, write a correct version of <code>increment!</code> that doesn’t contain any loops.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Anything that can be done with modifiers can also be done with pure functions. In fact, some programming languages only allow pure functions. There is some evidence that programs that use pure functions are faster to develop and less error-prone than programs that use modifiers. But modifiers are convenient at times, and functional programs tend to be less efficient.</p>
 </div>
 <div class="paragraph">
-<p>In general, I recommend that you write pure functions whenever it is reasonable and resort to modifiers only if there is a compelling advantage. This approach might be called a <em>functional programming style</em>.</p>
+<p>In general, I recommend that you write pure functions whenever it is reasonable and resort to modifiers only if there is a compelling advantage. This approach might be called a <em>functional programming style</em>.
+</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>As an exercise, write a “pure” version of <code>increment!</code> that creates and returns a new mytime object rather than modifying the parameter.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="prototyping_versus_planning">Prototyping Versus Planning</h3>
 <div class="paragraph">
-<p>The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.</p>
+<p>The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.
+</p>
 </div>
 <div class="paragraph">
 <p>This approach can be effective, especially if you don’t yet have a deep understanding of the problem. But incremental corrections can generate code that is unnecessarily complicated—since it deals with many special cases—and unreliable—since it is hard to know if you have found all the errors.</p>
 </div>
 <div class="paragraph">
-<p>An alternative is <em>designed development</em>, in which high-level insight into the problem can make the programming much easier. In this case, the insight is that a Time object is really a three-digit number in base 60 (see <a href="https://en.wikipedia.org/wiki/Sexagesimal)!" class="bare">https://en.wikipedia.org/wiki/Sexagesimal)!</a> The second attribute is the “ones column”, the minute attribute is the “sixties column”, and the hour attribute is the “thirty-six hundreds column”.</p>
+<p>An alternative is <em>designed development</em>, in which high-level insight into the problem can make the programming much easier. In this case, the insight is that a Time object is really a three-digit number in base 60 (see <a href="https://en.wikipedia.org/wiki/Sexagesimal)!" class="bare">https://en.wikipedia.org/wiki/Sexagesimal)!</a> The second attribute is the “ones column”, the minute attribute is the “sixties column”, and the hour attribute is the “thirty-six hundreds column”.
+</p>
 </div>
 <div class="paragraph">
-<p>When we wrote <code>addtime</code> and <code>increment!</code>, we were effectively doing addition in base \(60\), which is why we had to carry from one column to the next.</p>
+<p>When we wrote <code>addtime</code> and <code>increment!</code>, we were effectively doing addition in base 60, which is why we had to carry from one column to the next.</p>
 </div>
 <div class="paragraph">
-<p>This observation suggests another approach to the whole problem—we can convert Time objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.</p>
+<p>This observation suggests another approach to the whole problem—we can convert mytime objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.</p>
 </div>
 <div class="paragraph">
-<p>Here is a function that converts mytimes to integers:</p>
+<p>Here is a function that converts mytimes to integers:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12277,7 +12400,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>And here is a function that converts an integer to a mytime (recall that <code>divrem</code> divides the first argument by the second and returns the quotient and remainder as a tuple):</p>
+<p>And here is a function that converts an integer to a mytime (recall that <code>divrem</code> divides the first argument by the second and returns the quotient and remainder as a tuple):
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12288,8 +12412,19 @@ suffix)</p>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>You might have to think a bit, and run some tests, to convince yourself that these functions are correct. One way to test them is to check that <code>timetoint(inttotime(x)) == x</code> for many values of <code>x</code>. This is an example of a consistency check.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Once you are convinced they are correct, you can use them to rewrite <code>addtime</code>:</p>
@@ -12303,13 +12438,27 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This version is shorter than the original, and easier to verify. Rewrite <code>increment!</code> using <code>timetoint</code> and <code>inttotime</code>.</p>
+<p>This version is shorter than the original, and easier to verify.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Rewrite <code>increment!</code> using <code>timetoint</code> and <code>inttotime</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>In some ways, converting from base \(60\) to base \(10\) and back is harder than just dealing with times. Base conversion is more abstract; our intuition for dealing with time values is better.</p>
+<p>In some ways, converting from base 60 to base 10 and back is harder than just dealing with times. Base conversion is more abstract; our intuition for dealing with time values is better.</p>
 </div>
 <div class="paragraph">
-<p>But if we have the insight to treat times as base \(60\) numbers and make the investment of writing the conversion functions (<code>timetoint</code> and <code>inttotime</code>), we get a program that is shorter, easier to read and debug, and more reliable.</p>
+<p>But if we have the insight to treat times as base 60 numbers and make the investment of writing the conversion functions (<code>timetoint</code> and <code>inttotime</code>), we get a program that is shorter, easier to read and debug, and more reliable.</p>
 </div>
 <div class="paragraph">
 <p>It is also easier to add features later. For example, imagine subtracting two mytimes to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.</p>
@@ -12321,13 +12470,16 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_debugging_14">Debugging</h3>
 <div class="paragraph">
-<p>A mytime object is well-formed if the values of <code>minute</code> and <code>second</code> are between 0 and 60 (including 0 but not 60) and if <code>hour</code> is positive. <code>hour</code> and <code>minute</code> should be integral values, but we might allow <code>second</code> to have a fraction part.</p>
+<p>A mytime object is well-formed if the values of <code>minute</code> and <code>second</code> are between 0 and 60 (including 0 but not 60) and if <code>hour</code> is positive. <code>hour</code> and <code>minute</code> should be integral values, but we might allow <code>second</code> to have a fraction part.
+</p>
 </div>
 <div class="paragraph">
-<p>Requirements like these are called <em>invariants</em> because they should always be true. To put it a different way, if they are not true, something has gone wrong.</p>
+<p>Requirements like these are called <em>invariants</em> because they should always be true. To put it a different way, if they are not true, something has gone wrong.
+</p>
 </div>
 <div class="paragraph">
-<p>Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like <code>isvalidtime</code> that takes a mytime object and returns <code>false</code> if it violates an invariant:</p>
+<p>Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like <code>isvalidtime</code> that takes a mytime object and returns <code>false</code> if it violates an invariant:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12343,7 +12495,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>At the beginning of each function you could check the arguments to make sure they are valid:</p>
+<p>At the beginning of each function you could check the arguments to make sure they are valid:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12357,7 +12510,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Or you could use an <em>+@assert+ macro</em>, which checks a given invariant and throws an exception if it fails:</p>
+<p>Or you could use an <code>@assert</code> macro, which checks a given invariant and throws an exception if it fails:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12378,31 +12532,33 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">prototype and patch</dt>
 <dd>
-<p>A development plan that involves writing a rough draft of a program, testing, and correcting errors as they are found.</p>
+<p>A development plan that involves writing a rough draft of a program, testing, and correcting errors as they are found.
+</p>
 </dd>
 <dt class="hdlist1">designed development</dt>
 <dd>
-<p>A development plan that involves high-level insight into the problem and more planning than incremental development or prototype development.</p>
+<p>A development plan that involves high-level insight into the problem and more planning than incremental development or prototype development.
+</p>
 </dd>
 <dt class="hdlist1">pure function</dt>
 <dd>
-<p>A function that does not modify any of the objects it receives as arguments. Most pure functions are fruitful.</p>
+<p>A function that does not modify any of the objects it receives as arguments. Most pure functions are fruitful.
+</p>
 </dd>
 <dt class="hdlist1">modifier</dt>
 <dd>
-<p>A function that changes one or more of the objects it receives as arguments. Most modifiers are void; that is, they return <code>nothing</code>.</p>
+<p>A function that changes one or more of the objects it receives as arguments. Most modifiers are void; that is, they return <code>nothing</code>.
+</p>
 </dd>
 <dt class="hdlist1">functional programming style</dt>
 <dd>
-<p>A style of program design in which the majority of functions are pure.</p>
+<p>A style of program design in which the majority of functions are pure.
+</p>
 </dd>
 <dt class="hdlist1">invariant</dt>
 <dd>
-<p>A condition that should always be true during the execution of a program.</p>
-</dd>
-<dt class="hdlist1"><code>@assert</code> macro</dt>
-<dd>
-<p>A statement that check a condition and throws an exception if it fails.</p>
+<p>A condition that should always be true during the execution of a program.
+</p>
 </dd>
 </dl>
 </div>
@@ -12412,7 +12568,8 @@ suffix)</p>
 <div class="sect4">
 <h5 id="ex16-1">Exercise 16-1</h5>
 <div class="paragraph">
-<p>Write a function called <code>multime</code> that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.</p>
+<p>Write a function called <code>multime</code> that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.
+</p>
 </div>
 <div class="paragraph">
 <p>Then use <code>multime</code> to write a function that takes a mytime object that represents the finishing time in a race, and a number that represents the distance, and returns a mytime object that represents the average pace (time per mile).</p>
@@ -15862,7 +16019,7 @@ end</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-24 15:39:33 CEST
+Last updated 2018-08-24 17:39:19 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
