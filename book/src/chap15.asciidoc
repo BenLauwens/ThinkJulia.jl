@@ -7,6 +7,7 @@ At this point you know how to use functions to organize code and built-in types 
 === Composite Types
 
 We have used many of Julia’s built-in types; now we are going to define a new type. As an example, we will create a type called +Point+ that represents a point in two-dimensional space.
+(((type)))(((Point)))((("type", "programmer-defined", "Point", see="Point")))
 
 In mathematical notation, points are often written in parentheses with a comma separating the coordinates. For example, latexmath:[\(\left(0,0\right)\)] represents the origin, and latexmath:[\(\left(x,y\right)\)] represents the point latexmath:[\(x\)] units to the right and latexmath:[\(y\)] units up from the origin.
 
@@ -21,6 +22,7 @@ There are several ways we might represent points in Julia:
 Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.
 
 A programmer-defined _composite type_ is also called a _struct_. The +struct+ definition for a point looks like this:
+(((composite type)))(((struct)))((("keyword", "struct")))(((end)))
 
 [source,@julia-setup chap15]
 ----
@@ -31,16 +33,18 @@ end
 ----
 
 The header indicates that the new struct is called +Point+. The body defines the _attributes_ or _fields_ of the struct. The +Point+ struct has two fields: +x+ and +y+. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
+(((attribute)))((("field", see="attribute")))
 
 Defining a type named Point creates a datatype object:
+(((typeof)))(((DataType)))((("type", "Base", "DataType", see="DataType")))
 
 [source,@julia-repl chap15]
 ----
 typeof(Point)
-Point
 ----
 
 A struct is like a factory for creating objects. To create a point, you call +Point+ as if it were a function having as arguments the values of the fields. When +Point+ is used as a function, it is called a _constructor_.
+(((constructor)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -49,14 +53,17 @@ Point(3.0, 4.0)
 ----
 
 The return value is a reference to a point object, which we assign to +p+.
+(((reference)))
 
 Creating a new object is called _instantiation_, and the object is an _instance_ of the type.
+(((instatiation)))(((instance)))
 
 When you print an instance, Julia tells you what type it belongs to and what the values of the atributes are.
 
 Every object is an instance of some type, so “object” and “instance” are interchangeable. But in this chapter I use “instance” to indicate that I am talking about a programmer-defined type.
 
 A state diagram that shows an object and its fields is called an _object diagram_; see <<fig15-1>>.
+(((object diagram)))((("diagram", "object", see="object diagram")))
 
 [[fig15-1]]
 .Object diagram
@@ -66,6 +73,7 @@ image::images/fig151.svg[]
 === Structs are Immutable
 
 You can get the values of the fields using +.+ notation:
+(((.)))((("dot notation", see=".")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -86,6 +94,7 @@ julia> distance = sqrt(p.x^2 + p.y^2)
 ----
 
 Structs are however by default immutable, after construction the fields can not change value:
+(((immutable)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -105,6 +114,7 @@ This may seem odd at first, but it has several advantages:
 === Mutable Structs
 
 Where required, mutable composite types can be declared with the keyword +mutable struct+. Here is the definition of a mutable point:
+(((mutable composite type)))(((mutable)))((("keyword", "mutable", see="mutable")))(((MPoint)))((("type", "programmer-defined", "MPoint", see="MPoint")))
 
 [source,@julia-setup chap15]
 ----
@@ -115,6 +125,7 @@ end
 ----
 
 You can assign values to an instance of a mutable struct using dot notation:
+(((.)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -127,6 +138,7 @@ julia> blank.y = 4.0
 ----
 
 You can pass an instance as an argument in the usual way. For example:
+(((printpoint)))((("function", "programmer-defined", "printpoint", see="printpoint")))
 
 [source,@julia-setup chap15]
 ----
@@ -143,7 +155,12 @@ julia> printpoint(blank)
 (3.0, 4.0)
 ----
 
+[TIP]
+====
 As an exercise, write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
+(((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
+
+====
 
 
 === Rectangles
@@ -157,6 +174,7 @@ There are at least two possibilities:
 * You could specify two opposing corners.
 
 At this point it is hard to say whether either is better than the other, so we’ll implement the first one, just as an example.
+(((Rectangle)))((("type", "programmer-defined", "Rectangle", see="Rectangle")))
 
 [source,@julia-setup chap15]
 ----
@@ -173,6 +191,7 @@ end
 ----
 
 The docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.
+(((docstring)))
 
 To represent a rectangle, you have to instantiate a rectangle object:
 
@@ -185,16 +204,17 @@ Rectangle(100.0, 200.0, MPoint(0.0, 0.0))
 ----
 
 <<fig15-2>> shows the state of this object. An object that is a field of another object is _embedded_. Because the +corner+ attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+(((embedded)))(((object diagram)))
 
 [[fig15-2]]
 .Object diagram
 image::images/fig152.svg[]
 
 
-
 === Instances as Return Values
 
 Functions can return instances. For example, +findcenter+ takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
+(((findcenter)))((("function", "programmer-defined", "findcenter", see="findcenter")))
 
 [source,@julia-setup chap15]
 ----
@@ -216,7 +236,8 @@ Point(0.0, 0.0)
 
 === Instances as Arguments
 
-If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint+ takes a mutable point object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the point:
+If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint!+ takes a mutable point object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the point:
+(((movepoint!)))((("function", "programmer-defined", "movepoint!", see="movepoint!")))
 
 [source,@julia-setup chap15]
 ----
@@ -240,6 +261,7 @@ MPoint(1.0, 2.0)
 ----
 
 Inside the function, +p+ is an alias for +origin+, so when the function modifies +p+, +origin+ changes.
+(((aliasing)))
 
 Passing an immutable point object to +movepoint!+ causes an error:
 
@@ -270,20 +292,26 @@ julia> box
 Rectangle(100.0, 200.0, MPoint(1.0, 2.0))
 ----
 
+[WARNING]
+====
 Attention you cannot reassign a mutable attribute of an immutable object:
+(((reassignment)))
 
 [source,@julia-repl-test chap15]
 ----
 julia> box.corner = MPoint(1.0, 2.0)
 ERROR: type Rectangle is immutable
 ----
+====
 
 
 === Copying
 
 Aliasing can make a program difficult to read because changes in one place might have unexpected effects in another place. It is hard to keep track of all the variables that might refer to a given object.
+(((aliasing)))
 
 Copying an object is often an alternative to aliasing. Julia provides a function called +deepcopy+ that can duplicate any object:
+(((copying)))(((deepcopy)))((("function", "Base", "deepcopy", see="deepcopy")))(deep copy)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -298,13 +326,18 @@ false
 ----
 
 The +≡+ operator indicates that +p1+ and +p2+ are not the same object, which is what we expected. But you might have expected +==+ to yield +true+ because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the +==+ operator is the same as the +===+ operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
+(((==)))(((≡)))
 
+[TIP]
+====
 As an exercise, create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
+====
 
 
 === Debugging
 
 When you start working with objects, you are likely to encounter some new exceptions. If you try to access a field that doesn’t exist, you get:
+(((debugging)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -318,6 +351,7 @@ Stacktrace:
 ----
 
 If you are not sure what type an object is, you can ask:
+(((typeof)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -326,6 +360,7 @@ Point
 ----
 
 You can also use isinstance to check whether an object is an instance of a type:
+(((isa)))
 
 [source,@julia-repl-test chap15]
 ----
@@ -334,6 +369,7 @@ true
 ----
 
 If you are not sure whether an object has a particular attribute, you can use the built-in function +fieldnames+:
+(((deepcopy)))((("function", "Base", "deepcopy", see="deepcopy")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -342,6 +378,7 @@ julia> fieldnames(Point)
 ----
 
 or the function +isdefined+:
+(((isdefined)))((("function", "Base", "isdefined", see="isdefined")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -352,8 +389,10 @@ false
 ----
 
 The first argument can be any object; the second argument is a symbol, +:+ followed by the name of the field.
+(((:)))(((Symbol)))((("type", "Base", "Symbol", see="Symbol")))
 
 You can also use a +try+ statement to see if the object has the fields you need:
+(((try statement)))
 
 [source,@julia-setup chap15]
 ----
@@ -369,27 +408,35 @@ end
 
 struct::
 A composite type. A struct definition creates a new struct object.
+(((struct)))
 
 struct object::
 An object that contains information about a composite type. The struct object can be used to create instances of the type.
+(((struct object)))
 
 instance::
 An object that belongs to a type.
+(((instance)))
 
 instantiate::
 To create a new object.
+(((instantiate)))
 
 attribute or field::
 One of the named values associated with an object.
+(((attribute)))
 
 embedded object::
 An object that is stored as a field of another object.
+(((embedded object)))
 
 deep copy::
 To copy the contents of an object as well as any embedded objects, and any objects embedded in them, and so on; implemented by the +deepcopy+ function.
+(((deep copy)))
 
 object diagram::
 A diagram that shows objects, their fields, and the values of the fields.
+(((object diagram)))
 
 
 === Exercises
@@ -398,19 +445,25 @@ A diagram that shows objects, their fields, and the values of the fields.
 ===== Exercise 15-1
 
 . Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a point object and +radius+ is a number.
+(((Circle)))((("type", "programmer-defined", "Circle")))
 
-. Instantiate a circle object that represents a circle with its center at latexmath:[\(\left(150, 100\right)\)] and radius latexmath:[\(75\)].
+. Instantiate a circle object that represents a circle with its center at latexmath:[\(\left(150, 100\right)\)] and radius 75.
 
 . Write a function named +pointincircle+ that takes a circle object and a point object and returns +true+ if the point lies in or on the boundary of the circle.
+(((pointincircle)))((("function", "programmer-defined", "pointincircle", see="pointincircle")))
 
 . Write a function named +rectincircle+ that takes a circle object and a rectangle object and returns +true+ if the rectangle lies entirely in or on the boundary of the circle.
+(((rectincircle)))((("function", "programmer-defined", "rectincircle", see="rectincircle")))
 
 . Write a function named +rectcircleoverlap+ that takes a circle object and a rectangle object and returns +true+ if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return +true+ if any part of the rectangle falls inside the circle.
+(((rectcircleoverlap)))((("function", "programmer-defined", "rectcircleoverlap", see="rectcircleoverlap")))
 
 [[ex15-2]]
 ===== Exercise 15-2
 
 . Write a function called +drawrect+ that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.
+(((drawrect)))((("function", "programmer-defined", "drawrect", see="drawrect")))
 
 . Write a function called +drawcircle+ that takes a turtle object and a circle object and draws the circle.
+(((drawcircle)))((("function", "programmer-defined", "drawcircle", see="drawcircle")))
 

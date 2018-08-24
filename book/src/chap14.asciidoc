@@ -214,14 +214,13 @@ To avoid these errors, you could use functions like +ispath+ and +isfile+, but i
 It is better to go ahead and try—and deal with problems if they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
 (((try statement)))((("statement", "try", see="try statement")))(((try)))((("keyword", "try", see="try")))(((catch)))((("keyword", "catch", see="catch")))(((end)))
 
-[source,@julia-repl-test]
+[source,julia]
 ----
-julia> try
-           fin = open("bad_file.txt")
-       catch exc
-           println("Something went wrong: $exc")
-       end
-Something went wrong: SystemError("opening file bad_file.txt", 2, nothing)
+try
+    fin = open("bad_file.txt")
+catch exc
+    println("Something went wrong: $exc")
+end
 ----
 
 Julia starts by executing the +try+ clause. If all goes well, it skips the +catch+ clause and proceeds. If an exception occurs, it jumps out of the +try+ clause and runs the +catch+ clause.
@@ -232,7 +231,7 @@ Handling an exception with a +try+ statement is called _catching_ an exception. 
 In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The +finally+ keyword provides a way to run some code when a given block of code exits, regardless of how it exits:
 (((finally)))((("keyword", "finally", see="finally")))
 
-[source,@julia-setup]
+[source,julia]
 ----
 f = open("output.txt")
 try
@@ -241,7 +240,6 @@ try
 finally
     close(f)
 end
-
 ----
 
 The function +close+ will always be executed.
