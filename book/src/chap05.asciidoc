@@ -7,7 +7,7 @@ The main topic of this chapter is the +if+ statement, which executes different c
 === Floor Division and Modulus
 
 The _floor division_ operator, +÷+ (+\div TAB+), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
-(((floor division operator)))((("operator", "base", "÷", see="floor division operator")))((("÷", see="floor division operator")))
+(((floor division operator)))((("operator", "Base", "÷", see="floor division operator")))((("÷", see="floor division operator")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -34,7 +34,7 @@ julia> remainder = minutes - hours * 60
 ----
 
 An alternative is to use the _modulus operator_, +%+, which divides two numbers and returns the remainder.
-(((modulus operator)))((("operator", "base", "%", see="modulus operator")))((("%", see="modulus operator)))
+(((modulus operator)))((("operator", "Base", "%", see="modulus operator")))((("%", see="modulus operator)))
 
 [source,@julia-repl-test chap05]
 ----
@@ -64,7 +64,7 @@ false
 ----
 
 +true+ and +false+ are special values that belong to the type +Bool+; they are not strings:
-(((Bool)))((("type", "base", "Bool")))
+(((Bool)))((("type", "Base", "Bool")))
 
 [source,@julia-repl-test]
 ----
@@ -75,7 +75,7 @@ Bool
 ----
 
 The +==+ operator is one of the relational operators; the others are:
-(((relational operator)))(((==)))((("operator", "base", "==", see="==")))
+(((relational operator)))(((==)))((("operator", "Base", "==", see="==")))
 
 [source,julia]
 ----
@@ -92,7 +92,7 @@ The +==+ operator is one of the relational operators; the others are:
 [WARNING]
 ====
 Although these operations are probably familiar to you, the Julia symbols are different from the mathematical symbols. A common error is to use a single equal sign (+=+) instead of a double equal sign (+==+). Remember that +=+ is an assignment operator and +==+ is a relational operator. There is no such thing as +=<+ or +pass:[=>]+.
-(((≠)))((("operator", "base", "≠", see="≠")))((("!=", see="≠")))((("operator", "base", "!=", see="≠")))(((>)))((("operator", "base", ">", see=">")))(((<)))((("operator", "base", "<", see="<")))(((≥)))((("operator", "base", "≥", see="≥")))(((">=", see="≥")))((("operator", "base", ">=", see="≥")))(((≤)))((("operator", "base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operator", "base", "pass:[&lt;=]", see="≤")))
+(((≠)))((("operator", "Base", "≠", see="≠")))((("!=", see="≠")))((("operator", "Base", "!=", see="≠")))(((>)))((("operator", "Base", ">", see=">")))(((<)))((("operator", "Base", "<", see="<")))(((≥)))((("operator", "Base", "≥", see="≥")))(((">=", see="≥")))((("operator", "Base", ">=", see="≥")))(((≤)))((("operator", "Base", "≤", see="≤")))((("pass:[&lt;=]", see="≤")))((("operator", "Base", "pass:[&lt;=]", see="≤")))
 ====
 
 
@@ -356,7 +356,7 @@ Stacktrace:
 ----
 
 This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 +recurse+ frames on the stack!
-(((traceback)))(((StackOverflowError)))((("error", "base", "StackOverflowError", see="StackOverflowError")))
+(((traceback)))(((StackOverflowError)))((("error", "Base", "StackOverflowError", see="StackOverflowError")))
 
 If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
 
@@ -366,7 +366,7 @@ If you encounter an infinite recursion by accident, review your function to conf
 The programs we have written so far accept no input from the user. They just do the same thing every time.
 
 Julia provides a built-in function called +readline+ that stops the program and waits for the user to type something. When the user presses +RETURN+ or +ENTER+, the program resumes and +readline+ returns what the user typed as a string.
-(((readline)))((("function", "base", "readline", see="readline")))
+(((readline)))((("function", "Base", "readline", see="readline")))
 
 [source,jlcon]
 ----
@@ -535,7 +535,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 ===== Exercise 5-1
 
 The function +time+ returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
-(((time)))((("function", "base", "time")))
+(((time)))((("function", "Base", "time")))
 
 [source,@julia-repl]
 ----

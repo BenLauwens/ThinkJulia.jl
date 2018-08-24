@@ -59,7 +59,7 @@ Array{Any,1}
 ----
 
 The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array +empty+ contains values of type +Any+. This is a predefined type that can represent any type.
-(((Array)))((("type", "base", "Array", see="Array")))(((Any)))((("type", "base", "Any", see="Any")))
+(((Array)))((("type", "Base", "Array", see="Array")))(((Any)))((("type", "Base", "Any", see="Any")))
 
 
 === Arrays Are Mutable
@@ -162,7 +162,7 @@ Although an array can contain another array, the nested array still counts as a 
 === Array Slices
 
 The slice operator also works on arrays:
-(((slice operator)))((("operator", "base", "[:]", see="slice operator")))((("[:]", see="slice operator")))
+(((slice operator)))((("operator", "Base", "[:]", see="slice operator")))((("[:]", see="slice operator")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -199,7 +199,7 @@ julia> print(t)
 === Array Library
 
 Julia provides functions that operate on arrays. For example, +push!+ adds a new element to the end of an array:
-(((push!)))((("function", "base", "push!", see="push!")))
+(((push!)))((("function", "Base", "push!", see="push!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -212,7 +212,7 @@ julia> print(t)
 ----
 
 +append!+ add the elements of the second array to the end of the first:
-(((append!)))((("function", "base", "append!", see="append!")))
+(((append!)))((("function", "Base", "append!", see="append!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -229,7 +229,7 @@ julia> print(t1)
 This example leaves +t2+ unmodified.
 
 +sort!+ arranges the elements of the array from low to high:
-(((sort!)))((("function", "base", "sort!", see="sort!")))
+(((sort!)))((("function", "Base", "sort!", see="sort!")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -242,7 +242,7 @@ julia> print(t)
 ----
 
 +sort+ returns a copy of the elements of the array in order:
-(((sort)))((("function", "base", "sort", see="sort")))
+(((sort)))((("function", "Base", "sort", see="sort")))
 
 [source,@julia-repl-test chap10]
 ----
@@ -279,7 +279,7 @@ end
 ----
 
 +total+ is initialized to 0. Each time through the loop, +pass:[+=]+ gets one element from the array. The +pass:[+=]+ operator provides a short way to update a variable. This _augmented assignment statement_,
-(((augmented assignment statement)))(((pass:[+=])))((("operator", "base", "pass:[+=]", see="pass:[+=]")))
+(((augmented assignment statement)))(((pass:[+=])))((("operator", "Base", "pass:[+=]", see="pass:[+=]")))
 
 [source,julia]
 ----
@@ -297,7 +297,7 @@ As the loop runs, +total+ accumulates the sum of the elements; a variable used t
 (((accumulator)))
 
 Adding up the elements of an array is such a common operation that Julia provides it as a built-in function, +sum+:
-(((sum)))((("function", "base", "sum", see="sum")))
+(((sum)))((("function", "Base", "sum", see="sum")))
 
 [source,@julia-repl-test]
 ----
@@ -354,7 +354,7 @@ Most common array operations can be expressed as a combination of map, filter an
 === Dot Syntax
 
 For every binary operator like +pass:[^]+, there is a corresponding _dot operator_ pass:[<code>.^</code>] that is automatically defined to perform +pass:[^]+ element-by-element on arrays. For example, pass:[<code>&#91;1, 2, 3&#93; ^ 3</code>] is not defined, but pass:[<code>&#91;1, 2, 3&#93; .^ 3</code>] is defined as computing the elementwise result pass:[<code>&#91;1^3, 2^3, 3^3&#93;</code>]:
-(((dot operator)))((("operator", "base", ".", see="dot operator")))(((".", see="dot operator")))
+(((dot operator)))((("operator", "Base", ".", see="dot operator")))(((".", see="dot operator")))
 
 [source,@julia-repl-test]
 ----
@@ -387,7 +387,7 @@ end
 === Deleting (Inserting) Elements
 
 There are several ways to delete elements from an array. If you know the index of the element you want, you can use +splice!+:
-(((splice!)))((("function", "base", "splice!", see="splice!")))
+(((splice!)))((("function", "Base", "splice!", see="splice!")))
 
 [source,@julia-repl-test]
 ----
@@ -402,7 +402,7 @@ julia> print(t)
 +splice!+ modifies the array and returns the element that was removed.
 
 +pop!+ deletes and returns the last element:
-(((pop!)))((("function", "base", "pop!", see="pop!")))
+(((pop!)))((("function", "Base", "pop!", see="pop!")))
 
 [source,@julia-repl-test]
 ----
@@ -415,7 +415,7 @@ julia> print(t)
 ----
 
 +popfirst!+ deletes and returns the first element:
-(((popfirst!)))((("function", "base", "popfirst!", see="popfirst!")))
+(((popfirst!)))((("function", "Base", "popfirst!", see="popfirst!")))
 
 [source,@julia-repl-test]
 ----
@@ -428,10 +428,10 @@ julia> print(t)
 ----
 
 The functions +pushfirst!+ and +push!+ insert an element at the beginning, respectively at the end of the array.
-(((pushfirst!)))((("function", "base", "pushfirst!", see="pushfirst!")))(((push!)))
+(((pushfirst!)))((("function", "Base", "pushfirst!", see="pushfirst!")))(((push!)))
 
 If you don’t need the removed value, you can use the function +deleteat!+:
-(((deleteat!)))((("function", "base", "deleteat!", see="deleteat!")))
+(((deleteat!)))((("function", "Base", "deleteat!", see="deleteat!")))
 
 [source,@julia-repl-test]
 ----
@@ -442,7 +442,7 @@ julia> print(deleteat!(t, 2))
 ----
 
 The function +insert!+ inserts an element at a given index:
-(((insert!)))((("function", "base", "insert!", see="insert!")))
+(((insert!)))((("function", "Base", "insert!", see="insert!")))
 
 [source,@julia-repl-test]
 ----
@@ -456,7 +456,7 @@ julia> print(insert!(t, 2, 'x'))
 === Arrays and Strings
 
 A string is a sequence of characters and an array is a sequence of values, but an array of characters is not the same as a string. To convert from a string to an array of characters, you can use the function +collect+:
-(((collect)))((("function", "base", "collect", see="collect")))
+(((collect)))((("function", "Base", "collect", see="collect")))
 
 [source,@julia-repl-test]
 ----
@@ -469,7 +469,7 @@ julia> print(t)
 The +collect+ function breaks a string or another sequence into individual elements.
 
 If you want to break a string into words, you can use the +split+ function:
-(((split)))((("function", "base", "split", see="split")))
+(((split)))((("function", "Base", "split", see="split")))
 
 [source,@julia-repl-test]
 ----
@@ -491,7 +491,7 @@ SubString{String}["spam", "spam", "spam"]
 ----
 
 +join+ is the inverse of +split+. It takes an array of strings and concatenates the elements:
-(((join)))((("function", "base", "join", see="join")))
+(((join)))((("function", "Base", "join", see="join")))
 
 [source,@julia-repl-test]
 ----
@@ -527,7 +527,7 @@ image::images/fig102.svg[]
 In one case, +a+ and +b+ refer to two different objects that have the same value. In the second case, they refer to the same object.
 
 To check whether two variables refer to the same object, you can use the +≡+ (+\equiv TAB+) or +===+ operator.
-(((≡ operator)))((("operator", "base", "≡", see="operator ≡")))((("≡", see="operator ≡")))((("===", see="operator ≡")))
+(((≡ operator)))((("operator", "Base", "≡", see="operator ≡")))((("≡", see="operator ≡")))((("===", see="operator ≡")))
 
 [source,@julia-repl-test]
 ----
@@ -653,7 +653,7 @@ image::images/fig105.svg[]
 Since the array is shared by two frames, I drew it between them.
 
 It is important to distinguish between operations that modify arrays and operations that create new arrays. For example, +push!+ modifies an array, but +vcat+ creates a new array.
-(((push!)))(((vcat)))((("function", "base", "vcat", see="vcat")))
+(((push!)))(((vcat)))((("function", "Base", "vcat", see="vcat")))
 
 Here’s an example using +push!+:
 
@@ -1015,7 +1015,7 @@ This exercise pertains to the so-called Birthday Paradox, which you can read abo
 (((Birthday paradox)))
 
 If there are 23 students in your class, what are the chances that two of you have the same birthday? You can estimate this probability by generating random samples of 23 birthdays and checking for matches.
-(((rand)))((("function", "base", "rand", see="rand")))
+(((rand)))((("function", "Base", "rand", see="rand")))
 
 [TIP]
 ====

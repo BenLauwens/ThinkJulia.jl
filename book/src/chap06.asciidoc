@@ -86,7 +86,7 @@ nothing
 [NOTE]
 ====
 By the way, Julia provides a built-in function called +abs+ that computes absolute values.
-(((abs)))((("function", "base", "abs", see="abs")))
+(((abs)))((("function", "Base", "abs", see="abs")))
 ====
 
 [TIP]
@@ -406,7 +406,7 @@ In the last frame, the local variables +recurse+ and +result+ do not exist, beca
 [TIP]
 ====
 Julia provides the function +factorial+ to calculate the factorial of an integer number.
-(((factorial)))((("function", "base", "factorial", see="factorial")))
+(((factorial)))((("function", "Base", "factorial", see="factorial")))
 ====
 
 

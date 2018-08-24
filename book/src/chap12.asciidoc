@@ -29,7 +29,7 @@ julia> t = ('a', 'b', 'c', 'd', 'e')
 ----
 
 To create a tuple with a single element, you have to include a final comma:
-(((final comma)))(((typeof)))(((Tuple)))((("type", "base", "Tuple", see="Tuple")))
+(((final comma)))(((typeof)))(((Tuple)))((("type", "Base", "Tuple", see="Tuple")))
 
 [source,@julia-repl-test]
 ----
@@ -54,7 +54,7 @@ Char
 ====
 
 Another way to create a tuple is the built-in function tuple. With no argument, it creates an empty tuple:
-(((tuple)))((("function", "base", "tuple", see="tuple")))
+(((tuple)))((("function", "Base", "tuple", see="tuple")))
 
 [source,@julia-repl-test]
 ----
@@ -175,7 +175,7 @@ Strictly speaking, a function can only return one value, but if the value is a t
 (((÷)))(((%)))
 
 The built-in function +divrem+ takes two arguments and returns a tuple of two values, the quotient and remainder. You can store the result as a tuple:
-(((divrem)))((("function", "base", "divrem", see="divrem")))
+(((divrem)))((("function", "Base", "divrem", see="divrem")))
 
 [source,@julia-repl-test]
 ----
@@ -205,7 +205,7 @@ end
 ----
 
 +maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +min_max+ computes both and returns a tuple of two values.
-(((maximum)))(((minimum)))((("function", "base", "maximum", see="maximum")))((("function", "base", "minimum", see="minimum")))
+(((maximum)))(((minimum)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))
 
 
 === Variable-length Argument Tuples
@@ -248,7 +248,7 @@ julia> divrem(t...)
 ----
 
 Many of the built-in functions use variable-length argument tuples. For example, +max+ and +min+ can take any number of arguments:
-(((max)))(((min)))((("function", "base", "max", see="max")))((("function", "base", "min", see="min")))
+(((max)))(((min)))((("function", "Base", "max", see="max")))((("function", "Base", "min", see="min")))
 
 [source,@julia-repl-test]
 ----
@@ -274,7 +274,7 @@ As an exercise, write a function called +sumall+ that takes any number of argume
 === Arrays and Tuples
 
 +zip+ is a built-in function that takes two or more sequences and returns an array of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
-(((zip)))((("function", "base", "zip", see="zip")))
+(((zip)))((("function", "Base", "zip", see="zip")))
 
 This example zips a string and an array:
 
@@ -347,11 +347,12 @@ julia> for (letter, number) in t
 Each time through the loop, Julia selects the next tuple in the array and assigns the elements to letter and number. The parentheses around +(letter, number)+ are compulsory.
 (((parentheses)))
 
-If you combine +zip+, +for+ and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, +has_match+ takes two sequences, +t1+ and +t2+, and returns +true+ if there is an index +i+ such that +t1[i] == t2[i]+:
+If you combine +zip+, +for+ and tuple assignment, you get a useful idiom for traversing two (or more) sequences at the same time. For example, +hasmatch+ takes two sequences, +t1+ and +t2+, and returns +true+ if there is an index +i+ such that +t1[i] == t2[i]+:
+(((hasmatch)))((("function", "Base", "hasmatch", see="hasmatch")))
 
 [source,@julia-setup chap12]
 ----
-function has_match(t1, t2)
+function hasmatch(t1, t2)
     for (x, y) in zip(t1, t2)
         if x == y
             return true
@@ -362,7 +363,7 @@ end
 ----
 
 If you need to traverse the elements of a sequence and their indices, you can use the built-in function +enumerate+:
-(((enumerate)))((("function", "base", "enumerate", see="enumerate")))
+(((enumerate)))((("function", "Base", "enumerate", see="enumerate")))
 
 [source,@julia-repl-test chap12]
 ----
@@ -375,7 +376,6 @@ julia> for (index, element) in enumerate("abc")
 ----
 
 The result from +enumerate+ is an enumerate object, which iterates a sequence of pairs; each pair contains an index (starting from 1) and an element from the given sequence.
-(((enumerate object)))
 
 
 === Dictionaries and Tuples
@@ -479,13 +479,13 @@ Arrays are more common than tuples, mostly because they are mutable. But there a
 (((aliasing)))
 
 Because tuples are immutable, they don’t provide function like +sort!+ and +reverse!+, which modify existing arrays. But Julia provides the built-in function +sort+, which takes an array and returns a new array with the same elements in sorted order, and +reverse+, which takes any sequence and returns a sequence of the same type in reverse order.
-(((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("function", "base", "reverse", see="reverse")))(((zip)))((("function", "base", "reverse!", see="reverse!")))
+(((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("function", "Base", "reverse", see="reverse")))(((zip)))((("function", "Base", "reverse!", see="reverse!")))
 
 
 === Debugging
 
 Arrays, dictionaries and tuples are examples of _data structures_; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call _shape errors_; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
-(debugging)))(((data structures)))(((shape error)))
+(((debugging)))(((data structures)))(((shape error)))
 
 Julia allows to attach a type to elements of a sequence. How this is done, is detailed in [[chap17]]. Specifying the type eliminates a lot of shape errors.
 
@@ -552,7 +552,7 @@ Here is an example of what the output might look like:
 +
 [TIP]
 ====
-you might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
+You might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?
 ====
 
 . Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.

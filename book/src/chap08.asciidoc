@@ -16,7 +16,7 @@ The _Unicode standard_ tackles the complexities of what exactly a character is, 
 (((Unicode standard)))
 
 A +Char+ value represents a single character and is surrounded by single quotes:
-(((Char)))((("type", "base", "Char", see="Char")))
+(((Char)))((("type", "Base", "Char", see="Char")))
 
 [source,@julia-repl-test]
 ----
@@ -35,7 +35,7 @@ Emojis are part of the Unicode standard.
 === A String Is a Sequence
 
 A string is a sequence of characters. You can access the characters one at a time with the bracket operator:
-(((string)))(((String)))(((sequence)))(((bracket operator)))((("[]", see="bracket operator")))((("operator", "base", "[]", see="bracket operator")))
+(((string)))(((String)))(((sequence)))(((bracket operator)))((("[]", see="bracket operator")))((("operator", "Base", "[]", see="bracket operator")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -72,7 +72,7 @@ julia> fruit[end-1]
 ----
 
 But the value of the index has to be an integer. Otherwise you get:
-(((MethodError)))((("error", "base", "MethodError", see="MethodError")))
+(((MethodError)))((("error", "Base", "MethodError", see="MethodError")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -111,7 +111,7 @@ Strings are encoded using the _UTF-8 encoding_. UTF-8 is a variable-width encodi
 (((UTF-8 encoding)))
 
 The function +sizeof+ gives the number of bytes in a string:
-(((sizeof)))((("function", "base", "sizeof", see="sizeof")))
+(((sizeof)))((("function", "Base", "sizeof", see="sizeof")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -123,7 +123,7 @@ Because an emoji is encoded in 4 bytes and string indexing is byte based, the 5t
 (((emoji)))
 
 This means also that not every byte index into a UTF-8 string is necessarily a valid index for a character. If you index into a string at such an invalid byte index, an error is thrown:
-(((StringIndexError)))((("error", "base", "StringIndexError", see="StringIndexError")))
+(((StringIndexError)))((("error", "Base", "StringIndexError", see="StringIndexError")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -132,7 +132,7 @@ ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
 In the case of +fruits+, the character +🍌+ is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by +nextind(fruit, 1)+, and the next index after that by +nextind(fruit, 5)+ and so on.
-(((nextind)))((("function", "base", "nextind", see="nextind")))
+(((nextind)))((("function", "Base", "nextind", see="nextind")))
 
 
 === Traversal
@@ -153,7 +153,7 @@ end
 This loop traverses the string and displays each letter on a line by itself. The loop condition is +index <= sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run.
 
 The function +firstindex+ returns the first valid byte index.
-(((firstindex)))((("function", "base", "firstindex", see="firstindex")))
+(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
 [TIP]
 ====
@@ -344,7 +344,7 @@ Then rewrite the function so that instead of traversing the string, it uses the 
 === String Library
 
 Julia provides functions that perform a variety of useful operations on strings. For example, the function +uppercase+ takes a string and returns a new string with all uppercase letters.
-(((uppercase)))((("function", "base", "uppercase", see="uppercase")))
+(((uppercase)))((("function", "Base", "uppercase", see="uppercase")))
 
 [source,@julia-repl-test]
 ----
@@ -382,7 +382,7 @@ julia> findnext("na", "banana", 4)
 === The +∈+ Operator
 
 The operator +∈+ (+\in TAB+) is a boolean operator that takes a character and a string and returns +true+ if the first appears as in the second:
-((("∈", see="in")))((("operator", "base", "in", see="in")))((("operator", "base", "∈", see="in")))
+((("∈", see="in")))((("operator", "Base", "in", see="in")))((("operator", "Base", "∈", see="in")))
 
 [source,@julia-repl-test]
 ----
@@ -576,7 +576,7 @@ ERROR: BoundsError: attempt to access "pots"
 ----
 
 This time a +BoundsError+ has been thrown. The value of +i+ is 5, which is out a range for the string +"pots"+.
-(((BoundsError)))((("error", "base", "BoundsError", see="BoundsError")))
+(((BoundsError)))((("error", "Base", "BoundsError", see="BoundsError")))
 
 [TIP]
 ====
@@ -643,13 +643,13 @@ A variable used to count something, usually initialized to zero and then increme
 Read the documentation of the string functions at https://docs.julialang.org/en/stable/base/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
 
 The documentation uses a syntax that might be confusing. For example, in +search(string::AbstractString, chars::Chars, [start::Integer])+, the brackets indicate optional arguments. So +string+ and +chars+ are required, but +start+ is optional.
-(((search)))((("function", "base", "search", see="search")))
+(((search)))((("function", "Base", "search", see="search")))
 
 [[ex08-2]]
 ===== Exercise 8-2
 
 There is a builtin function called +count+ that is similar to the function in <<looping_and_counting>>. Read the documentation of this function and use it to count the number of +a+’s in "banana".
-(((count)))((("function","base", "count", see="count")))
+(((count)))((("function","Base", "count", see="count")))
 
 [[ex08-3]]
 ===== Exercise 8-3

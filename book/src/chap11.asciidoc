@@ -16,7 +16,7 @@ In mathematical language, a dictionary represents a _mapping_ from keys to value
 (((mapping)))
 
 The function +Dict+ creates a new dictionary with no items. Because +Dict+ is the name of a built-in function, you should avoid using it as a variable name.
-(((Dict)))((("type", "base", "Dict", see="Dict")))
+(((Dict)))((("type", "Base", "Dict", see="Dict")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -25,7 +25,7 @@ Dict{Any,Any} with 0 entries
 ----
 
 The kind of dictionary is surrounded by curly brackets: the keys are of type +Any+ and also the values are of type +Any+.
-(((curly brackets)))((("{}"= see="curly brackets")))(((Any)))((("type", "base", "Any", see="Any")))
+(((curly brackets)))((("{}"= see="curly brackets")))(((Any)))((("type", "Base", "Any", see="Any")))
 
 The dictionary is empty. To add items to the dictionary, you can use square brackets:
 (((square brackets)))
@@ -73,7 +73,7 @@ julia> eng2sp["two"]
 The key "two" always maps to the value "dos" so the order of the items doesn’t matter.
 
 If the key isn’t in the dictionary, you get an exception:
-(((KeyError)))((("error", "base", "KeyError", see="KeyError")))
+(((KeyError)))((("error", "Base", "KeyError", see="KeyError")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -91,7 +91,7 @@ julia> length(eng2sp)
 ----
 
 The function +keys+ returns an array with the keys of the dictionary:
-(((keys)))((("function", "base", "keys", see="keys")))
+(((keys)))((("function", "Base", "keys", see="keys")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -113,7 +113,7 @@ false
 ----
 
 To see whether something appears as a value in a dictionary, you can use the function +values+, which returns a collection of values, and then use the +∈+ operator:
-(((values)))((("function", "base", "values", see="values")))
+(((values)))((("function", "Base", "values", see="values")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -185,7 +185,7 @@ Dict{Any,Any} with 8 entries:
 The histogram indicates that the letters +'a'+ and +'b'+ appear once; +'o'+ appears twice, and so on.
 
 Dictionaries have a function called +get+ that takes a key and a default value. If the key appears in the dictionary, +get+ returns the corresponding value; otherwise it returns the default value. For example:
-(((get)))((("function", "base", "get", see="get")))
+(((get)))((("function", "Base", "get", see="get")))
 
 [source,@julia-repl-test chap11]
 ----
@@ -271,7 +271,7 @@ end
 ----
 
 This function is yet another example of the search pattern, but it uses a function we haven’t seen before, +error+. The +error+ function is used to produce an +ErrorException+ that interrupts the normal flow of control. In this case it has the message +"LookupError"+, indicating that a key does not exist.
-(((error)))((("function", "base", "error", see="error")))
+(((error)))((("function", "Base", "error", see="error")))
 
 If we get to the end of the loop, that means +v+ doesn’t appear in the dictionary as a value, so we throw an exception.
 
@@ -573,7 +573,7 @@ Another kind of check compares the results of two different computations to see 
 * Format the output:
 +
 Formatting debugging output can make it easier to spot an error. We saw an example in <<deb06>>.
-(formatting)))
+(((formatting)))
 +
 Again, time you spend building scaffolding can reduce the time you spend debugging.
 (((scaffolding)))(((debugging)))
@@ -676,7 +676,7 @@ If you did <<ex10-10>>, you can compare the speed of this implementation with th
 ===== Exercise 11-2
 
 Read the documentation of the dictionary function +get!+ and use it to write a more concise version of +invertdict+.
-(((get!)))((("function", "base", "get!", see="get!")))
+(((get!)))((("function", "Base", "get!", see="get!")))
 
 [[ex11-3]]
 ===== Exercise 11-3

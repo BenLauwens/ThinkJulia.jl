@@ -22,7 +22,7 @@ It is common to say that a function “takes” an argument and “returns” a 
 (((return value)))
 
 Julia provides functions that convert values from one type to another. The +parse+ function takes a string and converts it to any number type, if it can, or complains otherwise:
-(((type conversion)))((("function", "base", "parse", see="parse")))(((ArgumentError)))((("error", "base", "ArgumentError", see="ArgumentError")))
+(((type conversion)))((("function", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Base", "ArgumentError", see="ArgumentError")))
 
 [source,@julia-repl-test]
 ----
@@ -35,7 +35,7 @@ ERROR: ArgumentError: invalid base 10 digit 'H' in "Hello"
 ----
 
 +trunc+ can convert floating-point values to integers, but it doesn’t round off; it chops off the fraction part:
-(((trunc)))((("function", "base", "trunc", see="trunc")))
+(((trunc)))((("function", "Base", "trunc", see="trunc")))
 
 [source,@julia-repl-test]
 ----
@@ -46,7 +46,7 @@ julia> trunc(Int64, -2.3)
 ----
 
 +float+ converts integers to floating-point numbers:
-(((float)))((("function", "base", "float", see="float")))
+(((float)))((("function", "Base", "float", see="float")))
 
 [source,@julia-repl-test]
 ----
@@ -55,7 +55,7 @@ julia> float(32)
 ----
 
 Finally, +string+ converts its argument to a string:
-(((string)))((("function", "base", "string", see="string")))
+(((string)))((("function", "Base", "string", see="string")))
 
 [source,@julia-repl-test]
 ----
@@ -69,7 +69,7 @@ julia> string(3.14159)
 === Math Functions
 
 In Julia, most of the familiar mathematical functions are directly available:
-(((math function)))(((log10)))((("function", "base", "log10", see="log10")))
+(((math function)))(((log10)))((("function", "Base", "log10", see="log10")))
 
 [source,julia]
 ----
@@ -78,7 +78,7 @@ decibels = 10 * log10(ratio)
 ----
 
 The first example uses +log10+ to compute a signal-to-noise ratio in decibels (assuming that +signal_power+ and +noise_power+ are defined). +log+, which computes logarithms in base latexmath:[\(e\)], is also provided.
-(((log)))((("function", "base", "log", see="log")))((("logarithmic function", see="log")))
+(((log)))((("function", "Base", "log", see="log")))((("logarithmic function", see="log")))
 
 [source,julia]
 ----
@@ -87,7 +87,7 @@ height = sin(radians)
 ----
 
 The second example finds the sine of radians. The name of the variable is a hint that +sin+ and the other trigonometric functions (+cos+, +tan+, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by latexmath:[\(\pi\)]:
-(((sin)))((("function", "base", "sin", see="sin")))(((trigonometric function)))
+(((sin)))((("function", "Base", "sin", see="sin")))(((trigonometric function)))
 
 [source,@julia-repl-test]
 ----
@@ -103,7 +103,7 @@ The value of the variable +π+ is a floating-point approximation of latexmath:[\
 (((pi)))
 
 If you know trigonometry, you can check the previous result by comparing it to the square root of two divided by two:
-(((sqrt)))((("function", "base", "sqrt", see="sqrt")))((("square function", see="sqrt")))
+(((sqrt)))((("function", "Base", "sqrt", see="sqrt")))((("square function", see="sqrt")))
 
 [source,@julia-repl-test]
 ----
@@ -125,7 +125,7 @@ x = sin(degrees / 360 * 2 * π)
 ----
 
 And even function calls:
-(((exp)))((("function", "base", "exp", see="exp")))((("exponential function", see="exp")))
+(((exp)))((("function", "Base", "exp", see="exp")))((("exponential function", see="exp")))
 
 [source,julia]
 ----
@@ -185,7 +185,7 @@ julia> function printlyrics()
 To end the function, you have to enter +end+.
 
 Defining a function creates a _function object_, which is of type +Function+:
-(((Function)))((("type", "base", "Function", see="Function")))(((isa)))((("operator", "base", "isa", see="isa")))
+(((Function)))((("type", "Base", "Function", see="Function")))(((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap03]
 ----
@@ -323,7 +323,7 @@ Spam Spam Spam Spam
 ----
 
 The argument is evaluated before the function is called, so in the examples the expressions +"Spam "^4+ and +cos(π)+ are only evaluated once.
-(((argument)))(((cos)))((("function", "base", "cos", see="cos")))
+(((argument)))(((cos)))((("function", "Base", "cos", see="cos")))
 
 You can also use a variable as an argument:
 
@@ -367,7 +367,7 @@ Bing tiddle tiddle bang.
 ----
 
 When +cattwice+ terminates, the variable +concat+ is destroyed. If we try to print it, we get an exception:
-(((run-time error)))(((UndefVarError)))((("error", "base", "UndefVarError", see="UndefVarError")))
+(((run-time error)))(((UndefVarError)))((("error", "Base", "UndefVarError", see="UndefVarError")))
 
 [source,@julia-repl-test chap03]
 ----
@@ -460,10 +460,10 @@ nothing
 ----
 
 To print the value +nothing+, you have to use the function +show+ which is like +print+ but can handle the value +nothing+.
-(((show)))((("function", "base", "show", see="show")))
+(((show)))((("function", "Base", "show", see="show")))
 
 The value +nothing+ is not the same as the string +"nothing"+. It is a special value that has its own type:
-(((Nothing)))((("type", "base", "Nothing", see="Nothing")))
+(((Nothing)))((("type", "Base", "Nothing", see="Nothing")))
 
 [source,@julia-repl-test]
 ----
@@ -604,7 +604,7 @@ rightjustify("monty")
 [TIP]
 ====
 Use string concatenation and repetition. Also, Julia provides a built-in function called +length+ that returns the length of a string, so the value of +length("monty")+ is 5.
-(((length)))((("function", "base", "length", see="length)))
+(((length)))((("function", "Base", "length", see="length)))
 ====
 
 [[ex03-2]]
@@ -689,4 +689,4 @@ println("-")
 
 The output of these statements is +pass:["+ -"]+ on the same line. The output from the next print statement would begin on the next line.
 ====
-(((println)))(((print)))((("function", "base", "print", see="print")))
+(((println)))(((print)))((("function", "Base", "print", see="print")))

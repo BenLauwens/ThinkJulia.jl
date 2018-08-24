@@ -5,6 +5,8 @@ Julia +Base+ contains a range of functions, types and macros appropriate for per
 
 This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/base/base/.
 
+
+[[collections_and_data_structures]]
 === Collections and Data Structures
 
 In <<dictionary_subtraction>> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes +d1+, which contains the words from the document as keys, and +d2+, which contains the array of words. It returns a dictionary that contains the keys from +d1+ that are not in +d2+.

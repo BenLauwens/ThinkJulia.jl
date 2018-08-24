@@ -10,7 +10,7 @@ For the exercises in this chapter we need a list of English words. There are lot
 (((Mobi lexicon)))
 
 This file is in plain text, so you can open it with a text editor, but you can also read it from Julia. The built-in function +open+ takes the name of the file as a parameter and returns a _file stream_ you can use to read the file.
-(((open)))((("function", "base", "open", see="open")))
+(((open)))((("function", "Base", "open", see="open")))
 
 [source,@julia-eval chap09]
 ----
@@ -25,7 +25,7 @@ IOStream(<file words.txt>)
 ----
 
 +fin+ is a common name for a file stream used for input. Julia provides several function for reading, including +readline+, which reads characters from the file until it gets to a +NEWLINE+ and returns the result as a string:
-(((file stream)))(((input)))(((readline)))((("function", "base", "readline", see="readline")))
+(((file stream)))(((input)))(((readline)))((("function", "Base", "readline", see="readline")))
 
 [source,@julia-repl chap09]
 ----
@@ -44,7 +44,7 @@ readline(fin)
 The next word is “aah”, which is a perfectly legitimate word, so stop looking at me like that.
 
 You can also use a file as part of a +for+ loop. This program reads +words.txt+ and prints each word, one per line:
-(((for statement)))(((eachline)))((("function", "base", "eachline", see="eachline")))
+(((for statement)))(((eachline)))((("function", "Base", "eachline", see="eachline")))
 
 [source,julia]
 ----
@@ -123,7 +123,7 @@ end
 The +for+ loop traverses the characters in word. If we find the letter +'e'+, we can immediately return +false+; otherwise we have to go to the next letter. If we exit the loop normally, that means we didn’t find an +'e'+, so we return +true+.
 
 You could write this function more concisely using the +∉+ (+\notin TAB+) operator, but I started with this version because it demonstrates the logic of the search pattern.
-(((∉)))((("operator", "base", "∉", see="∉")))
+(((∉)))((("operator", "Base", "∉", see="∉")))
 
 +avoids+ is a more general version of +hasno_e+ but it has the same structure:
 (((avoids)))
@@ -372,6 +372,6 @@ Write a Julia program that searches for solutions to this Puzzler.
 [TIP]
 ====
 You might find the function +lpad+ useful.
-(((lpad)))((("function", "base", "lpad", see="lpad")))
+(((lpad)))((("function", "Base", "lpad", see="lpad")))
 ====
 

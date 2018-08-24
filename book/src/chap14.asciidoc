@@ -7,12 +7,14 @@ This chapter introduces the idea of “persistent” programs that keep data in 
 === Persistence
 
 Most of the programs we have seen so far are transient in the sense that they run for a short time and produce some output, but when they end, their data disappears. If you run the program again, it starts with a clean slate.
+(((transient)))
 
 Other programs are _persistent_: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.
+(((persistent)))
 
 Examples of persistent programs are operating systems, which run pretty much whenever a computer is on, and web servers, which run all the time, waiting for requests to come in on the network.
 
-One of the simplest ways for programs to maintain their data is by reading and writing text files. We have already seen programs that read text files; in this chapter we will see programs that write them.
+One of the simplest ways for programs to maintain their data is by reading and writing _text files_. We have already seen programs that read text files; in this chapter we will see programs that write them.
 
 An alternative is to store the state of the program in a database. In this chapter I will also present how to use a simple database.
 
@@ -22,6 +24,7 @@ An alternative is to store the state of the program in a database. In this chapt
 A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <<reading_word_lists>>.
 
 To write a file, you have to open it with mode +"w"+ as a second parameter:
+(((open)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -30,6 +33,7 @@ IOStream(<file output.txt>)
 ----
 
 If the file already exists, opening it in write mode clears out the old data and starts fresh, so be careful! If the file doesn’t exist, a new one is created. +open+ returns a file object and the +write+ function puts data into the file.
+(((write)))((("function", "Base", "write", see="write")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -50,6 +54,7 @@ julia> write(fout, line2)
 ----
 
 When you are done writing, you should close the file.
+(((close)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -63,6 +68,7 @@ If you don’t close the file, it gets closed for you when the program ends.
 === Formatting
 
 The argument of write has to be a string, so if we want to put other values in a file, we have to convert them to strings. The easiest way to do that is with +string+ or string interpolation:
+(((string)))(((string interpolation)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -73,6 +79,7 @@ julia> write(fout, string(150))
 ----
 
 An alternative is to use the +print(ln)+ family of functions.
+(((print)))(((println)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -82,14 +89,20 @@ julia> println(fout, "I have spotted $camels camels.")
 
 ----
 
+[TIP]
+====
 A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/stable/stdlib/Printf/
+(((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formatting)))
+====
 
 
 === Filenames and Paths
 
 Files are organized into _directories_ (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
+(((directory)))((("folder", see="directory")))
 
 The function +pwd+ returns the name of the current directory:
+(((pwd)))((("function", "Base", "pwd", see="pwd")))
 
 [source,jlcon]
 ----
@@ -100,10 +113,13 @@ julia> cwd = pwd()
 +cwd+ stands for “current working directory”. The result in this example is +/home/dinsdale+, which is the home directory of a user named +dinsdale+.
 
 A string like +"/home/dinsdale"+ that identifies a file or directory is called a _path_.
+(((path)))
 
 A simple filename, like +memo.txt+ is also considered a path, but it is a _relative path_ because it relates to the current directory. If the current directory is +/home/dinsdale+, the filename +memo.txt+ would refer to +/home/dinsdale/memo.txt+.
+(((relative path)))((("path", "relative", see="relative path")))
 
 A path that begins with +/+ does not depend on the current directory; it is called an _absolute path_. To find the absolute path to a file, you can use +abspath+:
+(((absolute path)))((("path", "absolute", see="absolute path")))(((abspath)))((("function", "Base", "abspath", see="abspath")))
 
 [source,jlcon]
 ----
@@ -112,6 +128,7 @@ julia> abspath("memo.txt")
 ----
 
 Julia provides other functions for working with filenames and paths. For example, +ispath+ checks whether a file or directory exists:
+(((ispath)))((("function", "Base", "ispath", see="ispath")))
 
 [source,jlcon]
 ----
@@ -120,6 +137,7 @@ true
 ----
 
 If it exists, +isdir+ checks whether it’s a directory:
+(((isdir)))((("function", "Base", "isdir", see="isdir")))
 
 [source,jlcon]
 ----
@@ -130,8 +148,10 @@ true
 ----
 
 Similarly, +isfile+ checks whether it’s a file.
+(((isfile)))((("function", "Base", "isfile", see="isfile")))
 
 +readdir+ returns a list of the files (and other directories) in the given directory:
+(((readdir)))((("function", "Base", "readdir", see="readdir")))
 
 [source,jlcon]
 ----
@@ -143,6 +163,7 @@ julia> readdir(cwd)
 ----
 
 To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.
+(((walk)))((("function", "programmer-defined", "walk", see="walk")))
 
 [source,@julia-setup chap14]
 ----
@@ -159,13 +180,20 @@ end
 ----
 
 +joinpath+ takes a directory and a file name and joins them into a complete path.
+(((joinpath)))((("function", "Base", "joinpath", see="joinpath")))
 
+[TIP]
+====
 Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+(((walkdir)))((("function", "Base", "walkdir", see="walkdir")))
+====
+
 
 [[catching_exceptions]]
 === Catching Exceptions
 
 A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a +SystemError+:
+(((SystemError)))((("error", "Base", "SystemError", see="SystemError")))
 
 [source,@julia-repl-test]
 ----
@@ -184,6 +212,7 @@ ERROR: SystemError: opening file /etc/passwd: Permission denied
 To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
 
 It is better to go ahead and try—and deal with problems if they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
+(((try statement)))((("statement", "try", see="try statement")))(((try)))((("keyword", "try", see="try")))(((catch)))((("keyword", "catch", see="catch")))(((end)))
 
 [source,@julia-repl-test]
 ----
@@ -198,10 +227,12 @@ Something went wrong: SystemError("opening file bad_file.txt", 2, nothing)
 Julia starts by executing the +try+ clause. If all goes well, it skips the +catch+ clause and proceeds. If an exception occurs, it jumps out of the +try+ clause and runs the +catch+ clause.
 
 Handling an exception with a +try+ statement is called _catching_ an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.
+(((catching an exception)))
 
 In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The +finally+ keyword provides a way to run some code when a given block of code exits, regardless of how it exits:
+(((finally)))((("keyword", "finally", see="finally")))
 
-[source,julia]
+[source,@julia-setup]
 ----
 f = open("output.txt")
 try
@@ -210,6 +241,7 @@ try
 finally
     close(f)
 end
+
 ----
 
 The function +close+ will always be executed.
@@ -218,10 +250,13 @@ The function +close+ will always be executed.
 === Databases
 
 A _database_ is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
+(((database)))
 
 ThinkJulia provides an interface to +GDBM+ for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+(((GDBM)))
 
 Opening a database is similar to opening other files:
+(((DBM)))((("type", "ThinkJulia", "DBM", see="DBM")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -234,6 +269,7 @@ DBM(<captions>)
 The mode "c" means that the database should be created if it doesn’t already exist. The result is a database object that can be used (for most operations) like a dictionary.
 
 When you create a new item, +GDBM+ updates the database file:
+(((bracket operator)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -250,6 +286,7 @@ julia> db["cleese.png"]
 ----
 
 If you make another assignment to an existing key, +GDBM+ replaces the old value:
+(((assignement)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -260,6 +297,7 @@ julia> db["cleese.png"]
 ----
 
 Some functions having a dictionary as argument, like +keys+ and +values+, don’t work with database objects. But iteration with a +for+ loop works:
+(((for statement)))(((iteration)))
 
 [source,julia]
 ----
@@ -269,6 +307,7 @@ end
 ----
 
 As with other files, you should close the database when you are done:
+(((close)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -281,7 +320,8 @@ julia> close(db)
 
 A limitation of +GDBM+ is that the keys and the values have to be strings or byte arrays. If you try to use any other type, you get an error.
 
-The functions +serialize+ and +deserialize+ can help. They translate almost any type of object into a byte array suitable for storage in a database, and then translates byte arrays back into objects:
+The functions +serialize+ and +deserialize+ can help. They translate almost any type of object into a byte array (an iobuffer) suitable for storage in a database, and then translates byte arrays back into objects:
+(((Serialization)))((("module", "Serialization", see="Serialization")))(((serialize)))((("function", "Serialization", "serialize", see="serialize)))(((IOBuffer)))((("type", "Base", "IOBuffer", see="IOBuffer")))(((take!)))((("function", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -298,6 +338,7 @@ UInt8[0x37, 0x4a, 0x4c, 0x07, 0x04, 0x00, 0x00, 0x00, 0x15, 0x00, 0x08, 0xe2, 0x
 ----
 
 The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. +deserialize+ reconstitutes the object:
+(((deserialize)))((("function", "Serialization", "deserialize", see="deserialize)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -328,15 +369,23 @@ false
 ----
 
 In other words, serialization and then deserialization has the same effect as copying the object.
+(((copying)))
 
-You can use this to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a package called +JLD(2)+.
+You can use this to store non-strings in a database. 
+
+[NOTE]
+====
+In fact, this combination is so common that it has been encapsulated in a package called +JLD(2)+ (see https://github.com/simonster/JLD2.jl).
+====
 
 
 === Command Objects
 
 Most operating systems provide a command-line interface, also known as a _shell_. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with +cd+, display the contents of a directory with +ls+, and launch a web browser by typing (for example) +firefox+.
+(((shell)))(((cd)))
 
 Any program that you can launch from the shell can also be launched from Julia using a _command object_:
+(((command object)))(((backticks)))((("``", see="backticks")))
 
 [source,@julia-repl-test chap14]
 ----
@@ -347,6 +396,7 @@ julia> cmd = `echo hello`
 Backticks are used to delimit the command.
 
 The function +run+ executes the command:
+(((run)))((("function", "Base", "run", see="run"))))
 
 [source,@julia-repl-test chap14]
 ----
@@ -356,7 +406,8 @@ hello
 
 The +hello+ is the output of the echo command, sent to +STDOUT+. The +run+ function itself returns a process object, and throws an +ErrorException+ if the external command fails to run successfully.
 
-If you want to read the output of the external command, +readstring+ can be used instead:
+If you want to read the output of the external command, +read+ can be used instead:
+(((read)))
 
 [source,@julia-repl-test chap14]
 ----
@@ -365,6 +416,7 @@ julia> a = read(cmd, String)
 ----
 
 For example, most Unix systems provide a command called +md5sum+ or +md5+ that reads the contents of a file and computes a “checksum”. You can read about MD5 at https://en.wikipedia.org/wiki/Md5. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
+(((checksum)))(((md5)))(((md5sum)))
 
 You can use a command object to run +md5+ from Julia and get the result:
 
@@ -379,6 +431,7 @@ res = read(cmd, String)
 === Modules
 
 Any file that contains Julia code can be imported as a module. For example, suppose you have a file named +"wc.jl"+ with the following code:
+(((module)))(((linecount)))((("function", "programmer-defined", "linecount", see="linecount")))(((eachline)))
 
 [source,julia]
 ----
@@ -409,13 +462,19 @@ close(file)
 ----
 
 If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:
+(((include)))((("function", "Base", "include", see="include")))
 
-[source,@julia-repl]
+[source,@julia-repl-test]
 ----
-include("wc.jl")
+julia> Base.include(Main, "wc.jl")
+9
 ----
+
+The first argument of +include+ is a module. The input source file is evaluated in the scope of that module. The prefix +Base+ is mandatory is this case. Without the prefix +include+ has only one argument, the filename, and the file is evaluated in the scope of the active module. +Main+ corresponds to the +pass:[__main__]+ frame.
+(((Main)))(((Base)))
 
 Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside +module ...  end+. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else's. Within a module, you can control which names from other modules are visible (via +import+ing), and specify which of your names are intended to be public (via +export+ing).
+(((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]
 ----
@@ -442,16 +501,23 @@ julia> linecount("wc.jl")
 11
 ----
 
+[TIP]
+====
 As an exercise, type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
+====
 
-Warning: If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.
+[WARNING]
+====
+If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.
 
-If you want to reload a module, you can use the built-in function +reload+, but it can be tricky, so the safest thing to do is restart the REPL.
+If you want to reload a module, you have to restart the REPL. A package +Revise+ exists that can keep your sessions running longer (see https://github.com/timholy/Revise.jl).
+====
 
 
 === Debugging
 
 When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:
+(((\n)))(((\t)))
 
 [source,jlcon]
 ----
@@ -464,7 +530,7 @@ julia> println(s)
 
 The built-in function +repr+ can help. It takes any object as an argument and returns a string representation of the object.
 
-This can be helpful for debugging.
+(((repr)))((("function", "Base", "repr", see="repr")))
 
 [source,@julia-eval chap14]
 ----
@@ -477,7 +543,11 @@ julia> repr(s)
 "\"1 2\\t 3\\n 4\""
 ----
 
+This can be helpful for debugging.
+(((debugging)))
+
 One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented +\n+. Others use a return character, represented +\r+. Some use both. If you move files between different systems, these inconsistencies can cause problems.
+(((\r)))
 
 For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at https://en.wikipedia.org/wiki/Newline. Or, of course, you could write one yourself.
 
@@ -486,33 +556,43 @@ For most systems, there are applications to convert from one format to another. 
 
 persistent::
 Pertaining to a program that runs indefinitely and keeps at least some of its data in permanent storage.
+(((persistent)))
 
 text file::
 A sequence of characters stored in permanent storage like a hard drive.
+(((text file)))
 
 directory::
 A named collection of files, also called a folder.
+(((directory)))
 
 path::
 A string that identifies a file.
+(((path)))
 
 relative path::
 A path that starts from the current directory.
+(((relative path)))
 
 absolute path::
 A path that starts from the topmost directory in the file system.
+(((absolute path)))
 
 catch::
 To prevent an exception from terminating a program using the +try ... catch ... finally+ statements.
+(((catching)))
 
 database::
 A file whose contents are organized like a dictionary with keys that correspond to values.
+(((database)))
 
 shell::
 A program that allows users to type commands and then executes them by starting other programs.
+(((shell)))
 
 command object::
 An object that represents a shell command, allowing a Julia program to run commands and read the results.
+(((command object)))
 
 
 === Exercises
@@ -521,6 +601,7 @@ An object that represents a shell command, allowing a Julia program to run comma
 ===== Exercise 14-1
 
 Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
+(((sed)))((("function", "programmer-defined", "sed", see="sed")))
 
 If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
 
@@ -529,7 +610,8 @@ If an error occurs while opening, reading, writing or closing files, your progra
 
 If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "+opst"+ maps to the list +["opts", "post", "pots", "spot", "stop", "tops"]+.
 
-Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +read_anagrams+ should look up a word and return a list of its anagrams.
+Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +readanagrams+ should look up a word and return a list of its anagrams.
+(((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
 ===== Exercise 14-3
