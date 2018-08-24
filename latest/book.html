@@ -4230,7 +4230,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535054039539179e9</span></code></pre>
+<span class="tok-go">1.535117314854114e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10478,8 +10478,8 @@ she	2364</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">Words</span> <span class="tok-kp">in</span> <span class="tok-n">the</span> <span class="tok-n">book</span> <span class="tok-n">that</span> <span class="tok-n">aren</span><span class="tok-o">&#39;</span><span class="tok-n">t</span> <span class="tok-kp">in</span> <span class="tok-n">the</span> <span class="tok-n">word</span> <span class="tok-n">list</span><span class="tok-o">:</span>
-<span class="tok-n">outree</span> <span class="tok-n">quicksighted</span> <span class="tok-n">outwardly</span> <span class="tok-n">adelaide</span> <span class="tok-n">rencontre</span> <span class="tok-n">jeffereys</span> <span class="tok-n">unreserved</span> <span class="tok-n">dixons</span> <span class="tok-n">betweens</span> <span class="tok-o">...</span></code></pre>
+<pre class="pygments highlight"><code>Words in the book that aren't in the word list:
+outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons betweens ...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10853,16 +10853,18 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_persistence">Persistence</h3>
 <div class="paragraph">
-<p>Most of the programs we have seen so far are transient in the sense that they run for a short time and produce some output, but when they end, their data disappears. If you run the program again, it starts with a clean slate.</p>
+<p>Most of the programs we have seen so far are transient in the sense that they run for a short time and produce some output, but when they end, their data disappears. If you run the program again, it starts with a clean slate.
+</p>
 </div>
 <div class="paragraph">
-<p>Other programs are <em>persistent</em>: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.</p>
+<p>Other programs are <em>persistent</em>: they run for a long time (or all the time); they keep at least some of their data in permanent storage (a hard drive, for example); and if they shut down and restart, they pick up where they left off.
+</p>
 </div>
 <div class="paragraph">
 <p>Examples of persistent programs are operating systems, which run pretty much whenever a computer is on, and web servers, which run all the time, waiting for requests to come in on the network.</p>
 </div>
 <div class="paragraph">
-<p>One of the simplest ways for programs to maintain their data is by reading and writing text files. We have already seen programs that read text files; in this chapter we will see programs that write them.</p>
+<p>One of the simplest ways for programs to maintain their data is by reading and writing <em>text files</em>. We have already seen programs that read text files; in this chapter we will see programs that write them.</p>
 </div>
 <div class="paragraph">
 <p>An alternative is to store the state of the program in a database. In this chapter I will also present how to use a simple database.</p>
@@ -10874,7 +10876,8 @@ suffix)</p>
 <p>A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <a href="#reading_word_lists">Reading Word Lists</a>.</p>
 </div>
 <div class="paragraph">
-<p>To write a file, you have to open it with mode <code>"w"</code> as a second parameter:</p>
+<p>To write a file, you have to open it with mode <code>"w"</code> as a second parameter:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10883,7 +10886,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If the file already exists, opening it in write mode clears out the old data and starts fresh, so be careful! If the file doesn’t exist, a new one is created. <code>open</code> returns a file object and the <code>write</code> function puts data into the file.</p>
+<p>If the file already exists, opening it in write mode clears out the old data and starts fresh, so be careful! If the file doesn’t exist, a new one is created. <code>open</code> returns a file object and the <code>write</code> function puts data into the file.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10903,7 +10907,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you are done writing, you should close the file.</p>
+<p>When you are done writing, you should close the file.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10917,7 +10922,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_formatting">Formatting</h3>
 <div class="paragraph">
-<p>The argument of write has to be a string, so if we want to put other values in a file, we have to convert them to strings. The easiest way to do that is with <code>string</code> or string interpolation:</p>
+<p>The argument of write has to be a string, so if we want to put other values in a file, we have to convert them to strings. The easiest way to do that is with <code>string</code> or string interpolation:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10928,7 +10934,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>An alternative is to use the <code>print(ln)</code> family of functions.</p>
+<p>An alternative is to use the <code>print(ln)</code> family of functions.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10937,17 +10944,31 @@ suffix)</p>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">,</span> <span class="tok-s">&quot;I have spotted </span><span class="tok-si">$camels</span><span class="tok-s"> camels.&quot;</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>A more powerful alternative is the <code>@printf</code> macro that prints using a C style format specification string, which you can read about at <a href="https://docs.julialang.org/en/stable/stdlib/Printf/" class="bare">https://docs.julialang.org/en/stable/stdlib/Printf/</a></p>
+<p>A more powerful alternative is the <code>@printf</code> macro that prints using a C style format specification string, which you can read about at <a href="https://docs.julialang.org/en/stable/stdlib/Printf/" class="bare">https://docs.julialang.org/en/stable/stdlib/Printf/</a>
+</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_filenames_and_paths">Filenames and Paths</h3>
 <div class="paragraph">
-<p>Files are organized into <em>directories</em> (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.</p>
+<p>Files are organized into <em>directories</em> (also called “folders”). Every running program has a “current directory”, which is the default directory for most operations. For example, when you open a file for reading, Julia looks for it in the current directory.
+</p>
 </div>
 <div class="paragraph">
-<p>The function <code>pwd</code> returns the name of the current directory:</p>
+<p>The function <code>pwd</code> returns the name of the current directory:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10959,13 +10980,16 @@ suffix)</p>
 <p><code>cwd</code> stands for “current working directory”. The result in this example is <code>/home/dinsdale</code>, which is the home directory of a user named <code>dinsdale</code>.</p>
 </div>
 <div class="paragraph">
-<p>A string like <code>"/home/dinsdale"</code> that identifies a file or directory is called a <em>path</em>.</p>
+<p>A string like <code>"/home/dinsdale"</code> that identifies a file or directory is called a <em>path</em>.
+</p>
 </div>
 <div class="paragraph">
-<p>A simple filename, like <code>memo.txt</code> is also considered a path, but it is a <em>relative path</em> because it relates to the current directory. If the current directory is <code>/home/dinsdale</code>, the filename <code>memo.txt</code> would refer to <code>/home/dinsdale/memo.txt</code>.</p>
+<p>A simple filename, like <code>memo.txt</code> is also considered a path, but it is a <em>relative path</em> because it relates to the current directory. If the current directory is <code>/home/dinsdale</code>, the filename <code>memo.txt</code> would refer to <code>/home/dinsdale/memo.txt</code>.
+</p>
 </div>
 <div class="paragraph">
-<p>A path that begins with <code>/</code> does not depend on the current directory; it is called an <em>absolute path</em>. To find the absolute path to a file, you can use <code>abspath</code>:</p>
+<p>A path that begins with <code>/</code> does not depend on the current directory; it is called an <em>absolute path</em>. To find the absolute path to a file, you can use <code>abspath</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10974,7 +10998,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Julia provides other functions for working with filenames and paths. For example, <code>ispath</code> checks whether a file or directory exists:</p>
+<p>Julia provides other functions for working with filenames and paths. For example, <code>ispath</code> checks whether a file or directory exists:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10983,7 +11008,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If it exists, <code>isdir</code> checks whether it’s a directory:</p>
+<p>If it exists, <code>isdir</code> checks whether it’s a directory:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10994,10 +11020,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly, <code>isfile</code> checks whether it’s a file.</p>
+<p>Similarly, <code>isfile</code> checks whether it’s a file.
+</p>
 </div>
 <div class="paragraph">
-<p><code>readdir</code> returns a list of the files (and other directories) in the given directory:</p>
+<p><code>readdir</code> returns a list of the files (and other directories) in the given directory:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11009,7 +11037,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.</p>
+<p>To demonstrate these functions, the following example “walks” through a directory, prints the names of all the files, and calls itself recursively on all the directories.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11026,16 +11055,30 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>joinpath</code> takes a directory and a file name and joins them into a complete path.</p>
+<p><code>joinpath</code> takes a directory and a file name and joins them into a complete path.
+</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Julia provides a function called <code>walkdir</code> (see <a href="https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir" class="bare">https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir</a>) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.</p>
+<p>Julia provides a function called <code>walkdir</code> (see <a href="https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir" class="bare">https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir</a>) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="catching_exceptions">Catching Exceptions</h3>
 <div class="paragraph">
-<p>A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a <code>SystemError</code>:</p>
+<p>A lot of things can go wrong when you try to read and write files. If you try to open a file that doesn’t exist, you get a <code>SystemError</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11056,7 +11099,8 @@ suffix)</p>
 <p>To avoid these errors, you could use functions like <code>ispath</code> and <code>isfile</code>, but it would take a lot of time and code to check all the possibilities.</p>
 </div>
 <div class="paragraph">
-<p>It is better to go ahead and try—and deal with problems if they happen—which is exactly what the <code>try</code> statement does. The syntax is similar to an <code>if</code> statement:</p>
+<p>It is better to go ahead and try—and deal with problems if they happen—which is exactly what the <code>try</code> statement does. The syntax is similar to an <code>if</code> statement:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11072,10 +11116,12 @@ suffix)</p>
 <p>Julia starts by executing the <code>try</code> clause. If all goes well, it skips the <code>catch</code> clause and proceeds. If an exception occurs, it jumps out of the <code>try</code> clause and runs the <code>catch</code> clause.</p>
 </div>
 <div class="paragraph">
-<p>Handling an exception with a <code>try</code> statement is called <em>catching</em> an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.</p>
+<p>Handling an exception with a <code>try</code> statement is called <em>catching</em> an exception. In this example, the except clause prints an error message that is not very helpful. In general, catching an exception gives you a chance to fix the problem, or try again, or at least end the program gracefully.
+</p>
 </div>
 <div class="paragraph">
-<p>In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The <code>finally</code> keyword provides a way to run some code when a given block of code exits, regardless of how it exits:</p>
+<p>In code that performs state changes or uses resources like files, there is typically clean-up work (such as closing files) that needs to be done when the code is finished. Exceptions potentially complicate this task, since they can cause a block of code to exit before reaching its normal end. The <code>finally</code> keyword provides a way to run some code when a given block of code exits, regardless of how it exits:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11095,13 +11141,16 @@ suffix)</p>
 <div class="sect2">
 <h3 id="databases">Databases</h3>
 <div class="paragraph">
-<p>A <em>database</em> is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.</p>
+<p>A <em>database</em> is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
+</p>
 </div>
 <div class="paragraph">
-<p>ThinkJulia provides an interface to <code>GDBM</code> for creating and updating database files. As an example, I’ll create a database that contains captions for image files.</p>
+<p>ThinkJulia provides an interface to <code>GDBM</code> for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+</p>
 </div>
 <div class="paragraph">
-<p>Opening a database is similar to opening other files:</p>
+<p>Opening a database is similar to opening other files:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11114,7 +11163,8 @@ suffix)</p>
 <p>The mode "c" means that the database should be created if it doesn’t already exist. The result is a database object that can be used (for most operations) like a dictionary.</p>
 </div>
 <div class="paragraph">
-<p>When you create a new item, <code>GDBM</code> updates the database file:</p>
+<p>When you create a new item, <code>GDBM</code> updates the database file:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11132,7 +11182,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you make another assignment to an existing key, <code>GDBM</code> replaces the old value:</p>
+<p>If you make another assignment to an existing key, <code>GDBM</code> replaces the old value:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11143,7 +11194,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Some functions having a dictionary as argument, like <code>keys</code> and <code>values</code>, don’t work with database objects. But iteration with a <code>for</code> loop works:</p>
+<p>Some functions having a dictionary as argument, like <code>keys</code> and <code>values</code>, don’t work with database objects. But iteration with a <code>for</code> loop works:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11153,7 +11205,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>As with other files, you should close the database when you are done:</p>
+<p>As with other files, you should close the database when you are done:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11167,7 +11220,8 @@ suffix)</p>
 <p>A limitation of <code>GDBM</code> is that the keys and the values have to be strings or byte arrays. If you try to use any other type, you get an error.</p>
 </div>
 <div class="paragraph">
-<p>The functions <code>serialize</code> and <code>deserialize</code> can help. They translate almost any type of object into a byte array suitable for storage in a database, and then translates byte arrays back into objects:</p>
+<p>The functions <code>serialize</code> and <code>deserialize</code> can help. They translate almost any type of object into a byte array (an iobuffer) suitable for storage in a database, and then translates byte arrays back into objects:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11181,7 +11235,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. <code>deserialize</code> reconstitutes the object:</p>
+<p>The format isn’t obvious to human readers; it is meant to be easy for Julia to interpret. <code>deserialize</code> reconstitutes the object:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11210,19 +11265,36 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In other words, serialization and then deserialization has the same effect as copying the object.</p>
+<p>In other words, serialization and then deserialization has the same effect as copying the object.
+</p>
 </div>
 <div class="paragraph">
-<p>You can use this to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a package called <code>JLD(2)</code>.</p>
+<p>You can use this to store non-strings in a database.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In fact, this combination is so common that it has been encapsulated in a package called <code>JLD(2)</code> (see <a href="https://github.com/simonster/JLD2.jl" class="bare">https://github.com/simonster/JLD2.jl</a>).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_command_objects">Command Objects</h3>
 <div class="paragraph">
-<p>Most operating systems provide a command-line interface, also known as a <em>shell</em>. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with <code>cd</code>, display the contents of a directory with <code>ls</code>, and launch a web browser by typing (for example) <code>firefox</code>.</p>
+<p>Most operating systems provide a command-line interface, also known as a <em>shell</em>. Shells usually provide commands to navigate the file system and launch applications. For example, in Unix you can change directories with <code>cd</code>, display the contents of a directory with <code>ls</code>, and launch a web browser by typing (for example) <code>firefox</code>.
+</p>
 </div>
 <div class="paragraph">
-<p>Any program that you can launch from the shell can also be launched from Julia using a <em>command object</em>:</p>
+<p>Any program that you can launch from the shell can also be launched from Julia using a <em>command object</em>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11234,7 +11306,8 @@ suffix)</p>
 <p>Backticks are used to delimit the command.</p>
 </div>
 <div class="paragraph">
-<p>The function <code>run</code> executes the command:</p>
+<p>The function <code>run</code> executes the command:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11246,7 +11319,8 @@ suffix)</p>
 <p>The <code>hello</code> is the output of the echo command, sent to <code>STDOUT</code>. The <code>run</code> function itself returns a process object, and throws an <code>ErrorException</code> if the external command fails to run successfully.</p>
 </div>
 <div class="paragraph">
-<p>If you want to read the output of the external command, <code>readstring</code> can be used instead:</p>
+<p>If you want to read the output of the external command, <code>read</code> can be used instead:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11255,7 +11329,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>For example, most Unix systems provide a command called <code>md5sum</code> or <code>md5</code> that reads the contents of a file and computes a “checksum”. You can read about MD5 at <a href="https://en.wikipedia.org/wiki/Md5" class="bare">https://en.wikipedia.org/wiki/Md5</a>. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).</p>
+<p>For example, most Unix systems provide a command called <code>md5sum</code> or <code>md5</code> that reads the contents of a file and computes a “checksum”. You can read about MD5 at <a href="https://en.wikipedia.org/wiki/Md5" class="bare">https://en.wikipedia.org/wiki/Md5</a>. This command provides an efficient way to check whether two files have the same contents. The probability that different contents yield the same checksum is very small (that is, unlikely to happen before the universe collapses).
+</p>
 </div>
 <div class="paragraph">
 <p>You can use a command object to run <code>md5</code> from Julia and get the result:</p>
@@ -11274,7 +11349,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_modules">Modules</h3>
 <div class="paragraph">
-<p>Any file that contains Julia code can be imported as a module. For example, suppose you have a file named <code>"wc.jl"</code> with the following code:</p>
+<p>Any file that contains Julia code can be imported as a module. For example, suppose you have a file named <code>"wc.jl"</code> with the following code:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11290,16 +11366,22 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:</p>
+<p>If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">include</span><span class="tok-p">(</span><span class="tok-s">&quot;wc.jl&quot;</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: UndefVarError: include not defined</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">include</span><span class="tok-p">(</span><span class="tok-n">Main</span><span class="tok-p">,</span> <span class="tok-s">&quot;wc.jl&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside <code>module &#8230;&#8203;  end</code>. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else&#8217;s. Within a module, you can control which names from other modules are visible (via +import+ing), and specify which of your names are intended to be public (via +export+ing).</p>
+<p>The first argument of <code>include</code> is a module. The input source file is evaluated in the scope of that module. The prefix <code>Base</code> is mandatory is this case. Without the prefix <code>include</code> has only one argument, the filename, and the file is evaluated in the scope of the active module. <code>Main</code> corresponds to the <code>__main__</code> frame.
+</p>
+</div>
+<div class="paragraph">
+<p>Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside <code>module &#8230;&#8203;  end</code>. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else&#8217;s. Within a module, you can control which names from other modules are visible (via +import+ing), and specify which of your names are intended to be public (via +export+ing).
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11327,20 +11409,43 @@ suffix)</p>
 <span class="tok-mi">11</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>As an exercise, type this example into a file named <em>wc.jl</em>, include it into the REPL and enter <code>using LineCount</code>.</p>
 </div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Warning: If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.</p>
+<p>If you import a module that has already been imported, Julia does nothing. It does not re-read the file, even if it has changed.</p>
 </div>
 <div class="paragraph">
-<p>If you want to reload a module, you can use the built-in function <code>reload</code>, but it can be tricky, so the safest thing to do is restart the REPL.</p>
+<p>If you want to reload a module, you have to restart the REPL. A package <code>Revise</code> exists that can keep your sessions running longer (see <a href="https://github.com/timholy/Revise.jl" class="bare">https://github.com/timholy/Revise.jl</a>).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_debugging_12">Debugging</h3>
 <div class="paragraph">
-<p>When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:</p>
+<p>When you are reading and writing files, you might run into problems with whitespace. These errors can be hard to debug because spaces, tabs and newlines are normally invisible:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11355,7 +11460,7 @@ suffix)</p>
 <p>The built-in function <code>repr</code> can help. It takes any object as an argument and returns a string representation of the object.</p>
 </div>
 <div class="paragraph">
-<p>This can be helpful for debugging.</p>
+<p></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11364,7 +11469,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented <code>\n</code>. Others use a return character, represented <code>\r</code>. Some use both. If you move files between different systems, these inconsistencies can cause problems.</p>
+<p>This can be helpful for debugging.
+</p>
+</div>
+<div class="paragraph">
+<p>One other problem you might run into is that different systems use different characters to indicate the end of a line. Some systems use a newline, represented <code>\n</code>. Others use a return character, represented <code>\r</code>. Some use both. If you move files between different systems, these inconsistencies can cause problems.
+</p>
 </div>
 <div class="paragraph">
 <p>For most systems, there are applications to convert from one format to another. You can find them (and read more about this issue) at <a href="https://en.wikipedia.org/wiki/Newline" class="bare">https://en.wikipedia.org/wiki/Newline</a>. Or, of course, you could write one yourself.</p>
@@ -11376,43 +11486,53 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">persistent</dt>
 <dd>
-<p>Pertaining to a program that runs indefinitely and keeps at least some of its data in permanent storage.</p>
+<p>Pertaining to a program that runs indefinitely and keeps at least some of its data in permanent storage.
+</p>
 </dd>
 <dt class="hdlist1">text file</dt>
 <dd>
-<p>A sequence of characters stored in permanent storage like a hard drive.</p>
+<p>A sequence of characters stored in permanent storage like a hard drive.
+</p>
 </dd>
 <dt class="hdlist1">directory</dt>
 <dd>
-<p>A named collection of files, also called a folder.</p>
+<p>A named collection of files, also called a folder.
+</p>
 </dd>
 <dt class="hdlist1">path</dt>
 <dd>
-<p>A string that identifies a file.</p>
+<p>A string that identifies a file.
+</p>
 </dd>
 <dt class="hdlist1">relative path</dt>
 <dd>
-<p>A path that starts from the current directory.</p>
+<p>A path that starts from the current directory.
+</p>
 </dd>
 <dt class="hdlist1">absolute path</dt>
 <dd>
-<p>A path that starts from the topmost directory in the file system.</p>
+<p>A path that starts from the topmost directory in the file system.
+</p>
 </dd>
 <dt class="hdlist1">catch</dt>
 <dd>
-<p>To prevent an exception from terminating a program using the <code>try &#8230;&#8203; catch &#8230;&#8203; finally</code> statements.</p>
+<p>To prevent an exception from terminating a program using the <code>try &#8230;&#8203; catch &#8230;&#8203; finally</code> statements.
+</p>
 </dd>
 <dt class="hdlist1">database</dt>
 <dd>
-<p>A file whose contents are organized like a dictionary with keys that correspond to values.</p>
+<p>A file whose contents are organized like a dictionary with keys that correspond to values.
+</p>
 </dd>
 <dt class="hdlist1">shell</dt>
 <dd>
-<p>A program that allows users to type commands and then executes them by starting other programs.</p>
+<p>A program that allows users to type commands and then executes them by starting other programs.
+</p>
 </dd>
 <dt class="hdlist1">command object</dt>
 <dd>
-<p>An object that represents a shell command, allowing a Julia program to run commands and read the results.</p>
+<p>An object that represents a shell command, allowing a Julia program to run commands and read the results.
+</p>
 </dd>
 </dl>
 </div>
@@ -11422,7 +11542,8 @@ suffix)</p>
 <div class="sect4">
 <h5 id="ex14-1">Exercise 14-1</h5>
 <div class="paragraph">
-<p>Write a function called <code>sed</code> that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.</p>
+<p>Write a function called <code>sed</code> that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
+</p>
 </div>
 <div class="paragraph">
 <p>If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.</p>
@@ -11434,7 +11555,8 @@ suffix)</p>
 <p>If you have done <a href="#ex12-2">Exercise 12-2</a>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "<code>opst"</code> maps to the list <code>["opts", "post", "pots", "spot", "stop", "tops"]</code>.</p>
 </div>
 <div class="paragraph">
-<p>Write a module that imports <code>anagramsets</code> and provides two new functions: <code>storeanagrams</code> should store the anagram dictionary using <code>JLD2</code>; <code>read_anagrams</code> should look up a word and return a list of its anagrams.</p>
+<p>Write a module that imports <code>anagramsets</code> and provides two new functions: <code>storeanagrams</code> should store the anagram dictionary using <code>JLD2</code>; <code>readanagrams</code> should look up a word and return a list of its anagrams.
+</p>
 </div>
 </div>
 <div class="sect4">
@@ -15740,7 +15862,7 @@ end</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-23 21:53:54 CEST
+Last updated 2018-08-24 15:28:30 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
