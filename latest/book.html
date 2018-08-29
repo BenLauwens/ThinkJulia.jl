@@ -762,7 +762,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_printing_objects">Printing Objects</a></li>
 <li><a href="#_more_examples">More Examples</a></li>
 <li><a href="#_constructors">Constructors</a></li>
-<li><a href="#_base_show"><code>Base.show</code></a></li>
+<li><a href="#_show"><code>show</code></a></li>
 <li><a href="#_operator_overloading">Operator Overloading</a></li>
 <li><a href="#_multiple_dispatch">Multiple Dispatch</a></li>
 <li><a href="#_polymorphism">Polymorphism</a></li>
@@ -927,13 +927,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="content">
 <pre>               _
-   _       _ _(_)_     |  A fresh approach to technical computing
-  (_)     | (_) (_)    |  Documentation: https://docs.julialang.org
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 0.7.0 (2018-08-08 06:46 UTC)
- _/ |\__'_|_|_|\__'_|  |  Official http://julialang.org/ release
-|__/                   |  x86_64-apple-darwin14.5.0
+  | | |_| | | | (_| |  |  Version 1.0.0 (2018-08-08)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
 
 julia&gt;</pre>
 </div>
@@ -1438,7 +1438,7 @@ julia&gt;</pre>
 <span class="tok-gr">ERROR: syntax: &quot;76&quot; is not a valid function argument name</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">more</span><span class="tok-err">@</span> <span class="tok-o">=</span> <span class="tok-mi">1000000</span>
 <span class="tok-gr">ERROR: syntax: extra token &quot;@&quot; after end of expression</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-k">type</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Advanced Theoretical Zymurgy&quot;</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">struct</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Advanced Theoretical Zymurgy&quot;</span>
 <span class="tok-gr">ERROR: syntax: unexpected &quot;=&quot;</span></code></pre>
 </div>
 </div>
@@ -4231,7 +4231,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535127967913633e9</span></code></pre>
+<span class="tok-go">1.535579531841175e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11411,8 +11411,10 @@ suffix)</p>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">filename</span> <span class="tok-o">=</span> <span class="tok-s">&quot;output.txt&quot;</span>
 <span class="tok-go">&quot;output.txt&quot;</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">cmd</span> <span class="tok-o">=</span> <span class="tok-sb">`md5 </span><span class="tok-si">$filename</span><span class="tok-sb">`</span>
 <span class="tok-go">`md5 output.txt`</span>
+
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-n">read</span><span class="tok-p">(</span><span class="tok-n">cmd</span><span class="tok-p">,</span> <span class="tok-n">String</span><span class="tok-p">)</span>
 <span class="tok-go">&quot;MD5 (output.txt) = d41d8cd98f00b204e9800998ecf8427e\n&quot;</span></code></pre>
 </div>
@@ -12693,7 +12695,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_type_declarations">Type Declarations</h3>
 <div class="paragraph">
-<p>The <code>::</code> operator can be used to attach <em>type annotations</em> to expressions and variables in programs. There are two primary reasons to do this:</p>
+<p>The <code>::</code> operator can be used to attach <em>type annotations</em> to expressions and variables in programs. There are two primary reasons to do this:
+</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -12706,7 +12709,8 @@ suffix)</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>When appended to an expression computing a value, the <code>::</code> operator is read as "is an instance of". It can be used anywhere to assert that the value of the expression on the left is an instance of the type on the right.</p>
+<p>When appended to an expression computing a value, the <code>::</code> operator is read as "is an instance of". It can be used anywhere to assert that the value of the expression on the left is an instance of the type on the right.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12720,7 +12724,8 @@ suffix)</p>
 <p>This allows a type assertion to be attached to any expression in-place.</p>
 </div>
 <div class="paragraph">
-<p>When appended to a variable on the left-hand side of an assignment, or as part of a declaration, the <code>::</code> operator means something a bit different: it declares the variable to always have the specified type. If needed and possible a conversion will take place.</p>
+<p>When appended to a variable on the left-hand side of an assignment, or as part of a declaration, the <code>::</code> operator means something a bit different: it declares the variable to always have the specified type. If needed and possible a conversion will take place.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12752,22 +12757,25 @@ suffix)</p>
 <p>Returning from this function behaves just like an assignment to a variable with a declared type: the value is always converted to <code>Float64</code>.</p>
 </div>
 <div class="paragraph">
-<p>The default behavior in Julia when types are omitted is to allow values to be of any type.</p>
+<p>The default behavior in Julia when types are omitted is to allow values to be of any type (<code>Any</code>).
+</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_methods">Methods</h3>
 <div class="paragraph">
-<p>Recall from Functions that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the ++ function.</p>
+<p>Recall from <a href="#chap03">Functions</a> that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the <code>+</code> function.</p>
 </div>
 <div class="paragraph">
-<p>To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a <em>method</em>. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the <em>signatures</em> of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.</p>
+<p>To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a <em>method</em>. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the <em>signatures</em> of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
+</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_printing_objects">Printing Objects</h3>
 <div class="paragraph">
-<p>In <a href="#chap16">Structs and Functions</a>, we defined a struct named <code>MyTime</code> and in <a href="#time">Time</a>, you wrote a function named <code>printtime</code>:</p>
+<p>In <a href="#chap16">Structs and Functions</a>, we defined a struct named <code>MyTime</code> and in <a href="#time">Time</a>, you wrote a function named <code>printtime</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12836,14 +12844,26 @@ suffix)</p>
 <span class="tok-go">I don&#39;t know how to print the argument time.</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>As an exercise, rewrite <code>timetoint</code> and <code>inttotime</code> (from <a href="#prototyping_versus_planning">Prototyping Versus Planning</a>) to specify their argument.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_more_examples">More Examples</h3>
 <div class="paragraph">
-<p>Here’s a version of <code>increment!</code> (from <a href="#modifiers">Modifiers</a>) rewritten to specify its arguments:</p>
+<p>Here’s a version of <code>increment!</code> (from <a href="#modifiers">Modifiers</a>) rewritten to specify its arguments:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12868,7 +12888,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>If you put the arguments in the wrong order, you get an error:</p>
+<p>If you put the arguments in the wrong order, you get an error:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12880,7 +12901,8 @@ suffix)</p>
 <p>The signature of the method is <code>printtime(time::MyTime, seconds::Int64)</code> and not <code>printtime(seconds::Int64, time::MyTime)</code>.</p>
 </div>
 <div class="paragraph">
-<p>Rewriting +isafter+to act only on mytime objects ia as easy:</p>
+<p>Rewriting +isafter+to act only on mytime objects ia as easy:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12916,7 +12938,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_constructors">Constructors</h3>
 <div class="paragraph">
-<p>A <em>constructor</em> is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of <code>MyTime</code> have the following signatures:</p>
+<p>A <em>constructor</em> is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of <code>MyTime</code> have the following signatures:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12928,7 +12951,8 @@ suffix)</p>
 <p>The former is a convenience method to allow implicit conversions.</p>
 </div>
 <div class="paragraph">
-<p>We can also add our own <em>outer constructor</em> methods:</p>
+<p>We can also add our own <em>outer constructor</em> methods:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12938,10 +12962,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This method is called a <em>copy constructor</em> because the new mytime object is a copy of argument.</p>
+<p>This method is called a <em>copy constructor</em> because the new mytime object is a copy of argument.
+</p>
 </div>
 <div class="paragraph">
-<p>While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need <em>inner constructor</em> methods:</p>
+<p>While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need <em>inner constructor</em> methods:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12958,7 +12984,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The struct <code>MyTime</code> has now 5 constructor methods:</p>
+<p>The struct <code>MyTime</code> has now 6 constructor methods:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12987,7 +13013,8 @@ suffix)</p>
 <p>If any inner constructor method is defined, no default constructor method is provided: it is presumed that you have supplied yourself with all the inner constructors you need.</p>
 </div>
 <div class="paragraph">
-<p>A second method without arguments of the local function <code>new</code> exists:</p>
+<p>A second method without arguments of the local function <code>new</code> exists:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13008,13 +13035,15 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This allows to construct incompletely initialized objects and self-referential objects, or more generally, recursive data structures.</p>
+<p>This allows to construct incompletely initialized objects and self-referential objects, or more generally, recursive data structures.
+</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_base_show"><code>Base.show</code></h3>
+<h3 id="_show"><code>show</code></h3>
 <div class="paragraph">
-<p><code>Base.show</code> is a special function that is supposed to return a string representation of an object. For example, here is a <code>Base.show</code> method for Time objects:</p>
+<p><code>show</code> is a special function that is supposed to return a string representation of an object. For example, here is a <code>show</code> method for mytime objects:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13026,7 +13055,10 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you print an object, Julia invokes the <code>Base.show</code> function:</p>
+<p>The prefix <code>Base</code> is needed because we want to add a new method to the <code>Base.show</code> function.</p>
+</div>
+<div class="paragraph">
+<p>When you print an object, Julia invokes the <code>show</code> function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13035,16 +13067,27 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and <code>Base.show</code>, which is useful for debugging.</p>
+<p>When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and <code>show</code>, which is useful for debugging.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>As an exercise, write an inner constructor method for the <code>Point</code> class that takes <code>x</code> and <code>y</code> as optional parameters and assigns them to the corresponding fields.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_operator_overloading">Operator Overloading</h3>
 <div class="paragraph">
-<p>By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named <code> with two <code>MyTime</code> arguments, you can use the </code> operator on <code>MyTime</code> objects.</p>
+<p>By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named <code>+</code> with two <code>MyTime</code> arguments, you can use the <code>+</code> operator on mytime objects.</p>
 </div>
 <div class="paragraph">
 <p>Here is what the definition might look like:</p>
@@ -13060,7 +13103,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The import statement adds the <code>Base.</code> function to the local scope so that methods can be added.</p>
+<p>The import statement adds the <code>Base.+</code> function to the local scope so that methods can be added.</p>
 </div>
 <div class="paragraph">
 <p>And here is how you could use it:</p>
@@ -13076,16 +13119,17 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>When you apply the <code>pass[</code>]+ operator to <code>MyTime</code> objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes <code>Base.show</code>. So there is a lot happening behind the scenes!</p>
+<p>When you apply the <code>+</code> operator to mytime objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes <code>show</code>. So there is a lot happening behind the scenes!</p>
 </div>
 <div class="paragraph">
-<p>Changing the behavior of an operator so that it works with programmer-defined types is called <em>operator overloading</em>.</p>
+<p>Changing the behavior of an operator so that it works with programmer-defined types is called <em>operator overloading</em>.
+</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_multiple_dispatch">Multiple Dispatch</h3>
 <div class="paragraph">
-<p>In the previous section we added two <code>MyTime</code> objects, but you also might want to add an integer to a <code>MyTime</code> object:</p>
+<p>In the previous section we added two mytime objects, but you also might want to add an integer to a <code>MyTime</code> object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13095,7 +13139,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Here is an example that use the ++ operator with a mytime object and an integer:</p>
+<p>Here is an example that use the <code>+</code> operator with a mytime object and an integer:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13125,10 +13169,18 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The choice of which method to execute when a function is applied is called <em>dispatch</em>. Julia allows the dispatch process to choose which of a function&#8217;s methods to call based on the number of arguments given, and on the types of all of the function&#8217;s arguments.  Using all of a function&#8217;s arguments to choose which method should be invoked is known as <em>multiple dispatch</em>.</p>
+<p>The choice of which method to execute when a function is applied is called <em>dispatch</em>. Julia allows the dispatch process to choose which of a function&#8217;s methods to call based on the number of arguments given, and on the types of all of the function&#8217;s arguments.  Using all of a function&#8217;s arguments to choose which method should be invoked is known as <em>multiple dispatch</em>.
+</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>As an exercise, write ++ methods for point objects:</p>
+<p>As an exercise, write <code>+</code> methods for point objects:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -13139,6 +13191,10 @@ suffix)</p>
 <p>If the first or the second operand is a tuple, the method should add the first element of the tuple to the <code>x</code> coordinate and the second element to the <code>y</code> coordinate, and return a new point object with the result.</p>
 </li>
 </ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -13179,10 +13235,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Functions that work with several types are called <em>polymorphic</em>. Polymorphism can facilitate code reuse.</p>
+<p>Functions that work with several types are called <em>polymorphic</em>. Polymorphism can facilitate code reuse.
+</p>
 </div>
 <div class="paragraph">
-<p>For example, the built-in function <code>sum</code>, which adds the elements of a sequence, works as long as the elements of the sequence support addition.</p>
+<p>For example, the built-in function <code>sum</code>, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
+</p>
 </div>
 <div class="paragraph">
 <p>Since a <code>+</code> method is provided for mytime objects, they work with <code>sum</code>:</p>
@@ -13203,7 +13261,8 @@ suffix)</p>
 <p>In general, if all of the operations inside a function work with a given type, the function works with that type.</p>
 </div>
 <div class="paragraph">
-<p>The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.</p>
+<p>The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.
+</p>
 </div>
 </div>
 <div class="sect2">
@@ -13212,7 +13271,8 @@ suffix)</p>
 <p>One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.</p>
 </div>
 <div class="paragraph">
-<p>A design principle that helps achieve that goal is to keep interfaces separate from implementations. For objects, that means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.</p>
+<p>A design principle that helps achieve that goal is to keep interfaces separate from implementations. For objects, that means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
+</p>
 </div>
 <div class="paragraph">
 <p>For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include <code>timetoint</code>, <code>isafter</code>, and <code>+</code>.</p>
@@ -13233,7 +13293,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_debugging_15">Debugging</h3>
 <div class="paragraph">
-<p>To know what methods are available, you can use the function <code>methods</code>:</p>
+<p>To know what methods are available, you can use the function <code>methods</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13250,47 +13311,53 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">type annotation</dt>
 <dd>
-<p>The operator <code>::</code> followed by a type indicating that an expression or a variable is of that type.</p>
+<p>The operator <code>::</code> followed by a type indicating that an expression or a variable is of that type.
+</p>
 </dd>
 <dt class="hdlist1">method</dt>
 <dd>
-<p>A definition of a possible behavior for a function.</p>
+<p>A definition of a possible behavior for a function.
+</p>
 </dd>
 <dt class="hdlist1">dispatch</dt>
 <dd>
-<p>The choice of which method to execute when a function is executed.</p>
+<p>The choice of which method to execute when a function is executed.
+</p>
 </dd>
 <dt class="hdlist1">signature</dt>
 <dd>
-<p>The number and type of the arguments of a method allowing the dispatch to select the most specific method of a function during the function call.</p>
-</dd>
-<dt class="hdlist1">constructor</dt>
-<dd>
-<p>A special function that is called to create an object.</p>
+<p>The number and type of the arguments of a method allowing the dispatch to select the most specific method of a function during the function call.
+</p>
 </dd>
 <dt class="hdlist1">outer constructor</dt>
 <dd>
-<p>Constructor defined outside the type definition to define convenience methods for creating an object.</p>
+<p>Constructor defined outside the type definition to define convenience methods for creating an object.
+</p>
 </dd>
 <dt class="hdlist1">inner constructor</dt>
 <dd>
-<p>Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.</p>
+<p>Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.
+</p>
 </dd>
 <dt class="hdlist1">copy constructor</dt>
 <dd>
-<p>Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.</p>
+<p>Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
+</p>
 </dd>
 <dt class="hdlist1">operator overloading</dt>
 <dd>
-<p>Changing the behavior of an operator like ++ so it works with a programmer-defined type.</p>
+<p>Changing the behavior of an operator like ++ so it works with a programmer-defined type.
+</p>
 </dd>
 <dt class="hdlist1">multiple dispatch</dt>
 <dd>
-<p>Dispatch based on all of a function&#8217;s arguments.</p>
+<p>Dispatch based on all of a function&#8217;s arguments.
+</p>
 </dd>
 <dt class="hdlist1">polymorphic</dt>
 <dd>
-<p>Pertaining to a function that can work with more than one type.</p>
+<p>Pertaining to a function that can work with more than one type.
+</p>
 </dd>
 </dl>
 </div>
@@ -13306,7 +13373,8 @@ suffix)</p>
 <div class="sect4">
 <h5 id="ex17-2">Exercise 17-2</h5>
 <div class="paragraph">
-<p>Write a definition for a type named <code>Kangaroo</code> with a field named <code>pouchcontents</code> of type <code>Array</code> and the following methods:</p>
+<p>Write a definition for a type named <code>Kangaroo</code> with a field named <code>pouchcontents</code> of type <code>Array</code> and the following methods:
+</p>
 </div>
 <div class="ulist">
 <ul>
@@ -16110,7 +16178,7 @@ end</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-24 18:26:03 CEST
+Last updated 2018-08-29 23:52:07 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
