@@ -222,7 +222,7 @@ It is also easier to add features later. For example, imagine subtracting two my
 
 Ironically, sometimes making a problem harder (or more general) makes it easier (because there are fewer special cases and fewer opportunities for error).
 
-
+[[chap16_debugging]]
 === Debugging
 
 A mytime object is well-formed if the values of +minute+ and +second+ are between 0 and 60 (including 0 but not 60) and if +hour+ is positive. +hour+ and +minute+ should be integral values, but we might allow +second+ to have a fraction part.

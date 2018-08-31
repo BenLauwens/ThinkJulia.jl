@@ -1,23 +1,14 @@
 [[chap17]]
 == Multiple Dispatch
 
-In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is also dynamic, meaning that only at run-time it can be checked that a function supports an object as argument. But Julia gains some of the advantages of static type systems for which every type has to been known at compile time, by making it possible to indicate that certain values are of specific types. This can be of great assistance in generating efficient code, but even more significantly, it allows method dispatch on the types of function arguments to be deeply integrated with the language.
+In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is dynamic but inherits some features of static type system. A method can be efficiently dispatched on the number and the type of its arguments.
 
 In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.
-
-Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: https://docs.julialang.org/en/stable/manual/types/#Type-Declarations-1 and https://docs.julialang.org/en/stable/manual/methods/#Methods-1.
 
 
 === Type Declarations
 
-The +::+ operator can be used to attach _type annotations_ to expressions and variables in programs. There are two primary reasons to do this:
-(((::)))((("operator","Base","::", see="::")))(((type annotation)))
-
-. As an assertion to help confirm that your program works the way you expect,
-
-. To provide extra type information to the compiler, which can then improve performance in some cases.
-
-When appended to an expression computing a value, the +::+ operator is read as "is an instance of". It can be used anywhere to assert that the value of the expression on the left is an instance of the type on the right.
+The +::+ operator attaches _type annotations_ to expressions and variables:
 (((TypeError)))((("error", "Base", "TypeError", see="TypeError")))
 
 [source,@julia-repl-test]
@@ -28,9 +19,9 @@ julia> (1 + 2) :: Int64
 3
 ----
 
-This allows a type assertion to be attached to any expression in-place.
+This helps to confirm that your program works the way you expect.
 
-When appended to a variable on the left-hand side of an assignment, or as part of a declaration, the +::+ operator means something a bit different: it declares the variable to always have the specified type. If needed and possible a conversion will take place.
+The +::+ operator can also be appended to the left-hand side of an assignment, or as part of a declaration.
 (((returnfloat)))((("function", "programmer-defined", "returnfloat", see="returnfloat")))
 
 [source,@julia-repl-test]
@@ -46,7 +37,10 @@ julia> typeof(x)
 Float64
 ----
 
-Declarations can also be attached to function definitions:
+The variable +x+ is always of type +Float64+ and the value is converted to a floating point if needed.
+
+A type annotation can also be attached to the header of a function definition:
+(((sinc)))((("function", "programmer-defined", "sinc", see="sinc")))
 
 [source,@julia-setup]
 ----
@@ -58,18 +52,10 @@ function sinc(x)::Float64
 end
 ----
 
-Returning from this function behaves just like an assignment to a variable with a declared type: the value is always converted to +Float64+.
+The return value of +sinc+ is always converted to type +Float64+.
 
 The default behavior in Julia when types are omitted is to allow values to be of any type (+Any+).
 (((Any)))
-
-
-=== Methods
-
-Recall from <<chap03>> that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the +pass:[+]+ function.
-
-To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a _method_. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the _signatures_ of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
-(((method)))(((signature)))
 
 
 === Printing Objects
@@ -104,7 +90,8 @@ julia> printtime(start)
 09:45:00
 ----
 
-To add a method to the function +printtime+ that only accepts as argument a mytime object, all we have to do is append +::+ followed by +MyTime+ to the argument +time+ in the function definition:
+To add a _method_ to the function +printtime+ that only accepts as argument a mytime object, all we have to do is append +::+ followed by +MyTime+ to the argument +time+ in the function definition:
+(((method)))
 
 [source,@julia-setup chap17a]
 ----
@@ -112,6 +99,9 @@ function printtime(time::MyTime)
     @printf("%02d:%02d:%02d", time.hour, time.minute, time.second)
 end
 ----
+
+A method is a function definition with a specific _signature_: +printtime+ has one argument of type +MyTime+.
+(((signature)))
 
 Calling the function +printtime+ with a mytime object yields the same result:
 
@@ -141,6 +131,7 @@ I don't know how to print the argument time.
 [TIP]
 ====
 As an exercise, rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
+(((timetoint)))(((inttotime)))
 ====
 
 [source,@julia-eval chap17a]
@@ -193,7 +184,7 @@ ERROR: MethodError: no method matching increment!(::Int64, ::MyTime)
 
 The signature of the method is +printtime(time::MyTime, seconds::Int64)+ and not +printtime(seconds::Int64, time::MyTime)+.
 
-Rewriting +isafter+to act only on mytime objects ia as easy:
+Rewriting +isafter+to act only on mytime objects is as easy:
 (((isafter)))
 
 [source,@julia-setup chap17a]
@@ -226,7 +217,7 @@ These expressions are valid Julia method definitions. This is a shorthand notati
 
 === Constructors
 
-A _constructor_ is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of +MyTime+ have the following signatures:
+A _constructor_ is a special function that is called to create an object. The default constructor methods of +MyTime+ have the following signatures:
 (((constructor)))
 
 [source,julia]
@@ -234,8 +225,6 @@ A _constructor_ is a special function that is called to create an object. The de
 MyTime(hour, minute, second)
 MyTime(hour::Int64, minute::Int64, second::Int64)
 ----
-
-The former is a convenience method to allow implicit conversions.
 
 We can also add our own _outer constructor_ methods:
 (((outer constructor)))((("constructor", "outer", see="outer constructor")))
@@ -250,7 +239,7 @@ end
 This method is called a _copy constructor_ because the new mytime object is a copy of argument.
 (((copy constructor)))((("constructor", "copy", see="copy constructor")))
 
-While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need _inner constructor_ methods:
+To enforce invariants, we need _inner constructor_ methods:
 (((inner constructor)))((("constructor", "inner", see="inner constructor")))
 
 [source,@julia-setup chap17b]
@@ -279,13 +268,12 @@ MyTime(hour::Int64, minute::Int64, second::Int64)
 MyTime(time::MyTime)
 ----
 
-An inner constructor method is much like an outer constructor method, with two differences:
+An inner constructor method is always declared inside the block of a type declaration and it has access to a function called +new+ that creates objects of the newly declared type.
 
-* It is declared inside the block of a type declaration.
-
-* It has access to a special locally existent function called +new+ that creates objects of the newly declared type.
-
+[WARNING]
+====
 If any inner constructor method is defined, no default constructor method is provided: it is presumed that you have supplied yourself with all the inner constructors you need.
+====
 
 A second method without arguments of the local function +new+ exists:
 (((new)))((("function", "Base", "new", see="new")))
@@ -308,13 +296,13 @@ mutable struct MyTime
 end
 ----
 
-This allows to construct incompletely initialized objects and self-referential objects, or more generally, recursive data structures.
+This allows to construct recursive data structures.
 (((recursive data structures)))
 
 
 === +show+
 
-+show+ is a special function that is supposed to return a string representation of an object. For example, here is a +show+ method for mytime objects:
++show+ is a special function that returns a string representation of an object. For example, here is a +show+ method for mytime objects:
 (((show)))
 
 [source,@julia-setup chap17b]
@@ -341,6 +329,7 @@ When I write a new composite type, I almost always start by writing an inner con
 [TIP]
 ====
 As an exercise, write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
+(((Point)))
 ====
 
 [source,@julia-eval chap17b]
@@ -378,7 +367,7 @@ function +(t1::MyTime, t2::MyTime)
 end
 ----
 
-The import statement adds the +Base.pass:[+]+ function to the local scope so that methods can be added.
+The import statement adds the +pass:[+]+ operator to the local scope so that methods can be added.
 
 And here is how you could use it:
 
@@ -455,6 +444,7 @@ As an exercise, write +pass:[+]+ methods for point objects:
 Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.
 
 Many of the functions we wrote for strings also work for other sequence types. For example, in <<dictionary_collection_counters>> we used +histogram+ to count the number of times each letter appears in a word.
+(((histogram)))
 
 [source,@julia-setup chap17]
 ----
@@ -573,7 +563,7 @@ Outer constructor method of a type with as only argument an object of the type. 
 (((copy constructor)))
 
 operator overloading::
-Changing the behavior of an operator like ++ so it works with a programmer-defined type.
+Changing the behavior of an operator like +pass:[+]+ so it works with a programmer-defined type.
 (((operator overloading)))
 
 multiple dispatch::
@@ -601,8 +591,10 @@ Write a definition for a type named +Kangaroo+ with a field named +pouchcontents
 * An constructor that initializes +pouchcontents+ to an empty array.
 
 * A method named +putinpouch+ that takes a +Kangaroo+ object and an object of any type and adds it to +pouchcontents+.
+(((putinpouch)))((("function", "programmer-defined", "putinpouch", see="putinpouch")))
 
 * A +show+ method that returns a string representation of the +Kangaroo+ object and the contents of the pouch.
+(((show)))
 
 Test your code by creating two +Kangaroo+ objects, assigning them to variables named +kanga+ and +roo+, and then adding +roo+ to the contents of +kanga+’s pouch.
 
