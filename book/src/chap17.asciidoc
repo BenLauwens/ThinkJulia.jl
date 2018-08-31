@@ -1,7 +1,7 @@
 [[chap17]]
 == Multiple Dispatch
 
-In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is dynamic but inherits some features of static type system. A method can be efficiently dispatched on the number and the type of its arguments.
+In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is dynamic but inherits some features of static type systems. A method can be efficiently dispatched on the number and the type of its arguments.
 
 In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.
 

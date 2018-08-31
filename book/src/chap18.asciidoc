@@ -15,6 +15,7 @@ There are fifty-two cards in a deck, each of which belongs to one of four suits 
 If we want to define a new object to represent a playing card, it is obvious what the attributes should be: rank and suit. It is not as obvious what type the attributes should be. One possibility is to use strings containing words like +"Spade"+ for suits and +"Queen"+ for ranks. One problem with this implementation is that it would not be easy to compare cards to see which had a higher rank or suit.
 
 An alternative is to use integers to _encode_ the ranks and suits. In this context, “encode” means that we are going to define a mapping between numbers and suits, or between numbers and ranks. This kind of encoding is not meant to be a secret (that would be “encryption”).
+(((encode)))
 
 For example, this table shows the suits and the corresponding integer codes:
 
@@ -31,6 +32,7 @@ This code makes it easy to compare cards; because higher suits map to higher num
 I am using the latexmath:[\(\mapsto\)] symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.
 
 The struct definition for +Card+ looks like this:
+(((Card)))((("type", "programmer-defined", "Card", see="Card")))
 
 [source,@julia-setup chap18]
 ----
@@ -64,9 +66,11 @@ const suit_names = ["♣", "♦", "♥", "♠"]
 const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 ----
 
-Variables like +suit_names+ and +rank_names+, which are defined outside of a type definition or of any method, are called _global variables_. The +const+ declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
+The variables +suit_names+ and +rank_names+ are global variables. The +const+ declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
+(((global statement)))(((const)))((("keyword", "const", see="const")))
 
 Now we can implement an appropriate +show+ method:
+(((show)))
 
 [source,@julia-setup chap18]
 ----
@@ -94,7 +98,8 @@ The correct ordering for cards is not obvious. For example, which is better, the
 
 The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.
 
-With that decided, we can write +Base.isless+:
+With that decided, we can write +isless+:
+(((isless)))((("function", "programmer-defined", "isless", see="isless")))
 
 [source,@julia-setup chap18]
 ----
@@ -103,14 +108,19 @@ function Base.isless(c1::Card, c2::Card)
 end
 ----
 
-As an exercise, write a +Base.isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
+[TIP]
+====
+As an exercise, write a +isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
+====
 
 
 === Unit Testing
 
 _Unit testing_ is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
+(((unit_testing)))
 
 Simple unit testing can be performed with the +@test+ macros:
+(((Test)))((("module", "Test", see="Test")))(((@test)))((("macro", "Test", "@test", see="@test"))) 
 
 [source,@julia-repl-test chap18]
 ----
@@ -122,7 +132,7 @@ julia> @test isless(Card(1, 3), Card(1, 4))
 Test Passed
 ----
 
-+@test+ returns a +Test Passed+ if the expression following it is +true+, a +Test Failed+ if it is false, and an +Error Result+ if it could not be evaluated.
++@test+ returns a +"Test Passed"+ if the expression following it is +true+, a +"Test Failed"+ if it is +false+, and an +"Error Result"+ if it could not be evaluated.
 
 
 === Decks
@@ -130,6 +140,7 @@ Test Passed
 Now that we have Cards, the next step is to define Decks. Since a deck is made up of cards, it is natural for each Deck to contain an array of cards as an attribute.
 
 The following is a struct definition for +Deck+. The constructor creates the fields cards and generates the standard set of fifty-two cards:
+(((Deck)))((("type", "programmer-defined", "Deck", see="Deck")))
 
 [source,@julia-setup chap18]
 ----
@@ -149,7 +160,7 @@ end
 
 The easiest way to populate the deck is with a nested loop. The outer loop enumerates the suits from 1 to 4. The inner loop enumerates the ranks from 1 to 13. Each iteration creates a new +Card+ with the current suit and rank, and pushes it to +deck.cards+.
 
-Here is a +Base.show+ method for +Deck+:
+Here is a +show+ method for +Deck+:
 
 [source,@julia-setup chap18]
 ----
@@ -173,6 +184,7 @@ A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦
 === Add, Remove, Shuffle and Sort
 
 To deal cards, we would like a function that removes a card from the deck and returns it. The function +pop!+ provides a convenient way to do that:
+(((pop!)))
 
 [source,@julia-setup chap18]
 ----
@@ -184,6 +196,7 @@ end
 Since +pop!+ removes the last card in the array, we are dealing from the bottom of the deck.
 
 To add a card, we can use the function +push!+:
+(((push!)))
 
 [source,@julia-setup chap18]
 ----
@@ -194,10 +207,12 @@ end
 ----
 
 A method like this that uses another method without doing much work is sometimes called a _veneer_. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.
+(((veneer)))
 
-In this case +addcard+ is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.
+In this case +push!+ is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.
 
-As another example, we can write a method named +shuffledeck!+ using the function +Random.shuffle!+:
+As another example, we can write a method named +shuffle!+ using the function +Random.shuffle!+:
+(((Random)))((("module", "Random", see="Random")))(((shuffle!)))((("function", "Random", "shuffle!", see="shuffle!")))
 
 [source,@julia-setup chap18]
 ----
@@ -209,7 +224,11 @@ function Random.shuffle!(deck::Deck)
 end
 ----
 
-Write a function named +sortdeck!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +Base.isless+ method we defined to determine the order.
+[TIP]
+====
+Write a function named +sort!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +isless+ method we defined to determine the order.
+(((sort!)))
+====
 
 
 === Abstract Types and Subtyping
@@ -219,8 +238,10 @@ We want a type to represent a “hand”, that is, the cards held by one player.
 A hand is also different from a deck; there are operations we want for hands that don’t make sense for a deck. For example, in poker we might compare two hands to see which one wins. In bridge, we might compute a score for a hand in order to make a bid.
 
 So we need a way to group related _concrete types_. In Julia this is done by defining an _abstract type_ that serves as a parent for both +Deck+ and +Hand+. This is called _subtyping_
+(((concrete type)))(((abstract type)))(((subtyping)))
 
 Let's call this abstract type +CardSet+:
+(((CardSet)))((("type", "programmer-defined", "CardSet", see="CardSet")))
 
 [source,@julia-eval chap18a]
 ----
@@ -241,8 +262,10 @@ abstract type CardSet end
 ----
 
 The +abstract type+ keyword introduces a new abstract type. The name can be optionally followed by +<:+ and an already-existing abstract type, indicating that the newly declared abstract type is a _subtype_ of this “parent” type.
+(((abstract)))((("keyword", "abstract", see="abstract")))(((type)))((("keyword", "type", see="type")))(((subtype)))
 
 When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are subtypes of.
+(((supertype)))
 
 We can now express that +Deck+ is a descendant of +CardSet+:
 
@@ -263,6 +286,7 @@ end
 ----
 
 The operator +isa+ checks whether an object is of a given type:
+(((isa)))
 
 [source,@julia-repl-test chap18a]
 ----
@@ -273,6 +297,7 @@ true
 ----
 
 A hand is also a kind of +CardSet+:
+(((Hand)))((("type", "programmer-defined", "Hand", see="Hand")))
 
 [source,@julia-setup chap18a]
 ----
@@ -297,6 +322,7 @@ Hand(Card[], "new hand")
 === Abstract Types and Functions
 
 We can now express the common operations between +Deck+ and +Hand+ as functions having as argument +CardSet+:
+(((show)))(((pop!)))(((push!)))
 
 [source,@julia-setup chap18a]
 ----
@@ -328,6 +354,7 @@ hand
 ----
 
 A natural next step is to encapsulate this code in a function called +move!+:
+(((move!)))((("function", "programmer-defined", "move!", see="move!")))
 
 [source,@julia-setup chap18a]
 ----
@@ -351,14 +378,18 @@ In some games, cards are moved from one hand to another, or from a hand back to 
 So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.
 
 They are also highly detailed; for some purposes, too detailed. A _type diagram_ is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
+(((type diagram)))((("diagram", "type")))
 
 There are several kinds of relationship between types:
 
 * Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point.
+(((HAS-A)))
 
 * One type might has supertype an abstract type. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
+(((IS-A)))
 
 * One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a _dependency_.
+(((dependency)))
 
 [[fig18-1]]
 .Type diagram
@@ -369,6 +400,7 @@ The arrow with a hollow triangle head represents an IS-A relationship; in this c
 The standard arrow head represents a HAS-A relationship; in this case a Deck has references to Card objects.
 
 The star (+pass:[*]+) near the arrow head is a _multiplicity_; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like +52+, a range, +like 5:7+ or a star, which indicates that a Deck can have any number of Cards.
+(((multiplicity)))
 
 There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.
 
@@ -391,6 +423,7 @@ end
 Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If +shuffle!+ prints a message that says something like +Running shuffle! Deck+, then as the program runs it traces the flow of execution.
 
 As an alternative, you can also use the +InteractiveUtils.@which+ macro:
+(((InteractiveUtils)))((("module", "InteractiveUtils", see="InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", see="@which")))
 
 [source,jlcon]
 ----
@@ -405,13 +438,16 @@ So the +sort!+ method for +hand+ is the one having as argument an object of type
 Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like an +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
 
 If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
+(((Liskov substitution principle)))
 
 
 === Data Encapsulation
 
 The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like +Point+, +Rectangle+ and +MyTime+—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).
+(((type-oriented design)))
 
 But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by _data encapsulation_.
+(((data encapsulation)))
 
 Markov analysis, from <<markov_analysis>>, provides a good example. If you download my code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, you’ll see that it uses two global variables—+suffixes+ and +prefix+—that are read and written from several functions.
 
@@ -424,6 +460,7 @@ prefix = []
 Because these variables are global, we can only run one analysis at a time. If we read two texts, their prefixes and suffixes would be added to the same data structures (which makes for some interesting generated text).
 
 To run multiple analyses, and keep them separate, we can encapsulate the state of each analysis in an object. Here’s what that looks like:
+(((Markov)))((("type", "programmer-defined", "Markov", see="Markov")))
 
 [source,@julia-setup chap18b]
 ----
@@ -438,6 +475,7 @@ end
 ----
 
 Next, we transform the functions into methods. For example, here’s +processword+:
+(((processword)))((("function", "programmer-defined", "processword", see="processword")))
 
 [source,@julia-setup chap18b]
 ----
@@ -454,6 +492,7 @@ end
 ----
 
 Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see <<refactoring>>).
+(((refactoring)))
 
 This example suggests a development plan for designing types:
 
@@ -465,16 +504,16 @@ This example suggests a development plan for designing types:
 
 * Transform the associated functions into methods with as argument objects of the new type.
 
+[TIP]
+====
 As an exercise, download my Markov code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
+====
 
 
 === Glossary
 
 encode::
 To represent one set of values using another set of values by constructing a mapping between them.
-
-global variable::
-A variable declared outside a function/method definition.
 
 unit testing::
 Standardized way to test the correctness of code.
@@ -551,7 +590,8 @@ addping(pong, ping)
 [[ex18-2]]
 ===== Exercise 18-2
 
-Write a method called +deal+ that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
+Write a method called +deal!+ that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
+(((deal!)))((("function", "programmer-defined", "deal!", see="deal!")))
 
 [[ex18-3]]
 ===== Exercise 18-3
@@ -585,8 +625,10 @@ five cards in sequence (as defined above) and with the same suit
 The goal of this exercise is to estimate the probability of drawing these various hands.
 
 . Add methods named +haspair+, +hastwopair+, etc. that return +true+ or +false+ according to whether or not the hand meets the relevant criteria. Your code should work correctly for “hands” that contain any number of cards (although 5 and 7 are the most common sizes).
+(((haspair)))((("function", "programmer-defined", "haspair", see="haspair")))(((hastwopair)))((("function", "programmer-defined", "hastwopair", see="hastwopair")))
 
 . Write a method named +classify+ that figures out the highest-value classification for a hand and sets the +label+ field accordingly. For example, a 7-card hand might contain a flush and a pair; it should be labeled “flush”.
+(((classify)))((("function", "programmer-defined", "classify", see="classify")))
 
 . When you are convinced that your classification methods are working, the next step is to estimate the probabilities of the various hands. Write a function that shuffles a deck of cards, divides it into hands, classifies the hands, and counts the number of times various classifications appear.
 

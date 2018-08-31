@@ -506,43 +506,6 @@ end
 Global variables can be useful, but if you have a lot of them, and you modify them frequently, they can make programs hard to debug and perform badly.
 ====
 
-In almost all code (and particularly performance sensitive code) global variables should be declared constant:
-(((const)))((("keyword", "const", see="const))))
-
-[source,@julia-setup]
-----
-const known = Dict(0=>0, 1=>1)
-
-function fibonacci(n)
-    if n ∉ keys(known)
-        known[n] = fibonacci(n-1) + fibonacci(n-2)
-    end
-    known[n]
-end
-----
-
-Here is a function that tries to reassign a _constant global variable_:
-(((constant global variable)))(((reassignment)))
-
-[source,@julia-setup chap11]
-----
-const known = Dict(0=>0, 1=>1)
-
-function example5()
-    global known
-    known = Dict()
-end
-----
-
-If you run this an exception is generated:
-
-[source,@julia-repl-test chap11]
-----
-julia> example5()
-ERROR: invalid redefinition of constant known
-----
-
-
 === Debugging
 
 As you work with bigger datasets it can become unwieldy to debug by printing and checking the output by hand. Here are some suggestions for debugging large datasets:
