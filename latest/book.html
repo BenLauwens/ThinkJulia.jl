@@ -750,7 +750,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_pure_functions">Pure Functions</a></li>
 <li><a href="#modifiers">Modifiers</a></li>
 <li><a href="#prototyping_versus_planning">Prototyping Versus Planning</a></li>
-<li><a href="#_debugging_14">Debugging</a></li>
+<li><a href="#chap16_debugging">Debugging</a></li>
 <li><a href="#_glossary_16">Glossary</a></li>
 <li><a href="#_exercises_18">Exercises</a></li>
 </ul>
@@ -758,7 +758,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#chap17">17. Multiple Dispatch</a>
 <ul class="sectlevel2">
 <li><a href="#_type_declarations">Type Declarations</a></li>
-<li><a href="#_methods">Methods</a></li>
 <li><a href="#_printing_objects">Printing Objects</a></li>
 <li><a href="#_more_examples">More Examples</a></li>
 <li><a href="#_constructors">Constructors</a></li>
@@ -767,7 +766,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_multiple_dispatch">Multiple Dispatch</a></li>
 <li><a href="#_polymorphism">Polymorphism</a></li>
 <li><a href="#_interface_and_implementation">Interface and Implementation</a></li>
-<li><a href="#_debugging_15">Debugging</a></li>
+<li><a href="#_debugging_14">Debugging</a></li>
 <li><a href="#_glossary_17">Glossary</a></li>
 <li><a href="#_exercises_19">Exercises</a></li>
 </ul>
@@ -783,7 +782,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_abstract_types_and_subtyping">Abstract Types and Subtyping</a></li>
 <li><a href="#_abstract_types_and_functions">Abstract Types and Functions</a></li>
 <li><a href="#_type_diagrams">Type Diagrams</a></li>
-<li><a href="#_debugging_16">Debugging</a></li>
+<li><a href="#_debugging_15">Debugging</a></li>
 <li><a href="#_data_encapsulation">Data Encapsulation</a></li>
 <li><a href="#_glossary_18">Glossary</a></li>
 <li><a href="#_exercises_20">Exercises</a></li>
@@ -791,10 +790,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap19">19. The Goodies: Syntax</a>
 <ul class="sectlevel2">
+<li><a href="#_blocks">Blocks</a></li>
 <li><a href="#_functions">Functions</a></li>
 <li><a href="#_control_flow">Control Flow</a></li>
 <li><a href="#_types">Types</a></li>
-<li><a href="#_methods_2">Methods</a></li>
+<li><a href="#_methods">Methods</a></li>
 <li><a href="#_constructors_2">Constructors</a></li>
 <li><a href="#_conversion_and_promotion">Conversion and Promotion</a></li>
 <li><a href="#_metaprogramming">Metaprogramming</a></li>
@@ -1454,13 +1454,13 @@ julia&gt;</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>abstract    baremodule   begin      break       catch
-ccall       const        continue   do          else
-elseif      end          export     finally     for
-function    global       if         import      importall
-let         local        macro      module      mutable
-primitive   quote        return     try         type
-using       struct       while</pre>
+<pre>abstract type   baremodule   begin      break            catch
+const           continue     do         else             elseif
+end             export       finally    for              function
+global          if           import     importall        let
+local           macro        module     mutable struct   primitive type
+quote           return       try        using            struct
+while</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2409,11 +2409,11 @@ Stacktrace:
 </div>
 </div>
 <div class="paragraph">
-<p>This list of functions is called a <em>traceback</em>. It tells you what program file the error occurred in, and what line, and what functions were executing at the time. It also shows the line of code that caused the error.
+<p>This list of functions is called a <em>stacktrace</em>. It tells you what program file the error occurred in, and what line, and what functions were executing at the time. It also shows the line of code that caused the error.
 </p>
 </div>
 <div class="paragraph">
-<p>The order of the functions in the traceback is the inverse of the order of the frames in the stack diagram. The function that is currently running is at the top.</p>
+<p>The order of the functions in the stacktrace is the inverse of the order of the frames in the stack diagram. The function that is currently running is at the top.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2624,7 +2624,7 @@ Stacktrace:
 <p>A box in a stack diagram that represents a function call. It contains the local variables and parameters of the function.
 </p>
 </dd>
-<dt class="hdlist1">traceback</dt>
+<dt class="hdlist1">stacktrace</dt>
 <dd>
 <p>A list of the functions that are executing, printed when an exception occurs.
 </p>
@@ -3997,7 +3997,7 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 <code>recurse</code> frames on the stack!
+<p>This stacktrace is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 <code>recurse</code> frames on the stack!
 </p>
 </div>
 <div class="paragraph">
@@ -4231,7 +4231,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535579531841175e9</span></code></pre>
+<span class="tok-go">1.535755333010693e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8523,7 +8523,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The kind of dictionary is surrounded by curly brackets: the keys are of type <code>Any</code> and also the values are of type <code>Any</code>.
+<p>The kind of dictionary is surrounded by curly braces: the keys are of type <code>Any</code> and also the values are of type <code>Any</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -8848,7 +8848,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The effect when you generate an exception is the same as when Julia throws one: it prints a traceback and an error message.</p>
+<p>The effect when you generate an exception is the same as when Julia throws one: it prints a stacktrace and an error message.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -9114,45 +9114,6 @@ Qack</pre>
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>In almost all code (and particularly performance sensitive code) global variables should be declared constant:
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-kd">const</span> <span class="tok-n">known</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-o">=&gt;</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-o">=&gt;</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-
-<span class="tok-k">function</span> <span class="tok-n">fibonacci</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-p">)</span>
-    <span class="tok-k">if</span> <span class="tok-n">n</span> <span class="tok-o">∉</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">known</span><span class="tok-p">)</span>
-        <span class="tok-n">known</span><span class="tok-p">[</span><span class="tok-n">n</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-n">fibonacci</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-o">+</span> <span class="tok-n">fibonacci</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)</span>
-    <span class="tok-k">end</span>
-    <span class="tok-n">known</span><span class="tok-p">[</span><span class="tok-n">n</span><span class="tok-p">]</span>
-<span class="tok-k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here is a function that tries to reassign a <em>constant global variable</em>:
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-kd">const</span> <span class="tok-n">known</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-o">=&gt;</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-o">=&gt;</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-
-<span class="tok-k">function</span> <span class="tok-n">example5</span><span class="tok-p">()</span>
-    <span class="tok-kd">global</span> <span class="tok-n">known</span>
-    <span class="tok-n">known</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">()</span>
-<span class="tok-k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you run this an exception is generated:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">example5</span><span class="tok-p">()</span>
-<span class="tok-gr">ERROR: invalid redefinition of constant known</span></code></pre>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -12548,7 +12509,7 @@ suffix)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_debugging_14">Debugging</h3>
+<h3 id="chap16_debugging">Debugging</h3>
 <div class="paragraph">
 <p>A mytime object is well-formed if the values of <code>minute</code> and <code>second</code> are between 0 and 60 (including 0 but not 60) and if <code>hour</code> is positive. <code>hour</code> and <code>minute</code> should be integral values, but we might allow <code>second</code> to have a fraction part.
 </p>
@@ -12684,32 +12645,15 @@ suffix)</p>
 <h2 id="chap17">17. Multiple Dispatch</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia&#8217;s type system is also dynamic, meaning that only at run-time it can be checked that a function supports an object as argument. But Julia gains some of the advantages of static type systems for which every type has to been known at compile time, by making it possible to indicate that certain values are of specific types. This can be of great assistance in generating efficient code, but even more significantly, it allows method dispatch on the types of function arguments to be deeply integrated with the language.</p>
+<p>In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia&#8217;s type system is dynamic but inherits some features of static type systems. A method can be efficiently dispatched on the number and the type of its arguments.</p>
 </div>
 <div class="paragraph">
 <p>In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.</p>
 </div>
-<div class="paragraph">
-<p>Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: <a href="https://docs.julialang.org/en/stable/manual/types/#Type-Declarations-1" class="bare">https://docs.julialang.org/en/stable/manual/types/#Type-Declarations-1</a> and <a href="https://docs.julialang.org/en/stable/manual/methods/#Methods-1" class="bare">https://docs.julialang.org/en/stable/manual/methods/#Methods-1</a>.</p>
-</div>
 <div class="sect2">
 <h3 id="_type_declarations">Type Declarations</h3>
 <div class="paragraph">
-<p>The <code>::</code> operator can be used to attach <em>type annotations</em> to expressions and variables in programs. There are two primary reasons to do this:
-</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>As an assertion to help confirm that your program works the way you expect,</p>
-</li>
-<li>
-<p>To provide extra type information to the compiler, which can then improve performance in some cases.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>When appended to an expression computing a value, the <code>::</code> operator is read as "is an instance of". It can be used anywhere to assert that the value of the expression on the left is an instance of the type on the right.
+<p>The <code>::</code> operator attaches <em>type annotations</em> to expressions and variables:
 </p>
 </div>
 <div class="listingblock">
@@ -12721,10 +12665,10 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This allows a type assertion to be attached to any expression in-place.</p>
+<p>This helps to confirm that your program works the way you expect.</p>
 </div>
 <div class="paragraph">
-<p>When appended to a variable on the left-hand side of an assignment, or as part of a declaration, the <code>::</code> operator means something a bit different: it declares the variable to always have the specified type. If needed and possible a conversion will take place.
+<p>The <code>::</code> operator can also be appended to the left-hand side of an assignment, or as part of a declaration.
 </p>
 </div>
 <div class="listingblock">
@@ -12741,7 +12685,11 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Declarations can also be attached to function definitions:</p>
+<p>The variable <code>x</code> is always of type <code>Float64</code> and the value is converted to a floating point if needed.</p>
+</div>
+<div class="paragraph">
+<p>A type annotation can also be attached to the header of a function definition:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12754,20 +12702,10 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Returning from this function behaves just like an assignment to a variable with a declared type: the value is always converted to <code>Float64</code>.</p>
+<p>The return value of <code>sinc</code> is always converted to type <code>Float64</code>.</p>
 </div>
 <div class="paragraph">
 <p>The default behavior in Julia when types are omitted is to allow values to be of any type (<code>Any</code>).
-</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_methods">Methods</h3>
-<div class="paragraph">
-<p>Recall from <a href="#chap03">Functions</a> that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the <code>+</code> function.</p>
-</div>
-<div class="paragraph">
-<p>To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a <em>method</em>. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the <em>signatures</em> of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
 </p>
 </div>
 </div>
@@ -12807,7 +12745,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To add a method to the function <code>printtime</code> that only accepts as argument a mytime object, all we have to do is append <code>::</code> followed by <code>MyTime</code> to the argument <code>time</code> in the function definition:</p>
+<p>To add a <em>method</em> to the function <code>printtime</code> that only accepts as argument a mytime object, all we have to do is append <code>::</code> followed by <code>MyTime</code> to the argument <code>time</code> in the function definition:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12815,6 +12754,10 @@ suffix)</p>
     <span class="tok-nd">@printf</span><span class="tok-p">(</span><span class="tok-s">&quot;</span><span class="tok-si">%02d</span><span class="tok-s">:</span><span class="tok-si">%02d</span><span class="tok-s">:</span><span class="tok-si">%02d</span><span class="tok-s">&quot;</span><span class="tok-p">,</span> <span class="tok-n">time</span><span class="tok-o">.</span><span class="tok-n">hour</span><span class="tok-p">,</span> <span class="tok-n">time</span><span class="tok-o">.</span><span class="tok-n">minute</span><span class="tok-p">,</span> <span class="tok-n">time</span><span class="tok-o">.</span><span class="tok-n">second</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>A method is a function definition with a specific <em>signature</em>: <code>printtime</code> has one argument of type <code>MyTime</code>.
+</p>
 </div>
 <div class="paragraph">
 <p>Calling the function <code>printtime</code> with a mytime object yields the same result:</p>
@@ -12852,7 +12795,8 @@ suffix)</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As an exercise, rewrite <code>timetoint</code> and <code>inttotime</code> (from <a href="#prototyping_versus_planning">Prototyping Versus Planning</a>) to specify their argument.</p>
+<p>As an exercise, rewrite <code>timetoint</code> and <code>inttotime</code> (from <a href="#prototyping_versus_planning">Prototyping Versus Planning</a>) to specify their argument.
+</p>
 </div>
 </td>
 </tr>
@@ -12901,7 +12845,7 @@ suffix)</p>
 <p>The signature of the method is <code>printtime(time::MyTime, seconds::Int64)</code> and not <code>printtime(seconds::Int64, time::MyTime)</code>.</p>
 </div>
 <div class="paragraph">
-<p>Rewriting +isafter+to act only on mytime objects ia as easy:
+<p>Rewriting +isafter+to act only on mytime objects is as easy:
 </p>
 </div>
 <div class="listingblock">
@@ -12938,7 +12882,7 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_constructors">Constructors</h3>
 <div class="paragraph">
-<p>A <em>constructor</em> is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of <code>MyTime</code> have the following signatures:
+<p>A <em>constructor</em> is a special function that is called to create an object. The default constructor methods of <code>MyTime</code> have the following signatures:
 </p>
 </div>
 <div class="listingblock">
@@ -12946,9 +12890,6 @@ suffix)</p>
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-p">)</span>
 <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The former is a convenience method to allow implicit conversions.</p>
 </div>
 <div class="paragraph">
 <p>We can also add our own <em>outer constructor</em> methods:
@@ -12966,7 +12907,7 @@ suffix)</p>
 </p>
 </div>
 <div class="paragraph">
-<p>While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need <em>inner constructor</em> methods:
+<p>To enforce invariants, we need <em>inner constructor</em> methods:
 </p>
 </div>
 <div class="listingblock">
@@ -12997,20 +12938,21 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>An inner constructor method is much like an outer constructor method, with two differences:</p>
+<p>An inner constructor method is always declared inside the block of a type declaration and it has access to a function called <code>new</code> that creates objects of the newly declared type.</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>It is declared inside the block of a type declaration.</p>
-</li>
-<li>
-<p>It has access to a special locally existent function called <code>new</code> that creates objects of the newly declared type.</p>
-</li>
-</ul>
-</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>If any inner constructor method is defined, no default constructor method is provided: it is presumed that you have supplied yourself with all the inner constructors you need.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>A second method without arguments of the local function <code>new</code> exists:
@@ -13035,14 +12977,14 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>This allows to construct incompletely initialized objects and self-referential objects, or more generally, recursive data structures.
+<p>This allows to construct recursive data structures.
 </p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_show"><code>show</code></h3>
 <div class="paragraph">
-<p><code>show</code> is a special function that is supposed to return a string representation of an object. For example, here is a <code>show</code> method for mytime objects:
+<p><code>show</code> is a special function that returns a string representation of an object. For example, here is a <code>show</code> method for mytime objects:
 </p>
 </div>
 <div class="listingblock">
@@ -13077,7 +13019,8 @@ suffix)</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>As an exercise, write an inner constructor method for the <code>Point</code> class that takes <code>x</code> and <code>y</code> as optional parameters and assigns them to the corresponding fields.</p>
+<p>As an exercise, write an inner constructor method for the <code>Point</code> class that takes <code>x</code> and <code>y</code> as optional parameters and assigns them to the corresponding fields.
+</p>
 </div>
 </td>
 </tr>
@@ -13103,7 +13046,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The import statement adds the <code>Base.+</code> function to the local scope so that methods can be added.</p>
+<p>The import statement adds the <code>+</code> operator to the local scope so that methods can be added.</p>
 </div>
 <div class="paragraph">
 <p>And here is how you could use it:</p>
@@ -13203,7 +13146,8 @@ suffix)</p>
 <p>Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.</p>
 </div>
 <div class="paragraph">
-<p>Many of the functions we wrote for strings also work for other sequence types. For example, in <a href="#dictionary_collection_counters">Dictionary as a Collection of Counters</a> we used <code>histogram</code> to count the number of times each letter appears in a word.</p>
+<p>Many of the functions we wrote for strings also work for other sequence types. For example, in <a href="#dictionary_collection_counters">Dictionary as a Collection of Counters</a> we used <code>histogram</code> to count the number of times each letter appears in a word.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13291,7 +13235,7 @@ suffix)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_debugging_15">Debugging</h3>
+<h3 id="_debugging_14">Debugging</h3>
 <div class="paragraph">
 <p>To know what methods are available, you can use the function <code>methods</code>:
 </p>
@@ -13346,7 +13290,7 @@ suffix)</p>
 </dd>
 <dt class="hdlist1">operator overloading</dt>
 <dd>
-<p>Changing the behavior of an operator like ++ so it works with a programmer-defined type.
+<p>Changing the behavior of an operator like <code>+</code> so it works with a programmer-defined type.
 </p>
 </dd>
 <dt class="hdlist1">multiple dispatch</dt>
@@ -13382,10 +13326,12 @@ suffix)</p>
 <p>An constructor that initializes <code>pouchcontents</code> to an empty array.</p>
 </li>
 <li>
-<p>A method named <code>putinpouch</code> that takes a <code>Kangaroo</code> object and an object of any type and adds it to <code>pouchcontents</code>.</p>
+<p>A method named <code>putinpouch</code> that takes a <code>Kangaroo</code> object and an object of any type and adds it to <code>pouchcontents</code>.
+</p>
 </li>
 <li>
-<p>A <code>show</code> method that returns a string representation of the <code>Kangaroo</code> object and the contents of the pouch.</p>
+<p>A <code>show</code> method that returns a string representation of the <code>Kangaroo</code> object and the contents of the pouch.
+</p>
 </li>
 </ul>
 </div>
@@ -13417,7 +13363,8 @@ suffix)</p>
 <p>If we want to define a new object to represent a playing card, it is obvious what the attributes should be: rank and suit. It is not as obvious what type the attributes should be. One possibility is to use strings containing words like <code>"Spade"</code> for suits and <code>"Queen"</code> for ranks. One problem with this implementation is that it would not be easy to compare cards to see which had a higher rank or suit.</p>
 </div>
 <div class="paragraph">
-<p>An alternative is to use integers to <em>encode</em> the ranks and suits. In this context, “encode” means that we are going to define a mapping between numbers and suits, or between numbers and ranks. This kind of encoding is not meant to be a secret (that would be “encryption”).</p>
+<p>An alternative is to use integers to <em>encode</em> the ranks and suits. In this context, “encode” means that we are going to define a mapping between numbers and suits, or between numbers and ranks. This kind of encoding is not meant to be a secret (that would be “encryption”).
+</p>
 </div>
 <div class="paragraph">
 <p>For example, this table shows the suits and the corresponding integer codes:</p>
@@ -13445,7 +13392,8 @@ suffix)</p>
 <p>I am using the \(\mapsto\) symbol to make it clear that these mappings are not part of the Julia program. They are part of the program design, but they don’t appear explicitly in the code.</p>
 </div>
 <div class="paragraph">
-<p>The struct definition for <code>Card</code> looks like this:</p>
+<p>The struct definition for <code>Card</code> looks like this:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13482,10 +13430,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Variables like <code>suit_names</code> and <code>rank_names</code>, which are defined outside of a type definition or of any method, are called <em>global variables</em>. The <code>const</code> declaration means that the variable can only be assigned once. This solves the performance problem of global variables.</p>
+<p>The variables <code>suit_names</code> and <code>rank_names</code> are global variables. The <code>const</code> declaration means that the variable can only be assigned once. This solves the performance problem of global variables.
+</p>
 </div>
 <div class="paragraph">
-<p>Now we can implement an appropriate <code>show</code> method:</p>
+<p>Now we can implement an appropriate <code>show</code> method:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13519,7 +13469,8 @@ suffix)</p>
 <p>The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.</p>
 </div>
 <div class="paragraph">
-<p>With that decided, we can write <code>Base.isless</code>:</p>
+<p>With that decided, we can write <code>isless</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13528,17 +13479,30 @@ suffix)</p>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>As an exercise, write a <code>Base.isless</code> method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.</p>
+<p>As an exercise, write a <code>isless</code> method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_unit_testing">Unit Testing</h3>
 <div class="paragraph">
-<p><em>Unit testing</em> is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.</p>
+<p><em>Unit testing</em> is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
+</p>
 </div>
 <div class="paragraph">
-<p>Simple unit testing can be performed with the <code>@test</code> macros:</p>
+<p>Simple unit testing can be performed with the <code>@test</code> macros:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13551,7 +13515,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>@test</code> returns a <code>Test Passed</code> if the expression following it is <code>true</code>, a <code>Test Failed</code> if it is false, and an <code>Error Result</code> if it could not be evaluated.</p>
+<p><code>@test</code> returns a <code>"Test Passed"</code> if the expression following it is <code>true</code>, a <code>"Test Failed"</code> if it is <code>false</code>, and an <code>"Error Result"</code> if it could not be evaluated.</p>
 </div>
 </div>
 <div class="sect2">
@@ -13560,7 +13524,8 @@ suffix)</p>
 <p>Now that we have Cards, the next step is to define Decks. Since a deck is made up of cards, it is natural for each Deck to contain an array of cards as an attribute.</p>
 </div>
 <div class="paragraph">
-<p>The following is a struct definition for <code>Deck</code>. The constructor creates the fields cards and generates the standard set of fifty-two cards:</p>
+<p>The following is a struct definition for <code>Deck</code>. The constructor creates the fields cards and generates the standard set of fifty-two cards:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13582,7 +13547,7 @@ suffix)</p>
 <p>The easiest way to populate the deck is with a nested loop. The outer loop enumerates the suits from 1 to 4. The inner loop enumerates the ranks from 1 to 13. Each iteration creates a new <code>Card</code> with the current suit and rank, and pushes it to <code>deck.cards</code>.</p>
 </div>
 <div class="paragraph">
-<p>Here is a <code>Base.show</code> method for <code>Deck</code>:</p>
+<p>Here is a <code>show</code> method for <code>Deck</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13607,7 +13572,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_add_remove_shuffle_and_sort">Add, Remove, Shuffle and Sort</h3>
 <div class="paragraph">
-<p>To deal cards, we would like a function that removes a card from the deck and returns it. The function <code>pop!</code> provides a convenient way to do that:</p>
+<p>To deal cards, we would like a function that removes a card from the deck and returns it. The function <code>pop!</code> provides a convenient way to do that:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13620,7 +13586,8 @@ suffix)</p>
 <p>Since <code>pop!</code> removes the last card in the array, we are dealing from the bottom of the deck.</p>
 </div>
 <div class="paragraph">
-<p>To add a card, we can use the function <code>push!</code>:</p>
+<p>To add a card, we can use the function <code>push!</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13631,13 +13598,15 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A method like this that uses another method without doing much work is sometimes called a <em>veneer</em>. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.</p>
+<p>A method like this that uses another method without doing much work is sometimes called a <em>veneer</em>. The metaphor comes from woodworking, where a veneer is a thin layer of good quality wood glued to the surface of a cheaper piece of wood to improve the appearance.
+</p>
 </div>
 <div class="paragraph">
-<p>In this case <code>addcard</code> is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.</p>
+<p>In this case <code>push!</code> is a “thin” method that expresses an array operation in terms appropriate for decks. It improves the appearance, or interface, of the implementation.</p>
 </div>
 <div class="paragraph">
-<p>As another example, we can write a method named <code>shuffledeck!</code> using the function <code>Random.shuffle!</code>:</p>
+<p>As another example, we can write a method named <code>shuffle!</code> using the function <code>Random.shuffle!</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13649,8 +13618,20 @@ suffix)</p>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Write a function named <code>sortdeck!</code> that uses the function <code>sort!</code> to sort the cards in a Deck. <code>sort!</code> uses the <code>Base.isless</code> method we defined to determine the order.</p>
+<p>Write a function named <code>sort!</code> that uses the function <code>sort!</code> to sort the cards in a Deck. <code>sort!</code> uses the <code>isless</code> method we defined to determine the order.
+</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -13662,10 +13643,12 @@ suffix)</p>
 <p>A hand is also different from a deck; there are operations we want for hands that don’t make sense for a deck. For example, in poker we might compare two hands to see which one wins. In bridge, we might compute a score for a hand in order to make a bid.</p>
 </div>
 <div class="paragraph">
-<p>So we need a way to group related <em>concrete types</em>. In Julia this is done by defining an <em>abstract type</em> that serves as a parent for both <code>Deck</code> and <code>Hand</code>. This is called <em>subtyping</em></p>
+<p>So we need a way to group related <em>concrete types</em>. In Julia this is done by defining an <em>abstract type</em> that serves as a parent for both <code>Deck</code> and <code>Hand</code>. This is called <em>subtyping</em>
+</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s call this abstract type <code>CardSet</code>:</p>
+<p>Let&#8217;s call this abstract type <code>CardSet</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13673,10 +13656,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>abstract type</code> keyword introduces a new abstract type. The name can be optionally followed by <code>&lt;:</code> and an already-existing abstract type, indicating that the newly declared abstract type is a <em>subtype</em> of this “parent” type.</p>
+<p>The <code>abstract type</code> keyword introduces a new abstract type. The name can be optionally followed by <code>&lt;:</code> and an already-existing abstract type, indicating that the newly declared abstract type is a <em>subtype</em> of this “parent” type.
+</p>
 </div>
 <div class="paragraph">
-<p>When no <em>supertype</em> is given, the default supertype is <code>Any</code> – a predefined abstract type that all objects are instances of and all types are subtypes of.</p>
+<p>When no <em>supertype</em> is given, the default supertype is <code>Any</code> – a predefined abstract type that all objects are instances of and all types are subtypes of.
+</p>
 </div>
 <div class="paragraph">
 <p>We can now express that <code>Deck</code> is a descendant of <code>CardSet</code>:</p>
@@ -13698,7 +13683,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The operator <code>isa</code> checks whether an object is of a given type:</p>
+<p>The operator <code>isa</code> checks whether an object is of a given type:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13709,7 +13695,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A hand is also a kind of <code>CardSet</code>:</p>
+<p>A hand is also a kind of <code>CardSet</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13735,7 +13722,8 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_abstract_types_and_functions">Abstract Types and Functions</h3>
 <div class="paragraph">
-<p>We can now express the common operations between <code>Deck</code> and <code>Hand</code> as functions having as argument <code>CardSet</code>:</p>
+<p>We can now express the common operations between <code>Deck</code> and <code>Hand</code> as functions having as argument <code>CardSet</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13768,7 +13756,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>A natural next step is to encapsulate this code in a function called <code>move!</code>:</p>
+<p>A natural next step is to encapsulate this code in a function called <code>move!</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13795,7 +13784,8 @@ suffix)</p>
 <p>So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.</p>
 </div>
 <div class="paragraph">
-<p>They are also highly detailed; for some purposes, too detailed. A <em>type diagram</em> is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.</p>
+<p>They are also highly detailed; for some purposes, too detailed. A <em>type diagram</em> is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
+</p>
 </div>
 <div class="paragraph">
 <p>There are several kinds of relationship between types:</p>
@@ -13803,13 +13793,16 @@ suffix)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called <em>HAS-A</em>, as in, “a Rectangle has a Point.</p>
+<p>Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called <em>HAS-A</em>, as in, “a Rectangle has a Point.
+</p>
 </li>
 <li>
-<p>One type might has supertype an abstract type. This relationship is called <em>IS-A</em>, as in, “a Hand is a kind of a CardSet.”</p>
+<p>One type might has supertype an abstract type. This relationship is called <em>IS-A</em>, as in, “a Hand is a kind of a CardSet.”
+</p>
 </li>
 <li>
-<p>One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a <em>dependency</em>.</p>
+<p>One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a <em>dependency</em>.
+</p>
 </li>
 </ul>
 </div>
@@ -13826,7 +13819,8 @@ suffix)</p>
 <p>The standard arrow head represents a HAS-A relationship; in this case a Deck has references to Card objects.</p>
 </div>
 <div class="paragraph">
-<p>The star (<code>*</code>) near the arrow head is a <em>multiplicity</em>; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like <code>52</code>, a range, <code>like 5:7</code> or a star, which indicates that a Deck can have any number of Cards.</p>
+<p>The star (<code>*</code>) near the arrow head is a <em>multiplicity</em>; it indicates how many Cards a Deck has. A multiplicity can be a simple number, like <code>52</code>, a range, <code>like 5:7</code> or a star, which indicates that a Deck can have any number of Cards.
+</p>
 </div>
 <div class="paragraph">
 <p>There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.</p>
@@ -13836,7 +13830,7 @@ suffix)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_debugging_16">Debugging</h3>
+<h3 id="_debugging_15">Debugging</h3>
 <div class="paragraph">
 <p>Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.</p>
 </div>
@@ -13854,7 +13848,8 @@ suffix)</p>
 <p>Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If <code>shuffle!</code> prints a message that says something like <code>Running shuffle! Deck</code>, then as the program runs it traces the flow of execution.</p>
 </div>
 <div class="paragraph">
-<p>As an alternative, you can also use the <code>InteractiveUtils.@which</code> macro:</p>
+<p>As an alternative, you can also use the <code>InteractiveUtils.@which</code> macro:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13871,16 +13866,19 @@ suffix)</p>
 <p>Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like an <code>CardSet</code>, will also work with instances of its subtypes <code>Deck</code> and <code>Hand</code>.</p>
 </div>
 <div class="paragraph">
-<p>If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.</p>
+<p>If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
+</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_data_encapsulation">Data Encapsulation</h3>
 <div class="paragraph">
-<p>The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like <code>Point</code>, <code>Rectangle</code> and <code>MyTime</code>—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).</p>
+<p>The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like <code>Point</code>, <code>Rectangle</code> and <code>MyTime</code>—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).
+</p>
 </div>
 <div class="paragraph">
-<p>But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by <em>data encapsulation</em>.</p>
+<p>But sometimes it is less obvious what objects you need and how they should interact. In that case you need a different development plan. In the same way that we discovered function interfaces by encapsulation and generalization, we can discover type interfaces by <em>data encapsulation</em>.
+</p>
 </div>
 <div class="paragraph">
 <p>Markov analysis, from <a href="#markov_analysis">Markov Analysis</a>, provides a good example. If you download my code from <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl</a>, you’ll see that it uses two global variables—<code>suffixes</code> and <code>prefix</code>—that are read and written from several functions.</p>
@@ -13895,7 +13893,8 @@ suffix)</p>
 <p>Because these variables are global, we can only run one analysis at a time. If we read two texts, their prefixes and suffixes would be added to the same data structures (which makes for some interesting generated text).</p>
 </div>
 <div class="paragraph">
-<p>To run multiple analyses, and keep them separate, we can encapsulate the state of each analysis in an object. Here’s what that looks like:</p>
+<p>To run multiple analyses, and keep them separate, we can encapsulate the state of each analysis in an object. Here’s what that looks like:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13910,7 +13909,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Next, we transform the functions into methods. For example, here’s <code>processword</code>:</p>
+<p>Next, we transform the functions into methods. For example, here’s <code>processword</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13927,7 +13927,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see <a href="#refactoring">Refactoring</a>).</p>
+<p>Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see <a href="#refactoring">Refactoring</a>).
+</p>
 </div>
 <div class="paragraph">
 <p>This example suggests a development plan for designing types:</p>
@@ -13948,8 +13949,19 @@ suffix)</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>As an exercise, download my Markov code from <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl</a>, and follow the steps described above to encapsulate the global variables as attributes of a new struct called <code>Markov</code>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -13959,10 +13971,6 @@ suffix)</p>
 <dt class="hdlist1">encode</dt>
 <dd>
 <p>To represent one set of values using another set of values by constructing a mapping between them.</p>
-</dd>
-<dt class="hdlist1">global variable</dt>
-<dd>
-<p>A variable declared outside a function/method definition.</p>
 </dd>
 <dt class="hdlist1">unit testing</dt>
 <dd>
@@ -14055,7 +14063,8 @@ suffix)</p>
 <div class="sect4">
 <h5 id="ex18-2">Exercise 18-2</h5>
 <div class="paragraph">
-<p>Write a method called <code>deal</code> that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.</p>
+<p>Write a method called <code>deal!</code> that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
+</p>
 </div>
 </div>
 <div class="sect4">
@@ -14105,10 +14114,12 @@ suffix)</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Add methods named <code>haspair</code>, <code>hastwopair</code>, etc. that return <code>true</code> or <code>false</code> according to whether or not the hand meets the relevant criteria. Your code should work correctly for “hands” that contain any number of cards (although 5 and 7 are the most common sizes).</p>
+<p>Add methods named <code>haspair</code>, <code>hastwopair</code>, etc. that return <code>true</code> or <code>false</code> according to whether or not the hand meets the relevant criteria. Your code should work correctly for “hands” that contain any number of cards (although 5 and 7 are the most common sizes).
+</p>
 </li>
 <li>
-<p>Write a method named <code>classify</code> that figures out the highest-value classification for a hand and sets the <code>label</code> field accordingly. For example, a 7-card hand might contain a flush and a pair; it should be labeled “flush”.</p>
+<p>Write a method named <code>classify</code> that figures out the highest-value classification for a hand and sets the <code>label</code> field accordingly. For example, a 7-card hand might contain a flush and a pair; it should be labeled “flush”.
+</p>
 </li>
 <li>
 <p>When you are convinced that your classification methods are working, the next step is to estimate the probabilities of the various hands. Write a function that shuffles a deck of cards, divides it into hands, classifies the hands, and counts the number of times various classifications appear.</p>
@@ -14140,22 +14151,111 @@ suffix)</p>
 <p>syntax supplements</p>
 </li>
 <li>
-<p>functions, types and macros directly available in <code>Base</code></p>
+<p>functions, types and macros directly available in <code>Base</code>
+</p>
 </li>
 <li>
-<p>functions, types and macros in the Standard Library</p>
+<p>functions, types and macros in the Standard Library
+</p>
 </li>
 </ul>
 </div>
+<div class="sect2">
+<h3 id="_blocks">Blocks</h3>
 <div class="paragraph">
-<p>Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: <a href="https://docs.julialang.org/en/stable/" class="bare">https://docs.julialang.org/en/stable/</a></p>
+<p><code>begin &#8230;&#8203; end</code> is used to group a number of statements. This is called a block of code.
+</p>
+</div>
+<div class="paragraph">
+<p>In <a href="#chap04">Case Study: Interface Design</a> the <code>@svg</code> macro was introduced:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">🐢</span> <span class="tok-o">=</span> <span class="tok-n">Turtle</span><span class="tok-p">()</span>
+<span class="tok-nd">@svg</span> <span class="tok-k">begin</span>
+    <span class="tok-n">forward</span><span class="tok-p">(</span><span class="tok-n">🐢</span><span class="tok-p">,</span> <span class="tok-mi">100</span><span class="tok-p">)</span>
+    <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">🐢</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">90</span><span class="tok-p">)</span>
+    <span class="tok-n">forward</span><span class="tok-p">(</span><span class="tok-n">🐢</span><span class="tok-p">,</span> <span class="tok-mi">100</span><span class="tok-p">)</span>
+<span class="tok-k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The macro has as argument the block of code consisting of 3 function calls.</p>
+</div>
+<div class="sect3">
+<h4 id="_closures_and_let_blocks">Closures and <code>let</code> blocks</h4>
+<div class="paragraph">
+<p>The function <code>funcgen</code> returns an array with two anonymous functions (see next sections) which return respectively the values 1 and 2:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span>
+    <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Function</span><span class="tok-p">[]</span>
+    <span class="tok-k">while</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span>
+        <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">res</span><span class="tok-p">,</span> <span class="tok-p">()</span><span class="tok-o">-&gt;</span><span class="tok-n">i</span><span class="tok-p">)</span>
+        <span class="tok-n">i</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
+    <span class="tok-k">end</span>
+    <span class="tok-n">res</span>
+<span class="tok-k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We don&#8217;t get what we expected.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span> <span class="tok-o">=</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]()</span>
+<span class="tok-go">3</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]()</span>
+<span class="tok-go">3</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The returned functions are <em>closures</em> and the variable <code>i</code> is common to both of them.
+</p>
+</div>
+<div class="paragraph">
+<p>A <em>let block</em> create new variable bindings and provides a solution to our problem:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span>
+    <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Function</span><span class="tok-p">[]</span>
+    <span class="tok-k">while</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span>
+        <span class="tok-k">let</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-n">i</span>
+            <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">res</span><span class="tok-p">,</span> <span class="tok-p">()</span><span class="tok-o">-&gt;</span><span class="tok-n">i</span><span class="tok-p">)</span>
+        <span class="tok-k">end</span>
+        <span class="tok-n">i</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
+    <span class="tok-k">end</span>
+    <span class="tok-n">res</span>
+<span class="tok-k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, we get what we expected:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span> <span class="tok-o">=</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]()</span>
+<span class="tok-go">1</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]()</span>
+<span class="tok-go">2</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_functions">Functions</h3>
 <div class="sect3">
 <h4 id="_anonymous_functions">Anonymous Functions</h4>
 <div class="paragraph">
-<p>Functions can be defined without being given a name, using either of these syntaxes:</p>
+<p>We can define a function without specifying a name:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14168,7 +14268,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>f</code> is an <em>anonymous function</em> that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:</p>
+<p><code>f</code> is an <em>anonymous function</em> which is called as a normal function. Anonymous functions are often used as an argument to another function:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14190,7 +14291,7 @@ suffix)</p>
 <div class="sect3">
 <h4 id="_named_tuples">Named Tuples</h4>
 <div class="paragraph">
-<p>The components of tuples can optionally be named, in which case a <em>named tuple</em> is constructed:</p>
+<p>You can name the components of a tuple:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14201,13 +14302,14 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax <code>(x.a)</code>.</p>
+<p>This is called a <em>named tuple</em> having the additional property that fields can be accessed by name using dot syntax <code>(x.a)</code>.
+</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_keyword_arguments">Keyword Arguments</h4>
 <div class="paragraph">
-<p>Function arguments can also be specified by keyword:</p>
+<p>Function arguments can also be named:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14219,13 +14321,15 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Functions with <em>keyword arguments</em> are defined using a semicolon in the signature. When the function is called, the semicolon is optional.</p>
+<p><em>Keyword arguments</em> in a function are specified after a semicolon in the signature.
+</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_do_block"><code>do</code> Block</h4>
 <div class="paragraph">
-<p>In <a href="#reading_and_writing">Reading and Writing</a> we had to close the file after when where done writing. This can be done automatically using a <em>+do+ block</em>:</p>
+<p>In <a href="#reading_and_writing">Reading and Writing</a> we had to close the file after when where done writing. This can be done automatically using a <em>do block</em>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14245,31 +14349,29 @@ suffix)</p>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">f</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-k">begin</span>
            <span class="tok-n">write</span><span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">,</span> <span class="tok-n">data</span><span class="tok-p">)</span>
        <span class="tok-k">end</span>
-<span class="tok-go">#3 (generic function with 1 method)</span>
+<span class="tok-go">#7 (generic function with 1 method)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-n">f</span><span class="tok-p">,</span> <span class="tok-s">&quot;output.txt&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">48</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The anonymous function is used as first argument of the function <code>open</code>:</p>
-</div>
-<div class="paragraph">
-<p>[source,julia}</p>
+<p>The anonymous function is used as first argument of the function <code>open</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>function open(f::Function, args...)
-    io = open(args...)
-    try
-        f(io)
-    finally
-        close(io)
-    end
-end</pre>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-n">f</span><span class="tok-o">::</span><span class="tok-kt">Function</span><span class="tok-p">,</span> <span class="tok-n">args</span><span class="tok-o">...</span><span class="tok-p">)</span>
+    <span class="tok-n">io</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-n">args</span><span class="tok-o">...</span><span class="tok-p">)</span>
+    <span class="tok-k">try</span>
+        <span class="tok-n">f</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">)</span>
+    <span class="tok-k">finally</span>
+        <span class="tok-n">close</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">)</span>
+    <span class="tok-k">end</span>
+<span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A <code>do</code> block can “capture“ variables from its enclosing scope. For example, the variable <code>data</code> in the above example of <code>open&#8230;&#8203;do</code> is captured from the outer scope.</p>
+<p>A <code>do</code> block can “capture” variables from its enclosing scope. For example, the variable <code>data</code> in the above example of <code>open&#8230;&#8203;do</code> is captured from the outer scope.</p>
 </div>
 </div>
 </div>
@@ -14278,7 +14380,8 @@ end</pre>
 <div class="sect3">
 <h4 id="_ternary_operator">Ternary Operator</h4>
 <div class="paragraph">
-<p>The so-called <em>ternary operator</em>, <code>?:</code>, is closely related to the <code>if-elseif-else</code> syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:</p>
+<p>The <em>ternary operator</em>, <code>?:</code>, is an alternative to an <code>if-elseif</code> statement, when the choice is between single expression values.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14295,32 +14398,76 @@ end</pre>
 <div class="sect3">
 <h4 id="_short_circuit_evaluation">Short-Circuit Evaluation</h4>
 <div class="paragraph">
-<p>The operators <code>&amp;&amp;</code> and <code>||</code> do a <em>short-circuit evaluation</em>: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.</p>
+<p>The operators <code>&amp;&amp;</code> and <code>||</code> do a <em>short-circuit evaluation</em>: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
+</p>
 </div>
 <div class="paragraph">
-<p>For example, a recursive factorial routine could be defined like this:</p>
+<p>For example, a recursive factorial routine could be defined like this:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">function</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">::</span><span class="tok-kt">Int</span><span class="tok-p">)</span>
-           <span class="tok-n">n</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">0</span> <span class="tok-o">||</span> <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;n must be non-negative&quot;</span><span class="tok-p">)</span>
-           <span class="tok-n">n</span> <span class="tok-o">==</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-k">return</span> <span class="tok-mi">1</span>
-           <span class="tok-n">n</span> <span class="tok-o">*</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-       <span class="tok-k">end</span>
-<span class="tok-go">fact (generic function with 1 method)</span></code></pre>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">::</span><span class="tok-kt">Int</span><span class="tok-p">)</span>
+    <span class="tok-n">n</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">0</span> <span class="tok-o">||</span> <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;n must be non-negative&quot;</span><span class="tok-p">)</span>
+    <span class="tok-n">n</span> <span class="tok-o">==</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-k">return</span> <span class="tok-mi">1</span>
+    <span class="tok-n">n</span> <span class="tok-o">*</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+<span class="tok-k">end</span></code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_tasks_aka_coroutines">Tasks (aka Coroutines)</h4>
 <div class="paragraph">
-<p><em>Tasks</em> are a control flow feature that allows computations to be suspended and resumed in a flexible manner. This feature is sometimes called by other names, such as symmetric coroutines, lightweight threads, cooperative multitasking, or one-shot continuations.</p>
+<p>The Fibonnaci sequence can also be generated using a <em>task</em>.
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">fib</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-o">::</span><span class="tok-kt">Channel</span><span class="tok-p">)</span>
+    <span class="tok-n">a</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
+    <span class="tok-n">b</span> <span class="tok-o">=</span> <span class="tok-mi">1</span>
+    <span class="tok-n">put!</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">,</span> <span class="tok-n">a</span><span class="tok-p">)</span>
+    <span class="tok-k">while</span> <span class="tok-kc">true</span>
+        <span class="tok-n">put!</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-p">)</span>
+        <span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">b</span><span class="tok-p">,</span> <span class="tok-n">a</span><span class="tok-o">+</span><span class="tok-n">b</span><span class="tok-p">)</span>
+    <span class="tok-k">end</span>
+<span class="tok-k">end</span></code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>When a piece of computing work (in practice, executing a particular function) is designated as a <code>Task</code>, it becomes possible to interrupt it by switching to another <code>Task</code>. The original <code>Task</code> can later be resumed, at which point it will pick up right where it left off. At first, this may seem similar to a function call. However there are two key differences. First, switching tasks does not use any space, so any number of task switches can occur without consuming the call stack. Second, switching among tasks can occur in any order, unlike function calls, where the called function must finish executing before control returns to the calling function.</p>
+<p><code>put!</code> stores values in a channel object and <code>take!</code> reads values:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fib_gen</span> <span class="tok-o">=</span> <span class="tok-kt">Channel</span><span class="tok-p">(</span><span class="tok-n">fib</span><span class="tok-p">);</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">fib_gen</span><span class="tok-p">)</span>
+<span class="tok-go">0</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">fib_gen</span><span class="tok-p">)</span>
+<span class="tok-go">1</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">fib_gen</span><span class="tok-p">)</span>
+<span class="tok-go">1</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">fib_gen</span><span class="tok-p">)</span>
+<span class="tok-go">2</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">take!</span><span class="tok-p">(</span><span class="tok-n">fib_gen</span><span class="tok-p">)</span>
+<span class="tok-go">3</span></code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Details can be found in <a href="https://docs.julialang.org/en/latest/manual/control-flow/#man-tasks-1" class="bare">https://docs.julialang.org/en/latest/manual/control-flow/#man-tasks-1</a>.</p>
+<p>The function <code>fib</code> is suspended after each call to <code>put!</code> and resumed after <code>take!</code>. For performance reasons, several values of the sequence are buffered in the channel object between the resume/suspend cycle.</p>
+</div>
+<div class="paragraph">
+<p>A channel object can also be used as an iterator:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">for</span> <span class="tok-n">val</span> <span class="tok-kp">in</span> <span class="tok-kt">Channel</span><span class="tok-p">(</span><span class="tok-n">fib</span><span class="tok-p">)</span>
+           <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-n">val</span><span class="tok-p">,</span> <span class="tok-s">&quot; &quot;</span><span class="tok-p">)</span>
+           <span class="tok-n">val</span> <span class="tok-o">&gt;</span> <span class="tok-mi">20</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-k">break</span>
+       <span class="tok-k">end</span>
+<span class="tok-go">0 1 1 2 3 5 8 13 21</span></code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -14329,7 +14476,8 @@ end</pre>
 <div class="sect3">
 <h4 id="_primitive_types">Primitive Types</h4>
 <div class="paragraph">
-<p>A <em>primitive type</em> is a concrete type whose data consists of plain old bits. Classic examples of primitive types are integers and floating-point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in ones. In fact, the standard primitive types are all defined in the language itself:</p>
+<p>A concrete type consisting of plain old bits, is called a <em>primitive type</em>. Unlike most languages, you can declare your own primitive types. The standard primitive types are defined in the same way:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14340,30 +14488,17 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The number in the statements specifies how much storage the type requires.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_type_unions">Type Unions</h4>
-<div class="paragraph">
-<p>A <em>type union</em> is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special <code>Union</code> keyword:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">IntOrString</span> <span class="tok-o">=</span> <span class="tok-kt">Union</span><span class="tok-p">{</span><span class="tok-kt">Int</span><span class="tok-p">,</span><span class="tok-kt">AbstractString</span><span class="tok-p">}</span>
-<span class="tok-go">Union{Int64, AbstractString}</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-mi">1</span> <span class="tok-o">::</span> <span class="tok-n">IntOrString</span>
-<span class="tok-go">1</span></code></pre>
-</div>
+<p>The number in the statements specifies how many bits are required.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_parametric_types">Parametric Types</h4>
 <div class="paragraph">
-<p>An important and powerful feature of Julia&#8217;s type system is that it is <em>parametric</em>: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.</p>
+<p>Julia&#8217;s type system is <em>parametric</em>: types can have parameters.</p>
 </div>
 <div class="paragraph">
-<p>Type parameters are introduced immediately after the type name, surrounded by curly braces:</p>
+<p>Type parameters are introduced after the name of the type, surrounded by curly braces:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14374,27 +14509,43 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This declaration defines a new parametric type, <code>Point{T&lt;:Real}</code>, holding two "coordinates" of type <code>T</code>. What, one may ask, is <code>T</code>? Well, that&#8217;s precisely the point of parametric types: it can be any type having <code>Real</code> as supertype.</p>
+<p>This defines a new parametric type, <code>Point{T&lt;:Real}</code>, holding two "coordinates" of type <code>T</code> which can be any type having <code>Real</code> as supertype.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-kt">Float64</span><span class="tok-p">}</span>
-<span class="tok-go">Point{Float64}</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-kt">Int64</span><span class="tok-p">}</span>
-<span class="tok-go">Point{Int64}</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mf">0.0</span><span class="tok-p">)</span>
+<span class="tok-go">Point{Float64}(0.0, 0.0)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_type_unions">Type Unions</h4>
+<div class="paragraph">
+<p>A <em>type union</em> is an abstract parametric type that can act as any of its argument types:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">IntOrString</span> <span class="tok-o">=</span> <span class="tok-kt">Union</span><span class="tok-p">{</span><span class="tok-kt">Int</span><span class="tok-p">,</span><span class="tok-kt">AbstractString</span><span class="tok-p">}</span>
+<span class="tok-go">Union{Int64, AbstractString}</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-mi">150</span> <span class="tok-o">::</span> <span class="tok-n">IntOrString</span>
+<span class="tok-go">150</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-s">&quot;Julia&quot;</span> <span class="tok-o">::</span> <span class="tok-n">IntOrString</span>
+<span class="tok-go">&quot;Julia&quot;</span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_methods_2">Methods</h3>
+<h3 id="_methods">Methods</h3>
 <div class="sect3">
 <h4 id="_parametric_methods">Parametric Methods</h4>
 <div class="paragraph">
-<p>Method definitions can optionally have type parameters qualifying the signature:</p>
+<p>Method definitions can also have type parameters qualifying their signature:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14410,7 +14561,8 @@ end</pre>
 <div class="sect3">
 <h4 id="_function_like_objects">Function-like Objects</h4>
 <div class="paragraph">
-<p>Methods are associated with types, so it is possible to make any arbitrary Julia object “callable“ by adding methods to its type. Such “callable“ objects are sometimes called <em>functors</em>.</p>
+<p>An arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called <em>functors</em>.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14428,7 +14580,7 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example we can evaluate a polynomial by calling it:</p>
+<p>To evaluate the polynomial, we simply have to call it:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14443,7 +14595,7 @@ end</pre>
 <div class="sect2">
 <h3 id="_constructors_2">Constructors</h3>
 <div class="paragraph">
-<p>Parametric types add a few wrinkles to the constructor story. Instances of parametric composite types can be constructed either with explicitly given type parameters or with type parameters implied by the types of the arguments given to the constructor:</p>
+<p>Parametric types can be explicitely or implicitely constructed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14456,7 +14608,8 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>What&#8217;s going on here? A default constructor is specified for each <code>T</code>:</p>
+<p>Default inner and outer constructors are generated for each <code>T</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14473,7 +14626,7 @@ end</pre>
 <p>and both <code>x</code> and <code>y</code> have to be of the same type.</p>
 </div>
 <div class="paragraph">
-<p>To solve this problem following outer constructor can be used:</p>
+<p>To solve this problem following outer constructor can be defined:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14481,18 +14634,20 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>promote</code> function is detailed in the next section.</p>
+<p>The <code>promote</code> function is detailed in the next section.
+</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_conversion_and_promotion">Conversion and Promotion</h3>
 <div class="paragraph">
-<p>Julia has a system for promoting arguments of mathematical operators to a common type. This system is not automatic but extensible.</p>
+<p>Julia has a system for promoting arguments to a common type. This is not done automatically but can be easily extended.</p>
 </div>
 <div class="sect3">
 <h4 id="_conversion">Conversion</h4>
 <div class="paragraph">
-<p>It can be convenient to convert a value from one type to another without the programmer asking for it explicitly. This is called <em>conversion</em>:</p>
+<p>A value can be converted from one type to another:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14521,7 +14676,8 @@ end</pre>
 <div class="sect3">
 <h4 id="_promotion">Promotion</h4>
 <div class="paragraph">
-<p>Promotion refers to converting values of mixed types to a single common type:</p>
+<p><em>Promotion</em> is the conversion of values of mixed types to a single common type:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14530,20 +14686,12 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Although one could, in principle, define methods for the <code>promote</code> function directly, this would require many redundant definitions for all possible permutations of argument types. Instead, the behavior of <code>promote</code> is defined in terms of an auxiliary function called <code>promote_rule</code>, which one can provide methods for.</p>
+<p>Methods for the <code>promote</code> function are normally not directly defined, but the auxiliary function <code>promote_rule</code> is used to specify the rules for promotion:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">promote_rule</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-kt">Type</span><span class="tok-p">{</span><span class="tok-kt">Float64</span><span class="tok-p">},</span> <span class="tok-o">::</span><span class="tok-kt">Type</span><span class="tok-p">{</span><span class="tok-kt">Int32</span><span class="tok-p">})</span> <span class="tok-o">=</span> <span class="tok-kt">Float64</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>promote_rule</code> function is used as a building block to define a second function called <code>promote_type</code>, which, given any number of type objects, returns the common type to which those values, as arguments to promote should be promoted:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">promote_type</span><span class="tok-p">(</span><span class="tok-kt">Float32</span><span class="tok-p">,</span> <span class="tok-kt">Float64</span><span class="tok-p">)</span>
-<span class="tok-go">Float64</span></code></pre>
 </div>
 </div>
 </div>
@@ -14551,12 +14699,12 @@ end</pre>
 <div class="sect2">
 <h3 id="_metaprogramming">Metaprogramming</h3>
 <div class="paragraph">
-<p>Julia represents its own code as a data structure of the language itself. Since code is represented by objects that can be created and manipulated from within the language, it is possible for a program to transform and generate its own code.</p>
+<p>Julia code can be represented as a data structure of the language itself. This allows a program to transform and generate its own code.</p>
 </div>
 <div class="sect3">
 <h4 id="_expressions">Expressions</h4>
 <div class="paragraph">
-<p>Every Julia program starts life as a string:</p>
+<p>Every Julia program starts as a string:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14565,7 +14713,8 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The next step is to parse each string into an object called an <em>expression</em>, represented by the Julia type <code>Expr</code>:</p>
+<p>The next step is to parse each string into an object called an <em>expression</em>, represented by the Julia type <code>Expr</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14583,13 +14732,26 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>dump</code> function provides indented and annotated display of <code>Expr</code> objects.</p>
+<p>The <code>dump</code> function displays expr objects with annotations.
+</p>
+</div>
+<div class="paragraph">
+<p>Expressions can be constructed directly by prefixing with <code>:</code> inside parentheses or using a quote block
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span><span class="tok-n">ex</span> <span class="tok-o">=</span> <span class="tok-k">quote</span>
+          <span class="tok-mi">1</span> <span class="tok-o">+</span> <span class="tok-mi">2</span>
+      <span class="tok-k">end</span><span class="tok-p">;</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_eval"><code>eval</code></h4>
 <div class="paragraph">
-<p>Given an expression object, one can cause Julia to evaluate (execute) it at global scope using <code>eval</code>:</p>
+<p>Julia can evaluate an expression object using <code>eval</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14598,29 +14760,43 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Every module has its own <code>eval</code> function that evaluates expressions in its global scope.</p>
+<p>Every module has its own <code>eval</code> function that evaluates expressions in its scope.</p>
 </div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>When you are using a lot of calls to the function <code>eval</code>, often this means that something is wrong. <code>eval</code> is considered “evil“.</p>
+<p>When you are using a lot of calls to the function <code>eval</code>, often this means that something is wrong. <code>eval</code> is considered “evil”.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_macros">Macros</h4>
 <div class="paragraph">
-<p>Macros provide a method to include generated code in the final body of a program. A <em>macro</em> maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime <code>eval</code> call.</p>
+<p>Macros can include generated code in a program. A <em>macro</em> maps a tuple of arguments directly to a compiled expression:
+</p>
 </div>
 <div class="paragraph">
-<p>Here is a simple macro:</p>
+<p>Here is a simple macro:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">macro</span> <span class="tok-n">sayhello</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">)</span>
-    <span class="tok-k">return</span> <span class="tok-o">:</span><span class="tok-p">(</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Hello, &quot;</span><span class="tok-p">,</span> <span class="tok-o">$</span><span class="tok-n">name</span><span class="tok-p">,</span> <span class="tok-s">&quot;!&quot;</span><span class="tok-p">)</span> <span class="tok-p">)</span>
+    <span class="tok-o">:</span><span class="tok-p">(</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Hello, &quot;</span><span class="tok-p">,</span> <span class="tok-o">$</span><span class="tok-n">name</span><span class="tok-p">,</span> <span class="tok-s">&quot;!&quot;</span><span class="tok-p">)</span> <span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Macros have a dedicated character in Julia&#8217;s syntax: the <code>@</code> (at-sign). The compiler will replace all instances of <code>@sayhello("World")</code> with:</p>
+<p>Macros are called by prefixing their name with the <code>@</code> (at-sign). The macro call <code>@sayhello("World")</code> is replaced by:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14628,47 +14804,57 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This expression is returned by <code>@macroexpand @sayhello "World"</code> which is extremely useful for debugging macros.</p>
+<p><code>@macroexpand @sayhello "World"</code>  returns this expression which is extremely useful for debugging.
+</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Why macros?</p>
 </div>
 <div class="paragraph">
-<p>Macros are necessary because they execute when code is parsed, therefore, macros allow the programmer to generate and include fragments of customized code <em>before</em> the full program is run.</p>
+<p>Macros generate and include fragments of customized code during parse time, thus <em>before</em> the full program is run.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_generated_functions">Generated Functions</h4>
 <div class="paragraph">
-<p>A very special macro is <code>@generated</code>, which allows you to define so-called <em>generated functions</em>. These have the capability to generate specialized code depending on the types of their arguments with more flexibility and/or less code than what can be achieved with multiple dispatch. While macros work with expressions at parse time and cannot access the types of their inputs, a generated function gets expanded at a time when the types of the arguments are known, but the function is not yet compiled.</p>
-</div>
-<div class="paragraph">
-<p>It&#8217;s easiest to illustrate this with an example. We can declare a generated function <code>foo</code> as</p>
+<p>The macro <code>@generated</code> creates specialized code for methods depending on the types of the arguments:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-nd">@generated</span> <span class="tok-k">function</span> <span class="tok-n">foo</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-nd">@generated</span> <span class="tok-k">function</span> <span class="tok-n">square</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span>
     <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span>
     <span class="tok-o">:</span><span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">*</span> <span class="tok-n">x</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that the body returns a quoted expression, namely <code>:(x * x)</code>, rather than just the value of <code>x * x</code>.</p>
+<p>The body returns a quoted expression like a macro.</p>
 </div>
 <div class="paragraph">
-<p>From the caller&#8217;s perspective, this is identical to a regular function; in fact, you don&#8217;t have to know whether you&#8217;re calling a regular or generated function. Let&#8217;s see how <code>foo</code> behaves:</p>
+<p>For the caller, the <em>generate function</em> behaves as a regular function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-n">foo</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span> <span class="tok-c"># note: output is from println() statement in the body</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-n">square</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">);</span> <span class="tok-c"># note: output is from println() statement in the body</span>
 <span class="tok-go">Int64</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span>           <span class="tok-c"># now we print x</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span>              <span class="tok-c"># now we print x</span>
 <span class="tok-go">4</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-n">foo</span><span class="tok-p">(</span><span class="tok-s">&quot;bar&quot;</span><span class="tok-p">);</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-n">square</span><span class="tok-p">(</span><span class="tok-s">&quot;spam&quot;</span><span class="tok-p">);</span>
 <span class="tok-go">String</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">y</span>
-<span class="tok-go">&quot;barbar&quot;</span></code></pre>
+<span class="tok-go">&quot;spamspam&quot;</span></code></pre>
 </div>
 </div>
 </div>
@@ -14676,7 +14862,8 @@ end</pre>
 <div class="sect2">
 <h3 id="_missing_values">Missing Values</h3>
 <div class="paragraph">
-<p>Julia provides support for representing <em>missing values</em> in the statistical sense, that is for situations where no value is available for a variable in an observation, but a valid value theoretically exists. Missing values are represented via the <code>missing</code> object, which is the singleton instance of the type <code>Missing</code>.</p>
+<p><em>missing values</em> can be represented via the <code>missing</code> object, which is the singleton instance of the type <code>Missing</code>.
+</p>
 </div>
 <div class="paragraph">
 <p>Arrays containing missing values can be created like other arrays:</p>
@@ -14690,10 +14877,10 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As this example shows, the element type of such arrays is <code>Union{Missing, T}</code>, with <code>T</code> the type of the non-missing values.</p>
+<p>The element type of such arrays is <code>Union{Missing, T}</code>, with <code>T</code> the type of the non-missing values.</p>
 </div>
 <div class="paragraph">
-<p>Since missing values propagate with standard mathematical operators, reduction functions return missing when called on arrays which contain missing values</p>
+<p>Reduction functions return <code>missing</code> when called on arrays which contain missing values</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14702,7 +14889,8 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this situation, use the skipmissing function to skip missing values:</p>
+<p>In this situation, use the skipmissing function to skip missing values:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14710,14 +14898,12 @@ end</pre>
 <span class="tok-go">1</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>This convenience function returns an iterator which filters out <code>missing</code> values efficiently.</p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_calling_c_and_fortran_code">Calling C and Fortran Code</h3>
 <div class="paragraph">
-<p>Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with <code>ccall</code> syntax, which looks like an ordinary function call.</p>
+<p>Julia can integrate existing C or Fortran code by making an appropriate call with <code>ccall</code> syntax.
+</p>
 </div>
 <div class="paragraph">
 <p>In <a href="#databases">Databases</a> I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to <code>close(db)</code> has to be made:</p>
@@ -14732,7 +14918,8 @@ end</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A dbm object has a field <code>handle</code> of <code>Ptr{Cvoid}</code> type. This field holds a C pointer that refers to the database. To close the database the C function <code>gdbm_close</code> has to be called having as only argument the C pointer pointing to the database and no return value. Julia does this directly with the <code>ccall</code> function having as arguments:</p>
+<p>A dbm object has a field <code>handle</code> of <code>Ptr{Cvoid}</code> type. This field holds a C pointer that refers to the database. To close the database the C function <code>gdbm_close</code> has to be called having as only argument the C pointer pointing to the database and no return value. Julia does this directly with the <code>ccall</code> function having as arguments:
+</p>
 </div>
 <div class="ulist">
 <ul>
@@ -14758,6 +14945,14 @@ end</pre>
 <h3 id="_glossary_19">Glossary</h3>
 <div class="dlist">
 <dl>
+<dt class="hdlist1">closure</dt>
+<dd>
+<p>Function that captures variables from its defining scope.</p>
+</dd>
+<dt class="hdlist1">let block</dt>
+<dd>
+<p>Block allocating new variable bindings.</p>
+</dd>
 <dt class="hdlist1">anonymous function</dt>
 <dd>
 <p>Function defined without being given a name.</p>
@@ -14804,7 +14999,7 @@ end</pre>
 </dd>
 <dt class="hdlist1">conversion</dt>
 <dd>
-<p>Convert a value from one type to another without the programmer asking for it explicitly.</p>
+<p>Convert a value from one type to another.</p>
 </dd>
 <dt class="hdlist1">promotion</dt>
 <dd>
@@ -14816,11 +15011,11 @@ end</pre>
 </dd>
 <dt class="hdlist1">macro</dt>
 <dd>
-<p>Method to include generated code in the final body of a program.</p>
+<p>Way to include generated code in the final body of a program.</p>
 </dd>
 <dt class="hdlist1">generated functions</dt>
 <dd>
-<p>Functions capable of generating specialized code depending on the types of their arguments.</p>
+<p>Functions capable of generating specialized code depending on the types of the arguments.</p>
 </dd>
 <dt class="hdlist1">missing values</dt>
 <dd>
@@ -15811,10 +16006,10 @@ end</pre>
 <div class="sect3">
 <h4 id="_when_i_run_the_program_i_get_an_exception">When I run the program I get an exception</h4>
 <div class="paragraph">
-<p>If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a traceback.</p>
+<p>If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a stacktrace.</p>
 </div>
 <div class="paragraph">
-<p>The traceback identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.</p>
+<p>The stacktrace identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.</p>
 </div>
 <div class="paragraph">
 <p>The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:</p>
@@ -16178,7 +16373,7 @@ end</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-29 23:52:07 CEST
+Last updated 2018-09-01 00:42:09 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
