@@ -5,18 +5,20 @@ In Julia you have the ability to write code that can operate on different types.
 
 In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.
 
-Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: https://docs.julialang.org/en/stable/manual/types/#Type-Declarations-1 and hhttps://docs.julialang.org/en/stable/manual/methods/#Methods-1.
+Credit: The first two sections are slightly adapted and shortened version of the following introductory sections in the Julia documentation: https://docs.julialang.org/en/stable/manual/types/#Type-Declarations-1 and https://docs.julialang.org/en/stable/manual/methods/#Methods-1.
 
 
 === Type Declarations
 
 The +::+ operator can be used to attach _type annotations_ to expressions and variables in programs. There are two primary reasons to do this:
+(((::)))((("operator","Base","::", see="::")))(((type annotation)))
 
 . As an assertion to help confirm that your program works the way you expect,
 
 . To provide extra type information to the compiler, which can then improve performance in some cases.
 
 When appended to an expression computing a value, the +::+ operator is read as "is an instance of". It can be used anywhere to assert that the value of the expression on the left is an instance of the type on the right.
+(((TypeError)))((("error", "Base", "TypeError", see="TypeError")))
 
 [source,@julia-repl-test]
 ----
@@ -29,6 +31,7 @@ julia> (1 + 2) :: Int64
 This allows a type assertion to be attached to any expression in-place.
 
 When appended to a variable on the left-hand side of an assignment, or as part of a declaration, the +::+ operator means something a bit different: it declares the variable to always have the specified type. If needed and possible a conversion will take place.
+(((returnfloat)))((("function", "programmer-defined", "returnfloat", see="returnfloat")))
 
 [source,@julia-repl-test]
 ----
@@ -57,19 +60,22 @@ end
 
 Returning from this function behaves just like an assignment to a variable with a declared type: the value is always converted to +Float64+.
 
-The default behavior in Julia when types are omitted is to allow values to be of any type.
+The default behavior in Julia when types are omitted is to allow values to be of any type (+Any+).
+(((Any)))
 
 
 === Methods
 
-Recall from Functions that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the ++ function.
+Recall from <<chap03>> that a function is an object that maps a tuple of arguments to a return value, or throws an exception if no appropriate value can be returned. It is common for the same conceptual function or operation to be implemented quite differently for different types of arguments: adding two integers is very different from adding two floating-point numbers, both of which are distinct from adding an integer to a floating-point number. Despite their implementation differences, these operations all fall under the general concept of "addition". Accordingly, in Julia, these behaviors all belong to a single object: the +pass:[+]+ function.
 
 To facilitate using many different implementations of the same concept smoothly, functions need not be defined all at once, but can rather be defined piecewise by providing specific behaviors for certain combinations of argument types and counts. A definition of one possible behavior for a function is called a _method_. Thus far, we have presented only examples of functions defined with a single method, applicable to all types of arguments. However, the _signatures_ of method definitions can be annotated to indicate the types of arguments in addition to their number, and more than a single method definition may be provided. When a function is applied to a particular tuple of arguments, the most specific method applicable to those arguments is applied. Thus, the overall behavior of a function is a patchwork of the behaviors of its various method definitions. If the patchwork is well designed, even though the implementations of the methods may be quite different, the outward behavior of the function will appear seamless and consistent.
+(((method)))(((signature)))
 
 
 === Printing Objects
 
 In <<chap16>>, we defined a struct named +MyTime+ and in <<time>>, you wrote a function named +printtime+:
+(((MyTime)))(((printtime)))
 
 [source,@julia-setup chap17a]
 ----
@@ -132,7 +138,10 @@ julia> printtime(150)
 I don't know how to print the argument time.
 ----
 
+[TIP]
+====
 As an exercise, rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
+====
 
 [source,@julia-eval chap17a]
 ----
@@ -151,6 +160,7 @@ end;
 === More Examples
 
 Here’s a version of +increment!+ (from <<modifiers>>) rewritten to specify its arguments:
+(((increment!)))
 
 [source,@julia-setup chap17a]
 ----
@@ -173,6 +183,7 @@ MyTime(10, 7, 17)
 ----
 
 If you put the arguments in the wrong order, you get an error:
+(((MethodError)))
 
 [source,@julia-repl-test chap17a]
 ----
@@ -183,6 +194,7 @@ ERROR: MethodError: no method matching increment!(::Int64, ::MyTime)
 The signature of the method is +printtime(time::MyTime, seconds::Int64)+ and not +printtime(seconds::Int64, time::MyTime)+.
 
 Rewriting +isafter+to act only on mytime objects ia as easy:
+(((isafter)))
 
 [source,@julia-setup chap17a]
 ----
@@ -215,6 +227,7 @@ These expressions are valid Julia method definitions. This is a shorthand notati
 === Constructors
 
 A _constructor_ is a special function that is called to create an object. The default constructor method has in case of a composite type as signature a tuple containing the fields. If type declaration are added to the fields, a second constructor method having as signature a tuple of the fields and the corresponding type declarations is available. The constructor methods of +MyTime+ have the following signatures:
+(((constructor)))
 
 [source,julia]
 ----
@@ -225,6 +238,7 @@ MyTime(hour::Int64, minute::Int64, second::Int64)
 The former is a convenience method to allow implicit conversions.
 
 We can also add our own _outer constructor_ methods:
+(((outer constructor)))((("constructor", "outer", see="outer constructor")))
 
 [source,@julia-setup chap17a]
 ----
@@ -234,8 +248,10 @@ end
 ----
 
 This method is called a _copy constructor_ because the new mytime object is a copy of argument.
+(((copy constructor)))((("constructor", "copy", see="copy constructor")))
 
 While outer constructor methods succeed in addressing the problem of providing additional convenience methods for constructing objects, they fail to address the enforcing of invariants, and the construction of self-referential objects. For these problems, we need _inner constructor_ methods:
+(((inner constructor)))((("constructor", "inner", see="inner constructor")))
 
 [source,@julia-setup chap17b]
 ----
@@ -251,7 +267,7 @@ mutable struct MyTime
 end
 ----
 
-The struct +MyTime+ has now 5 constructor methods:
+The struct +MyTime+ has now 6 constructor methods:
 
 [source,julia]
 ----
@@ -272,6 +288,7 @@ An inner constructor method is much like an outer constructor method, with two d
 If any inner constructor method is defined, no default constructor method is provided: it is presumed that you have supplied yourself with all the inner constructors you need.
 
 A second method without arguments of the local function +new+ exists:
+(((new)))((("function", "Base", "new", see="new")))
 
 [source,@julia-setup chap17c]
 ----
@@ -292,11 +309,13 @@ end
 ----
 
 This allows to construct incompletely initialized objects and self-referential objects, or more generally, recursive data structures.
+(((recursive data structures)))
 
 
-=== +Base.show+
+=== +show+
 
-+Base.show+ is a special function that is supposed to return a string representation of an object. For example, here is a +Base.show+ method for Time objects:
++show+ is a special function that is supposed to return a string representation of an object. For example, here is a +show+ method for mytime objects:
+(((show)))
 
 [source,@julia-setup chap17b]
 ----
@@ -307,7 +326,9 @@ function Base.show(io::IO, time::MyTime)
 end
 ----
 
-When you print an object, Julia invokes the +Base.show+ function:
+The prefix +Base+ is needed because we want to add a new method to the +Base.show+ function.
+
+When you print an object, Julia invokes the +show+ function:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -315,9 +336,12 @@ julia> time = MyTime(9, 45)
 09:45:00
 ----
 
-When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and +Base.show+, which is useful for debugging.
+When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
 
+[TIP]
+====
 As an exercise, write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
+====
 
 [source,@julia-eval chap17b]
 ----
@@ -340,7 +364,7 @@ end;
 
 === Operator Overloading
 
-By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named ++ with two +MyTime+ arguments, you can use the ++ operator on +MyTime+ objects.
+By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named +pass:[+]+ with two +MyTime+ arguments, you can use the +pass:[+]+ operator on mytime objects.
 
 Here is what the definition might look like:
 
@@ -354,7 +378,7 @@ function +(t1::MyTime, t2::MyTime)
 end
 ----
 
-The import statement adds the +Base.+ function to the local scope so that methods can be added.
+The import statement adds the +Base.pass:[+]+ function to the local scope so that methods can be added.
 
 And here is how you could use it:
 
@@ -369,14 +393,15 @@ julia> start + duration
 11:20:00
 ----
 
-When you apply the +pass[+]+ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +Base.show+. So there is a lot happening behind the scenes!
+When you apply the +pass:[+]+ operator to mytime objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +show+. So there is a lot happening behind the scenes!
 
 Changing the behavior of an operator so that it works with programmer-defined types is called _operator overloading_.
+(((operator overloading)))
 
 
 === Multiple Dispatch
 
-In the previous section we added two +MyTime+ objects, but you also might want to add an integer to a +MyTime+ object:
+In the previous section we added two mytime objects, but you also might want to add an integer to a +MyTime+ object:
 
 [source,@julia-setup chap17b]
 ----
@@ -385,7 +410,7 @@ function +(time::MyTime, seconds::Int64)
 end
 ----
 
-Here is an example that use the ++ operator with a mytime object and an integer:
+Here is an example that use the +pass:[+]+ operator with a mytime object and an integer:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -413,12 +438,16 @@ julia> 1337 + start
 ----
 
 The choice of which method to execute when a function is applied is called _dispatch_. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as _multiple dispatch_.
+(((dispatch)))(((multiple dispatch)))
 
-As an exercise, write ++ methods for point objects:
+[TIP]
+====
+As an exercise, write +pass:[+]+ methods for point objects:
 
 * If both operands are point objects, the method should return a new point object whose +x+ coordinate is the sum of the +x+ coordinates of the operands, and likewise for the +y+ coordinates.
 
 * If the first or the second operand is a tuple, the method should add the first element of the tuple to the +x+ coordinate and the second element to the +y+ coordinate, and return a new point object with the result.
+====
 
 
 === Polymorphism
@@ -456,8 +485,10 @@ Dict{Any,Any} with 3 entries:
 ----
 
 Functions that work with several types are called _polymorphic_. Polymorphism can facilitate code reuse.
+(((polymorphic)))
 
 For example, the built-in function +sum+, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
+(((sum)))
 
 Since a +pass:[+]+ method is provided for mytime objects, they work with +sum+:
 
@@ -476,6 +507,7 @@ julia> sum((t1, t2, t3))
 In general, if all of the operations inside a function work with a given type, the function works with that type.
 
 The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.
+(((polymorphism)))
 
 
 === Interface and Implementation
@@ -483,6 +515,7 @@ The best kind of polymorphism is the unintentional kind, where you discover that
 One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.
 
 A design principle that helps achieve that goal is to keep interfaces separate from implementations. For objects, that means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
+(((interface)))(((implementation)))
 
 For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include +timetoint+, +isafter+, and +pass:[+]+.
 
@@ -498,6 +531,7 @@ But if you designed the interface carefully, you can change the implementation w
 === Debugging
 
 To know what methods are available, you can use the function +methods+:
+(((methods)))((("function", "base", "methods", see="methods")))
 
 [source,jlcon]
 ----
@@ -512,36 +546,43 @@ julia> methods(printtime)
 
 type annotation::
 The operator +::+ followed by a type indicating that an expression or a variable is of that type.
+(((type annotation)))
 
 method::
 A definition of a possible behavior for a function.
+(((method)))
 
 dispatch::
 The choice of which method to execute when a function is executed.
+(((dispatch)))
 
 signature::
 The number and type of the arguments of a method allowing the dispatch to select the most specific method of a function during the function call.
-
-constructor::
-A special function that is called to create an object.
+(((signature)))
 
 outer constructor::
 Constructor defined outside the type definition to define convenience methods for creating an object.
+(((outer constructor)))
 
 inner constructor::
 Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.
+(((inner constructor)))
 
 copy constructor::
 Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
+(((copy constructor)))
 
 operator overloading::
 Changing the behavior of an operator like ++ so it works with a programmer-defined type.
+(((operator overloading)))
 
 multiple dispatch::
 Dispatch based on all of a function's arguments.
+(((multiple dispatch)))
 
 polymorphic::
 Pertaining to a function that can work with more than one type.
+(((polymorphic)))
 
 
 === Exercises
@@ -555,6 +596,7 @@ Change the fields of +MyTime+ to be a single integer representing seconds since 
 ===== Exercise 17-2
 
 Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:
+(((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))
 
 * An constructor that initializes +pouchcontents+ to an empty array.
 

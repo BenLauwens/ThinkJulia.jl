@@ -1,5 +1,3 @@
-using TikzPictures
-
 function fig10_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east](ch) at(-2.75, 0) {\tt cheeses};

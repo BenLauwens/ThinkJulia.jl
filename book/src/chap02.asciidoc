@@ -52,7 +52,7 @@ julia> 76trombones = "big parade"
 ERROR: syntax: "76" is not a valid function argument name
 julia> more@ = 1000000
 ERROR: syntax: extra token "@" after end of expression
-julia> type = "Advanced Theoretical Zymurgy"
+julia> struct = "Advanced Theoretical Zymurgy"
 ERROR: syntax: unexpected "="
 ----
 

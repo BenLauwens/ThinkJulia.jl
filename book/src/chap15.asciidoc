@@ -311,7 +311,7 @@ Aliasing can make a program difficult to read because changes in one place might
 (((aliasing)))
 
 Copying an object is often an alternative to aliasing. Julia provides a function called +deepcopy+ that can duplicate any object:
-(((copying)))(((deepcopy)))((("function", "Base", "deepcopy", see="deepcopy")))(deep copy)))
+(((copying)))(((deepcopy)))((("function", "Base", "deepcopy", see="deepcopy")))(((deep copy)))
 
 [source,@julia-repl-test chap15]
 ----

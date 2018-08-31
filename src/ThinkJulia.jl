@@ -5,6 +5,8 @@ module ThinkJulia
   using Base64
   using REPL
   using Luxor
+  using TikzPictures
+  using Plots
 
   #import Base.+
 

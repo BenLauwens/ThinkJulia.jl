@@ -86,7 +86,7 @@ function expandjuliareplblock(root::String, out::IOStream, lines::Vector{String}
   repl = replrun(code, name, root)
   println(out, "[source,jlcon]")
   println(out, "----")
-  print(out, repl)
+  print(out, replace(repl, "\n\n"=>"\n"))
   println(out, "----")
   m + 1   
 end

@@ -355,8 +355,8 @@ Stacktrace:
  [1] recurse() at ./REPL[1]:2 (repeats 80000 times)
 ----
 
-This traceback is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 +recurse+ frames on the stack!
-(((traceback)))(((StackOverflowError)))((("error", "Base", "StackOverflowError", see="StackOverflowError")))
+This stacktrace is a little bigger than the one we saw in the previous chapter. When the error occurs, there are 80000 +recurse+ frames on the stack!
+(((stacktrace)))(((StackOverflowError)))((("error", "Base", "StackOverflowError", see="StackOverflowError")))
 
 If you encounter an infinite recursion by accident, review your function to confirm that there is a base case that does not make a recursive call. And if there is a base case, check whether you are guaranteed to reach it.
 

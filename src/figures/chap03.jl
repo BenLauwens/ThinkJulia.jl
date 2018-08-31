@@ -1,5 +1,3 @@
-using TikzPictures
-
 function fig03_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east] at(-4,0){\tt \_\_main\_\_};

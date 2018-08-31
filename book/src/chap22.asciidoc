@@ -123,9 +123,9 @@ Now when you run the program, it will print a trace of each function as it is in
 
 ==== When I run the program I get an exception
 
-If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a traceback.
+If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a stacktrace.
 
-The traceback identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.
+The stacktrace identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.
 
 The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
 

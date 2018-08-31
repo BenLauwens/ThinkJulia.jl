@@ -1,6 +1,3 @@
-using TikzPictures
-using Luxor
-
 function fig05_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[anchor=east] at(-1.5,0){\tt \_\_main\_\_};

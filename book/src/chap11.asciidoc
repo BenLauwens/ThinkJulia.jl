@@ -293,7 +293,7 @@ julia> key = reverselookup(h, 3)
 ERROR: LookupError
 ----
 
-The effect when you generate an exception is the same as when Julia throws one: it prints a traceback and an error message.
+The effect when you generate an exception is the same as when Julia throws one: it prints a stacktrace and an error message.
 
 [WARNING]
 ====

@@ -409,10 +409,10 @@ Stacktrace:
  [2] cattwice(::String, ::String) at ./REPL[2]:3
 ----
 
-This list of functions is called a _traceback_. It tells you what program file the error occurred in, and what line, and what functions were executing at the time. It also shows the line of code that caused the error.
-(((traceback)))
+This list of functions is called a _stacktrace_. It tells you what program file the error occurred in, and what line, and what functions were executing at the time. It also shows the line of code that caused the error.
+(((stacktrace)))
 
-The order of the functions in the traceback is the inverse of the order of the frames in the stack diagram. The function that is currently running is at the top.
+The order of the functions in the stacktrace is the inverse of the order of the frames in the stack diagram. The function that is currently running is at the top.
 
 
 === Fruitful Functions and Void Functions
@@ -573,9 +573,9 @@ frame::
 A box in a stack diagram that represents a function call. It contains the local variables and parameters of the function.
 (((frame)))
 
-traceback::
+stacktrace::
 A list of the functions that are executing, printed when an exception occurs.
-(((traceback)))
+(((stacktrace)))
 
 
 === Exercises

@@ -1,5 +1,3 @@
-using TikzPictures
-
 function fig02_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
   \node[draw, fill=mycolor, minimum width=10.5cm, minimum height=1.5cm]{};
