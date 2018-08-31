@@ -64,13 +64,13 @@ It turns out that +type+ is one of Julia’s _keywords_. The REPL uses keywords 
 Julia has these keywords:
 
 ----
-abstract    baremodule   begin      break       catch
-ccall       const        continue   do          else
-elseif      end          export     finally     for
-function    global       if         import      importall
-let         local        macro      module      mutable
-primitive   quote        return     try         type
-using       struct       while
+abstract type   baremodule   begin      break            catch
+const           continue     do         else             elseif      
+end             export       finally    for              function
+global          if           import     importall        let         
+local           macro        module     mutable struct   primitive type
+quote           return       try        using            struct       
+while
 ----
 
 You don’t have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you’ll know.

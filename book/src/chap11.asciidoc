@@ -24,8 +24,8 @@ julia> eng2sp = Dict()
 Dict{Any,Any} with 0 entries
 ----
 
-The kind of dictionary is surrounded by curly brackets: the keys are of type +Any+ and also the values are of type +Any+.
-(((curly brackets)))((("{}"= see="curly brackets")))(((Any)))((("type", "Base", "Any", see="Any")))
+The kind of dictionary is surrounded by curly braces: the keys are of type +Any+ and also the values are of type +Any+.
+(((curly braces)))((("{}"= see="curly braces")))(((Any)))((("type", "Base", "Any", see="Any")))
 
 The dictionary is empty. To add items to the dictionary, you can use square brackets:
 (((square brackets)))

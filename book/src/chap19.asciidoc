@@ -9,15 +9,95 @@ This chapter and the two following discuss the things I have left out in the pre
 
 * syntax supplements
 * functions, types and macros directly available in +Base+
+(((Base)))
 * functions, types and macros in the Standard Library
+(((Standard Library)))
 
-Credit: this chapter is a synthesis of the corresponding parts in the offical Julia documentation: https://docs.julialang.org/en/stable/
+=== Blocks
+
++begin ... end+ is used to group a number of statements. This is called a block of code.
+(((begin)))((("keyword", "begin", see="begin")))(((end)))
+
+In <<chap04>> the +@svg+ macro was introduced:
+
+[source,julia]
+----
+🐢 = Turtle()
+@svg begin
+    forward(🐢, 100)
+    turn(🐢, -90)
+    forward(🐢, 100)
+end
+----
+
+The macro has as argument the block of code consisting of 3 function calls.
+
+==== Closures and +let+ blocks 
+
+The function +funcgen+ returns an array with two anonymous functions (see next sections) which return respectively the values 1 and 2:
+(((funcgen)))((("function", "programmer-defined", "funcgen", see="funcgen")))
+
+[source,@julia-setup chap19]
+----
+function funcgen(i)
+    res = Function[]
+    while i < 3
+        push!(res, ()->i)
+        i += 1
+    end
+    res
+end
+----
+
+We don't get what we expected.
+
+[source,@julia-repl-test chap19]
+----
+julia> fs = funcgen(1);
+
+julia> fs[1]()
+3
+julia> fs[2]()
+3
+----
+
+The returned functions are _closures_ and the variable +i+ is common to both of them.
+(((closures)))
+
+A _let block_ create new variable bindings and provides a solution to our problem:
+(((let block)))(((let)))((("keyword", "let", see="let")))
+
+[source,@julia-setup chap19]
+----
+function funcgen(i)
+    res = Function[]
+    while i < 3
+        let i = i
+            push!(res, ()->i)
+        end
+        i += 1
+    end
+    res
+end
+----
+
+Now, we get what we expected:
+
+[source,@julia-repl-test chap19]
+----
+julia> fs = funcgen(1);
+
+julia> fs[1]()
+1
+julia> fs[2]()
+2
+----
 
 === Functions
 
 ==== Anonymous Functions
 
-Functions can be defined without being given a name, using either of these syntaxes:
+We can define a function without specifying a name:
 
 [source,@julia-repl-test]
 ----
@@ -29,7 +109,8 @@ julia> f = function (x)
 #3 (generic function with 1 method)
 ----
 
-+f+ is an _anonymous function_ that can be called as a normal function or can be used as a variable and passed as an argument to another function. The latter is the most common:
++f+ is an _anonymous function_ which is called as a normal function. Anonymous functions are often used as an argument to another function:
+(((anonymous function)))(((Plots)))((("module", "Plots", see="Plots")))(((plot)))((("function", "Plots", "plot", see="plot")))
 
 [source,jlcon]
 ----
@@ -47,7 +128,7 @@ image::images/fig191.svg[pdfwidth="10cm"]
 
 ==== Named Tuples
 
-The components of tuples can optionally be named, in which case a _named tuple_ is constructed:
+You can name the components of a tuple:
 
 [source,@julia-repl-test]
 ----
@@ -57,11 +138,12 @@ julia> x.a
 1
 ----
 
-Named tuples are very similar to tuples, except that fields can additionally be accessed by name using dot syntax +(x.a)+.
+This is called a _named tuple_ having the additional property that fields can be accessed by name using dot syntax +(x.a)+.
+(((named tuple)))(((dot syntax)))
 
 ==== Keyword Arguments
 
-Function arguments can also be specified by keyword:
+Function arguments can also be named:
 
 [source,@julia-repl-test]
 ----
@@ -73,11 +155,13 @@ julia> plot(0:10, 0:10; style="dotted", color="blue")
 
 ----
 
-Functions with _keyword arguments_ are defined using a semicolon in the signature. When the function is called, the semicolon is optional.
+_Keyword arguments_ in a function are specified after a semicolon in the signature.
+(((;)))(((keyword arguments)))
 
 ==== +do+ Block
 
-In <<reading_and_writing>> we had to close the file after when where done writing. This can be done automatically using a _+do+ block_:
+In <<reading_and_writing>> we had to close the file after when where done writing. This can be done automatically using a _do block_:
+(((do)))((("keyword", "do", see="do")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -96,14 +180,15 @@ This is functionally equivalent to
 julia> f = (fout) -> begin
            write(fout, data)
        end
-#3 (generic function with 1 method)
+#7 (generic function with 1 method)
 julia> open(f, "output.txt", "w")
 48
 ----
 
 The anonymous function is used as first argument of the function +open+:
+(((open)))
 
-[source,julia}
+[source,julia]
 ----
 function open(f::Function, args...)
     io = open(args...)
@@ -115,13 +200,14 @@ function open(f::Function, args...)
 end
 ----
 
-A +do+ block can “capture“ variables from its enclosing scope. For example, the variable +data+ in the above example of +open...do+ is captured from the outer scope.
+A +do+ block can “capture” variables from its enclosing scope. For example, the variable +data+ in the above example of +open...do+ is captured from the outer scope.
 
 === Control Flow
 
 ==== Ternary Operator
 
-The so-called _ternary operator_, +?:+, is closely related to the +if-elseif-else+ syntax, but is used where a conditional choice between single expression values is required, as opposed to conditional execution of longer blocks of code. It gets its name from being the only operator in most languages taking three operands:
+The _ternary operator_, +?:+, is an alternative to an +if-elseif+ statement, when the choice is between single expression values. 
+(((?:)))((("operator", "Base", "?:", see="?:+")))((("ternary operator", see="?:")))
 
 [source,@julia-repl-test]
 ----
@@ -136,32 +222,77 @@ The expression before the +?+, is a condition expression. If the condition is +t
 ==== Short-Circuit Evaluation
 
 The operators +&&+ and +||+ do a _short-circuit evaluation_: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
+(((&&)))(((||)))(((short-circuit evaluation)))
 
 For example, a recursive factorial routine could be defined like this:
+(((fact)))
 
-[source,@julia-repl-test]
+[source,@julia-setup]
 ----
-julia> function fact(n::Int)
-           n >= 0 || error("n must be non-negative")
-           n == 0 && return 1
-           n * fact(n-1)
-       end
-fact (generic function with 1 method)
+function fact(n::Int)
+    n >= 0 || error("n must be non-negative")
+    n == 0 && return 1
+    n * fact(n-1)
+end
 ----
 
 ==== Tasks (aka Coroutines)
 
-_Tasks_ are a control flow feature that allows computations to be suspended and resumed in a flexible manner. This feature is sometimes called by other names, such as symmetric coroutines, lightweight threads, cooperative multitasking, or one-shot continuations.
+The Fibonnaci sequence can also be generated using a _task_.
+(((task)))(((Channel)))((("type", "Base", "Channel", see="Channel")))(((put!)))((("function", "Base", "put!", see="put!")))
 
-When a piece of computing work (in practice, executing a particular function) is designated as a +Task+, it becomes possible to interrupt it by switching to another +Task+. The original +Task+ can later be resumed, at which point it will pick up right where it left off. At first, this may seem similar to a function call. However there are two key differences. First, switching tasks does not use any space, so any number of task switches can occur without consuming the call stack. Second, switching among tasks can occur in any order, unlike function calls, where the called function must finish executing before control returns to the calling function.
+[source,@julia-setup chap19]
+----
+function fib(c::Channel)
+    a = 0
+    b = 1
+    put!(c, a)
+    while true
+        put!(c, b)
+        (a, b) = (b, a+b)
+    end
+end
+----
 
-Details can be found in https://docs.julialang.org/en/latest/manual/control-flow/#man-tasks-1.
++put!+ stores values in a channel object and +take!+ reads values:
+(((take!)))((("function", "Base", "take!", see="take!")))
+
+[source,@julia-repl-test chap19]
+----
+julia> fib_gen = Channel(fib);
+
+julia> take!(fib_gen)
+0
+julia> take!(fib_gen)
+1
+julia> take!(fib_gen)
+1
+julia> take!(fib_gen)
+2
+julia> take!(fib_gen)
+3
+----
+
+The function +fib+ is suspended after each call to +put!+ and resumed after +take!+. For performance reasons, several values of the sequence are buffered in the channel object between the resume/suspend cycle.
+
+A channel object can also be used as an iterator:
+
+[source,@julia-repl-test chap19]
+----
+julia> for val in Channel(fib)
+           print(val, " ")
+           val > 20 && break
+       end
+0 1 1 2 3 5 8 13 21
+----
+
 
 === Types
 
 ==== Primitive Types
 
-A _primitive type_ is a concrete type whose data consists of plain old bits. Classic examples of primitive types are integers and floating-point values. Unlike most languages, Julia lets you declare your own primitive types, rather than providing only a fixed set of built-in ones. In fact, the standard primitive types are all defined in the language itself:
+A concrete type consisting of plain old bits, is called a _primitive type_. Unlike most languages, you can declare your own primitive types. The standard primitive types are defined in the same way:
+(((primitive type)))((("keyword", "primitive type", see="primitive type")))
 
 [source,julia]
 ----
@@ -171,25 +302,14 @@ primitive type Char <: AbstractChar 32 end
 primitive type Int64 <: Signed 64 end
 ----
 
-The number in the statements specifies how much storage the type requires.
-
-==== Type Unions
-
-A _type union_ is a special abstract type which includes as objects all instances of any of its argument types, constructed using the special +Union+ keyword:
-
-[source,@julia-repl-test]
-----
-julia> IntOrString = Union{Int,AbstractString}
-Union{Int64, AbstractString}
-julia> 1 :: IntOrString
-1
-----
+The number in the statements specifies how many bits are required.
 
 ==== Parametric Types
 
-An important and powerful feature of Julia's type system is that it is _parametric_: types can take parameters, so that type declarations actually introduce a whole family of new types – one for each possible combination of parameter values.
+Julia's type system is _parametric_: types can have parameters.
 
-Type parameters are introduced immediately after the type name, surrounded by curly braces:
+Type parameters are introduced after the name of the type, surrounded by curly braces:
+(((curly braces)))
 
 [source,@julia-setup chap19]
 ----
@@ -199,23 +319,37 @@ struct Point{T<:Real}
 end
 ----
 
-This declaration defines a new parametric type, +Point{T<:Real}+, holding two "coordinates" of type +T+. What, one may ask, is +T+? Well, that's precisely the point of parametric types: it can be any type having +Real+ as supertype.
+This defines a new parametric type, +Point{T<:Real}+, holding two "coordinates" of type +T+ which can be any type having +Real+ as supertype.
 
 [source,@julia-repl-test chap19]
 ----
-julia> Point{Float64}
-Point{Float64}
-julia> Point{Int64}
-Point{Int64}
+julia> Point(0.0, 0.0)
+Point{Float64}(0.0, 0.0)
 ----
 
 Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.
+
+==== Type Unions
+
+A _type union_ is an abstract parametric type that can act as any of its argument types:
+(((type union)))(((Union)))((("type", "Base", "Union", see="Union")))
+
+[source,@julia-repl-test]
+----
+julia> IntOrString = Union{Int,AbstractString}
+Union{Int64, AbstractString}
+julia> 150 :: IntOrString
+150
+julia> "Julia" :: IntOrString
+"Julia"
+----
 
 === Methods
 
 ==== Parametric Methods
 
-Method definitions can optionally have type parameters qualifying the signature:
+Method definitions can also have type parameters qualifying their signature:
+(((signature)))
 
 [source,@julia-repl-test chap19]
 ----
@@ -229,7 +363,8 @@ true
 
 ==== Function-like Objects
 
-Methods are associated with types, so it is possible to make any arbitrary Julia object “callable“ by adding methods to its type. Such “callable“ objects are sometimes called _functors_.
+An arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called _functors_.
+(((functor)))
 
 [source,@julia-setup chap19]
 ----
@@ -246,7 +381,7 @@ function (p::Polynomial)(x)
 end
 ----
 
-In this example we can evaluate a polynomial by calling it:
+To evaluate the polynomial, we simply have to call it:
 
 [source,@julia-repl-test chap19]
 ----
@@ -258,7 +393,7 @@ julia> p(3)
 
 === Constructors
 
-Parametric types add a few wrinkles to the constructor story. Instances of parametric composite types can be constructed either with explicitly given type parameters or with type parameters implied by the types of the arguments given to the constructor:
+Parametric types can be explicitely or implicitely constructed:
 
 [source,@julia-repl-test chap19]
 ----
@@ -270,7 +405,8 @@ julia> Point(1,2.5) ## implicit T ##
 ERROR: MethodError: no method matching Point(::Int64, ::Float64)
 ----
 
-What's going on here? A default constructor is specified for each +T+:
+Default inner and outer constructors are generated for each +T+:
+(((constructor)))
 
 [source,julia]
 ----
@@ -285,7 +421,7 @@ Point(x::T, y::T) where {T<:Real} = Point{T}(x,y);
 
 and both +x+ and +y+ have to be of the same type.
 
-To solve this problem following outer constructor can be used:
+To solve this problem following outer constructor can be defined:
 
 [source,@julia-setup chap19]
 ----
@@ -293,14 +429,16 @@ Point(x::Real, y::Real) = Point(promote(x,y)...);
 ----
 
 The +promote+ function is detailed in the next section.
+(((promote)))((("function", "Base", "promote", see="promote")))
 
 === Conversion and Promotion
 
-Julia has a system for promoting arguments of mathematical operators to a common type. This system is not automatic but extensible.
+Julia has a system for promoting arguments to a common type. This is not done automatically but can be easily extended.
 
 ==== Conversion
 
-It can be convenient to convert a value from one type to another without the programmer asking for it explicitly. This is called _conversion_:
+A value can be converted from one type to another:
+(((conversion)))(((convert)))((("function", "Base", "convert", see="convert")))
 
 [source,@julia-repl-test]
 ----
@@ -325,35 +463,30 @@ Point{Int64}(1, 2)
 
 ==== Promotion
 
-Promotion refers to converting values of mixed types to a single common type:
+_Promotion_ is the conversion of values of mixed types to a single common type:
+(((promotion)))(((promote)))
+
 [source,@julia-repl-test]
 ----
 julia> promote(1, 2.5, 3)
 (1.0, 2.5, 3.0)
 ----
 
-Although one could, in principle, define methods for the +promote+ function directly, this would require many redundant definitions for all possible permutations of argument types. Instead, the behavior of +promote+ is defined in terms of an auxiliary function called +promote_rule+, which one can provide methods for.
+Methods for the +promote+ function are normally not directly defined, but the auxiliary function +promote_rule+ is used to specify the rules for promotion:
+(((promote_rule)))((("function", "Base", "promote_rule", see="promote_rule")))
 
 [source,julia]
 ----
 promote_rule(::Type{Float64}, ::Type{Int32}) = Float64
 ----
 
-The +promote_rule+ function is used as a building block to define a second function called +promote_type+, which, given any number of type objects, returns the common type to which those values, as arguments to promote should be promoted:
-
-[source,@julia-repl-test]
-----
-julia> promote_type(Float32, Float64)
-Float64
-----
-
 === Metaprogramming
 
-Julia represents its own code as a data structure of the language itself. Since code is represented by objects that can be created and manipulated from within the language, it is possible for a program to transform and generate its own code. 
+Julia code can be represented as a data structure of the language itself. This allows a program to transform and generate its own code. 
 
 ==== Expressions
 
-Every Julia program starts life as a string:
+Every Julia program starts as a string:
 
 [source,@julia-repl-test chap19]
 ----
@@ -362,6 +495,7 @@ julia> prog = "1 + 2"
 ----
 
 The next step is to parse each string into an object called an _expression_, represented by the Julia type +Expr+:
+(((expression)))(((Expr)))((("type", "Base", "Expr", see="Expr")))(((parse)))((("function", "Meta", "parse", see="parse")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -378,80 +512,103 @@ Expr
     3: Int64 2
 ----
 
-The +dump+ function provides indented and annotated display of +Expr+ objects.
+The +dump+ function displays expr objects with annotations.
+(((dump)))
+
+Expressions can be constructed directly by prefixing with +:+ inside parentheses or using a quote block
+(((:)))(((quote)))((("keyword", "quote", see="quote")))
+
+[source,@julia-repl-test chap19]
+----
+julia>ex = quote
+          1 + 2
+      end;
+----
 
 ==== +eval+
 
-Given an expression object, one can cause Julia to evaluate (execute) it at global scope using +eval+:
+Julia can evaluate an expression object using +eval+:
+(((eval)))((("function", "Core", "eval", see="eval")))
+
 [source,jlcon]
 ----
 julia> Core.eval(Main, ex)
 3
 ----
 
-Every module has its own +eval+ function that evaluates expressions in its global scope.
+Every module has its own +eval+ function that evaluates expressions in its scope.
 
-When you are using a lot of calls to the function +eval+, often this means that something is wrong. +eval+ is considered “evil“.
+[WARNING]
+====
+When you are using a lot of calls to the function +eval+, often this means that something is wrong. +eval+ is considered “evil”.
+====
 
 ==== Macros
 
-Macros provide a method to include generated code in the final body of a program. A _macro_ maps a tuple of arguments to a returned expression, and the resulting expression is compiled directly rather than requiring a runtime +eval+ call.
+Macros can include generated code in a program. A _macro_ maps a tuple of arguments directly to a compiled expression:
+(((macro)))
 
 Here is a simple macro:
+(((sayhello)))((("macro", "programmer-defined", "sayhello", see="sayhello")))
 
 [source,@julia-setup chap19]
 ----
 macro sayhello(name)
-    return :( println("Hello, ", $name, "!") )
+    :( println("Hello, ", $name, "!") )
 end
 ----
 
-Macros have a dedicated character in Julia's syntax: the +@+ (at-sign). The compiler will replace all instances of +@sayhello("World")+ with:
+Macros are called by prefixing their name with the +@+ (at-sign). The macro call +@sayhello("World")+ is replaced by:
+(((@)))
 
 [source,julia]
 ----
 :((Main.println)("Hello, ", "World", "!"))
 ----
 
-This expression is returned by +@macroexpand @sayhello "World"+ which is extremely useful for debugging macros.
++@macroexpand @sayhello "World"+  returns this expression which is extremely useful for debugging.
+(((@macroexpand)))((("macro", "Base", "@macroexpand", see="@macroexpand")))
 
+[NOTE]
+====
 Why macros?
 
-Macros are necessary because they execute when code is parsed, therefore, macros allow the programmer to generate and include fragments of customized code _before_ the full program is run.
+Macros generate and include fragments of customized code during parse time, thus _before_ the full program is run.
+====
 
 ==== Generated Functions
 
-A very special macro is +@generated+, which allows you to define so-called _generated functions_. These have the capability to generate specialized code depending on the types of their arguments with more flexibility and/or less code than what can be achieved with multiple dispatch. While macros work with expressions at parse time and cannot access the types of their inputs, a generated function gets expanded at a time when the types of the arguments are known, but the function is not yet compiled.
-
-It's easiest to illustrate this with an example. We can declare a generated function +foo+ as
+The macro +@generated+ creates specialized code for methods depending on the types of the arguments:
+(((generated functions)))(((@generated)))((("macro", "Base", "@generated", see="@generated")))
 
 [source,@julia-setup chap19]
 ----
-@generated function foo(x)
+@generated function square(x)
     println(x)
     :(x * x)
 end
 ----
 
-Note that the body returns a quoted expression, namely +pass:[:(x * x)]+, rather than just the value of +pass:[x * x]+.
+The body returns a quoted expression like a macro.
 
-From the caller's perspective, this is identical to a regular function; in fact, you don't have to know whether you're calling a regular or generated function. Let's see how +foo+ behaves:
+For the caller, the _generate function_ behaves as a regular function:
 
 [source,@julia-repl-test chap19]
 ----
-julia> x = foo(2); # note: output is from println() statement in the body
+julia> x = square(2); # note: output is from println() statement in the body
 Int64
-julia> x           # now we print x
+julia> x              # now we print x
 4
-julia> y = foo("bar");
+julia> y = square("spam");
 String
 julia> y
-"barbar"
+"spamspam"
 ----
 
 === Missing Values
 
-Julia provides support for representing _missing values_ in the statistical sense, that is for situations where no value is available for a variable in an observation, but a valid value theoretically exists. Missing values are represented via the +missing+ object, which is the singleton instance of the type +Missing+.
+_missing values_ can be represented via the +missing+ object, which is the singleton instance of the type +Missing+.
+(((missing values)))(((missing)))(((Missing)))((("type", "Base", "Missing", see="Missing")))
 
 Arrays containing missing values can be created like other arrays:
 
@@ -463,9 +620,9 @@ julia> a = [1, missing]
   missing
 ----
 
-As this example shows, the element type of such arrays is +Union{Missing, T}+, with +T+ the type of the non-missing values.
+The element type of such arrays is +Union{Missing, T}+, with +T+ the type of the non-missing values.
 
-Since missing values propagate with standard mathematical operators, reduction functions return missing when called on arrays which contain missing values
+Reduction functions return +missing+ when called on arrays which contain missing values
 
 [source,@julia-repl-test chap19]
 ----
@@ -474,6 +631,7 @@ missing
 ----
 
 In this situation, use the skipmissing function to skip missing values:
+(((skipmissing)))((("function", "Base", "skipmissing", see="skipmissing")))
 
 [source,@julia-repl-test chap19]
 ----
@@ -481,11 +639,11 @@ julia> sum(skipmissing([1, missing]))
 1
 ----
 
-This convenience function returns an iterator which filters out +missing+ values efficiently.
 
 === Calling C and Fortran Code
 
-Though most code can be written in Julia, there are many high-quality, mature libraries for numerical computing already written in C and Fortran. To allow easy use of this existing code, Julia makes it simple and efficient to call C and Fortran functions. Julia has a “no boilerplate” philosophy: functions can be called directly from Julia without any “glue” code, code generation, or compilation – even from the interactive prompt. This is accomplished just by making an appropriate call with +ccall+ syntax, which looks like an ordinary function call.
+Julia can integrate existing C or Fortran code by making an appropriate call with +ccall+ syntax.
+(((ccall)))((("function", "Base", "ccall", see="ccall")))
 
 In <<databases>> I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to +close(db)+ has to be made:
 
@@ -499,6 +657,7 @@ end
 ----
 
 A dbm object has a field +handle+ of +Ptr{Cvoid}+ type. This field holds a C pointer that refers to the database. To close the database the C function +gdbm_close+ has to be called having as only argument the C pointer pointing to the database and no return value. Julia does this directly with the +ccall+ function having as arguments:
+(((Ptr)))((("type", "Base", "Ptr", see="Ptr")))
 
 * a tuple consisting of a symbol holding the name of the function we want to call: +:gdbm_close+ and the shared library specified as a string: +"libgdm"+,
 
@@ -511,6 +670,12 @@ A dbm object has a field +handle+ of +Ptr{Cvoid}+ type. This field holds a C poi
 The complete mapping of the GDBM library can be found as an example in the ThinkJulia sources.
 
 === Glossary
+
+closure::
+Function that captures variables from its defining scope.
+
+let block::
+Block allocating new variable bindings.
 
 anonymous function::
 Function defined without being given a name.
@@ -546,7 +711,7 @@ functor::
 Type with an associated method, so that it looks callable.
 
 conversion::
-Convert a value from one type to another without the programmer asking for it explicitly.
+Convert a value from one type to another.
 
 promotion::
 Converting values of mixed types to a single common type
@@ -555,10 +720,10 @@ expression::
 Julia type that holds a language construct.
 
 macro::
-Method to include generated code in the final body of a program.
+Way to include generated code in the final body of a program.
 
 generated functions::
-Functions capable of generating specialized code depending on the types of their arguments.
+Functions capable of generating specialized code depending on the types of the arguments.
 
 missing values::
 Instances that represent data points with no value.

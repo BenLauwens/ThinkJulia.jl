@@ -262,7 +262,7 @@ abstract type CardSet end
 ----
 
 The +abstract type+ keyword introduces a new abstract type. The name can be optionally followed by +<:+ and an already-existing abstract type, indicating that the newly declared abstract type is a _subtype_ of this “parent” type.
-(((abstract)))((("keyword", "abstract", see="abstract")))(((type)))((("keyword", "type", see="type")))(((subtype)))
+(((abstract type)))((("keyword", "abstract type", see="abstract type")))(((type)))
 
 When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are subtypes of.
 (((supertype)))

@@ -114,7 +114,7 @@ This may seem odd at first, but it has several advantages:
 === Mutable Structs
 
 Where required, mutable composite types can be declared with the keyword +mutable struct+. Here is the definition of a mutable point:
-(((mutable composite type)))(((mutable)))((("keyword", "mutable", see="mutable")))(((MPoint)))((("type", "programmer-defined", "MPoint", see="MPoint")))
+(((mutable composite type)))(((mutable struct)))((("keyword", "mutable struct", see="mutable struct")))(((MPoint)))((("type", "programmer-defined", "MPoint", see="MPoint")))
 
 [source,@julia-setup chap15]
 ----
