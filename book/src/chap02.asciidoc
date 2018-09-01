@@ -56,9 +56,9 @@ julia> struct = "Advanced Theoretical Zymurgy"
 ERROR: syntax: unexpected "="
 ----
 
-+76trombones+ is illegal because it begins with a number. +more@+ is illegal because it contains an illegal character, +@+. But what’s wrong with +type+?
++76trombones+ is illegal because it begins with a number. +more@+ is illegal because it contains an illegal character, +@+. But what’s wrong with +struct+?
 
-It turns out that +type+ is one of Julia’s _keywords_. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+It turns out that +struct+ is one of Julia’s _keywords_. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
 (((keyword)))
 
 Julia has these keywords:
