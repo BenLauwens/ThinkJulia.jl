@@ -39,4 +39,4 @@ after_success:
   #- cp ~/.julia/v0.6/ThinkJulia/fonts/* ~/.fonts
   #- cp ~/.julia/v0.7/ThinkJulia/fonts/* ~/.fonts
   #- luaotfload-tool --update
-  #- julia -e 'cd(joinpath(Pkg.dir("ThinkJulia"), "book")); ARGS=("images",); include("make.jl")'
+  - if [ $TRAVIS_OS_NAME = osx ]; then julia -e 'cd(joinpath(Pkg.dir("ThinkJulia"), "book")); ARGS=("images","html","deploy"); include("make.jl")'; fi

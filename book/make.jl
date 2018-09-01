@@ -5,8 +5,10 @@ const src = joinpath(root, "src")
 const dst = joinpath(root, "build")
 const target = joinpath(root, "site")
 const img = joinpath(dst, "images")
+const oreilly = "/Users/ben/Source/think-julia"
 const chaps = [
   "book.asciidoc",
+  "colophon.asciidoc",
   "preface.asciidoc",
   "chap01.asciidoc",
   "chap02.asciidoc",
@@ -45,7 +47,8 @@ for chap in chaps
   expandcodeblocks(root, joinpath("src", chap), joinpath("build", chap))
 end
 if "pdf" in ARGS
-  run(`asciidoctor-pdf -a compat-mode -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a source-highlighter=rouge -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
+  #run(`asciidoctor-pdf -a compat-mode -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a source-highlighter=rouge -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
+  run(`ruby ~/Source/asciidoctor-htmlbook/scripts/convert_book.rb build`)
 elseif "html" in ARGS
   run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   book = read("build/book.html", String)
@@ -54,6 +57,39 @@ elseif "html" in ARGS
   book = replace(book, "\\begin{equation}\\n{"=> "")
   book = replace(book, "}\\n\\end{equation}"=> "")
   write("build/book.html", book)
+end
+if "oreilly" in ARGS
+  run(`cp build/chap01.asciidoc $oreilly`)
+  run(`cp build/chap02.asciidoc $oreilly`)
+  run(`cp build/chap03.asciidoc $oreilly`)
+  run(`cp build/chap04.asciidoc $oreilly`)
+  run(`cp build/chap05.asciidoc $oreilly`)
+  run(`cp build/chap06.asciidoc $oreilly`)
+  run(`cp build/chap07.asciidoc $oreilly`)
+  run(`cp build/chap08.asciidoc $oreilly`)
+  run(`cp build/chap09.asciidoc $oreilly`)
+  run(`cp build/chap10.asciidoc $oreilly`)
+  run(`cp build/chap11.asciidoc $oreilly`)
+  run(`cp build/chap12.asciidoc $oreilly`)
+  run(`cp build/chap13.asciidoc $oreilly`)
+  run(`cp build/chap14.asciidoc $oreilly`)
+  run(`cp build/chap15.asciidoc $oreilly`)
+  run(`cp build/chap16.asciidoc $oreilly`)
+  run(`cp build/chap17.asciidoc $oreilly`)
+  run(`cp build/chap18.asciidoc $oreilly`)
+  run(`cp build/chap19.asciidoc $oreilly`)
+  run(`cp build/chap20.asciidoc $oreilly`)
+  run(`cp build/chap21.asciidoc $oreilly`)
+  run(`cp build/appa.asciidoc $oreilly`)
+  cd(oreilly) do
+    run(`git commit -a -m $(ARGS[end])`)
+    run(`git push`)
+  end
+  atlas_token = "atlas_token.jl"
+  if isfile(atlas_token)
+    include(atlas_token)
+    run(`atlas build $ATLAS_TOKEN oreillymedia/think-julia pdf master`)
+  end
 end
 if "deploy" in ARGS
   isdir(target) || mkpath(target)

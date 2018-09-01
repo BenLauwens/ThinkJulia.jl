@@ -1,0 +1,6 @@
+[colophon]
+== Colophon
+
+Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.
+
+_Think Julia_ is available under the Creative Commons Attribution-NonCommercial 3.0 Unported License. The authors maintain an online version at https://benlauwens.github.io/ThinkJulia.jl/latest/book.html

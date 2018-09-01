@@ -14,4 +14,5 @@ book/lib
 book/my-theme.yml
 book/fake_travis.jl
 book/delim_file.txt
+book/atlas_token.jl
 site

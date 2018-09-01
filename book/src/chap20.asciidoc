@@ -1,7 +1,7 @@
 [[chap20]]
 == The Goodies: Base
 
-+Base+ contains a number of functions, types and macros that are directly available in Julia. Additional functionality can be imported from the Standard Library or from a growing collection of packages (https://pkg.julialang.org).
++Base+ contains a number of functions, types and macros that are directly available in Julia. Additional functionality can be imported from the Standard Library or from a growing collection of packages (https://juliaobserver.com).
 (((Base)))
 
 This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/base/base/.
@@ -29,7 +29,7 @@ julia> @time fibonacci(40)
 
 [WARNING]
 ====
-A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as a function to get compiled and the first time they are executed, has to be excluded from the performace measure.
+A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as a function to get compiled and the first time they are executed, has to be excluded from the performance measure.
 ====
 
 
