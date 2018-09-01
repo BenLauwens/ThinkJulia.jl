@@ -1443,10 +1443,10 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>76trombones</code> is illegal because it begins with a number. <code>more@</code> is illegal because it contains an illegal character, <code>@</code>. But what’s wrong with <code>type</code>?</p>
+<p><code>76trombones</code> is illegal because it begins with a number. <code>more@</code> is illegal because it contains an illegal character, <code>@</code>. But what’s wrong with <code>struct</code>?</p>
 </div>
 <div class="paragraph">
-<p>It turns out that <code>type</code> is one of Julia’s <em>keywords</em>. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
+<p>It turns out that <code>struct</code> is one of Julia’s <em>keywords</em>. The REPL uses keywords to recognize the structure of the program, and they cannot be used as variable names.
 </p>
 </div>
 <div class="paragraph">
@@ -4231,7 +4231,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535755333010693e9</span></code></pre>
+<span class="tok-go">1.535792982630509e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13793,7 +13793,7 @@ suffix)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called <em>HAS-A</em>, as in, “a Rectangle has a Point.
+<p>Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called <em>HAS-A</em>, as in, “a Rectangle has a Point”.
 </p>
 </li>
 <li>
@@ -14218,7 +14218,7 @@ suffix)</p>
 </p>
 </div>
 <div class="paragraph">
-<p>A <em>let block</em> create new variable bindings and provides a solution to our problem:
+<p>A <em>let block</em> creates new variable bindings and provides a solution to our problem:
 </p>
 </div>
 <div class="listingblock">
@@ -14455,7 +14455,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The function <code>fib</code> is suspended after each call to <code>put!</code> and resumed after <code>take!</code>. For performance reasons, several values of the sequence are buffered in the channel object between the resume/suspend cycle.</p>
+<p>The function <code>fib</code> is suspended after each call to <code>put!</code> and resumed after <code>take!</code>. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.</p>
 </div>
 <div class="paragraph">
 <p>A channel object can also be used as an iterator:</p>
@@ -14866,7 +14866,7 @@ suffix)</p>
 </p>
 </div>
 <div class="paragraph">
-<p>Arrays containing missing values can be created like other arrays:</p>
+<p>Arrays can contain missing values:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14877,7 +14877,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The element type of such arrays is <code>Union{Missing, T}</code>, with <code>T</code> the type of the non-missing values.</p>
+<p>The element type of such an array is <code>Union{Missing, T}</code>, with <code>T</code> the type of the non-missing values.</p>
 </div>
 <div class="paragraph">
 <p>Reduction functions return <code>missing</code> when called on arrays which contain missing values</p>
@@ -14889,7 +14889,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In this situation, use the skipmissing function to skip missing values:
+<p>In this situation, use the <code>skipmissing</code> function to skip missing values:
 </p>
 </div>
 <div class="listingblock">
@@ -16373,7 +16373,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-01 00:42:09 CEST
+Last updated 2018-09-01 11:09:38 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
