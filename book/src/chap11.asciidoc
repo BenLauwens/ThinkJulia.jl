@@ -356,7 +356,7 @@ A _hash_ is a function that takes a value (of any kind) and returns an integer. 
 (((hash)))
 ====
 
-
+[[memos]]
 === Memos
 
 If you played with the +fibonacci+ function from <<one_more_example>>, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.

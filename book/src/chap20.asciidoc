@@ -1,15 +1,43 @@
 [[chap20]]
 == The Goodies: Base
 
-Julia +Base+ contains a range of functions, types and macros appropriate for performing scientific and numerical computing, but is also as broad as those of many general purpose programming languages. Additional functionality is available from the Standard Library and a growing collection of available packages.
++Base+ contains a number of functions, types and macros that are directly available in Julia. Additional functionality can be imported from the Standard Library or from a growing collection of packages (https://pkg.julialang.org).
+(((Base)))
 
 This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/base/base/.
+
+=== Measuring Performance
+
+We have seen that some algorithms perform better than other. +fibonnaci+ in <<memos>> is a lot faster than +fib+ in <<one_more_example>>. The +@time+ macro allows to quantify the difference:
+(((@time)))((("macro", "base", "@time", see="@time")))
+
+[source,jlcon]
+----
+julia> fib(1)
+1
+julia> fibonacci(1)
+1
+julia> @time fib(40)
+  0.567546 seconds (5 allocations: 176 bytes)
+102334155
+julia> @time fibonacci(40)
+  0.000012 seconds (8 allocations: 1.547 KiB)
+102334155
+----
+
++@time+ prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. There ain't no such thing as a free lunch!
+
+[WARNING]
+====
+A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as a function to get compiled and the first time they are executed, has to be excluded from the performace measure.
+====
 
 
 [[collections_and_data_structures]]
 === Collections and Data Structures
 
 In <<dictionary_subtraction>> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes +d1+, which contains the words from the document as keys, and +d2+, which contains the array of words. It returns a dictionary that contains the keys from +d1+ that are not in +d2+.
+(((subtract)))
 
 [source,@julia-setup]
 ----
@@ -27,6 +55,7 @@ end
 In all of these dictionaries, the values are +nothing+ because we never use them. As a result, we waste some storage space.
 
 Julia provides another built-in type, called a set, that behaves like a collection of dictionary keys with no values. Adding elements to a set is fast; so is checking membership. And sets provide functions and operators to compute common set operations.
+(((Set)))((("type", "Base", "Set", see="Set")))
 
 For example, set subtraction is available as a function called +setdiff+. So we can rewrite +subtract+ like this:
 
@@ -40,6 +69,7 @@ end
 The result is a set instead of a dictionary.
 
 Some of the exercises in this book can be done concisely and efficiently with sets. For example, here is a solution to +hasduplicates+, from <<ex10-7>>, that uses a dictionary:
+(((hasduplicates)))
 
 [source,@julia-setup]
 ----
@@ -69,6 +99,7 @@ end
 An element can only appear in a set once, so if an element in +t+ appears more than once, the set will be smaller than +t+. If there are no duplicates, the set will be the same size as +t+.
 
 We can also use sets to do some of the exercises in <<chap09>>. For example, here’s a version of +usesonly+ with a loop:
+(((usesonly)))
 
 [source,@julia-setup]
 ----
@@ -92,14 +123,21 @@ end
 ----
 
 The +⊆+ operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+.
+(((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
+[TIP]
+====
 As an exercise, rewrite +avoids+ using sets.
+(((avoids)))
+====
 
 === Mathematics
 
 Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[i], representing the principal square root of latexmath:[-1].
+(((complex numbers)))(((im)))
 
 We can now verify the Euler's identity:
+(((Euler's identity)))
 
 [source,@julia-repl-test]
 ----
@@ -108,14 +146,15 @@ julia> ℯ^(im*π)+1
 ----
 
 The symbol +ℯ+ (+\euler TAB) is the base of the natural logarithm.
-
-The full gamut of other elementary operators and functions is also defined for complex numbers. 
+(((ℯ))) 
 
 Let's illustrate the complex nature of trigonometric functions:
 
 [latexmath]
 ++++
-\cos\left(x\right)=\frac{\mathrm{e}^{\mathrm{i}x}+\mathrm{e}^{-\mathrm{i}x}}{2}\,.
+\begin{equation}
+{\cos\left(x\right)=\frac{\mathrm{e}^{\mathrm{i}x}+\mathrm{e}^{-\mathrm{i}x}}{2}\,.}
+\end{equation}
 ++++
 
 We can test this formula for different values of latexmath:[x].
@@ -133,8 +172,10 @@ Here, another example of the +.+ operator is shown. Julia also allows numeric li
 === Strings
 
 In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (_regexes_), which eases the task of finding complex patterns in string objets.
+(((regex)))
 
 The +usesonly+ function can be implemented as a regex:
+(((usesonly)))(((Regex)))((("type", "Base", "Regex", see="Regex")))(((occursin)))((("function", "Base", "occursin", see="occursin")))
 
 [source,@julia-setup chap20]
 ----
@@ -155,16 +196,18 @@ false
 ----
 
 Regexes can also be constructed as non-standard string literals prefixed with +r+:
+(((string)))(((match)))((("function", "Base", "match", see="match")))
 
 [source,@julia-repl-test chap20]
 ----
-julia> match(r"^\s*(?:#|$)", "not a comment")
+julia> match(r"[^abn]", "banana")
 
-julia> m = match(r"^\s*(?:#|$)", "# a comment")
-RegexMatch("#")
+julia> m = match(r"[^abn]", "bananas")
+RegexMatch("s")
 ----
 
 String interpolation is not allowed in this case. The +match+ function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.
+(((string interpolation)))(((RegexMatch)))((("type", "Base", "RegexMatch", see="RegexMatch")))
 
 We can extract the following info from a regexmatch object:
 
@@ -176,9 +219,9 @@ We can extract the following info from a regexmatch object:
 [source,@julia-repl-test chap20]
 ----
 julia> m.match
-"#"
+"s"
 julia> m.offset
-1
+7
 ----
 
 Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perlre.html provides all the details to construct the most exotic searches.
@@ -188,6 +231,7 @@ Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perl
 In <<chap10>> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
 
 Let's create a 2-by-3 zero matrix:
+(((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
 
 [source,@julia-repl-test chap20]
 ----
@@ -200,8 +244,10 @@ Array{Float64,2}
 ----
 
 De type of this matrix is an array holding floating points and having 2 dimensions.
+(((dimension)))
 
 The +size+ function returns a tuple with as elements the number of elements in each dimension:
+(((size)))((("function", "Base", "size", see="size")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -210,6 +256,7 @@ julia> size(z)
 ----
 
 The function +ones+ constructs a matrix with unit value elements:
+(((ones)))((("function", "Base", "ones", see="ones")))
 
 [source,@julia-repl-test chap20]
 ----
@@ -218,7 +265,11 @@ julia> s = ones(String, 1, 3)
  ""  ""  ""
 ----
 
-The string unit element is an empty string. Attention +s+ is not a one-dimensional array:
+The string unit element is an empty string.
+
+[WARNING]
+====
++s+ is not a one-dimensional array:
 
 [source,@julia-repl-test chap20]
 ----
@@ -232,8 +283,10 @@ false
 ----
 
 +s+ is a row matrix and +t+ is a column matrix.
+====
 
 A matrix can be entered directly using a space to separate elements in a row and a semicolon +;+ to separate rows:
+(((;)))
 
 [source,@julia-repl-test chap20]
 ----
@@ -243,7 +296,8 @@ julia> a = [1 2 3; 4 5 6]
  4  5  6
 ----
 
-You can use index as usual to address indivual elements:
+You can use square brackets as usual to address indivual elements:
+(((square brackets)))
 
 [source,@julia-repl-test chap20]
 ----
@@ -258,6 +312,7 @@ julia> z
 ----
 
 Slices can be used for each dimension to select a subgroup of elements:
+(((slice)))
 
 [source,@julia-repl-test chap20]
 ----
@@ -268,6 +323,7 @@ julia> u = z[:,2:end]
 ----
 
 The +.+ operator broadcasts to all dimensions:
+(((.)))
 
 [source,@julia-repl-test chap20]
 ----
@@ -279,37 +335,34 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
-A lot of the power and extensibility in Julia comes from a collection of informal interfaces. By extending a few specific methods to work for a custom type, objects of that type not only receive those functionalities, but they are also able to be used in other methods that are written to generically build upon those behaviors.
-
-[quote]
-____
-If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
-____
+Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors. If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
 
 ==== Iterators
 
 In <<one_more_example>> I implemented the +fib+ function returning the latexmath:[n]th element of the Fibonnaci sequence.
 
-Let's make an iterator that returns lazily the Fibonnaci sequence:
+Let's make an iterator that returns lazily the Fibonacci sequence:
+(((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
 
 [source,@julia-setup chap20]
 ----
-struct Fibonnaci{T<:Real} end
-Fibonnaci(d::DataType) = d<:Real ? Fibonnaci{d}() : error("No Real type!")
+struct Fibonacci{T<:Real} end
+Fibonacci(d::DataType) = d<:Real ? Fibonacci{d}() : error("No Real type!")
 
-Base.iterate(::Fibonnaci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
-Base.iterate(::Fibonnaci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
+Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
+Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-I implemented a parametric type with no fields +Fibonnaci+, an outer constructor and two methods +Base.iterate+. The first is called to initialize the iterator an returns a tuple consisting of the first value, latexmath:[0], and a state. The state in this case is a tuple containing the second and the third value, latexmath:[1] and latexmath:[1].
+I implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator an returns a tuple consisting of the first value, latexmath:[0], and a state. The state in this case is a tuple containing the second and the third value, latexmath:[1] and latexmath:[1].
 
-The second is called to get the next value of the Fibonnaci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
+The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
 
-We can use +Fibonnaci+ now in a +for+ loop:
+We can use +Fibonacci+ now in a +for+ loop:
+(((for statement)))
 
 [source,@julia-repl-test chap20]
 ----
-julia> for e in Fibonnaci(Int64)
+julia> for e in Fibonacci(Int64)
            e > 100 && break
            print(e, " ")
        end
@@ -339,21 +392,26 @@ end
 
 This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.
 
-==== Indexing
+==== Indexing and Arrays
 
 What is an array? In Julia an array is defined as a type having as supertype an +AbstractArray+ and implementing the indexing interface:
+(((AbstractArray)))((("type", "Base", "AbstractArray", see="AbstractArray")))
 
 +getindex(X, i)+::
 +X[i]+, indexed element access
+(((getindex)))((("function", "Base", "getindex", see="getindex")))
 
 +setindex!(X, v, i)+::
 +X[i] = v+, indexed assignment
+(((setindex!)))((("function", "Base", "setindex!", see="setindex!")))
 
 +firstindex(X)+::
 The first index
+(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
 +lastindex(X)+::
 The last index, used in +X[end]+
+(((lastindex)))((("function", "Base", "lastindex", see="lastindex")))
 
 This is all it takes to implements your own array-like type and to reuse all the goodies provided in Julia.
 
@@ -361,7 +419,3 @@ This is all it takes to implements your own array-like type and to reuse all the
 
 regex::
 Regular expression, a sequence of characters that define a search pattern.
-
-
-
-

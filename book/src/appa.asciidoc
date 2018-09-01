@@ -16,11 +16,13 @@ The following table lists Unicode characters that can be entered via tab complet
 |+🐫+|*+\:camel:+*|
 |+🐢+|*+\:turtle:+*|
 |+≡+|*+\equiv+*|+===+
+|+ℯ+|*+\euler+*|
 |+∈+|*+\in+*|+in+
 |+≥+|*+\ge+*|+>=+
 |+≤+|*+\le+*|+pass:[&lt;=]+
 |+≠+|*+\ne+*|+!=+
 |+∉+|*+\notin+*| 
 |+π+|*+\pi+*|+pi+
+|+⊆+|*+\subseteq+*|
 |+ε+|*+\varepsilon+*| 
 |====
