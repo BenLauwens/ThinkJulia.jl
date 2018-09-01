@@ -677,7 +677,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_looping_and_dictionaries">Looping and Dictionaries</a></li>
 <li><a href="#_reverse_lookup">Reverse Lookup</a></li>
 <li><a href="#_dictionaries_and_arrays">Dictionaries and Arrays</a></li>
-<li><a href="#_memos">Memos</a></li>
+<li><a href="#memos">Memos</a></li>
 <li><a href="#_global_variables">Global Variables</a></li>
 <li><a href="#_debugging_9">Debugging</a></li>
 <li><a href="#_glossary_11">Glossary</a></li>
@@ -805,6 +805,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap20">20. The Goodies: Base</a>
 <ul class="sectlevel2">
+<li><a href="#_measuring_performance">Measuring Performance</a></li>
 <li><a href="#collections_and_data_structures">Collections and Data Structures</a></li>
 <li><a href="#_mathematics">Mathematics</a></li>
 <li><a href="#_strings">Strings</a></li>
@@ -4231,7 +4232,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535792982630509e9</span></code></pre>
+<span class="tok-go">1.535831579081638e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8938,7 +8939,7 @@ Qack</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_memos">Memos</h3>
+<h3 id="memos">Memos</h3>
 <div class="paragraph">
 <p>If you played with the <code>fibonacci</code> function from <a href="#one_more_example">One More Example</a>, you might have noticed that the bigger the argument you provide, the longer the function takes to run. Furthermore, the run time increases quickly.
 </p>
@@ -15030,15 +15031,55 @@ suffix)</p>
 <h2 id="chap20">20. The Goodies: Base</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Julia <code>Base</code> contains a range of functions, types and macros appropriate for performing scientific and numerical computing, but is also as broad as those of many general purpose programming languages. Additional functionality is available from the Standard Library and a growing collection of available packages.</p>
+<p><code>Base</code> contains a number of functions, types and macros that are directly available in Julia. Additional functionality can be imported from the Standard Library or from a growing collection of packages (<a href="https://pkg.julialang.org" class="bare">https://pkg.julialang.org</a>).
+</p>
 </div>
 <div class="paragraph">
 <p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/stable/base/base/" class="bare">https://docs.julialang.org/en/stable/base/base/</a>.</p>
 </div>
 <div class="sect2">
+<h3 id="_measuring_performance">Measuring Performance</h3>
+<div class="paragraph">
+<p>We have seen that some algorithms perform better than other. <code>fibonnaci</code> in <a href="#memos">Memos</a> is a lot faster than <code>fib</code> in <a href="#one_more_example">One More Example</a>. The <code>@time</code> macro allows to quantify the difference:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fib</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+<span class="tok-go">1</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">fibonacci</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+<span class="tok-go">1</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@time</span> <span class="tok-n">fib</span><span class="tok-p">(</span><span class="tok-mi">40</span><span class="tok-p">)</span>
+<span class="tok-go">  0.567546 seconds (5 allocations: 176 bytes)</span>
+<span class="tok-go">102334155</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@time</span> <span class="tok-n">fibonacci</span><span class="tok-p">(</span><span class="tok-mi">40</span><span class="tok-p">)</span>
+<span class="tok-go">  0.000012 seconds (8 allocations: 1.547 KiB)</span>
+<span class="tok-go">102334155</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>@time</code> prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. There ain&#8217;t no such thing as a free lunch!</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as a function to get compiled and the first time they are executed, has to be excluded from the performace measure.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
 <h3 id="collections_and_data_structures">Collections and Data Structures</h3>
 <div class="paragraph">
-<p>In <a href="#dictionary_subtraction">Dictionary Subtraction</a> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes <code>d1</code>, which contains the words from the document as keys, and <code>d2</code>, which contains the array of words. It returns a dictionary that contains the keys from <code>d1</code> that are not in <code>d2</code>.</p>
+<p>In <a href="#dictionary_subtraction">Dictionary Subtraction</a> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes <code>d1</code>, which contains the words from the document as keys, and <code>d2</code>, which contains the array of words. It returns a dictionary that contains the keys from <code>d1</code> that are not in <code>d2</code>.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15057,7 +15098,8 @@ suffix)</p>
 <p>In all of these dictionaries, the values are <code>nothing</code> because we never use them. As a result, we waste some storage space.</p>
 </div>
 <div class="paragraph">
-<p>Julia provides another built-in type, called a set, that behaves like a collection of dictionary keys with no values. Adding elements to a set is fast; so is checking membership. And sets provide functions and operators to compute common set operations.</p>
+<p>Julia provides another built-in type, called a set, that behaves like a collection of dictionary keys with no values. Adding elements to a set is fast; so is checking membership. And sets provide functions and operators to compute common set operations.
+</p>
 </div>
 <div class="paragraph">
 <p>For example, set subtraction is available as a function called <code>setdiff</code>. So we can rewrite <code>subtract</code> like this:</p>
@@ -15073,7 +15115,8 @@ suffix)</p>
 <p>The result is a set instead of a dictionary.</p>
 </div>
 <div class="paragraph">
-<p>Some of the exercises in this book can be done concisely and efficiently with sets. For example, here is a solution to <code>hasduplicates</code>, from <a href="#ex10-7">Exercise 10-7</a>, that uses a dictionary:</p>
+<p>Some of the exercises in this book can be done concisely and efficiently with sets. For example, here is a solution to <code>hasduplicates</code>, from <a href="#ex10-7">Exercise 10-7</a>, that uses a dictionary:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15106,7 +15149,8 @@ suffix)</p>
 <p>An element can only appear in a set once, so if an element in <code>t</code> appears more than once, the set will be smaller than <code>t</code>. If there are no duplicates, the set will be the same size as <code>t</code>.</p>
 </div>
 <div class="paragraph">
-<p>We can also use sets to do some of the exercises in <a href="#chap09">Case Study: Word Play</a>. For example, here’s a version of <code>usesonly</code> with a loop:</p>
+<p>We can also use sets to do some of the exercises in <a href="#chap09">Case Study: Word Play</a>. For example, here’s a version of <code>usesonly</code> with a loop:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15131,19 +15175,34 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>⊆</code> operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in <code>word</code> appear in <code>available</code>.</p>
+<p>The <code>⊆</code> operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in <code>word</code> appear in <code>available</code>.
+</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>As an exercise, rewrite <code>avoids</code> using sets.</p>
+<p>As an exercise, rewrite <code>avoids</code> using sets.
+</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_mathematics">Mathematics</h3>
 <div class="paragraph">
-<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \(i\), representing the principal square root of \(-1\).</p>
+<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \(i\), representing the principal square root of \(-1\).
+</p>
 </div>
 <div class="paragraph">
-<p>We can now verify the Euler&#8217;s identity:</p>
+<p>We can now verify the Euler&#8217;s identity:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15152,17 +15211,17 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The symbol <code>ℯ</code> (+\euler TAB) is the base of the natural logarithm.</p>
-</div>
-<div class="paragraph">
-<p>The full gamut of other elementary operators and functions is also defined for complex numbers.</p>
+<p>The symbol <code>ℯ</code> (+\euler TAB) is the base of the natural logarithm.
+</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s illustrate the complex nature of trigonometric functions:</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[\cos\left(x\right)=\frac{\mathrm{e}^{\mathrm{i}x}+\mathrm{e}^{-\mathrm{i}x}}{2}\,.\]
+\[\begin{equation}
+{\cos\left(x\right)=\frac{\mathrm{e}^{\mathrm{i}x}+\mathrm{e}^{-\mathrm{i}x}}{2}\,.}
+\end{equation}\]
 </div>
 </div>
 <div class="paragraph">
@@ -15183,10 +15242,12 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_strings">Strings</h3>
 <div class="paragraph">
-<p>In <a href="#chap08">Strings</a> and <a href="#chap09">Case Study: Word Play</a>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (<em>regexes</em>), which eases the task of finding complex patterns in string objets.</p>
+<p>In <a href="#chap08">Strings</a> and <a href="#chap09">Case Study: Word Play</a>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (<em>regexes</em>), which eases the task of finding complex patterns in string objets.
+</p>
 </div>
 <div class="paragraph">
-<p>The <code>usesonly</code> function can be implemented as a regex:</p>
+<p>The <code>usesonly</code> function can be implemented as a regex:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15208,18 +15269,20 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Regexes can also be constructed as non-standard string literals prefixed with <code>r</code>:</p>
+<p>Regexes can also be constructed as non-standard string literals prefixed with <code>r</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">r&quot;^\s*(?:#|$)&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;not a comment&quot;</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">r&quot;[^abn]&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;banana&quot;</span><span class="tok-p">)</span>
 
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">m</span> <span class="tok-o">=</span> <span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">r&quot;^\s*(?:#|$)&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;# a comment&quot;</span><span class="tok-p">)</span>
-<span class="tok-go">RegexMatch(&quot;#&quot;)</span></code></pre>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">m</span> <span class="tok-o">=</span> <span class="tok-n">match</span><span class="tok-p">(</span><span class="tok-sr">r&quot;[^abn]&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;bananas&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">RegexMatch(&quot;s&quot;)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>String interpolation is not allowed in this case. The <code>match</code> function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.</p>
+<p>String interpolation is not allowed in this case. The <code>match</code> function returns nothing if the pattern (a command) is not found and return a regexmatch object otherwise.
+</p>
 </div>
 <div class="paragraph">
 <p>We can extract the following info from a regexmatch object:</p>
@@ -15243,9 +15306,9 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">m</span><span class="tok-o">.</span><span class="tok-n">match</span>
-<span class="tok-go">&quot;#&quot;</span>
+<span class="tok-go">&quot;s&quot;</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">m</span><span class="tok-o">.</span><span class="tok-n">offset</span>
-<span class="tok-go">1</span></code></pre>
+<span class="tok-go">7</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15258,7 +15321,8 @@ suffix)</p>
 <p>In <a href="#chap10">Arrays</a> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s create a 2-by-3 zero matrix:</p>
+<p>Let&#8217;s create a 2-by-3 zero matrix:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15271,10 +15335,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>De type of this matrix is an array holding floating points and having 2 dimensions.</p>
+<p>De type of this matrix is an array holding floating points and having 2 dimensions.
+</p>
 </div>
 <div class="paragraph">
-<p>The <code>size</code> function returns a tuple with as elements the number of elements in each dimension:</p>
+<p>The <code>size</code> function returns a tuple with as elements the number of elements in each dimension:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15283,7 +15349,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The function <code>ones</code> constructs a matrix with unit value elements:</p>
+<p>The function <code>ones</code> constructs a matrix with unit value elements:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15293,7 +15360,17 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The string unit element is an empty string. Attention <code>s</code> is not a one-dimensional array:</p>
+<p>The string unit element is an empty string.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><code>s</code> is not a one-dimensional array:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15309,8 +15386,13 @@ suffix)</p>
 <div class="paragraph">
 <p><code>s</code> is a row matrix and <code>t</code> is a column matrix.</p>
 </div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>A matrix can be entered directly using a space to separate elements in a row and a semicolon <code>;</code> to separate rows:</p>
+<p>A matrix can be entered directly using a space to separate elements in a row and a semicolon <code>;</code> to separate rows:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15321,7 +15403,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You can use index as usual to address indivual elements:</p>
+<p>You can use square brackets as usual to address indivual elements:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15336,7 +15419,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Slices can be used for each dimension to select a subgroup of elements:</p>
+<p>Slices can be used for each dimension to select a subgroup of elements:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15347,7 +15431,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>.</code> operator broadcasts to all dimensions:</p>
+<p>The <code>.</code> operator broadcasts to all dimensions:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15361,14 +15446,7 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_interfaces">Interfaces</h3>
 <div class="paragraph">
-<p>A lot of the power and extensibility in Julia comes from a collection of informal interfaces. By extending a few specific methods to work for a custom type, objects of that type not only receive those functionalities, but they are also able to be used in other methods that are written to generically build upon those behaviors.</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck.</p>
-</div>
-</blockquote>
+<p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors. If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck.</p>
 </div>
 <div class="sect3">
 <h4 id="_iterators">Iterators</h4>
@@ -15376,29 +15454,31 @@ suffix)</p>
 <p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s make an iterator that returns lazily the Fibonnaci sequence:</p>
+<p>Let&#8217;s make an iterator that returns lazily the Fibonacci sequence:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Fibonnaci</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-k">end</span>
-<span class="tok-n">Fibonnaci</span><span class="tok-p">(</span><span class="tok-n">d</span><span class="tok-o">::</span><span class="tok-kt">DataType</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-n">d</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span> <span class="tok-o">?</span> <span class="tok-n">Fibonnaci</span><span class="tok-p">{</span><span class="tok-n">d</span><span class="tok-p">}()</span> <span class="tok-o">:</span> <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;No Real type!&quot;</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Fibonacci</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-k">end</span>
+<span class="tok-n">Fibonacci</span><span class="tok-p">(</span><span class="tok-n">d</span><span class="tok-o">::</span><span class="tok-kt">DataType</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-n">d</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span> <span class="tok-o">?</span> <span class="tok-n">Fibonacci</span><span class="tok-p">{</span><span class="tok-n">d</span><span class="tok-p">}()</span> <span class="tok-o">:</span> <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;No Real type!&quot;</span><span class="tok-p">)</span>
 
-<span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">iterate</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-n">Fibonnaci</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">zero</span><span class="tok-p">(</span><span class="tok-n">T</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-n">one</span><span class="tok-p">(</span><span class="tok-n">T</span><span class="tok-p">),</span> <span class="tok-n">one</span><span class="tok-p">(</span><span class="tok-n">T</span><span class="tok-p">)))</span>
-<span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">iterate</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-n">Fibonnaci</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">},</span> <span class="tok-n">state</span><span class="tok-o">::</span><span class="tok-kt">Tuple</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">,</span> <span class="tok-n">T</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-p">(</span><span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">],</span> <span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">+</span> <span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]))</span></code></pre>
+<span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">iterate</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-n">Fibonacci</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">zero</span><span class="tok-p">(</span><span class="tok-n">T</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-n">one</span><span class="tok-p">(</span><span class="tok-n">T</span><span class="tok-p">),</span> <span class="tok-n">one</span><span class="tok-p">(</span><span class="tok-n">T</span><span class="tok-p">)))</span>
+<span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">iterate</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-n">Fibonacci</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">},</span> <span class="tok-n">state</span><span class="tok-o">::</span><span class="tok-kt">Tuple</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">,</span> <span class="tok-n">T</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-o">&lt;:</span><span class="tok-kt">Real</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">],</span> <span class="tok-p">(</span><span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">],</span> <span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">+</span> <span class="tok-n">state</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I implemented a parametric type with no fields <code>Fibonnaci</code>, an outer constructor and two methods <code>Base.iterate</code>. The first is called to initialize the iterator an returns a tuple consisting of the first value, \(0\), and a state. The state in this case is a tuple containing the second and the third value, \(1\) and \(1\).</p>
+<p>I implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator an returns a tuple consisting of the first value, \(0\), and a state. The state in this case is a tuple containing the second and the third value, \(1\) and \(1\).</p>
 </div>
 <div class="paragraph">
-<p>The second is called to get the next value of the Fibonnaci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.</p>
+<p>The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.</p>
 </div>
 <div class="paragraph">
-<p>We can use <code>Fibonnaci</code> now in a <code>for</code> loop:</p>
+<p>We can use <code>Fibonacci</code> now in a <code>for</code> loop:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">for</span> <span class="tok-nb">e</span> <span class="tok-kp">in</span> <span class="tok-n">Fibonnaci</span><span class="tok-p">(</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">for</span> <span class="tok-nb">e</span> <span class="tok-kp">in</span> <span class="tok-n">Fibonacci</span><span class="tok-p">(</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
            <span class="tok-nb">e</span> <span class="tok-o">&gt;</span> <span class="tok-mi">100</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-k">break</span>
            <span class="tok-n">print</span><span class="tok-p">(</span><span class="tok-nb">e</span><span class="tok-p">,</span> <span class="tok-s">&quot; &quot;</span><span class="tok-p">)</span>
        <span class="tok-k">end</span>
@@ -15433,27 +15513,32 @@ suffix)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_indexing">Indexing</h4>
+<h4 id="_indexing_and_arrays">Indexing and Arrays</h4>
 <div class="paragraph">
-<p>What is an array? In Julia an array is defined as a type having as supertype an <code>AbstractArray</code> and implementing the indexing interface:</p>
+<p>What is an array? In Julia an array is defined as a type having as supertype an <code>AbstractArray</code> and implementing the indexing interface:
+</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1"><code>getindex(X, i)</code></dt>
 <dd>
-<p><code>X[i]</code>, indexed element access</p>
+<p><code>X[i]</code>, indexed element access
+</p>
 </dd>
 <dt class="hdlist1"><code>setindex!(X, v, i)</code></dt>
 <dd>
-<p><code>X[i] = v</code>, indexed assignment</p>
+<p><code>X[i] = v</code>, indexed assignment
+</p>
 </dd>
 <dt class="hdlist1"><code>firstindex(X)</code></dt>
 <dd>
-<p>The first index</p>
+<p>The first index
+</p>
 </dd>
 <dt class="hdlist1"><code>lastindex(X)</code></dt>
 <dd>
-<p>The last index, used in <code>X[end]</code></p>
+<p>The last index, used in <code>X[end]</code>
+</p>
 </dd>
 </dl>
 </div>
@@ -16326,6 +16411,11 @@ suffix)</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>===</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ℯ</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\euler</code></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>∈</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\in</code></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>in</code></p></td>
@@ -16356,6 +16446,11 @@ suffix)</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>pi</code></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>⊆</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\subseteq</code></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ε</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\varepsilon</code></strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -16373,7 +16468,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-01 11:09:38 CEST
+Last updated 2018-09-01 21:52:55 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
