@@ -64,7 +64,7 @@ julia> fs[2]()
 The returned functions are _closures_ and the variable +i+ is common to both of them.
 (((closures)))
 
-A _let block_ create new variable bindings and provides a solution to our problem:
+A _let block_ creates new variable bindings and provides a solution to our problem:
 (((let block)))(((let)))((("keyword", "let", see="let")))
 
 [source,@julia-setup chap19]
@@ -273,7 +273,7 @@ julia> take!(fib_gen)
 3
 ----
 
-The function +fib+ is suspended after each call to +put!+ and resumed after +take!+. For performance reasons, several values of the sequence are buffered in the channel object between the resume/suspend cycle.
+The function +fib+ is suspended after each call to +put!+ and resumed after +take!+. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.
 
 A channel object can also be used as an iterator:
 
@@ -610,7 +610,7 @@ julia> y
 _missing values_ can be represented via the +missing+ object, which is the singleton instance of the type +Missing+.
 (((missing values)))(((missing)))(((Missing)))((("type", "Base", "Missing", see="Missing")))
 
-Arrays containing missing values can be created like other arrays:
+Arrays can contain missing values:
 
 [source,@julia-repl-test chap19]
 ----
@@ -620,7 +620,7 @@ julia> a = [1, missing]
   missing
 ----
 
-The element type of such arrays is +Union{Missing, T}+, with +T+ the type of the non-missing values.
+The element type of such an array is +Union{Missing, T}+, with +T+ the type of the non-missing values.
 
 Reduction functions return +missing+ when called on arrays which contain missing values
 
@@ -630,7 +630,7 @@ julia> sum(a)
 missing
 ----
 
-In this situation, use the skipmissing function to skip missing values:
+In this situation, use the +skipmissing+ function to skip missing values:
 (((skipmissing)))((("function", "Base", "skipmissing", see="skipmissing")))
 
 [source,@julia-repl-test chap19]

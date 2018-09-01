@@ -382,7 +382,7 @@ They are also highly detailed; for some purposes, too detailed. A _type diagram_
 
 There are several kinds of relationship between types:
 
-* Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point.
+* Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point”.
 (((HAS-A)))
 
 * One type might has supertype an abstract type. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
