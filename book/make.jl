@@ -57,8 +57,7 @@ elseif "html" in ARGS
   book = replace(book, "\\begin{equation}\\n{"=> "")
   book = replace(book, "}\\n\\end{equation}"=> "")
   write("build/book.html", book)
-end
-if "oreilly" in ARGS
+elseif "oreilly" in ARGS
   run(`cp build/chap01.asciidoc $oreilly`)
   run(`cp build/chap02.asciidoc $oreilly`)
   run(`cp build/chap03.asciidoc $oreilly`)
@@ -113,6 +112,6 @@ if "deploy" in ARGS
     branch = "gh-pages",
     latest = "master",
     osname = "osx",
-    julia  = "nightly",
+    julia  = "1.0",
   )
 end

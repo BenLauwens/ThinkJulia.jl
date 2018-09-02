@@ -12,7 +12,7 @@ notifications:
 git:
   depth: 99999999
 install:
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install lmodern texlive-luatex texlive-xetex texlive-latex-extra pgf; else brew update; travis_wait 30 brew cask install mactex-no-gui; fi
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install lmodern texlive-luatex texlive-xetex texlive-latex-extra pgf; else brew cask install mactex-no-gui; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install ttf-ubuntu-font-family fonts-dejavu; else brew tap homebrew/cask-fonts; brew cask install font-ubuntu font-dejavu-sans; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install pdf2svg; else brew install pdf2svg; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install libgdbm3; else brew upgrade gdbm; fi
