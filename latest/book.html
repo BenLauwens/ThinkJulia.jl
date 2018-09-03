@@ -681,7 +681,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_reverse_lookup">Reverse Lookup</a></li>
 <li><a href="#_dictionaries_and_arrays">Dictionaries and Arrays</a></li>
 <li><a href="#memos">Memos</a></li>
-<li><a href="#_global_variables">Global Variables</a></li>
+<li><a href="#global_variables">Global Variables</a></li>
 <li><a href="#_debugging_9">Debugging</a></li>
 <li><a href="#_glossary_11">Glossary</a></li>
 <li><a href="#_exercises_13">Exercises</a></li>
@@ -777,7 +777,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#chap18">18. Subtyping</a>
 <ul class="sectlevel2">
 <li><a href="#_cards">Cards</a></li>
-<li><a href="#_global_variables_2">Global Variables</a></li>
+<li><a href="#_global_variables">Global Variables</a></li>
 <li><a href="#_comparing_cards">Comparing Cards</a></li>
 <li><a href="#_unit_testing">Unit Testing</a></li>
 <li><a href="#_decks">Decks</a></li>
@@ -4233,7 +4233,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535971702550182e9</span></code></pre>
+<span class="tok-go">1.535973530073176e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6064,7 +6064,7 @@ Done!</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the case of <code>fruits</code>, the character <code>🍌</code> is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character&#8217;s index is 5; this next valid index can be computed by <code>nextind(fruit, 1)</code>, and the next index after that by <code>nextind(fruit, 5)</code> and so on.
+<p>In the case of <code>fruits</code>, the character <code>🍌</code> is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character&#8217;s index is 5; this next valid index can be computed by <code>nextind(fruits, 1)</code>, and the next index after that by <code>nextind(fruits, 5)</code> and so on.
 </p>
 </div>
 </div>
@@ -6080,7 +6080,7 @@ Done!</code></pre>
 <span class="tok-k">while</span> <span class="tok-n">index</span> <span class="tok-o">&lt;=</span> <span class="tok-n">sizeof</span><span class="tok-p">(</span><span class="tok-n">fruits</span><span class="tok-p">)</span>
     <span class="tok-n">letter</span> <span class="tok-o">=</span> <span class="tok-n">fruits</span><span class="tok-p">[</span><span class="tok-n">index</span><span class="tok-p">]</span>
     <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">letter</span><span class="tok-p">)</span>
-    <span class="tok-n">index</span> <span class="tok-o">=</span> <span class="tok-n">nextind</span><span class="tok-p">(</span><span class="tok-n">fruits</span><span class="tok-p">,</span> <span class="tok-n">index</span><span class="tok-p">)</span>
+    <span class="tok-kd">global</span> <span class="tok-n">index</span> <span class="tok-o">=</span> <span class="tok-n">nextind</span><span class="tok-p">(</span><span class="tok-n">fruits</span><span class="tok-p">,</span> <span class="tok-n">index</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -6088,7 +6088,7 @@ Done!</code></pre>
 <p>This loop traverses the string and displays each letter on a line by itself. The loop condition is <code>index &#8656; sizeof(fruit)</code>, so when index is larger than the number of bytes in the string, the condition is <code>false</code>, and the body of the loop doesn’t run.</p>
 </div>
 <div class="paragraph">
-<p>The function <code>firstindex</code> returns the first valid byte index.
+<p>The function <code>firstindex</code> returns the first valid byte index. The keyword <code>global</code> before <code>index</code> indicates that we want to modify a variable defined outside the loop (see <a href="#global_variables">Global Variables</a>).
 </p>
 </div>
 <div class="admonitionblock tip">
@@ -6217,7 +6217,7 @@ Qack</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">greeting</span> <span class="tok-o">=</span> <span class="tok-s">&quot;Hello, world!&quot;</span>
 <span class="tok-go">&quot;Hello, world!&quot;</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">greeting</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-sc">&#39;J&#39;</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">greeting</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-sc">&#39;J&#39;</span>
 <span class="tok-gr">ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)</span></code></pre>
 </div>
 </div>
@@ -8990,7 +8990,7 @@ Qack</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_global_variables">Global Variables</h3>
+<h3 id="global_variables">Global Variables</h3>
 <div class="paragraph">
 <p>In the previous example, known is created outside the function, so it belongs to the special frame called <code>__main__</code>. Variables in <code>__main__</code> are sometimes called <em>global</em> because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
 </p>
@@ -13419,7 +13419,7 @@ suffix)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_global_variables_2">Global Variables</h3>
+<h3 id="_global_variables">Global Variables</h3>
 <div class="paragraph">
 <p>In order to print <code>Card</code> objects in a way that people can easily read, we need a mapping from the integer codes to the corresponding ranks and suits. A natural way to do that is with arrays of strings:</p>
 </div>
@@ -16338,7 +16338,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-03 12:48:18 CEST
+Last updated 2018-09-03 13:18:45 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
