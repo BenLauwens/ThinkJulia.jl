@@ -131,7 +131,7 @@ julia> fruits[2]
 ERROR: StringIndexError("🍌 🍎 🍐", 2)
 ----
 
-In the case of +fruits+, the character +🍌+ is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by +nextind(fruit, 1)+, and the next index after that by +nextind(fruit, 5)+ and so on.
+In the case of +fruits+, the character +🍌+ is a four-byte character, so the indices 2, 3 and 4 are invalid and the next character's index is 5; this next valid index can be computed by +nextind(fruits, 1)+, and the next index after that by +nextind(fruits, 5)+ and so on.
 (((nextind)))((("function", "Base", "nextind", see="nextind")))
 
 
@@ -140,20 +140,20 @@ In the case of +fruits+, the character +🍌+ is a four-byte character, so the i
 A lot of computations involve processing a string one character at a time. Often they start at the beginning, select each character in turn, do something to it, and continue until the end. This pattern of processing is called a _traversal_. One way to write a traversal is with a +while+ loop:
 (((traversal)))(((while statement)))
 
-[source,julia]
+[source,@julia-setup chap08]
 ----
 index = firstindex(fruits)
 while index <= sizeof(fruits)
     letter = fruits[index]
     println(letter)
-    index = nextind(fruits, index)
+    global index = nextind(fruits, index)
 end
 ----
 
-This loop traverses the string and displays each letter on a line by itself. The loop condition is +index <= sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run.
+This loop traverses the string and displays each letter on a line by itself. The loop condition is +index <= sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run. 
 
-The function +firstindex+ returns the first valid byte index.
-(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
+The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to modify a variable defined outside the loop (see <<global_variables>>).
+(((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
 [TIP]
 ====
@@ -163,7 +163,7 @@ As an exercise, write a function that takes a string as an argument and displays
 Another way to write a traversal is with a +for+ loop:
 (((for statement)))(((in)))
 
-[source,julia]
+[source,@julia-setup chap08]
 ----
 for letter in fruits
     println(letter)
@@ -238,7 +238,7 @@ It is tempting to use the +[]+ operator on the left side of an assignment, with 
 ----
 julia> greeting = "Hello, world!"
 "Hello, world!"
-julia> greeting[0] = 'J'
+julia> greeting[1] = 'J'
 ERROR: MethodError: no method matching setindex!(::String, ::Char, ::Int64)
 ----
 

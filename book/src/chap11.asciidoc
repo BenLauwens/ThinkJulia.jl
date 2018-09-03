@@ -397,7 +397,7 @@ Whenever +fibonacci+ is called, it checks +known+. If the result is already ther
 
 If you run this version of +fibonacci+ and compare it with the original, you will find that it is much faster.
 
-
+[[global_variables]]
 === Global Variables
 
 In the previous example, known is created outside the function, so it belongs to the special frame called +pass:[__main__]+. Variables in +pass:[__main__]+ are sometimes called _global_ because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
