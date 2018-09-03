@@ -806,7 +806,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_glossary_19">Glossary</a></li>
 </ul>
 </li>
-<li><a href="#chap20">20. The Goodies: Base</a>
+<li><a href="#chap20">20. The Goodies: Base and Standard Library</a>
 <ul class="sectlevel2">
 <li><a href="#_measuring_performance">Measuring Performance</a></li>
 <li><a href="#collections_and_data_structures">Collections and Data Structures</a></li>
@@ -814,28 +814,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_strings">Strings</a></li>
 <li><a href="#_arrays">Arrays</a></li>
 <li><a href="#_interfaces">Interfaces</a></li>
+<li><a href="#_interactive_utilities">Interactive Utilities</a></li>
+<li><a href="#_debugging_16">Debugging</a></li>
 <li><a href="#_glossary_20">Glossary</a></li>
 </ul>
 </li>
-<li><a href="#chap21">21. The Goodies: Standard Library</a>
-<ul class="sectlevel2">
-<li><a href="#_dates">Dates</a></li>
-<li><a href="#_delimited_files">Delimited Files</a></li>
-<li><a href="#_distributed_computing_and_shared_arrays">Distributed Computing and Shared Arrays</a></li>
-<li><a href="#_interactive_utilities">Interactive Utilities</a></li>
-<li><a href="#_linear_algebra">Linear Algebra</a></li>
-<li><a href="#_logging">Logging</a></li>
-<li><a href="#_profiling">Profiling</a></li>
-<li><a href="#_sockets">Sockets</a></li>
-<li><a href="#_sparse_arrays">Sparse Arrays</a></li>
-<li><a href="#_statistics">Statistics</a></li>
-</ul>
-</li>
-<li><a href="#chap22">22. Debugging</a>
+<li><a href="#chap21">21. Debugging</a>
 <ul class="sectlevel2">
 <li><a href="#_syntax_errors">Syntax Errors</a></li>
 <li><a href="#_runtime_errors">Runtime Errors</a></li>
 <li><a href="#_semantic_errors">Semantic Errors</a></li>
+</ul>
+</li>
+<li><a href="#chap22">22. Debugging</a>
+<ul class="sectlevel2">
+<li><a href="#_syntax_errors_2">Syntax Errors</a></li>
+<li><a href="#_runtime_errors_2">Runtime Errors</a></li>
+<li><a href="#_semantic_errors_2">Semantic Errors</a></li>
 </ul>
 </li>
 <li><a href="#_unicode_input">Appendix A: Unicode Input</a></li>
@@ -4236,7 +4231,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535927915217022e9</span></code></pre>
+<span class="tok-go">1.535968791606594e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13973,59 +13968,73 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">encode</dt>
 <dd>
-<p>To represent one set of values using another set of values by constructing a mapping between them.</p>
+<p>To represent one set of values using another set of values by constructing a mapping between them.
+</p>
 </dd>
 <dt class="hdlist1">unit testing</dt>
 <dd>
-<p>Standardized way to test the correctness of code.</p>
+<p>Standardized way to test the correctness of code.
+</p>
 </dd>
 <dt class="hdlist1">veneer</dt>
 <dd>
-<p>A method or function that provides a different interface to another function without doing much computation.</p>
+<p>A method or function that provides a different interface to another function without doing much computation.
+</p>
 </dd>
 <dt class="hdlist1">subtyping</dt>
 <dd>
-<p>The ability to define a hierarchy of related types.</p>
+<p>The ability to define a hierarchy of related types.
+</p>
 </dd>
 <dt class="hdlist1">abstract type</dt>
 <dd>
-<p>A type that can act as a parent for another type.</p>
+<p>A type that can act as a parent for another type.
+</p>
 </dd>
 <dt class="hdlist1">concrete type</dt>
 <dd>
-<p>A type that can be constructed.</p>
+<p>A type that can be constructed.
+</p>
 </dd>
 <dt class="hdlist1">subtype</dt>
 <dd>
-<p>A type that has as parent an abstract type.</p>
+<p>A type that has as parent an abstract type.
+</p>
 </dd>
 <dt class="hdlist1">supertype</dt>
 <dd>
-<p>An abstract type that is the parent of another type.</p>
+<p>An abstract type that is the parent of another type.
+</p>
 </dd>
 <dt class="hdlist1">IS-A relationship</dt>
 <dd>
-<p>A relationship between a subtype and its supertype.</p>
+<p>A relationship between a subtype and its supertype.
+</p>
 </dd>
 <dt class="hdlist1">HAS-A relationship</dt>
 <dd>
-<p>A relationship between two types where instances of one type contain references to instances of the other.</p>
+<p>A relationship between two types where instances of one type contain references to instances of the other.
+</p>
 </dd>
 <dt class="hdlist1">dependency</dt>
 <dd>
-<p>A relationship between two types where instances of one type use instances of the other type, but do not store them as fields.</p>
+<p>A relationship between two types where instances of one type use instances of the other type, but do not store them as fields.
+</p>
 </dd>
 <dt class="hdlist1">type diagram</dt>
 <dd>
-<p>A diagram that shows the types in a program and the relationships between them.</p>
+<p>A diagram that shows the types in a program and the relationships between them.
+</p>
 </dd>
 <dt class="hdlist1">multiplicity</dt>
 <dd>
-<p>A notation in a class diagram that shows, for a HAS-A relationship, how many references there are to instances of another class.</p>
+<p>A notation in a type diagram that shows, for a HAS-A relationship, how many references there are to instances of another class.
+</p>
 </dd>
 <dt class="hdlist1">data encapsulation</dt>
 <dd>
-<p>A program development plan that involves a prototype using global variables and a final version that makes the global variables into instance fields.</p>
+<p>A program development plan that involves a prototype using global variables and a final version that makes the global variables into instance fields.
+</p>
 </dd>
 </dl>
 </div>
@@ -14146,7 +14155,7 @@ suffix)</p>
 <p>Now I want to go back for some of the good bits that got left behind. Julia provides a number of features that are not really necessary—you can write good code without them—but with them you can sometimes write code that’s more concise, readable or efficient, and sometimes all three.</p>
 </div>
 <div class="paragraph">
-<p>This chapter and the two following discuss the things I have left out in the previous chapters:</p>
+<p>This chapter and the next discuss the things I have left out in the previous chapters:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -14193,7 +14202,7 @@ suffix)</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span>        <span class="tok-c"># WRONG</span>
     <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Function</span><span class="tok-p">[]</span>
     <span class="tok-k">while</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span>
         <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">res</span><span class="tok-p">,</span> <span class="tok-p">()</span><span class="tok-o">-&gt;</span><span class="tok-n">i</span><span class="tok-p">)</span>
@@ -14950,79 +14959,98 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">closure</dt>
 <dd>
-<p>Function that captures variables from its defining scope.</p>
+<p>Function that captures variables from its defining scope.
+</p>
 </dd>
 <dt class="hdlist1">let block</dt>
 <dd>
-<p>Block allocating new variable bindings.</p>
+<p>Block allocating new variable bindings.
+</p>
 </dd>
 <dt class="hdlist1">anonymous function</dt>
 <dd>
-<p>Function defined without being given a name.</p>
+<p>Function defined without being given a name.
+</p>
 </dd>
 <dt class="hdlist1">named tuple</dt>
 <dd>
-<p>Tuple with named components.</p>
+<p>Tuple with named components.
+</p>
 </dd>
 <dt class="hdlist1">keyword arguments</dt>
 <dd>
-<p>Arguments identified by name instead of only by position.</p>
+<p>Arguments identified by name instead of only by position.
+</p>
 </dd>
-<dt class="hdlist1"><code>do</code> block</dt>
+<dt class="hdlist1">do block</dt>
 <dd>
-<p>Syntax construction used to define and call an anonymous function which looks like a normal code block.</p>
+<p>Syntax construction used to define and call an anonymous function which looks like a normal code block.
+</p>
 </dd>
 <dt class="hdlist1">ternary operator</dt>
 <dd>
-<p>Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields <code>true</code> and an expression to be executed when the condition yields <code>false</code>.</p>
+<p>Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields <code>true</code> and an expression to be executed when the condition yields <code>false</code>.
+</p>
 </dd>
 <dt class="hdlist1">short-circuit evaluation</dt>
 <dd>
-<p>Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.</p>
+<p>Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
+</p>
 </dd>
 <dt class="hdlist1">task (aka coroutine)</dt>
 <dd>
-<p>Control flow feature that allows computations to be suspended and resumed in a flexible manner.</p>
+<p>Control flow feature that allows computations to be suspended and resumed in a flexible manner.
+</p>
 </dd>
 <dt class="hdlist1">primitive type</dt>
 <dd>
-<p>Concrete type whose data consists of plain old bits.</p>
+<p>Concrete type whose data consists of plain old bits.
+</p>
 </dd>
 <dt class="hdlist1">type union</dt>
 <dd>
-<p>Abstract type which includes as objects all instances of any of its argument types.</p>
+<p>Abstract type which includes as objects all instances of any of its argument types.
+</p>
 </dd>
 <dt class="hdlist1">parametric type</dt>
 <dd>
-<p>Type that can be parameterized.</p>
+<p>Type that can be parameterized.
+</p>
 </dd>
 <dt class="hdlist1">functor</dt>
 <dd>
-<p>Type with an associated method, so that it looks callable.</p>
+<p>Type with an associated method, so that it looks callable.
+</p>
 </dd>
 <dt class="hdlist1">conversion</dt>
 <dd>
-<p>Convert a value from one type to another.</p>
+<p>Convert a value from one type to another.
+</p>
 </dd>
 <dt class="hdlist1">promotion</dt>
 <dd>
-<p>Converting values of mixed types to a single common type</p>
+<p>Converting values of mixed types to a single common type.
+</p>
 </dd>
 <dt class="hdlist1">expression</dt>
 <dd>
-<p>Julia type that holds a language construct.</p>
+<p>Julia type that holds a language construct.
+</p>
 </dd>
 <dt class="hdlist1">macro</dt>
 <dd>
-<p>Way to include generated code in the final body of a program.</p>
+<p>Way to include generated code in the final body of a program.
+</p>
 </dd>
 <dt class="hdlist1">generated functions</dt>
 <dd>
-<p>Functions capable of generating specialized code depending on the types of the arguments.</p>
+<p>Functions capable of generating specialized code depending on the types of the arguments.
+</p>
 </dd>
 <dt class="hdlist1">missing values</dt>
 <dd>
-<p>Instances that represent data points with no value.</p>
+<p>Instances that represent data points with no value.
+</p>
 </dd>
 </dl>
 </div>
@@ -15030,14 +15058,32 @@ suffix)</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="chap20">20. The Goodies: Base</h2>
+<h2 id="chap20">20. The Goodies: Base and Standard Library</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>Base</code> contains a number of functions, types and macros that are directly available in Julia. Additional functionality can be imported from the Standard Library or from a growing collection of packages (<a href="https://juliaobserver.com" class="bare">https://juliaobserver.com</a>).
+<p><code>Base</code> contains a number of functions, types and macros that are directly available in Julia.
 </p>
 </div>
 <div class="paragraph">
-<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/stable/base/base/" class="bare">https://docs.julialang.org/en/stable/base/base/</a>.</p>
+<p>Julia provides also a large number of specialized modules in its Standard Library.  Functions, types and macros defined in the Standard Library have to be imported before they can be used:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import <em>Module</em></code> imports the module, and <code><em>Module.fn</em>(x)</code> calls the function <code><em>fn</em></code>
+</p>
+</li>
+<li>
+<p><code>using <em>Module</em></code> imports all exported <code><em>Module</em></code> functions, types and macros.
+</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional functionality can be added from a growing collection of packages (<a href="https://juliaobserver.com" class="bare">https://juliaobserver.com</a>).</p>
+</div>
+<div class="paragraph">
+<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/stable/" class="bare">https://docs.julialang.org/en/stable/</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_measuring_performance">Measuring Performance</h3>
@@ -15060,7 +15106,14 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p><code>@time</code> prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. There ain&#8217;t no such thing as a free lunch!</p>
+<p><code>@time</code> prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>There ain&#8217;t no such thing as a free lunch!</p>
+</div>
+</blockquote>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -15104,7 +15157,8 @@ suffix)</p>
 </p>
 </div>
 <div class="paragraph">
-<p>For example, set subtraction is available as a function called <code>setdiff</code>. So we can rewrite <code>subtract</code> like this:</p>
+<p>For example, set subtraction is available as a function called <code>setdiff</code>. So we can rewrite <code>subtract</code> like this:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15199,7 +15253,7 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_mathematics">Mathematics</h3>
 <div class="paragraph">
-<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \(i\), representing the principal square root of \(-1\).
+<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \($i$\), representing the principal square root of \($-1$\).
 </p>
 </div>
 <div class="paragraph">
@@ -15227,7 +15281,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>We can test this formula for different values of \(x\).</p>
+<p>We can test this formula for different values of \($x$\).</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15323,7 +15377,7 @@ suffix)</p>
 <p>In <a href="#chap10">Arrays</a> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s create a 2-by-3 zero matrix:
+<p>Let&#8217;s create a 2-by-3 zero <em>matrix</em>:
 </p>
 </div>
 <div class="listingblock">
@@ -15448,10 +15502,16 @@ suffix)</p>
 <div class="sect2">
 <h3 id="_interfaces">Interfaces</h3>
 <div class="paragraph">
-<p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors. If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck.</p>
+<p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors.
+</p>
 </div>
-<div class="sect3">
-<h4 id="_iterators">Iterators</h4>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck.</p>
+</div>
+</blockquote>
+</div>
 <div class="paragraph">
 <p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
 </div>
@@ -15469,7 +15529,7 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>I implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator an returns a tuple consisting of the first value, \(0\), and a state. The state in this case is a tuple containing the second and the third value, \(1\) and \(1\).</p>
+<p>I implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator an returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.</p>
 </div>
 <div class="paragraph">
 <p>The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.</p>
@@ -15514,142 +15574,18 @@ suffix)</p>
 <p>This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_indexing_and_arrays">Indexing and Arrays</h4>
-<div class="paragraph">
-<p>What is an array? In Julia an array is defined as a type having as supertype an <code>AbstractArray</code> and implementing the indexing interface:
-</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>getindex(X, i)</code></dt>
-<dd>
-<p><code>X[i]</code>, indexed element access
-</p>
-</dd>
-<dt class="hdlist1"><code>setindex!(X, v, i)</code></dt>
-<dd>
-<p><code>X[i] = v</code>, indexed assignment
-</p>
-</dd>
-<dt class="hdlist1"><code>firstindex(X)</code></dt>
-<dd>
-<p>The first index
-</p>
-</dd>
-<dt class="hdlist1"><code>lastindex(X)</code></dt>
-<dd>
-<p>The last index, used in <code>X[end]</code>
-</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>This is all it takes to implements your own array-like type and to reuse all the goodies provided in Julia.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_glossary_20">Glossary</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">regex</dt>
-<dd>
-<p>Regular expression, a sequence of characters that define a search pattern.</p>
-</dd>
-</dl>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="chap21">21. The Goodies: Standard Library</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>As in the previous chapter, only small examples are given. Only the modules not yet mentioned in the other chapters are discussed. Further information can be found in the official Julia documentation.</p>
-</div>
-<div class="paragraph">
-<p>To use module functions:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>use <code>import <em>Module</em></code> to import the module, and <code><em>Module.fn</em>(x)</code> to use the functions</p>
-</li>
-<li>
-<p>alternatively, <code>using <em>Module</em></code> will import all exported <code><em>Module</em></code> functions into the current namespace.</p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="_dates">Dates</h3>
-<div class="paragraph">
-<p>The <code>Dates</code> module provides two types for working with dates: <code>Date</code> and <code>DateTime</code>, representing day and millisecond precision, respectively.</p>
-</div>
-<div class="paragraph">
-<p>In <a href="#chap16">Structs and Functions</a> I defined a time type. We can also use the <code>Dates</code> module:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Dates</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">d1</span> <span class="tok-o">=</span> <span class="tok-kt">Date</span><span class="tok-p">(</span><span class="tok-mi">2015</span><span class="tok-p">,</span> <span class="tok-mi">6</span><span class="tok-p">,</span> <span class="tok-mi">23</span><span class="tok-p">)</span>
-<span class="tok-go">2015-06-23</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">d2</span> <span class="tok-o">=</span> <span class="tok-kt">Date</span><span class="tok-p">(</span><span class="tok-mi">2017</span><span class="tok-p">,</span> <span class="tok-mi">6</span><span class="tok-p">,</span> <span class="tok-mi">16</span><span class="tok-p">)</span>
-<span class="tok-go">2017-06-16</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">d2</span> <span class="tok-o">-</span> <span class="tok-n">d1</span>
-<span class="tok-go">724 days</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>So the difference in age between my 2 sons is \(724\) days.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_delimited_files">Delimited Files</h3>
-<div class="paragraph">
-<p>Often we want to read or write data from or to a file in a structured way. The <code>DelimitedFiles</code> module allows us to store values row by row as lines in a file with elements separated by the given delimiter.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">DelimitedFiles</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">;</span> <span class="tok-mi">2</span><span class="tok-p">;</span> <span class="tok-mi">3</span><span class="tok-p">;</span> <span class="tok-mi">4</span><span class="tok-p">];</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">5</span><span class="tok-p">;</span> <span class="tok-mi">6</span><span class="tok-p">;</span> <span class="tok-mi">7</span><span class="tok-p">;</span> <span class="tok-mi">8</span><span class="tok-p">];</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;delim_file.txt&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span> <span class="tok-k">do</span> <span class="tok-n">io</span>
-           <span class="tok-n">writedlm</span><span class="tok-p">(</span><span class="tok-n">io</span><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-n">x</span> <span class="tok-n">y</span><span class="tok-p">])</span>
-       <span class="tok-k">end</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">readdlm</span><span class="tok-p">(</span><span class="tok-s">&quot;delim_file.txt&quot;</span><span class="tok-p">,</span> <span class="tok-sc">&#39;\t&#39;</span><span class="tok-p">,</span> <span class="tok-kt">Int</span><span class="tok-p">,</span> <span class="tok-sc">&#39;\n&#39;</span><span class="tok-p">)</span>
-<span class="tok-go">4×2 Array{Int64,2}:</span>
-<span class="tok-go"> 1  5</span>
-<span class="tok-go"> 2  6</span>
-<span class="tok-go"> 3  7</span>
-<span class="tok-go"> 4  8</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_distributed_computing_and_shared_arrays">Distributed Computing and Shared Arrays</h3>
-<div class="paragraph">
-<p>Julia provides a module <code>Distributed</code> to distribute the workload over multiple cores or remote machines. A clustermanager or the ssh protocol can be used to communicate between remote machines.</p>
-</div>
-<div class="paragraph">
-<p>The shared arrays or the <code>SharedArrays</code> module use system shared memory to map the same array across many processes. A shared array is a good choice when you want to have a large amount of data jointly accessible to two or more processes on the same machine.</p>
-</div>
-</div>
 <div class="sect2">
 <h3 id="_interactive_utilities">Interactive Utilities</h3>
 <div class="paragraph">
-<p>We have already met the <code>InteractiveUtils</code> module in <a href="#chap18">Subtyping</a>. The <code>@which</code> macro is only the tip of the iceberg.</p>
+<p>We have already met the <code>InteractiveUtils</code> module in <a href="#chap18">Subtyping</a>. The <code>@which</code> macro is only the tip of the iceberg.
+</p>
 </div>
 <div class="paragraph">
 <p>Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s give a simple example:</p>
+<p>Let&#8217;s give a simple example:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15659,10 +15595,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>@noinline</code> macro prohibits the inlining of the function call.</p>
+<p>The <code>@noinline</code> macro prohibits the inlining of the function call.
+</p>
 </div>
 <div class="paragraph">
-<p>The first step is to look at the lowered code:</p>
+<p>The first step is to look at the lowered code:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15683,14 +15621,17 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>code_lowered</code> macro returns an array of an intermediate representation of the code that is used by the compiler to generate optimised code.</p>
+<p>The <code>code_lowered</code> macro returns an array of an <em>intermediate representation</em> of the code that is used by the compiler to generate optimised code.
+</p>
 </div>
 <div class="paragraph">
-<p>The next step adds type information:</p>
+<p>The next step adds type information:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-go">CodeInfo(</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_typed</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
+<span class="tok-go">CodeInfo(</span>
 <span class="tok-go">2 1 ─ %1 = (Base.mul_float)(a, a)::Float64</span>
 <span class="tok-go">  │   %2 = (Base.mul_float)(b, b)::Float64</span>
 <span class="tok-go">  │   %3 = (Base.add_float)(%1, %2)::Float64</span>
@@ -15702,7 +15643,8 @@ suffix)</p>
 <p>We see that the type of the intermediate results and the return value is correctly inferred.</p>
 </div>
 <div class="paragraph">
-<p>This representation of the code is transformed in LLVM code:</p>
+<p>This representation of the code is transformed in LLVM code:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15728,7 +15670,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>And finally the machinecode is generated:</p>
+<p>And finally the <em>machine code</em> is generated:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15754,35 +15697,10 @@ suffix)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_linear_algebra">Linear Algebra</h3>
+<h3 id="_debugging_16">Debugging</h3>
 <div class="paragraph">
-<p>The <code>LinearAlgebra</code> modules provides native implementations of many common and useful linear algebra operations.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">LinearAlgebra</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">A</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span> <span class="tok-mi">2</span> <span class="tok-mi">3</span><span class="tok-p">;</span> <span class="tok-mi">4</span> <span class="tok-mi">1</span> <span class="tok-mi">6</span><span class="tok-p">;</span> <span class="tok-mi">7</span> <span class="tok-mi">8</span> <span class="tok-mi">1</span><span class="tok-p">]</span>
-<span class="tok-go">3×3 Array{Int64,2}:</span>
-<span class="tok-go"> 1  2  3</span>
-<span class="tok-go"> 4  1  6</span>
-<span class="tok-go"> 7  8  1</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">tr</span><span class="tok-p">(</span><span class="tok-n">A</span><span class="tok-p">)</span>
-<span class="tok-go">3</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">det</span><span class="tok-p">(</span><span class="tok-n">A</span><span class="tok-p">)</span>
-<span class="tok-go">104.0</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">inv</span><span class="tok-p">(</span><span class="tok-n">A</span><span class="tok-p">)</span>
-<span class="tok-go">3×3 Array{Float64,2}:</span>
-<span class="tok-go"> -0.451923   0.211538    0.0865385</span>
-<span class="tok-go">  0.365385  -0.192308    0.0576923</span>
-<span class="tok-go">  0.240385   0.0576923  -0.0673077</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_logging">Logging</h3>
-<div class="paragraph">
-<p>The <code>Logging</code> module provides a way to record the history and progress of a computation as a log of events. Events are created by inserting a logging statement into the source code, for example:</p>
+<p>The <code>Logging</code> macros provide an alternative to scaffolding with print statements:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15792,7 +15710,8 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The system provides several advantages over peppering your source code with calls to <code>println</code>. It allows you to control the visibility and presentation of messages without editing the source code. For example, in contrast to the <code>@warn</code> above</p>
+<p>The debug statement don&#8217;t have to be removed from the source. For example, in contrast to the <code>@warn</code> above
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15800,10 +15719,12 @@ suffix)</p>
 </div>
 </div>
 <div class="paragraph">
-<p>will produce no output by default. Furthermore, it&#8217;s very cheap to leave debug statements like this in the source code because the system avoids evaluating the message if it would later be ignored. In this case <code>sum(rand(100))</code> and the associated string processing will never be executed unless debug logging is enabled.</p>
+<p>will produce no output by default. In this case <code>sum(rand(100))</code> will never be evaluated unless <em>debug logging</em> is enabled.
+</p>
 </div>
 <div class="paragraph">
-<p>The level of logging can be selected by an environment variable <code>JULIA_DEBUG</code>, for example:</p>
+<p>The level of logging can be selected by an environment variable <code>JULIA_DEBUG</code>:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15817,96 +15738,41 @@ suffix)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_profiling">Profiling</h3>
-<div class="paragraph">
-<p>The <code>Profile</code> module provides tools to help developers improve the performance of their code. When used, it takes measurements on running code, and produces output that helps you understand how much time is spent on individual line(s). The most common usage is to identify “bottlenecks“ as targets for optimization.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sockets">Sockets</h3>
-<div class="paragraph">
-<p>We used the standard IO streams in <a href="#chap14">Files</a> to read and write to a file. Julia provides also network streams to communicate over the internet.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s create a server:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">using</span> <span class="tok-n">Sockets</span>
-
-<span class="tok-nd">@async</span> <span class="tok-k">begin</span>
-    <span class="tok-n">server</span> <span class="tok-o">=</span> <span class="tok-n">listen</span><span class="tok-p">(</span><span class="tok-mi">2000</span><span class="tok-p">)</span>
-    <span class="tok-k">while</span> <span class="tok-kc">true</span>
-        <span class="tok-n">sock</span> <span class="tok-o">=</span> <span class="tok-n">accept</span><span class="tok-p">(</span><span class="tok-n">server</span><span class="tok-p">)</span>
-        <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Hello World</span><span class="tok-se">\n</span><span class="tok-s">&quot;</span><span class="tok-p">)</span>
-    <span class="tok-k">end</span>
-<span class="tok-k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To those familiar with the Unix socket API, the method names will feel familiar, though their usage is somewhat simpler than the raw Unix socket API. The first call to <code>listen</code> will create a server waiting for incoming connections on the specified port (2000) in this case.</p>
-</div>
-<div class="paragraph">
-<p>The <code>accept</code> function retrieves a connection to the client that is connecting to the server we just created, while the <code>connect</code> function takes the same arguments as <code>listen</code>, so, assuming the environment (i.e. host, cwd, etc.) is the same you should be able to pass the same arguments to connect as you did to listen to establish the connection. So let&#8217;s try that out:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">conn</span> <span class="tok-o">=</span> <span class="tok-n">connect</span><span class="tok-p">(</span><span class="tok-mi">2000</span><span class="tok-p">)</span>
-
-<span class="tok-go">Hello World</span>
-<span class="tok-go">Sockets.TCPSocket(RawFD(0x00000019) open, 0 bytes waiting)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As expected we saw <code>"Hello World"</code> printed. So, let&#8217;s actually analyze what happened behind the scenes. When we called <code>connect</code>, we connect to the server we had just created. Meanwhile, the <code>accept</code> function returns a server-side connection to the newly created socket and prints <code>"Hello World"</code> to indicate that the connection was successful.</p>
-</div>
-<div class="paragraph">
-<p>Once we have established a connection with the server, we can use the <code>read</code> and <code>write</code> functions to communicate.</p>
-</div>
-<div class="paragraph">
-<p>As with other streams, <code>close</code> is used to disconnect the socket:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">close</span><span class="tok-p">(</span><span class="tok-n">conn</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sparse_arrays">Sparse Arrays</h3>
-<div class="paragraph">
-<p>Julia has support for sparse vectors and sparse matrices in the <code>SparseArrays</code> module. Sparse arrays are arrays that contain enough zeros that storing them in a special data structure leads to savings in space and execution time, compared to dense arrays.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_statistics">Statistics</h3>
-<div class="paragraph">
-<p>The <code>Statistics</code> module contains basic statistics functionality.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Statistics</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">data</span> <span class="tok-o">=</span> <span class="tok-n">rand</span><span class="tok-p">(</span><span class="tok-mi">100</span><span class="tok-p">);</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">mean</span><span class="tok-p">(</span><span class="tok-n">data</span><span class="tok-p">)</span>
-<span class="tok-go">0.4653206876448169</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">median</span><span class="tok-p">(</span><span class="tok-n">data</span><span class="tok-p">)</span>
-<span class="tok-go">0.4449296373479631</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">std</span><span class="tok-p">(</span><span class="tok-n">data</span><span class="tok-p">)</span>
-<span class="tok-go">0.2794859135916336</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">quantile</span><span class="tok-p">(</span><span class="tok-n">data</span><span class="tok-p">,</span> <span class="tok-p">[</span><span class="tok-mf">0.25</span><span class="tok-p">,</span><span class="tok-mf">0.5</span><span class="tok-p">,</span> <span class="tok-mf">0.75</span><span class="tok-p">])</span>
-<span class="tok-go">3-element Array{Float64,1}:</span>
-<span class="tok-go"> 0.26176145742656</span>
-<span class="tok-go"> 0.4449296373479631</span>
-<span class="tok-go"> 0.7031069804883248</span></code></pre>
-</div>
+<h3 id="_glossary_20">Glossary</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">regex</dt>
+<dd>
+<p>Regular expression, a sequence of characters that define a search pattern.
+</p>
+</dd>
+<dt class="hdlist1">matrix</dt>
+<dd>
+<p>Two-dimensional array.
+</p>
+</dd>
+<dt class="hdlist1">intermediate representation</dt>
+<dd>
+<p>Data structure used internally by a compiler to represent source code.
+</p>
+</dd>
+<dt class="hdlist1">machine code</dt>
+<dd>
+<p>Language instructions that can be executed directly by a computer&#8217;s central processing unit.
+</p>
+</dd>
+<dt class="hdlist1">debug logging</dt>
+<dd>
+<p>Storing debug messages in a log.
+</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="chap22">22. Debugging</h2>
+<h2 id="chap21">21. Debugging</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When you are debugging, you should distinguish among different kinds of errors in order to track them down more quickly:</p>
@@ -16347,6 +16213,447 @@ suffix)</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="chap22">22. Debugging</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you are debugging, you should distinguish among different kinds of errors in order to track them down more quickly:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Syntax errors are discovered by the interpreter when it is translating the source code into byte code. They indicate that there is something wrong with the structure of the program. Example: Omitting the <code>end</code> keyword at the end of a function block generates the somewhat redundant message <code>ERROR: LoadError: syntax: incomplete: function requires end</code>.</p>
+</li>
+<li>
+<p>Runtime errors are produced by the interpreter if something goes wrong while the program is running. Most runtime error messages include information about where the error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error <code>ERROR: LoadError: StackOverflowError</code>.</p>
+</li>
+<li>
+<p>Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result. The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_syntax_errors_2">Syntax Errors</h3>
+<div class="paragraph">
+<p>Syntax errors are usually easy to fix once you figure out what they are. Unfortunately, the error messages are often not helpful. The most common messages are <code>ERROR: LoadError: syntax: incomplete: premature end of input</code> and <code>ERROR: LoadError: syntax: unexpected "="</code>, neither of which is very informative.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, the message does tell you where in the program the problem occurred. Actually, it tells you where Julia noticed a problem, which is not necessarily where the error is. Sometimes the error is prior to the location of the error message, often on the preceding line.</p>
+</div>
+<div class="paragraph">
+<p>If you are building the program incrementally, you should have a good idea about where the error is. It will be in the last line you added.</p>
+</div>
+<div class="paragraph">
+<p>If you are copying code from a book, start by comparing your code to the book’s code very carefully. Check every character. At the same time, remember that the book might be wrong, so if you see something that looks like a syntax error, it might be.</p>
+</div>
+<div class="paragraph">
+<p>Here are some ways to avoid the most common syntax errors:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make sure you are not using a Julia keyword for a variable name.</p>
+</li>
+<li>
+<p>Check that you have the <code>end</code> keyword at the end of every compound statement, including <code>for</code>, <code>while</code>, <code>if</code>, and <code>function</code> blocks.</p>
+</li>
+<li>
+<p>Make sure that any strings in the code have matching quotation marks. Make sure that all quotation marks are “straight quotes”, not “curly quotes”.</p>
+</li>
+<li>
+<p>If you have multiline strings with triple quotes , make sure you have terminated the string properly. An unterminated string may cause an invalid token error at the end of your program, or it may treat the following part of the program as a string until it comes to the next string. In the second case, it might not produce an error message at all!</p>
+</li>
+<li>
+<p>An unclosed opening operator—<code>(</code>, <code>{</code>, or <code>[</code>—makes Julia continue with the next line as part of the current statement. Generally, an error occurs almost immediately in the next line.</p>
+</li>
+<li>
+<p>Check for the classic <code>=</code> instead of <code>==</code> inside a conditional.</p>
+</li>
+<li>
+<p>If you have non-ASCII characters in the code (including strings and comments), that might cause a problem, although Julia usually handles non-ASCII characters. Be careful if you paste in text from a web page or other source.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If nothing works, move on to the next section&#8230;&#8203;</p>
+</div>
+<div class="sect3">
+<h4 id="_i_keep_making_changes_and_it_makes_no_difference_2">I keep making changes and it makes no difference</h4>
+<div class="paragraph">
+<p>If the REPL says there is an error and you don’t see it, that might be because you and the REPL are not looking at the same code. Check your programming environment to make sure that the program you are editing is the one Julia is trying to run.</p>
+</div>
+<div class="paragraph">
+<p>If you are not sure, try putting an obvious and deliberate syntax error at the beginning of the program. Now run it again. If the REPL doesn’t find the new error, you are not running the new code.</p>
+</div>
+<div class="paragraph">
+<p>There are a few likely culprits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You edited the file and forgot to save the changes before running it again. Some programming environments do this for you, but some don’t.</p>
+</li>
+<li>
+<p>You changed the name of the file, but you are still running the old name.</p>
+</li>
+<li>
+<p>Something in your development environment is configured incorrectly.</p>
+</li>
+<li>
+<p>If you are writing a module and using <code>using</code>, make sure you don’t give your module the same name as one of the standard Julia modules.</p>
+</li>
+<li>
+<p>If you are using <code>using</code> to import a module, remember that you have to restart the REPL or use <code>reload</code> to read a modified file. If you import the module again, it doesn’t do anything.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you get stuck and you can’t figure out what is going on, one approach is to start again with a new program like “Hello, World!”, and make sure you can get a known program to run. Then gradually add the pieces of the original program to the new one.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runtime_errors_2">Runtime Errors</h3>
+<div class="paragraph">
+<p>Once your program is syntactically correct, Julia can read it and at least start running it. What could possibly go wrong?</p>
+</div>
+<div class="sect3">
+<h4 id="_my_program_does_absolutely_nothing_2">My program does absolutely nothing</h4>
+<div class="paragraph">
+<p>This problem is most common when your file consists of functions and classes but does not actually invoke a function to start execution. This may be intentional if you only plan to import this module to supply classes and functions.</p>
+</div>
+<div class="paragraph">
+<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see “Flow of Execution” below).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_my_program_hangs_2">My program hangs</h4>
+<div class="paragraph">
+<p>If a program stops and seems to be doing nothing, it is “hanging”. Often that means that it is caught in an infinite loop or infinite recursion.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If there is a particular loop that you suspect is the problem, add a print statement immediately before the loop that says “entering the loop” and another immediately after that says “exiting the loop”.</p>
+<div class="paragraph">
+<p>Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <a href="#infinite_loop">Infinite Loop</a> below.</p>
+</div>
+</li>
+<li>
+<p>Most of the time, an infinite recursion will cause the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error. If that happens, go to <a href="#infinite_recursion">Infinite Recursion</a> below.</p>
+<div class="paragraph">
+<p>If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <a href="#infinite_recursion">Infinite Recursion</a>.</p>
+</div>
+</li>
+<li>
+<p>If neither of those steps works, start testing other loops and other recursive functions and methods.</p>
+</li>
+<li>
+<p>If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to <a href="#flow_of_execution">Flow of Execution</a> below.</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="infinite_loop">Infinite Loop</h5>
+<div class="paragraph">
+<p>If you think you have an infinite loop and you think you know what loop is causing the problem, add a print statement at the end of the loop that prints the values of the variables in the condition and the value of the condition.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">while</span> <span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span>
+  <span class="tok-c"># do something to x</span>
+  <span class="tok-c"># do something to y</span>
+  <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;x: &quot;</span><span class="tok-p">,</span> <span class="tok-n">x</span><span class="tok-p">)</span>
+  <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;y: &quot;</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">)</span>
+  <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;condition: &quot;</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span><span class="tok-p">))</span>
+<span class="tok-k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now when you run the program, you will see three lines of output for each time through the loop. The last time through the loop, the condition should be <code>false</code>. If the loop keeps going, you will be able to see the values of <code>x</code> and <code>y</code>, and you might figure out why they are not being updated correctly.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="infinite_recursion">Infinite Recursion</h5>
+<div class="paragraph">
+<p>Most of the time, infinite recursion causes the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error.</p>
+</div>
+<div class="paragraph">
+<p>If you suspect that a function is causing an infinite recursion, make sure that there is a base case. There should be some condition that causes the function to return without making a recursive invocation. If not, you need to rethink the algorithm and identify a base case.</p>
+</div>
+<div class="paragraph">
+<p>If there is a base case but the program doesn’t seem to be reaching it, add a print statement at the beginning of the function that prints the parameters. Now when you run the program, you will see a few lines of output every time the function is invoked, and you will see the parameter values. If the parameters are not moving toward the base case, you will get some ideas about why not.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="flow_of_execution">Flow of Execution</h5>
+<div class="paragraph">
+<p>If you are not sure how the flow of execution is moving through your program, add print statements to the beginning of each function with a message like “entering function foo”, where foo is the name of the function.</p>
+</div>
+<div class="paragraph">
+<p>Now when you run the program, it will print a trace of each function as it is invoked.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_when_i_run_the_program_i_get_an_exception_2">When I run the program I get an exception</h4>
+<div class="paragraph">
+<p>If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a stacktrace.</p>
+</div>
+<div class="paragraph">
+<p>The stacktrace identifies the function that is currently running, and then the function that called it, and then the function that called that, and so on. In other words, it traces the sequence of function calls that got you to where you are, including the line number in your file where each call occurred.</p>
+</div>
+<div class="paragraph">
+<p>The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ArgumentError</dt>
+<dd>
+<p>The parameters to a function call do not match a valid signature.</p>
+</dd>
+<dt class="hdlist1">BoundsError</dt>
+<dd>
+<p>An indexing operation into an array tried to access an out-of-bounds element.</p>
+</dd>
+<dt class="hdlist1">DivideError</dt>
+<dd>
+<p>Integer division was attempted with a denominator value of 0.</p>
+</dd>
+<dt class="hdlist1">DomainError</dt>
+<dd>
+<p>The argument to a function or constructor is outside the valid domain.</p>
+</dd>
+<dt class="hdlist1">EOFError</dt>
+<dd>
+<p>No more data was available to read from a file or stream.</p>
+</dd>
+<dt class="hdlist1">KeyError</dt>
+<dd>
+<p>An indexing operation into an <code>AbstractDict</code> (<code>Dict</code>) or <code>Set</code> like object tried to access or delete a non-existent element.</p>
+</dd>
+<dt class="hdlist1">MethodError</dt>
+<dd>
+<p>A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.</p>
+</dd>
+<dt class="hdlist1">OutOfMemoryError</dt>
+<dd>
+<p>An operation allocated too much memory for either the system or the garbage collector to handle properly.</p>
+</dd>
+<dt class="hdlist1">OverflowError</dt>
+<dd>
+<p>The result of an expression is too large for the specified type and will cause a wraparound.</p>
+</dd>
+<dt class="hdlist1">StackOverflowError</dt>
+<dd>
+<p>The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.</p>
+</dd>
+<dt class="hdlist1">UndefVarError</dt>
+<dd>
+<p>A symbol in the current scope is not defined.</p>
+</dd>
+<dt class="hdlist1">StringIndexError</dt>
+<dd>
+<p>An error occurred when trying to access a string at an index that is not valid.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_i_added_so_many_print_statements_i_get_inundated_with_output_2">I added so many print statements I get inundated with output</h4>
+<div class="paragraph">
+<p>One of the problems with using print statements for debugging is that you can end up buried in output. There are two ways to proceed: simplify the output or simplify the program.</p>
+</div>
+<div class="paragraph">
+<p>To simplify the output, you can remove or comment out print statements that aren’t helping, or combine them, or format the output so it is easier to understand.</p>
+</div>
+<div class="paragraph">
+<p>To simplify the program, there are several things you can do. First, scale down the problem the program is working on. For example, if you are searching a list, search a small list. If the program takes input from the user, give it the simplest input that causes the problem.</p>
+</div>
+<div class="paragraph">
+<p>Second, clean up the program. Remove dead code and reorganize the program to make it as easy to read as possible. For example, if you suspect that the problem is in a deeply nested part of the program, try rewriting that part with simpler structure. If you suspect a large function, try splitting it into smaller functions and testing them separately.</p>
+</div>
+<div class="paragraph">
+<p>Often the process of finding the minimal test case leads you to the bug. If you find that a program works in one situation but not in another, that gives you a clue about what is going on.</p>
+</div>
+<div class="paragraph">
+<p>Similarly, rewriting a piece of code can help you find subtle bugs. If you make a change that you think shouldn’t affect the program, and it does, that can tip you off.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_semantic_errors_2">Semantic Errors</h3>
+<div class="paragraph">
+<p>In some ways, semantic errors are the hardest to debug, because the interpreter provides no information about what is wrong. Only you know what the program is supposed to do.</p>
+</div>
+<div class="paragraph">
+<p>The first step is to make a connection between the program text and the behavior you are seeing. You need a hypothesis about what the program is actually doing. One of the things that makes that hard is that computers run so fast.</p>
+</div>
+<div class="paragraph">
+<p>You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often short compared to setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.</p>
+</div>
+<div class="sect3">
+<h4 id="_my_program_doesnt_work_2">My program doesn’t work</h4>
+<div class="paragraph">
+<p>You should ask yourself these questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Is there something the program was supposed to do but which doesn’t seem to be happening? Find the section of the code that performs that function and make sure it is executing when you think it should.</p>
+</li>
+<li>
+<p>Is something happening that shouldn’t? Find code in your program that performs that function and see if it is executing when it shouldn’t.</p>
+</li>
+<li>
+<p>Is a section of code producing an effect that is not what you expected? Make sure that you understand the code in question, especially if it involves functions or methods in other Julia modules. Read the documentation for the functions you call. Try them out by writing simple test cases and checking the results.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to program, you need a mental model of how programs work. If you write a program that doesn’t do what you expect, often the problem is not in the program; it’s in your mental model.</p>
+</div>
+<div class="paragraph">
+<p>The best way to correct your mental model is to break the program into its components (usually the functions and methods) and test each component independently. Once you find the discrepancy between your model and reality, you can solve the problem.</p>
+</div>
+<div class="paragraph">
+<p>Of course, you should be building and testing components as you develop the program. If you encounter a problem, there should be only a small amount of new code that is not known to be correct.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ive_got_a_big_hairy_expression_and_it_doesnt_do_what_i_expect_2">I’ve got a big hairy expression and it doesn’t do what I expect</h4>
+<div class="paragraph">
+<p>Writing complex expressions is fine as long as they are readable, but they can be hard to debug. It is often a good idea to break a complex expression into a series of assignments to temporary variables.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">addcard</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-o">.</span><span class="tok-n">hands</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">],</span> <span class="tok-n">popcard</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-o">.</span><span class="tok-n">hands</span><span class="tok-p">[</span><span class="tok-n">findneighbor</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">)]))</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This can be rewritten as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">neighbor</span> <span class="tok-o">=</span> <span class="tok-n">findneighbor</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">)</span>
+<span class="tok-n">pickedcard</span> <span class="tok-o">=</span> <span class="tok-n">popcard</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-o">.</span><span class="tok-n">hands</span><span class="tok-p">[</span><span class="tok-n">neighbor</span><span class="tok-p">])</span>
+<span class="tok-n">addcard</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-o">.</span><span class="tok-n">hands</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">],</span> <span class="tok-n">pickedcard</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The explicit version is easier to read because the variable names provide additional documentation, and it is easier to debug because you can check the types of the intermediate variables and display their values.</p>
+</div>
+<div class="paragraph">
+<p>Another problem that can occur with big expressions is that the order of evaluation may not be what you expect. For example, if you are translating the expression \(\frac{x}{2\pi}\) into Julia, you might write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-n">x</span> <span class="tok-o">/</span> <span class="tok-mi">2</span> <span class="tok-o">*</span> <span class="tok-nb">π</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That is not correct because multiplication and division have the same precedence and are evaluated from left to right. So this expression computes \(\frac{x\pi}{2}\).</p>
+</div>
+<div class="paragraph">
+<p>A good way to debug expressions is to add parentheses to make the order of evaluation explicit:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-n">x</span> <span class="tok-o">/</span> <span class="tok-p">(</span><span class="tok-mi">2</span> <span class="tok-o">*</span> <span class="tok-nb">π</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Whenever you are not sure of the order of evaluation, use parentheses. Not only will the program be correct (in the sense of doing what you intended), it will also be more readable for other people who haven’t memorized the order of operations.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ive_got_a_function_that_doesnt_return_what_i_expect_2">I’ve got a function that doesn’t return what I expect</h4>
+<div class="paragraph">
+<p>If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">return</span> <span class="tok-n">removematches</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-o">.</span><span class="tok-n">hands</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">])</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>you could write:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-n">removematches</span><span class="tok-p">(</span><span class="tok-n">game</span><span class="tok-o">.</span><span class="tok-n">hands</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">])</span>
+<span class="tok-k">return</span> <span class="tok-n">count</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you have the opportunity to display the value of <code>count</code> before returning.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_im_really_really_stuck_and_i_need_help_2">I’m really, really stuck and I need help</h4>
+<div class="paragraph">
+<p>First, try getting away from the computer for a few minutes. Computers emit waves that affect the brain, causing these symptoms:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Frustration and rage.</p>
+</li>
+<li>
+<p>Superstitious beliefs (“the computer hates me”) and magical thinking (“the program only works when I wear my hat backward”).</p>
+</li>
+<li>
+<p>Random walk programming (the attempt to program by writing every possible program and choosing the one that does the right thing).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you find yourself suffering from any of these symptoms, get up and go for a walk. When you are calm, think about the program. What is it doing? What are some possible causes of that behavior? When was the last time you had a working program, and what did you do next?</p>
+</div>
+<div class="paragraph">
+<p>Sometimes it just takes time to find a bug. I often find bugs when I am away from the computer and let my mind wander. Some of the best places to find bugs are trains, showers, and in bed, just before you fall asleep.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_no_i_really_need_help_2">No, I really need help</h4>
+<div class="paragraph">
+<p>It happens. Even the best programmers occasionally get stuck. Sometimes you work on a program so long that you can’t see the error. You need a fresh pair of eyes.</p>
+</div>
+<div class="paragraph">
+<p>Before you bring someone else in, make sure you are prepared. Your program should be as simple as possible, and you should be working on the smallest input that causes the error. You should have print statements in the appropriate places (and the output they produce should be comprehensible). You should understand the problem well enough to describe it concisely.</p>
+</div>
+<div class="paragraph">
+<p>When you bring someone in to help, be sure to give them the information they need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If there is an error message, what is it and what part of the program does it indicate?</p>
+</li>
+<li>
+<p>What was the last thing you did before this error occurred? What were the last lines of code that you wrote, or what is the new test case that fails?</p>
+</li>
+<li>
+<p>What have you tried so far, and what have you learned?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>When you find the bug, take a second to think about what you could have done to find it faster. Next time you see something similar, you will be able to find the bug more quickly.</p>
+</div>
+<div class="paragraph">
+<p>Remember, the goal is not just to make the program work. The goal is to learn how to make the program work.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_unicode_input">Appendix A: Unicode Input</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -16470,7 +16777,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-03 00:38:31 CEST
+Last updated 2018-09-03 11:59:47 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
