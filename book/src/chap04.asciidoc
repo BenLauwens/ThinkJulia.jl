@@ -9,8 +9,11 @@ The examples in this chapter can be executed in a graphical notebook on JuliaBox
 
 === Turtles
 
-A _module_ is a file that contains a collection of related functions. Modules can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
-(((module)))(((pass:[&#93;])))(((ThinkJulia)))((("module", "ThinkJulia", see="ThinkJulia")))
+A _module_ is a file that contains a collection of related functions. Julia provides some modules in its Standard Library. Additional functionality can be added from a growing collection of _packages_ (https://juliaobserver.com).
+(((module)))(((package)))
+
+Packages can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.
+(((pass:[&#93;])))(((ThinkJulia)))((("module", "ThinkJulia", see="ThinkJulia")))
 
 [source,jlcon]
 ----
@@ -465,6 +468,10 @@ If the preconditions are satisfied and the postconditions are not, the bug is in
 module::
 A file that contains a collection of related functions and other definitions.
 (((module)))
+
+package::
+An external library with additional functionality.
+(((package)))
 
 using statement::
 A statement that reads a module file and creates a module object.
