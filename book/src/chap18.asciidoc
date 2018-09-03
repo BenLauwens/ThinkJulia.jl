@@ -514,45 +514,59 @@ As an exercise, download my Markov code from https://github.com/BenLauwens/Think
 
 encode::
 To represent one set of values using another set of values by constructing a mapping between them.
+(((encode)))
 
 unit testing::
 Standardized way to test the correctness of code.
+(((unit testing)))
 
 veneer::
 A method or function that provides a different interface to another function without doing much computation.
+(((veneer)))
 
 subtyping::
 The ability to define a hierarchy of related types.
+(((subtyping)))
 
 abstract type::
 A type that can act as a parent for another type.
+(((abstract type)))
 
 concrete type::
 A type that can be constructed.
+(((concrete type)))
 
 subtype::
 A type that has as parent an abstract type.
+(((subtype)))
 
 supertype::
 An abstract type that is the parent of another type.
+(((supertype)))
 
 IS-A relationship::
 A relationship between a subtype and its supertype.
+(((IS-A relationship)))
 
 HAS-A relationship::
 A relationship between two types where instances of one type contain references to instances of the other.
+(((HAS-A relationship)))
 
 dependency::
 A relationship between two types where instances of one type use instances of the other type, but do not store them as fields.
+(((dependency)))
 
 type diagram::
 A diagram that shows the types in a program and the relationships between them.
+(((type diagram)))
 
 multiplicity::
-A notation in a class diagram that shows, for a HAS-A relationship, how many references there are to instances of another class.
+A notation in a type diagram that shows, for a HAS-A relationship, how many references there are to instances of another class.
+(((multiplicity)))
 
 data encapsulation::
 A program development plan that involves a prototype using global variables and a final version that makes the global variables into instance fields.
+(((data encapsulation)))
 
 
 === Exercises

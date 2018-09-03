@@ -1,10 +1,19 @@
 [[chap20]]
-== The Goodies: Base
+== The Goodies: Base and Standard Library
 
-+Base+ contains a number of functions, types and macros that are directly available in Julia. Additional functionality can be imported from the Standard Library or from a growing collection of packages (https://juliaobserver.com).
++Base+ contains a number of functions, types and macros that are directly available in Julia.
 (((Base)))
 
-This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/base/base/.
+Julia provides also a large number of specialized modules in its Standard Library.  Functions, types and macros defined in the Standard Library have to be imported before they can be used:
+
+* +import _Module_+ imports the module, and +_Module.fn_(x)+ calls the function +_fn_+
+(((import)))((("keyword", "import", see="import")))
+* +using _Module_+ imports all exported +_Module_+ functions, types and macros.
+(((using)))
+
+Additional functionality can be added from a growing collection of packages (https://juliaobserver.com).
+
+This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/.
 
 === Measuring Performance
 
@@ -25,7 +34,12 @@ julia> @time fibonacci(40)
 102334155
 ----
 
-+@time+ prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. There ain't no such thing as a free lunch!
++@time+ prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory. 
+
+[quote]
+____
+There ain't no such thing as a free lunch!
+____
 
 [WARNING]
 ====
@@ -58,6 +72,7 @@ Julia provides another built-in type, called a set, that behaves like a collecti
 (((Set)))((("type", "Base", "Set", see="Set")))
 
 For example, set subtraction is available as a function called +setdiff+. So we can rewrite +subtract+ like this:
+(((setdiff)))((("function", "Base", "setdiff", see="setdiff")))
 
 [source,@julia-setup]
 ----
@@ -133,7 +148,7 @@ As an exercise, rewrite +avoids+ using sets.
 
 === Mathematics
 
-Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[i], representing the principal square root of latexmath:[-1].
+Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[$i$], representing the principal square root of latexmath:[$-1$].
 (((complex numbers)))(((im)))
 
 We can now verify the Euler's identity:
@@ -157,7 +172,7 @@ Let's illustrate the complex nature of trigonometric functions:
 \end{equation}
 ++++
 
-We can test this formula for different values of latexmath:[x].
+We can test this formula for different values of latexmath:[$x$].
 
 [source,@julia-repl-test]
 ----
@@ -230,7 +245,7 @@ Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perl
 
 In <<chap10>> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
 
-Let's create a 2-by-3 zero matrix:
+Let's create a 2-by-3 zero _matrix_:
 (((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
 
 [source,@julia-repl-test chap20]
@@ -335,9 +350,13 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
-Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors. If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
+Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors.
+(((interface)))
 
-==== Iterators
+[quote]
+____
+If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
+____
 
 In <<one_more_example>> I implemented the +fib+ function returning the latexmath:[n]th element of the Fibonnaci sequence.
 
@@ -353,7 +372,7 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-I implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator an returns a tuple consisting of the first value, latexmath:[0], and a state. The state in this case is a tuple containing the second and the third value, latexmath:[1] and latexmath:[1].
+I implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator an returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
 
 The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
 
@@ -392,30 +411,173 @@ end
 
 This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.
 
-==== Indexing and Arrays
 
-What is an array? In Julia an array is defined as a type having as supertype an +AbstractArray+ and implementing the indexing interface:
-(((AbstractArray)))((("type", "Base", "AbstractArray", see="AbstractArray")))
+=== Interactive Utilities
 
-+getindex(X, i)+::
-+X[i]+, indexed element access
-(((getindex)))((("function", "Base", "getindex", see="getindex")))
+We have already met the +InteractiveUtils+ module in <<chap18>>. The +@which+ macro is only the tip of the iceberg.
+(((InteractiveUtils)))(((@which)))
 
-+setindex!(X, v, i)+::
-+X[i] = v+, indexed assignment
-(((setindex!)))((("function", "Base", "setindex!", see="setindex!")))
+Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.
 
-+firstindex(X)+::
-The first index
-(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
+Let's give a simple example:
+(((squaresum)))((("function", "programmer-defined", "squaresum", see="squaresum")))
 
-+lastindex(X)+::
-The last index, used in +X[end]+
-(((lastindex)))((("function", "Base", "lastindex", see="lastindex")))
+[source,@julia-setup chap20]
+----
+@noinline function squaresum(a::Float64, b::Float64)
+    a^2 + b^2
+end
+----
 
-This is all it takes to implements your own array-like type and to reuse all the goodies provided in Julia.
+The +@noinline+ macro prohibits the inlining of the function call.
+(((@nolinline)))((("macro", "Base", "@noinline", see="@noinline")))
+
+The first step is to look at the lowered code:
+(((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", see="@code_lowered")))
+
+[source,@julia-repl-test chap20]
+----
+julia> using InteractiveUtils
+
+julia> @code_lowered squaresum(3.0, 4.0)
+CodeInfo(
+  1 ─      $(Expr(:meta, :noinline))
+2 │   %2 = (Core.apply_type)(Base.Val, 2)
+  │   %3 = (%2)()
+  │   %4 = (Base.literal_pow)(:^, a, %3)
+  │   %5 = (Core.apply_type)(Base.Val, 2)
+  │   %6 = (%5)()
+  │   %7 = (Base.literal_pow)(:^, b, %6)
+  │   %8 = %4 + %7
+  └──      return %8
+)
+----
+
+The +code_lowered+ macro returns an array of an _intermediate representation_ of the code that is used by the compiler to generate optimised code.
+(((intermediate representation)))
+
+The next step adds type information:
+(((@code_typed)))((("macro", "InteractiveUtils", "@code_typed", see="@code_typed")))
+
+[source,@julia-repl-test chap20]
+----
+julia> @code_typed squaresum(3.0, 4.0)
+CodeInfo(
+2 1 ─ %1 = (Base.mul_float)(a, a)::Float64
+  │   %2 = (Base.mul_float)(b, b)::Float64
+  │   %3 = (Base.add_float)(%1, %2)::Float64
+  └──      return %3
+) => Float64
+----
+
+We see that the type of the intermediate results and the return value is correctly inferred.
+
+This representation of the code is transformed in LLVM code:
+(((LLVM code)))(((@code_llvm)))((("macro", "InteractiveUtils", "@code_llvm", see="@code_llvm")))
+
+[source,@julia-repl-test chap20]
+----
+julia> @code_llvm squaresum(3.0, 4.0)
+
+; Function squaresum
+; Location: none:2
+define double @julia_squaresum_39479(double, double) {
+top:
+; Function literal_pow; {
+; Location: intfuncs.jl:243
+; Function *; {
+; Location: float.jl:399
+  %2 = fmul double %0, %0
+  %3 = fmul double %1, %1
+;}}
+; Function +; {
+; Location: float.jl:395
+  %4 = fadd double %2, %3
+;}
+  ret double %4
+}
+----
+
+And finally the _machine code_ is generated:
+(((machine code)))(((@code_native)))((("macro", "InteractiveUtils", "@code_native", see="@code_native")))
+
+[source,@julia-repl-test chap20]
+----
+julia> @code_native squaresum(3.0, 4.0)
+	.section	__TEXT,__text,regular,pure_instructions
+; Function squaresum {
+; Location: none:2
+; Function literal_pow; {
+; Location: intfuncs.jl:243
+; Function *; {
+; Location: none:2
+	vmulsd	%xmm0, %xmm0, %xmm0
+	vmulsd	%xmm1, %xmm1, %xmm1
+;}}
+; Function +; {
+; Location: float.jl:395
+	vaddsd	%xmm1, %xmm0, %xmm0
+;}
+	retl
+	nopl	(%eax)
+;}
+----
+
+=== Debugging
+
+The +Logging+ macros provide an alternative to scaffolding with print statements:
+(((@warn)))((("macro", "Base", "@warn", see="@warn")))
+
+[source,jlcon]
+----
+julia> @warn "Abandon printf debugging, all ye who enter here!"
+┌ Warning: Abandon printf debugging, all ye who enter here!
+└ @ Main REPL[1]:1
+----
+
+The debug statement don't have to be removed from the source. For example, in contrast to the +@warn+ above
+(((debug statement)))(((@debug)))((("macro", "Base", "@debug", see="@debug")))
+
+[source,jlcon]
+----
+julia> @debug "The sum of some values $(sum(rand(100)))"
+
+----
+
+will produce no output by default. In this case +sum(rand(100))+ will never be evaluated unless _debug logging_ is enabled.
+(((debug logging)))
+
+The level of logging can be selected by an environment variable +JULIA_DEBUG+:
+(((environment variable)))
+
+[source]
+----
+$ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
+┌ Debug: The sum of some values 47.116520814555024
+└ @ Main none:1
+----
+
+Here, I have used +all+ to get all debug information, but you can also choose to generate only output for a specific file or module.
+
 
 === Glossary
 
 regex::
 Regular expression, a sequence of characters that define a search pattern.
+(((regex)))
+
+matrix::
+Two-dimensional array.
+(((matrix)))
+
+intermediate representation::
+Data structure used internally by a compiler to represent source code.
+(((intermediate representation)))
+
+machine code::
+Language instructions that can be executed directly by a computer's central processing unit.
+(((machine code)))
+
+debug logging::
+Storing debug messages in a log.
+(((debug logging)))

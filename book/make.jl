@@ -31,7 +31,6 @@ const chaps = [
   "chap19.asciidoc",
   "chap20.asciidoc",
   "chap21.asciidoc",
-  "chap22.asciidoc",
   "appa.asciidoc",
   "index.asciidoc"
 ]

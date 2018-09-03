@@ -5,7 +5,7 @@ One of my goals for this book has been to teach you as little Julia as possible.
 
 Now I want to go back for some of the good bits that got left behind. Julia provides a number of features that are not really necessary—you can write good code without them—but with them you can sometimes write code that’s more concise, readable or efficient, and sometimes all three.
 
-This chapter and the two following discuss the things I have left out in the previous chapters: 
+This chapter and the next discuss the things I have left out in the previous chapters: 
 
 * syntax supplements
 * functions, types and macros directly available in +Base+
@@ -39,7 +39,7 @@ The function +funcgen+ returns an array with two anonymous functions (see next s
 
 [source,@julia-setup chap19]
 ----
-function funcgen(i)
+function funcgen(i)        # WRONG
     res = Function[]
     while i < 3
         push!(res, ()->i)
@@ -673,57 +673,76 @@ The complete mapping of the GDBM library can be found as an example in the Think
 
 closure::
 Function that captures variables from its defining scope.
+(((closure)))
 
 let block::
 Block allocating new variable bindings.
+(((let block)))
 
 anonymous function::
 Function defined without being given a name.
+(((anonymous function)))
 
 named tuple::
 Tuple with named components.
+(((named tuple)))
 
 keyword arguments::
 Arguments identified by name instead of only by position.
+(((keyword arguments)))
 
-+do+ block::
+do block::
 Syntax construction used to define and call an anonymous function which looks like a normal code block.
+(((do block)))
 
 ternary operator::
 Control flow operator taking three operands to specify a condition, an expression to be executed when the condition yields +true+ and an expression to be executed when the condition yields +false+.
+(((ternary operator)))
 
 short-circuit evaluation::
 Evaluation of a boolean operator for which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression.
+(((short-circuit evaluation)))
 
 task (aka coroutine)::
 Control flow feature that allows computations to be suspended and resumed in a flexible manner.
+(((task)))
 
 primitive type::
 Concrete type whose data consists of plain old bits.
+(((primitive type)))
 
 type union::
 Abstract type which includes as objects all instances of any of its argument types.
+(((type union)))
 
 parametric type::
 Type that can be parameterized.
+(((parametric type)))
 
 functor::
 Type with an associated method, so that it looks callable.
+(((functor)))
 
 conversion::
 Convert a value from one type to another.
+(((conversion)))
 
 promotion::
-Converting values of mixed types to a single common type
+Converting values of mixed types to a single common type.
+(((promotion)))
 
 expression::
 Julia type that holds a language construct.
+(((expression)))
 
 macro::
 Way to include generated code in the final body of a program.
+(((macro)))
 
 generated functions::
 Functions capable of generating specialized code depending on the types of the arguments.
+(((generated functions)))
 
 missing values::
 Instances that represent data points with no value.
+(((missing values)))
