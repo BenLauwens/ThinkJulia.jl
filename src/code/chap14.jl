@@ -69,14 +69,10 @@ function gdbm_nextkey(handle::Ptr{Cvoid}, prev::Datum)
   ccall((:gdbm_nextkey, "libgdbm"), Datum, (Ptr{Cvoid}, Datum), handle, prev)
 end
 
-function libc_free(ptr::Ptr{UInt8})
-  ccall((:free, "libc"), Cvoid, (Ptr{UInt8}, ), ptr)
-end
-
 function Base.getindex(dbm::DBM, key::Union{String,Array{UInt8,1}})
   datum = gdbm_fetch(dbm.handle, Datum(key))
   value = unsafe_string(datum.dptr, datum.dsize)
-  libc_free(datum.dptr)
+  Libc.free(datum.dptr)
   value
 end
   
@@ -91,18 +87,18 @@ function Base.iterate(dbm::DBM)
   key = unsafe_string(first.dptr, first.dsize)
   datum = gdbm_fetch(dbm.handle, first)
   value = unsafe_string(datum.dptr, datum.dsize)
-  libc_free(datum.dptr)
+  Libc.free(datum.dptr)
   ((key, value), first)
 end
 
 function Base.iterate(dbm::DBM, prev::Datum)
   next = gdbm_nextkey(dbm.handle, prev)
-  libc_free(prev.dptr)
+  Libc.free(prev.dptr)
   next.dptr == C_NULL && return nothing
   key = unsafe_string(next.dptr, next.dsize)
   datum = gdbm_fetch(dbm.handle, next)
   value = unsafe_string(datum.dptr, datum.dsize)
-  libc_free(datum.dptr)
+  Libc.free(datum.dptr)
   ((key, value), next)
 end
 
@@ -126,7 +122,7 @@ function Base.pop!(dbm::DBM, key::Union{String,Array{UInt8,1}}, default = nothin
   if gdbm_exists(dbm.handle, datum)
     vdatum = gdbm_fetch(dbm.handle, datum)
     value = unsafe_string(vdatum.dptr, vdatum.dsize)
-    libc_free(vdatum.dptr)
+    Libc.free(vdatum.dptr)
     gdbm_delete(dbm.handle, datum)
     return value
   end
@@ -145,7 +141,7 @@ function Base.get(dbm::DBM, key::Union{String,Array{UInt8,1}}, default::String)
   if gdbm_exists(dbm.handle, datum)
     datum = gdbm_fetch(dbm.handle, datum)
     value = unsafe_string(datum.dptr, datum.dsize)
-    libc_free(datum.dptr)
+    Libc.free(datum.dptr)
   end
   value
 end
@@ -156,7 +152,7 @@ function Base.get!(dbm::DBM, key::Union{String,Array{UInt8,1}}, default::String)
   if gdbm_exists(dbm.handle, datum)
     vdatum = gdbm_fetch(dbm.handle, datum)
     value = unsafe_string(vdatum.dptr, vdatum.dsize)
-    libc_free(vdatum.dptr)
+    Libc.free(vdatum.dptr)
   else
     gdbm_store(dbm.handle, datum, Datum(default))
   end
@@ -174,7 +170,7 @@ function Base.empty!(dbm::DBM)
     key = unsafe_string(prev.dptr, prev.dsize)
     next = gdbm_nextkey(dbm.handle, prev)
     gdbm_delete(dbm.handle, prev)
-    libc_free(prev.dptr)
+    Libc.free(prev.dptr)
     prev = next
   end
 end
@@ -184,6 +180,6 @@ function Base.in(pair::Union{Pair{String,String},Pair{String,Array{UInt8,1}},Pai
   !gdbm_exists(dbm.handle, datum) && return false
   vdatum = gdbm_fetch(dbm.handle, datum)
   value = unsafe_string(vdatum.dptr, vdatum.dsize)
-  libc_free(vdatum.dptr)
+  Libc.free(vdatum.dptr)
   value == pair.second
 end
