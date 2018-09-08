@@ -4233,7 +4233,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.535973530073176e9</span></code></pre>
+<span class="tok-go">1.536420596071848e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11899,7 +11899,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">findcenter</span><span class="tok-p">(</span><span class="tok-n">rect</span><span class="tok-p">)</span>
-    <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-n">rect</span><span class="tok-o">.</span><span class="tok-n">corner</span><span class="tok-o">.</span><span class="tok-n">x</span><span class="tok-p">,</span> <span class="tok-n">rect</span><span class="tok-o">.</span><span class="tok-n">corner</span><span class="tok-o">.</span><span class="tok-n">y</span><span class="tok-p">)</span>
+    <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-n">rect</span><span class="tok-o">.</span><span class="tok-n">corner</span><span class="tok-o">.</span><span class="tok-n">x</span> <span class="tok-o">+</span> <span class="tok-n">rect</span><span class="tok-o">.</span><span class="tok-n">width</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-n">rect</span><span class="tok-o">.</span><span class="tok-n">corner</span><span class="tok-o">.</span><span class="tok-n">y</span> <span class="tok-o">+</span> <span class="tok-n">rect</span><span class="tok-o">.</span><span class="tok-n">height</span> <span class="tok-o">/</span> <span class="tok-mi">2</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -11912,7 +11912,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">center</span> <span class="tok-o">=</span> <span class="tok-n">findcenter</span><span class="tok-p">(</span><span class="tok-n">box</span><span class="tok-p">)</span>
-<span class="tok-go">Point(0.0, 0.0)</span></code></pre>
+<span class="tok-go">Point(50.0, 100.0)</span></code></pre>
 </div>
 </div>
 </div>
@@ -16338,7 +16338,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-03 13:18:45 CEST
+Last updated 2018-09-08 17:29:51 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
