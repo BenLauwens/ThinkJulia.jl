@@ -4233,7 +4233,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.536563032838097e9</span></code></pre>
+<span class="tok-go">1.536569708945678e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15782,13 +15782,16 @@ suffix)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Syntax errors are discovered by the interpreter when it is translating the source code into byte code. They indicate that there is something wrong with the structure of the program. Example: Omitting the <code>end</code> keyword at the end of a function block generates the somewhat redundant message <code>ERROR: LoadError: syntax: incomplete: function requires end</code>.</p>
+<p>Syntax errors are discovered by the interpreter when it is translating the source code into byte code. They indicate that there is something wrong with the structure of the program. Example: Omitting the <code>end</code> keyword at the end of a function block generates the somewhat redundant message <code>ERROR: LoadError: syntax: incomplete: function requires end</code>.
+</p>
 </li>
 <li>
-<p>Runtime errors are produced by the interpreter if something goes wrong while the program is running. Most runtime error messages include information about where the error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error <code>ERROR: LoadError: StackOverflowError</code>.</p>
+<p>Runtime errors are produced by the interpreter if something goes wrong while the program is running. Most runtime error messages include information about where the error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error <code>ERROR: StackOverflowError</code>.
+</p>
 </li>
 <li>
-<p>Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result. The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.</p>
+<p>Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result. The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.
+</p>
 </li>
 </ul>
 </div>
@@ -15863,7 +15866,7 @@ suffix)</p>
 <p>If you are writing a module and using <code>using</code>, make sure you don’t give your module the same name as one of the standard Julia modules.</p>
 </li>
 <li>
-<p>If you are using <code>using</code> to import a module, remember that you have to restart the REPL or use <code>reload</code> to read a modified file. If you import the module again, it doesn’t do anything.</p>
+<p>If you are using <code>using</code> to import a module, remember that you have to restart the REPL when you modify the code in the module. If you import the module again, it doesn’t do anything.</p>
 </li>
 </ul>
 </div>
@@ -15883,7 +15886,8 @@ suffix)</p>
 <p>This problem is most common when your file consists of functions and classes but does not actually invoke a function to start execution. This may be intentional if you only plan to import this module to supply classes and functions.</p>
 </div>
 <div class="paragraph">
-<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see “Flow of Execution” below).</p>
+<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see “Flow of Execution” below).
+</p>
 </div>
 </div>
 <div class="sect3">
@@ -15896,13 +15900,15 @@ suffix)</p>
 <li>
 <p>If there is a particular loop that you suspect is the problem, add a print statement immediately before the loop that says “entering the loop” and another immediately after that says “exiting the loop”.</p>
 <div class="paragraph">
-<p>Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <a href="#infinite_loop">Infinite Loop</a> below.</p>
+<p>Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <a href="#infinite_loop">Infinite Loop</a> below.
+</p>
 </div>
 </li>
 <li>
 <p>Most of the time, an infinite recursion will cause the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error. If that happens, go to <a href="#infinite_recursion">Infinite Recursion</a> below.</p>
 <div class="paragraph">
-<p>If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <a href="#infinite_recursion">Infinite Recursion</a>.</p>
+<p>If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <a href="#infinite_recursion">Infinite Recursion</a>.
+</p>
 </div>
 </li>
 <li>
@@ -15939,7 +15945,8 @@ suffix)</p>
 <div class="sect4">
 <h5 id="infinite_recursion">Infinite Recursion</h5>
 <div class="paragraph">
-<p>Most of the time, infinite recursion causes the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error.</p>
+<p>Most of the time, infinite recursion causes the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error.
+</p>
 </div>
 <div class="paragraph">
 <p>If you suspect that a function is causing an infinite recursion, make sure that there is a base case. There should be some condition that causes the function to return without making a recursive invocation. If not, you need to rethink the algorithm and identify a base case.</p>
@@ -15973,51 +15980,68 @@ suffix)</p>
 <dl>
 <dt class="hdlist1">ArgumentError</dt>
 <dd>
-<p>The parameters to a function call do not match a valid signature.</p>
+<p>The parameters to a function call do not match a valid signature.
+</p>
 </dd>
 <dt class="hdlist1">BoundsError</dt>
 <dd>
-<p>An indexing operation into an array tried to access an out-of-bounds element.</p>
+<p>An indexing operation into an array tried to access an out-of-bounds element.
+</p>
 </dd>
 <dt class="hdlist1">DivideError</dt>
 <dd>
-<p>Integer division was attempted with a denominator value of 0.</p>
-</dd>
-<dt class="hdlist1">DomainError</dt>
-<dd>
-<p>The argument to a function or constructor is outside the valid domain.</p>
+<p>Integer division was attempted with a denominator value of 0.
+</p>
 </dd>
 <dt class="hdlist1">EOFError</dt>
 <dd>
-<p>No more data was available to read from a file or stream.</p>
+<p>No more data was available to read from a file or stream.
+</p>
 </dd>
 <dt class="hdlist1">KeyError</dt>
 <dd>
-<p>An indexing operation into an <code>AbstractDict</code> (<code>Dict</code>) or <code>Set</code> like object tried to access or delete a non-existent element.</p>
+<p>An indexing operation into an <code>AbstractDict</code> (<code>Dict</code>) or <code>Set</code> like object tried to access or delete a non-existent element.
+</p>
 </dd>
 <dt class="hdlist1">MethodError</dt>
 <dd>
-<p>A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.</p>
+<p>A method with the required type signature does not exist in the given generic function. Alternatively, there is no unique most-specific method.
+</p>
 </dd>
 <dt class="hdlist1">OutOfMemoryError</dt>
 <dd>
-<p>An operation allocated too much memory for either the system or the garbage collector to handle properly.</p>
+<p>An operation allocated too much memory for either the system or the garbage collector to handle properly.
+</p>
 </dd>
 <dt class="hdlist1">OverflowError</dt>
 <dd>
-<p>The result of an expression is too large for the specified type and will cause a wraparound.</p>
+<p>The result of an expression is too large for the specified type and will cause a wraparound.
+</p>
 </dd>
 <dt class="hdlist1">StackOverflowError</dt>
 <dd>
-<p>The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.</p>
-</dd>
-<dt class="hdlist1">UndefVarError</dt>
-<dd>
-<p>A symbol in the current scope is not defined.</p>
+<p>The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
+</p>
 </dd>
 <dt class="hdlist1">StringIndexError</dt>
 <dd>
-<p>An error occurred when trying to access a string at an index that is not valid.</p>
+<p>An error occurred when trying to access a string at an index that is not valid.
+</p>
+</dd>
+<dt class="hdlist1">SystemError</dt>
+<dd>
+<p>A system call failed with an error code.
+</p>
+</dd>
+<dt class="hdlist1">TypeError</dt>
+<dd>
+<p>A type assertion failure, or calling an intrinsic function with an incorrect argument type.
+</p>
+</dd>
+<dt class="hdlist1">UndefVarError</dt>
+<dd>
+<p>A symbol in the current scope is not defined.
+</p>
 </dd>
 </dl>
 </div>
@@ -16034,7 +16058,8 @@ suffix)</p>
 <p>To simplify the program, there are several things you can do. First, scale down the problem the program is working on. For example, if you are searching a list, search a small list. If the program takes input from the user, give it the simplest input that causes the problem.</p>
 </div>
 <div class="paragraph">
-<p>Second, clean up the program. Remove dead code and reorganize the program to make it as easy to read as possible. For example, if you suspect that the problem is in a deeply nested part of the program, try rewriting that part with simpler structure. If you suspect a large function, try splitting it into smaller functions and testing them separately.</p>
+<p>Second, clean up the program. Remove dead code and reorganize the program to make it as easy to read as possible. For example, if you suspect that the problem is in a deeply nested part of the program, try rewriting that part with simpler structure. If you suspect a large function, try splitting it into smaller functions and testing them separately.
+</p>
 </div>
 <div class="paragraph">
 <p>Often the process of finding the minimal test case leads you to the bug. If you find that a program works in one situation but not in another, that gives you a clue about what is going on.</p>
@@ -16074,7 +16099,8 @@ suffix)</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>In order to program, you need a mental model of how programs work. If you write a program that doesn’t do what you expect, often the problem is not in the program; it’s in your mental model.</p>
+<p>In order to program, you need a mental model of how programs work. If you write a program that doesn’t do what you expect, often the problem is not in the program; it’s in your mental model.
+</p>
 </div>
 <div class="paragraph">
 <p>The best way to correct your mental model is to break the program into its components (usually the functions and methods) and test each component independently. Once you find the discrepancy between your model and reality, you can solve the problem.</p>
@@ -16135,7 +16161,8 @@ suffix)</p>
 <div class="sect3">
 <h4 id="_ive_got_a_function_that_doesnt_return_what_i_expect">I’ve got a function that doesn’t return what I expect</h4>
 <div class="paragraph">
-<p>If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:</p>
+<p>If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -16338,7 +16365,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-10 09:03:47 CEST
+Last updated 2018-09-10 10:55:04 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
