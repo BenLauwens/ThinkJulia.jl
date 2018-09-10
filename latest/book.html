@@ -4233,7 +4233,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.536420596071848e9</span></code></pre>
+<span class="tok-go">1.536563032838097e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6088,7 +6088,7 @@ Done!</code></pre>
 <p>This loop traverses the string and displays each letter on a line by itself. The loop condition is <code>index &#8656; sizeof(fruit)</code>, so when index is larger than the number of bytes in the string, the condition is <code>false</code>, and the body of the loop doesn’t run.</p>
 </div>
 <div class="paragraph">
-<p>The function <code>firstindex</code> returns the first valid byte index. The keyword <code>global</code> before <code>index</code> indicates that we want to modify a variable defined outside the loop (see <a href="#global_variables">Global Variables</a>).
+<p>The function <code>firstindex</code> returns the first valid byte index. The keyword <code>global</code> before <code>index</code> indicates that we want to reassign the variable <code>index</code> defined in <code>_&#95;&#95;main&#95;&#95;</code> (see <a href="#global_variables">Global Variables</a>).
 </p>
 </div>
 <div class="admonitionblock tip">
@@ -6323,7 +6323,7 @@ Qack</pre>
 <span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
 <span class="tok-k">for</span> <span class="tok-n">letter</span> <span class="tok-kp">in</span> <span class="tok-n">word</span>
     <span class="tok-k">if</span> <span class="tok-n">letter</span> <span class="tok-o">==</span> <span class="tok-sc">&#39;a&#39;</span>
-        <span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-n">count</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
+        <span class="tok-kd">global</span> <span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-n">count</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
     <span class="tok-k">end</span>
 <span class="tok-k">end</span>
 <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">count</span><span class="tok-p">)</span></code></pre>
@@ -6703,7 +6703,7 @@ Qack</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">anylowercase1</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
     <span class="tok-k">for</span> <span class="tok-n">c</span> <span class="tok-kp">in</span> <span class="tok-n">s</span>
-        <span class="tok-k">if</span> <span class="tok-n">islower</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
+        <span class="tok-k">if</span> <span class="tok-n">islowercase</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
             <span class="tok-k">return</span> <span class="tok-kc">true</span>
         <span class="tok-k">else</span>
             <span class="tok-k">return</span> <span class="tok-kc">false</span>
@@ -6713,7 +6713,7 @@ Qack</pre>
 
 <span class="tok-k">function</span> <span class="tok-n">anylowercase2</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
     <span class="tok-k">for</span> <span class="tok-n">c</span> <span class="tok-kp">in</span> <span class="tok-n">s</span>
-        <span class="tok-k">if</span> <span class="tok-n">islower</span><span class="tok-p">(</span><span class="tok-sc">&#39;c&#39;</span><span class="tok-p">)</span>
+        <span class="tok-k">if</span> <span class="tok-n">islowercase</span><span class="tok-p">(</span><span class="tok-sc">&#39;c&#39;</span><span class="tok-p">)</span>
             <span class="tok-k">return</span> <span class="tok-s">&quot;true&quot;</span>
         <span class="tok-k">else</span>
             <span class="tok-k">return</span> <span class="tok-s">&quot;false&quot;</span>
@@ -6723,7 +6723,7 @@ Qack</pre>
 
 <span class="tok-k">function</span> <span class="tok-n">anylowercase3</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
     <span class="tok-k">for</span> <span class="tok-n">c</span> <span class="tok-kp">in</span> <span class="tok-n">s</span>
-        <span class="tok-n">flag</span> <span class="tok-o">=</span> <span class="tok-n">islower</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
+        <span class="tok-n">flag</span> <span class="tok-o">=</span> <span class="tok-n">islowercase</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
     <span class="tok-k">end</span>
     <span class="tok-n">flag</span>
 <span class="tok-k">end</span>
@@ -6731,14 +6731,14 @@ Qack</pre>
 <span class="tok-k">function</span> <span class="tok-n">anylowercase4</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
     <span class="tok-n">flag</span> <span class="tok-o">=</span> <span class="tok-kc">false</span>
     <span class="tok-k">for</span> <span class="tok-n">c</span> <span class="tok-kp">in</span> <span class="tok-n">s</span>
-        <span class="tok-n">flag</span> <span class="tok-o">=</span> <span class="tok-n">flag</span> <span class="tok-o">||</span> <span class="tok-n">islower</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
+        <span class="tok-n">flag</span> <span class="tok-o">=</span> <span class="tok-n">flag</span> <span class="tok-o">||</span> <span class="tok-n">islowercase</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
     <span class="tok-k">end</span>
     <span class="tok-n">flag</span>
 <span class="tok-k">end</span>
 
 <span class="tok-k">function</span> <span class="tok-n">anylowercase5</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
     <span class="tok-k">for</span> <span class="tok-n">c</span> <span class="tok-kp">in</span> <span class="tok-n">s</span>
-        <span class="tok-k">if</span> <span class="tok-o">!</span><span class="tok-n">islower</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
+        <span class="tok-k">if</span> <span class="tok-o">!</span><span class="tok-n">islowercase</span><span class="tok-p">(</span><span class="tok-n">c</span><span class="tok-p">)</span>
             <span class="tok-k">return</span> <span class="tok-kc">false</span>
         <span class="tok-k">end</span>
     <span class="tok-k">end</span>
@@ -16338,7 +16338,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-08 17:29:51 CEST
+Last updated 2018-09-10 09:03:47 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
