@@ -152,7 +152,7 @@ end
 
 This loop traverses the string and displays each letter on a line by itself. The loop condition is +index <= sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run. 
 
-The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to modify a variable defined outside the loop (see <<global_variables>>).
+The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to reassign the variable +index+ defined in +_pass:[&#95;&#95;main&#95;&#95;]+ (see <<global_variables>>).
 (((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
 [TIP]
@@ -318,13 +318,13 @@ As an exercise, modify +find+ so that it has a third parameter, the index in +wo
 
 The following program counts the number of times the letter +a+ appears in a string:
 
-[source,julia]
+[source,@julia-setup]
 ----
 word = "banana"
 count = 0
 for letter in word
     if letter == 'a'
-        count = count + 1
+        global count = count + 1
     end
 end
 println(count)
@@ -679,7 +679,7 @@ The following functions are all _intended_ to check whether a string contains an
 ----
 function anylowercase1(s)
     for c in s
-        if islower(c)
+        if islowercase(c)
             return true
         else
             return false
@@ -689,7 +689,7 @@ end
 
 function anylowercase2(s)
     for c in s
-        if islower('c')
+        if islowercase('c')
             return "true"
         else
             return "false"
@@ -699,7 +699,7 @@ end
 
 function anylowercase3(s)
     for c in s
-        flag = islower(c)
+        flag = islowercase(c)
     end
     flag
 end
@@ -707,14 +707,14 @@ end
 function anylowercase4(s)
     flag = false
     for c in s
-        flag = flag || islower(c)
+        flag = flag || islowercase(c)
     end
     flag
 end
 
 function anylowercase5(s)
     for c in s
-        if !islower(c)
+        if !islowercase(c)
             return false
         end
     end
