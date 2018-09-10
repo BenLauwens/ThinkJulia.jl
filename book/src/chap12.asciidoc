@@ -196,15 +196,16 @@ julia> println(rem)
 ----
 
 Here is an example of a function that returns a tuple:
+(((minmax)))((("function", "programmer defined", "minmax", see="minmax")))
 
 [source,@julia-setup]
 ----
-function min_max(t)
+function minmax(t)
     minimum(t), maximum(t)
 end
 ----
 
-+maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +min_max+ computes both and returns a tuple of two values.
++maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +minmax+ computes both and returns a tuple of two values.
 (((maximum)))(((minimum)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))
 
 
