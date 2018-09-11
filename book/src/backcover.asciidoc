@@ -1,0 +1,19 @@
+If you’re just learning how to program, Julia is an excellent JIT-compiled, dynamically-typed language with a clean syntax. This hands-on guide uses Julia (version 1.0) to learn to program one step at a time, beginning with basic programming concepts before moving on to more advanced capabilities, such as creating new types and multiple dispatch.
+
+Designed from the beginning for high performance, Julia is a general-purpose language not only ideal for numerical analysis and computational science, but also for web programming or scripting. Through exercises in each chapter, you’ll try out programming concepts as you learn them.
+
+Think Julia is ideal for students at the high school or college level, as well as self-learners, home-schooled students, and professionals who need to learn programming basics.
+
+* Start with the basics, including language syntax and semantics
+
+* Get a clear definition of each programming concept
+
+* Learn values, variables, statements, functions, and data structures in a logical progression
+
+* Discover how to work with files and databases
+
+* Understand types, methods, and multiple dispatch
+
+* Use debugging techniques to fix syntax, runtime, and semantic errors
+
+* Explore interface design and data structures through case studies

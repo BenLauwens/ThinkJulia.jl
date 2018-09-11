@@ -160,7 +160,7 @@ julia> ℯ^(im*π)+1
 0.0 + 1.2246467991473532e-16im
 ----
 
-The symbol +ℯ+ (+\euler TAB) is the base of the natural logarithm.
+The symbol +ℯ+ (+\euler TAB+) is the base of the natural logarithm.
 (((ℯ))) 
 
 Let's illustrate the complex nature of trigonometric functions:
