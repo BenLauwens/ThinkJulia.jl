@@ -2,6 +2,8 @@
 *.jl.*.cov
 *.jl.mem
 deps/deps.jl
+deps/usr
+deps/build.log
 docs/build
 docs/captions
 docs/output.txt

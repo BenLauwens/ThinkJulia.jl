@@ -1,5 +1,7 @@
 julia 0.7
 
+BinaryProvider
+Libdl
 TikzPictures
 Luxor
 Plots

@@ -290,8 +290,3 @@ end
 
 const CAN_INLINE = Ref(true)
 funcsym() = CAN_INLINE[] ? :disable_color : :eval
-
-function __init__()
-  global setcolor! = Core.eval(Base, :(x -> (y = have_color; global have_color = x; y)))
-  CAN_INLINE[] = Base.JLOptions().can_inline == 0 ? false : true
-end
