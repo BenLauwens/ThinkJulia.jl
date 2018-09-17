@@ -172,7 +172,7 @@ Let's illustrate the complex nature of trigonometric functions:
 \end{equation}
 ++++
 
-We can test this formula for different values of latexmath:[$x$].
+We can test this formula for different values of latexmath:[\(x\)].
 
 [source,@julia-repl-test]
 ----
