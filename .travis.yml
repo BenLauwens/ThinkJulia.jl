@@ -18,6 +18,7 @@ install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install libgdbm3; else brew upgrade gdbm; fi
   - if [ $TRAVIS_OS_NAME = osx ]; then export PATH=$PATH:/usr/local/texlive/2018/bin/x86_64-darwin; fi
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install asciidoctor; else brew install asciidoctor; fi
+  - julia -e 'pkg"dev BinaryProvider"'
 #addons:
 #  apt_packages:
 #    - lmodern
