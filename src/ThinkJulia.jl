@@ -1,5 +1,7 @@
 module ThinkJulia
 
+  __precompile__(false)
+
   using Printf
   using Random
   using Base64
