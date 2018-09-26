@@ -46,8 +46,15 @@ for chap in chaps
   expandcodeblocks(root, joinpath("src", chap), joinpath("build", chap))
 end
 if "pdf" in ARGS
-  #run(`asciidoctor-pdf -a compat-mode -a media=prepress -a pdf-style=my-theme.yml -a pdf-fontsdir=fonts -d book -a stem=latexmath -a sectnums -a sectnumlevels=1 -a toc -a toclevels=2 -a source-highlighter=rouge -r asciidoctor-mathematical -a mathematical-format=svg build/book.asciidoc`)
-  run(`ruby ~/Source/asciidoctor-htmlbook/scripts/convert_book.rb build`)
+  run(`asciidoctor -d book -b html5 -a compat-mode -a stylesheet! -a nofooter -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toclevels=2 build/book.asciidoc`)
+  book = read("build/book.html", String)
+  book = replace(book, "\\(\\("=> "\\(")
+  book = replace(book, "\\)\\)"=> "\\)")
+  book = replace(book, "\\begin{equation}\\n{"=> "")
+  book = replace(book, "}\\n\\end{equation}"=> "")
+  write("build/book.html", book)
+  run(`mjpage --output MML < build/book.html > build/book.html`)
+  run(`prince -s print.css -o build/book.pdf build/book.html`)
 elseif "html" in ARGS
   run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   book = read("build/book.html", String)
