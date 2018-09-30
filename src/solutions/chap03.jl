@@ -1,6 +1,6 @@
 function rightjustify(s)
   n = 70 - length(s)
-  println(" "^70 * s)
+  println(" "^n * s)
 end
 
 function dotwice(f)
