@@ -18,6 +18,10 @@ Packages can be installed in the REPL by entering the Pkg REPL-mode using the ke
 [source,jlcon]
 ----
 (v0.7) pkg> add ThinkJulia
+
+or
+
+(v1.0) pkg> add https://github.com/BenLauwens/ThinkJulia.jl
 ----
 
 This can take some time.
