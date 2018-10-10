@@ -46,15 +46,19 @@ for chap in chaps
   expandcodeblocks(root, joinpath("src", chap), joinpath("build", chap))
 end
 if "pdf" in ARGS
-  run(`asciidoctor -d book -b html5 -a compat-mode -a stylesheet! -a nofooter -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toclevels=2 build/book.asciidoc`)
+  println("Run ASCIIDoctor")
+  run(`asciidoctor -d book -b html5 -a compat-mode -a stylesheet! -a nofooter -a stem=latexmath -a source-highlighter=pygments build/book.asciidoc`)
+  println("Cleanup equations")
   book = read("build/book.html", String)
   book = replace(book, "\\(\\("=> "\\(")
   book = replace(book, "\\)\\)"=> "\\)")
   book = replace(book, "\\begin{equation}\\n{"=> "")
   book = replace(book, "}\\n\\end{equation}"=> "")
   write("build/book.html", book)
-  run(`mjpage --output MML < build/book.html > build/book.html`)
-  run(`prince -s print.css -o build/book.pdf build/book.html`)
+  println("Run mjpage")
+  run(`mjpage --output MML < build/book.html > build/output.html`)
+  println("Run prince")
+  run(`prince -s print.css -o build/book.pdf build/output.html`)
 elseif "html" in ARGS
   run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   book = read("build/book.html", String)

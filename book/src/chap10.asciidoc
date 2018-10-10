@@ -74,7 +74,7 @@ julia> cheeses[1]
 ----
 
 Unlike strings, arrays are _mutable_. When the bracket operator appears on the left side of an assignment, it identifies the element of the array that will be assigned:
-(((mutable)))(((assignement statement)))
+(((mutable)))(((assignment statement)))
 
 [source,@julia-repl-test chap10]
 ----
@@ -527,7 +527,7 @@ image::images/fig102.svg[]
 In one case, +a+ and +b+ refer to two different objects that have the same value. In the second case, they refer to the same object.
 
 To check whether two variables refer to the same object, you can use the +≡+ (+\equiv TAB+) or +===+ operator.
-(((≡ operator)))((("operator", "Base", "≡", see="operator ≡")))((("≡", see="operator ≡")))((("===", see="operator ≡")))
+(((≡)))((("operator", "Base", "≡", see="≡")))((("===", see="≡")))
 
 [source,@julia-repl-test]
 ----

@@ -207,7 +207,7 @@ A +do+ block can “capture” variables from its enclosing scope. For example, 
 ==== Ternary Operator
 
 The _ternary operator_, +?:+, is an alternative to an +if-elseif+ statement, when the choice is between single expression values. 
-(((?:)))((("operator", "Base", "?:", see="?:+")))((("ternary operator", see="?:")))
+(((?:)))((("operator", "Base", "?:", see="?:")))((("ternary operator", see="?:")))
 
 [source,@julia-repl-test]
 ----
@@ -549,7 +549,7 @@ Macros can include generated code in a program. A _macro_ maps a tuple of argume
 (((macro)))
 
 Here is a simple macro:
-(((sayhello)))((("macro", "programmer-defined", "sayhello", see="sayhello")))
+(((@sayhello)))((("macro", "programmer-defined", "@sayhello", see="@sayhello")))
 
 [source,@julia-setup chap19]
 ----

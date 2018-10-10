@@ -648,7 +648,7 @@ dotwice(printspam)
 ===== Exercise 3-3
 
 . Write a function +printgrid+ that draws a grid like the following:
-(((printgrid)))((("function", "programmer-defined", "printgrid", see="printgrid")
+(((printgrid)))((("function", "programmer-defined", "printgrid", see="printgrid")))
 +
 [source,@julia-repl-test chap03-ex]
 ----

@@ -430,7 +430,7 @@ end
 ----
 
 The +@noinline+ macro prohibits the inlining of the function call.
-(((@nolinline)))((("macro", "Base", "@noinline", see="@noinline")))
+(((@noinline)))((("macro", "Base", "@noinline", see="@noinline")))
 
 The first step is to look at the lowered code:
 (((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", see="@code_lowered")))

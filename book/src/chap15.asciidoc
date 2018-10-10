@@ -22,7 +22,7 @@ There are several ways we might represent points in Julia:
 Creating a new type is more complicated than the other options, but it has advantages that will be apparent soon.
 
 A programmer-defined _composite type_ is also called a _struct_. The +struct+ definition for a point looks like this:
-(((composite type)))(((struct)))((("keyword", "struct")))(((end)))
+(((composite type)))(((struct)))((("keyword", "struct", see="struct")))(((end)))
 
 [source,@julia-setup chap15]
 ----
@@ -445,7 +445,7 @@ A diagram that shows objects, their fields, and the values of the fields.
 ===== Exercise 15-1
 
 . Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a point object and +radius+ is a number.
-(((Circle)))((("type", "programmer-defined", "Circle")))
+(((Circle)))((("type", "programmer-defined", "Circle", see="Circle")))
 
 . Instantiate a circle object that represents a circle with its center at latexmath:[\(\left(150, 100\right)\)] and radius 75.
 

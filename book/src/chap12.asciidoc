@@ -488,7 +488,7 @@ Because tuples are immutable, they don’t provide function like +sort!+ and +re
 Arrays, dictionaries and tuples are examples of _data structures_; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call _shape errors_; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
 (((debugging)))(((data structures)))(((shape error)))
 
-Julia allows to attach a type to elements of a sequence. How this is done, is detailed in [[chap17]]. Specifying the type eliminates a lot of shape errors.
+Julia allows to attach a type to elements of a sequence. How this is done, is detailed in <<chap17>>. Specifying the type eliminates a lot of shape errors.
 
 
 === Glossary

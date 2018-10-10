@@ -8,7 +8,7 @@ One of the most powerful features of a programming language is the ability to ma
 === Assignment Statements
 
 An _assignment statement_ creates a new variable and gives it a value:
-(((assignment statement)))((("statement", "assignment", see="assignment statement")))(((pass:[=], see="assignment statement"))))(((pi)))((("π", see="pi")))
+(((assignment statement)))((("statement", "assignment", see="assignment statement")))(((pass:[=], see="assignment statement")))(((pi)))((("π", see="pi")))
 
 [source,@julia-repl-test chap02]
 ----
@@ -16,11 +16,11 @@ julia> message = "And now for something completely different"
 "And now for something completely different"
 julia> n = 17
 17
-julia> π = 3.141592653589793
+julia> πval = 3.141592653589793
 3.141592653589793
 ----
 
-This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +π+ (*+\pi TAB+*).
+This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +πval+ (*+\pi TAB+*).
 
 A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a _state diagram_ because it shows what state each of the variables is in (think of it as the variable’s state of mind). <<fig02-1>> shows the result of the previous example.
 (((state diagram)))((("diagram", "state", see="state diagram")))
@@ -221,11 +221,11 @@ The +pass:[*]+ operator performs _string concatenation_, which means it joins th
 
 [source,@julia-repl-test]
 ----
-julia> first = "throat"
+julia> first_str = "throat"
 "throat"
-julia> second = "warbler"
+julia> second_str = "warbler"
 "warbler"
-julia> first * second
+julia> first_str * second_str
 "throatwarbler"
 ----
 

@@ -64,7 +64,7 @@ false
 ----
 
 +true+ and +false+ are special values that belong to the type +Bool+; they are not strings:
-(((Bool)))((("type", "Base", "Bool")))
+(((Bool)))((("type", "Base", "Bool", see="Bool")))
 
 [source,@julia-repl-test]
 ----
@@ -207,7 +207,7 @@ end
 The outer conditional contains two branches. The first branch contains a simple statement. The second branch contains another +if+ statement, which has two branches of its own. Those two branches are both simple statements, although they could have been conditional statements as well.
 
 Although the non-compulsory indentation of the statements makes the structure apparent, _nested conditionals_ become difficult to read very quickly. It is a good idea to avoid them when you can.
-(((indentation)
+(((indentation)))
 
 Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:
 
@@ -535,7 +535,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 ===== Exercise 5-1
 
 The function +time+ returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
-(((time)))((("function", "Base", "time")))
+(((time)))((("function", "Base", "time", see="time")))
 
 [source,@julia-repl]
 ----

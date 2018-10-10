@@ -45,7 +45,7 @@ To avoid that problem, I recommend that you start out running Julia in a browser
 In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing.
 (((JuliaBox)))
 
-The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
+The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+/opt/julia-1.0/bin/julia+* on the command line. When it starts, you should see output like this:
 (((REPL)))((("Read-Eval-Print Loop", see="REPL")))(((JuliaBox, terminal)))
 
 [source,@julia-eval]
@@ -56,7 +56,7 @@ banner = String(take!(io))
 println("$(banner)julia>")
 ----
 
-The first lines contain information about the REPL, so it might be different for you. But you should check that the version number is at least +0.7.0+.
+The first lines contain information about the REPL, so it might be different for you. But you should check that the version number is at least +1.0.0+.
 
 The last line is a _prompt_ that indicates that the REPL is ready for you to enter code. If you type a line of code and hit +ENTER+, the REPL displays the result:
 (((prompt)))

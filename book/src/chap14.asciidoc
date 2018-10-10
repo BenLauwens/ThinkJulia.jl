@@ -206,7 +206,7 @@ If you don’t have permission to access a file:
 [source,@julia-repl-test]
 ----
 julia> fout = open("/etc/passwd", "w")
-ERROR: SystemError: opening file /etc/passwd: Permission denied
+ERROR: SystemError: opening file /etc/passwd: Operation not permitted
 ----
 
 To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
@@ -284,7 +284,7 @@ julia> db["cleese.png"]
 ----
 
 If you make another assignment to an existing key, +GDBM+ replaces the old value:
-(((assignement)))
+(((assignment)))
 
 [source,@julia-repl-test chap14]
 ----
