@@ -1384,12 +1384,12 @@ julia&gt;</pre>
 <span class="tok-go">&quot;And now for something completely different&quot;</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">n</span> <span class="tok-o">=</span> <span class="tok-mi">17</span>
 <span class="tok-go">17</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-nb">π</span> <span class="tok-o">=</span> <span class="tok-mf">3.141592653589793</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">πval</span> <span class="tok-o">=</span> <span class="tok-mf">3.141592653589793</span>
 <span class="tok-go">3.141592653589793</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This example makes three assignments. The first assigns a string to a new variable named <code>message</code>; the second gives the integer <code>17</code> to <code>n</code>; the third assigns the (approximate) value of \(\pi\) to <code>π</code> (<strong><code>\pi TAB</code></strong>).</p>
+<p>This example makes three assignments. The first assigns a string to a new variable named <code>message</code>; the second gives the integer <code>17</code> to <code>n</code>; the third assigns the (approximate) value of \(\pi\) to <code>πval</code> (<strong><code>\pi TAB</code></strong>).</p>
 </div>
 <div class="paragraph">
 <p>A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a <em>state diagram</em> because it shows what state each of the variables is in (think of it as the variable’s state of mind). <a href="#fig02-1">State diagram</a> shows the result of the previous example.
@@ -1654,11 +1654,11 @@ while</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">first</span> <span class="tok-o">=</span> <span class="tok-s">&quot;throat&quot;</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">first_str</span> <span class="tok-o">=</span> <span class="tok-s">&quot;throat&quot;</span>
 <span class="tok-go">&quot;throat&quot;</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">second</span> <span class="tok-o">=</span> <span class="tok-s">&quot;warbler&quot;</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">second_str</span> <span class="tok-o">=</span> <span class="tok-s">&quot;warbler&quot;</span>
 <span class="tok-go">&quot;warbler&quot;</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">first</span> <span class="tok-o">*</span> <span class="tok-n">second</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">first_str</span> <span class="tok-o">*</span> <span class="tok-n">second_str</span>
 <span class="tok-go">&quot;throatwarbler&quot;</span></code></pre>
 </div>
 </div>
@@ -2723,7 +2723,7 @@ Stacktrace:
 <ol class="arabic">
 <li>
 <p>Write a function <code>printgrid</code> that draws a grid like the following:
-((("function", "programmer-defined", "printgrid", see="printgrid")</p>
+</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">printgrid</span><span class="tok-p">()</span>
@@ -2809,7 +2809,7 @@ Stacktrace:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-go">(v0.7) pkg&gt; add ThinkJulia</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-go">(v0.7) pkg&gt; add https://github.com/BenLauwens/ThinkJulia.jl</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3798,7 +3798,7 @@ search:
 </div>
 <div class="paragraph">
 <p>Although the non-compulsory indentation of the statements makes the structure apparent, <em>nested conditionals</em> become difficult to read very quickly. It is a good idea to avoid them when you can.
-(((indentation)</p>
+</p>
 </div>
 <div class="paragraph">
 <p>Logical operators often provide a way to simplify nested conditional statements. For example, we can rewrite the following code using a single conditional:</p>
@@ -4233,7 +4233,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.537996110501899e9</span></code></pre>
+<span class="tok-go">1.539179324237999e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10604,7 +10604,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="paragraph">
 <p>The result of Markov analysis is a mapping from each prefix (like “half the” and “the bee”) to all possible suffixes (like “has” and “is”).
-suffix)</p>
+</p>
 </div>
 <div class="paragraph">
 <p>Given this mapping, you can generate a random text by starting with any prefix and choosing at random from the possible suffixes. Next, you can combine the end of the prefix and the new suffix to form the next prefix, and repeat.</p>
@@ -11121,7 +11121,7 @@ suffix)</p>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fout</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;/etc/passwd&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: SystemError: opening file /etc/passwd: Permission denied</span></code></pre>
+<span class="tok-gr">ERROR: SystemError: opening file /etc/passwd: Operation not permitted</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16366,7 +16366,7 @@ suffix)</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-09-26 23:08:27 CEST
+Last updated 2018-10-10 15:48:41 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
