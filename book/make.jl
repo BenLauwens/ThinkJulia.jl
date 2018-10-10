@@ -32,6 +32,7 @@ const chaps = [
   "chap20.asciidoc",
   "chap21.asciidoc",
   "appa.asciidoc",
+  "appb.asciidoc",
   "index.asciidoc"
 ]
 mkpath(img)
@@ -40,6 +41,11 @@ if "images"  in ARGS
     cd(()->makefigs(:svg, "DejaVu Sans Mono", 1.5), img)
   else
     cd(()->makefigs(:svg, "Ubuntu Mono", 1.0), img)
+  end
+  for (dir, dirs, files) in walkdir(joinpath(root, "images"))
+    for file in files
+      occursin(".png", file) && cp(joinpath(dir, file), joinpath(img, file), force=true)
+    end
   end
 end
 for chap in chaps
@@ -90,6 +96,7 @@ elseif "oreilly" in ARGS
   run(`cp build/chap20.asciidoc $oreilly`)
   run(`cp build/chap21.asciidoc $oreilly`)
   run(`cp build/appa.asciidoc $oreilly`)
+  run(`cp build/appb.asciidoc $oreilly`)
   cd(oreilly) do
     run(`git commit -a -m $(ARGS[end])`)
     run(`git push`)
@@ -107,6 +114,7 @@ if "deploy" in ARGS
   for (dir, dirs, files) in walkdir(img)
     for file in files
       occursin(".svg", file) && cp(joinpath(dir, file), joinpath(target, "images", file), force=true)
+      occursin(".png", file) && cp(joinpath(dir, file), joinpath(target, "images", file), force=true)
     end
   end
   if "local" in ARGS

@@ -49,5 +49,7 @@ include::chap21.asciidoc[]
 
 include::appa.asciidoc[]
 
+include::appb.asciidoc[]
+
 include::index.asciidoc[]    
     

@@ -1,0 +1,24 @@
+[appendix]
+== JuliaBox
+
+JuliaBox allows you to run Julia in your browser. Enter the url https://www.juliabox.com, login and start using the Jupyter environment.
+
+The initial screen is shown in <<figb-1>>. The new button allows the creation of a Julia notebook, a text file, a folder or a terminal session.
+
+[[figb-1]]
+.Initial screen
+image::images/screenshot0.png[]
+
+In a terminal session, the command *+/opt/julia-1.0/bin/julia+* starts the REPL as show in <<figb-2>>.
+
+[[figb-2]]
+.Terminal session
+image::images/screenshot1.png[]
+
+The notebook interface allows to mix text in Markdown markup and highlighted code with associated output. <<figb-3>> shows an example.
+
+[[figb-3]]
+.Notebook
+image::images/screenshot2.png[]
+
+Further documentation can be found on the website of Jupyter: http://jupyter.org/documentation.
