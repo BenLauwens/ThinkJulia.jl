@@ -1448,13 +1448,13 @@ julia&gt;</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>abstract type   baremodule   begin      break            catch
-const           continue     do         else             elseif
-end             export       finally    for              function
-global          if           import     importall        let
-local           macro        module     mutable struct   primitive type
-quote           return       try        using            struct
-while</pre>
+<pre>abstract type    baremodule   begin      break       catch
+const            continue     do         else        elseif
+end              export       finally    for         function
+global           if           import     importall   in
+let              local        macro      module      mutable struct
+primitive type   quote        return     try         using
+struct           where        while</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4234,7 +4234,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.539332011139302e9</span></code></pre>
+<span class="tok-go">1.539365934452261e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15395,7 +15395,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>De type of this matrix is an array holding floating points and having 2 dimensions.
+<p>The type of this matrix is an array holding floating points and having 2 dimensions.
 </p>
 </div>
 <div class="paragraph">
@@ -15517,7 +15517,7 @@ Due to some ancient injury?</pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the atexmath:[\(n\)]th element of the Fibonnaci sequence.</p>
+<p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s make an iterator that returns lazily the Fibonacci sequence:
@@ -15533,7 +15533,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator an returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.</p>
+<p>I implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.</p>
 </div>
 <div class="paragraph">
 <p>The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.</p>
@@ -15625,7 +15625,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>code_lowered</code> macro returns an array of an <em>intermediate representation</em> of the code that is used by the compiler to generate optimised code.
+<p>The <code>@code_lowered</code> macro returns an array of an <em>intermediate representation</em> of the code that is used by the compiler to generate optimised code.
 </p>
 </div>
 <div class="paragraph">
@@ -15888,7 +15888,7 @@ Due to some ancient injury?</pre>
 <p>This problem is most common when your file consists of functions and classes but does not actually invoke a function to start execution. This may be intentional if you only plan to import this module to supply classes and functions.</p>
 </div>
 <div class="paragraph">
-<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see “Flow of Execution” below).
+<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see <a href="#flow_of_execution">Flow of Execution</a>).
 </p>
 </div>
 </div>
@@ -16285,11 +16285,6 @@ Due to some ancient injury?</pre>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>🍐</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\:pear:</code></strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>🍌</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\:banana:</code></strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -16297,6 +16292,11 @@ Due to some ancient injury?</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>🐫</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\:camel:</code></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>🍐</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\:pear:</code></strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -16405,7 +16405,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-12 10:13:27 CEST
+Last updated 2018-10-12 19:38:51 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
