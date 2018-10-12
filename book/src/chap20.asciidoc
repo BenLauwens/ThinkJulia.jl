@@ -358,7 +358,7 @@ ____
 If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
 ____
 
-In <<one_more_example>> I implemented the +fib+ function returning the latexmath:[n]th element of the Fibonnaci sequence.
+In <<one_more_example>> I implemented the +fib+ function returning the atexmath:[\(n\)]th element of the Fibonnaci sequence.
 
 Let's make an iterator that returns lazily the Fibonacci sequence:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))

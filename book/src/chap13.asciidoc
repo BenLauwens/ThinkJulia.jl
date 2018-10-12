@@ -331,7 +331,7 @@ An alternative is:
 
 . Use +keys+ to get an array of the words in the book.
 
-. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, latexmath:[n].
+. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, atexmath:[\(n\)].
 
 . Choose a random number from 1 to latexmath:[\(n\)]. Use a bisection search (see <<ex10-10>>) to find the index where the random number would be inserted in the cumulative sum.
 (((bisection search)))
