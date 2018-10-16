@@ -74,10 +74,10 @@ To draw a right angle, modify the macro:
 end
 ----
 
-[TIP]
-====
+[quote]
+____
 Now modify the macro to draw a square. Don’t go on until you’ve got it working!
-====
+____
 
 
 [[simple_repetition]]

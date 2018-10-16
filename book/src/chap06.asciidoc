@@ -83,16 +83,16 @@ julia> show(absvalue(0))
 nothing
 ----
 
-[NOTE]
+[TIP]
 ====
 By the way, Julia provides a built-in function called +abs+ that computes absolute values.
 (((abs)))((("function", "Base", "abs", see="abs")))
 ====
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write a +compare+ function takes two values, +x+ and +y+, and returns +1+ if +x > y+, +0+ if +x == y+, and +-1+ if +x < y+.
-====
+____
 
 [[incremental_development]]
 === Incremental Development
@@ -195,10 +195,10 @@ The key aspects of the process are:
 
 . Once the program is working, you might want to remove some of the scaffolding or consolidate multiple statements into compound expressions, but only if it does not make the program difficult to read.
 
-[TIP]
-====
+[quote]
+____
 As an exercise, use incremental development to write a function called +hypotenuse+ that returns the length of the hypotenuse of a right triangle given the lengths of the other two legs as arguments. Record each stage of the development process as you go.
-====
+____
 
 
 === Composition
@@ -303,10 +303,10 @@ end
 
 But the extra comparison is unnecessary.
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write a function +isbetween(x, y, z)+ that returns +true+ if +x ≤ y ≤ z+ or +false+ otherwise.
-====
+____
 
 
 === More Recursion

@@ -249,7 +249,7 @@ function isabecedarian(word)
 end
 ----
 
-The loop starts at +i=1+ and +j=nextind(word, 1)+ and ends when +j>sizeof(word)+. Each time through the loop, it compares the +i+th character (which you can think of as the current character) to the +j+th character (which you can think of as the next).
+The loop starts at +i=1+ and +j=nextind(word, 1)+ and ends when +j>sizeof(word)+. Each time through the loop, it compares the ++i++th character (which you can think of as the current character) to the ++j++th character (which you can think of as the next).
 
 If the next character is less than (alphabetically before) the current one, then we have discovered a break in the abecedarian trend, and we return +false+.
 

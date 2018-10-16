@@ -26,7 +26,7 @@ The first example is an array of four integers. The second is an array of three 
 ----
 
 An array within another array is _nested_.
-(((nested
+(((nested)))
 
 An array that contains no elements is called an empty array; you can create one with empty brackets, +[]+.
 (((empty array)))
@@ -757,7 +757,7 @@ t2 = sort!(t1)
 +
 Because +sort!+ returns the modified original array +t1+, +t2+ is an alias of +t1+.
 +
-[NOTE]
+[TIP]
 ====
 Before using array functions and operators, you should read the documentation carefully and then test them in interactive mode.
 ====

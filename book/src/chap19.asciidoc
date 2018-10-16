@@ -34,7 +34,7 @@ The macro has as argument the block of code consisting of 3 function calls.
 
 ==== Closures and +let+ blocks 
 
-The function +funcgen+ returns an array with two anonymous functions (see next sections) which return respectively the values 1 and 2:
+The function +funcgen+ returns an array with two anonymous functions (see <<anonymous_functions>>) which return respectively the values 1 and 2:
 (((funcgen)))((("function", "programmer-defined", "funcgen", see="funcgen")))
 
 [source,@julia-setup chap19]
@@ -95,6 +95,7 @@ julia> fs[2]()
 
 === Functions
 
+[[anonymous_functions]]
 ==== Anonymous Functions
 
 We can define a function without specifying a name:
@@ -428,7 +429,7 @@ To solve this problem following outer constructor can be defined:
 Point(x::Real, y::Real) = Point(promote(x,y)...);
 ----
 
-The +promote+ function is detailed in the next section.
+The +promote+ function is detailed in <<promotion>>.
 (((promote)))((("function", "Base", "promote", see="promote")))
 
 === Conversion and Promotion
@@ -461,6 +462,7 @@ julia> convert(Point{Int64}, [1, 2])
 Point{Int64}(1, 2)
 ----
 
+[[promotion]]
 ==== Promotion
 
 _Promotion_ is the conversion of values of mixed types to a single common type:

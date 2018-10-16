@@ -211,7 +211,7 @@ end
 
 === Variable-length Argument Tuples
 
-Functions can take a variable number of arguments. A parameter name that ends with +...+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
+Functions can take a variable number of arguments. A parameter name that ends with +pass:[.&nbsp;.&nbsp;.]+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
 (((gather)))(((...)))(((printall)))((("function", "programmer-defined", "printall", see="printall")))
 
 [source,@julia-setup chap12]
@@ -229,7 +229,7 @@ julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
-The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +...+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
+The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +pass:[.&nbsp;.&nbsp;.]+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
 (((scatter)))(((MethodError)))
 
 [source,@julia-repl-test chap12]
@@ -266,11 +266,11 @@ julia> sum(1, 2, 3)
 ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 ----
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write a function called +sumall+ that takes any number of arguments and returns their sum.
 (((sumall)))((("function", "programmer-defined", "sumall", see="sumall")))
-====
+____
 
 === Arrays and Tuples
 
@@ -559,11 +559,6 @@ You might want to build a dictionary that maps from a collection of letters to a
 . Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.
 
 . In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos?
-+
-[TIP]
-====
-There are seven.
-====
 
 [[ex12-3]]
 ===== Exercise 12-3

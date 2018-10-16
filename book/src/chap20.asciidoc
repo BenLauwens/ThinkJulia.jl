@@ -140,11 +140,11 @@ end
 The +⊆+ operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+.
 (((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, rewrite +avoids+ using sets.
 (((avoids)))
-====
+____
 
 === Mathematics
 
@@ -258,7 +258,7 @@ julia> typeof(z)
 Array{Float64,2}
 ----
 
-De type of this matrix is an array holding floating points and having 2 dimensions.
+The type of this matrix is an array holding floating points and having 2 dimensions.
 (((dimension)))
 
 The +size+ function returns a tuple with as elements the number of elements in each dimension:
@@ -288,16 +288,11 @@ The string unit element is an empty string.
 
 [source,@julia-repl-test chap20]
 ----
-julia> t = ["", "", ""]
-3-element Array{String,1}:
- ""
- ""
- ""
-julia> s == t
+julia> s ==  ["", "", ""]
 false
 ----
 
-+s+ is a row matrix and +t+ is a column matrix.
++s+ is a row matrix and +["", "", ""]+ is a column matrix.
 ====
 
 A matrix can be entered directly using a space to separate elements in a row and a semicolon +;+ to separate rows:
@@ -358,7 +353,7 @@ ____
 If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
 ____
 
-In <<one_more_example>> I implemented the +fib+ function returning the atexmath:[\(n\)]th element of the Fibonnaci sequence.
+In <<one_more_example>> I implemented the +fib+ function returning the latexmath:[\(n\)]th element of the Fibonnaci sequence.
 
 Let's make an iterator that returns lazily the Fibonacci sequence:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
@@ -372,7 +367,7 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-I implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator an returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
+I implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
 
 The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
 
@@ -414,7 +409,7 @@ This is a great example how a good defined interface allows an implementation to
 
 === Interactive Utilities
 
-We have already met the +InteractiveUtils+ module in <<chap18>>. The +@which+ macro is only the tip of the iceberg.
+We have already met the +InteractiveUtils+ module in <<interactive>>. The +@which+ macro is only the tip of the iceberg.
 (((InteractiveUtils)))(((@which)))
 
 Julia code is transformed by the LLVM library to machinecode in multiple steps. We can directly visualize the output of each stage.
@@ -453,7 +448,7 @@ CodeInfo(
 )
 ----
 
-The +code_lowered+ macro returns an array of an _intermediate representation_ of the code that is used by the compiler to generate optimised code.
+The +@code_lowered+ macro returns an array of an _intermediate representation_ of the code that is used by the compiler to generate optimised code.
 (((intermediate representation)))
 
 The next step adds type information:

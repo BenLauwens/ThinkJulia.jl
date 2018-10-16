@@ -64,13 +64,13 @@ It turns out that +struct+ is one of Julia’s _keywords_. The REPL uses keyword
 Julia has these keywords:
 
 ----
-abstract type   baremodule   begin      break            catch
-const           continue     do         else             elseif      
-end             export       finally    for              function
-global          if           import     importall        let         
-local           macro        module     mutable struct   primitive type
-quote           return       try        using            struct       
-while
+abstract type    baremodule   begin      break       catch
+const            continue     do         else        elseif      
+end              export       finally    for         function
+global           if           import     importall   in         
+let              local        macro      module      mutable struct
+primitive type   quote        return     try         using            
+struct           where        while
 ----
 
 You don’t have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you’ll know.
@@ -168,8 +168,8 @@ println(x)
 
 The assignment statement produces no output.
 
-[TIP]
-====
+[quote]
+____
 To check your understanding, type the following statements in the Julia REPL and see what they do:
 
 [source,julia]
@@ -180,7 +180,7 @@ x + 1
 ----
 
 Now put the same statements in a script and run it. What is the output? Modify the script by transforming each expression into a print statement and then run it again.
-====
+____
 
 === Order of Operations
 

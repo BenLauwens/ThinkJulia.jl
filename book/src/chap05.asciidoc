@@ -327,10 +327,10 @@ As usual, the top of the stack is the frame for +pass:[__main__]+. It is empty b
 The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
 (((base case)))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
-====
+____
 
 
 === Infinite Recursion

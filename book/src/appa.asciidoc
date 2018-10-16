@@ -11,9 +11,9 @@ The following table lists Unicode characters that can be entered via tab complet
 |+₁+|*+\_1+*| 
 |+₂+|*+\_2+*|
 |+🍎+|*+\:apple:+*|
-|+🍐+|*+\:pear:+*|
 |+🍌+|*+\:banana:+*|
 |+🐫+|*+\:camel:+*|
+|+🍐+|*+\:pear:+*|
 |+🐢+|*+\:turtle:+*|
 |+≡+|*+\equiv+*|+===+
 |+ℯ+|*+\euler+*|

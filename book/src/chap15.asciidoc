@@ -137,31 +137,6 @@ julia> blank.y = 4.0
 4.0
 ----
 
-You can pass an instance as an argument in the usual way. For example:
-(((printpoint)))((("function", "programmer-defined", "printpoint", see="printpoint")))
-
-[source,@julia-setup chap15]
-----
-function printpoint(p)
-    println("($(p.x), $(p.y))")
-end
-----
-
-+printpoint+ takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass +p+ as an argument:
-
-[source,@julia-repl-test chap15]
-----
-julia> printpoint(blank)
-(3.0, 4.0)
-----
-
-[TIP]
-====
-As an exercise, write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
-(((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
-
-====
-
 
 === Rectangles
 
@@ -211,30 +186,31 @@ Rectangle(100.0, 200.0, MPoint(0.0, 0.0))
 image::images/fig152.svg[]
 
 
-=== Instances as Return Values
+=== Instances as Arguments
 
-Functions can return instances. For example, +findcenter+ takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
-(((findcenter)))((("function", "programmer-defined", "findcenter", see="findcenter")))
+You can pass an instance as an argument in the usual way. For example:
+(((printpoint)))((("function", "programmer-defined", "printpoint", see="printpoint")))
 
 [source,@julia-setup chap15]
 ----
-function findcenter(rect)
-    Point(rect.corner.x + rect.width / 2, rect.corner.y + rect.height / 2)
+function printpoint(p)
+    println("($(p.x), $(p.y))")
 end
 ----
 
-The expression +rect.corner.x+ means, “Go to the object +rect+ refers to and select the field named +corner+; then go to that object and select the field named +x+.”
-
-Here is an example that passes +box+ as an argument and assigns the resulting point to +center+:
++printpoint+ takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass +p+ as an argument:
 
 [source,@julia-repl-test chap15]
 ----
-julia> center = findcenter(box)
-Point(50.0, 100.0)
+julia> printpoint(blank)
+(3.0, 4.0)
 ----
 
-
-=== Instances as Arguments
+[quote]
+____
+As an exercise, write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
+(((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
+____
 
 If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint!+ takes a mutable point object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the point:
 (((movepoint!)))((("function", "programmer-defined", "movepoint!", see="movepoint!")))
@@ -304,6 +280,28 @@ ERROR: type Rectangle is immutable
 ----
 ====
 
+=== Instances as Return Values
+
+Functions can return instances. For example, +findcenter+ takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
+(((findcenter)))((("function", "programmer-defined", "findcenter", see="findcenter")))
+
+[source,@julia-setup chap15]
+----
+function findcenter(rect)
+    Point(rect.corner.x + rect.width / 2, rect.corner.y + rect.height / 2)
+end
+----
+
+The expression +rect.corner.x+ means, “Go to the object +rect+ refers to and select the field named +corner+; then go to that object and select the field named +x+.”
+
+Here is an example that passes +box+ as an argument and assigns the resulting point to +center+:
+
+[source,@julia-repl-test chap15]
+----
+julia> center = findcenter(box)
+Point(50.0, 100.0)
+----
+
 
 === Copying
 
@@ -328,10 +326,10 @@ false
 The +≡+ operator indicates that +p1+ and +p2+ are not the same object, which is what we expected. But you might have expected +==+ to yield +true+ because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the +==+ operator is the same as the +===+ operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
 (((==)))(((≡)))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
-====
+____
 
 
 === Debugging

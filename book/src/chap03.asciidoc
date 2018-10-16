@@ -250,12 +250,12 @@ This program contains two function definitions: +printlyrics+ and +repeatlyrics+
 
 As you might expect, you have to create a function before you can run it. In other words, the function definition has to run before the function gets called.
 
-[TIP]
-====
+[quote]
+____
 As an exercise, move the last line of this program to the top, so the function call appears before the definitions. Run the program and see what error message you get.
 
 Now move the function call back to the bottom and move the definition of +printlyrics+ after the definition of +repeatlyrics+. What happens when you run this program?
-====
+____
 
 
 === Flow of Execution

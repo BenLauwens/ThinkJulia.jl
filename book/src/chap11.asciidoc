@@ -198,10 +198,10 @@ julia> get(h, 'b', 0)
 0
 ----
 
-[TIP]
-====
+[quote]
+____
 As an exercise, use +get+ to write +histogram+ more concisely. You should be able to eliminate the +if+ statement.
-====
+____
 
 
 === Looping and Dictionaries
@@ -646,11 +646,6 @@ Read the documentation of the dictionary function +get!+ and use it to write a m
 
 Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments.
 (((memo)))(((Ackermann function)))
-
-[TIP]
-====
-No.
-====
 
 [[ex11-4]]
 ===== Exercise 11-4

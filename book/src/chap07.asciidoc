@@ -158,10 +158,10 @@ Since +n+ sometimes increases and sometimes decreases, there is no obvious proof
 The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture.)
 (((Collatz conjecture)))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, rewrite the function +printn+ from <<recursion>> using iteration instead of recursion.
-====
+____
 
 
 === +break+

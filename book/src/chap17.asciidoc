@@ -3,7 +3,7 @@
 
 In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is dynamic but inherits some features of static type systems. A method can be efficiently dispatched on the number and the type of its arguments.
 
-In this chapter I will discuss the use of type declarations in Julia and I will introduce methods, ways to implement different behavior for a function depending on its arguments and the associate multiple dispatch mechanism.
+In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on its arguments. This is called multiple dispatch.
 
 
 === Type Declarations
@@ -128,11 +128,11 @@ julia> printtime(150)
 I don't know how to print the argument time.
 ----
 
-[TIP]
-====
+[quote]
+____
 As an exercise, rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
 (((timetoint)))(((inttotime)))
-====
+____
 
 [source,@julia-eval chap17a]
 ----
@@ -150,12 +150,12 @@ end;
 
 === More Examples
 
-Here’s a version of +increment!+ (from <<modifiers>>) rewritten to specify its arguments:
-(((increment!)))
+Here’s a version of +increment+ (from <<modifiers>>) rewritten to specify its arguments:
+(((increment)))
 
 [source,@julia-setup chap17a]
 ----
-function increment!(time::MyTime, seconds::Int64)
+function increment(time::MyTime, seconds::Int64)
     seconds += timetoint(time)
     inttotime(seconds)
 end
@@ -169,7 +169,7 @@ Here's how you would invoke increment:
 ----
 julia> start = MyTime(9, 45, 0)
 MyTime(9, 45, 0)
-julia> increment!(start, 1337)
+julia> increment(start, 1337)
 MyTime(10, 7, 17)
 ----
 
@@ -178,13 +178,13 @@ If you put the arguments in the wrong order, you get an error:
 
 [source,@julia-repl-test chap17a]
 ----
-julia> increment!(1337, start)
-ERROR: MethodError: no method matching increment!(::Int64, ::MyTime)
+julia> increment(1337, start)
+ERROR: MethodError: no method matching increment(::Int64, ::MyTime)
 ----
 
-The signature of the method is +printtime(time::MyTime, seconds::Int64)+ and not +printtime(seconds::Int64, time::MyTime)+.
+The signature of the method is +increment(time::MyTime, seconds::Int64)+ and not +increment(seconds::Int64, time::MyTime)+.
 
-Rewriting +isafter+to act only on mytime objects is as easy:
+Rewriting +isafter+ to act only on mytime objects is as easy:
 (((isafter)))
 
 [source,@julia-setup chap17a]
@@ -326,11 +326,11 @@ julia> time = MyTime(9, 45)
 
 When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
 (((Point)))
-====
+____
 
 [source,@julia-eval chap17b]
 ----
@@ -429,14 +429,14 @@ julia> 1337 + start
 The choice of which method to execute when a function is applied is called _dispatch_. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as _multiple dispatch_.
 (((dispatch)))(((multiple dispatch)))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write +pass:[+]+ methods for point objects:
 
 * If both operands are point objects, the method should return a new point object whose +x+ coordinate is the sum of the +x+ coordinates of the operands, and likewise for the +y+ coordinates.
 
 * If the first or the second operand is a tuple, the method should add the first element of the tuple to the +x+ coordinate and the second element to the +y+ coordinate, and return a new point object with the result.
-====
+____
 
 
 === Polymorphism
@@ -588,7 +588,7 @@ Change the fields of +MyTime+ to be a single integer representing seconds since 
 Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:
 (((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))
 
-* An constructor that initializes +pouchcontents+ to an empty array.
+* A constructor that initializes +pouchcontents+ to an empty array.
 
 * A method named +putinpouch+ that takes a +Kangaroo+ object and an object of any type and adds it to +pouchcontents+.
 (((putinpouch)))((("function", "programmer-defined", "putinpouch", see="putinpouch")))

@@ -108,10 +108,10 @@ function Base.isless(c1::Card, c2::Card)
 end
 ----
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write a +isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
-====
+____
 
 
 === Unit Testing
@@ -224,11 +224,11 @@ function Random.shuffle!(deck::Deck)
 end
 ----
 
-[TIP]
-====
+[quote]
+____
 Write a function named +sort!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +isless+ method we defined to determine the order.
 (((sort!)))
-====
+____
 
 
 === Abstract Types and Subtyping
@@ -406,7 +406,7 @@ There are no dependencies in this diagram. They would normally be shown with a d
 
 A more detailed diagram might show that a Deck actually contains an array of Cards, but built-in types like array and dictionnaries are usually not included in type diagrams.
 
-
+[[interactive]]
 === Debugging
 
 Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.
@@ -504,10 +504,10 @@ This example suggests a development plan for designing types:
 
 * Transform the associated functions into methods with as argument objects of the new type.
 
-[TIP]
-====
+[quote]
+____
 As an exercise, download my Markov code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
-====
+____
 
 
 === Glossary

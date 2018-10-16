@@ -107,15 +107,15 @@ The function +pwd+ returns the name of the current directory:
 [source,jlcon]
 ----
 julia> cwd = pwd()
-"/home/dinsdale"
+"/home/ben"
 ----
 
-+cwd+ stands for “current working directory”. The result in this example is +/home/dinsdale+, which is the home directory of a user named +dinsdale+.
++cwd+ stands for “current working directory”. The result in this example is +/home/ben+, which is the home directory of a user named +ben+.
 
-A string like +"/home/dinsdale"+ that identifies a file or directory is called a _path_.
+A string like +"/home/ben"+ that identifies a file or directory is called a _path_.
 (((path)))
 
-A simple filename, like +memo.txt+ is also considered a path, but it is a _relative path_ because it relates to the current directory. If the current directory is +/home/dinsdale+, the filename +memo.txt+ would refer to +/home/dinsdale/memo.txt+.
+A simple filename, like +memo.txt+ is also considered a path, but it is a _relative path_ because it relates to the current directory. If the current directory is +/home/ben+, the filename +memo.txt+ would refer to +/home/ben/memo.txt+.
 (((relative path)))((("path", "relative", see="relative path")))
 
 A path that begins with +/+ does not depend on the current directory; it is called an _absolute path_. To find the absolute path to a file, you can use +abspath+:
@@ -124,7 +124,7 @@ A path that begins with +/+ does not depend on the current directory; it is call
 [source,jlcon]
 ----
 julia> abspath("memo.txt")
-"/home/dinsdale/memo.txt"
+"/home/ben/memo.txt"
 ----
 
 Julia provides other functions for working with filenames and paths. For example, +ispath+ checks whether a file or directory exists:
@@ -143,7 +143,7 @@ If it exists, +isdir+ checks whether it’s a directory:
 ----
 julia> isdir("memo.txt")
 false
-julia> isdir("/home/dinsdale")
+julia> isdir("/home/ben")
 true
 ----
 
@@ -371,9 +371,9 @@ In other words, serialization and then deserialization has the same effect as co
 
 You can use this to store non-strings in a database. 
 
-[NOTE]
+[TIP]
 ====
-In fact, this combination is so common that it has been encapsulated in a package called +JLD(2)+ (see https://github.com/simonster/JLD2.jl).
+In fact, this combination is so common that it has been encapsulated in a package called +JLD2+ (see https://github.com/simonster/JLD2.jl).
 ====
 
 
@@ -471,7 +471,7 @@ julia> Base.include(Main, "wc.jl")
 The first argument of +include+ is a module. The input source file is evaluated in the scope of that module. The prefix +Base+ is mandatory is this case. Without the prefix +include+ has only one argument, the filename, and the file is evaluated in the scope of the active module. +Main+ corresponds to the +pass:[__main__]+ frame.
 (((Main)))(((Base)))
 
-Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside +module ...  end+. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else's. Within a module, you can control which names from other modules are visible (via +import+ing), and specify which of your names are intended to be public (via +export+ing).
+Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside +module ...  end+. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else's. Within a module, you can control which names from other modules are visible (via ++import++ing), and specify which of your names are intended to be public (via ++export++ing).
 (((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]
@@ -499,10 +499,10 @@ julia> linecount("wc.jl")
 11
 ----
 
-[TIP]
-====
+[quote]
+____
 As an exercise, type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
-====
+____
 
 [WARNING]
 ====

@@ -94,8 +94,6 @@ julia> len = length(fruits)
 5
 ----
 
-[WARNING]
-====
 To get the last letter of a string, you might be tempted to try something like this:
 
 [source,@julia-repl-test chap08]
@@ -105,7 +103,6 @@ julia> last = fruits[len]
 ----
 
 But you might not get what you expect.
-====
 
 Strings are encoded using the _UTF-8 encoding_. UTF-8 is a variable-width encoding, meaning that not all characters are encoded in the same number of bytes.
 (((UTF-8 encoding)))
@@ -150,15 +147,15 @@ while index <= sizeof(fruits)
 end
 ----
 
-This loop traverses the string and displays each letter on a line by itself. The loop condition is +index <= sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run. 
+This loop traverses the string and displays each letter on a line by itself. The loop condition is +index pass:[&lt;=] sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run. 
 
 The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to reassign the variable +index+ defined in +_pass:[&#95;&#95;main&#95;&#95;]+ (see <<global_variables>>).
 (((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, write a function that takes a string as an argument and displays the letters backward, one per line.
-====
+____
 
 Another way to write a traversal is with a +for+ loop:
 (((for statement)))(((in)))
@@ -223,10 +220,10 @@ julia> str[8:7]
 
 An empty string contains no characters and has length 0, but other than that, it is the same as any other string.
 
-[TIP]
-====
+[quote]
+____
 Continuing this example, what do you think +str[:]+ means? Try it and see.
-====
+____
 
 
 === Strings Are Immutable
@@ -308,10 +305,10 @@ If the character doesn’t appear in the string, the program exits the loop norm
 This pattern of computation—traversing a sequence and returning when we find what we are looking for—is called a _search_.
 (((search)))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, modify +find+ so that it has a third parameter, the index in +word+ where it should start looking.
-====
+____
 
 [[looping_and_counting]]
 === Looping and Counting
@@ -333,12 +330,12 @@ println(count)
 This program demonstrates another pattern of computation called a _counter_. The variable +count+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, count contains the result—the total number of +a+’s.
 (((counter)))
 
-[TIP]
-====
+[quote]
+____
 As an exercise, encapsulate this code in a function named +count+, and generalize it so that it accepts the string and the letter as arguments.
 
 Then rewrite the function so that instead of traversing the string, it uses the three-parameter version of +find+ from the previous section.
-====
+____
 
 
 === String Library
@@ -578,10 +575,10 @@ ERROR: BoundsError: attempt to access "pots"
 This time a +BoundsError+ has been thrown. The value of +i+ is 5, which is out a range for the string +"pots"+.
 (((BoundsError)))((("error", "Base", "BoundsError", see="BoundsError")))
 
-[TIP]
-====
+[quote]
+____
 Run the program on paper, changing the values of +i+ and +j+ during each iteration. Find and fix the second error in this function.
-====
+____
 
 
 === Glossary
