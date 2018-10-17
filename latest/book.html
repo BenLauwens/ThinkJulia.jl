@@ -752,8 +752,83 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#time">Time</a></li>
 <li><a href="#_pure_functions">Pure Functions</a></li>
 <li><a href="#modifiers">Modifiers</a></li>
+<li><a href="#prototyping_versus_planning">Prototyping Versus Planning</a></li>
+<li><a href="#chap16_debugging">Debugging</a></li>
+<li><a href="#_glossary_16">Glossary</a></li>
+<li><a href="#_exercises_18">Exercises</a></li>
 </ul>
 </li>
+<li><a href="#chap17">17. Multiple Dispatch</a>
+<ul class="sectlevel2">
+<li><a href="#_type_declarations">Type Declarations</a></li>
+<li><a href="#_printing_objects">Printing Objects</a></li>
+<li><a href="#_more_examples">More Examples</a></li>
+<li><a href="#_constructors">Constructors</a></li>
+<li><a href="#_show"><code>show</code></a></li>
+<li><a href="#_operator_overloading">Operator Overloading</a></li>
+<li><a href="#_multiple_dispatch">Multiple Dispatch</a></li>
+<li><a href="#_polymorphism">Polymorphism</a></li>
+<li><a href="#_interface_and_implementation">Interface and Implementation</a></li>
+<li><a href="#_debugging_14">Debugging</a></li>
+<li><a href="#_glossary_17">Glossary</a></li>
+<li><a href="#_exercises_19">Exercises</a></li>
+</ul>
+</li>
+<li><a href="#chap18">18. Subtyping</a>
+<ul class="sectlevel2">
+<li><a href="#_cards">Cards</a></li>
+<li><a href="#_global_variables">Global Variables</a></li>
+<li><a href="#_comparing_cards">Comparing Cards</a></li>
+<li><a href="#_unit_testing">Unit Testing</a></li>
+<li><a href="#_decks">Decks</a></li>
+<li><a href="#_add_remove_shuffle_and_sort">Add, Remove, Shuffle and Sort</a></li>
+<li><a href="#_abstract_types_and_subtyping">Abstract Types and Subtyping</a></li>
+<li><a href="#_abstract_types_and_functions">Abstract Types and Functions</a></li>
+<li><a href="#_type_diagrams">Type Diagrams</a></li>
+<li><a href="#interactive">Debugging</a></li>
+<li><a href="#_data_encapsulation">Data Encapsulation</a></li>
+<li><a href="#_glossary_18">Glossary</a></li>
+<li><a href="#_exercises_20">Exercises</a></li>
+</ul>
+</li>
+<li><a href="#chap19">19. The Goodies: Syntax</a>
+<ul class="sectlevel2">
+<li><a href="#_blocks">Blocks</a></li>
+<li><a href="#_functions">Functions</a></li>
+<li><a href="#_control_flow">Control Flow</a></li>
+<li><a href="#_types">Types</a></li>
+<li><a href="#_methods">Methods</a></li>
+<li><a href="#_constructors_2">Constructors</a></li>
+<li><a href="#_conversion_and_promotion">Conversion and Promotion</a></li>
+<li><a href="#_metaprogramming">Metaprogramming</a></li>
+<li><a href="#_missing_values">Missing Values</a></li>
+<li><a href="#_calling_c_and_fortran_code">Calling C and Fortran Code</a></li>
+<li><a href="#_glossary_19">Glossary</a></li>
+</ul>
+</li>
+<li><a href="#chap20">20. The Goodies: Base and Standard Library</a>
+<ul class="sectlevel2">
+<li><a href="#_measuring_performance">Measuring Performance</a></li>
+<li><a href="#collections_and_data_structures">Collections and Data Structures</a></li>
+<li><a href="#_mathematics">Mathematics</a></li>
+<li><a href="#_strings">Strings</a></li>
+<li><a href="#_arrays">Arrays</a></li>
+<li><a href="#_interfaces">Interfaces</a></li>
+<li><a href="#_interactive_utilities">Interactive Utilities</a></li>
+<li><a href="#_debugging_15">Debugging</a></li>
+<li><a href="#_glossary_20">Glossary</a></li>
+</ul>
+</li>
+<li><a href="#chap21">21. Debugging</a>
+<ul class="sectlevel2">
+<li><a href="#_syntax_errors">Syntax Errors</a></li>
+<li><a href="#_runtime_errors">Runtime Errors</a></li>
+<li><a href="#_semantic_errors">Semantic Errors</a></li>
+</ul>
+</li>
+<li><a href="#_unicode_input">Appendix A: Unicode Input</a></li>
+<li><a href="#juliabox">Appendix B: JuliaBox</a></li>
+<li><a href="#_index">Index</a></li>
 </ul>
 </div>
 </div>
@@ -836,7 +911,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </p>
 </div>
 <div class="paragraph">
-<p>In the browser you can run Julia on JuliaBox: <a href="https://www.juliabox.com" class="bare">https://www.juliabox.com</a>. No installation is required – just point your browser there, login and start computing (see <a href="#juliabox">[juliabox]</a>).
+<p>In the browser you can run Julia on JuliaBox: <a href="https://www.juliabox.com" class="bare">https://www.juliabox.com</a>. No installation is required – just point your browser there, login and start computing (see <a href="#juliabox">JuliaBox</a>).
 </p>
 </div>
 <div class="paragraph">
@@ -2716,7 +2791,7 @@ Stacktrace:
 <p>It introduces turtle graphics, a way to create programmatically drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.</p>
 </div>
 <div class="paragraph">
-<p>The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <a href="#juliabox">[juliabox]</a>).
+<p>The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <a href="#juliabox">JuliaBox</a>).
 </p>
 </div>
 <div class="sect2">
@@ -4128,7 +4203,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.539779915331636e9</span></code></pre>
+<span class="tok-go">1.539780847022544e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5991,7 +6066,13 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Of course, that’s not quite right because “Ouack” and “Quack” are misspelled. As an exercise, modify the program to fix this error.</p>
+<p>Of course, that’s not quite right because “Ouack” and “Quack” are misspelled.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_exercise_8_2">Exercise 8-2</h5>
+<div class="paragraph">
+<p>Modify the program to fix this error.</p>
 </div>
 </div>
 </div>
@@ -6037,7 +6118,7 @@ Qack</pre>
 <p>An empty string contains no characters and has length 0, but other than that, it is the same as any other string.</p>
 </div>
 <div class="sect4">
-<h5 id="_exercise_8_2">Exercise 8-2</h5>
+<h5 id="_exercise_8_3">Exercise 8-3</h5>
 <div class="paragraph">
 <p>Continuing this example, what do you think <code>str[:]</code> means? Try it and see.</p>
 </div>
@@ -6134,7 +6215,7 @@ Qack</pre>
 </p>
 </div>
 <div class="sect4">
-<h5 id="_exercise_8_3">Exercise 8-3</h5>
+<h5 id="_exercise_8_4">Exercise 8-4</h5>
 <div class="paragraph">
 <p>Modify <code>find</code> so that it has a third parameter, the index in <code>word</code> where it should start looking.</p>
 </div>
@@ -6162,7 +6243,7 @@ Qack</pre>
 </p>
 </div>
 <div class="sect4">
-<h5 id="_exercise_8_3_2">Exercise 8-3</h5>
+<h5 id="_exercise_8_5">Exercise 8-5</h5>
 <div class="paragraph">
 <p>Encapsulate this code in a function named <code>count</code>, and generalize it so that it accepts the string and the letter as arguments.</p>
 </div>
@@ -6392,7 +6473,7 @@ Qack</pre>
 </p>
 </div>
 <div class="sect4">
-<h5 id="_exercise_8_4">Exercise 8-4</h5>
+<h5 id="_exercise_8_6">Exercise 8-6</h5>
 <div class="paragraph">
 <p>Run the program on paper, changing the values of <code>i</code> and <code>j</code> during each iteration. Find and fix the second error in this function.</p>
 </div>
@@ -6468,7 +6549,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_exercises_9">Exercises</h3>
 <div class="sect4">
-<h5 id="ex08-1">Exercise 8-5</h5>
+<h5 id="ex08-1">Exercise 8-7</h5>
 <div class="paragraph">
 <p>Read the documentation of the string functions at <a href="https://docs.julialang.org/en/stable/base/strings/" class="bare">https://docs.julialang.org/en/stable/base/strings/</a>. You might want to experiment with some of them to make sure you understand how they work. <code>strip</code> and <code>replace</code> are particularly useful.</p>
 </div>
@@ -6478,14 +6559,14 @@ Qack</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ex08-2">Exercise 8-6</h5>
+<h5 id="ex08-2">Exercise 8-8</h5>
 <div class="paragraph">
 <p>There is a builtin function called <code>count</code> that is similar to the function in <a href="#looping_and_counting">Looping and Counting</a>. Read the documentation of this function and use it to count the number of <code>a</code>’s in "banana".
 </p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ex08-3">Exercise 8-7</h5>
+<h5 id="ex08-3">Exercise 8-9</h5>
 <div class="paragraph">
 <p>A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
 </p>
@@ -6502,12 +6583,12 @@ Qack</pre>
 <p>A step size of -1 goes through the word backwards, so the slice <code>[end:-1:1]</code> generates a reversed string.</p>
 </div>
 <div class="paragraph">
-<p>Use this idiom to write a one-line version of <code>ispalindrome</code> from Exercise 6.3.
+<p>Use this idiom to write a one-line version of <code>ispalindrome</code> from <a href="#ex06-3">Exercise 6-6</a>.
 </p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ex08-4">Exercise 8-8</h5>
+<h5 id="ex08-4">Exercise 8-10</h5>
 <div class="paragraph">
 <p>The following functions are all <em>intended</em> to check whether a string contains any lowercase letters, but at least some of them are wrong. For each function, describe what the function actually does (assuming that the parameter is a string).</p>
 </div>
@@ -6560,7 +6641,7 @@ Qack</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="ex08-5">Exercise 8-9</h5>
+<h5 id="ex08-5">Exercise 8-11</h5>
 <div class="paragraph">
 <p>A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so <code>’A’</code> rotated by 3 is <code>’D’</code> and <code>’Z’</code> rotated by 1 is <code>’A’</code>.
 </p>
@@ -9121,7 +9202,7 @@ Qack</pre>
 <div class="sect4">
 <h5 id="ex11-5">Exercise 11-6</h5>
 <div class="paragraph">
-<p>Two words are “rotate pairs” if you can rotate one of them and get the other (see <code>rotateword</code> in <a href="#ex08-5">Exercise 8-9</a>).
+<p>Two words are “rotate pairs” if you can rotate one of them and get the other (see <code>rotateword</code> in <a href="#ex08-5">Exercise 8-11</a>).
 </p>
 </div>
 <div class="paragraph">
@@ -9737,7 +9818,7 @@ Qack</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Julia allows to attach a type to elements of a sequence. How this is done, is detailed in <a href="#chap17">[chap17]</a>. Specifying the type eliminates a lot of shape errors.</p>
+<p>Julia allows to attach a type to elements of a sequence. How this is done, is detailed in <a href="#chap17">Multiple Dispatch</a>. Specifying the type eliminates a lot of shape errors.</p>
 </div>
 </div>
 <div class="sect2">
@@ -10283,7 +10364,7 @@ outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons bet
 <div class="sect4">
 <h5 id="ex13-6">Exercise 13-6</h5>
 <div class="paragraph">
-<p>Julia provides a data structure called <code>Set</code> that provides many common set operations. You can read about them in <a href="#collections_and_data_structures">[collections_and_data_structures]</a>, or read the documentation at <a href="https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1" class="bare">https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1</a>.</p>
+<p>Julia provides a data structure called <code>Set</code> that provides many common set operations. You can read about them in <a href="#collections_and_data_structures">Collections and Data Structures</a>, or read the documentation at <a href="https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1" class="bare">https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1</a>.</p>
 </div>
 <div class="paragraph">
 <p>Write a program that uses set subtraction to find words in the book that are not in the word list.</p>
@@ -11639,7 +11720,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_exercise_15_2">Exercise 15-2</h5>
+<h5 id="_exercise_15_1">Exercise 15-1</h5>
 <div class="paragraph">
 <p>Write a function called <code>distancebetweenpoints</code> that takes two points as arguments and returns the distance between them.
 </p>
@@ -11782,7 +11863,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="sect4">
-<h5 id="_exercise_15_1">Exercise 15-1</h5>
+<h5 id="_exercise_15_2">Exercise 15-2</h5>
 <div class="paragraph">
 <p>Create a <code>Point</code> instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.</p>
 </div>
@@ -12131,11 +12212,10 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Write a “pure” version of <code>increment</code> that creates and returns a new mytime object rather than modifying the parameter.</p>
 </div>
-<div class="quoteblock">
-<blockquote>
-<div id="prototyping_versus_planning" class="paragraph">
-<p>=== Prototyping Versus Planning</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="prototyping_versus_planning">Prototyping Versus Planning</h3>
 <div class="paragraph">
 <p>The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.
 </p>
@@ -12195,9 +12275,8 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>This version is shorter than the original, and easier to verify.</p>
 </div>
-<div class="paragraph">
-<p>===== Exercise 16-5</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_16_5">Exercise 16-5</h5>
 <div class="paragraph">
 <p>Rewrite <code>increment!</code> using <code>timetoint</code> and <code>inttotime</code>.</p>
 </div>
@@ -12213,9 +12292,10 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Ironically, sometimes making a problem harder (or more general) makes it easier (because there are fewer special cases and fewer opportunities for error).</p>
 </div>
-<div id="chap16_debugging" class="paragraph">
-<p>=== Debugging</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="chap16_debugging">Debugging</h3>
 <div class="paragraph">
 <p>A mytime object is well-formed if the values of <code>minute</code> and <code>second</code> are between 0 and 60 (including 0 but not 60) and if <code>hour</code> is positive. <code>hour</code> and <code>minute</code> should be integral values, but we might allow <code>second</code> to have a fraction part.
 </p>
@@ -12272,9 +12352,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p><code>@assert</code> macros are useful because they distinguish code that deals with normal conditions from code that checks for errors.</p>
 </div>
-<div class="paragraph">
-<p>=== Glossary</p>
 </div>
+<div class="sect2">
+<h3 id="_glossary_16">Glossary</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">prototype and patch</dt>
@@ -12309,12 +12389,11 @@ Due to some ancient injury?</pre>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>=== Exercises</p>
 </div>
-<div id="ex16-1" class="paragraph">
-<p>===== Exercise 16-6</p>
-</div>
+<div class="sect2">
+<h3 id="_exercises_18">Exercises</h3>
+<div class="sect4">
+<h5 id="ex16-1">Exercise 16-6</h5>
 <div class="paragraph">
 <p>Write a function called <code>multime</code> that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.
 </p>
@@ -12322,9 +12401,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Then use <code>multime</code> to write a function that takes a mytime object that represents the finishing time in a race, and a number that represents the distance, and returns a mytime object that represents the average pace (time per mile).</p>
 </div>
-<div id="ex16-2" class="paragraph">
-<p>===== Exercise 16-7</p>
 </div>
+<div class="sect4">
+<h5 id="ex16-2">Exercise 16-7</h5>
 <div class="paragraph">
 <p>Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at <a href="https://docs.julialang.org/en/stable/stdlib/Dates/" class="bare">https://docs.julialang.org/en/stable/stdlib/Dates/</a>.</p>
 </div>
@@ -12344,18 +12423,21 @@ Due to some ancient injury?</pre>
 </li>
 </ol>
 </div>
-<div id="chap17" class="paragraph">
-<p>== Multiple Dispatch</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chap17">17. Multiple Dispatch</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia&#8217;s type system is dynamic but inherits some features of static type systems. A method can be efficiently dispatched on the number and the type of its arguments.</p>
 </div>
 <div class="paragraph">
 <p>In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on its arguments. This is called multiple dispatch.</p>
 </div>
-<div class="paragraph">
-<p>=== Type Declarations</p>
-</div>
+<div class="sect2">
+<h3 id="_type_declarations">Type Declarations</h3>
 <div class="paragraph">
 <p>The <code>::</code> operator attaches <em>type annotations</em> to expressions and variables:
 </p>
@@ -12412,9 +12494,9 @@ Due to some ancient injury?</pre>
 <p>The default behavior in Julia when types are omitted is to allow values to be of any type (<code>Any</code>).
 </p>
 </div>
-<div class="paragraph">
-<p>=== Printing Objects</p>
 </div>
+<div class="sect2">
+<h3 id="_printing_objects">Printing Objects</h3>
 <div class="paragraph">
 <p>In <a href="#chap16">Structs and Functions</a>, we defined a struct named <code>MyTime</code> and in <a href="#time">Time</a>, you wrote a function named <code>printtime</code>:
 </p>
@@ -12491,16 +12573,16 @@ Due to some ancient injury?</pre>
 <span class="tok-go">I don&#39;t know how to print the argument time.</span></code></pre>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_exercise_17_1">Exercise 17-1</h5>
 <div class="paragraph">
-<p>===== Exercise 17-1</p>
-</div>
-<div class="paragraph">
-<p>Rewrite <code>timetoint</code> and <code>inttotime</code> (from <a href="#prototyping_versus_planning">[prototyping_versus_planning]</a>) to specify their argument.
+<p>Rewrite <code>timetoint</code> and <code>inttotime</code> (from <a href="#prototyping_versus_planning">Prototyping Versus Planning</a>) to specify their argument.
 </p>
 </div>
-<div class="paragraph">
-<p>=== More Examples</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_more_examples">More Examples</h3>
 <div class="paragraph">
 <p>Here’s a version of <code>increment</code> (from <a href="#modifiers">Modifiers</a>) rewritten to specify its arguments:
 </p>
@@ -12574,9 +12656,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>These expressions are valid Julia method definitions. This is a shorthand notation for defining functions/methods.</p>
 </div>
-<div class="paragraph">
-<p>=== Constructors</p>
 </div>
+<div class="sect2">
+<h3 id="_constructors">Constructors</h3>
 <div class="paragraph">
 <p>A <em>constructor</em> is a special function that is called to create an object. The default constructor methods of <code>MyTime</code> have the following signatures:
 </p>
@@ -12676,9 +12758,9 @@ Due to some ancient injury?</pre>
 <p>This allows to construct recursive data structures.
 </p>
 </div>
-<div class="paragraph">
-<p>=== <code>show</code></p>
 </div>
+<div class="sect2">
+<h3 id="_show"><code>show</code></h3>
 <div class="paragraph">
 <p><code>show</code> is a special function that returns a string representation of an object. For example, here is a <code>show</code> method for mytime objects:
 </p>
@@ -12707,16 +12789,16 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and <code>show</code>, which is useful for debugging.</p>
 </div>
-<div class="paragraph">
-<p>===== Exercise 17-2</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_17_2">Exercise 17-2</h5>
 <div class="paragraph">
 <p>Write an inner constructor method for the <code>Point</code> class that takes <code>x</code> and <code>y</code> as optional parameters and assigns them to the corresponding fields.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Operator Overloading</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_operator_overloading">Operator Overloading</h3>
 <div class="paragraph">
 <p>By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named <code>+</code> with two <code>MyTime</code> arguments, you can use the <code>+</code> operator on mytime objects.</p>
 </div>
@@ -12756,9 +12838,9 @@ Due to some ancient injury?</pre>
 <p>Changing the behavior of an operator so that it works with programmer-defined types is called <em>operator overloading</em>.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Multiple Dispatch</p>
 </div>
+<div class="sect2">
+<h3 id="_multiple_dispatch">Multiple Dispatch</h3>
 <div class="paragraph">
 <p>In the previous section we added two mytime objects, but you also might want to add an integer to a <code>MyTime</code> object:</p>
 </div>
@@ -12803,9 +12885,8 @@ Due to some ancient injury?</pre>
 <p>The choice of which method to execute when a function is applied is called <em>dispatch</em>. Julia allows the dispatch process to choose which of a function&#8217;s methods to call based on the number of arguments given, and on the types of all of the function&#8217;s arguments.  Using all of a function&#8217;s arguments to choose which method should be invoked is known as <em>multiple dispatch</em>.
 </p>
 </div>
-<div class="paragraph">
-<p>===== Exercise 17-3</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_17_3">Exercise 17-3</h5>
 <div class="paragraph">
 <p>Write <code>+</code> methods for point objects:</p>
 </div>
@@ -12819,9 +12900,10 @@ Due to some ancient injury?</pre>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Polymorphism</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_polymorphism">Polymorphism</h3>
 <div class="paragraph">
 <p>Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.</p>
 </div>
@@ -12888,9 +12970,9 @@ Due to some ancient injury?</pre>
 <p>The best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Interface and Implementation</p>
 </div>
+<div class="sect2">
+<h3 id="_interface_and_implementation">Interface and Implementation</h3>
 <div class="paragraph">
 <p>One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.</p>
 </div>
@@ -12913,9 +12995,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>But if you designed the interface carefully, you can change the implementation without changing the interface, which means that other parts of the program don’t have to change.</p>
 </div>
-<div class="paragraph">
-<p>=== Debugging</p>
 </div>
+<div class="sect2">
+<h3 id="_debugging_14">Debugging</h3>
 <div class="paragraph">
 <p>To know what methods are available, you can use the function <code>methods</code>:
 </p>
@@ -12928,9 +13010,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">[2] printtime(time) in Main at REPL[4]:2</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Glossary</p>
 </div>
+<div class="sect2">
+<h3 id="_glossary_17">Glossary</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">type annotation</dt>
@@ -12985,18 +13067,17 @@ Due to some ancient injury?</pre>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>=== Exercises</p>
 </div>
-<div id="ex17-1" class="paragraph">
-<p>===== Exercise 17-4</p>
-</div>
+<div class="sect2">
+<h3 id="_exercises_19">Exercises</h3>
+<div class="sect4">
+<h5 id="ex17-1">Exercise 17-4</h5>
 <div class="paragraph">
 <p>Change the fields of <code>MyTime</code> to be a single integer representing seconds since midnight. Then modify the methods defined in this chapter to work with the new implementation.</p>
 </div>
-<div id="ex17-2" class="paragraph">
-<p>===== Exercise 17-5</p>
 </div>
+<div class="sect4">
+<h5 id="ex17-2">Exercise 17-5</h5>
 <div class="paragraph">
 <p>Write a definition for a type named <code>Kangaroo</code> with a field named <code>pouchcontents</code> of type <code>Array</code> and the following methods:
 </p>
@@ -13019,9 +13100,13 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Test your code by creating two <code>Kangaroo</code> objects, assigning them to variables named <code>kanga</code> and <code>roo</code>, and then adding <code>roo</code> to the contents of <code>kanga</code>’s pouch.</p>
 </div>
-<div id="chap18" class="paragraph">
-<p>== Subtyping</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chap18">18. Subtyping</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>In the previous chapter we introduced the multiple dispatch mechanism and polymorphic methods. Not specifying the type of the arguments results in a method that can be called with arguments of any type. Specifying a subset of allowed types in the signature of a method is a logical next step.</p>
 </div>
@@ -13031,9 +13116,8 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>If you don’t play poker, you can read about it at <a href="https://en.wikipedia.org/wiki/Poker" class="bare">https://en.wikipedia.org/wiki/Poker</a>, but you don’t have to; I’ll tell you what you need to know for the exercises.</p>
 </div>
-<div class="paragraph">
-<p>=== Cards</p>
-</div>
+<div class="sect2">
+<h3 id="_cards">Cards</h3>
 <div class="paragraph">
 <p>There are fifty-two cards in a deck, each of which belongs to one of four suits and one of thirteen ranks. The suits are Spades (<code>♠</code>), Hearts (<code>♥</code>), Diamonds (<code>♦</code>), and Clubs (<code>♣</code>). The ranks are Ace (A), 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack (J), Queen (Q), and King (K). Depending on the game that you are playing, an Ace may be higher than King or lower than 2.</p>
 </div>
@@ -13095,9 +13179,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">Card(2, 12)</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Global Variables</p>
 </div>
+<div class="sect2">
+<h3 id="_global_variables">Global Variables</h3>
 <div class="paragraph">
 <p>In order to print <code>Card</code> objects in a way that people can easily read, we need a mapping from the integer codes to the corresponding ranks and suits. A natural way to do that is with arrays of strings:</p>
 </div>
@@ -13134,9 +13218,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">J♥</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Comparing Cards</p>
 </div>
+<div class="sect2">
+<h3 id="_comparing_cards">Comparing Cards</h3>
 <div class="paragraph">
 <p>For built-in types, there are relational operators (<code>&lt;</code>, <code>&gt;</code>, <code>==</code>, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: <code>Base.isless</code>.</p>
 </div>
@@ -13157,15 +13241,15 @@ Due to some ancient injury?</pre>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== Exercise 18-1</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_18_1">Exercise 18-1</h5>
 <div class="paragraph">
 <p>Write a <code>isless</code> method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.</p>
 </div>
-<div class="paragraph">
-<p>=== Unit Testing</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_unit_testing">Unit Testing</h3>
 <div class="paragraph">
 <p><em>Unit testing</em> is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
 </p>
@@ -13187,9 +13271,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p><code>@test</code> returns a <code>"Test Passed"</code> if the expression following it is <code>true</code>, a <code>"Test Failed"</code> if it is <code>false</code>, and an <code>"Error Result"</code> if it could not be evaluated.</p>
 </div>
-<div class="paragraph">
-<p>=== Decks</p>
 </div>
+<div class="sect2">
+<h3 id="_decks">Decks</h3>
 <div class="paragraph">
 <p>Now that we have Cards, the next step is to define Decks. Since a deck is made up of cards, it is natural for each Deck to contain an array of cards as an attribute.</p>
 </div>
@@ -13238,9 +13322,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Add, Remove, Shuffle and Sort</p>
 </div>
+<div class="sect2">
+<h3 id="_add_remove_shuffle_and_sort">Add, Remove, Shuffle and Sort</h3>
 <div class="paragraph">
 <p>To deal cards, we would like a function that removes a card from the deck and returns it. The function <code>pop!</code> provides a convenient way to do that:
 </p>
@@ -13288,16 +13372,16 @@ Due to some ancient injury?</pre>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>===== Exercise 18-2</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_18_2">Exercise 18-2</h5>
 <div class="paragraph">
 <p>Write a function named <code>sort!</code> that uses the function <code>sort!</code> to sort the cards in a Deck. <code>sort!</code> uses the <code>isless</code> method we defined to determine the order.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Abstract Types and Subtyping</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_abstract_types_and_subtyping">Abstract Types and Subtyping</h3>
 <div class="paragraph">
 <p>We want a type to represent a “hand”, that is, the cards held by one player. A hand is similar to a deck: both are made up of a collection of cards, and both require operations like adding and removing cards.</p>
 </div>
@@ -13380,9 +13464,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">Hand(Card[], &quot;new hand&quot;)</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Abstract Types and Functions</p>
 </div>
+<div class="sect2">
+<h3 id="_abstract_types_and_functions">Abstract Types and Functions</h3>
 <div class="paragraph">
 <p>We can now express the common operations between <code>Deck</code> and <code>Hand</code> as functions having as argument <code>CardSet</code>:
 </p>
@@ -13439,9 +13523,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>In some games, cards are moved from one hand to another, or from a hand back to the deck. You can use <code>move!</code> for any of these operations: <code>cs1</code> and <code>cs2</code> can be either a <code>Deck</code> or a <code>Hand</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Type Diagrams</p>
 </div>
+<div class="sect2">
+<h3 id="_type_diagrams">Type Diagrams</h3>
 <div class="paragraph">
 <p>So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.</p>
 </div>
@@ -13490,9 +13574,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>A more detailed diagram might show that a Deck actually contains an array of Cards, but built-in types like array and dictionnaries are usually not included in type diagrams.</p>
 </div>
-<div id="interactive" class="paragraph">
-<p>=== Debugging</p>
 </div>
+<div class="sect2">
+<h3 id="interactive">Debugging</h3>
 <div class="paragraph">
 <p>Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.</p>
 </div>
@@ -13531,9 +13615,9 @@ Due to some ancient injury?</pre>
 <p>If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Data Encapsulation</p>
 </div>
+<div class="sect2">
+<h3 id="_data_encapsulation">Data Encapsulation</h3>
 <div class="paragraph">
 <p>The previous chapters demonstrate a development plan we might call “type-oriented design”. We identified objects we needed—like <code>Point</code>, <code>Rectangle</code> and <code>MyTime</code>—and defined structs to represent them. In each case there is an obvious correspondence between the object and some entity in the real world (or at least a mathematical world).
 </p>
@@ -13611,15 +13695,15 @@ Due to some ancient injury?</pre>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>===== Exercise 18-3</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_18_3">Exercise 18-3</h5>
 <div class="paragraph">
 <p>Download my Markov code from <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl</a>, and follow the steps described above to encapsulate the global variables as attributes of a new struct called <code>Markov</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Glossary</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_glossary_18">Glossary</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">encode</dt>
@@ -13694,12 +13778,11 @@ Due to some ancient injury?</pre>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>=== Exercises</p>
 </div>
-<div id="ex18-1" class="paragraph">
-<p>===== Exercise 18-4</p>
-</div>
+<div class="sect2">
+<h3 id="_exercises_20">Exercises</h3>
+<div class="sect4">
+<h5 id="ex18-1">Exercise 18-4</h5>
 <div class="paragraph">
 <p>For the following program, draw a type diagram that shows these types and the relationships among them.</p>
 </div>
@@ -13728,16 +13811,16 @@ Due to some ancient injury?</pre>
 <span class="tok-n">addping</span><span class="tok-p">(</span><span class="tok-n">pong</span><span class="tok-p">,</span> <span class="tok-n">ping</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
-<div id="ex18-2" class="paragraph">
-<p>===== Exercise 18-5</p>
 </div>
+<div class="sect4">
+<h5 id="ex18-2">Exercise 18-5</h5>
 <div class="paragraph">
 <p>Write a method called <code>deal!</code> that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
 </p>
 </div>
-<div id="ex18-3" class="paragraph">
-<p>===== Exercise 18-6</p>
 </div>
+<div class="sect4">
+<h5 id="ex18-3">Exercise 18-6</h5>
 <div class="paragraph">
 <p>The following are the possible hands in poker, in increasing order of value and decreasing order of probability:</p>
 </div>
@@ -13798,9 +13881,13 @@ Due to some ancient injury?</pre>
 </li>
 </ol>
 </div>
-<div id="chap19" class="paragraph">
-<p>== The Goodies: Syntax</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chap19">19. The Goodies: Syntax</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>One of my goals for this book has been to teach you as little Julia as possible. When there were two ways to do something, I picked one and avoided mentioning the other. Or sometimes I put the second one into an exercise.</p>
 </div>
@@ -13825,9 +13912,8 @@ Due to some ancient injury?</pre>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Blocks</p>
-</div>
+<div class="sect2">
+<h3 id="_blocks">Blocks</h3>
 <div class="paragraph">
 <p><code>begin &#8230;&#8203; end</code> is used to group a number of statements. This is called a block of code.
 </p>
@@ -13848,11 +13934,10 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>The macro has as argument the block of code consisting of 3 function calls.</p>
 </div>
+<div class="sect3">
+<h4 id="_closures_and_let_blocks">Closures and <code>let</code> blocks</h4>
 <div class="paragraph">
-<p>==== Closures and <code>let</code> blocks</p>
-</div>
-<div class="paragraph">
-<p>The function <code>funcgen</code> returns an array with two anonymous functions (see <a href="#anonymous_functions">[anonymous_functions]</a>) which return respectively the values 1 and 2:
+<p>The function <code>funcgen</code> returns an array with two anonymous functions (see <a href="#anonymous_functions">Anonymous Functions</a>) which return respectively the values 1 and 2:
 </p>
 </div>
 <div class="listingblock">
@@ -13915,12 +14000,12 @@ Due to some ancient injury?</pre>
 <span class="tok-go">2</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Functions</p>
 </div>
-<div id="anonymous_functions" class="paragraph">
-<p>==== Anonymous Functions</p>
 </div>
+<div class="sect2">
+<h3 id="_functions">Functions</h3>
+<div class="sect3">
+<h4 id="anonymous_functions">Anonymous Functions</h4>
 <div class="paragraph">
 <p>We can define a function without specifying a name:</p>
 </div>
@@ -13954,9 +14039,9 @@ Due to some ancient injury?</pre>
 </div>
 <div class="title">Figure 24. Plot</div>
 </div>
-<div class="paragraph">
-<p>==== Named Tuples</p>
 </div>
+<div class="sect3">
+<h4 id="_named_tuples">Named Tuples</h4>
 <div class="paragraph">
 <p>You can name the components of a tuple:</p>
 </div>
@@ -13972,9 +14057,9 @@ Due to some ancient injury?</pre>
 <p>This is called a <em>named tuple</em> having the additional property that fields can be accessed by name using dot syntax <code>(x.a)</code>.
 </p>
 </div>
-<div class="paragraph">
-<p>==== Keyword Arguments</p>
 </div>
+<div class="sect3">
+<h4 id="_keyword_arguments">Keyword Arguments</h4>
 <div class="paragraph">
 <p>Function arguments can also be named:</p>
 </div>
@@ -13991,9 +14076,9 @@ Due to some ancient injury?</pre>
 <p><em>Keyword arguments</em> in a function are specified after a semicolon in the signature.
 </p>
 </div>
-<div class="paragraph">
-<p>==== <code>do</code> Block</p>
 </div>
+<div class="sect3">
+<h4 id="_do_block"><code>do</code> Block</h4>
 <div class="paragraph">
 <p>In <a href="#reading_and_writing">Reading and Writing</a> we had to close the file after when where done writing. This can be done automatically using a <em>do block</em>:
 </p>
@@ -14040,12 +14125,12 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>A <code>do</code> block can “capture” variables from its enclosing scope. For example, the variable <code>data</code> in the above example of <code>open&#8230;&#8203;do</code> is captured from the outer scope.</p>
 </div>
-<div class="paragraph">
-<p>=== Control Flow</p>
 </div>
-<div class="paragraph">
-<p>==== Ternary Operator</p>
 </div>
+<div class="sect2">
+<h3 id="_control_flow">Control Flow</h3>
+<div class="sect3">
+<h4 id="_ternary_operator">Ternary Operator</h4>
 <div class="paragraph">
 <p>The <em>ternary operator</em>, <code>?:</code>, is an alternative to an <code>if-elseif</code> statement, when the choice is between single expression values.
 </p>
@@ -14061,9 +14146,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>The expression before the <code>?</code>, is a condition expression. If the condition is <code>true</code>, the expression before the <code>:</code> is evaluated, otherwise, the expression after the <code>:</code> is evaluated.</p>
 </div>
-<div class="paragraph">
-<p>==== Short-Circuit Evaluation</p>
 </div>
+<div class="sect3">
+<h4 id="_short_circuit_evaluation">Short-Circuit Evaluation</h4>
 <div class="paragraph">
 <p>The operators <code>&amp;&amp;</code> and <code>||</code> do a <em>short-circuit evaluation</em>: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
 </p>
@@ -14081,9 +14166,9 @@ Due to some ancient injury?</pre>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Tasks (aka Coroutines)</p>
 </div>
+<div class="sect3">
+<h4 id="_tasks_aka_coroutines">Tasks (aka Coroutines)</h4>
 <div class="paragraph">
 <p>The Fibonnaci sequence can also be generated using a <em>task</em>.
 </p>
@@ -14136,12 +14221,12 @@ Due to some ancient injury?</pre>
 <span class="tok-go">0 1 1 2 3 5 8 13 21</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Types</p>
 </div>
-<div class="paragraph">
-<p>==== Primitive Types</p>
 </div>
+<div class="sect2">
+<h3 id="_types">Types</h3>
+<div class="sect3">
+<h4 id="_primitive_types">Primitive Types</h4>
 <div class="paragraph">
 <p>A concrete type consisting of plain old bits, is called a <em>primitive type</em>. Unlike most languages, you can declare your own primitive types. The standard primitive types are defined in the same way:
 </p>
@@ -14157,9 +14242,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>The number in the statements specifies how many bits are required.</p>
 </div>
-<div class="paragraph">
-<p>==== Parametric Types</p>
 </div>
+<div class="sect3">
+<h4 id="_parametric_types">Parametric Types</h4>
 <div class="paragraph">
 <p>Julia&#8217;s type system is <em>parametric</em>: types can have parameters.</p>
 </div>
@@ -14187,9 +14272,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.</p>
 </div>
-<div class="paragraph">
-<p>==== Type Unions</p>
 </div>
+<div class="sect3">
+<h4 id="_type_unions">Type Unions</h4>
 <div class="paragraph">
 <p>A <em>type union</em> is an abstract parametric type that can act as any of its argument types:
 </p>
@@ -14204,12 +14289,12 @@ Due to some ancient injury?</pre>
 <span class="tok-go">&quot;Julia&quot;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Methods</p>
 </div>
-<div class="paragraph">
-<p>==== Parametric Methods</p>
 </div>
+<div class="sect2">
+<h3 id="_methods">Methods</h3>
+<div class="sect3">
+<h4 id="_parametric_methods">Parametric Methods</h4>
 <div class="paragraph">
 <p>Method definitions can also have type parameters qualifying their signature:
 </p>
@@ -14224,9 +14309,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">true</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== Function-like Objects</p>
 </div>
+<div class="sect3">
+<h4 id="_function_like_objects">Function-like Objects</h4>
 <div class="paragraph">
 <p>An arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called <em>functors</em>.
 </p>
@@ -14257,9 +14342,10 @@ Due to some ancient injury?</pre>
 <span class="tok-go">931</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Constructors</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_constructors_2">Constructors</h3>
 <div class="paragraph">
 <p>Parametric types can be explicitely or implicitely constructed:</p>
 </div>
@@ -14300,18 +14386,17 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>promote</code> function is detailed in <a href="#promotion">[promotion]</a>.
+<p>The <code>promote</code> function is detailed in <a href="#promotion">Promotion</a>.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Conversion and Promotion</p>
 </div>
+<div class="sect2">
+<h3 id="_conversion_and_promotion">Conversion and Promotion</h3>
 <div class="paragraph">
 <p>Julia has a system for promoting arguments to a common type. This is not done automatically but can be easily extended.</p>
 </div>
-<div class="paragraph">
-<p>==== Conversion</p>
-</div>
+<div class="sect3">
+<h4 id="_conversion">Conversion</h4>
 <div class="paragraph">
 <p>A value can be converted from one type to another:
 </p>
@@ -14339,9 +14424,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">Point{Int64}(1, 2)</span></code></pre>
 </div>
 </div>
-<div id="promotion" class="paragraph">
-<p>==== Promotion</p>
 </div>
+<div class="sect3">
+<h4 id="promotion">Promotion</h4>
 <div class="paragraph">
 <p><em>Promotion</em> is the conversion of values of mixed types to a single common type:
 </p>
@@ -14361,15 +14446,15 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">promote_rule</span><span class="tok-p">(</span><span class="tok-o">::</span><span class="tok-kt">Type</span><span class="tok-p">{</span><span class="tok-kt">Float64</span><span class="tok-p">},</span> <span class="tok-o">::</span><span class="tok-kt">Type</span><span class="tok-p">{</span><span class="tok-kt">Int32</span><span class="tok-p">})</span> <span class="tok-o">=</span> <span class="tok-kt">Float64</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Metaprogramming</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_metaprogramming">Metaprogramming</h3>
 <div class="paragraph">
 <p>Julia code can be represented as a data structure of the language itself. This allows a program to transform and generate its own code.</p>
 </div>
-<div class="paragraph">
-<p>==== Expressions</p>
-</div>
+<div class="sect3">
+<h4 id="_expressions">Expressions</h4>
 <div class="paragraph">
 <p>Every Julia program starts as a string:</p>
 </div>
@@ -14413,9 +14498,9 @@ Due to some ancient injury?</pre>
       <span class="tok-k">end</span><span class="tok-p">;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>==== <code>eval</code></p>
 </div>
+<div class="sect3">
+<h4 id="_eval"><code>eval</code></h4>
 <div class="paragraph">
 <p>Julia can evaluate an expression object using <code>eval</code>:
 </p>
@@ -14443,9 +14528,9 @@ Due to some ancient injury?</pre>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Macros</p>
 </div>
+<div class="sect3">
+<h4 id="_macros">Macros</h4>
 <div class="paragraph">
 <p>Macros can include generated code in a program. A <em>macro</em> maps a tuple of arguments directly to a compiled expression:
 </p>
@@ -14491,9 +14576,9 @@ Due to some ancient injury?</pre>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>==== Generated Functions</p>
 </div>
+<div class="sect3">
+<h4 id="_generated_functions">Generated Functions</h4>
 <div class="paragraph">
 <p>The macro <code>@generated</code> creates specialized code for methods depending on the types of the arguments:
 </p>
@@ -14524,9 +14609,10 @@ Due to some ancient injury?</pre>
 <span class="tok-go">&quot;spamspam&quot;</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Missing Values</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_missing_values">Missing Values</h3>
 <div class="paragraph">
 <p><em>missing values</em> can be represented via the <code>missing</code> object, which is the singleton instance of the type <code>Missing</code>.
 </p>
@@ -14564,9 +14650,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">1</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Calling C and Fortran Code</p>
 </div>
+<div class="sect2">
+<h3 id="_calling_c_and_fortran_code">Calling C and Fortran Code</h3>
 <div class="paragraph">
 <p>Julia can integrate existing C or Fortran code by making an appropriate call with <code>ccall</code> syntax.
 </p>
@@ -14606,9 +14692,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>The complete mapping of the GDBM library can be found as an example in the ThinkJulia sources.</p>
 </div>
-<div class="paragraph">
-<p>=== Glossary</p>
 </div>
+<div class="sect2">
+<h3 id="_glossary_19">Glossary</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">closure</dt>
@@ -14708,9 +14794,12 @@ Due to some ancient injury?</pre>
 </dd>
 </dl>
 </div>
-<div id="chap20" class="paragraph">
-<p>== The Goodies: Base and Standard Library</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chap20">20. The Goodies: Base and Standard Library</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p><code>Base</code> contains a number of functions, types and macros that are directly available in Julia.
 </p>
@@ -14736,9 +14825,8 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/stable/" class="bare">https://docs.julialang.org/en/stable/</a>.</p>
 </div>
-<div class="paragraph">
-<p>=== Measuring Performance</p>
-</div>
+<div class="sect2">
+<h3 id="_measuring_performance">Measuring Performance</h3>
 <div class="paragraph">
 <p>We have seen that some algorithms perform better than other. <code>fibonnaci</code> in <a href="#memos">Memos</a> is a lot faster than <code>fib</code> in <a href="#one_more_example">One More Example</a>. The <code>@time</code> macro allows to quantify the difference:
 </p>
@@ -14760,13 +14848,13 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p><code>@time</code> prints the time the function took to execute, the number of allocations and the allocated memory before returning the result. The memoized version is effectively a lot faster but needs more memory.</p>
 </div>
-</blockquote>
-</div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
 <p>There ain&#8217;t no such thing as a free lunch!</p>
 </div>
-<div class="quoteblock">
-<blockquote>
+</blockquote>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -14781,9 +14869,9 @@ Due to some ancient injury?</pre>
 </tr>
 </table>
 </div>
-<div id="collections_and_data_structures" class="paragraph">
-<p>=== Collections and Data Structures</p>
 </div>
+<div class="sect2">
+<h3 id="collections_and_data_structures">Collections and Data Structures</h3>
 <div class="paragraph">
 <p>In <a href="#dictionary_subtraction">Dictionary Subtraction</a> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes <code>d1</code>, which contains the words from the document as keys, and <code>d2</code>, which contains the array of words. It returns a dictionary that contains the keys from <code>d1</code> that are not in <code>d2</code>.
 </p>
@@ -14886,16 +14974,16 @@ Due to some ancient injury?</pre>
 <p>The <code>⊆</code> operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in <code>word</code> appear in <code>available</code>.
 </p>
 </div>
-<div class="paragraph">
-<p>===== Exercise 20-1</p>
-</div>
+<div class="sect4">
+<h5 id="_exercise_20_1">Exercise 20-1</h5>
 <div class="paragraph">
 <p>Rewrite <code>avoids</code> using sets.
 </p>
 </div>
-<div class="paragraph">
-<p>=== Mathematics</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_mathematics">Mathematics</h3>
 <div class="paragraph">
 <p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \($i$\), representing the principal square root of \($-1$\).
 </p>
@@ -14938,9 +15026,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Here, another example of the <code>.</code> operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in <code>2π</code>.</p>
 </div>
-<div class="paragraph">
-<p>=== Strings</p>
 </div>
+<div class="sect2">
+<h3 id="_strings">Strings</h3>
 <div class="paragraph">
 <p>In <a href="#chap08">Strings</a> and <a href="#chap09">Case Study: Word Play</a>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (<em>regexes</em>), which eases the task of finding complex patterns in string objets.
 </p>
@@ -15014,9 +15102,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Regexes are extremely powerful and the PERL manpage <a href="http://perldoc.perl.org/perlre.html" class="bare">http://perldoc.perl.org/perlre.html</a> provides all the details to construct the most exotic searches.</p>
 </div>
-<div class="paragraph">
-<p>=== Arrays</p>
 </div>
+<div class="sect2">
+<h3 id="_arrays">Arrays</h3>
 <div class="paragraph">
 <p>In <a href="#chap10">Arrays</a> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.</p>
 </div>
@@ -15137,20 +15225,20 @@ Due to some ancient injury?</pre>
 <span class="tok-go">      1.0+0.0im       0.540302+0.841471im</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Interfaces</p>
 </div>
+<div class="sect2">
+<h3 id="_interfaces">Interfaces</h3>
 <div class="paragraph">
 <p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors.
 </p>
 </div>
-</blockquote>
-</div>
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
 <p>If it looks like a duck, swims like a duck, and quacks like a duck, then it probably <em>is</em> a duck.</p>
 </div>
-<div class="quoteblock">
-<blockquote>
+</blockquote>
+</div>
 <div class="paragraph">
 <p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
 </div>
@@ -15212,11 +15300,11 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.</p>
 </div>
-<div class="paragraph">
-<p>=== Interactive Utilities</p>
 </div>
+<div class="sect2">
+<h3 id="_interactive_utilities">Interactive Utilities</h3>
 <div class="paragraph">
-<p>We have already met the <code>InteractiveUtils</code> module in <a href="#interactive">[interactive]</a>. The <code>@which</code> macro is only the tip of the iceberg.
+<p>We have already met the <code>InteractiveUtils</code> module in <a href="#interactive">Debugging</a>. The <code>@which</code> macro is only the tip of the iceberg.
 </p>
 </div>
 <div class="paragraph">
@@ -15334,9 +15422,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">;}</span></code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>=== Debugging</p>
 </div>
+<div class="sect2">
+<h3 id="_debugging_15">Debugging</h3>
 <div class="paragraph">
 <p>The <code>Logging</code> macros provide an alternative to scaffolding with print statements:
 </p>
@@ -15375,9 +15463,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Here, I have used <code>all</code> to get all debug information, but you can also choose to generate only output for a specific file or module.</p>
 </div>
-<div class="paragraph">
-<p>=== Glossary</p>
 </div>
+<div class="sect2">
+<h3 id="_glossary_20">Glossary</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">regex</dt>
@@ -15407,9 +15495,12 @@ Due to some ancient injury?</pre>
 </dd>
 </dl>
 </div>
-<div id="chap21" class="paragraph">
-<p>== Debugging</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="chap21">21. Debugging</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>When you are debugging, you should distinguish among different kinds of errors in order to track them down more quickly:</p>
 </div>
@@ -15429,9 +15520,8 @@ Due to some ancient injury?</pre>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>=== Syntax Errors</p>
-</div>
+<div class="sect2">
+<h3 id="_syntax_errors">Syntax Errors</h3>
 <div class="paragraph">
 <p>Syntax errors are usually easy to fix once you figure out what they are. Unfortunately, the error messages are often not helpful. The most common messages are <code>ERROR: LoadError: syntax: incomplete: premature end of input</code> and <code>ERROR: LoadError: syntax: unexpected "="</code>, neither of which is very informative.</p>
 </div>
@@ -15475,9 +15565,8 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>If nothing works, move on to the next section&#8230;&#8203;</p>
 </div>
-<div class="paragraph">
-<p>==== I keep making changes and it makes no difference</p>
-</div>
+<div class="sect3">
+<h4 id="_i_keep_making_changes_and_it_makes_no_difference">I keep making changes and it makes no difference</h4>
 <div class="paragraph">
 <p>If the REPL says there is an error and you don’t see it, that might be because you and the REPL are not looking at the same code. Check your programming environment to make sure that the program you are editing is the one Julia is trying to run.</p>
 </div>
@@ -15509,25 +15598,25 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>If you get stuck and you can’t figure out what is going on, one approach is to start again with a new program like “Hello, World!”, and make sure you can get a known program to run. Then gradually add the pieces of the original program to the new one.</p>
 </div>
-<div class="paragraph">
-<p>=== Runtime Errors</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_runtime_errors">Runtime Errors</h3>
 <div class="paragraph">
 <p>Once your program is syntactically correct, Julia can read it and at least start running it. What could possibly go wrong?</p>
 </div>
-<div class="paragraph">
-<p>==== My program does absolutely nothing</p>
-</div>
+<div class="sect3">
+<h4 id="_my_program_does_absolutely_nothing">My program does absolutely nothing</h4>
 <div class="paragraph">
 <p>This problem is most common when your file consists of functions and classes but does not actually invoke a function to start execution. This may be intentional if you only plan to import this module to supply classes and functions.</p>
 </div>
 <div class="paragraph">
-<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see <a href="#flow_of_execution">[flow_of_execution]</a>).
+<p>If it is not intentional, make sure there is a function call in the program, and make sure the flow of execution reaches it (see <a href="#flow_of_execution">Flow of Execution</a>).
 </p>
 </div>
-<div class="paragraph">
-<p>==== My program hangs</p>
 </div>
+<div class="sect3">
+<h4 id="_my_program_hangs">My program hangs</h4>
 <div class="paragraph">
 <p>If a program stops and seems to be doing nothing, it is “hanging”. Often that means that it is caught in an infinite loop or infinite recursion.</p>
 </div>
@@ -15536,14 +15625,14 @@ Due to some ancient injury?</pre>
 <li>
 <p>If there is a particular loop that you suspect is the problem, add a print statement immediately before the loop that says “entering the loop” and another immediately after that says “exiting the loop”.</p>
 <div class="paragraph">
-<p>Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <a href="#infinite_loop">[infinite_loop]</a> below.
+<p>Run the program. If you get the first message and not the second, you’ve got an infinite loop. Go to <a href="#infinite_loop">Infinite Loop</a> below.
 </p>
 </div>
 </li>
 <li>
-<p>Most of the time, an infinite recursion will cause the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error. If that happens, go to <a href="#infinite_recursion">[infinite_recursion]</a> below.</p>
+<p>Most of the time, an infinite recursion will cause the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error. If that happens, go to <a href="#infinite_recursion">Infinite Recursion</a> below.</p>
 <div class="paragraph">
-<p>If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <a href="#infinite_recursion">[infinite_recursion]</a>.
+<p>If you are not getting this error but you suspect there is a problem with a recursive method or function, you can still use the techniques in <a href="#infinite_recursion">Infinite Recursion</a>.
 </p>
 </div>
 </li>
@@ -15551,13 +15640,12 @@ Due to some ancient injury?</pre>
 <p>If neither of those steps works, start testing other loops and other recursive functions and methods.</p>
 </li>
 <li>
-<p>If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to <a href="#flow_of_execution">[flow_of_execution]</a> below.</p>
+<p>If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to <a href="#flow_of_execution">Flow of Execution</a> below.</p>
 </li>
 </ul>
 </div>
-<div id="infinite_loop" class="paragraph">
-<p>===== Infinite Loop</p>
-</div>
+<div class="sect4">
+<h5 id="infinite_loop">Infinite Loop</h5>
 <div class="paragraph">
 <p>If you think you have an infinite loop and you think you know what loop is causing the problem, add a print statement at the end of the loop that prints the values of the variables in the condition and the value of the condition.</p>
 </div>
@@ -15578,9 +15666,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Now when you run the program, you will see three lines of output for each time through the loop. The last time through the loop, the condition should be <code>false</code>. If the loop keeps going, you will be able to see the values of <code>x</code> and <code>y</code>, and you might figure out why they are not being updated correctly.</p>
 </div>
-<div id="infinite_recursion" class="paragraph">
-<p>===== Infinite Recursion</p>
 </div>
+<div class="sect4">
+<h5 id="infinite_recursion">Infinite Recursion</h5>
 <div class="paragraph">
 <p>Most of the time, infinite recursion causes the program to run for a while and then produce a <code>ERROR: LoadError: StackOverflowError</code> error.
 </p>
@@ -15591,18 +15679,19 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>If there is a base case but the program doesn’t seem to be reaching it, add a print statement at the beginning of the function that prints the parameters. Now when you run the program, you will see a few lines of output every time the function is invoked, and you will see the parameter values. If the parameters are not moving toward the base case, you will get some ideas about why not.</p>
 </div>
-<div id="flow_of_execution" class="paragraph">
-<p>===== Flow of Execution</p>
 </div>
+<div class="sect4">
+<h5 id="flow_of_execution">Flow of Execution</h5>
 <div class="paragraph">
 <p>If you are not sure how the flow of execution is moving through your program, add print statements to the beginning of each function with a message like “entering function foo”, where foo is the name of the function.</p>
 </div>
 <div class="paragraph">
 <p>Now when you run the program, it will print a trace of each function as it is invoked.</p>
 </div>
-<div class="paragraph">
-<p>==== When I run the program I get an exception</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_when_i_run_the_program_i_get_an_exception">When I run the program I get an exception</h4>
 <div class="paragraph">
 <p>If something goes wrong during runtime, Julia prints a message that includes the name of the exception, the line of the program where the problem occurred, and a stacktrace.</p>
 </div>
@@ -15681,9 +15770,9 @@ Due to some ancient injury?</pre>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>==== I added so many print statements I get inundated with output</p>
 </div>
+<div class="sect3">
+<h4 id="_i_added_so_many_print_statements_i_get_inundated_with_output">I added so many print statements I get inundated with output</h4>
 <div class="paragraph">
 <p>One of the problems with using print statements for debugging is that you can end up buried in output. There are two ways to proceed: simplify the output or simplify the program.</p>
 </div>
@@ -15703,9 +15792,10 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Similarly, rewriting a piece of code can help you find subtle bugs. If you make a change that you think shouldn’t affect the program, and it does, that can tip you off.</p>
 </div>
-<div class="paragraph">
-<p>=== Semantic Errors</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_semantic_errors">Semantic Errors</h3>
 <div class="paragraph">
 <p>In some ways, semantic errors are the hardest to debug, because the interpreter provides no information about what is wrong. Only you know what the program is supposed to do.</p>
 </div>
@@ -15715,9 +15805,8 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often short compared to setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.</p>
 </div>
-<div class="paragraph">
-<p>==== My program doesn’t work</p>
-</div>
+<div class="sect3">
+<h4 id="_my_program_doesnt_work">My program doesn’t work</h4>
 <div class="paragraph">
 <p>You should ask yourself these questions:</p>
 </div>
@@ -15744,9 +15833,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Of course, you should be building and testing components as you develop the program. If you encounter a problem, there should be only a small amount of new code that is not known to be correct.</p>
 </div>
-<div class="paragraph">
-<p>==== I’ve got a big hairy expression and it doesn’t do what I expect</p>
 </div>
+<div class="sect3">
+<h4 id="_ive_got_a_big_hairy_expression_and_it_doesnt_do_what_i_expect">I’ve got a big hairy expression and it doesn’t do what I expect</h4>
 <div class="paragraph">
 <p>Writing complex expressions is fine as long as they are readable, but they can be hard to debug. It is often a good idea to break a complex expression into a series of assignments to temporary variables.</p>
 </div>
@@ -15793,9 +15882,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Whenever you are not sure of the order of evaluation, use parentheses. Not only will the program be correct (in the sense of doing what you intended), it will also be more readable for other people who haven’t memorized the order of operations.</p>
 </div>
-<div class="paragraph">
-<p>==== I’ve got a function that doesn’t return what I expect</p>
 </div>
+<div class="sect3">
+<h4 id="_ive_got_a_function_that_doesnt_return_what_i_expect">I’ve got a function that doesn’t return what I expect</h4>
 <div class="paragraph">
 <p>If you have a return statement with a complex expression, you don’t have a chance to print the result before returning. Again, you can use a temporary variable. For example, instead of:
 </p>
@@ -15817,9 +15906,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Now you have the opportunity to display the value of <code>count</code> before returning.</p>
 </div>
-<div class="paragraph">
-<p>==== I’m really, really stuck and I need help</p>
 </div>
+<div class="sect3">
+<h4 id="_im_really_really_stuck_and_i_need_help">I’m really, really stuck and I need help</h4>
 <div class="paragraph">
 <p>First, try getting away from the computer for a few minutes. Computers emit waves that affect the brain, causing these symptoms:</p>
 </div>
@@ -15842,9 +15931,9 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Sometimes it just takes time to find a bug. I often find bugs when I am away from the computer and let my mind wander. Some of the best places to find bugs are trains, showers, and in bed, just before you fall asleep.</p>
 </div>
-<div class="paragraph">
-<p>==== No, I really need help</p>
 </div>
+<div class="sect3">
+<h4 id="_no_i_really_need_help">No, I really need help</h4>
 <div class="paragraph">
 <p>It happens. Even the best programmers occasionally get stuck. Sometimes you work on a program so long that you can’t see the error. You need a fresh pair of eyes.</p>
 </div>
@@ -15873,9 +15962,13 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>Remember, the goal is not just to make the program work. The goal is to learn how to make the program work.</p>
 </div>
-<div class="paragraph">
-<p>== Unicode Input</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unicode_input">Appendix A: Unicode Input</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>The following table lists Unicode characters that can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL (and in various other editing environments).
 </p>
@@ -15986,9 +16079,11 @@ Due to some ancient injury?</pre>
 </tr>
 </tbody>
 </table>
-<div id="juliabox" class="paragraph">
-<p>== JuliaBox</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="juliabox">Appendix B: JuliaBox</h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>JuliaBox allows you to run Julia in your browser. Enter the url <a href="https://www.juliabox.com" class="bare">https://www.juliabox.com</a>, login and start using the Jupyter environment.</p>
 </div>
@@ -16022,19 +16117,18 @@ Due to some ancient injury?</pre>
 </div>
 <div class="title">Figure 27. Notebook</div>
 </div>
-<div class="paragraph">
-<p>== Index</p>
-</div>
-</blockquote>
 </div>
 </div>
-</div>
+<div class="sect1">
+<h2 id="_index">Index</h2>
+<div class="sectionbody">
+
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-17 14:38:31 CEST
+Last updated 2018-10-17 14:54:02 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
