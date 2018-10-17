@@ -206,7 +206,7 @@ julia> printpoint(blank)
 (3.0, 4.0)
 ----
 
-===== Exercise 15-2
+===== Exercise 15-1
 
 Write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
 (((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
@@ -325,7 +325,7 @@ false
 The +≡+ operator indicates that +p1+ and +p2+ are not the same object, which is what we expected. But you might have expected +==+ to yield +true+ because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the +==+ operator is the same as the +===+ operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
 (((==)))(((≡)))
 
-===== Exercise 15-1
+===== Exercise 15-2
 
 Create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
 

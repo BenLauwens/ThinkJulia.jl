@@ -152,7 +152,7 @@ In general, I recommend that you write pure functions whenever it is reasonable 
 ===== Exercise 16-4
 
 Write a “pure” version of +increment+ that creates and returns a new mytime object rather than modifying the parameter.
-____
+
 
 [[prototyping_versus_planning]]
 === Prototyping Versus Planning
