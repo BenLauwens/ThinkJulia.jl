@@ -499,10 +499,10 @@ julia> linecount("wc.jl")
 11
 ----
 
-[quote]
-____
-As an exercise, type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
-____
+===== Exercise 14-1
+
+Type this example into a file named _wc.jl_, include it into the REPL and enter +using LineCount+.
+
 
 [WARNING]
 ====
@@ -596,7 +596,7 @@ An object that represents a shell command, allowing a Julia program to run comma
 === Exercises
 
 [[ex14-1]]
-===== Exercise 14-1
+===== Exercise 14-2
 
 Write a function called +sed+ that takes as arguments a pattern string, a replacement string, and two filenames; it should read the first file and write the contents into the second file (creating it if necessary). If the pattern string appears anywhere in the file, it should be replaced with the replacement string.
 (((sed)))((("function", "programmer-defined", "sed", see="sed")))
@@ -604,7 +604,7 @@ Write a function called +sed+ that takes as arguments a pattern string, a replac
 If an error occurs while opening, reading, writing or closing files, your program should catch the exception, print an error message, and exit.
 
 [[ex14-2]]
-===== Exercise 14-2
+===== Exercise 14-3
 
 If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "+opst"+ maps to the list +["opts", "post", "pots", "spot", "stop", "tops"]+.
 
@@ -612,7 +612,7 @@ Write a module that imports +anagramsets+ and provides two new functions: +store
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
-===== Exercise 14-3
+===== Exercise 14-4
 
 In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
 

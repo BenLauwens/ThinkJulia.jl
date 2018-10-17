@@ -168,8 +168,8 @@ println(x)
 
 The assignment statement produces no output.
 
-[quote]
-____
+===== Exercise 2-1
+
 To check your understanding, type the following statements in the Julia REPL and see what they do:
 
 [source,julia]
@@ -180,7 +180,6 @@ x + 1
 ----
 
 Now put the same statements in a script and run it. What is the output? Modify the script by transforming each expression into a print statement and then run it again.
-____
 
 === Order of Operations
 
@@ -384,7 +383,7 @@ An error in a program that makes it do something other than what the programmer 
 === Exercises
 
 [[ex02-1]]
-===== Exercise 2-1
+===== Exercise 2-2
 
 Repeating my advice from the previous chapter, whenever you learn a new feature, you should try it out in interactive mode and make errors on purpose to see what goes wrong.
 
@@ -400,7 +399,7 @@ Repeating my advice from the previous chapter, whenever you learn a new feature,
 . In math notation you can multiply +x+ and +y+ like this: +x y+. What happens if you try that in Julia?
 
 [[ex02-2]]
-===== Exercise 2-2
+===== Exercise 2-3
 
 Practice using the Julia REPL as a calculator:
 (((calculator)))

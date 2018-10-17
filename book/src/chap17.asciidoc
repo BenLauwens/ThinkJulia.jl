@@ -128,11 +128,11 @@ julia> printtime(150)
 I don't know how to print the argument time.
 ----
 
-[quote]
-____
-As an exercise, rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
+===== Exercise 17-1
+
+Rewrite +timetoint+ and +inttotime+ (from <<prototyping_versus_planning>>) to specify their argument.
 (((timetoint)))(((inttotime)))
-____
+
 
 [source,@julia-eval chap17a]
 ----
@@ -326,11 +326,11 @@ julia> time = MyTime(9, 45)
 
 When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
 
-[quote]
-____
-As an exercise, write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
+===== Exercise 17-2
+
+Write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
 (((Point)))
-____
+
 
 [source,@julia-eval chap17b]
 ----
@@ -429,14 +429,13 @@ julia> 1337 + start
 The choice of which method to execute when a function is applied is called _dispatch_. Julia allows the dispatch process to choose which of a function's methods to call based on the number of arguments given, and on the types of all of the function's arguments.  Using all of a function's arguments to choose which method should be invoked is known as _multiple dispatch_.
 (((dispatch)))(((multiple dispatch)))
 
-[quote]
-____
-As an exercise, write +pass:[+]+ methods for point objects:
+===== Exercise 17-3
+
+Write +pass:[+]+ methods for point objects:
 
 * If both operands are point objects, the method should return a new point object whose +x+ coordinate is the sum of the +x+ coordinates of the operands, and likewise for the +y+ coordinates.
 
 * If the first or the second operand is a tuple, the method should add the first element of the tuple to the +x+ coordinate and the second element to the +y+ coordinate, and return a new point object with the result.
-____
 
 
 === Polymorphism
@@ -578,12 +577,12 @@ Pertaining to a function that can work with more than one type.
 === Exercises
 
 [[ex17-1]]
-===== Exercise 17-1
+===== Exercise 17-4
 
 Change the fields of +MyTime+ to be a single integer representing seconds since midnight. Then modify the methods defined in this chapter to work with the new implementation.
 
 [[ex17-2]]
-===== Exercise 17-2
+===== Exercise 17-5
 
 Write a definition for a type named +Kangaroo+ with a field named +pouchcontents+ of type +Array+ and the following methods:
 (((Kangaroo)))((("type", "programmer-defined", "Kangaroo", see="Kangaroo")))

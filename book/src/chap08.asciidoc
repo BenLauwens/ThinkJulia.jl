@@ -152,10 +152,10 @@ This loop traverses the string and displays each letter on a line by itself. The
 The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to reassign the variable +index+ defined in +_pass:[&#95;&#95;main&#95;&#95;]+ (see <<global_variables>>).
 (((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
-[quote]
-____
-As an exercise, write a function that takes a string as an argument and displays the letters backward, one per line.
-____
+===== Exercise 8-1
+
+Write a function that takes a string as an argument and displays the letters backward, one per line.
+
 
 Another way to write a traversal is with a +for+ loop:
 (((for statement)))(((in)))
@@ -220,10 +220,9 @@ julia> str[8:7]
 
 An empty string contains no characters and has length 0, but other than that, it is the same as any other string.
 
-[quote]
-____
+===== Exercise 8-2
+
 Continuing this example, what do you think +str[:]+ means? Try it and see.
-____
 
 
 === Strings Are Immutable
@@ -305,10 +304,10 @@ If the character doesn’t appear in the string, the program exits the loop norm
 This pattern of computation—traversing a sequence and returning when we find what we are looking for—is called a _search_.
 (((search)))
 
-[quote]
-____
-As an exercise, modify +find+ so that it has a third parameter, the index in +word+ where it should start looking.
-____
+===== Exercise 8-3 
+
+Modify +find+ so that it has a third parameter, the index in +word+ where it should start looking.
+
 
 [[looping_and_counting]]
 === Looping and Counting
@@ -330,12 +329,11 @@ println(count)
 This program demonstrates another pattern of computation called a _counter_. The variable +count+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, count contains the result—the total number of +a+’s.
 (((counter)))
 
-[quote]
-____
-As an exercise, encapsulate this code in a function named +count+, and generalize it so that it accepts the string and the letter as arguments.
+===== Exercise 8-3
+
+Encapsulate this code in a function named +count+, and generalize it so that it accepts the string and the letter as arguments.
 
 Then rewrite the function so that instead of traversing the string, it uses the three-parameter version of +find+ from the previous section.
-____
 
 
 === String Library
@@ -575,10 +573,9 @@ ERROR: BoundsError: attempt to access "pots"
 This time a +BoundsError+ has been thrown. The value of +i+ is 5, which is out a range for the string +"pots"+.
 (((BoundsError)))((("error", "Base", "BoundsError", see="BoundsError")))
 
-[quote]
-____
+===== Exercise 8-4
+
 Run the program on paper, changing the values of +i+ and +j+ during each iteration. Find and fix the second error in this function.
-____
 
 
 === Glossary
@@ -635,7 +632,7 @@ A variable used to count something, usually initialized to zero and then increme
 === Exercises
 
 [[ex08-1]]
-===== Exercise 8-1
+===== Exercise 8-5
 
 Read the documentation of the string functions at https://docs.julialang.org/en/stable/base/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
 
@@ -643,13 +640,13 @@ The documentation uses a syntax that might be confusing. For example, in +search
 (((search)))((("function", "Base", "search", see="search")))
 
 [[ex08-2]]
-===== Exercise 8-2
+===== Exercise 8-6
 
 There is a builtin function called +count+ that is similar to the function in <<looping_and_counting>>. Read the documentation of this function and use it to count the number of +a+’s in "banana".
 (((count)))((("function","Base", "count", see="count")))
 
 [[ex08-3]]
-===== Exercise 8-3
+===== Exercise 8-7
 
 A string slice can take a third index. The first specifies the start, the third the end and the second the “step size”; that is, the number of spaces between successive characters. A step size of 2 means every other character; 3 means every third, etc.
 (((slice)))
@@ -668,7 +665,7 @@ Use this idiom to write a one-line version of +ispalindrome+ from Exercise 6.3.
 (((ispalindrome)))
 
 [[ex08-4]]
-===== Exercise 8-4
+===== Exercise 8-8
 
 The following functions are all _intended_ to check whether a string contains any lowercase letters, but at least some of them are wrong. For each function, describe what the function actually does (assuming that the parameter is a string).
 
@@ -720,7 +717,7 @@ end
 ----
 
 [[ex08-5]]
-===== Exercise 8-5
+===== Exercise 8-9
 
 A Caesar cypher is a weak form of encryption that involves “rotating” each letter by a fixed number of places. To rotate a letter means to shift it through the alphabet, wrapping around to the beginning if necessary, so +’A’+ rotated by 3 is +’D’+ and +’Z’+ rotated by 1 is +’A’+.
 (((Caesar cypher)))

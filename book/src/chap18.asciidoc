@@ -108,10 +108,9 @@ function Base.isless(c1::Card, c2::Card)
 end
 ----
 
-[quote]
-____
-As an exercise, write a +isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
-____
+===== Exercise 18-1
+
+Write a +isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
 
 
 === Unit Testing
@@ -224,11 +223,10 @@ function Random.shuffle!(deck::Deck)
 end
 ----
 
-[quote]
-____
+===== Exercise 18-2
+
 Write a function named +sort!+ that uses the function +sort!+ to sort the cards in a Deck. +sort!+ uses the +isless+ method we defined to determine the order.
 (((sort!)))
-____
 
 
 === Abstract Types and Subtyping
@@ -504,10 +502,9 @@ This example suggests a development plan for designing types:
 
 * Transform the associated functions into methods with as argument objects of the new type.
 
-[quote]
-____
-As an exercise, download my Markov code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
-____
+===== Exercise 18-3
+
+Download my Markov code from https://github.com/BenLauwens/ThinkJulia.jl/blob/master/src/solutions/chap13.jl, and follow the steps described above to encapsulate the global variables as attributes of a new struct called +Markov+.
 
 
 === Glossary
@@ -572,7 +569,7 @@ A program development plan that involves a prototype using global variables and 
 === Exercises
 
 [[ex18-1]]
-===== Exercise 18-1
+===== Exercise 18-4
 
 For the following program, draw a type diagram that shows these types and the relationships among them.
 
@@ -602,13 +599,13 @@ addping(pong, ping)
 ----
 
 [[ex18-2]]
-===== Exercise 18-2
+===== Exercise 18-5
 
 Write a method called +deal!+ that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
 (((deal!)))((("function", "programmer-defined", "deal!", see="deal!")))
 
 [[ex18-3]]
-===== Exercise 18-3
+===== Exercise 18-6
 
 The following are the possible hands in poker, in increasing order of value and decreasing order of probability:
 

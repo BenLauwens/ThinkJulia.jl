@@ -250,12 +250,11 @@ This program contains two function definitions: +printlyrics+ and +repeatlyrics+
 
 As you might expect, you have to create a function before you can run it. In other words, the function definition has to run before the function gets called.
 
-[quote]
-____
-As an exercise, move the last line of this program to the top, so the function call appears before the definitions. Run the program and see what error message you get.
+===== Exercise 3-1
+
+Move the last line of this program to the top, so the function call appears before the definitions. Run the program and see what error message you get.
 
 Now move the function call back to the bottom and move the definition of +printlyrics+ after the definition of +repeatlyrics+. What happens when you run this program?
-____
 
 
 === Flow of Execution
@@ -437,7 +436,7 @@ julia> sqrt(5)
 But in a script, if you call a fruitful function all by itself, the return value is lost forever!
 (((script mode)))
 
-[source,@julia-eval]
+[source,@julia-run]
 ----
 sqrt(5)
 ----
@@ -493,7 +492,7 @@ In some ways debugging is like detective work. You are confronted with clues and
 
 Debugging is also like an experimental science. Once you have an idea about what is going wrong, you modify your program and try again. If your hypothesis was correct, you can predict the result of the modification, and you take a step closer to a working program. If your hypothesis was wrong, you have to come up with a new one. As Sherlock Holmes pointed out,
 
-[quote, A. Conan Doyle,  _The Sign of Four_]
+[quote, A. Conan Doyle, The Sign of Four]
 ____
 When you have eliminated the impossible, whatever remains, however improbable, must be the truth.
 ____
@@ -588,7 +587,7 @@ These exercises should be done using only the statements and other features we h
 ====
 
 [[ex03-1]]
-===== Exercise 3-1
+===== Exercise 3-2
 
 Write a function named +rightjustify+ that takes a string named +s+ as a parameter and prints the string with enough leading spaces so that the last letter of the string is in column 70 of the display.
 (((rightjustify)))((("function", "programmer-defined", "rightjustify", see="rightjustify)))
@@ -610,7 +609,7 @@ Use string concatenation and repetition. Also, Julia provides a built-in functio
 ====
 
 [[ex03-2]]
-===== Exercise 3-2
+===== Exercise 3-3
 
 A function object is a value you can assign to a variable or pass as an argument. For example, +dotwice+ is a function that takes a function object as an argument and calls it twice:
 (((function object)))(((dotwice)))((("function", "programmer-defined", "dotwice", see="dotwice")))
@@ -647,7 +646,7 @@ dotwice(printspam)
 (((dofour)))((("function", "programmer-defined", "dofour", see="dofour")))
 
 [[ex03-3]]
-===== Exercise 3-3
+===== Exercise 3-4
 
 . Write a function +printgrid+ that draws a grid like the following:
 (((printgrid)))((("function", "programmer-defined", "printgrid", see="printgrid")))

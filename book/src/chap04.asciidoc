@@ -3,7 +3,9 @@
 
 This chapter presents a case study that demonstrates a process for designing functions that work together.
 
-The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document.
+It introduces turtle graphics, a way to create programmatically drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.
+
+The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <<juliabox>>).
 (((JuliaBox, graphical notebook)))
 
 
@@ -74,10 +76,9 @@ To draw a right angle, modify the macro:
 end
 ----
 
-[quote]
-____
+===== Exercise 4-1
+
 Now modify the macro to draw a square. Don’t go on until you’ve got it working!
-____
 
 
 [[simple_repetition]]
@@ -148,28 +149,28 @@ When a function returns and its arguments are in the same state as before the fu
 
 The following is a series of exercises using turtles. They are meant to be fun, but they have a point, too. While you are working on them, think about what the point is.
 
-[NOTE]
+[TIP]
 ====
 The following sections have solutions to the exercises, so don’t look until you have finished (or at least tried).
 ====
 
 [[ex04-1]]
-===== Exercise 4-1
+===== Exercise 4-2
 
 Write a function called +square+ that takes a parameter named +t+, which is a turtle. It should use the turtle to draw a square.
 
 [[ex04-2]]
-===== Exercise 4-2
+===== Exercise 4-3
 
 Write a function call that passes +t+ as an argument to +square+, and then run the macro again.
 
 [[ex04-3]]
-===== Exercise 4-3
+===== Exercise 4-4
 
 Add another parameter, named +len+, to square. Modify the body so length of the sides is +len+, and then modify the function call to provide a second argument. Run the macro again. Test with a range of values for +len+.
 
 [[ex04-4]]
-===== Exercise 4-4
+===== Exercise 4-5
 
 Make a copy of +square+ and change the name to +polygon+. Add another parameter named +n+ and modify the body so it draws an latexmath:[\(n\)]-sided regular polygon. 
 
@@ -179,7 +180,7 @@ The exterior angles of an latexmath:[\(n\)]-sided regular polygon are latexmath:
 ====
 
 [[ex04-5]]
-===== Exercise 4-5
+===== Exercise 4-6
 
 Write a function called +circle+ that takes a turtle, +t+, and radius, +r+, as parameters and that draws an approximate circle by calling +polygon+ with an appropriate length and number of sides. Test your function with a range of values of +r+. 
 
@@ -189,7 +190,7 @@ Figure out the circumference of the circle and make sure that +len * n == circum
 ====
 
 [[ex04-6]]
-===== Exercise 4-6
+===== Exercise 4-7
 
 Make a more general version of +circle+ called +arc+ that takes an additional parameter +angle+, which determines what fraction of a circle to draw. +angle+ is in units of degrees, so when +angle = 360+, +arc+ should draw a complete circle.
 
@@ -399,10 +400,7 @@ A _development plan_ is a process for writing programs. The process we used in t
 
 . Look for opportunities to improve the program by refactoring. For example, if you have similar code in several places, consider factoring it into an appropriately general function.
 
-[NOTE]
-====
 This process has some drawbacks—we will see alternatives later—but it can be useful if you don’t know ahead of time how to divide the program into functions. This approach lets you design as you go along.
-====
 
 
 === Docstring
@@ -442,7 +440,7 @@ By convention, all docstrings are triple-quoted strings, also known as multiline
 
 It is terse, but it contains the essential information someone would need to use this function. It explains concisely what the function does (without getting into the details of how it does it). It explains what effect each parameter has on the behavior of the function and what type each parameter should be (if it is not obvious).
 
-[NOTE]
+[TIP]
 ====
 Writing this kind of documentation is an important part of interface design. A well-designed interface should be simple to explain; if you have a hard time explaining one of your functions, maybe the interface could be improved.
 ====
@@ -521,7 +519,7 @@ A requirement that should be satisfied by the function before it ends.
 === Exercises
 
 [[ex04-7]]
-===== Exercise 4-7
+===== Exercise 4-8
 
 Enter the code in this chapter in a notebook.
 
@@ -556,7 +554,7 @@ end
 ----
 
 [[ex04-8]]
-===== Exercise 4-8
+===== Exercise 4-9
 
 Write an appropriately general set of functions that can draw flowers as in <<fig04-2>>.
 
@@ -565,7 +563,7 @@ Write an appropriately general set of functions that can draw flowers as in <<fi
 image::images/fig42.svg[]
 
 [[ex04-9]]
-===== Exercise 4-9
+===== Exercise 4-10
 
 Write an appropriately general set of functions that can draw shapes as in <<fig04-3>>.
 
@@ -574,14 +572,14 @@ Write an appropriately general set of functions that can draw shapes as in <<fig
 image::images/fig43.svg[]
 
 [[ex04-10]]
-===== Exercise 4-10
+===== Exercise 4-11
 
 The letters of the alphabet can be constructed from a moderate number of basic elements, like vertical and horizontal lines and a few curves. Design an alphabet that can be drawn with a minimal number of basic elements and then write functions that draw the letters.
 
 You should write one function for each letter, with names +draw_a+, +draw_b+, etc., and put your functions in a file named _letters.jl_.
 
 [[ex04-11]]
-===== Exercise 4-11
+===== Exercise 4-12
 
 Read about spirals at https://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in <<fig04-4>>.
 

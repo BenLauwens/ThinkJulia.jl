@@ -42,7 +42,7 @@ julia> remainder = minutes % 60
 45
 ----
 
-[NOTE]
+[TIP]
 ====
 The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if +x % y+ is zero, then +x+ is divisible by +y+.
 
@@ -327,11 +327,9 @@ As usual, the top of the stack is the frame for +pass:[__main__]+. It is empty b
 The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
 (((base case)))
 
-[quote]
-____
-As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
-____
+===== Exercise 5-1
 
+As an exercise, draw a stack diagram for +printn+ called with +s = "Hello"+ and +n = 2+. Then write a function called +do_n+ that takes a function object and a number, +n+, as arguments, and that calls the given function latexmath:[\(n\)] times.
 
 === Infinite Recursion
 
@@ -481,7 +479,7 @@ An expression whose value is either +true+ or +false+.
 (((boolean expression)))
 
 relational operator::
-One of the operators that compares its operands: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+<=+).
+One of the operators that compares its operands: +==+, +≠+ (+!=+), +>+, +<+, +≥+ (+>=+), and +≤+ (+pass:[&lt;=]+).
 (((relational operator)))
 
 logical operator::
@@ -532,7 +530,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 === Exercises
 
 [[ex05-1]]
-===== Exercise 5-1
+===== Exercise 5-2
 
 The function +time+ returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
 (((time)))((("function", "Base", "time", see="time")))
@@ -545,7 +543,7 @@ time()
 Write a script that reads the current time and converts it to a time of day in hours, minutes, and seconds, plus the number of days since the epoch.
 
 [[ex05-2]]
-===== Exercise 5-2
+===== Exercise 5-3
 
 Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\)], latexmath:[\(b\)], and latexmath:[\(c\)] such that
 (((Fermat's last theorem)))
@@ -565,7 +563,7 @@ for any values of latexmath:[\(n\)] greater than 2.
 . Write a function that prompts the user to input values for +a+, +b+, +c+ and +n+, converts them to integers, and uses +checkfermat+ to check whether they violate Fermat’s theorem.
 
 [[ex05-3]]
-===== Exercise 5-3
+===== Exercise 5-4
 
 If you are given three sticks, you may or may not be able to arrange them in a triangle. For example, if one of the sticks is 12 inches long and the other two are one inch long, you will not be able to get the short sticks to meet in the middle. For any three lengths, there is a simple test to see if it is possible to form a triangle:
 
@@ -580,7 +578,7 @@ If any of the three lengths is greater than the sum of the other two, then you c
 . Write a function that prompts the user to input three stick lengths, converts them to integers, and uses +istriangle+ to check whether sticks with the given lengths can form a triangle.
 
 [[ex05-4]]
-===== Exercise 5-4
+===== Exercise 5-5
 
 What is the output of the following program? Draw a stack diagram that shows the state of the program when it prints the result.
 (((stack diagram)))(((recurse)))
@@ -605,7 +603,7 @@ recurse(3, 0)
 The following exercises use the +ThinkJulia+ module, described in <<chap04>>:
 
 [[ex05-5]]
-===== Exercise 5-5
+===== Exercise 5-6
 
 Read the following function and see if you can figure out what it does (see the examples in <<chap04>>). Then run it and see if you got it right.
 
@@ -627,7 +625,7 @@ end
 ----
 
 [[ex05-6]]
-===== Exercise 5-6
+===== Exercise 5-7
 
 [[fig05-2]]
 .A Koch curve

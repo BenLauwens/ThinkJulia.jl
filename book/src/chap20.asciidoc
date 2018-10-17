@@ -140,11 +140,11 @@ end
 The +⊆+ operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+.
 (((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
-[quote]
-____
-As an exercise, rewrite +avoids+ using sets.
+===== Exercise 20-1
+
+Rewrite +avoids+ using sets.
 (((avoids)))
-____
+
 
 === Mathematics
 

@@ -198,10 +198,9 @@ julia> get(h, 'b', 0)
 0
 ----
 
-[quote]
-____
-As an exercise, use +get+ to write +histogram+ more concisely. You should be able to eliminate the +if+ statement.
-____
+===== Exercise 11-1
+
+Use +get+ to write +histogram+ more concisely. You should be able to eliminate the +if+ statement.
 
 
 === Looping and Dictionaries
@@ -628,7 +627,7 @@ A global variable that can not be reassigned.
 === Exercises
 
 [[ex11-1]]
-===== Exercise 11-1
+===== Exercise 11-2
 
 Write a function that reads the words in _words.txt_ and stores them as keys in a dictionary. It doesn’t matter what the values are. Then you can use the +∈+ operator as a fast way to check whether a string is in the dictionary.
 (((in)))
@@ -636,19 +635,19 @@ Write a function that reads the words in _words.txt_ and stores them as keys in 
 If you did <<ex10-10>>, you can compare the speed of this implementation with the array +∈+ operator and the bisection search.
 
 [[ex11-2]]
-===== Exercise 11-2
+===== Exercise 11-3
 
 Read the documentation of the dictionary function +get!+ and use it to write a more concise version of +invertdict+.
 (((get!)))((("function", "Base", "get!", see="get!")))
 
 [[ex11-3]]
-===== Exercise 11-3
+===== Exercise 11-4
 
 Memoize the Ackermann function from <<ex06-2>> and see if memoization makes it possible to evaluate the function with bigger arguments.
 (((memo)))(((Ackermann function)))
 
 [[ex11-4]]
-===== Exercise 11-4
+===== Exercise 11-5
 
 If you did <<ex10-7>>, you already have a function named +hasduplicates+ that takes an array as a parameter and returns +true+ if there is any object that appears more than once in the array.
 (((hasduplicates)))
@@ -656,7 +655,7 @@ If you did <<ex10-7>>, you already have a function named +hasduplicates+ that ta
 Use a dictionary to write a faster, simpler version of +hasduplicates+.
 
 [[ex11-5]]
-===== Exercise 11-5
+===== Exercise 11-6
 
 Two words are “rotate pairs” if you can rotate one of them and get the other (see +rotateword+ in <<ex08-5>>).
 (((rotateword)))
@@ -664,7 +663,7 @@ Two words are “rotate pairs” if you can rotate one of them and get the other
 Write a program that reads a word array and finds all the rotate pairs.
 
 [[ex11-6]]
-===== Exercise 11-6
+===== Exercise 11-7
 
 Here’s another Puzzler from Car Talk (https://www.cartalk.com/puzzler/browse):
 (((Car Talk)))

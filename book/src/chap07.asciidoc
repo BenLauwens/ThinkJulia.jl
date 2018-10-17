@@ -158,10 +158,9 @@ Since +n+ sometimes increases and sometimes decreases, there is no obvious proof
 The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture.)
 (((Collatz conjecture)))
 
-[quote]
-____
-As an exercise, rewrite the function +printn+ from <<recursion>> using iteration instead of recursion.
-____
+===== Exercise 7-1
+
+Rewrite the function +printn+ from <<recursion>> using iteration instead of recursion.
 
 
 === +break+
@@ -394,7 +393,7 @@ A general process for solving a category of problems.
 === Exercises
 
 [[ex07-1]]
-===== Exercise 7-1
+===== Exercise 7-2
 
 Copy the loop from <<square_roots>> and encapsulate it in a function called +mysqrt+ that takes +a+ as a parameter, chooses a reasonable value of +x+, and returns an estimate of the square root of +a+.
 (((mysqrt)))((("function", "programmer-defined", "mysqrt", see="mysqrt")))
@@ -414,7 +413,7 @@ println(out)
 The first column is a number, +a+; the second column is the square root of a computed with +mysqrt+; the third column is the square root computed by +sqrt+; the fourth column is the absolute value of the difference between the two estimates.
 
 [[ex07-2]]
-===== Exercise 7-2
+===== Exercise 7-3
 
 The built-in function +Meta.parse+ takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function +Core.eval+. For example:
 (((parse)))((("function", "Meta", "parse", see="parse")))(((eval)))((("function", "Core", "eval", see="eval")))
@@ -436,7 +435,7 @@ Write a function called +evalloop+ that iteratively prompts the user, takes the 
 (((evalloop)))((("function", "programmer-defined", "evalloop", see="evalloop")))
 
 [[ex07-3]]
-===== Exercise 7-3
+===== Exercise 7-4
 
 The mathematician Srinivasa Ramanujan found an infinite series that can be used to generate a numerical approximation of latexmath:[\(\frac{1}{\pi}\)]:
 

@@ -206,11 +206,10 @@ julia> printpoint(blank)
 (3.0, 4.0)
 ----
 
-[quote]
-____
-As an exercise, write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
+===== Exercise 15-2
+
+Write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
 (((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
-____
 
 If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint!+ takes a mutable point object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the point:
 (((movepoint!)))((("function", "programmer-defined", "movepoint!", see="movepoint!")))
@@ -326,10 +325,9 @@ false
 The +≡+ operator indicates that +p1+ and +p2+ are not the same object, which is what we expected. But you might have expected +==+ to yield +true+ because these points contain the same data. In that case, you will be disappointed to learn that for mutable objects, the default behavior of the +==+ operator is the same as the +===+ operator; it checks object identity, not object equivalence. That’s because for mutable composite types, Julia doesn’t know what should be considered equivalent. At least, not yet.
 (((==)))(((≡)))
 
-[quote]
-____
-As an exercise, create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
-____
+===== Exercise 15-1
+
+Create a +Point+ instance, make a copy of it and check the equivalence and the egality of both. The result can surprise you but it explains why aliasing is a non issue for an immutable object.
 
 
 === Debugging
@@ -440,7 +438,7 @@ A diagram that shows objects, their fields, and the values of the fields.
 === Exercises
 
 [[ex15-1]]
-===== Exercise 15-1
+===== Exercise 15-3
 
 . Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a point object and +radius+ is a number.
 (((Circle)))((("type", "programmer-defined", "Circle", see="Circle")))
@@ -457,7 +455,7 @@ A diagram that shows objects, their fields, and the values of the fields.
 (((rectcircleoverlap)))((("function", "programmer-defined", "rectcircleoverlap", see="rectcircleoverlap")))
 
 [[ex15-2]]
-===== Exercise 15-2
+===== Exercise 15-4
 
 . Write a function called +drawrect+ that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.
 (((drawrect)))((("function", "programmer-defined", "drawrect", see="drawrect")))
