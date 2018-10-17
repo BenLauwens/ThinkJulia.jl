@@ -42,7 +42,7 @@ One of the challenges of getting started with Julia is that you might have to in
 To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
 ((("Julia in a browser", see="JuliaBox")))
 
-In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing.
+In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing (see <<juliabox>>).
 (((JuliaBox)))
 
 The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+/opt/julia-1.0/bin/julia+* on the command line. When it starts, you should see output like this:
@@ -186,10 +186,10 @@ _Natural languages_ are the languages people speak, such as English, Spanish, an
 _Formal languages_ are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly:
 (((formal language)))(((language, formal)))
 
-[NOTE]
-====
+[quote]
+____
 Programming languages are formal languages that have been designed to express computations.
-====
+____
 
 Formal languages tend to have strict _syntax_ rules that govern the structure of statements. For example, in mathematics the statement latexmath:[\(3 + 3 = 6\)] has correct syntax, but latexmath:[\(3 += 3 \$ 6\)] does not. In chemistry latexmath:[\(H_2O\)] is a syntactically correct formula, but latexmath:[\(_2Zz\)] is not.
 (((syntax)))
@@ -231,7 +231,7 @@ The literal meaning of words is more important, and the structure contributes mo
 Programs::
 The meaning of a computer program is unambiguous and literal, and can be understood entirely by analysis of the tokens and structure.
 
-[WARNING]
+[NOTE]
 ====
 Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal language.
 ====
@@ -366,7 +366,12 @@ Start the Julia REPL and use it as a calculator.
 
 . How many seconds are there in 42 minutes 42 seconds?
 
-. How many miles are there in 10 kilometers? Hint: there are 1.61 kilometers in a mile.
+. How many miles are there in 10 kilometers? 
++
+[TIP]
+====
+There are 1.61 kilometers in a mile.
+====
 
-. If you run a 10 kilometer race in 42 minutes 42 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?
+. If you run a 10 kilometer race in 37 minutes 48 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?
 

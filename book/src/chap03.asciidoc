@@ -273,10 +273,7 @@ That sounds simple enough, until you remember that one function can call another
 
 Fortunately, Julia is good at keeping track of where it is, so each time a function completes, the program picks up where it left off in the function that called it. When it gets to the end of the program, it terminates.
 
-[NOTE]
-====
 In summary, when you read a program, you don’t always want to read from top to bottom. Sometimes it makes more sense if you follow the flow of execution.
-====
 
 
 === Parameters and Arguments
@@ -440,7 +437,7 @@ julia> sqrt(5)
 But in a script, if you call a fruitful function all by itself, the return value is lost forever!
 (((script mode)))
 
-[source,@julia]
+[source,@julia-eval]
 ----
 sqrt(5)
 ----
@@ -494,12 +491,17 @@ One of the most important skills you will acquire is debugging. Although it can 
 
 In some ways debugging is like detective work. You are confronted with clues and you have to infer the processes and events that led to the results you see.
 
-Debugging is also like an experimental science. Once you have an idea about what is going wrong, you modify your program and try again. If your hypothesis was correct, you can predict the result of the modification, and you take a step closer to a working program. If your hypothesis was wrong, you have to come up with a new one. As Sherlock Holmes pointed out, “When you have eliminated the impossible, whatever remains, however improbable, must be the truth.” (A. Conan Doyle, _The Sign of Four_)
+Debugging is also like an experimental science. Once you have an idea about what is going wrong, you modify your program and try again. If your hypothesis was correct, you can predict the result of the modification, and you take a step closer to a working program. If your hypothesis was wrong, you have to come up with a new one. As Sherlock Holmes pointed out,
+
+[quote, A. Conan Doyle,  _The Sign of Four_]
+____
+When you have eliminated the impossible, whatever remains, however improbable, must be the truth.
+____
 (((experimental debugging)))(((Holmes, Sherlock)))(((Doyle, Arthur Conan)))
 
 For some people, programming and debugging are the same thing. That is, programming is the process of gradually debugging a program until it does what you want. The idea is that you should start with a working program and make small modifications, debugging them as you go.
 
-For example, Linux is an operating system that contains millions of lines of code, but it started out as a simple program Linus Torvalds used to explore the Intel 80386 chip. According to Larry Greenfield, “One of Linus’s earlier projects was a program that would switch between printing “AAAA and “BBBB”. This later evolved to Linux.” (_The Linux Users’ Guide_ Beta Version 1).
+For example, Linux is an operating system that contains millions of lines of code, but it started out as a simple program Linus Torvalds used to explore the Intel 80386 chip. According to Larry Greenfield, “One of Linus’s earlier projects was a program that would switch between printing “AAAA” and “BBBB”. This later evolved to Linux.” (_The Linux Users’ Guide_ Beta Version 1).
 (((Linux)))(((Torvalds, Linus)))
 
 
@@ -580,7 +582,7 @@ A list of the functions that are executing, printed when an exception occurs.
 
 === Exercises
 
-[NOTE]
+[TIP]
 ====
 These exercises should be done using only the statements and other features we have learned so far.
 ====

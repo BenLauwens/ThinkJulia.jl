@@ -198,7 +198,7 @@ When an expression contains more than one operator, the order of evaluation depe
 
 * Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[\(2\pi\)], you can use parentheses or write +degrees / 2 / π+.
 
-[NOTE]
+[TIP]
 ====
 I don’t work very hard to remember the precedence of operators. If I can’t tell by looking at the expression, I use parentheses to make it obvious.
 ====
