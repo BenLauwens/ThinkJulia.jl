@@ -763,7 +763,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_type_declarations">Type Declarations</a></li>
 <li><a href="#_printing_objects">Printing Objects</a></li>
 <li><a href="#_more_examples">More Examples</a></li>
-<li><a href="#_constructors">Constructors</a></li>
+<li><a href="#constructor">Constructors</a></li>
 <li><a href="#_show"><code>show</code></a></li>
 <li><a href="#_operator_overloading">Operator Overloading</a></li>
 <li><a href="#_multiple_dispatch">Multiple Dispatch</a></li>
@@ -798,7 +798,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_control_flow">Control Flow</a></li>
 <li><a href="#_types">Types</a></li>
 <li><a href="#_methods">Methods</a></li>
-<li><a href="#_constructors_2">Constructors</a></li>
+<li><a href="#_constructors">Constructors</a></li>
 <li><a href="#_conversion_and_promotion">Conversion and Promotion</a></li>
 <li><a href="#_metaprogramming">Metaprogramming</a></li>
 <li><a href="#_missing_values">Missing Values</a></li>
@@ -4203,7 +4203,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.539780847022544e9</span></code></pre>
+<span class="tok-go">1.539890414830158e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5290,9 +5290,9 @@ A(m-1, A(m, n-1))&amp; \textrm{if}\ m &gt; 0\ \textrm{and}\ n &gt; 0.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span><span class="tok-o">=</span><span class="tok-mi">5</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-mi">5</span>
 <span class="tok-go">5</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span><span class="tok-o">=</span><span class="tok-mi">7</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-mi">7</span>
 <span class="tok-go">7</span></code></pre>
 </div>
 </div>
@@ -9497,7 +9497,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_variable_length_argument_tuples">Variable-length Argument Tuples</h3>
 <div class="paragraph">
-<p>Functions can take a variable number of arguments. A parameter name that ends with <code>.&nbsp;.&nbsp;.</code> <em>gathers</em> arguments into a tuple. For example, <code>printall</code> takes any number of arguments and prints them:
+<p>Functions can take a variable number of arguments. A parameter name that ends with <code>...</code> <em>gathers</em> arguments into a tuple. For example, <code>printall</code> takes any number of arguments and prints them:
 </p>
 </div>
 <div class="listingblock">
@@ -9517,7 +9517,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The complement of gather is <em>scatter</em>. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the <code>.&nbsp;.&nbsp;.</code> operator. For example, <code>divrem</code> takes exactly two arguments; it doesn’t work with a tuple:
+<p>The complement of gather is <em>scatter</em>. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the <code>...</code> operator. For example, <code>divrem</code> takes exactly two arguments; it doesn’t work with a tuple:
 </p>
 </div>
 <div class="listingblock">
@@ -10117,7 +10117,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>your function should return <code><em>a</em></code> with probability \(\frac{2}{3}\) and <code><em>b</em></code> with probability \(\frac{1}{3}\).</p>
+<p>your function should return <code>'a'</code> with probability \(\frac{2}{3}\) and <code>'b'</code> with probability \(\frac{1}{3}\).</p>
 </div>
 </div>
 </div>
@@ -10698,7 +10698,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-go">pkg&gt; add Plots</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-go">(v1.0) pkg&gt; add Plots</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11598,7 +11598,7 @@ Due to some ancient injury?</pre>
 <p>It can be more efficient.</p>
 </li>
 <li>
-<p>It is not possible to violate the invariants provided by the type&#8217;s constructors (see later).</p>
+<p>It is not possible to violate the invariants provided by the type&#8217;s constructors (see <a href="#constructor">Constructors</a>).</p>
 </li>
 <li>
 <p>Code using immutable objects can be easier to reason about.</p>
@@ -12658,7 +12658,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_constructors">Constructors</h3>
+<h3 id="constructor">Constructors</h3>
 <div class="paragraph">
 <p>A <em>constructor</em> is a special function that is called to create an object. The default constructor methods of <code>MyTime</code> have the following signatures:
 </p>
@@ -14345,7 +14345,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_constructors_2">Constructors</h3>
+<h3 id="_constructors">Constructors</h3>
 <div class="paragraph">
 <p>Parametric types can be explicitely or implicitely constructed:</p>
 </div>
@@ -14493,9 +14493,9 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span><span class="tok-n">ex</span> <span class="tok-o">=</span> <span class="tok-k">quote</span>
-          <span class="tok-mi">1</span> <span class="tok-o">+</span> <span class="tok-mi">2</span>
-      <span class="tok-k">end</span><span class="tok-p">;</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">ex</span> <span class="tok-o">=</span> <span class="tok-k">quote</span>
+           <span class="tok-mi">1</span> <span class="tok-o">+</span> <span class="tok-mi">2</span>
+       <span class="tok-k">end</span><span class="tok-p">;</span></code></pre>
 </div>
 </div>
 </div>
@@ -14658,7 +14658,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>In <a href="#databases">Databases</a> I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to <code>close(db)</code> has to be made:</p>
+<p>In <a href="#databases">Databases</a> we introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to <code>close(db)</code> has to be made:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14863,7 +14863,7 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as a function to get compiled and the first time they are executed, has to be excluded from the performance measure.</p>
+<p>A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure.</p>
 </div>
 </td>
 </tr>
@@ -14873,7 +14873,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="collections_and_data_structures">Collections and Data Structures</h3>
 <div class="paragraph">
-<p>In <a href="#dictionary_subtraction">Dictionary Subtraction</a> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes <code>d1</code>, which contains the words from the document as keys, and <code>d2</code>, which contains the array of words. It returns a dictionary that contains the keys from <code>d1</code> that are not in <code>d2</code>.
+<p>In <a href="#dictionary_subtraction">Dictionary Subtraction</a> we used dictionaries to find the words that appear in a document but not in a word array. The function we wrote takes <code>d1</code>, which contains the words from the document as keys, and <code>d2</code>, which contains the array of words. It returns a dictionary that contains the keys from <code>d1</code> that are not in <code>d2</code>.
 </p>
 </div>
 <div class="listingblock">
@@ -14985,7 +14985,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_mathematics">Mathematics</h3>
 <div class="paragraph">
-<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \($i$\), representing the principal square root of \($-1$\).
+<p>Complex numbers are also supported in Julia. The global constant <code>im</code> is bound to the complex number \($\mathrm{i}$\), representing the principal square root of \($-1$\).
 </p>
 </div>
 <div class="paragraph">
@@ -15024,7 +15024,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Here, another example of the <code>.</code> operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in <code>2π</code>.</p>
+<p>Here, another example of the dot operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in <code>2π</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -15106,7 +15106,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_arrays">Arrays</h3>
 <div class="paragraph">
-<p>In <a href="#chap10">Arrays</a> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.</p>
+<p>In <a href="#chap10">Arrays</a> we used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s create a 2-by-3 zero <em>matrix</em>:
@@ -15240,7 +15240,7 @@ Due to some ancient injury?</pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>In <a href="#one_more_example">One More Example</a> I implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
+<p>In <a href="#one_more_example">One More Example</a> we implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s make an iterator that returns lazily the Fibonacci sequence:
@@ -15256,7 +15256,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.</p>
+<p>We implemented a parametric type with no fields <code>Fibonacci</code>, an outer constructor and two methods <code>iterate</code>. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.</p>
 </div>
 <div class="paragraph">
 <p>The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.</p>
@@ -15461,7 +15461,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Here, I have used <code>all</code> to get all debug information, but you can also choose to generate only output for a specific file or module.</p>
+<p>Here, we have used <code>all</code> to get all debug information, but you can also choose to generate only output for a specific file or module.</p>
 </div>
 </div>
 <div class="sect2">
@@ -16128,7 +16128,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-17 14:54:02 CEST
+Last updated 2018-10-18 21:20:09 CEST
 </div>
 </div>
 <script type="text/x-mathjax-config">
