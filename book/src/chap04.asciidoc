@@ -388,7 +388,7 @@ If we had planned ahead, we might have written +polyline+ first and avoided refa
 === A Development Plan
 
 A _development plan_ is a process for writing programs. The process we used in this case study is “encapsulation and generalization”. The steps of this process are:
-(((development plan)))
+(((program development plan)))
 
 . Start by writing a small program with no function definitions.
 
@@ -501,7 +501,7 @@ The process of modifying a working program to improve function interfaces and ot
 
 development plan::
 A process for writing programs.
-(((development plan)))
+(((program development plan)))
 
 docstring::
 A string that appears at the top of a function definition to document the function’s interface.

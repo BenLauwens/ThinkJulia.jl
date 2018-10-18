@@ -147,7 +147,7 @@ Write a correct version of +increment!+ that doesn’t contain any loops.
 Anything that can be done with modifiers can also be done with pure functions. In fact, some programming languages only allow pure functions. There is some evidence that programs that use pure functions are faster to develop and less error-prone than programs that use modifiers. But modifiers are convenient at times, and functional programs tend to be less efficient.
 
 In general, I recommend that you write pure functions whenever it is reasonable and resort to modifiers only if there is a compelling advantage. This approach might be called a _functional programming style_.
-(((function programming style)))
+(((functional programming style)))
 
 ===== Exercise 16-4
 
@@ -158,7 +158,7 @@ Write a “pure” version of +increment+ that creates and returns a new mytime 
 === Prototyping Versus Planning
 
 The development plan I am demonstrating is called “prototype and patch”. For each function, I wrote a prototype that performed the basic calculation and then tested it, patching errors along the way.
-(((development plan)))(((prototyping and patch)))
+(((program development plan)))(((prototyping and patch)))
 
 This approach can be effective, especially if you don’t yet have a deep understanding of the problem. But incremental corrections can generate code that is unnecessarily complicated—since it deals with many special cases—and unreliable—since it is hard to know if you have found all the errors.
 

@@ -7,7 +7,7 @@ function fig02_1(output::Symbol, font::String, scale::Float64)
   \node[anchor=east] (n) at(-3.75, 0) {\tt n};
   \node[anchor=west] (nv) at (-2.75, 0) {\tt 17};
   \draw[-latex] (n) -- (nv);
-  \node[anchor=east] (pi) at(-3.75, -0.5) {\tt π};
+  \node[anchor=east] (pi) at(-3.75, -0.5) {\tt πval};
   \node[anchor=west] (piv) at (-2.75, -0.5) {\tt 3.141592653589793};
   \draw[-latex] (pi) -- (piv);
   """; options= "scale=$scale, transform shape", preamble="""

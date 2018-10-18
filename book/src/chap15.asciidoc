@@ -106,7 +106,7 @@ This may seem odd at first, but it has several advantages:
 
 * It can be more efficient.
 
-* It is not possible to violate the invariants provided by the type's constructors (see later).
+* It is not possible to violate the invariants provided by the type's constructors (see <<constructor>>).
 
 * Code using immutable objects can be easier to reason about.
 

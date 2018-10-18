@@ -376,7 +376,7 @@ In some games, cards are moved from one hand to another, or from a hand back to 
 So far we have seen stack diagrams, which show the state of a program, and object diagrams, which show the attributes of an object and their values. These diagrams represent a snapshot in the execution of a program, so they change as the program runs.
 
 They are also highly detailed; for some purposes, too detailed. A _type diagram_ is a more abstract representation of the structure of a program. Instead of showing individual objects, it shows types and the relationships between them.
-(((type diagram)))((("diagram", "type")))
+(((type diagram)))((("diagram", "type", see="type diagram")))
 
 There are several kinds of relationship between types:
 
@@ -490,7 +490,7 @@ end
 ----
 
 Transforming a program like this—changing the design without changing the behavior—is another example of refactoring (see <<refactoring>>).
-(((refactoring)))
+(((refactoring)))(((program development plan)))
 
 This example suggests a development plan for designing types:
 

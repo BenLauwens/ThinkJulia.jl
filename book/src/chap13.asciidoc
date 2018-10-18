@@ -89,7 +89,7 @@ Dict{Any,Any} with 2 entries:
   'b' => 1
 ----
 
-your function should return +'a'+ with probability latexmath:[\(\frac{2}{3}\)] and +'b'+ with probability latexmath:[\(\frac{1}{3}\)].
+your function should return +pass:['a']+ with probability latexmath:[\(\frac{2}{3}\)] and +pass:['b']+ with probability latexmath:[\(\frac{1}{3}\)].
 
 
 === Word Histogram
@@ -141,7 +141,7 @@ This program reads _emma.txt_, which contains the text of _Emma_ by Jane Austen.
 Finally, +processline+ updates the histogram by creating a new item or incrementing an existing one.
 
 To count the total number of words in the file, we can add up the frequencies in the histogram:
-(((totalwords)))((("function", "programmed-defined", "totalswords", see="totalwords")))
+(((totalwords)))((("function", "programmer-defined", "totalswords", see="totalwords")))
 
 [source,@julia-setup chap13]
 ----
@@ -151,7 +151,7 @@ end
 ----
 
 The number of different words is just the number of items in the dictionary:
-(((differentwords)))((("function", "programmed-defined", "differentwords", see="differentwords")))
+(((differentwords)))((("function", "programmer-defined", "differentwords", see="differentwords")))
 
 [source,@julia-setup chap13]
 ----
@@ -175,7 +175,7 @@ Number of different words: 7380
 === Most Common Words
 
 To find the most common words, we can make an array of tuples, where each tuple contains a word and its frequency, and sort it. The following function takes a histogram and returns an array of word-frequency tuples:
-(((mostcommon)))((("function", "programmed-defined", "mostcommon", see="mostcommon")))(((reverse)))(((sort)))
+(((mostcommon)))((("function", "programmer-defined", "mostcommon", see="mostcommon")))(((reverse)))(((sort)))
 
 [source,@julia-setup chap13]
 ----
@@ -220,7 +220,7 @@ This code can be simplified using the +rev+ keyword argument of the +sort+ funct
 === Optional Parameters
 
 We have seen built-in functions that take optional arguments. It is possible to write programmer-defined functions with optional arguments, too. For example, here is a function that prints the most common words in a histogram:
-(((optional argument)))(((printmostcommon)))((("function", "programmed-defined", "printmostcommon", see="printmostcommon")))
+(((optional argument)))(((printmostcommon)))((("function", "programmer-defined", "printmostcommon", see="printmostcommon")))
 
 [source,@julia-setup chap13]
 ----
@@ -261,7 +261,7 @@ If a function has both required and optional parameters, all the required parame
 Finding the words from the book that are not in the word list from +words.txt+ is a problem you might recognize as set subtraction; that is, we want to find all the words from one set (the words in the book) that are not in the other (the words in the list).
 
 +subtract+ takes dictionaries +d1+ and +d2+ and returns a new dictionary that contains all the keys from +d1+ that are not in +d2+. Since we don’t really care about the values, we set them all to +nothing+.
-(((subtract)))((("function", "programmed-defined", "subtract", see="subtract")))(((nothing)))
+(((subtract)))((("function", "programmer-defined", "subtract", see="subtract")))(((nothing)))
 
 [source,@julia-setup chap13]
 ----
@@ -310,7 +310,7 @@ Write a program that uses set subtraction to find words in the book that are not
 === Random Words
 
 To choose a random word from the histogram, the simplest algorithm is to build an array with multiple copies of each word, according to the observed frequency, and then choose from the array:
-(((randomword)))((("function", "programmed-defined", "randomword", see="randomword")))
+(((randomword)))((("function", "programmer-defined", "randomword", see="randomword")))
 
 [source,@julia-setup chap13]
 ----
@@ -461,7 +461,7 @@ Take some time to think! What kind of error is it: syntax, runtime, or semantic?
 
 Rubberducking:: 
 If you explain the problem to someone else, you sometimes find the answer before you finish asking the question. Often you don’t need the other person; you could just talk to a rubber duck. And that’s the origin of the well-known strategy called rubber duck debugging. I am not making this up; see https://en.wikipedia.org/wiki/Rubber_duck_debugging.
-(((rubberduck debugging)))
+(((rubber duck debugging)))
 
 Retreating:: 
 At some point, the best thing to do is back off, undoing recent changes, until you get back to a program that works and that you understand. Then you can start rebuilding.
@@ -542,7 +542,7 @@ Install a plotting library:
 
 [source,jlcon]
 ----
-pkg> add Plots
+(v1.0) pkg> add Plots
 ----
 
 Its usage is very easy:

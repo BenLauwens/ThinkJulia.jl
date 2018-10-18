@@ -53,7 +53,7 @@ for chap in chaps
 end
 if "pdf" in ARGS
   println("Run ASCIIDoctor")
-  run(`asciidoctor -d book -b html5 -a compat-mode -a stylesheet! -a nofooter -a stem=latexmath -a source-highlighter=pygments build/book.asciidoc`)
+  run(`asciidoctor-htmlbook -a stem=latexmath build/book.asciidoc`)
   println("Cleanup equations")
   book = read("build/book.html", String)
   book = replace(book, "\\(\\("=> "\\(")
@@ -63,8 +63,8 @@ if "pdf" in ARGS
   write("build/book.html", book)
   println("Run mjpage")
   run(`mjpage --output MML < build/book.html > build/output.html`)
-  println("Run prince")
-  run(`prince -s print.css -o build/book.pdf build/output.html`)
+  println("Run antennahouse")
+  run(`/usr/local/AHFormatterV66/run.sh -d build/output.html -s ~/stack/Configs/styles/book.css -o "build/book.pdf"`)
 elseif "html" in ARGS
   run(`asciidoctor -d book -b html5 -a compat-mode -a stem=latexmath -a sectnums -a sectnumlevels=1 -a source-highlighter=pygments -a toc -a toc=left -a toclevels=2 build/book.asciidoc`)
   book = read("build/book.html", String)

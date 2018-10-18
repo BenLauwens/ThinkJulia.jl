@@ -362,7 +362,7 @@ If you played with the +fibonacci+ function from <<one_more_example>>, you might
 (((fibonnaci)))
 
 To understand why, consider <<fig11-2>>, which shows the _call graph_ for +fibonacci+ with +n = 4+:
-(((call graph)))
+(((call graph)))((("diagram", "call graph", see="call graph")))
 
 [[fig11-2]]
 .Call graph

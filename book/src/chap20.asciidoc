@@ -18,7 +18,7 @@ This chapter is not a replacement of the offical Julia documentation. I give mer
 === Measuring Performance
 
 We have seen that some algorithms perform better than other. +fibonnaci+ in <<memos>> is a lot faster than +fib+ in <<one_more_example>>. The +@time+ macro allows to quantify the difference:
-(((@time)))((("macro", "base", "@time", see="@time")))
+(((@time)))((("macro", "Base", "@time", see="@time")))
 
 [source,jlcon]
 ----
@@ -43,14 +43,14 @@ ____
 
 [WARNING]
 ====
-A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as a function to get compiled and the first time they are executed, has to be excluded from the performance measure.
+A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure.
 ====
 
 
 [[collections_and_data_structures]]
 === Collections and Data Structures
 
-In <<dictionary_subtraction>> I use dictionaries to find the words that appear in a document but not in a word array. The function I wrote takes +d1+, which contains the words from the document as keys, and +d2+, which contains the array of words. It returns a dictionary that contains the keys from +d1+ that are not in +d2+.
+In <<dictionary_subtraction>> we used dictionaries to find the words that appear in a document but not in a word array. The function we wrote takes +d1+, which contains the words from the document as keys, and +d2+, which contains the array of words. It returns a dictionary that contains the keys from +d1+ that are not in +d2+.
 (((subtract)))
 
 [source,@julia-setup]
@@ -148,7 +148,7 @@ Rewrite +avoids+ using sets.
 
 === Mathematics
 
-Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[$i$], representing the principal square root of latexmath:[$-1$].
+Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[$\mathrm{i}$], representing the principal square root of latexmath:[$-1$].
 (((complex numbers)))(((im)))
 
 We can now verify the Euler's identity:
@@ -182,7 +182,7 @@ julia> cos.(x) == 0.5*(ℯ.^(im*x)+ℯ.^(-im*x))
 true
 ----
 
-Here, another example of the +.+ operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in +2π+.
+Here, another example of the dot operator is shown. Julia also allows numeric literals to be juxtaposed with identifiers as coefficients as in +2π+.
 
 === Strings
 
@@ -243,7 +243,7 @@ Regexes are extremely powerful and the PERL manpage http://perldoc.perl.org/perl
 
 === Arrays
 
-In <<chap10>> I used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
+In <<chap10>> we used an array object as a one-dimensional container with an index to address its elements. In Julia however, arrays are multi-dimensional collections.
 
 Let's create a 2-by-3 zero _matrix_:
 (((zeros)))((("function", "Base", "zeros", see="zeros")))(((matrix)))
@@ -353,7 +353,7 @@ ____
 If it looks like a duck, swims like a duck, and quacks like a duck, then it probably _is_ a duck.
 ____
 
-In <<one_more_example>> I implemented the +fib+ function returning the latexmath:[\(n\)]th element of the Fibonnaci sequence.
+In <<one_more_example>> we implemented the +fib+ function returning the latexmath:[\(n\)]th element of the Fibonnaci sequence.
 
 Let's make an iterator that returns lazily the Fibonacci sequence:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
@@ -367,7 +367,7 @@ Base.iterate(::Fibonacci{T}) where {T<:Real} = (zero(T), (one(T), one(T)))
 Base.iterate(::Fibonacci{T}, state::Tuple{T, T}) where {T<:Real} = (state[1], (state[2], state[1] + state[2]))
 ----
 
-I implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
+We implemented a parametric type with no fields +Fibonacci+, an outer constructor and two methods +iterate+. The first is called to initialize the iterator and returns a tuple consisting of the first value, 0, and a state. The state in this case is a tuple containing the second and the third value, 1 and 1.
 
 The second is called to get the next value of the Fibonacci sequence and returns a tuple having as first element the next value and as second element the state which is a tuple with the two following values.
 
@@ -521,7 +521,7 @@ julia> @code_native squaresum(3.0, 4.0)
 === Debugging
 
 The +Logging+ macros provide an alternative to scaffolding with print statements:
-(((@warn)))((("macro", "Base", "@warn", see="@warn")))
+(((@warn)))((("macro", "Base", "@warn", see="@warn")))(((debugging)))
 
 [source,jlcon]
 ----
@@ -552,7 +552,7 @@ $ JULIA_DEBUG=all julia -e '@debug "The sum of some values $(sum(rand(100)))"'
 └ @ Main none:1
 ----
 
-Here, I have used +all+ to get all debug information, but you can also choose to generate only output for a specific file or module.
+Here, we have used +all+ to get all debug information, but you can also choose to generate only output for a specific file or module.
 
 
 === Glossary

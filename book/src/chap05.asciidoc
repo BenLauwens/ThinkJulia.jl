@@ -53,7 +53,7 @@ Also, you can extract the right-most digit or digits from a number. For example,
 === Boolean Expressions
 
 A _boolean expression_ is an expression that is either true or false. The following examples use the operator +==+, which compares two operands and produces +true+ if they are equal and +false+ otherwise:
-(((boolean expression)))(((true)))(((false)))((("keyword", "true", see="true")))((("keyword", "false", see="false")))
+(((boolean expression)))(((true)))(((false)))
 
 [source,@julia-repl-test]
 ----

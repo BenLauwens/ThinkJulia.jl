@@ -522,9 +522,9 @@ Expressions can be constructed directly by prefixing with +:+ inside parentheses
 
 [source,@julia-repl-test chap19]
 ----
-julia>ex = quote
-          1 + 2
-      end;
+julia> ex = quote
+           1 + 2
+       end;
 ----
 
 ==== +eval+
@@ -647,7 +647,7 @@ julia> sum(skipmissing([1, missing]))
 Julia can integrate existing C or Fortran code by making an appropriate call with +ccall+ syntax.
 (((ccall)))((("function", "Base", "ccall", see="ccall")))
 
-In <<databases>> I introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to +close(db)+ has to be made:
+In <<databases>> we introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to +close(db)+ has to be made:
 
 [source,julia]
 ----

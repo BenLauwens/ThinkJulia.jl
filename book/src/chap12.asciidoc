@@ -196,7 +196,7 @@ julia> println(rem)
 ----
 
 Here is an example of a function that returns a tuple:
-(((minmax)))((("function", "programmer defined", "minmax", see="minmax")))
+(((minmax)))((("function", "programmer-defined", "minmax", see="minmax")))
 
 [source,@julia-setup]
 ----
@@ -211,7 +211,7 @@ end
 
 === Variable-length Argument Tuples
 
-Functions can take a variable number of arguments. A parameter name that ends with +pass:[.&nbsp;.&nbsp;.]+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
+Functions can take a variable number of arguments. A parameter name that ends with +pass:[...]+ _gathers_ arguments into a tuple. For example, +printall+ takes any number of arguments and prints them:
 (((gather)))(((...)))(((printall)))((("function", "programmer-defined", "printall", see="printall")))
 
 [source,@julia-setup chap12]
@@ -229,7 +229,7 @@ julia> printall(1, 2.0, '3')
 (1, 2.0, '3')
 ----
 
-The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +pass:[.&nbsp;.&nbsp;.]+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
+The complement of gather is _scatter_. If you have a sequence of values and you want to pass it to a function as multiple arguments, you can use the +pass:[...]+ operator. For example, +divrem+ takes exactly two arguments; it doesn’t work with a tuple:
 (((scatter)))(((MethodError)))
 
 [source,@julia-repl-test chap12]

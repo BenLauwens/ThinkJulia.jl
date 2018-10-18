@@ -11,9 +11,9 @@ As you may have discovered, it is legal to make more than one assignment to the 
 
 [source,@julia-repl-test chap07]
 ----
-julia> x=5
+julia> x = 5
 5
-julia> x=7
+julia> x = 7
 7
 ----
 

@@ -146,11 +146,11 @@ An indexing operation into an array tried to access an out-of-bounds element.
 
 DivideError:: 
 Integer division was attempted with a denominator value of 0.
-(((DivideError)))((("Error", "Base", "DivideError", see="DivideError")))
+(((DivideError)))((("error", "Base", "DivideError", see="DivideError")))
 
 EOFError:: 
 No more data was available to read from a file or stream.
-(((EOFError)))((("Error", "Base", "EOFError", see="EOFError")))
+(((EOFError)))((("error", "Base", "EOFError", see="EOFError")))
 
 KeyError:: 
 An indexing operation into an +AbstractDict+ (+Dict+) or +Set+ like object tried to access or delete a non-existent element.
@@ -162,11 +162,11 @@ A method with the required type signature does not exist in the given generic fu
 
 OutOfMemoryError:: 
 An operation allocated too much memory for either the system or the garbage collector to handle properly.
-(((OutOfMemoryError)))((("Error", "Base", "OutOfMemoryError", see="OutOfMemoryError")))
+(((OutOfMemoryError)))((("error", "Base", "OutOfMemoryError", see="OutOfMemoryError")))
 
 OverflowError:: 
 The result of an expression is too large for the specified type and will cause a wraparound.
-(((OverflowError)))((("Error", "Base", "OverflowError", see="OverflowError")))
+(((OverflowError)))((("error", "Base", "OverflowError", see="OverflowError")))
 
 StackOverflowError:: 
 The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
