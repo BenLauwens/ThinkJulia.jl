@@ -761,8 +761,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#chap17">17. Multiple Dispatch</a>
 <ul class="sectlevel2">
 <li><a href="#_type_declarations">Type Declarations</a></li>
-<li><a href="#_printing_objects">Printing Objects</a></li>
-<li><a href="#_more_examples">More Examples</a></li>
+<li><a href="#_methods">Methods</a></li>
+<li><a href="#_additional_examples">Additional Examples</a></li>
 <li><a href="#constructor">Constructors</a></li>
 <li><a href="#_show"><code>show</code></a></li>
 <li><a href="#_operator_overloading">Operator Overloading</a></li>
@@ -797,7 +797,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_functions">Functions</a></li>
 <li><a href="#_control_flow">Control Flow</a></li>
 <li><a href="#_types">Types</a></li>
-<li><a href="#_methods">Methods</a></li>
+<li><a href="#_methods_2">Methods</a></li>
 <li><a href="#_constructors">Constructors</a></li>
 <li><a href="#_conversion_and_promotion">Conversion and Promotion</a></li>
 <li><a href="#_metaprogramming">Metaprogramming</a></li>
@@ -925,7 +925,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.0.1 (2018-09-29)
+  | | |_| | | | (_| |  |  Version 1.0.2 (2018-11-08)
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
@@ -1152,19 +1152,8 @@ julia&gt;</pre>
 </dd>
 </dl>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
 <div class="paragraph">
 <p>Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal language.</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -2788,7 +2777,7 @@ Stacktrace:
 <p>This chapter presents a case study that demonstrates a process for designing functions that work together.</p>
 </div>
 <div class="paragraph">
-<p>It introduces turtle graphics, a way to create programmatically drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.</p>
+<p>It introduces turtle graphics, a way to create programmatical drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.</p>
 </div>
 <div class="paragraph">
 <p>The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <a href="#juliabox">JuliaBox</a>).
@@ -4203,7 +4192,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.539890414830158e9</span></code></pre>
+<span class="tok-go">1.542210923439276e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4487,7 +4476,7 @@ search:
 </td>
 <td class="content">
 <div class="paragraph">
-<p>By the way, Julia provides a built-in function called <code>abs</code> that computes absolute values.
+<p>Julia provides a built-in function called <code>abs</code> that computes absolute values.
 </p>
 </div>
 </td>
@@ -5852,14 +5841,14 @@ Done!</code></pre>
 <div class="sect2">
 <h3 id="_characters">Characters</h3>
 <div class="paragraph">
-<p>The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the <em>ASCII standard</em>.
+<p>English language speakers are familiar with characters such as the letters of the alphabet (A, B, C&#8230;&#8203;), numerals, and common punctuation. These characters are standardized and mapped to integer values between 0 and 127 by the <em>ASCII standard</em> (American Standard Code for Information Interchange).
 </p>
 </div>
 <div class="paragraph">
 <p>There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean.</p>
 </div>
 <div class="paragraph">
-<p>The <em>Unicode standard</em> tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.
+<p>The <em>Unicode standard</em> tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.  It provides a unique number for every character on a world-wide scale.
 </p>
 </div>
 <div class="paragraph">
@@ -5877,7 +5866,7 @@ Done!</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Emojis are part of the Unicode standard.
+<p>Even emojis are part of the Unicode standard.
 </p>
 </div>
 </div>
@@ -5903,7 +5892,7 @@ Done!</code></pre>
 </p>
 </div>
 <div class="paragraph">
-<p>All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index <code>end</code>:
+<p>All indexing in Julia is 1-based --the first element of any integer-indexed object is found at index 1 and the last element at index <code>end</code>:
 </p>
 </div>
 <div class="listingblock">
@@ -6155,7 +6144,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_string_interpolation">String Interpolation</h3>
 <div class="paragraph">
-<p>Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to <code>string</code> or repeated multiplications, Julia allows <em>string interpolation</em> using <code>$</code>:
+<p>Constructing strings using concatenation can become a bit cumbersome. To reduce the need for these verbose calls to <code>string</code> or repeated multiplications, Julia allows <em>string interpolation</em> using <code>$</code>:
 </p>
 </div>
 <div class="listingblock">
@@ -6297,7 +6286,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_the_operator">The <code>∈</code> Operator</h3>
 <div class="paragraph">
-<p>The operator <code>∈</code> (<code>\in TAB</code>) is a boolean operator that takes a character and a string and returns <code>true</code> if the first appears as in the second:
+<p>The operator <code>∈</code> (<code>\in TAB</code>) is a boolean operator that takes a character and a string and returns <code>true</code> if the first appears in the second:
 </p>
 </div>
 <div class="listingblock">
@@ -10223,7 +10212,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In each tuple, the frequency appears first, so the resulting array is sorted by frequency. Here is a loop that prints the ten most common words:</p>
+<p>In each tuple, the frequency appears first, so the resulting array is sorted by frequency. Here is a loop that prints the 10 most common words:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -10970,7 +10959,7 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fout</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;/etc/passwd&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: SystemError: opening file /etc/passwd: Operation not permitted</span></code></pre>
+<span class="tok-gr">ERROR: SystemError: opening file /etc/passwd: Permission denied</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11265,7 +11254,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside <code>module &#8230;&#8203;  end</code>. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else&#8217;s. Within a module, you can control which names from other modules are visible (via <code>import</code>ing), and specify which of your names are intended to be public (via <code>export</code>ing).
+<p>Julia introduces modules to create separate variable workspace, i.e. new global scopes. A module starts with the keyword <code>module</code> and ends with <code>end</code>. Naming conflicts are avoided between your own top-level definitions and those find in somebody else&#8217;s code. <code>import</code> allows to control which names from other module are visible and <code>export</code> specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module.
 </p>
 </div>
 <div class="listingblock">
@@ -12496,7 +12485,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_printing_objects">Printing Objects</h3>
+<h3 id="_methods">Methods</h3>
 <div class="paragraph">
 <p>In <a href="#chap16">Structs and Functions</a>, we defined a struct named <code>MyTime</code> and in <a href="#time">Time</a>, you wrote a function named <code>printtime</code>:
 </p>
@@ -12582,7 +12571,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_more_examples">More Examples</h3>
+<h3 id="_additional_examples">Additional Examples</h3>
 <div class="paragraph">
 <p>Here’s a version of <code>increment</code> (from <a href="#modifiers">Modifiers</a>) rewritten to specify its arguments:
 </p>
@@ -12726,7 +12715,7 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If any inner constructor method is defined, no default constructor method is provided: it is presumed that you have supplied yourself with all the inner constructors you need.</p>
+<p>The default constructor is not available if any inner constructor is defined. You have to write explicitely all the inner constructors you need.</p>
 </div>
 </td>
 </tr>
@@ -12999,7 +12988,10 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_debugging_14">Debugging</h3>
 <div class="paragraph">
-<p>To know what methods are available, you can use the function <code>methods</code>:
+<p>Calling a function with the correct arguments can be difficult when more than one method for the function is specified. Julia allows to introspect the signatures of the methods of a function.</p>
+</div>
+<div class="paragraph">
+<p>To know what methods are available for a given function, you can use the function <code>methods</code>:
 </p>
 </div>
 <div class="listingblock">
@@ -13009,6 +13001,9 @@ Due to some ancient injury?</pre>
 <span class="tok-go">[1] printtime(time::MyTime) in Main at REPL[3]:2</span>
 <span class="tok-go">[2] printtime(time) in Main at REPL[4]:2</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>In this example, the function <code>printtime</code> has 2 methods: one with a <code>MyTime</code> argument and one with a <code>Any</code> argument.</p>
 </div>
 </div>
 <div class="sect2">
@@ -13251,7 +13246,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_unit_testing">Unit Testing</h3>
 <div class="paragraph">
-<p><em>Unit testing</em> is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
+<p><em>Unit testing</em> allows you to verify the correctness of your code by comparing the results of your code to what you expect. This can be useful to be sure that your code still is correct after modifications, and it is also a way to predefine the correct behaviour of your code during development.
 </p>
 </div>
 <div class="paragraph">
@@ -13402,11 +13397,11 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>abstract type</code> keyword introduces a new abstract type. The name can be optionally followed by <code>&lt;:</code> and an already-existing abstract type, indicating that the newly declared abstract type is a <em>subtype</em> of this “parent” type.
+<p>A new abstract type is created with the <code>abstract type</code> keyword. An optional “parent” type can be specified by putting after the name <code>&lt;:</code> followed by the name of an already-existing abstract type.
 </p>
 </div>
 <div class="paragraph">
-<p>When no <em>supertype</em> is given, the default supertype is <code>Any</code> – a predefined abstract type that all objects are instances of and all types are subtypes of.
+<p>When no <em>supertype</em> is given, the default supertype is <code>Any</code> – a predefined abstract type that all objects are instances of and all types are <em>subtypes</em> of.
 </p>
 </div>
 <div class="paragraph">
@@ -13543,7 +13538,7 @@ Due to some ancient injury?</pre>
 </p>
 </li>
 <li>
-<p>One type might has supertype an abstract type. This relationship is called <em>IS-A</em>, as in, “a Hand is a kind of a CardSet.”
+<p>A concrete type can have an abstract type as a supertype. This relationship is called <em>IS-A</em>, as in, “a Hand is a kind of a CardSet.”
 </p>
 </li>
 <li>
@@ -13915,8 +13910,10 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_blocks">Blocks</h3>
 <div class="paragraph">
-<p><code>begin &#8230;&#8203; end</code> is used to group a number of statements. This is called a block of code.
-</p>
+<p>A <em>block</em> is a way to group a number of statements. A block starts with the keyword <code>begin</code> and ends with <code>end</code>.</p>
+</div>
+<div class="paragraph">
+<p></p>
 </div>
 <div class="paragraph">
 <p>In <a href="#chap04">Case Study: Interface Design</a> the <code>@svg</code> macro was introduced:</p>
@@ -13932,10 +13929,13 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The macro has as argument the block of code consisting of 3 function calls.</p>
+<p>In this example, the macro <code>@svg</code> has a single argument, i.e. a block grouping 3 function calls.</p>
 </div>
 <div class="sect3">
 <h4 id="_closures_and_let_blocks">Closures and <code>let</code> blocks</h4>
+<div class="paragraph">
+<p>A <em>closure</em> is a technique allowing a function to have access to a variable defined outside the calling scope of the function.</p>
+</div>
 <div class="paragraph">
 <p>The function <code>funcgen</code> returns an array with two anonymous functions (see <a href="#anonymous_functions">Anonymous Functions</a>) which return respectively the values 1 and 2:
 </p>
@@ -13966,11 +13966,11 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The returned functions are <em>closures</em> and the variable <code>i</code> is common to both of them.
+<p>The returned functions are closures and the variable <code>i</code> is common to both of them.
 </p>
 </div>
 <div class="paragraph">
-<p>A <em>let block</em> creates new variable bindings and provides a solution to our problem:
+<p>A <em>let block</em> is a kind of block that creates new variable bindings. The solution to our problem can be implemented as follows
 </p>
 </div>
 <div class="listingblock">
@@ -14043,7 +14043,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_named_tuples">Named Tuples</h4>
 <div class="paragraph">
-<p>You can name the components of a tuple:</p>
+<p>You can name the components of a tuple, creating a named tuple:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14054,7 +14054,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is called a <em>named tuple</em> having the additional property that fields can be accessed by name using dot syntax <code>(x.a)</code>.
+<p>With named tuples, fields can be accessed by name using dot syntax <code>(x.a)</code>.
 </p>
 </div>
 </div>
@@ -14132,7 +14132,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_ternary_operator">Ternary Operator</h4>
 <div class="paragraph">
-<p>The <em>ternary operator</em>, <code>?:</code>, is an alternative to an <code>if-elseif</code> statement, when the choice is between single expression values.
+<p>The <em>ternary operator</em>, <code>?:</code>, is an alternative to an <code>if-elseif</code> statement used when you need to make a choice between single expression values.
 </p>
 </div>
 <div class="listingblock">
@@ -14150,7 +14150,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_short_circuit_evaluation">Short-Circuit Evaluation</h4>
 <div class="paragraph">
-<p>The operators <code>&amp;&amp;</code> and <code>||</code> do a <em>short-circuit evaluation</em>: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
+<p>The operators <code>&amp;&amp;</code> and <code>||</code> do a <em>short-circuit evaluation</em>: a next argument is only evaluated when it is needed to determine the final value.
 </p>
 </div>
 <div class="paragraph">
@@ -14170,7 +14170,10 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_tasks_aka_coroutines">Tasks (aka Coroutines)</h4>
 <div class="paragraph">
-<p>The Fibonnaci sequence can also be generated using a <em>task</em>.
+<p>A <em>task</em> is a control structure that can pass cooperatively control without returning. In Julia, a task is implemented as a function having as first argument a channel object. The channel object is used to pass values from the function to the callee.</p>
+</div>
+<div class="paragraph">
+<p>The Fibonnaci sequence can be generated using a task.
 </p>
 </div>
 <div class="listingblock">
@@ -14187,7 +14190,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>put!</code> stores values in a channel object and <code>take!</code> reads values:
+<p><code>put!</code> stores values in a channel object and <code>take!</code> reads values from it:
 </p>
 </div>
 <div class="listingblock">
@@ -14228,7 +14231,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_primitive_types">Primitive Types</h4>
 <div class="paragraph">
-<p>A concrete type consisting of plain old bits, is called a <em>primitive type</em>. Unlike most languages, you can declare your own primitive types. The standard primitive types are defined in the same way:
+<p>A concrete type consisting of plain old bits, is called a <em>primitive type</em>. Unlike most languages with Julia you can declare your own primitive types. The standard primitive types are defined in the same way:
 </p>
 </div>
 <div class="listingblock">
@@ -14246,7 +14249,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_parametric_types">Parametric Types</h4>
 <div class="paragraph">
-<p>Julia&#8217;s type system is <em>parametric</em>: types can have parameters.</p>
+<p>Julia&#8217;s type system is <em>parametric</em>, meaning that types can have parameters.</p>
 </div>
 <div class="paragraph">
 <p>Type parameters are introduced after the name of the type, surrounded by curly braces:
@@ -14261,7 +14264,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This defines a new parametric type, <code>Point{T&lt;:Real}</code>, holding two "coordinates" of type <code>T</code> which can be any type having <code>Real</code> as supertype.</p>
+<p>This defines a new parametric type, <code>Point{T&lt;:Real}</code>, holding two "coordinates" of type <code>T</code>, which can be any type having <code>Real</code> as supertype.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14270,7 +14273,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.</p>
+<p>In addition to composite types, abstract types and primitive types can also have a type parameter.</p>
 </div>
 </div>
 <div class="sect3">
@@ -14292,7 +14295,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_methods">Methods</h3>
+<h3 id="_methods_2">Methods</h3>
 <div class="sect3">
 <h4 id="_parametric_methods">Parametric Methods</h4>
 <div class="paragraph">
@@ -14313,21 +14316,21 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_function_like_objects">Function-like Objects</h4>
 <div class="paragraph">
-<p>An arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called <em>functors</em>.
+<p>Any arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called <em>functors</em>.
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Polynomial</span><span class="tok-p">{</span><span class="tok-n">R</span><span class="tok-p">}</span>
-    <span class="tok-n">coeffs</span><span class="tok-o">::</span><span class="tok-kt">Vector</span><span class="tok-p">{</span><span class="tok-n">R</span><span class="tok-p">}</span>
+    <span class="tok-n">coeff</span><span class="tok-o">::</span><span class="tok-kt">Vector</span><span class="tok-p">{</span><span class="tok-n">R</span><span class="tok-p">}</span>
 <span class="tok-k">end</span>
 
 <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-o">::</span><span class="tok-n">Polynomial</span><span class="tok-p">)(</span><span class="tok-n">x</span><span class="tok-p">)</span>
-    <span class="tok-n">v</span> <span class="tok-o">=</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">coeffs</span><span class="tok-p">[</span><span class="tok-k">end</span><span class="tok-p">]</span>
-    <span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">length</span><span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">coeffs</span><span class="tok-p">)</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span><span class="tok-o">:-</span><span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">1</span>
-        <span class="tok-n">v</span> <span class="tok-o">=</span> <span class="tok-n">v</span><span class="tok-o">*</span><span class="tok-n">x</span> <span class="tok-o">+</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">coeffs</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span>
+    <span class="tok-n">val</span> <span class="tok-o">=</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">coeff</span><span class="tok-p">[</span><span class="tok-k">end</span><span class="tok-p">]</span>
+    <span class="tok-k">for</span> <span class="tok-n">coeff</span> <span class="tok-kp">in</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">coeff</span><span class="tok-p">[</span><span class="tok-k">end</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-o">:-</span><span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">1</span><span class="tok-p">]</span>
+        <span class="tok-n">val</span> <span class="tok-o">=</span> <span class="tok-n">val</span> <span class="tok-o">*</span> <span class="tok-n">x</span> <span class="tok-o">+</span> <span class="tok-n">coeff</span>
     <span class="tok-k">end</span>
-    <span class="tok-n">v</span>
+    <span class="tok-n">val</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -14654,7 +14657,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_calling_c_and_fortran_code">Calling C and Fortran Code</h3>
 <div class="paragraph">
-<p>Julia can integrate existing C or Fortran code by making an appropriate call with <code>ccall</code> syntax.
+<p>A lot of code is written in C or Fortran. Reusing tested code is often better than writing your own version of an algorithm. Julia can call directly existing C or Fortran libraries using the <code>ccall</code> syntax.
 </p>
 </div>
 <div class="paragraph">
@@ -14801,11 +14804,11 @@ Due to some ancient injury?</pre>
 <h2 id="chap20">20. The Goodies: Base and Standard Library</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code>Base</code> contains a number of functions, types and macros that are directly available in Julia.
+<p>Julia comes with batteries included. The <code>Base</code> module contains the most useful functions, types and macros. These are directly available in Julia.
 </p>
 </div>
 <div class="paragraph">
-<p>Julia provides also a large number of specialized modules in its Standard Library.  Functions, types and macros defined in the Standard Library have to be imported before they can be used:</p>
+<p>Julia provides also a large number of specialized modules in its Standard Library (<code>Dates</code>, <code>Distributed Computing</code>, <code>Linear Algebra</code>, <code>Profiling</code>, <code>Random Numbers</code>, &#8230;&#8203;). Functions, types and macros defined in the Standard Library have to be imported before they can be used:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -14828,7 +14831,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_measuring_performance">Measuring Performance</h3>
 <div class="paragraph">
-<p>We have seen that some algorithms perform better than other. <code>fibonnaci</code> in <a href="#memos">Memos</a> is a lot faster than <code>fib</code> in <a href="#one_more_example">One More Example</a>. The <code>@time</code> macro allows to quantify the difference:
+<p>We have seen that some algorithms perform better than others. <code>fibonnaci</code> in <a href="#memos">Memos</a> is a lot faster than <code>fib</code> in <a href="#one_more_example">One More Example</a>. The <code>@time</code> macro allows to quantify the difference:
 </p>
 </div>
 <div class="listingblock">
@@ -15229,7 +15232,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_interfaces">Interfaces</h3>
 <div class="paragraph">
-<p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors.
+<p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods to build upon these behaviors.
 </p>
 </div>
 <div class="quoteblock">
@@ -15437,7 +15440,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The debug statement don&#8217;t have to be removed from the source. For example, in contrast to the <code>@warn</code> above
+<p>The debug statements don&#8217;t have to be removed from the source. For example, in contrast to the <code>@warn</code> above
 </p>
 </div>
 <div class="listingblock">
@@ -16128,7 +16131,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-10-18 21:20:09 CEST
+Last updated 2018-11-14 16:55:19 CET
 </div>
 </div>
 <script type="text/x-mathjax-config">
