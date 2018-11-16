@@ -85,7 +85,7 @@ nothing
 
 [TIP]
 ====
-By the way, Julia provides a built-in function called +abs+ that computes absolute values.
+Julia provides a built-in function called +abs+ that computes absolute values.
 (((abs)))((("function", "Base", "abs", see="abs")))
 ====
 

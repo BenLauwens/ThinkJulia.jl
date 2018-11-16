@@ -58,7 +58,7 @@ The default behavior in Julia when types are omitted is to allow values to be of
 (((Any)))
 
 
-=== Printing Objects
+=== Methods
 
 In <<chap16>>, we defined a struct named +MyTime+ and in <<time>>, you wrote a function named +printtime+:
 (((MyTime)))(((printtime)))
@@ -148,7 +148,7 @@ function inttotime(seconds)
 end;
 ----
 
-=== More Examples
+=== Additional Examples
 
 Here’s a version of +increment+ (from <<modifiers>>) rewritten to specify its arguments:
 (((increment)))
@@ -272,7 +272,7 @@ An inner constructor method is always declared inside the block of a type declar
 
 [WARNING]
 ====
-If any inner constructor method is defined, no default constructor method is provided: it is presumed that you have supplied yourself with all the inner constructors you need.
+The default constructor is not available if any inner constructor is defined. You have to write explicitely all the inner constructors you need.
 ====
 
 A second method without arguments of the local function +new+ exists:
@@ -519,7 +519,9 @@ But if you designed the interface carefully, you can change the implementation w
 
 === Debugging
 
-To know what methods are available, you can use the function +methods+:
+Calling a function with the correct arguments can be difficult when more than one method for the function is specified. Julia allows to introspect the signatures of the methods of a function.
+
+To know what methods are available for a given function, you can use the function +methods+:
 (((methods)))(((debugging)))
 
 [source,jlcon]
@@ -529,6 +531,8 @@ julia> methods(printtime)
 [1] printtime(time::MyTime) in Main at REPL[3]:2
 [2] printtime(time) in Main at REPL[4]:2
 ----
+
+In this example, the function +printtime+ has 2 methods: one with a +MyTime+ argument and one with a +Any+ argument.
 
 
 === Glossary

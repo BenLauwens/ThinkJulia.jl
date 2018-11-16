@@ -1,10 +1,10 @@
 [[chap20]]
 == The Goodies: Base and Standard Library
 
-+Base+ contains a number of functions, types and macros that are directly available in Julia.
+Julia comes with batteries included. The +Base+ module contains the most useful functions, types and macros. These are directly available in Julia.
 (((Base)))
 
-Julia provides also a large number of specialized modules in its Standard Library.  Functions, types and macros defined in the Standard Library have to be imported before they can be used:
+Julia provides also a large number of specialized modules in its Standard Library (+Dates+, +Distributed Computing+, +Linear Algebra+, +Profiling+, +Random Numbers+, ...). Functions, types and macros defined in the Standard Library have to be imported before they can be used:
 
 * +import _Module_+ imports the module, and +_Module.fn_(x)+ calls the function +_fn_+
 (((import)))((("keyword", "import", see="import")))
@@ -17,7 +17,7 @@ This chapter is not a replacement of the offical Julia documentation. I give mer
 
 === Measuring Performance
 
-We have seen that some algorithms perform better than other. +fibonnaci+ in <<memos>> is a lot faster than +fib+ in <<one_more_example>>. The +@time+ macro allows to quantify the difference:
+We have seen that some algorithms perform better than others. +fibonnaci+ in <<memos>> is a lot faster than +fib+ in <<one_more_example>>. The +@time+ macro allows to quantify the difference:
 (((@time)))((("macro", "Base", "@time", see="@time")))
 
 [source,jlcon]
@@ -345,7 +345,7 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
-Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods build upon these behaviors.
+Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods to build upon these behaviors.
 (((interface)))
 
 [quote]
@@ -530,7 +530,7 @@ julia> @warn "Abandon printf debugging, all ye who enter here!"
 └ @ Main REPL[1]:1
 ----
 
-The debug statement don't have to be removed from the source. For example, in contrast to the +@warn+ above
+The debug statements don't have to be removed from the source. For example, in contrast to the +@warn+ above
 (((debug statement)))(((@debug)))((("macro", "Base", "@debug", see="@debug")))
 
 [source,jlcon]

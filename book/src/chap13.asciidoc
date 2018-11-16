@@ -188,7 +188,7 @@ function mostcommon(hist)
 end
 ----
 
-In each tuple, the frequency appears first, so the resulting array is sorted by frequency. Here is a loop that prints the ten most common words:
+In each tuple, the frequency appears first, so the resulting array is sorted by frequency. Here is a loop that prints the 10 most common words:
 
 [source,julia]
 ----

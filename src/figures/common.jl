@@ -1,5 +1,5 @@
 function makefigs(output::Symbol, font::String, scale::Float64)
-  fig00_1(output, font, scale)
+  #fig00_1(output, font, scale)
   fig02_1(output, font, scale)
   fig03_1(output, font, scale)
   fig04_1(output, font, scale)

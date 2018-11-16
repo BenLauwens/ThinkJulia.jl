@@ -206,7 +206,7 @@ If you don’t have permission to access a file:
 [source,@julia-repl-test]
 ----
 julia> fout = open("/etc/passwd", "w")
-ERROR: SystemError: opening file /etc/passwd: Operation not permitted
+ERROR: SystemError: opening file /etc/passwd: Permission denied
 ----
 
 To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
@@ -471,7 +471,7 @@ julia> Base.include(Main, "wc.jl")
 The first argument of +include+ is a module. The input source file is evaluated in the scope of that module. The prefix +Base+ is mandatory is this case. Without the prefix +include+ has only one argument, the filename, and the file is evaluated in the scope of the active module. +Main+ corresponds to the +pass:[__main__]+ frame.
 (((Main)))(((Base)))
 
-Modules in Julia are separate variable workspaces, i.e. they introduce a new global scope. They are delimited syntactically, inside +module ...  end+. Modules allow you to create top-level definitions without worrying about name conflicts when your code is used together with somebody else's. Within a module, you can control which names from other modules are visible (via ++import++ing), and specify which of your names are intended to be public (via ++export++ing).
+Julia introduces modules to create separate variable workspace, i.e. new global scopes. A module starts with the keyword +module+ and ends with +end+. Naming conflicts are avoided between your own top-level definitions and those find in somebody else's code. +import+ allows to control which names from other module are visible and +export+ specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module. 
 (((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]

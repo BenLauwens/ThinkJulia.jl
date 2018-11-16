@@ -7,12 +7,12 @@ Strings are not like integers, floats, and booleans. A string is a _sequence_, w
 
 === Characters
 
-The characters that English speakers are familiar with are the letters A, B, C, etc., together with numerals and common punctuation symbols. These characters are standardized together with a mapping to integer values between 0 and 127 by the _ASCII standard_.
+English language speakers are familiar with characters such as the letters of the alphabet (A, B, C...), numerals, and common punctuation. These characters are standardized and mapped to integer values between 0 and 127 by the _ASCII standard_ (American Standard Code for Information Interchange).
 (((ASCII standard)))
 
 There are, of course, many other characters used in non-English languages, including variants of the ASCII characters with accents and other modifications, related scripts such as Cyrillic and Greek, and scripts completely unrelated to ASCII and English, including Arabic, Chinese, Hebrew, Hindi, Japanese, and Korean.
 
-The _Unicode standard_ tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.
+The _Unicode standard_ tackles the complexities of what exactly a character is, and is generally accepted as the definitive standard addressing this problem.  It provides a unique number for every character on a world-wide scale.
 (((Unicode standard)))
 
 A +Char+ value represents a single character and is surrounded by single quotes:
@@ -28,7 +28,7 @@ julia> typeof('x')
 Char
 ----
 
-Emojis are part of the Unicode standard.
+Even emojis are part of the Unicode standard.
 (((emoji)))
 
 
@@ -50,7 +50,7 @@ The second statement selects character number 1 from +fruit+ and assigns it to +
 The expression in brackets is called an _index_. The index indicates which character in the sequence you want (hence the name).
 (((index)))
 
-All indexing in Julia is 1-based: the first element of any integer-indexed object is found at index 1 and the last element at index +end+:
+All indexing in Julia is 1-based—the first element of any integer-indexed object is found at index 1 and the last element at index +end+:
 (((end)))
 
 [source,@julia-repl-test chap08]
@@ -256,7 +256,7 @@ This example concatenates a new first letter onto a slice of greeting. It has no
 
 === String Interpolation
 
-Constructing strings using concatenation can become a bit cumbersome, however. To reduce the need for these verbose calls to +string+ or repeated multiplications, Julia allows _string interpolation_ using +$+:
+Constructing strings using concatenation can become a bit cumbersome. To reduce the need for these verbose calls to +string+ or repeated multiplications, Julia allows _string interpolation_ using +$+:
 (((string interpolation)))((("$", see="string interpolation")))
 
 [source,@julia-repl-test]
@@ -380,7 +380,7 @@ julia> findnext("na", "banana", 4)
 
 === The +∈+ Operator
 
-The operator +∈+ (+\in TAB+) is a boolean operator that takes a character and a string and returns +true+ if the first appears as in the second:
+The operator +∈+ (+\in TAB+) is a boolean operator that takes a character and a string and returns +true+ if the first appears in the second:
 ((("∈", see="in")))((("operator", "Base", "in", see="in")))((("operator", "Base", "∈", see="in")))
 
 [source,@julia-repl-test]

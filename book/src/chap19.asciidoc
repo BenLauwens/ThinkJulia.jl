@@ -15,8 +15,9 @@ This chapter and the next discuss the things I have left out in the previous cha
 
 === Blocks
 
-+begin ... end+ is used to group a number of statements. This is called a block of code.
-(((begin)))((("keyword", "begin", see="begin")))(((end)))
+A _block_ is a way to group a number of statements. A block starts with the keyword +begin+ and ends with +end+.
+
+(((begin)))((("keyword", "begin", see="begin")))(((end)))(((block)))
 
 In <<chap04>> the +@svg+ macro was introduced:
 
@@ -30,9 +31,12 @@ In <<chap04>> the +@svg+ macro was introduced:
 end
 ----
 
-The macro has as argument the block of code consisting of 3 function calls.
+In this example, the macro +@svg+ has a single argument, i.e. a block grouping 3 function calls.
+
 
 ==== Closures and +let+ blocks 
+
+A _closure_ is a technique allowing a function to have access to a variable defined outside the calling scope of the function.
 
 The function +funcgen+ returns an array with two anonymous functions (see <<anonymous_functions>>) which return respectively the values 1 and 2:
 (((funcgen)))((("function", "programmer-defined", "funcgen", see="funcgen")))
@@ -61,10 +65,10 @@ julia> fs[2]()
 3
 ----
 
-The returned functions are _closures_ and the variable +i+ is common to both of them.
+The returned functions are closures and the variable +i+ is common to both of them.
 (((closures)))
 
-A _let block_ creates new variable bindings and provides a solution to our problem:
+A _let block_ is a kind of block that creates new variable bindings. The solution to our problem can be implemented as follows
 (((let block)))(((let)))((("keyword", "let", see="let")))
 
 [source,@julia-setup chap19]
@@ -92,6 +96,7 @@ julia> fs[1]()
 julia> fs[2]()
 2
 ----
+
 
 === Functions
 
@@ -129,7 +134,7 @@ image::images/fig191.svg[pdfwidth="10cm"]
 
 ==== Named Tuples
 
-You can name the components of a tuple:
+You can name the components of a tuple, creating a named tuple:
 
 [source,@julia-repl-test]
 ----
@@ -139,7 +144,7 @@ julia> x.a
 1
 ----
 
-This is called a _named tuple_ having the additional property that fields can be accessed by name using dot syntax +(x.a)+.
+With named tuples, fields can be accessed by name using dot syntax +(x.a)+.
 (((named tuple)))(((dot syntax)))
 
 ==== Keyword Arguments
@@ -207,7 +212,7 @@ A +do+ block can “capture” variables from its enclosing scope. For example, 
 
 ==== Ternary Operator
 
-The _ternary operator_, +?:+, is an alternative to an +if-elseif+ statement, when the choice is between single expression values. 
+The _ternary operator_, +?:+, is an alternative to an +if-elseif+ statement used when you need to make a choice between single expression values. 
 (((?:)))((("operator", "Base", "?:", see="?:")))((("ternary operator", see="?:")))
 
 [source,@julia-repl-test]
@@ -222,7 +227,7 @@ The expression before the +?+, is a condition expression. If the condition is +t
 
 ==== Short-Circuit Evaluation
 
-The operators +&&+ and +||+ do a _short-circuit evaluation_: in a series of boolean expressions connected by these operators, only the minimum number of expressions are evaluated as are necessary to determine the final boolean value of the entire chain.
+The operators +&&+ and +||+ do a _short-circuit evaluation_: a next argument is only evaluated when it is needed to determine the final value.
 (((&&)))(((||)))(((short-circuit evaluation)))
 
 For example, a recursive factorial routine could be defined like this:
@@ -239,7 +244,9 @@ end
 
 ==== Tasks (aka Coroutines)
 
-The Fibonnaci sequence can also be generated using a _task_.
+A _task_ is a control structure that can pass cooperatively control without returning. In Julia, a task is implemented as a function having as first argument a channel object. The channel object is used to pass values from the function to the callee.
+
+The Fibonnaci sequence can be generated using a task.
 (((task)))(((Channel)))((("type", "Base", "Channel", see="Channel")))(((put!)))((("function", "Base", "put!", see="put!")))
 
 [source,@julia-setup chap19]
@@ -255,7 +262,7 @@ function fib(c::Channel)
 end
 ----
 
-+put!+ stores values in a channel object and +take!+ reads values:
++put!+ stores values in a channel object and +take!+ reads values from it:
 (((take!)))((("function", "Base", "take!", see="take!")))
 
 [source,@julia-repl-test chap19]
@@ -292,7 +299,7 @@ julia> for val in Channel(fib)
 
 ==== Primitive Types
 
-A concrete type consisting of plain old bits, is called a _primitive type_. Unlike most languages, you can declare your own primitive types. The standard primitive types are defined in the same way:
+A concrete type consisting of plain old bits, is called a _primitive type_. Unlike most languages with Julia you can declare your own primitive types. The standard primitive types are defined in the same way:
 (((primitive type)))((("keyword", "primitive type", see="primitive type")))
 
 [source,julia]
@@ -307,7 +314,7 @@ The number in the statements specifies how many bits are required.
 
 ==== Parametric Types
 
-Julia's type system is _parametric_: types can have parameters.
+Julia's type system is _parametric_, meaning that types can have parameters.
 
 Type parameters are introduced after the name of the type, surrounded by curly braces:
 (((curly braces)))
@@ -320,7 +327,7 @@ struct Point{T<:Real}
 end
 ----
 
-This defines a new parametric type, +Point{T<:Real}+, holding two "coordinates" of type +T+ which can be any type having +Real+ as supertype.
+This defines a new parametric type, +Point{T<:Real}+, holding two "coordinates" of type +T+, which can be any type having +Real+ as supertype.
 
 [source,@julia-repl-test chap19]
 ----
@@ -328,7 +335,7 @@ julia> Point(0.0, 0.0)
 Point{Float64}(0.0, 0.0)
 ----
 
-Not only composite types can be parametric, abstract types and primitive types can also have a type parameter.
+In addition to composite types, abstract types and primitive types can also have a type parameter.
 
 ==== Type Unions
 
@@ -364,21 +371,21 @@ true
 
 ==== Function-like Objects
 
-An arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called _functors_.
+Any arbitrary Julia object can be made “callable”. Such “callable” objects are sometimes called _functors_.
 (((functor)))
 
 [source,@julia-setup chap19]
 ----
 struct Polynomial{R}
-    coeffs::Vector{R}
+    coeff::Vector{R}
 end
 
 function (p::Polynomial)(x)
-    v = p.coeffs[end]
-    for i = (length(p.coeffs)-1):-1:1
-        v = v*x + p.coeffs[i]
+    val = p.coeff[end]
+    for coeff in p.coeff[end-1:-1:1]
+        val = val * x + coeff
     end
-    v
+    val
 end
 ----
 
@@ -644,7 +651,7 @@ julia> sum(skipmissing([1, missing]))
 
 === Calling C and Fortran Code
 
-Julia can integrate existing C or Fortran code by making an appropriate call with +ccall+ syntax.
+A lot of code is written in C or Fortran. Reusing tested code is often better than writing your own version of an algorithm. Julia can call directly existing C or Fortran libraries using the +ccall+ syntax.
 (((ccall)))((("function", "Base", "ccall", see="ccall")))
 
 In <<databases>> we introduced a Julia interface to the GDBM library of database functions. The library is written in C. To close the database a function call to +close(db)+ has to be made:

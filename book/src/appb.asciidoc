@@ -6,7 +6,7 @@ JuliaBox allows you to run Julia in your browser. Enter the url https://www.juli
 
 The initial screen is shown in <<figb-1>>. The new button allows the creation of a Julia notebook, a text file, a folder or a terminal session.
 
-In a terminal session, the command *+/opt/julia-1.0/bin/julia+* starts the REPL as show in <<figb-2>>.
+In a terminal session, the command *+/opt/julia-1.0/bin/julia+* starts the REPL as shown in <<figb-2>>.
 
 The notebook interface allows to mix text in Markdown markup and highlighted code with associated output. <<figb-3>> shows an example.
 

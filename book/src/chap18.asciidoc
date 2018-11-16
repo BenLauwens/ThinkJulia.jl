@@ -115,7 +115,8 @@ Write a +isless+ method for mytime objects. You can use tuple comparison, but yo
 
 === Unit Testing
 
-_Unit testing_ is a way to see if your code is correct by checking that the results are what you expect. It can be helpful to ensure your code still works after you make changes, and can be used when developing as a way of specifying the behaviors your code should have when complete.
+
+_Unit testing_ allows you to verify the correctness of your code by comparing the results of your code to what you expect. This can be useful to be sure that your code still is correct after modifications, and it is also a way to predefine the correct behaviour of your code during development.
 (((unit testing)))
 
 Simple unit testing can be performed with the +@test+ macros:
@@ -259,11 +260,11 @@ end;
 abstract type CardSet end
 ----
 
-The +abstract type+ keyword introduces a new abstract type. The name can be optionally followed by +<:+ and an already-existing abstract type, indicating that the newly declared abstract type is a _subtype_ of this “parent” type.
+A new abstract type is created with the +abstract type+ keyword. An optional “parent” type can be specified by putting after the name +<:+ followed by the name of an already-existing abstract type. 
 (((abstract type)))((("keyword", "abstract type", see="abstract type")))(((type)))
 
-When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are subtypes of.
-(((supertype)))
+When no _supertype_ is given, the default supertype is +Any+ – a predefined abstract type that all objects are instances of and all types are _subtypes_ of.
+(((supertype)))(((subtype)))
 
 We can now express that +Deck+ is a descendant of +CardSet+:
 
@@ -383,7 +384,7 @@ There are several kinds of relationship between types:
 * Objects of a concrete type might contain references to objects of another type. For example, each Rectangle contains a reference to a Point, and each Deck contains references to an array of Cards. This kind of relationship is called _HAS-A_, as in, “a Rectangle has a Point”.
 (((HAS-A)))
 
-* One type might has supertype an abstract type. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
+* A concrete type can have an abstract type as a supertype. This relationship is called _IS-A_, as in, “a Hand is a kind of a CardSet.”
 (((IS-A)))
 
 * One type might depend on another in the sense that objects of one type take objects of the second type as parameters, or use objects of the second type as part of a computation. This kind of relationship is called a _dependency_.
