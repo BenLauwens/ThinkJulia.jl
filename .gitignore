@@ -8,7 +8,11 @@ book/print.css
 book/fake_travis.jl
 book/delim_file.txt
 book/atlas_token.jl
+book/config.xml
+book/src/make.sh
 book/site
+book/src/titlepage.asciidoc
+book/src/notes.asciidoc
 deps/usr
 deps/build.log
 deps/deps.jl
