@@ -288,7 +288,7 @@ What does the following function do?
 [source,@julia-setup]
 ----
 function find(word, letter)
-    index = firstindex(fruits)
+    index = firstindex(word)
     while index <= sizeof(word)
         if word[index] == letter
             return index
@@ -638,7 +638,7 @@ A variable used to count something, usually initialized to zero and then increme
 [[ex08-1]]
 ===== Exercise 8-7
 
-Read the documentation of the string functions at https://docs.julialang.org/en/stable/base/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
+Read the documentation of the string functions at https://docs.julialang.org/en/v1/manual/strings/. You might want to experiment with some of them to make sure you understand how they work. +strip+ and +replace+ are particularly useful.
 
 The documentation uses a syntax that might be confusing. For example, in +search(string::AbstractString, chars::Chars, [start::Integer])+, the brackets indicate optional arguments. So +string+ and +chars+ are required, but +start+ is optional.
 (((search)))((("function", "Base", "search", see="search")))
