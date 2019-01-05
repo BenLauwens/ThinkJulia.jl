@@ -617,10 +617,10 @@ function draw(t, length, n)
     forward(t, length*n)
     turn(t, -angle)
     draw(t, length, n-1)
-    furn(t, 2*angle)
+    turn(t, 2*angle)
     draw(t, length, n-1)
     turn(t, -angle)
-    forward(-length*n)
+    forward(t, -length*n)
 end
 ----
 

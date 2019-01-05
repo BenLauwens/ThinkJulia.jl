@@ -600,7 +600,7 @@ end
 
 The body returns a quoted expression like a macro.
 
-For the caller, the _generate function_ behaves as a regular function:
+For the caller, the _generated function_ behaves as a regular function:
 
 [source,@julia-repl-test chap19]
 ----

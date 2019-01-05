@@ -313,7 +313,7 @@ Then use +multime+ to write a function that takes a mytime object that represent
 [[ex16-2]]
 ===== Exercise 16-7
 
-Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/stable/stdlib/Dates/.
+Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/v1/stdlib/Dates/.
 
 . Write a program that gets the current date and prints the day of the week.
 

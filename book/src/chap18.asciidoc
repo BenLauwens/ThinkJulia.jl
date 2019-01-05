@@ -79,7 +79,7 @@ function Base.show(io::IO, card::Card)
 end
 ----
 
-The expression +rank_names[car.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
+The expression +rank_names[card.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
 
 With the methods we have so far, we can create and print cards:
 
@@ -110,7 +110,7 @@ end
 
 ===== Exercise 18-1
 
-Write a +isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
+Write a +isless+ method for +MyTime+ objects. You can use tuple comparison, but you also might consider comparing integers.
 
 
 === Unit Testing
@@ -434,7 +434,7 @@ sort!(hand::Hand) in Main at REPL[5]:1
 
 So the +sort!+ method for +hand+ is the one having as argument an object of type +Hand+.
 
-Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like an +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
+Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like a +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
 
 If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
 (((Liskov substitution principle)))

@@ -13,7 +13,7 @@ Julia provides also a large number of specialized modules in its Standard Librar
 
 Additional functionality can be added from a growing collection of packages (https://juliaobserver.com).
 
-This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/.
+This chapter is not a replacement of the official Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org.
 
 === Measuring Performance
 
@@ -404,7 +404,7 @@ while next !== nothing
 end
 ----
 
-This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.
+This is a great example how a well-defined interface allows an implementation to use all the functions that are aware of the interface.
 
 
 === Interactive Utilities

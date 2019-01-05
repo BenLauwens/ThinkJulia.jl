@@ -119,7 +119,7 @@ So far we have run Julia in _interactive mode_, which means that you interact di
 The alternative is to save code in a file called a _script_ and then run the REPL in _script mode_ to execute the script. By convention, Julia scripts have names that end with _.jl_.
 (((script)))(((script mode)))
 
-If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+julia name_of_the_script.jl+*.
+If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+/opt/julia-1.0/bin/julia name_of_the_script.jl+*.
 (((extension, .jl)))(((JuliaBox)))
 
 Because Julia provides both modes, you can test bits of code in interactive mode before you put them in a script. But there are differences between interactive mode and script mode that can be confusing.

@@ -691,7 +691,7 @@ For example, this function _does not_ delete the head of a array:
 [source,@julia-setup chap10]
 ----
 function baddeletehead(t)
-    t[2:end]                # WRONG!
+    t = t[2:end]                # WRONG!
 end
 ----
 

@@ -78,7 +78,7 @@ function printtime(time)
 end
 ----
 
-As you can see, type declaration can also be added to the fields in a struct definition.
+As you can see, type declarations can also be added to the fields in a struct definition.
 
 To call this function, you have to pass a mytime object as an argument:
 

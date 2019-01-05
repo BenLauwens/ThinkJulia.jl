@@ -91,7 +91,7 @@ julia> println(fout, "I have spotted $camels camels.")
 
 [TIP]
 ====
-A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/stable/stdlib/Printf/
+A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formatting)))
 ====
 
@@ -184,7 +184,7 @@ end
 
 [TIP]
 ====
-Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 (((walkdir)))((("function", "Base", "walkdir", see="walkdir")))
 ====
 

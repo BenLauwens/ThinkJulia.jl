@@ -213,7 +213,7 @@ end
 
 [TIP]
 ====
-This code can be simplified using the +rev+ keyword argument of the +sort+ function. You can read about it at https://docs.julialang.org/en/stable/base/sort/#Base.sort.
+This code can be simplified using the +rev+ keyword argument of the +sort+ function. You can read about it at https://docs.julialang.org/en/v1/base/sort/#Base.sort.
 ====
 
 
@@ -302,7 +302,7 @@ Some of these words are names and possessives. Others, like “rencontre”, are
 [[ex13-6]]
 ===== Exercise 13-6
 
-Julia provides a data structure called +Set+ that provides many common set operations. You can read about them in <<collections_and_data_structures>>, or read the documentation at https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1.
+Julia provides a data structure called +Set+ that provides many common set operations. You can read about them in <<collections_and_data_structures>>, or read the documentation at https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1.
 
 Write a program that uses set subtraction to find words in the book that are not in the word list.
 
@@ -331,7 +331,7 @@ An alternative is:
 
 . Use +keys+ to get an array of the words in the book.
 
-. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, atexmath:[\(n\)].
+. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, latexmath:[\(n\)].
 
 . Choose a random number from 1 to latexmath:[\(n\)]. Use a bisection search (see <<ex10-10>>) to find the index where the random number would be inserted in the cumulative sum.
 (((bisection search)))
@@ -435,7 +435,7 @@ For the collection of suffixes, the operations we need to perform include adding
 
 Adding a new suffix is equally easy for the array implementation or the histogram. Choosing a random element from a array is easy; choosing from a histogram is harder to do efficiently (see <<ex13-7>>).
 
-So far we have been talking mostly about ease of implementation, but there are other factors to consider in choosing data structures. One is run time. Sometimes there is a theoretical reason to expect one data structure to be faster than other; for example, I mentioned that the in operator is faster for dictionaries than for lists, at least when the number of elements is large.
+So far we have been talking mostly about ease of implementation, but there are other factors to consider in choosing data structures. One is run time. Sometimes there is a theoretical reason to expect one data structure to be faster than other; for example, I mentioned that the +in+ operator is faster for dictionaries than for arrays, at least when the number of elements is large.
 
 But often you don’t know ahead of time which implementation will be faster. One option is to implement both of them and see which is better. This approach is called _benchmarking_. A practical alternative is to choose the data structure that is easiest to implement, and then see if it is fast enough for the intended application. If so, there is no need to go on. If not, there are tools, like the +Profile+ module, that can identify the places in a program that take the most time.
 (((benchmarking)))
