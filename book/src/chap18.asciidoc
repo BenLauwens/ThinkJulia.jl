@@ -79,7 +79,7 @@ function Base.show(io::IO, card::Card)
 end
 ----
 
-The expression +rank_names[car.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
+The expression +rank_names[card.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
 
 With the methods we have so far, we can create and print cards:
 
