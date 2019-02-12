@@ -149,13 +149,12 @@ end
 
 This loop traverses the string and displays each letter on a line by itself. The loop condition is +index pass:[&lt;=] sizeof(fruit)+, so when index is larger than the number of bytes in the string, the condition is +false+, and the body of the loop doesn’t run. 
 
-The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to reassign the variable +index+ defined in +_pass:[&#95;&#95;main&#95;&#95;]+ (see <<global_variables>>).
+The function +firstindex+ returns the first valid byte index. The keyword +global+ before +index+ indicates that we want to reassign the variable +index+ defined in +Main+ (see <<global_variables>>).
 (((global)))(((firstindex)))((("function", "Base", "firstindex", see="firstindex")))
 
 ===== Exercise 8-1
 
 Write a function that takes a string as an argument and displays the letters backward, one per line.
-
 
 Another way to write a traversal is with a +for+ loop:
 (((for statement)))(((in)))
@@ -201,7 +200,7 @@ julia> str[1:6]
 "Julius"
 ----
 
-The operator +[n:m]+ returns the part of the string from the “n-eth” byte to the “m-eth” byte. So the same caution is needed as for simple indexing.
+The operator +[n:m]+ returns the part of the string from the +n+-th byte to the +m+-th byte. So the same caution is needed as for simple indexing.
 (((bracket operator)))
 
 The +end+ keyword can be used to indicate the last byte of the string:
@@ -505,7 +504,7 @@ For debugging this kind of error, my first move is to print the values of the in
 ----
     while j >= 0
         j = prevind(word2, j)
-        println("$i $j")        # print here
+        @show i j
         if word1[i] != word2[j]
 ----
 
@@ -519,7 +518,7 @@ function isreverse(word1, word2)
     j = lastindex(word2)
     while j >= 0
         j = prevind(word2, j)
-        println("$i $j")
+        @show i j
         if word1[i] != word2[j]
             return false
         end
@@ -534,7 +533,8 @@ Now when I run the program again, I get more information:
 [source,@julia-repl-test chap08]
 ----
 julia> isreverse("pots", "stop")
-1 3
+i = 1 
+j = 3
 false
 ----
 
@@ -551,7 +551,7 @@ function isreverse(word1, word2)
     i = firstindex(word1)
     j = lastindex(word2)
     while j >= 0
-        println("$i $j")
+        @show i j
         if word1[i] != word2[j]
             return false
         end
@@ -565,11 +565,16 @@ end;
 [source,@julia-repl-test chap08]
 ----
 julia> isreverse("pots", "stop")
-1 4
-2 3
-3 2
-4 1
-5 0
+i = 1
+j = 4
+i = 2
+j = 3
+i = 3
+j = 2
+i = 4
+j = 1
+i = 5
+j = 0
 ERROR: BoundsError: attempt to access "pots"
   at index [5]
 ----

@@ -50,6 +50,8 @@ The third line changes the value of +a+ but does not change the value of +b+, so
 [WARNING]
 ====
 Reassigning variables is often useful, but you should use it with caution. If the values of variables change frequently, it can make the code difficult to read and debug.
+
+It is illegal to define a function that has the same name as a previously defined variable.
 ====
 
 
@@ -98,7 +100,7 @@ Computers are often used to automate repetitive tasks. Repeating identical or si
 We have already seen two functions, +countdown+ and +printn+, that iterate using recursion. Because iteration is so common, Julia provides language features to make it easier. One is the +for+ statement we saw in <<simple_repetition>>. We’ll get back to that later.
 (((recursion)))(((for statement)))
 
-Another is the _+while+ statement_. Here is a version of +countdown+ that uses a +while+ statement:
+Another is the +while+ _statement_. Here is a version of +countdown+ that uses a +while+ statement:
 (((while)))((("keyword", "while", see="while")))(((while statement)))((("statement", "while", see="while statement")))
 
 [source,@julia-setup]
@@ -127,7 +129,7 @@ More formally, here is the flow of execution for a +while+ statement:
 This type of flow is called a loop because the third step loops back around to the top.
 (((loop)))
 
-The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an _infinite loop_. An endless source of amusement for computer scientists is the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite loop.
+The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an _infinite loop_. An endless source of amusement for computer scientists is the observation that the directions on shampoo bottles, “Lather, rinse, repeat”, are an infinite loop.
 (((infinite loop)))
 
 In the case of +countdown+, we can prove that the loop terminates: if +n+ is zero or negative, the loop never runs. Otherwise, +n+ gets smaller each time through the loop, so eventually we have to get to 0.
@@ -155,7 +157,7 @@ Each time through the loop, the program outputs the value of +n+ and then checks
 
 Since +n+ sometimes increases and sometimes decreases, there is no obvious proof that +n+ will ever reach 1, or that the program terminates. For some particular values of +n+, we can prove termination. For example, if the starting value is a power of two, +n+ will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.
 
-The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture.)
+The hard question is whether we can prove that this program terminates for all positive values of +n+. So far, no one has been able to prove it or disprove it! (See https://en.wikipedia.org/wiki/Collatz_conjecture)
 (((Collatz conjecture)))
 
 ===== Exercise 7-1
@@ -418,19 +420,24 @@ The first column is a number, +a+; the second column is the square root of a com
 The built-in function +Meta.parse+ takes a string and transforms it into an expression. This expression can be evaluated in Julia with the function +Core.eval+. For example:
 (((parse)))((("function", "Meta", "parse", see="parse")))(((eval)))((("function", "Core", "eval", see="eval")))
 
-[source,@julia-repl-test]
+[source,@julia-eval chap07]
+----
+import Base.eval
+----
+
+[source,@julia-repl-test chap07]
 ----
 julia> expr = Meta.parse("1+2*3")
 :(1 + 2 * 3)
-julia> Core.eval(Main, expr)
+julia> eval(expr)
 7
 julia> expr = Meta.parse("sqrt(π)")
 :(sqrt(π))
-julia> Core.eval(Main, expr)
+julia> eval(expr)
 1.7724538509055159
 ----
 
-Write a function called +evalloop+ that iteratively prompts the user, takes the resulting input and evaluates it using +Core.eval+, and prints the result. It should continue until the user enters +done+, and then return the value of the last expression it evaluated.
+Write a function called +evalloop+ that iteratively prompts the user, takes the resulting input and evaluates it using +eval+, and prints the result. It should continue until the user enters +done+, and then return the value of the last expression it evaluated.
 
 (((evalloop)))((("function", "programmer-defined", "evalloop", see="evalloop")))
 

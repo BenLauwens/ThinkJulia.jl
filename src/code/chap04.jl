@@ -35,9 +35,9 @@ function arc(t, r, angle)
   n = trunc(arc_len / 4) + 3
   step_len = arc_len / n
   step_angle = angle / n
-  turn(t, step_angle/2)
-  polyline(t, n, step_len, step_angle)
   turn(t, -step_angle/2)
+  polyline(t, n, step_len, step_angle)
+  turn(t, step_angle/2)
 end
 
 function circle(t, r)

@@ -468,7 +468,7 @@ julia> Base.include(Main, "wc.jl")
 9
 ----
 
-The first argument of +include+ is a module. The input source file is evaluated in the scope of that module. The prefix +Base+ is mandatory is this case. Without the prefix +include+ has only one argument, the filename, and the file is evaluated in the scope of the active module. +Main+ corresponds to the +pass:[__main__]+ frame.
+The first argument of +include+ is a module. The input source file is evaluated in the scope of that module. The prefix +Base+ is mandatory is this case. Without the prefix +include+ has only one argument, the filename, and the file is evaluated in the scope of the active module. +Main+ corresponds to the +Main+ frame.
 (((Main)))(((Base)))
 
 Julia introduces modules to create separate variable workspace, i.e. new global scopes. A module starts with the keyword +module+ and ends with +end+. Naming conflicts are avoided between your own top-level definitions and those find in somebody else's code. +import+ allows to control which names from other module are visible and +export+ specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module. 

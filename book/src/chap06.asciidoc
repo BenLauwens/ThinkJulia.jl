@@ -146,13 +146,12 @@ At this point we have confirmed that the function is syntactically correct, and 
 function distance(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
-    println("dx is ", dx)
-    println("dy is ", dy)
+    @show dx dy
     0.0
 end
 ----
 
-If the function is working, it should display +dx+ is 3 and +dy+ is 4. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.
+If the function is working, it should display +dx = 3+ and +dy = 4+. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.
 
 Next we compute the sum of squares of +dx+ and +dy+:
 
@@ -162,7 +161,7 @@ function distance(x₁, y₁, x₂, y₂)
     dx = x₂ - x₁
     dy = y₂ - y₁
     d² = dx^2 + dy^2
-    println("d² is ", d²)
+    @show d²
     0.0
 end
 ----
@@ -300,7 +299,7 @@ if isdivisible(x, y) == true
 end
 ----
 
-But the extra comparison is unnecessary.
+But the extra comparison with +true+ is unnecessary.
 
 ===== Exercise 6-3
 
@@ -486,11 +485,9 @@ We can use the built-in operator +isa+ to verify the type of the argument. While
 ----
 function fact(n)
     if !(n isa Int64)
-        println("Factorial is only defined for integers.")
-        return
+        error("Factorial is only defined for integers.")
     elseif n < 0
-        println("Factorial is not defined for negative integers.")
-        return
+        error("Factorial is not defined for negative integers.")
     elseif n == 0
         return 1
     else
@@ -504,9 +501,9 @@ The first base case handles nonintegers; the second handles negative integers. I
 [source,@julia-repl-test chap06]
 ----
 julia> fact("fred")
-Factorial is only defined for integers.
+ERROR: Factorial is only defined for integers.
 julia> fact(-2)
-Factorial is not defined for negative integers.
+ERROR: Factorial is not defined for negative integers.
 ----
 
 If we get past both checks, we know that +n+ is positive or zero, so we can prove that the recursion terminates.

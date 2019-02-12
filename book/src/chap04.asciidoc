@@ -3,7 +3,7 @@
 
 This chapter presents a case study that demonstrates a process for designing functions that work together.
 
-It introduces turtle graphics, a way to create programmatical drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.
+It introduces turtle graphics, a way to create programmatic drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.
 
 The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <<juliabox>>).
 (((JuliaBox, graphical notebook)))
@@ -53,8 +53,8 @@ end
 image::images/fig41.svg[]
 
 
-The +@svg+ keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.
-(((@svg)))((("macro", "Luxor", "@svg", see="@svg")))(((macro)))(((svg picture)))
+The +@svg+ keyword runs a macro that draws a SVG picture. Macros are an important but advanced feature of Julia.
+(((@svg)))((("macro", "Luxor", "@svg", see="@svg")))(((macro)))(((SVG picture)))
 
 The arguments of +forward+ are the turtle and a distance in pixels, so the actual size depends on your display.
 
@@ -64,7 +64,7 @@ Another function you can call with a turtle as argument is +turn+ for turning. T
 Also, each turtle is holding a pen, which is either down or up; if the pen is down, the turtle leaves a trail when it moves. <<fig04-1>> shows the trail left behind by the turtle. The functions +penup+ and +pendown+ stand for “pen up” and “pen down”.
 (((penup)))((("function", "ThinkJulia", "penup", see="penup")))(((pendown)))((("function", "ThinkJulia", "pendown", see="pendown")))
 
-To draw a right angle, modify the macro:
+To draw a right angle, modify the macro call:
 
 [source,julia]
 ----
@@ -137,12 +137,6 @@ A +for+ statement is also called a _loop_ because the flow of execution runs thr
 (((loop)))
 
 This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the turtle back in the starting position, facing in the starting direction.
-
-[NOTE]
-====
-When a function returns and its arguments are in the same state as before the function calls, we call this function _pure_. Pure functions are easier to reason about and allow some compiler optimizations.
-(((pure function)))
-====
 
 
 === Exercises
@@ -436,9 +430,9 @@ search:
   Draws n line segments with the given length and angle (in degrees) between them. t is a turtle.
 ----
 
-By convention, all docstrings are triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.
+Docstrings are often triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.
 
-It is terse, but it contains the essential information someone would need to use this function. It explains concisely what the function does (without getting into the details of how it does it). It explains what effect each parameter has on the behavior of the function and what type each parameter should be (if it is not obvious).
+A docstring contains the essential information someone would need to use this function. It explains concisely what the function does (without getting into the details of how it does it). It explains what effect each parameter has on the behavior of the function and what type each parameter should be (if it is not obvious).
 
 [TIP]
 ====
@@ -478,10 +472,6 @@ A statement that reads a module file and creates a module object.
 loop::
 A part of a program that can run repeatedly.
 (((loop)))
-
-pure function::
-Function without side effects.
-(((pure function)))
 
 encapsulation::
 The process of transforming a sequence of statements into a function definition.
@@ -547,9 +537,9 @@ function arc(t, r, angle)
 
     # making a slight left turn before starting reduces
     # the error caused by the linear approximation of the arc
-    turn(t, step_angle/2)
-    polyline(t, n, step_len, step_angle)
     turn(t, -step_angle/2)
+    polyline(t, n, step_len, step_angle)
+    turn(t, step_angle/2)
 end
 ----
 
@@ -581,8 +571,8 @@ You should write one function for each letter, with names +draw_a+, +draw_b+, et
 [[ex04-11]]
 ===== Exercise 4-12
 
-Read about spirals at https://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedian spiral as in <<fig04-4>>.
+Read about spirals at https://en.wikipedia.org/wiki/Spiral; then write a program that draws an Archimedan spiral as in <<fig04-4>>.
 
 [[fig04-4]]
-.Archimedian spiral
+.Archimedan spiral
 image::images/fig44.svg[]

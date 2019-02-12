@@ -45,8 +45,12 @@ To avoid that problem, I recommend that you start out running Julia in a browser
 In the browser you can run Julia on JuliaBox: https://www.juliabox.com. No installation is required – just point your browser there, login and start computing (see <<juliabox>>).
 (((JuliaBox)))
 
-The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+/opt/julia-1.0/bin/julia+* on the command line. When it starts, you should see output like this:
+The Julia _REPL_ (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
 (((REPL)))((("Read-Eval-Print Loop", see="REPL")))(((JuliaBox, terminal)))
+
+++++
+  <?hard-pagebreak?>
+++++
 
 [source,@julia-eval]
 ----
@@ -66,6 +70,8 @@ The last line is a _prompt_ that indicates that the REPL is ready for you to ent
 julia> 1 + 1
 2
 ----
+
+Code snippets can be copy-pasted verbatim, i.e. including the +julia>+ prompt and any output.
 
 Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.
 
@@ -93,7 +99,7 @@ The parentheses indicate that +println+ is a function. We’ll get to functions 
 
 === Arithmetic Operators
 
-After “Hello, World!”, the next step is arithmetic. Julia provides _operators_, which are special symbols that represent computations like addition and multiplication.
+After “Hello, World!”, the next step is arithmetic. Julia provides _operators_, which are symbols that represent computations like addition and multiplication.
 (((operator)))(((arithmetic operator)))(((operator, arithmetic)))
 
 The operators +pass:[+]+, +-+, and +*+ perform addition, subtraction, and multiplication, as in the following examples:
@@ -151,7 +157,7 @@ julia> typeof("Hello, World!")
 String
 ----
 
-Not surprisingly, integers belong to the type +Int64+, strings belong to +String+ and floating-point numbers belong to +Float64+.
+Integers belong to the type +Int64+, strings belong to +String+ and floating-point numbers belong to +Float64+.
 (((Int64)))((("type", "Base", "Int64", see="Int64")))(((Float64)))((("type", "Base", "Float64", see="Float64")))(((String)))((("type", "Base", "String", see="String")))
 
 What about values like +"2"+ and +"42.0"+? They look like numbers, but they are in quotation marks like strings.
@@ -177,6 +183,8 @@ julia> 1,000,000
 That’s not what we expected at all! Julia parses +1,000,000+ as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
 (((sequence)))
 
+You can get the expected result, using +1_000_000+, however.
+
 
 === Formal and Natural Languages
 
@@ -191,10 +199,10 @@ ____
 Programming languages are formal languages that have been designed to express computations.
 ____
 
-Formal languages tend to have strict _syntax_ rules that govern the structure of statements. For example, in mathematics the statement latexmath:[\(3 + 3 = 6\)] has correct syntax, but latexmath:[\(3 += 3 \$ 6\)] does not. In chemistry latexmath:[\(H_2O\)] is a syntactically correct formula, but latexmath:[\(_2Zz\)] is not.
+Formal languages tend to have strict _syntax_ rules that govern the structure of statements. For example, in mathematics the statement latexmath:[\(3 + 3 = 6\)] has correct syntax, but latexmath:[\(3 += 3 \$ 6\)] does not. In chemistry latexmath:[\(\mathrm{H_2O}\)] is a syntactically correct formula, but latexmath:[\(\mathrm{_2Zz}\)] is not.
 (((syntax)))
 
-Syntax rules come in two flavors, pertaining to _tokens_ and _structure_. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[\(3 += 3 \$ 6\)] is that latexmath:[\(\$\)] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[\(_2Zz\)] is not legal because there is no element with the abbreviation latexmath:[\(Zz\)].
+Syntax rules come in two flavors, pertaining to _tokens_ and _structure_. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with latexmath:[\(3 += 3 \$ 6\)] is that latexmath:[\(\$\)] is not a legal token in mathematics (at least as far as I know). Similarly, latexmath:[\(\mathrm{_2Zz}\)] is not legal because there is no element with the abbreviation latexmath:[\(\mathrm{Zz}\)].
 (((token)))(((structure)))
 
 The second type of syntax rule pertains to the way tokens are combined. The equation latexmath:[\(3 += 3\)] is illegal because even though latexmath:[\(+\)] and latexmath:[\(=\)] are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.
@@ -257,7 +265,7 @@ The process of formulating a problem, finding a solution, and expressing it.
 (((problem solving)))
 
 REPL::
-A program that reads another program and executes it.
+A program that repeatedly reads input, execute it and output results.
 (((REPL)))
 
 prompt::
@@ -273,7 +281,7 @@ An instruction that causes the Julia REPL to display a value on the screen.
 (((print statement)))
 
 operator::
-A special symbol that represents a simple computation like addition, multiplication, or string concatenation.
+A symbol that represents a simple computation like addition, multiplication, or string concatenation.
 (((operator)))
 
 value::
@@ -289,7 +297,7 @@ A type that represents whole numbers.
 (((integer)))
 
 floating-point::
-A type that represents numbers with fractional parts.
+A type that represents numbers with a decimal point.
 (((floating-point)))
 
 string::

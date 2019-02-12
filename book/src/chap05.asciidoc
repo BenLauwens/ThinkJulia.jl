@@ -46,7 +46,7 @@ julia> remainder = minutes % 60
 ====
 The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if +x % y+ is zero, then +x+ is divisible by +y+.
 
-Also, you can extract the right-most digit or digits from a number. For example, +x % 10+ yields the right-most digit of +x+ (in base 10). Similarly +x % 100+ yields the last two digits.
+Also, you can extract the right-most digit or digits from a number. For example, +x % 10+ yields the right-most digit of an integer +x+ (in base 10). Similarly +x % 100+ yields the last two digits.
 ====
 
 
@@ -229,7 +229,7 @@ if 0 < x && x < 10
 end
 ----
 
-For this kind of condition, Julia provides a more concise option:
+For this kind of condition, Julia provides a more concise syntax:
 
 [source,julia]
 ----
@@ -281,7 +281,7 @@ julia> countdown(3)
 
 . The countdown that got +n = 3+ returns.
 
-And then you’re back in +pass:[__main__]+.
+And then you’re back in +Main+.
 
 A function that calls itself is _recursive_; the process of executing it is called _recursion_.
 (((recursive function)))(((recursion)))
@@ -322,7 +322,7 @@ image::images/fig51.svg[]
 
 <<fig05-1>> shows a stack diagram for +countdown+ called with +n = 3+.
 
-As usual, the top of the stack is the frame for +pass:[__main__]+. It is empty because we did not create any variables in +pass:[__main__]+ or pass any arguments to it.
+As usual, the top of the stack is the frame for +Main+. It is empty because we did not create any variables in +Main+ or pass any arguments to it.
 
 The four +countdown+ frames have different values for the parameter +n+. The bottom of the stack, where +n = 0+, is called the _base case_. It does not make a recursive call, so there are no more frames.
 (((base case)))
@@ -532,7 +532,7 @@ A recursion that doesn’t have a base case, or never reaches it. Eventually, an
 [[ex05-1]]
 ===== Exercise 5-2
 
-The function +time+ returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
+The function +time+ returns the current Greenwich Mean Time in seconds since “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
 (((time)))((("function", "Base", "time", see="time")))
 
 [source,@julia-repl]
@@ -555,7 +555,7 @@ Fermat’s Last Theorem says that there are no positive integers latexmath:[\(a\
 \end{equation}
 ++++
 
-for any values of latexmath:[\(n\)] greater than 2.
+for any value of latexmath:[\(n\)] greater than 2.
 
 . Write a function named +checkfermat+ that takes four parameters—+a+, +b+, +c+ and +n+—and checks to see if Fermat’s theorem holds. If +n+ is greater than 2 and +pass:[a^n + b^n == c^n]+ the program should print, “Holy smokes, Fermat was wrong!” Otherwise the program should print, “No, that doesn’t work.”
 (((checkfermat)))((("function", "programmer-defined", "checkfermat", see="checkfermat")))
@@ -617,10 +617,10 @@ function draw(t, length, n)
     forward(t, length*n)
     turn(t, -angle)
     draw(t, length, n-1)
-    furn(t, 2*angle)
+    turn(t, 2*angle)
     draw(t, length, n-1)
     turn(t, -angle)
-    forward(-length*n)
+    forward(t, -length*n)
 end
 ----
 

@@ -16,11 +16,11 @@ julia> message = "And now for something completely different"
 "And now for something completely different"
 julia> n = 17
 17
-julia> πval = 3.141592653589793
+julia> π_val = 3.141592653589793
 3.141592653589793
 ----
 
-This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +πval+ (*+\pi TAB+*).
+This example makes three assignments. The first assigns a string to a new variable named +message+; the second gives the integer +17+ to +n+; the third assigns the (approximate) value of latexmath:[\(\pi\)] to +π_val+ (*+\pi TAB+*).
 
 A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a _state diagram_ because it shows what state each of the variables is in (think of it as the variable’s state of mind). <<fig02-1>> shows the result of the previous example.
 (((state diagram)))((("diagram", "state", see="state diagram")))
@@ -107,7 +107,7 @@ julia> println(n)
 
 The first line is an assignment statement that gives a value to +n+. The second line is a print statement that displays the value of +n+.
 
-When you type a statement, the REPL _executes_ it, which means that it does whatever the statement says. In general, statements don’t have values.
+When you type a statement, the REPL _executes_ it, which means that it does whatever the statement says.
 (((execute)))
 
 
@@ -116,11 +116,19 @@ When you type a statement, the REPL _executes_ it, which means that it does what
 So far we have run Julia in _interactive mode_, which means that you interact directly with the REPL. Interactive mode is a good way to get started, but if you are working with more than a few lines of code, it can be clumsy.
 (((interactive mode)))
 
-The alternative is to save code in a file called a _script_ and then run the REPL in _script mode_ to execute the script. By convention, Julia scripts have names that end with _.jl_.
+The alternative is to save code in a file called a _script_ and then run Julia in _script mode_ to execute the script. By convention, Julia scripts have names that end with _.jl_.
 (((script)))(((script mode)))
 
 If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+julia name_of_the_script.jl+*.
 (((extension, .jl)))(((JuliaBox)))
+
+A second way to run a script is to include it in the REPL:
+
+[source, jl-con]
+----
+julia> include("name_of_the_script.jl")
+
+----
 
 Because Julia provides both modes, you can test bits of code in interactive mode before you put them in a script. But there are differences between interactive mode and script mode that can be confusing.
 
@@ -181,10 +189,10 @@ x + 1
 
 Now put the same statements in a script and run it. What is the output? Modify the script by transforming each expression into a print statement and then run it again.
 
-=== Order of Operations
+=== Operator Precedence
 
-When an expression contains more than one operator, the order of evaluation depends on the _order of operations_. For mathematical operators, Julia follows mathematical convention. The acronym _PEMDAS_ is a useful way to remember the rules:
-(((order of operations)))(((PEMDAS)))
+When an expression contains more than one operator, the order of evaluation depends on the _operator precedence_. For mathematical operators, Julia follows mathematical convention. The acronym _PEMDAS_ is a useful way to remember the rules:
+(((operator precedence)))(((PEMDAS)))
 
 * __P__arentheses have the highest precedence and can be used to force an expression to evaluate in the order you want. Since expressions in parentheses are evaluated first, +2*(3-1)+ is 4, and +pass:[(1+1)^(5-2)]+ is 8. You can also use parentheses to make an expression easier to read, as in +(minute * 100) / 60+, even if it doesn’t change the result.
 (((parentheses)))
@@ -195,7 +203,7 @@ When an expression contains more than one operator, the order of evaluation depe
 * __M__ultiplication and __D__ivision have higher precedence than __A__ddition and __S__ubtraction. So +2*3-1+ is 5, not 4, and +pass:[6+4/2]+ is 8, not 5.
 (((pass:[*])))(((pass:[/])))(((pass:[+])))(((pass:[-])))
 
-* Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[\(2\pi\)], you can use parentheses or write +degrees / 2 / π+.
+* Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression +degrees / 2 * π+, the division happens first and the result is multiplied by +π+. To divide by latexmath:[\(2\pi\)], you can use parentheses, write +degrees / 2 / π+ or +degrees / 2π+.
 
 [TIP]
 ====
@@ -344,19 +352,19 @@ A way of using the Julia REPL by typing code at the prompt.
 (((interactive mode)))
 
 script mode::
-A way of using the Julia REPL to read code from a script and run it.
+A way of using Julia to read code from a script and run it.
 (((script mode)))
 
 script::
 A program stored in a file.
 (((script)))
 
-order of operations::
-Rules governing the order in which expressions involving multiple operators and operands are evaluated.
-(((order of operations)))
+operator precedence::
+Rules governing the order in which expressions involving multiple mathematical operators and operands are evaluated.
+(((operator precedence)))
 
 concatenate::
-To join two operands end-to-end.
+To join two strings end-to-end.
 (((string concatenation)))
 
 comment::
@@ -396,7 +404,7 @@ Repeating my advice from the previous chapter, whenever you learn a new feature,
 
 . What if you put a period at the end of a statement?
 
-. In math notation you can multiply +x+ and +y+ like this: +x y+. What happens if you try that in Julia?
+. In math notation you can multiply +x+ and +y+ like this: +x y+. What happens if you try that in Julia? What about 5x?
 
 [[ex02-2]]
 ===== Exercise 2-3

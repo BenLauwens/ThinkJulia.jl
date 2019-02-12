@@ -96,7 +96,7 @@ end
 
 function fig10_5(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
-  \node[anchor=east] at(-1.2,0){\tt \_\_main\_\_};
+  \node[anchor=east] at(-1.2,0){\tt Main};
   \node[draw, fill=mycolor, minimum width=2cm, minimum height=0.5cm] at(0,0){};
   \node[anchor=west] (l) at(-0.75, 0) {\tt letters};
   \node[anchor=east] at(-1.2,-1){\tt deletehead!};

@@ -11,11 +11,11 @@ We have already seen one example of a function call:
 
 [source,@julia-repl-test]
 ----
-julia> typeof(42)
-Int64
+julia> println("Hello, World!")
+Hello, World!
 ----
 
-The name of the function is +typeof+. The expression in parentheses is called the _argument_ of the function. The result, for this function, is the type of the argument.
+The name of the function is +println+. The expression in parentheses is called the _argument_ of the function.
 (((argument)))(((parentheses)))
 
 It is common to say that a function “takes” an argument and “returns” a result. The result is also called the _return value_.
@@ -77,7 +77,7 @@ ratio = signal_power / noise_power
 decibels = 10 * log10(ratio)
 ----
 
-The first example uses +log10+ to compute a signal-to-noise ratio in decibels (assuming that +signal_power+ and +noise_power+ are defined). +log+, which computes logarithms in base latexmath:[\(e\)], is also provided.
+This first example uses +log10+ to compute a signal-to-noise ratio in decibels (assuming that +signal_power+ and +noise_power+ are defined). +log+, which computes natural logarithms, is also provided.
 (((log)))((("function", "Base", "log", see="log")))((("logarithmic function", see="log")))
 
 [source,julia]
@@ -86,7 +86,7 @@ radians = 0.7
 height = sin(radians)
 ----
 
-The second example finds the sine of radians. The name of the variable is a hint that +sin+ and the other trigonometric functions (+cos+, +tan+, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by latexmath:[\(\pi\)]:
+This second example finds the sine of +radians+. The name of the variable is a hint that +sin+ and the other trigonometric functions (+cos+, +tan+, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by latexmath:[\(\pi\)]:
 (((sin)))((("function", "Base", "sin", see="sin")))(((trigonometric function)))
 
 [source,@julia-repl-test]
@@ -99,7 +99,7 @@ julia> sin(radians)
 0.7071067811865475
 ----
 
-The value of the variable +π+ is a floating-point approximation of latexmath:[\(\pi\)], accurate to about 21 digits.
+The value of the variable +π+ is a floating-point approximation of latexmath:[\(\pi\)], accurate to about 16 digits.
 (((pi)))
 
 If you know trigonometry, you can check the previous result by comparing it to the square root of two divided by two:
@@ -167,7 +167,7 @@ end
 The empty parentheses after the name indicate that this function doesn’t take any arguments.
 (((parentheses, empty)))
 
-The first line of the function definition is called the _header_; the rest is called the _body_. The body is terminated with the keyword +end+ and it can contain any number of statements. For readability the body of the function can be indented. So just do it.
+The first line of the function definition is called the _header_; the rest is called the _body_. The body is terminated with the keyword +end+ and it can contain any number of statements. For readability the body of the function should be indented.
 (((header)))(((body)))(((end)))((("keyword", "end", see="end")))(((indentation)))
 
 The quotation marks must be “straight quotes”, usually located next to Enter on the keyboard. “Curly quotes”, like the ones in this sentence, are not legal in Julia.
@@ -184,7 +184,7 @@ julia> function printlyrics()
 
 To end the function, you have to enter +end+.
 
-Defining a function creates a _function object_, which is of type +Function+:
+Defining a function creates a _function object_.
 (((Function)))((("type", "Base", "Function", see="Function")))(((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap03]
@@ -388,12 +388,12 @@ Each function is represented by a _frame_. A frame is a box with the name of a f
 .Stack diagram
 image::images/fig31.svg[]
 
-The frames are arranged in a stack that indicates which function called which, and so on. In this example, +printtwice+ was called by +cattwice+, and +cattwice+ was called by +pass:[__main__]+, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to +pass:[__main__]+.
+The frames are arranged in a stack that indicates which function called which, and so on. In this example, +printtwice+ was called by +cattwice+, and +cattwice+ was called by +Main+, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to +Main+.
 
 Each parameter refers to the same value as its corresponding argument. So, +part1+ has the same value as +line1+, +part2+ has the same value as +line2+, and +bruce+ has the same value as +concat+.
 
-If an error occurs during a function call, Julia prints the name of the function, the name of the function that called it, and the name of the function that called _that_, all the way back to +pass:[__main__]+.
-(((pass:[__main__])))
+If an error occurs during a function call, Julia prints the name of the function, the name of the function that called it, and the name of the function that called _that_, all the way back to +Main+.
+(((Main)))
 
 For example, if you try to access +concat+ from within +printtwice+, you get a +UndefVarError+:
 (((UndefVarError)))
@@ -481,6 +481,8 @@ It may not be clear why it is worth the trouble to divide a program into functio
 * Dividing a long program into functions allows you to debug the parts one at a time and then assemble them into a working whole.
 
 * Well-designed functions are often useful for many programs. Once you write and debug one, you can reuse it.
+
+* In Julia, functions can improve performance a lot.
 
 
 === Debugging

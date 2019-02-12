@@ -1,6 +1,6 @@
 function fig05_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
-  \node[anchor=east] at(-1.5,0){\tt \_\_main\_\_};
+  \node[anchor=east] at(-1.5,0){\tt Main};
   \node[draw, fill=mycolor, minimum width=2cm, minimum height=0.5cm]{};
   \node[anchor=east] at(-1.5,-0.75){\tt countdown};
   \node[draw, fill=mycolor, minimum width=2cm, minimum height=0.5cm] at(0,-0.75){};

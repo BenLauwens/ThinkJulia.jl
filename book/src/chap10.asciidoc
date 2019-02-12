@@ -58,7 +58,7 @@ julia> typeof(empty)
 Array{Any,1}
 ----
 
-The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array +empty+ contains values of type +Any+. This is a predefined type that can represent any type.
+The kind of the array is specified between curly braces and is composed of a type and a number. The number indicates the dimensions. The array +empty+ contains values of type +Any+., i.e. it can hold values of all types.
 (((Array)))((("type", "Base", "Array", see="Array")))(((Any)))((("type", "Base", "Any", see="Any")))
 
 
@@ -96,7 +96,7 @@ image::images/fig101.svg[]
 
 Arrays are represented by boxes and the elements of the array inside. +cheeses+ refers to an array with three elements indexed +1+, +2+ and +3+. +numbers+ contains two elements; the diagram shows that the value of the second element has been reassigned from +123+ to +5+. +empty+ refers to an array with no elements.
 
-Array indices work the same way as string indices:
+Array indices work the same way as string indices (but without UTF-8 caveats):
 
 * Any integer expression can be used as an index.
 
@@ -129,12 +129,12 @@ for cheese in cheeses
 end
 ----
 
-This works well if you only need to read the elements of the array. But if you want to write or update the elements, you need the indices. A common way to do that is to use the built-in function +length+:
-(((length)))
+This works well if you only need to read the elements of the array. But if you want to write or update the elements, you need the indices. A common way to do that is to use the built-in function +eachindex+:
+(((eachindex)))((("function", "Base", "eachindex", see="eachindex")))
 
 [source,@julia-setup chap10]
 ----
-for i in 1:length(numbers)
+for i in eachindex(numbers)
     numbers[i] = numbers[i] * 2
 end
 ----
@@ -307,10 +307,10 @@ julia> sum(t)
 10
 ----
 
-An operation like this that combines a sequence of elements into a single value is sometimes called _reduce_.
-(((reduce)))
+An operation like this that combines a sequence of elements into a single value is sometimes called a _reduce operation_.
+(((reduce operation)))
 
-Sometimes you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
+Often you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
 (((capitalizeall)))((("function", "programmer-defined", "capitalizeall", see="capitalizeall")))(((uppercase)))
 
 [source,@julia-setup]
@@ -329,7 +329,7 @@ end
 An operation like +capitalizeall+ is sometimes called a _map_ because it “maps” a function (in this case +uppercase+) onto each of the elements in a sequence.
 (((map)))
 
-Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns a array that contains only the uppercase strings:
+Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns an array that contains only the uppercase strings:
 (((onlyupper)))((("function", "programmer-defined", "onlyupper", see="onlyupper")))
 
 [source,@julia-setup]
@@ -362,7 +362,7 @@ julia> print([1, 2, 3] .^ 3)
 [1, 8, 27]
 ----
 
-Any Julia function +f+ can be applied elementwise to any array with the _dot syntax_. For example to capitalize an array of strings, we don't need a loop:
+Any Julia function +f+ can be applied elementwise to any array with the _dot syntax_. For example to capitalize an array of strings, we don't need an explicit loop:
 (((dot syntax)))
 
 [source,@julia-repl-test]
@@ -691,7 +691,7 @@ For example, this function _does not_ delete the head of a array:
 [source,@julia-setup chap10]
 ----
 function baddeletehead(t)
-    t[2:end]                # WRONG!
+    t = t[2:end]                # WRONG!
 end
 ----
 
@@ -792,7 +792,7 @@ If you want to use a function like +sort!+ that modifies the argument, but you n
 ----
 julia> t = [3, 1, 2];
 
-julia> t2 = t[:];
+julia> t2 = t[:]; # t2 = copy(t)
 
 julia> sort!(t2);
 
@@ -846,9 +846,9 @@ dot syntax::
 Syntax used to apply a function elementwise to any array.
 (((dot syntax)))
 
-reduce::
+reduce operation::
 A processing pattern that traverses a sequence and accumulates the elements into a single result.
-(((reduce)))
+(((reduce operation)))
 
 map::
 A processing pattern that traverses a sequence and performs an operation on each element.

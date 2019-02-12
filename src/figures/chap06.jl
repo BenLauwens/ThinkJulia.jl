@@ -1,6 +1,6 @@
 function fig06_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
-  \node[anchor=east] at(-4.2,0){\tt \_\_main\_\_};
+  \node[anchor=east] at(-4.2,0){\tt Main};
   \node[draw, fill=mycolor, minimum width=8cm, minimum height=0.5cm](c0){};
   \node[anchor=east] at(-4.2,-0.75){\tt fact};
   \node[draw, fill=mycolor, minimum width=8cm, minimum height=0.5cm](c1) at(0,-0.75){};

@@ -399,7 +399,7 @@ If you run this version of +fibonacci+ and compare it with the original, you wil
 [[global_variables]]
 === Global Variables
 
-In the previous example, known is created outside the function, so it belongs to the special frame called +pass:[__main__]+. Variables in +pass:[__main__]+ are sometimes called _global_ because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
+In the previous example, known is created outside the function, so it belongs to the special frame called +Main+. Variables in +Main+ are sometimes called _global_ because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
 (((global)))((("keyword", "global", see="global")))(((global variable)))
 
 It is common to use global variables for _flags_; that is, boolean variables that indicate (“flag”) whether a condition is true. For example, some programs use a flag named +verbose+ to control the level of detail in the output:

@@ -1,6 +1,6 @@
 function fig03_1(output::Symbol, font::String, scale::Float64)
   p = TikzPicture(L"""
-  \node[anchor=east] at(-4,0){\tt \_\_main\_\_};
+  \node[anchor=east] at(-4,0){\tt Main};
   \node[draw, fill=mycolor, minimum width=7cm, minimum height=1cm]{};
   \node[anchor=east] (l1) at(-2.25, 0.25) {\tt line1};
   \node[anchor=west] (l1v) at (-1.25, 0.25) {\tt "Bing tiddle "};
