@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.7.1">
+<meta name="generator" content="Asciidoctor 1.5.8">
 <meta name="author" content="Ben Lauwens, Allen Downey">
 <title>Think Julia: How to Think Like a Computer Scientist</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
@@ -80,7 +80,7 @@ h2{font-size:1.6875em}
 h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
 h4,h5{font-size:1.125em}
 h6{font-size:1em}
-hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
 em,i{font-style:italic;line-height:inherit}
 strong,b{font-weight:bold;line-height:inherit}
 small{font-size:60%;line-height:inherit}
@@ -142,9 +142,9 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #content{margin-top:1.25em}
 #content::before{content:none}
 #header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
-#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}
-#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}
-#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
 #header .details span:first-child{margin-left:-.125em}
 #header .details span.email a{color:rgba(0,0,0,.85)}
 #header .details br{display:none}
@@ -153,8 +153,8 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #header .details br+span#revremark::before{content:"\00a0|\00a0"}
 #header #revnumber{text-transform:capitalize}
 #header #revnumber::after{content:"\00a0"}
-#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
-#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
 #toc>ul{margin-left:.125em}
 #toc ul.sectlevel0>li>a{font-style:italic}
 #toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
@@ -165,13 +165,13 @@ p a>code:hover{color:rgba(0,0,0,.9)}
 #toctitle{color:#7a2518;font-size:1.2em}
 @media screen and (min-width:768px){#toctitle{font-size:1.375em}
 body.toc2{padding-left:15em;padding-right:0}
-#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
 #toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
 #toc.toc2>ul{font-size:.9em;margin-bottom:0}
 #toc.toc2 ul ul{margin-left:0;padding-left:1em}
 #toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
 body.toc2.toc-right{padding-left:0;padding-right:15em}
-body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
 @media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
 #toc.toc2{width:20em}
 #toc.toc2 #toctitle{font-size:1.375em}
@@ -188,7 +188,7 @@ body.toc2.toc-right{padding-left:0;padding-right:20em}}
 @media screen and (min-width:768px){#content{margin-bottom:1.25em}
 .sect1{padding-bottom:1.25em}}
 .sect1:last-child{padding-bottom:0}
-.sect1+.sect1{border-top:1px solid #efefed}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
 #content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
 #content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
 #content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
@@ -203,7 +203,7 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .admonitionblock>table td.icon{text-align:center;width:80px}
 .admonitionblock>table td.icon img{max-width:none}
 .admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
-.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
 .admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
 .exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
 .exampleblock>.content>:first-child{margin-top:0}
@@ -215,10 +215,10 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 .exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
 .literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
 .sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
-.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}
-.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
 @media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
 @media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
 .literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
 .listingblock pre.highlightjs{padding:0}
 .listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
@@ -231,19 +231,16 @@ table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font
 table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
 table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
 table.pyhltable td.code{padding-left:.75em;padding-right:0}
-pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
 pre.pygments .lineno{display:inline-block;margin-right:.25em}
 table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock{margin:0 1em 1.25em 1.5em;display:table}
 .quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
-.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
 .quoteblock blockquote{margin:0;padding:0;border:0}
 .quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
 .quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
-.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}
-.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}
-.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}
-.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
 .verseblock{margin:0 1em 1.25em}
 .verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
 .verseblock pre strong{font-weight:400}
@@ -251,10 +248,13 @@ table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
 .quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
 .quoteblock .attribution br,.verseblock .attribution br{display:none}
 .quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
 .quoteblock.abstract{margin:0 1em 1.25em;display:block}
 .quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
-.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{word-spacing:0;line-height:1.6}
-.quoteblock.abstract blockquote::before,.quoteblock.abstract p::before{display:none}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
 table.tableblock{max-width:100%;border-collapse:separate}
 p.tableblock:last-child{margin-bottom:0}
 td.tableblock>.content{margin-bottom:-1.25em}
@@ -313,8 +313,8 @@ td.hdlist1{font-weight:bold;padding-bottom:1.25em}
 .colist td:not([class]):first-child img{max-width:none}
 .colist td:not([class]):last-child{padding:.25em 0}
 .thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
-.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}
-.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
 .imageblock>.title{margin-bottom:0}
 .imageblock.thumb,.imageblock.th{border-width:6px}
 .imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
@@ -408,7 +408,7 @@ svg{max-width:100%}
 p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
 h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
 #toc,.sidebarblock,.exampleblock>.content{background:none!important}
-#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
 body.book #header{text-align:center}
 body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
 body.book #header .details{border:0!important;display:block;padding:0!important}
@@ -535,7 +535,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_variable_names">Variable Names</a></li>
 <li><a href="#_expressions_and_statements">Expressions and Statements</a></li>
 <li><a href="#_script_mode">Script Mode</a></li>
-<li><a href="#_order_of_operations">Order of Operations</a></li>
+<li><a href="#_operator_precedence">Operator Precedence</a></li>
 <li><a href="#_string_operations">String Operations</a></li>
 <li><a href="#_comments">Comments</a></li>
 <li><a href="#_debugging_2">Debugging</a></li>
@@ -915,9 +915,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </p>
 </div>
 <div class="paragraph">
-<p>The Julia <em>REPL</em> (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing <strong><code>/opt/julia-1.0/bin/julia</code></strong> on the command line. When it starts, you should see output like this:
+<p>The Julia <em>REPL</em> (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing <strong><code>julia</code></strong> on the command line. When it starts, you should see output like this:
 </p>
 </div>
+  <?hard-pagebreak?>
 <div class="listingblock">
 <div class="content">
 <pre>               _
@@ -925,7 +926,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.0.2 (2018-11-08)
+  | | |_| | | | (_| |  |  Version 1.1.0 (2019-01-21)
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
@@ -944,6 +945,9 @@ julia&gt;</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-mi">1</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
 <span class="tok-go">2</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Code snippets can be copy-pasted verbatim, i.e. including the <code>julia&gt;</code> prompt and any output.</p>
 </div>
 <div class="paragraph">
 <p>Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.</p>
@@ -977,7 +981,7 @@ julia&gt;</pre>
 <div class="sect2">
 <h3 id="_arithmetic_operators">Arithmetic Operators</h3>
 <div class="paragraph">
-<p>After “Hello, World!”, the next step is arithmetic. Julia provides <em>operators</em>, which are special symbols that represent computations like addition and multiplication.
+<p>After “Hello, World!”, the next step is arithmetic. Julia provides <em>operators</em>, which are symbols that represent computations like addition and multiplication.
 </p>
 </div>
 <div class="paragraph">
@@ -1043,7 +1047,7 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Not surprisingly, integers belong to the type <code>Int64</code>, strings belong to <code>String</code> and floating-point numbers belong to <code>Float64</code>.
+<p>Integers belong to the type <code>Int64</code>, strings belong to <code>String</code> and floating-point numbers belong to <code>Float64</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -1073,6 +1077,9 @@ julia&gt;</pre>
 <p>That’s not what we expected at all! Julia parses <code>1,000,000</code> as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
 </p>
 </div>
+<div class="paragraph">
+<p>You can get the expected result, using <code>1_000_000</code>, however.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_formal_and_natural_languages">Formal and Natural Languages</h3>
@@ -1092,11 +1099,11 @@ julia&gt;</pre>
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Formal languages tend to have strict <em>syntax</em> rules that govern the structure of statements. For example, in mathematics the statement \(3 + 3 = 6\) has correct syntax, but \(3 += 3 \$ 6\) does not. In chemistry \(H_2O\) is a syntactically correct formula, but \(_2Zz\) is not.
+<p>Formal languages tend to have strict <em>syntax</em> rules that govern the structure of statements. For example, in mathematics the statement \(3 + 3 = 6\) has correct syntax, but \(3 += 3 \$ 6\) does not. In chemistry \(\mathrm{H_2O}\) is a syntactically correct formula, but \(\mathrm{_2Zz}\) is not.
 </p>
 </div>
 <div class="paragraph">
-<p>Syntax rules come in two flavors, pertaining to <em>tokens</em> and <em>structure</em>. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with \(3 += 3 \$ 6\) is that \(\$\) is not a legal token in mathematics (at least as far as I know). Similarly, \(_2Zz\) is not legal because there is no element with the abbreviation \(Zz\).
+<p>Syntax rules come in two flavors, pertaining to <em>tokens</em> and <em>structure</em>. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with \(3 += 3 \$ 6\) is that \(\$\) is not a legal token in mathematics (at least as far as I know). Similarly, \(\mathrm{_2Zz}\) is not legal because there is no element with the abbreviation \(\mathrm{Zz}\).
 </p>
 </div>
 <div class="paragraph">
@@ -1189,7 +1196,7 @@ julia&gt;</pre>
 </dd>
 <dt class="hdlist1">REPL</dt>
 <dd>
-<p>A program that reads another program and executes it.
+<p>A program that repeatedly reads input, execute it and output results.
 </p>
 </dd>
 <dt class="hdlist1">prompt</dt>
@@ -1209,7 +1216,7 @@ julia&gt;</pre>
 </dd>
 <dt class="hdlist1">operator</dt>
 <dd>
-<p>A special symbol that represents a simple computation like addition, multiplication, or string concatenation.
+<p>A symbol that represents a simple computation like addition, multiplication, or string concatenation.
 </p>
 </dd>
 <dt class="hdlist1">value</dt>
@@ -1229,7 +1236,7 @@ julia&gt;</pre>
 </dd>
 <dt class="hdlist1">floating-point</dt>
 <dd>
-<p>A type that represents numbers with fractional parts.
+<p>A type that represents numbers with a decimal point.
 </p>
 </dd>
 <dt class="hdlist1">string</dt>
@@ -1381,12 +1388,12 @@ julia&gt;</pre>
 <span class="tok-go">&quot;And now for something completely different&quot;</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">n</span> <span class="tok-o">=</span> <span class="tok-mi">17</span>
 <span class="tok-go">17</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">πval</span> <span class="tok-o">=</span> <span class="tok-mf">3.141592653589793</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">π_val</span> <span class="tok-o">=</span> <span class="tok-mf">3.141592653589793</span>
 <span class="tok-go">3.141592653589793</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This example makes three assignments. The first assigns a string to a new variable named <code>message</code>; the second gives the integer <code>17</code> to <code>n</code>; the third assigns the (approximate) value of \(\pi\) to <code>πval</code> (<strong><code>\pi TAB</code></strong>).</p>
+<p>This example makes three assignments. The first assigns a string to a new variable named <code>message</code>; the second gives the integer <code>17</code> to <code>n</code>; the third assigns the (approximate) value of \(\pi\) to <code>π_val</code> (<strong><code>\pi TAB</code></strong>).</p>
 </div>
 <div class="paragraph">
 <p>A common way to represent variables on paper is to write the name with an arrow pointing to its value. This kind of figure is called a <em>state diagram</em> because it shows what state each of the variables is in (think of it as the variable’s state of mind). <a href="#fig02-1">State diagram</a> shows the result of the previous example.
@@ -1493,7 +1500,7 @@ struct           where        while</pre>
 <p>The first line is an assignment statement that gives a value to <code>n</code>. The second line is a print statement that displays the value of <code>n</code>.</p>
 </div>
 <div class="paragraph">
-<p>When you type a statement, the REPL <em>executes</em> it, which means that it does whatever the statement says. In general, statements don’t have values.
+<p>When you type a statement, the REPL <em>executes</em> it, which means that it does whatever the statement says.
 </p>
 </div>
 </div>
@@ -1504,7 +1511,7 @@ struct           where        while</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>The alternative is to save code in a file called a <em>script</em> and then run the REPL in <em>script mode</em> to execute the script. By convention, Julia scripts have names that end with <em>.jl</em>.
+<p>The alternative is to save code in a file called a <em>script</em> and then run Julia in <em>script mode</em> to execute the script. By convention, Julia scripts have names that end with <em>.jl</em>.
 </p>
 </div>
 <div class="paragraph">
@@ -1583,9 +1590,9 @@ struct           where        while</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_order_of_operations">Order of Operations</h3>
+<h3 id="_operator_precedence">Operator Precedence</h3>
 <div class="paragraph">
-<p>When an expression contains more than one operator, the order of evaluation depends on the <em>order of operations</em>. For mathematical operators, Julia follows mathematical convention. The acronym <em>PEMDAS</em> is a useful way to remember the rules:
+<p>When an expression contains more than one operator, the order of evaluation depends on the <em>operator precedence</em>. For mathematical operators, Julia follows mathematical convention. The acronym <em>PEMDAS</em> is a useful way to remember the rules:
 </p>
 </div>
 <div class="ulist">
@@ -1603,7 +1610,7 @@ struct           where        while</pre>
 </p>
 </li>
 <li>
-<p>Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression <code>degrees / 2 * π</code>, the division happens first and the result is multiplied by <code>π</code>. To divide by \(2\pi\), you can use parentheses or write <code>degrees / 2 / π</code>.</p>
+<p>Operators with the same precedence are evaluated from left to right (except exponentiation). So in the expression <code>degrees / 2 * π</code>, the division happens first and the result is multiplied by <code>π</code>. To divide by \(2\pi\), you can use parentheses, write <code>degrees / 2 / π</code> or <code>degrees / 2π</code>.</p>
 </li>
 </ul>
 </div>
@@ -1810,7 +1817,7 @@ struct           where        while</pre>
 </dd>
 <dt class="hdlist1">script mode</dt>
 <dd>
-<p>A way of using the Julia REPL to read code from a script and run it.
+<p>A way of using Julia to read code from a script and run it.
 </p>
 </dd>
 <dt class="hdlist1">script</dt>
@@ -1818,14 +1825,14 @@ struct           where        while</pre>
 <p>A program stored in a file.
 </p>
 </dd>
-<dt class="hdlist1">order of operations</dt>
+<dt class="hdlist1">operator precedence</dt>
 <dd>
-<p>Rules governing the order in which expressions involving multiple operators and operands are evaluated.
+<p>Rules governing the order in which expressions involving multiple mathematical operators and operands are evaluated.
 </p>
 </dd>
 <dt class="hdlist1">concatenate</dt>
 <dd>
-<p>To join two operands end-to-end.
+<p>To join two strings end-to-end.
 </p>
 </dd>
 <dt class="hdlist1">comment</dt>
@@ -1879,7 +1886,7 @@ struct           where        while</pre>
 <p>What if you put a period at the end of a statement?</p>
 </li>
 <li>
-<p>In math notation you can multiply <code>x</code> and <code>y</code> like this: <code>x y</code>. What happens if you try that in Julia?</p>
+<p>In math notation you can multiply <code>x</code> and <code>y</code> like this: <code>x y</code>. What happens if you try that in Julia? What about 5x?</p>
 </li>
 </ol>
 </div>
@@ -1922,12 +1929,12 @@ struct           where        while</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">typeof</span><span class="tok-p">(</span><span class="tok-mi">42</span><span class="tok-p">)</span>
-<span class="tok-go">Int64</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Hello, World!&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">Hello, World!</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The name of the function is <code>typeof</code>. The expression in parentheses is called the <em>argument</em> of the function. The result, for this function, is the type of the argument.
+<p>The name of the function is <code>println</code>. The expression in parentheses is called the <em>argument</em> of the function.
 </p>
 </div>
 <div class="paragraph">
@@ -1996,7 +2003,7 @@ struct           where        while</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first example uses <code>log10</code> to compute a signal-to-noise ratio in decibels (assuming that <code>signal_power</code> and <code>noise_power</code> are defined). <code>log</code>, which computes logarithms in base \(e\), is also provided.
+<p>This first example uses <code>log10</code> to compute a signal-to-noise ratio in decibels (assuming that <code>signal_power</code> and <code>noise_power</code> are defined). <code>log</code>, which computes natural logarithms, is also provided.
 </p>
 </div>
 <div class="listingblock">
@@ -2006,7 +2013,7 @@ struct           where        while</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The second example finds the sine of radians. The name of the variable is a hint that <code>sin</code> and the other trigonometric functions (<code>cos</code>, <code>tan</code>, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by \(\pi\):
+<p>This second example finds the sine of <code>radians</code>. The name of the variable is a hint that <code>sin</code> and the other trigonometric functions (<code>cos</code>, <code>tan</code>, etc.) take arguments in radians. To convert from degrees to radians, divide by 180 and multiply by \(\pi\):
 </p>
 </div>
 <div class="listingblock">
@@ -2020,7 +2027,7 @@ struct           where        while</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The value of the variable <code>π</code> is a floating-point approximation of \(\pi\), accurate to about 21 digits.
+<p>The value of the variable <code>π</code> is a floating-point approximation of \(\pi\), accurate to about 16 digits.
 </p>
 </div>
 <div class="paragraph">
@@ -2093,7 +2100,7 @@ struct           where        while</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>The first line of the function definition is called the <em>header</em>; the rest is called the <em>body</em>. The body is terminated with the keyword <code>end</code> and it can contain any number of statements. For readability the body of the function can be indented. So just do it.
+<p>The first line of the function definition is called the <em>header</em>; the rest is called the <em>body</em>. The body is terminated with the keyword <code>end</code> and it can contain any number of statements. For readability the body of the function should be indented.
 </p>
 </div>
 <div class="paragraph">
@@ -2113,7 +2120,7 @@ struct           where        while</pre>
 <p>To end the function, you have to enter <code>end</code>.</p>
 </div>
 <div class="paragraph">
-<p>Defining a function creates a <em>function object</em>, which is of type <code>Function</code>:
+<p>Defining a function creates a <em>function object</em>.
 </p>
 </div>
 <div class="listingblock">
@@ -2350,13 +2357,13 @@ struct           where        while</pre>
 <div class="title">Figure 2. Stack diagram</div>
 </div>
 <div class="paragraph">
-<p>The frames are arranged in a stack that indicates which function called which, and so on. In this example, <code>printtwice</code> was called by <code>cattwice</code>, and <code>cattwice</code> was called by <code>__main__</code>, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to <code>__main__</code>.</p>
+<p>The frames are arranged in a stack that indicates which function called which, and so on. In this example, <code>printtwice</code> was called by <code>cattwice</code>, and <code>cattwice</code> was called by <code>Main</code>, which is a special name for the topmost frame. When you create a variable outside of any function, it belongs to <code>Main</code>.</p>
 </div>
 <div class="paragraph">
 <p>Each parameter refers to the same value as its corresponding argument. So, <code>part1</code> has the same value as <code>line1</code>, <code>part2</code> has the same value as <code>line2</code>, and <code>bruce</code> has the same value as <code>concat</code>.</p>
 </div>
 <div class="paragraph">
-<p>If an error occurs during a function call, Julia prints the name of the function, the name of the function that called it, and the name of the function that called <em>that</em>, all the way back to <code>__main__</code>.
+<p>If an error occurs during a function call, Julia prints the name of the function, the name of the function that called it, and the name of the function that called <em>that</em>, all the way back to <code>Main</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -2473,6 +2480,9 @@ Stacktrace:
 </li>
 <li>
 <p>Well-designed functions are often useful for many programs. Once you write and debug one, you can reuse it.</p>
+</li>
+<li>
+<p>In Julia, functions can improve performance a lot.</p>
 </li>
 </ul>
 </div>
@@ -2777,7 +2787,7 @@ Stacktrace:
 <p>This chapter presents a case study that demonstrates a process for designing functions that work together.</p>
 </div>
 <div class="paragraph">
-<p>It introduces turtle graphics, a way to create programmatical drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.</p>
+<p>It introduces turtle graphics, a way to create programmatic drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.</p>
 </div>
 <div class="paragraph">
 <p>The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <a href="#juliabox">JuliaBox</a>).
@@ -2835,7 +2845,7 @@ Stacktrace:
 <div class="title">Figure 3. Moving the turtle forward</div>
 </div>
 <div class="paragraph">
-<p>The <code>@svg</code> keyword starts a macro that draws a svg picture. Macros are an important but advanced feature of Julia.
+<p>The <code>@svg</code> keyword runs a macro that draws a SVG picture. Macros are an important but advanced feature of Julia.
 </p>
 </div>
 <div class="paragraph">
@@ -2850,7 +2860,7 @@ Stacktrace:
 </p>
 </div>
 <div class="paragraph">
-<p>To draw a right angle, modify the macro:</p>
+<p>To draw a right angle, modify the macro call:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2931,21 +2941,6 @@ Stacktrace:
 </div>
 <div class="paragraph">
 <p>This version is actually a little different from the previous square-drawing code because it makes another turn after drawing the last side of the square. The extra turn takes more time, but it simplifies the code if we do the same thing every time through the loop. This version also has the effect of leaving the turtle back in the starting position, facing in the starting direction.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>When a function returns and its arguments are in the same state as before the function calls, we call this function <em>pure</em>. Pure functions are easier to reason about and allow some compiler optimizations.
-</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -3310,10 +3305,10 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>By convention, all docstrings are triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.</p>
+<p>Docstrings are often triple-quoted strings, also known as multiline strings because the triple quotes allow the string to span more than one line.</p>
 </div>
 <div class="paragraph">
-<p>It is terse, but it contains the essential information someone would need to use this function. It explains concisely what the function does (without getting into the details of how it does it). It explains what effect each parameter has on the behavior of the function and what type each parameter should be (if it is not obvious).</p>
+<p>A docstring contains the essential information someone would need to use this function. It explains concisely what the function does (without getting into the details of how it does it). It explains what effect each parameter has on the behavior of the function and what type each parameter should be (if it is not obvious).</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3372,11 +3367,6 @@ search:
 <dt class="hdlist1">loop</dt>
 <dd>
 <p>A part of a program that can run repeatedly.
-</p>
-</dd>
-<dt class="hdlist1">pure function</dt>
-<dd>
-<p>Function without side effects.
 </p>
 </dd>
 <dt class="hdlist1">encapsulation</dt>
@@ -3459,9 +3449,9 @@ search:
 
     <span class="tok-c"># making a slight left turn before starting reduces</span>
     <span class="tok-c"># the error caused by the linear approximation of the arc</span>
-    <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">step_angle</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">)</span>
-    <span class="tok-n">polyline</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">n</span><span class="tok-p">,</span> <span class="tok-n">step_len</span><span class="tok-p">,</span> <span class="tok-n">step_angle</span><span class="tok-p">)</span>
     <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-n">step_angle</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">)</span>
+    <span class="tok-n">polyline</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">n</span><span class="tok-p">,</span> <span class="tok-n">step_len</span><span class="tok-p">,</span> <span class="tok-n">step_angle</span><span class="tok-p">)</span>
+    <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">step_angle</span><span class="tok-o">/</span><span class="tok-mi">2</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -3502,13 +3492,13 @@ search:
 <div class="sect4">
 <h5 id="ex04-11">Exercise 4-12</h5>
 <div class="paragraph">
-<p>Read about spirals at <a href="https://en.wikipedia.org/wiki/Spiral" class="bare">https://en.wikipedia.org/wiki/Spiral</a>; then write a program that draws an Archimedian spiral as in <a href="#fig04-4">Archimedian spiral</a>.</p>
+<p>Read about spirals at <a href="https://en.wikipedia.org/wiki/Spiral" class="bare">https://en.wikipedia.org/wiki/Spiral</a>; then write a program that draws an Archimedan spiral as in <a href="#fig04-4">Archimedan spiral</a>.</p>
 </div>
 <div id="fig04-4" class="imageblock">
 <div class="content">
 <img src="images/fig44.svg" alt="fig44">
 </div>
-<div class="title">Figure 6. Archimedian spiral</div>
+<div class="title">Figure 6. Archimedan spiral</div>
 </div>
 </div>
 </div>
@@ -3573,7 +3563,7 @@ search:
 <p>The modulus operator is more useful than it seems. For example, you can check whether one number is divisible by another—if <code>x % y</code> is zero, then <code>x</code> is divisible by <code>y</code>.</p>
 </div>
 <div class="paragraph">
-<p>Also, you can extract the right-most digit or digits from a number. For example, <code>x % 10</code> yields the right-most digit of <code>x</code> (in base 10). Similarly <code>x % 100</code> yields the last two digits.</p>
+<p>Also, you can extract the right-most digit or digits from a number. For example, <code>x % 10</code> yields the right-most digit of an integer <code>x</code> (in base 10). Similarly <code>x % 100</code> yields the last two digits.</p>
 </div>
 </td>
 </tr>
@@ -3790,7 +3780,7 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>For this kind of condition, Julia provides a more concise option:</p>
+<p>For this kind of condition, Julia provides a more concise syntax:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3868,7 +3858,7 @@ search:
 </ol>
 </div>
 <div class="paragraph">
-<p>And then you’re back in <code>__main__</code>.</p>
+<p>And then you’re back in <code>Main</code>.</p>
 </div>
 <div class="paragraph">
 <p>A function that calls itself is <em>recursive</em>; the process of executing it is called <em>recursion</em>.
@@ -3920,7 +3910,7 @@ search:
 <p><a href="#fig05-1">Stack diagram</a> shows a stack diagram for <code>countdown</code> called with <code>n = 3</code>.</p>
 </div>
 <div class="paragraph">
-<p>As usual, the top of the stack is the frame for <code>__main__</code>. It is empty because we did not create any variables in <code>__main__</code> or pass any arguments to it.</p>
+<p>As usual, the top of the stack is the frame for <code>Main</code>. It is empty because we did not create any variables in <code>Main</code> or pass any arguments to it.</p>
 </div>
 <div class="paragraph">
 <p>The four <code>countdown</code> frames have different values for the parameter <code>n</code>. The bottom of the stack, where <code>n = 0</code>, is called the <em>base case</em>. It does not make a recursive call, so there are no more frames.
@@ -4186,13 +4176,13 @@ search:
 <div class="sect4">
 <h5 id="ex05-1">Exercise 5-2</h5>
 <div class="paragraph">
-<p>The function <code>time</code> returns the current Greenwich Mean Time in “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
+<p>The function <code>time</code> returns the current Greenwich Mean Time in seconds since “the epoch”, which is an arbitrary time used as a reference point. On UNIX systems, the epoch is 1 January 1970.
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.542362033923874e9</span></code></pre>
+<span class="tok-go">1.55006075776037e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4213,7 +4203,7 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>for any values of \(n\) greater than 2.</p>
+<p>for any value of \(n\) greater than 2.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -4306,10 +4296,10 @@ search:
     <span class="tok-n">forward</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">length</span><span class="tok-o">*</span><span class="tok-n">n</span><span class="tok-p">)</span>
     <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-n">angle</span><span class="tok-p">)</span>
     <span class="tok-n">draw</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">length</span><span class="tok-p">,</span> <span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-    <span class="tok-n">furn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-o">*</span><span class="tok-n">angle</span><span class="tok-p">)</span>
+    <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-o">*</span><span class="tok-n">angle</span><span class="tok-p">)</span>
     <span class="tok-n">draw</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-n">length</span><span class="tok-p">,</span> <span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
     <span class="tok-n">turn</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-n">angle</span><span class="tok-p">)</span>
-    <span class="tok-n">forward</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-n">length</span><span class="tok-o">*</span><span class="tok-n">n</span><span class="tok-p">)</span>
+    <span class="tok-n">forward</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-n">length</span><span class="tok-o">*</span><span class="tok-n">n</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -4551,14 +4541,13 @@ search:
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">distance</span><span class="tok-p">(</span><span class="tok-n">x₁</span><span class="tok-p">,</span> <span class="tok-n">y₁</span><span class="tok-p">,</span> <span class="tok-n">x₂</span><span class="tok-p">,</span> <span class="tok-n">y₂</span><span class="tok-p">)</span>
     <span class="tok-n">dx</span> <span class="tok-o">=</span> <span class="tok-n">x₂</span> <span class="tok-o">-</span> <span class="tok-n">x₁</span>
     <span class="tok-n">dy</span> <span class="tok-o">=</span> <span class="tok-n">y₂</span> <span class="tok-o">-</span> <span class="tok-n">y₁</span>
-    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;dx is &quot;</span><span class="tok-p">,</span> <span class="tok-n">dx</span><span class="tok-p">)</span>
-    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;dy is &quot;</span><span class="tok-p">,</span> <span class="tok-n">dy</span><span class="tok-p">)</span>
+    <span class="tok-nd">@show</span> <span class="tok-n">dx</span> <span class="tok-n">dy</span>
     <span class="tok-mf">0.0</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the function is working, it should display <code>dx</code> is 3 and <code>dy</code> is 4. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.</p>
+<p>If the function is working, it should display <code>dx = 3</code> and <code>dy = 4</code>. If so, we know that the function is getting the right arguments and performing the first computation correctly. If not, there are only a few lines to check.</p>
 </div>
 <div class="paragraph">
 <p>Next we compute the sum of squares of <code>dx</code> and <code>dy</code>:</p>
@@ -4569,7 +4558,7 @@ search:
     <span class="tok-n">dx</span> <span class="tok-o">=</span> <span class="tok-n">x₂</span> <span class="tok-o">-</span> <span class="tok-n">x₁</span>
     <span class="tok-n">dy</span> <span class="tok-o">=</span> <span class="tok-n">y₂</span> <span class="tok-o">-</span> <span class="tok-n">y₁</span>
     <span class="tok-n">d²</span> <span class="tok-o">=</span> <span class="tok-n">dx</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-n">dy</span><span class="tok-o">^</span><span class="tok-mi">2</span>
-    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;d² is &quot;</span><span class="tok-p">,</span> <span class="tok-n">d²</span><span class="tok-p">)</span>
+    <span class="tok-nd">@show</span> <span class="tok-n">d²</span>
     <span class="tok-mf">0.0</span>
 <span class="tok-k">end</span></code></pre>
 </div>
@@ -4732,7 +4721,7 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>But the extra comparison is unnecessary.</p>
+<p>But the extra comparison with <code>true</code> is unnecessary.</p>
 </div>
 <div class="sect4">
 <h5 id="_exercise_6_3">Exercise 6-3</h5>
@@ -4985,11 +4974,9 @@ search:
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-p">)</span>
     <span class="tok-k">if</span> <span class="tok-o">!</span><span class="tok-p">(</span><span class="tok-n">n</span> <span class="tok-n">isa</span> <span class="tok-kt">Int64</span><span class="tok-p">)</span>
-        <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Factorial is only defined for integers.&quot;</span><span class="tok-p">)</span>
-        <span class="tok-k">return</span>
+        <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;Factorial is only defined for integers.&quot;</span><span class="tok-p">)</span>
     <span class="tok-k">elseif</span> <span class="tok-n">n</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span>
-        <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Factorial is not defined for negative integers.&quot;</span><span class="tok-p">)</span>
-        <span class="tok-k">return</span>
+        <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;Factorial is not defined for negative integers.&quot;</span><span class="tok-p">)</span>
     <span class="tok-k">elseif</span> <span class="tok-n">n</span> <span class="tok-o">==</span> <span class="tok-mi">0</span>
         <span class="tok-k">return</span> <span class="tok-mi">1</span>
     <span class="tok-k">else</span>
@@ -5004,9 +4991,9 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-s">&quot;fred&quot;</span><span class="tok-p">)</span>
-<span class="tok-go">Factorial is only defined for integers.</span>
+<span class="tok-gr">ERROR: Factorial is only defined for integers.</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-o">-</span><span class="tok-mi">2</span><span class="tok-p">)</span>
-<span class="tok-go">Factorial is not defined for negative integers.</span></code></pre>
+<span class="tok-gr">ERROR: Factorial is not defined for negative integers.</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5333,6 +5320,9 @@ A(m-1, A(m, n-1))&amp; \textrm{if}\ m &gt; 0\ \textrm{and}\ n &gt; 0.
 <div class="paragraph">
 <p>Reassigning variables is often useful, but you should use it with caution. If the values of variables change frequently, it can make the code difficult to read and debug.</p>
 </div>
+<div class="paragraph">
+<p>It is illegal to define a function that has the same name as a previously defined variable.</p>
+</div>
 </td>
 </tr>
 </table>
@@ -5391,7 +5381,7 @@ A(m-1, A(m, n-1))&amp; \textrm{if}\ m &gt; 0\ \textrm{and}\ n &gt; 0.
 </p>
 </div>
 <div class="paragraph">
-<p>Another is the <em>+while+ statement</em>. Here is a version of <code>countdown</code> that uses a <code>while</code> statement:
+<p>Another is the <code>while</code> <em>statement</em>. Here is a version of <code>countdown</code> that uses a <code>while</code> statement:
 </p>
 </div>
 <div class="listingblock">
@@ -5431,7 +5421,7 @@ A(m-1, A(m, n-1))&amp; \textrm{if}\ m &gt; 0\ \textrm{and}\ n &gt; 0.
 </p>
 </div>
 <div class="paragraph">
-<p>The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an <em>infinite loop</em>. An endless source of amusement for computer scientists is the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite loop.
+<p>The body of the loop should change the value of one or more variables so that the condition becomes false eventually and the loop terminates. Otherwise the loop will repeat forever, which is called an <em>infinite loop</em>. An endless source of amusement for computer scientists is the observation that the directions on shampoo bottles, “Lather, rinse, repeat”, are an infinite loop.
 </p>
 </div>
 <div class="paragraph">
@@ -5465,7 +5455,7 @@ A(m-1, A(m, n-1))&amp; \textrm{if}\ m &gt; 0\ \textrm{and}\ n &gt; 0.
 <p>Since <code>n</code> sometimes increases and sometimes decreases, there is no obvious proof that <code>n</code> will ever reach 1, or that the program terminates. For some particular values of <code>n</code>, we can prove termination. For example, if the starting value is a power of two, <code>n</code> will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.</p>
 </div>
 <div class="paragraph">
-<p>The hard question is whether we can prove that this program terminates for all positive values of <code>n</code>. So far, no one has been able to prove it or disprove it! (See <a href="https://en.wikipedia.org/wiki/Collatz_conjecture." class="bare">https://en.wikipedia.org/wiki/Collatz_conjecture.</a>)
+<p>The hard question is whether we can prove that this program terminates for all positive values of <code>n</code>. So far, no one has been able to prove it or disprove it! (See <a href="https://en.wikipedia.org/wiki/Collatz_conjecture" class="bare">https://en.wikipedia.org/wiki/Collatz_conjecture</a>)
 </p>
 </div>
 <div class="sect4">
@@ -5796,16 +5786,16 @@ Done!</code></pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">expr</span> <span class="tok-o">=</span> <span class="tok-n">Meta</span><span class="tok-o">.</span><span class="tok-n">parse</span><span class="tok-p">(</span><span class="tok-s">&quot;1+2*3&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">:(1 + 2 * 3)</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">Core</span><span class="tok-o">.</span><span class="tok-n">eval</span><span class="tok-p">(</span><span class="tok-n">Main</span><span class="tok-p">,</span> <span class="tok-n">expr</span><span class="tok-p">)</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">eval</span><span class="tok-p">(</span><span class="tok-n">expr</span><span class="tok-p">)</span>
 <span class="tok-go">7</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">expr</span> <span class="tok-o">=</span> <span class="tok-n">Meta</span><span class="tok-o">.</span><span class="tok-n">parse</span><span class="tok-p">(</span><span class="tok-s">&quot;sqrt(π)&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">:(sqrt(π))</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">Core</span><span class="tok-o">.</span><span class="tok-n">eval</span><span class="tok-p">(</span><span class="tok-n">Main</span><span class="tok-p">,</span> <span class="tok-n">expr</span><span class="tok-p">)</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">eval</span><span class="tok-p">(</span><span class="tok-n">expr</span><span class="tok-p">)</span>
 <span class="tok-go">1.7724538509055159</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Write a function called <code>evalloop</code> that iteratively prompts the user, takes the resulting input and evaluates it using <code>Core.eval</code>, and prints the result. It should continue until the user enters <code>done</code>, and then return the value of the last expression it evaluated.</p>
+<p>Write a function called <code>evalloop</code> that iteratively prompts the user, takes the resulting input and evaluates it using <code>eval</code>, and prints the result. It should continue until the user enters <code>done</code>, and then return the value of the last expression it evaluated.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -6004,7 +5994,7 @@ Done!</code></pre>
 <p>This loop traverses the string and displays each letter on a line by itself. The loop condition is <code>index &lt;= sizeof(fruit)</code>, so when index is larger than the number of bytes in the string, the condition is <code>false</code>, and the body of the loop doesn’t run.</p>
 </div>
 <div class="paragraph">
-<p>The function <code>firstindex</code> returns the first valid byte index. The keyword <code>global</code> before <code>index</code> indicates that we want to reassign the variable <code>index</code> defined in <code>_&#95;&#95;main&#95;&#95;</code> (see <a href="#global_variables">Global Variables</a>).
+<p>The function <code>firstindex</code> returns the first valid byte index. The keyword <code>global</code> before <code>index</code> indicates that we want to reassign the variable <code>index</code> defined in <code>Main</code> (see <a href="#global_variables">Global Variables</a>).
 </p>
 </div>
 <div class="sect4">
@@ -6080,7 +6070,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The operator <code>[n:m]</code> returns the part of the string from the “n-eth” byte to the “m-eth” byte. So the same caution is needed as for simple indexing.
+<p>The operator <code>[n:m]</code> returns the part of the string from the <code>n</code>-th byte to the <code>m</code>-th byte. So the same caution is needed as for simple indexing.
 </p>
 </div>
 <div class="paragraph">
@@ -6179,7 +6169,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">find</span><span class="tok-p">(</span><span class="tok-n">word</span><span class="tok-p">,</span> <span class="tok-n">letter</span><span class="tok-p">)</span>
-    <span class="tok-n">index</span> <span class="tok-o">=</span> <span class="tok-n">firstindex</span><span class="tok-p">(</span><span class="tok-n">fruits</span><span class="tok-p">)</span>
+    <span class="tok-n">index</span> <span class="tok-o">=</span> <span class="tok-n">firstindex</span><span class="tok-p">(</span><span class="tok-n">word</span><span class="tok-p">)</span>
     <span class="tok-k">while</span> <span class="tok-n">index</span> <span class="tok-o">&lt;=</span> <span class="tok-n">sizeof</span><span class="tok-p">(</span><span class="tok-n">word</span><span class="tok-p">)</span>
         <span class="tok-k">if</span> <span class="tok-n">word</span><span class="tok-p">[</span><span class="tok-n">index</span><span class="tok-p">]</span> <span class="tok-o">==</span> <span class="tok-n">letter</span>
             <span class="tok-k">return</span> <span class="tok-n">index</span>
@@ -6425,7 +6415,7 @@ Qack</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span>    <span class="tok-k">while</span> <span class="tok-n">j</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">0</span>
         <span class="tok-n">j</span> <span class="tok-o">=</span> <span class="tok-n">prevind</span><span class="tok-p">(</span><span class="tok-n">word2</span><span class="tok-p">,</span> <span class="tok-n">j</span><span class="tok-p">)</span>
-        <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;</span><span class="tok-si">$i</span><span class="tok-s"> </span><span class="tok-si">$j</span><span class="tok-s">&quot;</span><span class="tok-p">)</span>        <span class="tok-c"># print here</span>
+        <span class="tok-nd">@show</span> <span class="tok-n">i</span> <span class="tok-n">j</span>
         <span class="tok-k">if</span> <span class="tok-n">word1</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span> <span class="tok-o">!=</span> <span class="tok-n">word2</span><span class="tok-p">[</span><span class="tok-n">j</span><span class="tok-p">]</span></code></pre>
 </div>
 </div>
@@ -6435,7 +6425,8 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">isreverse</span><span class="tok-p">(</span><span class="tok-s">&quot;pots&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;stop&quot;</span><span class="tok-p">)</span>
-<span class="tok-go">1 3</span>
+<span class="tok-go">i = 1</span>
+<span class="tok-go">j = 3</span>
 <span class="tok-go">false</span></code></pre>
 </div>
 </div>
@@ -6448,11 +6439,16 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">isreverse</span><span class="tok-p">(</span><span class="tok-s">&quot;pots&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;stop&quot;</span><span class="tok-p">)</span>
-<span class="tok-go">1 4</span>
-<span class="tok-go">2 3</span>
-<span class="tok-go">3 2</span>
-<span class="tok-go">4 1</span>
-<span class="tok-go">5 0</span>
+<span class="tok-go">i = 1</span>
+<span class="tok-go">j = 4</span>
+<span class="tok-go">i = 2</span>
+<span class="tok-go">j = 3</span>
+<span class="tok-go">i = 3</span>
+<span class="tok-go">j = 2</span>
+<span class="tok-go">i = 4</span>
+<span class="tok-go">j = 1</span>
+<span class="tok-go">i = 5</span>
+<span class="tok-go">j = 0</span>
 <span class="tok-gr">ERROR: BoundsError: attempt to access &quot;pots&quot;</span>
 <span class="tok-gr">  at index [5]</span></code></pre>
 </div>
@@ -6540,7 +6536,7 @@ Qack</pre>
 <div class="sect4">
 <h5 id="ex08-1">Exercise 8-7</h5>
 <div class="paragraph">
-<p>Read the documentation of the string functions at <a href="https://docs.julialang.org/en/stable/base/strings/" class="bare">https://docs.julialang.org/en/stable/base/strings/</a>. You might want to experiment with some of them to make sure you understand how they work. <code>strip</code> and <code>replace</code> are particularly useful.</p>
+<p>Read the documentation of the string functions at <a href="https://docs.julialang.org/en/v1/manual/strings/" class="bare">https://docs.julialang.org/en/v1/manual/strings/</a>. You might want to experiment with some of them to make sure you understand how they work. <code>strip</code> and <code>replace</code> are particularly useful.</p>
 </div>
 <div class="paragraph">
 <p>The documentation uses a syntax that might be confusing. For example, in <code>search(string::AbstractString, chars::Chars, [start::Integer])</code>, the brackets indicate optional arguments. So <code>string</code> and <code>chars</code> are required, but <code>start</code> is optional.
@@ -6550,7 +6546,7 @@ Qack</pre>
 <div class="sect4">
 <h5 id="ex08-2">Exercise 8-8</h5>
 <div class="paragraph">
-<p>There is a builtin function called <code>count</code> that is similar to the function in <a href="#looping_and_counting">Looping and Counting</a>. Read the documentation of this function and use it to count the number of <code>a</code>’s in "banana".
+<p>There is a built-in function called <code>count</code> that is similar to the function in <a href="#looping_and_counting">Looping and Counting</a>. Read the documentation of this function and use it to count the number of <code>a</code>’s in "banana".
 </p>
 </div>
 </div>
@@ -6688,7 +6684,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="reading_word_lists">Reading Word Lists</h3>
 <div class="paragraph">
-<p>For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see <a href="https://wikipedia.org/wiki/Moby_Project" class="bare">https://wikipedia.org/wiki/Moby_Project</a>). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is <em>113809of.fic</em>; you can download a copy, with the simpler name <em>words.txt</em>, from <a href="https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/data/words.txt</a>.
+<p>For the exercises in this chapter we need a list of English words. There are lots of word lists available on the Web, but the one most suitable for our purpose is one of the word lists collected and contributed to the public domain by Grady Ward as part of the Moby lexicon project (see <a href="https://wikipedia.org/wiki/Moby_Project" class="bare">https://wikipedia.org/wiki/Moby_Project</a>). It is a list of 113809 official crosswords; that is, words that are considered valid in crossword puzzles and other word games. In the Moby collection, the filename is <em>113809of.fic</em>; you can download a copy, with the simpler name <em>words.txt</em>, from <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/data/words.txt" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/data/words.txt</a>.
 </p>
 </div>
 <div class="paragraph">
@@ -6702,7 +6698,10 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>fin</code> is a common name for a file stream used for input. Julia provides several function for reading, including <code>readline</code>, which reads characters from the file until it gets to a <code>NEWLINE</code> and returns the result as a string:
+<p><code>fin</code> is a file stream used for input and when it is no longer needed, it has to be closed with <code>close(fin)</code>.</p>
+</div>
+<div class="paragraph">
+<p>Julia provides several function for reading, including <code>readline</code>, which reads characters from the file until it gets to a <code>NEWLINE</code> and returns the result as a string:
 </p>
 </div>
 <div class="listingblock">
@@ -7205,7 +7204,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The kind of the array is specified between curly braces and is composed of a type and a number. The number indicate the dimensions. The array <code>empty</code> contains values of type <code>Any</code>. This is a predefined type that can represent any type.
+<p>The kind of the array is specified between curly braces and is composed of a type and a number. The number indicates the dimensions. The array <code>empty</code> contains values of type <code>Any</code>., i.e. it can hold values of all types.
 </p>
 </div>
 </div>
@@ -7250,7 +7249,7 @@ Qack</pre>
 <p>Arrays are represented by boxes and the elements of the array inside. <code>cheeses</code> refers to an array with three elements indexed <code>1</code>, <code>2</code> and <code>3</code>. <code>numbers</code> contains two elements; the diagram shows that the value of the second element has been reassigned from <code>123</code> to <code>5</code>. <code>empty</code> refers to an array with no elements.</p>
 </div>
 <div class="paragraph">
-<p>Array indices work the same way as string indices:</p>
+<p>Array indices work the same way as string indices (but without UTF-8 caveats):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -7293,12 +7292,12 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This works well if you only need to read the elements of the array. But if you want to write or update the elements, you need the indices. A common way to do that is to use the built-in function <code>length</code>:
+<p>This works well if you only need to read the elements of the array. But if you want to write or update the elements, you need the indices. A common way to do that is to use the built-in function <code>eachindex</code>:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-n">length</span><span class="tok-p">(</span><span class="tok-n">numbers</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">for</span> <span class="tok-n">i</span> <span class="tok-kp">in</span> <span class="tok-n">eachindex</span><span class="tok-p">(</span><span class="tok-n">numbers</span><span class="tok-p">)</span>
     <span class="tok-n">numbers</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-n">numbers</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span> <span class="tok-o">*</span> <span class="tok-mi">2</span>
 <span class="tok-k">end</span></code></pre>
 </div>
@@ -7498,11 +7497,11 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An operation like this that combines a sequence of elements into a single value is sometimes called <em>reduce</em>.
+<p>An operation like this that combines a sequence of elements into a single value is sometimes called a <em>reduce operation</em>.
 </p>
 </div>
 <div class="paragraph">
-<p>Sometimes you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
+<p>Often you want to traverse one array while building another. For example, the following function takes an array of strings and returns a new array that contains capitalized strings:
 </p>
 </div>
 <div class="listingblock">
@@ -7524,7 +7523,7 @@ Qack</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns a array that contains only the uppercase strings:
+<p>Another common operation is to select some of the elements from an array and return a subarray. For example, the following function takes an array of strings and returns an array that contains only the uppercase strings:
 </p>
 </div>
 <div class="listingblock">
@@ -7561,7 +7560,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Any Julia function <code>f</code> can be applied elementwise to any array with the <em>dot syntax</em>. For example to capitalize an array of strings, we don&#8217;t need a loop:
+<p>Any Julia function <code>f</code> can be applied elementwise to any array with the <em>dot syntax</em>. For example to capitalize an array of strings, we don&#8217;t need an explicit loop:
 </p>
 </div>
 <div class="listingblock">
@@ -7946,7 +7945,7 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">baddeletehead</span><span class="tok-p">(</span><span class="tok-n">t</span><span class="tok-p">)</span>
-    <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-o">:</span><span class="tok-k">end</span><span class="tok-p">]</span>                <span class="tok-c"># WRONG!</span>
+    <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-o">:</span><span class="tok-k">end</span><span class="tok-p">]</span>                <span class="tok-c"># WRONG!</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -8071,7 +8070,7 @@ Qack</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">];</span>
 
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-o">:</span><span class="tok-p">];</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">t2</span> <span class="tok-o">=</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-o">:</span><span class="tok-p">];</span> <span class="tok-c"># t2 = copy(t)</span>
 
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">sort!</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">);</span>
 
@@ -8138,7 +8137,7 @@ Qack</pre>
 <p>Syntax used to apply a function elementwise to any array.
 </p>
 </dd>
-<dt class="hdlist1">reduce</dt>
+<dt class="hdlist1">reduce operation</dt>
 <dd>
 <p>A processing pattern that traverses a sequence and accumulates the elements into a single result.
 </p>
@@ -8380,7 +8379,7 @@ Qack</pre>
 <h2 id="chap11">11. Dictionaries</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This chapter presents another built-in type called a dictionary. Dictionaries are one of Julia’s best features; they are the building blocks of many efficient and elegant algorithms.</p>
+<p>This chapter presents another built-in type called a dictionary.</p>
 </div>
 <div class="sect2">
 <h3 id="_a_dictionary_is_a_mapping">A Dictionary Is a Mapping</h3>
@@ -8442,6 +8441,9 @@ Qack</pre>
 <span class="tok-go">  &quot;three&quot; =&gt; &quot;tres&quot;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>All the initial keys and values are strings, so a <code>Dict{String,String}</code> is created.</p>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -8489,7 +8491,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The function <code>keys</code> returns an array with the keys of the dictionary:
+<p>The function <code>keys</code> returns a collection with the keys of the dictionary:
 </p>
 </div>
 <div class="listingblock">
@@ -8528,7 +8530,7 @@ Qack</pre>
 <p>The <code>∈</code> operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <a href="#searching">Searching</a>. As the array gets longer, the search time gets longer in direct proportion.</p>
 </div>
 <div class="paragraph">
-<p>For dictionaries, Julia uses an algorithm called a <em>hashtable</em> that has a remarkable property: the <code>∈</code> operator takes about the same amount of time no matter how many items are in the dictionary.
+<p>For dictionaries, Julia uses an algorithm called a <em>hash table</em> that has a remarkable property: the <code>∈</code> operator takes about the same amount of time no matter how many items are in the dictionary.
 </p>
 </div>
 </div>
@@ -8726,6 +8728,10 @@ Qack</pre>
 <div class="paragraph">
 <p>The effect when you generate an exception is the same as when Julia throws one: it prints a stacktrace and an error message.</p>
 </div>
+<div class="paragraph">
+<p>Julia provides an optimized way to do a reverse lookup: <code>findall(isequal(3), h)</code>.
+</p>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -8801,7 +8807,7 @@ Qack</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be <em>hashable</em>.
+<p>I mentioned earlier that a dictionary is implemented using a hash table and that means that the keys have to be <em>hashable</em>.
 </p>
 </div>
 <div class="paragraph">
@@ -8866,7 +8872,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="global_variables">Global Variables</h3>
 <div class="paragraph">
-<p>In the previous example, known is created outside the function, so it belongs to the special frame called <code>__main__</code>. Variables in <code>__main__</code> are sometimes called <em>global</em> because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
+<p>In the previous example, known is created outside the function, so it belongs to the special frame called <code>Main</code>. Variables in <code>Main</code> are sometimes called <em>global</em> because they can be accessed from any function. Unlike local variables, which disappear when their function ends, global variables persist from one function call to the next.
 </p>
 </div>
 <div class="paragraph">
@@ -8900,7 +8906,7 @@ Qack</pre>
 <p>But if you run it you will see that the value of <code>been_called</code> doesn’t change. The problem is that <code>example2</code> creates a new local variable named <code>been_called</code>. The local variable goes away when the function ends, and has no effect on the global variable.</p>
 </div>
 <div class="paragraph">
-<p>To reassign a global variable inside a function you have to <em>declare</em> the global variable before you use it:
+<p>To reassign a global variable inside a function you have to <em>declare</em> the variable global before you use it:
 </p>
 </div>
 <div class="listingblock">
@@ -8953,7 +8959,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If a global variable refers to a mutable value, you can modify the value without declaring the variable:</p>
+<p>If a global variable refers to a mutable value, you can modify the value without declaring the variable global:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8965,7 +8971,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>So you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it:</p>
+<p>So you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it global:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8974,6 +8980,19 @@ Qack</pre>
 <span class="tok-k">function</span> <span class="tok-n">example5</span><span class="tok-p">()</span>
     <span class="tok-kd">global</span> <span class="tok-n">known</span>
     <span class="tok-n">known</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">()</span>
+<span class="tok-k">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For performance reasons, you should declare a global variable constant. You can no longer reassign the variable but if it refers to a mutable value, you can modify the value.
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-kd">const</span> <span class="tok-n">known</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-o">=&gt;</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-o">=&gt;</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+
+<span class="tok-k">function</span> <span class="tok-n">example4</span><span class="tok-p">()</span>
+    <span class="tok-n">known</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-mi">1</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -9003,7 +9022,7 @@ Qack</pre>
 <li>
 <p>Scale down the input:</p>
 <div class="paragraph">
-<p>If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find. You can either edit the files themselves, or (better) modify the program so it reads only the first \(n\) lines.
+<p>If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find which errors. You sould not edit the files themselves, but rather modify the program so it reads only the first \(n\) lines.
 </p>
 </div>
 <div class="paragraph">
@@ -9023,7 +9042,7 @@ Qack</pre>
 <li>
 <p>Write self-checks:</p>
 <div class="paragraph">
-<p>Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check” because it detects results that are “insane”.
+<p>Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check”.
 </p>
 </div>
 <div class="paragraph">
@@ -9084,19 +9103,19 @@ Qack</pre>
 <p>A way of performing a computation.
 </p>
 </dd>
-<dt class="hdlist1">hashtable</dt>
+<dt class="hdlist1">hash table</dt>
 <dd>
 <p>The algorithm used to implement Julia dictionaries.
 </p>
 </dd>
 <dt class="hdlist1">hash function</dt>
 <dd>
-<p>A function used by a hashtable to compute the location for a key.
+<p>A function used by a hash table to compute the location for a key.
 </p>
 </dd>
 <dt class="hdlist1">hashable</dt>
 <dd>
-<p>A type that has a hash function. Immutable types like integers, floats and strings are hashable; mutable types like arrays and dictionaries are not.
+<p>A type that has a hash function.
 </p>
 </dd>
 <dt class="hdlist1">lookup</dt>
@@ -9253,7 +9272,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_tuples_are_immutable">Tuples Are Immutable</h3>
 <div class="paragraph">
-<p>A tuple is a sequence of values. The values can be any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable.
+<p>A tuple is a sequence of values. The values can be of any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable and that each element can have its own type.
 </p>
 </div>
 <div class="paragraph">
@@ -9295,7 +9314,7 @@ Qack</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A value in parentheses is not a tuple:</p>
+<p>A value in parentheses without comma is not a tuple:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9405,12 +9424,14 @@ Qack</pre>
 <p>The left side is a tuple of variables; the right side is a tuple of expressions. Each value is assigned to its respective variable. All the expressions on the right side are evaluated before any of the assignments.</p>
 </div>
 <div class="paragraph">
-<p>The number of variables on the left and the number of values on the right have to be the same:
+<p>The number of variables on the left has to be fewer than the number of values on the right:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">a</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-p">,</span> <span class="tok-n">c</span> <span class="tok-o">=</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">)</span>
+<span class="tok-go">(1, 2, 3)</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">a</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-p">,</span> <span class="tok-n">c</span> <span class="tok-o">=</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span>
 <span class="tok-gr">ERROR: BoundsError: attempt to access (1, 2)</span>
 <span class="tok-gr">  at index [3]</span></code></pre>
 </div>
@@ -9459,12 +9480,11 @@ Qack</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">quot</span><span class="tok-p">,</span> <span class="tok-n">rem</span> <span class="tok-o">=</span> <span class="tok-n">divrem</span><span class="tok-p">(</span><span class="tok-mi">7</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">q</span><span class="tok-p">,</span> <span class="tok-n">r</span> <span class="tok-o">=</span> <span class="tok-n">divrem</span><span class="tok-p">(</span><span class="tok-mi">7</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">);</span>
 
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">quot</span><span class="tok-p">)</span>
-<span class="tok-go">2</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">rem</span><span class="tok-p">)</span>
-<span class="tok-go">1</span></code></pre>
+<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@show</span> <span class="tok-n">q</span> <span class="tok-n">r</span><span class="tok-p">;</span>
+<span class="tok-go">q = 2</span>
+<span class="tok-go">r = 1</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9479,7 +9499,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>maximum</code> and <code>mininimum</code> are built-in functions that find the largest and smallest elements of a sequence. <code>minmax</code> computes both and returns a tuple of two values.
+<p><code>maximum</code> and <code>mininimum</code> are built-in functions that find the largest and smallest elements of a sequence. <code>minmax</code> computes both and returns a tuple of two values. The built-in function <code>extrema</code> is more efficient.
 </p>
 </div>
 </div>
@@ -9552,12 +9572,15 @@ Qack</pre>
 <p>Write a function called <code>sumall</code> that takes any number of arguments and returns their sum.
 </p>
 </div>
+<div class="paragraph">
+<p>In the Julia world, gather is often called “slurp” and scatter “splat”.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_arrays_and_tuples">Arrays and Tuples</h3>
 <div class="paragraph">
-<p><code>zip</code> is a built-in function that takes two or more sequences and returns an array of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
+<p><code>zip</code> is a built-in function that takes two or more sequences and returns a collection of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
 </p>
 </div>
 <div class="paragraph">
@@ -9570,7 +9593,7 @@ Qack</pre>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">];</span>
 
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">zip</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">,</span> <span class="tok-n">t</span><span class="tok-p">)</span>
-<span class="tok-go">Base.Iterators.Zip2{String,Array{Int64,1}}(&quot;abc&quot;, [1, 2, 3])</span></code></pre>
+<span class="tok-go">Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}((&quot;abc&quot;, [1, 2, 3]))</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9676,7 +9699,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_dictionaries_and_tuples">Dictionaries and Tuples</h3>
 <div class="paragraph">
-<p>Dictionaries can be used as iterators that iterates the key-value pairs. You can use it in a <code>for</code> loop like this:
+<p>Dictionaries can be used as iterators that iterate the key-value pairs. You can use it in a <code>for</code> loop like this:
 </p>
 </div>
 <div class="listingblock">
@@ -9793,6 +9816,9 @@ Qack</pre>
 <p>If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
 </p>
 </li>
+<li>
+<p>For performance reasons. The compiler can specialize on the type.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -9807,7 +9833,7 @@ Qack</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Julia allows to attach a type to elements of a sequence. How this is done, is detailed in <a href="#chap17">Multiple Dispatch</a>. Specifying the type eliminates a lot of shape errors.</p>
+<p>Julia allows to attach a type to elements of a sequence. How this is done is detailed in <a href="#chap17">Multiple Dispatch</a>. Specifying the type eliminates a lot of shape errors.</p>
 </div>
 </div>
 <div class="sect2">
@@ -9816,7 +9842,7 @@ Qack</pre>
 <dl>
 <dt class="hdlist1">tuple</dt>
 <dd>
-<p>An immutable sequence of elements.
+<p>An immutable sequence of elements where every element can have its own type.
 </p>
 </dd>
 <dt class="hdlist1">tuple assignment</dt>
@@ -9836,7 +9862,7 @@ Qack</pre>
 </dd>
 <dt class="hdlist1">zip object</dt>
 <dd>
-<p>The result of calling a built-in function zip; an object that iterates through a sequence of tuples.
+<p>The result of calling a built-in function <code>zip</code>; an object that iterates through a sequence of tuples.
 </p>
 </dd>
 <dt class="hdlist1">iterator</dt>
@@ -10113,7 +10139,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_word_histogram">Word Histogram</h3>
 <div class="paragraph">
-<p>You should attempt the previous exercises before you go on. You will also need <a href="https://github.com/BenLauwens/ThinkJulia.jl/data/emma.txt" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/data/emma.txt</a>.</p>
+<p>You should attempt the previous exercises before you go on. You will also need <a href="https://github.com/BenLauwens/ThinkJulia.jl/blob/master/data/emma.txt" class="bare">https://github.com/BenLauwens/ThinkJulia.jl/blob/master/data/emma.txt</a>.</p>
 </div>
 <div class="paragraph">
 <p>Here is a program that reads a file and builds a histogram of the words in the file:
@@ -10315,10 +10341,8 @@ she	2364</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">subtract</span><span class="tok-p">(</span><span class="tok-n">d1</span><span class="tok-p">,</span> <span class="tok-n">d2</span><span class="tok-p">)</span>
     <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">()</span>
-    <span class="tok-k">for</span> <span class="tok-n">key</span> <span class="tok-kp">in</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d1</span><span class="tok-p">)</span>
-        <span class="tok-k">if</span> <span class="tok-n">key</span> <span class="tok-o">∉</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d2</span><span class="tok-p">)</span>
-            <span class="tok-n">res</span><span class="tok-p">[</span><span class="tok-n">key</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nb">nothing</span>
-        <span class="tok-k">end</span>
+    <span class="tok-k">for</span> <span class="tok-n">key</span> <span class="tok-kp">in</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d1</span><span class="tok-p">)</span> <span class="tok-o">∩</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d2</span><span class="tok-p">)</span>
+        <span class="tok-n">res</span><span class="tok-p">[</span><span class="tok-n">key</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nb">nothing</span>
     <span class="tok-k">end</span>
     <span class="tok-n">res</span>
 <span class="tok-k">end</span></code></pre>
@@ -10423,7 +10447,7 @@ outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons bet
 <p>A series of random words seldom makes sense because there is no relationship between successive words. For example, in a real sentence you would expect an article like “the” to be followed by an adjective or a noun, and probably not a verb or adverb.</p>
 </div>
 <div class="paragraph">
-<p>One way to measure these kinds of relationships is Markov analysis, which characterizes, for a given sequence of words, the probability of the words that might come next. For example, the song <em>Eric, the Half a Bee</em> begins:
+<p>One way to measure these kinds of relationships is Markov analysis, which characterizes, for a given sequence of words, the probability of the words that might come next. For example, the song <em>Eric, the Half a Bee</em> (by Monty Python) begins:
 </p>
 </div>
 <div class="verseblock">
@@ -10540,10 +10564,10 @@ Due to some ancient injury?</pre>
 <p>For the collection of suffixes, the operations we need to perform include adding a new suffix (or increasing the frequency of an existing one), and choosing a random suffix.</p>
 </div>
 <div class="paragraph">
-<p>Adding a new suffix is equally easy for the array implementation or the histogram. Choosing a random element from a array is easy; choosing from a histogram is harder to do efficiently (see <a href="#ex13-7">Exercise 13-7</a>).</p>
+<p>Adding a new suffix is equally easy for the array implementation or the histogram. Choosing a random element from an array is easy; choosing from a histogram is harder to do efficiently (see <a href="#ex13-7">Exercise 13-7</a>).</p>
 </div>
 <div class="paragraph">
-<p>So far we have been talking mostly about ease of implementation, but there are other factors to consider in choosing data structures. One is run time. Sometimes there is a theoretical reason to expect one data structure to be faster than other; for example, I mentioned that the in operator is faster for dictionaries than for lists, at least when the number of elements is large.</p>
+<p>So far we have been talking mostly about ease of implementation, but there are other factors to consider in choosing data structures. One is run time. Sometimes there is a theoretical reason to expect one data structure to be faster than other; for example, I mentioned that the <code>in</code> operator is faster for dictionaries than for arrays, at least when the number of elements is large.</p>
 </div>
 <div class="paragraph">
 <p>But often you don’t know ahead of time which implementation will be faster. One option is to implement both of them and see which is better. This approach is called <em>benchmarking</em>. A practical alternative is to choose the data structure that is easiest to implement, and then see if it is fast enough for the intended application. If so, there is no need to go on. If not, there are tools, like the <code>Profile</code> module, that can identify the places in a program that take the most time.
@@ -10554,6 +10578,20 @@ Due to some ancient injury?</pre>
 </div>
 <div class="paragraph">
 <p>One final thought: in this discussion, I have implied that we should use one data structure for both analysis and generation. But since these are separate phases, it would also be possible to use one structure for analysis and then convert to another structure for generation. This would be a net win if the time saved during generation exceeded the time spent in conversion.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The Julia package <code>DataStructures</code> (see <a href="https://github.com/JuliaCollections/DataStructures.jl" class="bare">https://github.com/JuliaCollections/DataStructures.jl</a>) implements a variety of data structures.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -10738,7 +10776,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="reading_and_writing">Reading and Writing</h3>
 <div class="paragraph">
-<p>A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <a href="#reading_word_lists">Reading Word Lists</a>.</p>
+<p>A text file is a sequence of characters stored on a permanent medium like a hard drive, or flash memory. We saw how to open and read a file in <a href="#reading_word_lists">Reading Word Lists</a>.</p>
 </div>
 <div class="paragraph">
 <p>To write a file, you have to open it with mode <code>"w"</code> as a second parameter:
@@ -10950,7 +10988,7 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fin</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;bad_file&quot;</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: SystemError: opening file bad_file: No such file or directory</span></code></pre>
+<span class="tok-gr">ERROR: SystemError: opening file &quot;bad_file&quot;: No such file or directory</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10959,14 +10997,14 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fout</span> <span class="tok-o">=</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-s">&quot;/etc/passwd&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: SystemError: opening file /etc/passwd: Permission denied</span></code></pre>
+<span class="tok-gr">ERROR: SystemError: opening file &quot;/etc/passwd&quot;: Permission denied</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>To avoid these errors, you could use functions like <code>ispath</code> and <code>isfile</code>, but it would take a lot of time and code to check all the possibilities.</p>
 </div>
 <div class="paragraph">
-<p>It is better to go ahead and try—and deal with problems if they happen—which is exactly what the <code>try</code> statement does. The syntax is similar to an <code>if</code> statement:
+<p>It is easier to go ahead and try—and deal with problems if they happen—which is exactly what the <code>try</code> statement does. The syntax is similar to an <code>if</code> statement:
 </p>
 </div>
 <div class="listingblock">
@@ -11011,7 +11049,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>ThinkJulia provides an interface to <code>GDBM</code> for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+<p>ThinkJulia provides an interface to <code>GDBM</code> (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
 </p>
 </div>
 <div class="paragraph">
@@ -11153,7 +11191,7 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>In fact, this combination is so common that it has been encapsulated in a package called <code>JLD2</code> (see <a href="https://github.com/simonster/JLD2.jl" class="bare">https://github.com/simonster/JLD2.jl</a>).</p>
+<p>In fact, the storage of non-string in a database is so common that it has been encapsulated in a package called <code>JLD2</code> (see <a href="https://github.com/JuliaIO/JLD2.jl" class="bare">https://github.com/JuliaIO/JLD2.jl</a>).</p>
 </div>
 </td>
 </tr>
@@ -11223,7 +11261,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_modules">Modules</h3>
 <div class="paragraph">
-<p>Any file that contains Julia code can be imported as a module. For example, suppose you have a file named <code>"wc.jl"</code> with the following code:
+<p>Suppose you have a file named <code>"wc.jl"</code> with the following code:
 </p>
 </div>
 <div class="listingblock">
@@ -11240,21 +11278,20 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:
+<p>If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it in the REPL like this:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">include</span><span class="tok-p">(</span><span class="tok-n">Main</span><span class="tok-p">,</span> <span class="tok-s">&quot;wc.jl&quot;</span><span class="tok-p">)</span>
-<span class="tok-go">9</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jl-con"><span></span>julia&gt; include(&quot;wc.jl&quot;)
+9</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The first argument of <code>include</code> is a module. The input source file is evaluated in the scope of that module. The prefix <code>Base</code> is mandatory is this case. Without the prefix <code>include</code> has only one argument, the filename, and the file is evaluated in the scope of the active module. <code>Main</code> corresponds to the <code>__main__</code> frame.
-</p>
+<p>Julia introduces modules to create separate variable workspace, i.e. new global scopes.</p>
 </div>
 <div class="paragraph">
-<p>Julia introduces modules to create separate variable workspace, i.e. new global scopes. A module starts with the keyword <code>module</code> and ends with <code>end</code>. Naming conflicts are avoided between your own top-level definitions and those find in somebody else&#8217;s code. <code>import</code> allows to control which names from other module are visible and <code>export</code> specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module.
+<p>A module starts with the keyword <code>module</code> and ends with <code>end</code>. Naming conflicts are avoided between your own top-level definitions and those found in somebody else&#8217;s code. <code>import</code> allows to control which names from other modules are visible and <code>export</code> specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module.
 </p>
 </div>
 <div class="listingblock">
@@ -11323,7 +11360,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The built-in function <code>repr</code> can help. It takes any object as an argument and returns a string representation of the object.</p>
+<p>The built-in functions <code>repr</code> or <code>dump</code> can help. It takes any object as an argument and returns a string representation of the object.</p>
 </div>
 <div class="paragraph">
 <p></p>
@@ -11331,7 +11368,9 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">repr</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
-<span class="tok-go">&quot;\&quot;1 2\\t 3\\n 4\&quot;&quot;</span></code></pre>
+<span class="tok-go">&quot;\&quot;1 2\\t 3\\n 4\&quot;&quot;</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">dump</span><span class="tok-p">(</span><span class="tok-n">s</span><span class="tok-p">)</span>
+<span class="tok-go">String &quot;1 2\t 3\n 4&quot;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11471,7 +11510,7 @@ Due to some ancient injury?</pre>
 <p>We could store the coordinates separately in two variables, <code>x</code> and <code>y</code>.</p>
 </li>
 <li>
-<p>We could store the coordinates as elements in a list or tuple.</p>
+<p>We could store the coordinates as elements in an array or tuple.</p>
 </li>
 <li>
 <p>We could create a new type to represent points as objects.</p>
@@ -15090,7 +15129,7 @@ Due to some ancient injury?</pre>
 <p>the offset at which the whole match begins: <code>m.offset</code></p>
 </li>
 <li>
-<p>the offsets of the captured substrings as a vector: <code>m.offsets</code></p>
+<p>the offsets of the captured substrings as an array: <code>m.offsets</code></p>
 </li>
 </ul>
 </div>
@@ -16031,6 +16070,11 @@ Due to some ancient injury?</pre>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>∩</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\cap</code></strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>≡</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>\equiv</code></strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>===</code></p></td>
@@ -16131,7 +16175,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-11-16 10:53:49 CET
+Last updated 2019-02-13 13:25:54 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
