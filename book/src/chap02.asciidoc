@@ -122,14 +122,6 @@ The alternative is to save code in a file called a _script_ and then run Julia i
 If you know how to create and run a script on your computer, you are ready to go. Otherwise I recommend using JuliaBox again. Open a text file, write the script and save with a _.jl_ extension. The script can be executed in a terminal with the command *+julia name_of_the_script.jl+*.
 (((extension, .jl)))(((JuliaBox)))
 
-A second way to run a script is to include it in the REPL:
-
-[source, jl-con]
-----
-julia> include("name_of_the_script.jl")
-
-----
-
 Because Julia provides both modes, you can test bits of code in interactive mode before you put them in a script. But there are differences between interactive mode and script mode that can be confusing.
 
 For example, if you are using Julia as a calculator, you might type

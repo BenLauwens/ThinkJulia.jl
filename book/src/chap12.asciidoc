@@ -8,7 +8,7 @@ One note: there is no consensus on how to pronounce “tuple”. Some people say
 
 === Tuples Are Immutable
 
-A tuple is a sequence of values. The values can be any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable.
+A tuple is a sequence of values. The values can be of any type, and they are indexed by integers, so in that respect tuples are a lot like arrays. The important difference is that tuples are immutable and that each element can have its own type.
 (((tuple)))(((immutable)))
 
 Syntactically, a tuple is a comma-separated list of values:
@@ -41,7 +41,7 @@ Tuple{Char}
 
 [WARNING]
 ====
-A value in parentheses is not a tuple:
+A value in parentheses without comma is not a tuple:
 
 [source,@julia-repl-test]
 ----
@@ -137,11 +137,13 @@ a, b = b, a
 
 The left side is a tuple of variables; the right side is a tuple of expressions. Each value is assigned to its respective variable. All the expressions on the right side are evaluated before any of the assignments.
 
-The number of variables on the left and the number of values on the right have to be the same:
+The number of variables on the left has to be fewer than the number of values on the right:
 (((BoundsError)))
 
 [source,@julia-repl-test]
 ----
+julia> (a, b) = (1, 2, 3)
+(1, 2, 3)
 julia> a, b, c = 1, 2
 ERROR: BoundsError: attempt to access (1, 2)
   at index [3]
@@ -187,12 +189,11 @@ Or use tuple assignment to store the elements separately:
 
 [source,@julia-repl-test]
 ----
-julia> quot, rem = divrem(7, 3);
+julia> q, r = divrem(7, 3);
 
-julia> println(quot)
-2
-julia> println(rem)
-1
+julia> @show q r;
+q = 2
+r = 1
 ----
 
 Here is an example of a function that returns a tuple:
@@ -205,9 +206,8 @@ function minmax(t)
 end
 ----
 
-+maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +minmax+ computes both and returns a tuple of two values.
-(((maximum)))(((minimum)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))
-
++maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +minmax+ computes both and returns a tuple of two values. The built-in function +extrema+ is more efficient.
+(((maximum)))(((minimum)))(((extrema)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))((("function", "Base", "extrema", see="extrema")))
 
 === Variable-length Argument Tuples
 
@@ -271,10 +271,12 @@ ERROR: MethodError: no method matching sum(::Int64, ::Int64, ::Int64)
 Write a function called +sumall+ that takes any number of arguments and returns their sum.
 (((sumall)))((("function", "programmer-defined", "sumall", see="sumall")))
 
+In the Julia world, gather is often called “slurp” and scatter “splat”.
+
 
 === Arrays and Tuples
 
-+zip+ is a built-in function that takes two or more sequences and returns an array of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
++zip+ is a built-in function that takes two or more sequences and returns a collection of tuples where each tuple contains one element from each sequence. The name of the function refers to a zipper, which joins and interleaves two rows of teeth.
 (((zip)))((("function", "Base", "zip", see="zip")))
 
 This example zips a string and an array:
@@ -286,7 +288,7 @@ julia> s = "abc";
 julia> t = [1, 2, 3];
 
 julia> zip(s, t)
-Base.Iterators.Zip2{String,Array{Int64,1}}("abc", [1, 2, 3])
+Base.Iterators.Zip{Tuple{String,Array{Int64,1}}}(("abc", [1, 2, 3]))
 ----
 
 The result is a _zip object_ that knows how to iterate through the pairs. The most common use of +zip+ is in a +for+ loop:
@@ -381,7 +383,7 @@ The result from +enumerate+ is an enumerate object, which iterates a sequence of
 
 === Dictionaries and Tuples
 
-Dictionaries can be used as iterators that iterates the key-value pairs. You can use it in a +for+ loop like this:
+Dictionaries can be used as iterators that iterate the key-value pairs. You can use it in a +for+ loop like this:
 (((key-value pair)))(((for statement)))
 
 [source,@julia-repl-test]
@@ -479,6 +481,8 @@ Arrays are more common than tuples, mostly because they are mutable. But there a
 * If you are passing a sequence as an argument to a function, using tuples reduces the potential for unexpected behavior due to aliasing.
 (((aliasing)))
 
+* For performance reasons. The compiler can specialize on the type.
+
 Because tuples are immutable, they don’t provide function like +sort!+ and +reverse!+, which modify existing arrays. But Julia provides the built-in function +sort+, which takes an array and returns a new array with the same elements in sorted order, and +reverse+, which takes any sequence and returns a sequence of the same type in reverse order.
 (((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("function", "Base", "reverse", see="reverse")))(((zip)))((("function", "Base", "reverse!", see="reverse!")))
 
@@ -488,13 +492,13 @@ Because tuples are immutable, they don’t provide function like +sort!+ and +re
 Arrays, dictionaries and tuples are examples of _data structures_; in this lecture we are starting to see compound data structures, like arrays of tuples, or dictionaries that contain tuples as keys and arrays as values. Compound data structures are useful, but they are prone to what I call _shape errors_; that is, errors caused when a data structure has the wrong type, size, or structure. For example, if you are expecting an array with one integer and I give you a plain old integer (not in an array), it won’t work.
 (((debugging)))(((data structures)))(((shape error)))
 
-Julia allows to attach a type to elements of a sequence. How this is done, is detailed in <<chap17>>. Specifying the type eliminates a lot of shape errors.
+Julia allows to attach a type to elements of a sequence. How this is done is detailed in <<chap17>>. Specifying the type eliminates a lot of shape errors.
 
 
 === Glossary
 
 tuple::
-An immutable sequence of elements.
+An immutable sequence of elements where every element can have its own type.
 (((tuple)))
 
 tuple assignment::
@@ -510,7 +514,7 @@ The operation of treating a sequence as a list of arguments.
 (((scatter)))
 
 zip object::
-The result of calling a built-in function zip; an object that iterates through a sequence of tuples.
+The result of calling a built-in function +zip+; an object that iterates through a sequence of tuples.
 (((zip object)))
 
 iterator::

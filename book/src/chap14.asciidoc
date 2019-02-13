@@ -21,7 +21,7 @@ An alternative is to store the state of the program in a database. In this chapt
 [[reading_and_writing]]
 === Reading and Writing
 
-A text file is a sequence of characters stored on a permanent medium like a hard drive, flash memory, or CD-ROM. We saw how to open and read a file in <<reading_word_lists>>.
+A text file is a sequence of characters stored on a permanent medium like a hard drive, or flash memory. We saw how to open and read a file in <<reading_word_lists>>.
 
 To write a file, you have to open it with mode +"w"+ as a second parameter:
 (((open)))
@@ -198,7 +198,7 @@ A lot of things can go wrong when you try to read and write files. If you try to
 [source,@julia-repl-test]
 ----
 julia> fin = open("bad_file")
-ERROR: SystemError: opening file bad_file: No such file or directory
+ERROR: SystemError: opening file "bad_file": No such file or directory
 ----
 
 If you don’t have permission to access a file:
@@ -206,12 +206,12 @@ If you don’t have permission to access a file:
 [source,@julia-repl-test]
 ----
 julia> fout = open("/etc/passwd", "w")
-ERROR: SystemError: opening file /etc/passwd: Permission denied
+ERROR: SystemError: opening file "/etc/passwd": Permission denied
 ----
 
 To avoid these errors, you could use functions like +ispath+ and +isfile+, but it would take a lot of time and code to check all the possibilities.
 
-It is better to go ahead and try—and deal with problems if they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
+It is easier to go ahead and try—and deal with problems if they happen—which is exactly what the +try+ statement does. The syntax is similar to an +if+ statement:
 (((try statement)))((("statement", "try", see="try statement")))(((try)))((("keyword", "try", see="try")))(((catch)))((("keyword", "catch", see="catch")))(((end)))
 
 [source,julia]
@@ -250,7 +250,7 @@ The function +close+ will always be executed.
 A _database_ is a file that is organized for storing data. Many databases are organized like a dictionary in the sense that they map from keys to values. The biggest difference between a database and a dictionary is that the database is on disk (or other permanent storage), so it persists after the program ends.
 (((database)))
 
-ThinkJulia provides an interface to +GDBM+ for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
+ThinkJulia provides an interface to +GDBM+ (GNU dbm) for creating and updating database files. As an example, I’ll create a database that contains captions for image files.
 (((GDBM)))
 
 Opening a database is similar to opening other files:
@@ -373,7 +373,7 @@ You can use this to store non-strings in a database.
 
 [TIP]
 ====
-In fact, this combination is so common that it has been encapsulated in a package called +JLD2+ (see https://github.com/simonster/JLD2.jl).
+In fact, the storage of non-string in a database is so common that it has been encapsulated in a package called +JLD2+ (see https://github.com/JuliaIO/JLD2.jl).
 ====
 
 
@@ -428,8 +428,8 @@ res = read(cmd, String)
 
 === Modules
 
-Any file that contains Julia code can be imported as a module. For example, suppose you have a file named +"wc.jl"+ with the following code:
-(((module)))(((linecount)))((("function", "programmer-defined", "linecount", see="linecount")))(((eachline)))
+Suppose you have a file named +"wc.jl"+ with the following code:
+(((linecount)))((("function", "programmer-defined", "linecount", see="linecount")))(((eachline)))
 
 [source,julia]
 ----
@@ -459,19 +459,18 @@ print(linecount("wc.jl"))""")
 close(file)
 ----
 
-If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it like this:
+If you run this program, it reads itself and prints the number of lines in the file, which is 9. You can also include it in the REPL like this:
 (((include)))((("function", "Base", "include", see="include")))
 
-[source,@julia-repl-test]
+[source,jl-con]
 ----
-julia> Base.include(Main, "wc.jl")
+julia> include("wc.jl")
 9
 ----
 
-The first argument of +include+ is a module. The input source file is evaluated in the scope of that module. The prefix +Base+ is mandatory is this case. Without the prefix +include+ has only one argument, the filename, and the file is evaluated in the scope of the active module. +Main+ corresponds to the +Main+ frame.
-(((Main)))(((Base)))
+Julia introduces modules to create separate variable workspace, i.e. new global scopes. 
 
-Julia introduces modules to create separate variable workspace, i.e. new global scopes. A module starts with the keyword +module+ and ends with +end+. Naming conflicts are avoided between your own top-level definitions and those find in somebody else's code. +import+ allows to control which names from other module are visible and +export+ specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module. 
+A module starts with the keyword +module+ and ends with +end+. Naming conflicts are avoided between your own top-level definitions and those found in somebody else's code. +import+ allows to control which names from other modules are visible and +export+ specifies which of your names are public, i.e. can be used outside the module without being prefixed with the name of the module. 
 (((scope)))(((module)))((("keyword", "module", see="module")))(((end)))(((import)))((("keyword", "import", see="import")))(((export)))((("keyword", "export", see="export")))(((LineCount)))((("module", "LineCount", see="LineCount")))((("function", "LineCount", "linecount", see="linecount")))
 
 [source,julia]
@@ -526,9 +525,9 @@ julia> println(s)
  4
 ----
 
-The built-in function +repr+ can help. It takes any object as an argument and returns a string representation of the object.
+The built-in functions +repr+ or +dump+ can help. It takes any object as an argument and returns a string representation of the object.
 
-(((repr)))((("function", "Base", "repr", see="repr")))
+(((repr)))((("function", "Base", "repr", see="repr")))(((dump)))((("function", "Base", "dump", see="dump")))
 
 [source,@julia-eval chap14]
 ----
@@ -539,6 +538,8 @@ s = "1 2\t 3\n 4";
 ----
 julia> repr(s)
 "\"1 2\\t 3\\n 4\""
+julia> dump(s)
+String "1 2\t 3\n 4"
 ----
 
 This can be helpful for debugging.

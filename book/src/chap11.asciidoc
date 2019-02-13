@@ -1,7 +1,7 @@
 [[chap11]]
 == Dictionaries
 
-This chapter presents another built-in type called a dictionary. Dictionaries are one of Julia’s best features; they are the building blocks of many efficient and elegant algorithms.
+This chapter presents another built-in type called a dictionary.
 
 
 === A Dictionary Is a Mapping
@@ -57,6 +57,8 @@ Dict{String,String} with 3 entries:
   "three" => "tres"
 ----
 
+All the initial keys and values are strings, so a +Dict{String,String}+ is created. 
+
 [WARNING]
 ====
 The order of the key-value pairs might not be the same. If you type the same example on your computer, you might get a different result. In general, the order of items in a dictionary is unpredictable.
@@ -90,7 +92,7 @@ julia> length(eng2sp)
 3
 ----
 
-The function +keys+ returns an array with the keys of the dictionary:
+The function +keys+ returns a collection with the keys of the dictionary:
 (((keys)))((("function", "Base", "keys", see="keys")))
 
 [source,@julia-repl-test chap11]
@@ -125,7 +127,7 @@ true
 
 The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <<searching>>. As the array gets longer, the search time gets longer in direct proportion.
 
-For dictionaries, Julia uses an algorithm called a _hashtable_ that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
+For dictionaries, Julia uses an algorithm called a _hash table_ that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
 (((hastable)))
 
 [[dictionary_collection_counters]]
@@ -294,6 +296,9 @@ ERROR: LookupError
 
 The effect when you generate an exception is the same as when Julia throws one: it prints a stacktrace and an error message.
 
+Julia provides an optimized way to do a reverse lookup: +findall(isequal(3), h)+.
+(((findall)))((("function", "Base", "findall", see="findall")))(((isequal)))((("function", "Base", "isequal", see="isequal")))
+
 [WARNING]
 ====
 A reverse lookup is much slower than a forward lookup; if you have to do it often, or if the dictionary gets big, the performance of your program will suffer.
@@ -348,7 +353,7 @@ image::images/fig111.svg[]
 
 [NOTE]
 ====
-I mentioned earlier that a dictionary is implemented using a hashtable and that means that the keys have to be _hashable_.
+I mentioned earlier that a dictionary is implemented using a hash table and that means that the keys have to be _hashable_.
 (((hashable)))
 
 A _hash_ is a function that takes a value (of any kind) and returns an integer. Dictionaries use these integers, called hash values, to store and look up key-value pairs.
@@ -429,7 +434,7 @@ end
 
 But if you run it you will see that the value of +been_called+ doesn’t change. The problem is that +example2+ creates a new local variable named +been_called+. The local variable goes away when the function ends, and has no effect on the global variable.
 
-To reassign a global variable inside a function you have to _declare_ the global variable before you use it:
+To reassign a global variable inside a function you have to _declare_ the variable global before you use it:
 (((declaration)))(((reassignment)))
 
 [source,@julia-setup]
@@ -477,7 +482,7 @@ function example3()
 end
 ----
 
-If a global variable refers to a mutable value, you can modify the value without declaring the variable:
+If a global variable refers to a mutable value, you can modify the value without declaring the variable global:
 
 [source,@julia-setup]
 ----
@@ -488,7 +493,7 @@ function example4()
 end
 ----
 
-So you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it:
+So you can add, remove and replace elements of a global array or dictionary, but if you want to reassign the variable, you have to declare it global:
 
 [source,@julia-setup]
 ----
@@ -497,6 +502,18 @@ known = Dict(0=>0, 1=>1)
 function example5()
     global known
     known = Dict()
+end
+----
+
+For performance reasons, you should declare a global variable constant. You can no longer reassign the variable but if it refers to a mutable value, you can modify the value. 
+(((const)))((("keyword", "const", see="const")))(((constant global variable)))
+
+[source,@julia-setup]
+----
+const known = Dict(0=>0, 1=>1)
+
+function example4()
+    known[2] = 1
 end
 ----
 
@@ -512,7 +529,7 @@ As you work with bigger datasets it can become unwieldy to debug by printing and
 
 * Scale down the input:
 +
-If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find. You can either edit the files themselves, or (better) modify the program so it reads only the first latexmath:[\(n\)] lines.
+If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find which errors. You sould not edit the files themselves, but rather modify the program so it reads only the first latexmath:[\(n\)] lines.
 (((scale down)))
 +
 If there is an error, you can reduce latexmath:[\(n\)] to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.
@@ -526,7 +543,7 @@ A common cause of runtime errors is a value that is not the right type. For debu
 
 * Write self-checks:
 +
-Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check” because it detects results that are “insane”.
+Sometimes you can write code to check for errors automatically. For example, if you are computing the average of an array of numbers, you could check that the result is not greater than the largest element in the array or less than the smallest. This is called a “sanity check”.
 (((self-check)))(((sanity check)))
 +
 Another kind of check compares the results of two different computations to see if they are consistent. This is called a “consistency check”.
@@ -571,16 +588,16 @@ implementation::
 A way of performing a computation.
 (((implementation)))
 
-hashtable::
+hash table::
 The algorithm used to implement Julia dictionaries.
-(((hashtable)))
+(((hash table)))
 
 hash function::
-A function used by a hashtable to compute the location for a key.
+A function used by a hash table to compute the location for a key.
 (((hash function)))
 
 hashable::
-A type that has a hash function. Immutable types like integers, floats and strings are hashable; mutable types like arrays and dictionaries are not.
+A type that has a hash function.
 (((hashable)))
 
 lookup::

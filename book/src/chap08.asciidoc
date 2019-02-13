@@ -651,7 +651,7 @@ The documentation uses a syntax that might be confusing. For example, in +search
 [[ex08-2]]
 ===== Exercise 8-8
 
-There is a builtin function called +count+ that is similar to the function in <<looping_and_counting>>. Read the documentation of this function and use it to count the number of +a+’s in "banana".
+There is a built-in function called +count+ that is similar to the function in <<looping_and_counting>>. Read the documentation of this function and use it to count the number of +a+’s in "banana".
 (((count)))((("function","Base", "count", see="count")))
 
 [[ex08-3]]

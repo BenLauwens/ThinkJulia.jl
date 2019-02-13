@@ -9,7 +9,6 @@ const oreilly = "/Users/ben/Source/think-julia"
 const chaps = [
   "book.asciidoc",
   "colophon.asciidoc",
-  "preface.asciidoc",
   "chap01.asciidoc",
   "chap02.asciidoc",
   "chap03.asciidoc",
@@ -80,6 +79,7 @@ elseif "html" in ARGS
   book = replace(book, "}\\n\\end{equation}"=> "")
   write("build/book.html", book)
 elseif "oreilly" in ARGS
+  run(`cp build/preface.asciidoc $oreilly`)
   run(`cp build/chap01.asciidoc $oreilly`)
   run(`cp build/chap02.asciidoc $oreilly`)
   run(`cp build/chap03.asciidoc $oreilly`)
