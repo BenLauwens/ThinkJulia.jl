@@ -22,7 +22,7 @@ It is common to say that a function “takes” an argument and “returns” a 
 (((return value)))
 
 Julia provides functions that convert values from one type to another. The +parse+ function takes a string and converts it to any number type, if it can, or complains otherwise:
-(((type conversion)))((("function", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Base", "ArgumentError", see="ArgumentError")))
+(((type conversion)))((("function", "Base", "parse", see="parse")))(((ArgumentError)))((("error", "Core", "ArgumentError", see="ArgumentError")))
 
 [source,@julia-repl-test]
 ----
@@ -183,15 +183,6 @@ julia> function printlyrics()
 ----
 
 To end the function, you have to enter +end+.
-
-Defining a function creates a _function object_.
-(((Function)))((("type", "Base", "Function", see="Function")))(((isa)))((("operator", "Base", "isa", see="isa")))
-
-[source,@julia-repl-test chap03]
-----
-julia> printlyrics isa Function
-true
-----
 
 The syntax for calling the new function is the same as for built-in functions:
 
@@ -363,7 +354,7 @@ Bing tiddle tiddle bang.
 ----
 
 When +cattwice+ terminates, the variable +concat+ is destroyed. If we try to print it, we get an exception:
-(((run-time error)))(((UndefVarError)))((("error", "Base", "UndefVarError", see="UndefVarError")))
+(((run-time error)))(((UndefVarError)))((("error", "Core", "UndefVarError", see="UndefVarError")))
 
 [source,@julia-repl-test chap03]
 ----

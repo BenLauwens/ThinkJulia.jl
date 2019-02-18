@@ -128,7 +128,7 @@ true
 The +∈+ operator uses different algorithms for arrays and dictionaries. For arrays, it searches the elements of the array in order, as in <<searching>>. As the array gets longer, the search time gets longer in direct proportion.
 
 For dictionaries, Julia uses an algorithm called a _hash table_ that has a remarkable property: the +∈+ operator takes about the same amount of time no matter how many items are in the dictionary.
-(((hastable)))
+(((hash table)))
 
 [[dictionary_collection_counters]]
 === Dictionary as a Collection of Counters

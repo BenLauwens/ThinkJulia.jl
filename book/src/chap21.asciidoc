@@ -101,11 +101,11 @@ For example:
 [source,julia]
 ----
 while x > 0 && y < 0
-  # do something to x
-  # do something to y
-  println("x: ", x)
-  println("y: ", y)
-  println("condition: ", (x > 0 && y < 0))
+    # do something to x
+    # do something to y
+    println("x: ", x)
+    println("y: ", y)
+    println("condition: ", (x > 0 && y < 0))
 end
 ----
 
@@ -137,20 +137,28 @@ The stacktrace identifies the function that is currently running, and then the f
 The first step is to examine the place in the program where the error occurred and see if you can figure out what happened. These are some of the most common runtime errors:
 
 ArgumentError:: 
-The parameters to a function call do not match a valid signature.
+One of the arguments to a function call is not in the expected state.
 (((ArgumentError)))
 
 BoundsError:: 
 An indexing operation into an array tried to access an out-of-bounds element.
 (((BoundsError)))
 
+DomainError::
+The argument to a function or constructor is outside the valid domain.
+(((DomainError)))((("error", "Core", "DomainError", see="DomainError")))
+
 DivideError:: 
 Integer division was attempted with a denominator value of 0.
-(((DivideError)))((("error", "Base", "DivideError", see="DivideError")))
+(((DivideError)))((("error", "Core", "DivideError", see="DivideError")))
 
 EOFError:: 
 No more data was available to read from a file or stream.
 (((EOFError)))((("error", "Base", "EOFError", see="EOFError")))
+
+InexactError::
+Cannot exactly convert to a type.
+(((InexactError)))((("error", "Core", "InexactError", see="InexactError")))
 
 KeyError:: 
 An indexing operation into an +AbstractDict+ (+Dict+) or +Set+ like object tried to access or delete a non-existent element.
@@ -162,11 +170,11 @@ A method with the required type signature does not exist in the given generic fu
 
 OutOfMemoryError:: 
 An operation allocated too much memory for either the system or the garbage collector to handle properly.
-(((OutOfMemoryError)))((("error", "Base", "OutOfMemoryError", see="OutOfMemoryError")))
+(((OutOfMemoryError)))((("error", "Core", "OutOfMemoryError", see="OutOfMemoryError")))
 
 OverflowError:: 
 The result of an expression is too large for the specified type and will cause a wraparound.
-(((OverflowError)))((("error", "Base", "OverflowError", see="OverflowError")))
+(((OverflowError)))((("error", "Core", "OverflowError", see="OverflowError")))
 
 StackOverflowError:: 
 The function call grew beyond the size of the call stack. This usually happens when a call recurses infinitely.
@@ -210,7 +218,7 @@ In some ways, semantic errors are the hardest to debug, because the interpreter 
 
 The first step is to make a connection between the program text and the behavior you are seeing. You need a hypothesis about what the program is actually doing. One of the things that makes that hard is that computers run so fast.
 
-You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often short compared to setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.
+You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often quicker than setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.
 
 ==== My program doesn’t work
 
@@ -291,7 +299,7 @@ Now you have the opportunity to display the value of +count+ before returning.
 
 ==== I’m really, really stuck and I need help
 
-First, try getting away from the computer for a few minutes. Computers emit waves that affect the brain, causing these symptoms:
+First, try getting away from the computer for a few minutes. Working with a computer can cause these symptoms:
 
 * Frustration and rage.
 

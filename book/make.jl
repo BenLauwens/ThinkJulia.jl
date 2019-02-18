@@ -136,6 +136,6 @@ if "deploy" in ARGS
     branch = "gh-pages",
     latest = "master",
     osname = "osx",
-    julia  = "1.0",
+    julia  = "1.1",
   )
 end

@@ -91,7 +91,7 @@ julia> println(fout, "I have spotted $camels camels.")
 
 [TIP]
 ====
-A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/stable/stdlib/Printf/
+A more powerful alternative is the +@printf+ macro that prints using a C style format specification string, which you can read about at https://docs.julialang.org/en/v1/stdlib/Printf/
 (((@printf)))((("macro", "Printf", "@printf", see="@printf")))(((formatting)))
 ====
 
@@ -184,7 +184,7 @@ end
 
 [TIP]
 ====
-Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+Julia provides a function called +walkdir+ (see https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 (((walkdir)))((("function", "Base", "walkdir", see="walkdir")))
 ====
 
@@ -607,9 +607,9 @@ If an error occurs while opening, reading, writing or closing files, your progra
 [[ex14-2]]
 ===== Exercise 14-3
 
-If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "+opst"+ maps to the list +["opts", "post", "pots", "spot", "stop", "tops"]+.
+If you have done <<ex12-2>>, you’ll see that a dictionary is created that maps from a sorted string of letters to the array of words that can be spelled with those letters. For example, +"opst"+ maps to the array +["opts", "post", "pots", "spot", "stop", "tops"]+.
 
-Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +readanagrams+ should look up a word and return a list of its anagrams.
+Write a module that imports +anagramsets+ and provides two new functions: +storeanagrams+ should store the anagram dictionary using +JLD2+; +readanagrams+ should look up a word and return an array of its anagrams.
 (((storeanagrams)))((("function", "programmer-defined", "storeanagrams", see="storeanagrams")))(((readanagrams)))((("function", "programmer-defined", "readanagrams", see="readanagrams")))
 
 [[ex14-3]]
@@ -617,7 +617,7 @@ Write a module that imports +anagramsets+ and provides two new functions: +store
 
 In a large collection of MP3 files, there may be more than one copy of the same song, stored in different directories or with different file names. The goal of this exercise is to search for duplicates.
 
-. Write a program that searches a directory and all of its subdirectories, recursively, and returns a list of complete paths for all files with a given suffix (like _.mp3_).
+. Write a program that searches a directory and all of its subdirectories, recursively, and returns an array of complete paths for all files with a given suffix (like _.mp3_).
 
 . To recognize duplicates, you can use +md5sum+ or +md5+ to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.
 

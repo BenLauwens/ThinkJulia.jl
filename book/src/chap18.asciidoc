@@ -79,7 +79,7 @@ function Base.show(io::IO, card::Card)
 end
 ----
 
-The expression +rank_names[car.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
+The expression +rank_names[card.rank]+ means “use the field +rank+ from the object +card+ as an index into the array +rank_names+, and select the appropriate string.”
 
 With the methods we have so far, we can create and print cards:
 
@@ -92,25 +92,26 @@ J♥
 
 === Comparing Cards
 
-For built-in types, there are relational operators (+<+, +>+, +==+, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: +Base.isless+.
+For built-in types, there are relational operators (+<+, +>+, +==+, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: +<+.
 
 The correct ordering for cards is not obvious. For example, which is better, the 3 of Clubs or the 2 of Diamonds? One has a higher rank, but the other has a higher suit. In order to compare cards, you have to decide whether rank or suit is more important.
 
 The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.
 
-With that decided, we can write +isless+:
-(((isless)))((("function", "programmer-defined", "isless", see="isless")))
+With that decided, we can write +<+:
 
 [source,@julia-setup chap18]
 ----
-function Base.isless(c1::Card, c2::Card)
-    isless((c1.suit, c1.rank), (c2.suit, c2.rank))
+import Base.<
+
+function <(c1::Card, c2::Card)
+    (c1.suit, c1.rank) < (c2.suit, c2.rank)
 end
 ----
 
 ===== Exercise 18-1
 
-Write a +isless+ method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.
+Write a +<+ method for +MyTime+ objects. You can use tuple comparison, but you also might consider comparing integers.
 
 
 === Unit Testing
@@ -126,9 +127,9 @@ Simple unit testing can be performed with the +@test+ macros:
 ----
 julia> using Test
 
-julia> @test isless(Card(1, 4), Card(2, 4))
+julia> @test Card(1, 4) < Card(2, 4)
 Test Passed
-julia> @test isless(Card(1, 3), Card(1, 4))
+julia> @test Card(1, 3) < Card(1, 4)
 Test Passed
 ----
 
@@ -146,15 +147,16 @@ The following is a struct definition for +Deck+. The constructor creates the fie
 ----
 struct Deck
     cards :: Array{Card, 1}
-    function Deck()
-        deck = new(Card[])
-        for suit in 1:4
-            for rank in 1:13
-                push!(deck.cards, Card(suit, rank))
-            end
+end
+
+function Deck()
+    deck = Deck(Card[])
+    for suit in 1:4
+        for rank in 1:13
+            push!(deck.cards, Card(suit, rank))
         end
-        deck
     end
+    deck
 end
 ----
 
@@ -202,7 +204,7 @@ To add a card, we can use the function +push!+:
 ----
 function Base.push!(deck::Deck, card::Card)
     push!(deck.cards, card)
-    nothing
+    deck
 end
 ----
 
@@ -220,7 +222,7 @@ using Random
 
 function Random.shuffle!(deck::Deck)
     shuffle!(deck.cards)
-    nothing
+    deck
 end
 ----
 
@@ -272,20 +274,38 @@ We can now express that +Deck+ is a descendant of +CardSet+:
 ----
 struct Deck <: CardSet
     cards :: Array{Card, 1}
-    function Deck()
-        deck = new(Card[])
-        for suit in 1:4
-            for rank in 1:13
-                push!(deck.cards, Card(suit, rank))
-            end
+end
+
+function Deck()
+    deck = Deck(Card[])
+    for suit in 1:4
+        for rank in 1:13
+            push!(deck.cards, Card(suit, rank))
         end
-        deck
     end
+    deck
+end
+----
+
+[source,@julia-eval chap18a]
+----
+using Random
+
+const suit_names = ["♣", "♦", "♥", "♠"];
+const rank_names = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+function Base.show(io::IO, card::Card)
+    print(io, rank_names[card.rank], suit_names[card.suit])
+end
+
+function Random.shuffle!(deck::Deck)
+    shuffle!(deck.cards)
+    deck
 end
 ----
 
 The operator +isa+ checks whether an object is of a given type:
-(((isa)))
+(((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap18a]
 ----
@@ -303,9 +323,10 @@ A hand is also a kind of +CardSet+:
 struct Hand <: CardSet
     cards :: Array{Card, 1}
     label :: String
-    function Hand(label::String="")
-        new(Card[], label)
-    end
+end
+
+function Hand(label::String="")
+    Hand(Card[], label)
 end
 ----
 
@@ -343,13 +364,12 @@ end
 
 We can use +pop!+ and +push!+ to deal a card:
 
-[source,@julia-repl-test chap18a]
+[source,@julia-repl chap18a]
 ----
-deck = Deck();
+deck = Deck()
 shuffle!(deck)
-card = pop!(deck);
+card = pop!(deck)
 push!(hand, card)
-hand
 ----
 
 A natural next step is to encapsulate this code in a function called +move!+:
@@ -367,7 +387,7 @@ function move!(cs1::CardSet, cs2::CardSet, n::Int)
 end
 ----
 
-+move!+ takes three arguments, two cardset objects and the number of cards to deal. It modifies both cardset objects, and returns +nothing+.
++move!+ takes three arguments, two +Cardset+ objects and the number of cards to deal. It modifies both +Cardset+ objects, and returns +nothing+.
 
 In some games, cards are moved from one hand to another, or from a hand back to the deck. You can use +move!+ for any of these operations: +cs1+ and +cs2+ can be either a +Deck+ or a +Hand+.
 
@@ -410,7 +430,7 @@ A more detailed diagram might show that a Deck actually contains an array of Car
 
 Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.
 
-Suppose you are writing a function that works with Hand objects. You would like it to work with all kinds of Hands, like PokerHands, BridgeHands, etc. If you invoke a method like +sort!+, you might get the one defined for an abstract type +Hand+, but if a method +sort!+ with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.
+Suppose you are writing a function that works with +Hand+ objects. You would like it to work with all kinds of +Hand+s, like +PokerHand+s, +BridgeHand+s, etc. If you invoke a method like +sort!+, you might get the one defined for an abstract type +Hand+, but if a method +sort!+ with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.
 
 [source,@julia-setup chap18a]
 ----
@@ -421,13 +441,11 @@ end
 
 Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If +shuffle!+ prints a message that says something like +Running shuffle! Deck+, then as the program runs it traces the flow of execution.
 
-As an alternative, you can also use the +InteractiveUtils.@which+ macro:
+As better alternative, you can also use the +@which+ macro:
 (((InteractiveUtils)))((("module", "InteractiveUtils", see="InteractiveUtils")))(((@which)))((("macro", "InteractiveUtils", "@which", see="@which")))
 
 [source,jlcon]
 ----
-julia> using InteractiveUtils
-
 julia> @which sort!(hand)
 sort!(hand::Hand) in Main at REPL[5]:1
 ----
@@ -438,6 +456,15 @@ Here’s a design suggestion: when you override a method, the interface of the n
 
 If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
 (((Liskov substitution principle)))
+
+The function +supertype+ can be used to find the direct supertype of a type.
+(((supertype)))((("function", "Base", "supertype", see="supertype")))
+
+[source,@julia-repl-test chap18a]
+----
+julia> supertype(Deck)
+CardSet
+----
 
 
 === Data Encapsulation
@@ -467,9 +494,10 @@ struct Markov
     order :: Int64
     suffixes :: Dict{String, Array{String, 1}}
     prefix :: Array{String, 1}
-    function Markov(order::Int64=2)
-        new(order, Dict{String, Array{String, 1}}(), Array{String, 1}())
-    end
+end
+
+function Markov(order::Int64=2)
+    Markov(order, Dict{String, Array{String, 1}}(), Array{String, 1}())
 end
 ----
 
@@ -602,7 +630,7 @@ addping(pong, ping)
 [[ex18-2]]
 ===== Exercise 18-5
 
-Write a method called +deal!+ that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
+Write a method called +deal!+ that takes three parameters, a +Deck+, the number of hands and the number of cards per hand. It should create the appropriate number of +Hand+ objects, deal the appropriate number of cards per hand, and return an array of +Hand+s.
 (((deal!)))((("function", "programmer-defined", "deal!", see="deal!")))
 
 [[ex18-3]]

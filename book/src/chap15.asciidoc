@@ -15,7 +15,7 @@ There are several ways we might represent points in Julia:
 
 * We could store the coordinates separately in two variables, +x+ and +y+.
 
-* We could store the coordinates as elements in a list or tuple.
+* We could store the coordinates as elements in an array or tuple.
 
 * We could create a new type to represent points as objects.
 
@@ -32,16 +32,8 @@ struct Point
 end
 ----
 
-The header indicates that the new struct is called +Point+. The body defines the _attributes_ or _fields_ of the struct. The +Point+ struct has two fields: +x+ and +y+. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
+The header indicates that the new struct is called +Point+. The body defines the _attributes_ or _fields_ of the struct. The +Point+ struct has two fields: +x+ and +y+.
 (((attribute)))((("field", see="attribute")))
-
-Defining a type named Point creates a datatype object:
-(((typeof)))(((DataType)))((("type", "Base", "DataType", see="DataType")))
-
-[source,@julia-repl chap15]
-----
-typeof(Point)
-----
 
 A struct is like a factory for creating objects. To create a point, you call +Point+ as if it were a function having as arguments the values of the fields. When +Point+ is used as a function, it is called a _constructor_.
 (((constructor)))
@@ -52,7 +44,7 @@ julia> p = Point(3.0, 4.0)
 Point(3.0, 4.0)
 ----
 
-The return value is a reference to a point object, which we assign to +p+.
+The return value is a reference to a +Point+ object, which we assign to +p+.
 (((reference)))
 
 Creating a new object is called _instantiation_, and the object is an _instance_ of the type.
@@ -99,7 +91,7 @@ Structs are however by default immutable, after construction the fields can not 
 [source,@julia-repl-test chap15]
 ----
 julia> p.y = 1.0
-ERROR: type Point is immutable
+ERROR: setfield! immutable struct of type Point cannot be changed
 ----
 
 This may seem odd at first, but it has several advantages:
@@ -165,10 +157,10 @@ struct Rectangle
 end
 ----
 
-The docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.
+The docstring lists the fields: width and height are numbers; corner is a +Point+ object that specifies the lower-left corner.
 (((docstring)))
 
-To represent a rectangle, you have to instantiate a rectangle object:
+To represent a rectangle, you have to instantiate a +Rectangle+ object:
 
 [source,@julia-repl-test chap15]
 ----
@@ -178,7 +170,7 @@ julia> box = Rectangle(100.0, 200.0, origin)
 Rectangle(100.0, 200.0, MPoint(0.0, 0.0))
 ----
 
-<<fig15-2>> shows the state of this object. An object that is a field of another object is _embedded_. Because the +corner+ attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+<<fig15-2>> shows the state of this object. An object that is a field of another object is _embedded_. Because the +corner+ attribute refers to a mutable object, the latter is drawn outside the +Rectangle+ object.
 (((embedded)))(((object diagram)))
 
 [[fig15-2]]
@@ -198,7 +190,7 @@ function printpoint(p)
 end
 ----
 
-+printpoint+ takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass +p+ as an argument:
++printpoint+ takes a +Point+ as an argument and displays it in mathematical notation. To invoke it, you can pass +p+ as an argument:
 
 [source,@julia-repl-test chap15]
 ----
@@ -211,7 +203,7 @@ julia> printpoint(blank)
 Write a function called +distancebetweenpoints+ that takes two points as arguments and returns the distance between them.
 (((distancebetweenpoints)))((("function", "programmer-defined", "distancebetweenpoints", see="distancebetweenpoints")))
 
-If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint!+ takes a mutable point object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the point:
+If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, +movepoint!+ takes a mutable +Point+ object and two numbers, +dx+ and +dy+, and adds the numbers to respectively the +x+ and the +y+ attribute of the +Point+:
 (((movepoint!)))((("function", "programmer-defined", "movepoint!", see="movepoint!")))
 
 [source,@julia-setup chap15]
@@ -227,7 +219,7 @@ Here is an example that demonstrates the effect:
 
 [source,@julia-repl-test chap15]
 ----
-julia> origin = MPoint(0.0,0.0)
+julia> origin = MPoint(0.0, 0.0)
 MPoint(0.0, 0.0)
 julia> movepoint!(origin, 1.0, 2.0)
 
@@ -238,15 +230,15 @@ MPoint(1.0, 2.0)
 Inside the function, +p+ is an alias for +origin+, so when the function modifies +p+, +origin+ changes.
 (((aliasing)))
 
-Passing an immutable point object to +movepoint!+ causes an error:
+Passing an immutable +Point+ object to +movepoint!+ causes an error:
 
 [source,@julia-repl-test chap15]
 ----
 julia> movepoint!(p, 1.0, 2.0)
-ERROR: type is immutable
+ERROR: setfield! immutable struct of type Point cannot be changed
 ----
 
-You can however modify the value of a mutable attribute of an immutable object. For example, +moverectangle!+ has as arguments a rectangle object and two numbers, +dx+ and +dy+, and uses +movepoint!+ to move the corner of the rectangle:
+You can however modify the value of a mutable attribute of an immutable object. For example, +moverectangle!+ has as arguments a +Rectangle+ object and two numbers, +dx+ and +dy+, and uses +movepoint!+ to move the corner of the rectangle:
 
 [source,@julia-setup chap15]
 ----
@@ -269,19 +261,19 @@ Rectangle(100.0, 200.0, MPoint(1.0, 2.0))
 
 [WARNING]
 ====
-Attention you cannot reassign a mutable attribute of an immutable object:
+You cannot reassign a mutable attribute of an immutable object:
 (((reassignment)))
 
 [source,@julia-repl-test chap15]
 ----
 julia> box.corner = MPoint(1.0, 2.0)
-ERROR: type Rectangle is immutable
+ERROR: setfield! immutable struct of type Rectangle cannot be changed
 ----
 ====
 
 === Instances as Return Values
 
-Functions can return instances. For example, +findcenter+ takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
+Functions can return instances. For example, +findcenter+ takes a +Rectangle+ as an argument and returns a +Point+ that contains the coordinates of the center of the rectangle:
 (((findcenter)))((("function", "programmer-defined", "findcenter", see="findcenter")))
 
 [source,@julia-setup chap15]
@@ -293,12 +285,12 @@ end
 
 The expression +rect.corner.x+ means, “Go to the object +rect+ refers to and select the field named +corner+; then go to that object and select the field named +x+.”
 
-Here is an example that passes +box+ as an argument and assigns the resulting point to +center+:
+Here is an example that passes +box+ as an argument and assigns the resulting +Point+ to +center+:
 
 [source,@julia-repl-test chap15]
 ----
 julia> center = findcenter(box)
-Point(50.0, 100.0)
+Point(51.0, 102.0)
 ----
 
 
@@ -355,8 +347,8 @@ julia> typeof(p)
 Point
 ----
 
-You can also use isinstance to check whether an object is an instance of a type:
-(((isa)))
+You can also use +isa+ to check whether an object is an instance of a type:
+(((isa)))((("operator", "Base", "isa", see="isa")))
 
 [source,@julia-repl-test chap15]
 ----
@@ -387,28 +379,15 @@ false
 The first argument can be any object; the second argument is a symbol, +:+ followed by the name of the field.
 (((:)))(((Symbol)))((("type", "Base", "Symbol", see="Symbol")))
 
-You can also use a +try+ statement to see if the object has the fields you need:
-(((try statement)))
-
-[source,@julia-setup chap15]
-----
-x = try
-    p.x = 1.0
-catch exc
-    0.0
-end
-----
-
-
 === Glossary
 
 struct::
-A composite type. A struct definition creates a new struct object.
+A composite type. 
 (((struct)))
 
-struct object::
-An object that contains information about a composite type. The struct object can be used to create instances of the type.
-(((struct object)))
+constructor::
+A function with the same name as a type that creates instances of the type.
+(((constructor)))
 
 instance::
 An object that belongs to a type.
@@ -440,26 +419,26 @@ A diagram that shows objects, their fields, and the values of the fields.
 [[ex15-1]]
 ===== Exercise 15-3
 
-. Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a point object and +radius+ is a number.
+. Write a definition for a type named +Circle+ with fields +center+ and +radius+, where +center+ is a +Point+ object and +radius+ is a number.
 (((Circle)))((("type", "programmer-defined", "Circle", see="Circle")))
 
 . Instantiate a circle object that represents a circle with its center at latexmath:[\(\left(150, 100\right)\)] and radius 75.
 
-. Write a function named +pointincircle+ that takes a circle object and a point object and returns +true+ if the point lies in or on the boundary of the circle.
+. Write a function named +pointincircle+ that takes a +Circle+ object and a +Point+ object and returns +true+ if the point lies in or on the boundary of the circle.
 (((pointincircle)))((("function", "programmer-defined", "pointincircle", see="pointincircle")))
 
-. Write a function named +rectincircle+ that takes a circle object and a rectangle object and returns +true+ if the rectangle lies entirely in or on the boundary of the circle.
+. Write a function named +rectincircle+ that takes a +Circle+ object and a +Rectangle+ object and returns +true+ if the rectangle lies entirely in or on the boundary of the circle.
 (((rectincircle)))((("function", "programmer-defined", "rectincircle", see="rectincircle")))
 
-. Write a function named +rectcircleoverlap+ that takes a circle object and a rectangle object and returns +true+ if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return +true+ if any part of the rectangle falls inside the circle.
+. Write a function named +rectcircleoverlap+ that takes a +Circle+ object and a +Rectangle+ object and returns +true+ if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return +true+ if any part of the rectangle falls inside the circle.
 (((rectcircleoverlap)))((("function", "programmer-defined", "rectcircleoverlap", see="rectcircleoverlap")))
 
 [[ex15-2]]
 ===== Exercise 15-4
 
-. Write a function called +drawrect+ that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.
+. Write a function called +drawrect+ that takes a turtle object and a +Rectangle+ object and uses the turtle to draw the rectangle. See Chapter 4 for examples using +Turtle+ objects.
 (((drawrect)))((("function", "programmer-defined", "drawrect", see="drawrect")))
 
-. Write a function called +drawcircle+ that takes a turtle object and a circle object and draws the circle.
+. Write a function called +drawcircle+ that takes a +Turtle+ object and a +Circle+ object and draws the circle.
 (((drawcircle)))((("function", "programmer-defined", "drawcircle", see="drawcircle")))
 

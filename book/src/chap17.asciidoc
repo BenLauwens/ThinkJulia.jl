@@ -1,15 +1,15 @@
 [[chap17]]
 == Multiple Dispatch
 
-In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia's type system is dynamic but inherits some features of static type systems. A method can be efficiently dispatched on the number and the type of its arguments.
+In Julia you have the ability to write code that can operate on different types. This is called generic programming.
 
-In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on its arguments. This is called multiple dispatch.
+In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on the types of its arguments. This is called multiple dispatch.
 
 
 === Type Declarations
 
 The +::+ operator attaches _type annotations_ to expressions and variables:
-(((TypeError)))((("error", "Base", "TypeError", see="TypeError")))
+(((TypeError)))((("error", "Core", "TypeError", see="TypeError")))
 
 [source,@julia-repl-test]
 ----
@@ -78,9 +78,9 @@ function printtime(time)
 end
 ----
 
-As you can see, type declaration can also be added to the fields in a struct definition.
+As you can see, type declaration can and should be added for performance reasons to the fields in a struct definition.
 
-To call this function, you have to pass a mytime object as an argument:
+To call this function, you have to pass a +MyTime+ object as an argument:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -90,7 +90,7 @@ julia> printtime(start)
 09:45:00
 ----
 
-To add a _method_ to the function +printtime+ that only accepts as argument a mytime object, all we have to do is append +::+ followed by +MyTime+ to the argument +time+ in the function definition:
+To add a _method_ to the function +printtime+ that only accepts as argument a +MyTime+ object, all we have to do is append +::+ followed by +MyTime+ to the argument +time+ in the function definition:
 (((method)))
 
 [source,@julia-setup chap17a]
@@ -103,7 +103,7 @@ end
 A method is a function definition with a specific _signature_: +printtime+ has one argument of type +MyTime+.
 (((signature)))
 
-Calling the function +printtime+ with a mytime object yields the same result:
+Calling the function +printtime+ with a +MyTime+ object yields the same result:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -120,7 +120,7 @@ function printtime(time)
 end
 ----
 
-If you call the function +printtime+ with an object different from mytime, you get now:
+If you call the function +printtime+ with an object different from +MyTime+, you get now:
 
 [source,@julia-repl-test chap17a]
 ----
@@ -161,7 +161,7 @@ function increment(time::MyTime, seconds::Int64)
 end
 ----
 
-Note that this time, it is a pure function, not a modifier.
+Note that now, it is a pure function, not a modifier.
 
 Here's how you would invoke increment:
 
@@ -184,7 +184,7 @@ ERROR: MethodError: no method matching increment(::Int64, ::MyTime)
 
 The signature of the method is +increment(time::MyTime, seconds::Int64)+ and not +increment(seconds::Int64, time::MyTime)+.
 
-Rewriting +isafter+ to act only on mytime objects is as easy:
+Rewriting +isafter+ to act only on +MyTime+ objects is as easy:
 (((isafter)))
 
 [source,@julia-setup chap17a]
@@ -236,7 +236,7 @@ function MyTime(time::MyTime)
 end
 ----
 
-This method is called a _copy constructor_ because the new mytime object is a copy of argument.
+This method is called a _copy constructor_ because the new +MyTime+ object is a copy of its argument.
 (((copy constructor)))((("constructor", "copy", see="copy constructor")))
 
 To enforce invariants, we need _inner constructor_ methods:
@@ -244,7 +244,7 @@ To enforce invariants, we need _inner constructor_ methods:
 
 [source,@julia-setup chap17b]
 ----
-mutable struct MyTime
+struct MyTime
     hour :: Int64
     minute :: Int64
     second :: Int64
@@ -256,7 +256,7 @@ mutable struct MyTime
 end
 ----
 
-The struct +MyTime+ has now 6 constructor methods:
+The struct +MyTime+ has now 4 inner constructor methods:
 
 [source,julia]
 ----
@@ -264,15 +264,13 @@ MyTime()
 MyTime(hour::Int64)
 MyTime(hour::Int64, minute::Int64)
 MyTime(hour::Int64, minute::Int64, second::Int64)
-MyTime(hour::Int64, minute::Int64, second::Int64)
-MyTime(time::MyTime)
 ----
 
-An inner constructor method is always declared inside the block of a type declaration and it has access to a function called +new+ that creates objects of the newly declared type.
+An inner constructor method is always declared inside the block of a type declaration and it has access to a special function called +new+ that creates objects of the newly declared type.
 
 [WARNING]
 ====
-The default constructor is not available if any inner constructor is defined. You have to write explicitely all the inner constructors you need.
+The default constructor is not available if any inner constructor is defined. You have to write explicitly all the inner constructors you need.
 ====
 
 A second method without arguments of the local function +new+ exists:
@@ -296,13 +294,13 @@ mutable struct MyTime
 end
 ----
 
-This allows to construct recursive data structures.
+This allows to construct recursive data structures, i.e. a struct where one of the fields is the struct itself. In this case the struct has to be mutable because its fields are modified after instantiation.
 (((recursive data structures)))
 
 
 === +show+
 
-+show+ is a special function that returns a string representation of an object. For example, here is a +show+ method for mytime objects:
++show+ is a special function that returns a string representation of an object. For example, here is a +show+ method for +MyTime+ objects:
 (((show)))
 
 [source,@julia-setup chap17b]
@@ -324,28 +322,28 @@ julia> time = MyTime(9, 45)
 09:45:00
 ----
 
-When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
+When I write a new composite type, I almost always start by writing an outer constructor, which makes it easier to instantiate objects, and +show+, which is useful for debugging.
 
 ===== Exercise 17-2
 
-Write an inner constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
+Write an outer constructor method for the +Point+ class that takes +x+ and +y+ as optional parameters and assigns them to the corresponding fields.
 (((Point)))
 
 
 [source,@julia-eval chap17b]
 ----
-function timetoint(time)
+function timetoint(time::MyTime)
     minutes = time.hour * 60 + time.minute
     seconds = minutes * 60 + time.second
 end;
 
-function inttotime(seconds)
+function inttotime(seconds::Int64)
     (minutes, second) = divrem(seconds, 60)
     hour, minute = divrem(minutes, 60)
     MyTime(hour, minute, second)
 end;
 
-function increment!(time::MyTime, seconds::Int64)
+function increment(time::MyTime, seconds::Int64)
     seconds += timetoint(time)
     inttotime(seconds)
 end;
@@ -353,7 +351,7 @@ end;
 
 === Operator Overloading
 
-By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named +pass:[+]+ with two +MyTime+ arguments, you can use the +pass:[+]+ operator on mytime objects.
+By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named +pass:[+]+ with two +MyTime+ arguments, you can use the +pass:[+]+ operator on +MyTime+ objects.
 
 Here is what the definition might look like:
 
@@ -382,24 +380,24 @@ julia> start + duration
 11:20:00
 ----
 
-When you apply the +pass:[+]+ operator to mytime objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +show+. So there is a lot happening behind the scenes!
+When you apply the +pass:[+]+ operator to +MyTime+ objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes +show+. So there is a lot happening behind the scenes!
 
-Changing the behavior of an operator so that it works with programmer-defined types is called _operator overloading_.
+Adding to the behavior of an operator so that it works with programmer-defined types is called _operator overloading_.
 (((operator overloading)))
 
 
 === Multiple Dispatch
 
-In the previous section we added two mytime objects, but you also might want to add an integer to a +MyTime+ object:
+In the previous section we added two +MyTime+ objects, but you also might want to add an integer to a +MyTime+ object:
 
 [source,@julia-setup chap17b]
 ----
 function +(time::MyTime, seconds::Int64)
-    increment!(time, seconds)
+    increment(time, seconds)
 end
 ----
 
-Here is an example that use the +pass:[+]+ operator with a mytime object and an integer:
+Here is an example that uses the +pass:[+]+ operator with a +MyTime+ object and an integer:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -414,7 +412,7 @@ Addition is a commutative operator so we have to add another method.
 [source,@julia-setup chap17b]
 ----
 function +(seconds::Int64, time::MyTime)
-  increment!(time, seconds)
+  time + seconds
 end
 ----
 
@@ -438,7 +436,7 @@ Write +pass:[+]+ methods for point objects:
 * If the first or the second operand is a tuple, the method should add the first element of the tuple to the +x+ coordinate and the second element to the +y+ coordinate, and return a new point object with the result.
 
 
-=== Polymorphism
+=== Generic Programming
 
 Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.
 
@@ -479,7 +477,7 @@ Functions that work with several types are called _polymorphic_. Polymorphism ca
 For example, the built-in function +sum+, which adds the elements of a sequence, works as long as the elements of the sequence support addition.
 (((sum)))
 
-Since a +pass:[+]+ method is provided for mytime objects, they work with +sum+:
+Since a +pass:[+]+ method is provided for +MyTime+ objects, they work with +sum+:
 
 [source,@julia-repl-test chap17b]
 ----
@@ -503,14 +501,14 @@ The best kind of polymorphism is the unintentional kind, where you discover that
 
 One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.
 
-A design principle that helps achieve that goal is to keep interfaces separate from implementations. For objects, that means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
+A design principle that helps achieve that goal is to keep interfaces separate from implementations. This means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
 (((interface)))(((implementation)))
 
 For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include +timetoint+, +isafter+, and +pass:[+]+.
 
-We could implement those methods in several ways. The details of the implementation depend on how we represent +MyTime+. In this chapter, the fields of a mytime object are +hour+, +minute+, and +second+.
+We could implement those methods in several ways. The details of the implementation depend on how we represent +MyTime+. In this chapter, the fields of a +MyTime+ object are +hour+, +minute+, and +second+.
 
-As an alternative, we could replace these field with a single integer representing the number of seconds since midnight. This implementation would make some functions, like +isafter+, easier to write, but it makes other functions harder.
+As an alternative, we could replace these fields with a single integer representing the number of seconds since midnight. This implementation would make some functions, like +isafter+, easier to write, but it makes other functions harder.
 
 After you deploy a new type, you might discover a better implementation. If other parts of the program are using your type, it might be time-consuming and error-prone to change the interface.
 
@@ -532,7 +530,7 @@ julia> methods(printtime)
 [2] printtime(time) in Main at REPL[4]:2
 ----
 
-In this example, the function +printtime+ has 2 methods: one with a +MyTime+ argument and one with a +Any+ argument.
+In this example, the function +printtime+ has 2 methods: one with a +MyTime+ argument and one with an +Any+ argument.
 
 
 === Glossary
@@ -561,21 +559,25 @@ inner constructor::
 Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.
 (((inner constructor)))
 
+default constructor::
+Inner constructor that is available when no programmer-defined inner constructors are provided.
+(((default constructor)))
+
 copy constructor::
 Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
 (((copy constructor)))
 
 operator overloading::
-Changing the behavior of an operator like +pass:[+]+ so it works with a programmer-defined type.
+Adding to the behavior of an operator like +pass:[+]+ so it works with a programmer-defined type.
 (((operator overloading)))
 
 multiple dispatch::
 Dispatch based on all of a function's arguments.
 (((multiple dispatch)))
 
-polymorphic::
-Pertaining to a function that can work with more than one type.
-(((polymorphic)))
+generic programming::
+Writing code that can work with more than one type.
+(((generic programming)))
 
 
 === Exercises

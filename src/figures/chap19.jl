@@ -1,5 +1,4 @@
 function fig19_1(output::Symbol, font::String, scale::Float64)
-  f = x -> x^2 + 2x - 1
-  p = plot(0.0:0.1:10.0, f, xaxis="x", yaxis="f")
+  p = plot(x -> x^2 + 2x - 1, 0, 10, xlabel="x", ylabel="y")
   savefig(p, "fig191.svg")
 end

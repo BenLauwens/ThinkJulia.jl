@@ -4,7 +4,7 @@
 Julia comes with batteries included. The +Base+ module contains the most useful functions, types and macros. These are directly available in Julia.
 (((Base)))
 
-Julia provides also a large number of specialized modules in its Standard Library (+Dates+, +Distributed Computing+, +Linear Algebra+, +Profiling+, +Random Numbers+, ...). Functions, types and macros defined in the Standard Library have to be imported before they can be used:
+Julia provides also a large number of specialized modules in its Standard Library (Dates, Distributed Computing, Linear Algebra, Profiling, Random Numbers, ...). Functions, types and macros defined in the Standard Library have to be imported before they can be used:
 
 * +import _Module_+ imports the module, and +_Module.fn_(x)+ calls the function +_fn_+
 (((import)))((("keyword", "import", see="import")))
@@ -13,7 +13,7 @@ Julia provides also a large number of specialized modules in its Standard Librar
 
 Additional functionality can be added from a growing collection of packages (https://juliaobserver.com).
 
-This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/stable/.
+This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org/en/v1/.
 
 === Measuring Performance
 
@@ -41,9 +41,11 @@ ____
 There ain't no such thing as a free lunch!
 ____
 
-[WARNING]
+[TIP]
 ====
-A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure.
+A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure, otherwise the compilation time is measured as well.
+
+The package +BenchmarkTools+ (https://github.com/JuliaCI/BenchmarkTools.jl) provides the macro +@btime+ that does benchmarking the right way. So just use it!
 ====
 
 
@@ -151,7 +153,7 @@ Rewrite +avoids+ using sets.
 Complex numbers are also supported in Julia. The global constant +im+ is bound to the complex number latexmath:[$\mathrm{i}$], representing the principal square root of latexmath:[$-1$].
 (((complex numbers)))(((im)))
 
-We can now verify the Euler's identity:
+We can now verify Euler's identity,
 (((Euler's identity)))
 
 [source,@julia-repl-test]
@@ -160,7 +162,7 @@ julia> ℯ^(im*π)+1
 0.0 + 1.2246467991473532e-16im
 ----
 
-The symbol +ℯ+ (+\euler TAB+) is the base of the natural logarithm.
+The symbol +ℯ+ (+\euler TAB+) is the base of natural logarithms.
 (((ℯ))) 
 
 Let's illustrate the complex nature of trigonometric functions:
@@ -229,7 +231,7 @@ We can extract the following info from a regexmatch object:
 * the entire substring matched: +m.match+
 * the captured substrings as an array of strings: +m.captures+
 * the offset at which the whole match begins: +m.offset+
-* the offsets of the captured substrings as a vector: +m.offsets+
+* the offsets of the captured substrings as an array: +m.offsets+
 
 [source,@julia-repl-test chap20]
 ----
@@ -306,7 +308,7 @@ julia> a = [1 2 3; 4 5 6]
  4  5  6
 ----
 
-You can use square brackets as usual to address indivual elements:
+You can use square brackets to address individual elements:
 (((square brackets)))
 
 [source,@julia-repl-test chap20]
@@ -345,7 +347,7 @@ julia> ℯ.^(im*u)
 
 === Interfaces
 
-Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods to build upon these behaviors.
+Julia specifies some informal interfaces to define behaviors, i.e. methods with a specific goal. When you extend such a method for a type, objects of that type can be used to build upon these behaviors.
 (((interface)))
 
 [quote]
@@ -355,7 +357,7 @@ ____
 
 In <<one_more_example>> we implemented the +fib+ function returning the latexmath:[\(n\)]th element of the Fibonnaci sequence.
 
-Let's make an iterator that returns lazily the Fibonacci sequence:
+Looping over the values of a collection, called iteration, is such an interface. Let's make an iterator that returns lazily the Fibonacci sequence:
 (((iterator)))(((Fibonacci)))((("type", "programmer-defined", "Fibonacci", see="Fibonacci")))(((iterate)))((("function", "Base", "iterate", see="iterate")))
 
 [source,@julia-setup chap20]
@@ -404,7 +406,7 @@ while next !== nothing
 end
 ----
 
-This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.
+This is a great example how a well defined interface allows an implementation to use all the functions that are aware of the interface.
 
 
 === Interactive Utilities
@@ -419,13 +421,10 @@ Let's give a simple example:
 
 [source,@julia-setup chap20]
 ----
-@noinline function squaresum(a::Float64, b::Float64)
+function squaresum(a::Float64, b::Float64)
     a^2 + b^2
 end
 ----
-
-The +@noinline+ macro prohibits the inlining of the function call.
-(((@noinline)))((("macro", "Base", "@noinline", see="@noinline")))
 
 The first step is to look at the lowered code:
 (((@code_lowered)))((("macro", "InteractiveUtils", "@code_lowered", see="@code_lowered")))
@@ -436,15 +435,14 @@ julia> using InteractiveUtils
 
 julia> @code_lowered squaresum(3.0, 4.0)
 CodeInfo(
-  1 ─      $(Expr(:meta, :noinline))
-2 │   %2 = (Core.apply_type)(Base.Val, 2)
-  │   %3 = (%2)()
-  │   %4 = (Base.literal_pow)(:^, a, %3)
-  │   %5 = (Core.apply_type)(Base.Val, 2)
-  │   %6 = (%5)()
-  │   %7 = (Base.literal_pow)(:^, b, %6)
-  │   %8 = %4 + %7
-  └──      return %8
+1 ─ %1 = (Core.apply_type)(Base.Val, 2)
+│   %2 = (%1)()
+│   %3 = (Base.literal_pow)(:^, a, %2)
+│   %4 = (Core.apply_type)(Base.Val, 2)
+│   %5 = (%4)()
+│   %6 = (Base.literal_pow)(:^, b, %5)
+│   %7 = %3 + %6
+└──      return %7
 )
 ----
 
@@ -458,39 +456,21 @@ The next step adds type information:
 ----
 julia> @code_typed squaresum(3.0, 4.0)
 CodeInfo(
-2 1 ─ %1 = (Base.mul_float)(a, a)::Float64
-  │   %2 = (Base.mul_float)(b, b)::Float64
-  │   %3 = (Base.add_float)(%1, %2)::Float64
-  └──      return %3
+1 ─ %1 = (Base.mul_float)(a, a)::Float64
+│   %2 = (Base.mul_float)(b, b)::Float64
+│   %3 = (Base.add_float)(%1, %2)::Float64
+└──      return %3
 ) => Float64
 ----
 
 We see that the type of the intermediate results and the return value is correctly inferred.
 
-This representation of the code is transformed in LLVM code:
+This representation of the code is transformed into LLVM code:
 (((LLVM code)))(((@code_llvm)))((("macro", "InteractiveUtils", "@code_llvm", see="@code_llvm")))
 
-[source,@julia-repl-test chap20]
+[source,@julia-repl chap20]
 ----
-julia> @code_llvm squaresum(3.0, 4.0)
-
-; Function squaresum
-; Location: none:2
-define double @julia_squaresum_39479(double, double) {
-top:
-; Function literal_pow; {
-; Location: intfuncs.jl:243
-; Function *; {
-; Location: float.jl:399
-  %2 = fmul double %0, %0
-  %3 = fmul double %1, %1
-;}}
-; Function +; {
-; Location: float.jl:395
-  %4 = fadd double %2, %3
-;}
-  ret double %4
-}
+@code_llvm squaresum(3.0, 4.0)
 ----
 
 And finally the _machine code_ is generated:
@@ -500,22 +480,18 @@ And finally the _machine code_ is generated:
 ----
 julia> @code_native squaresum(3.0, 4.0)
 	.section	__TEXT,__text,regular,pure_instructions
-; Function squaresum {
-; Location: none:2
-; Function literal_pow; {
-; Location: intfuncs.jl:243
-; Function *; {
-; Location: none:2
+; ┌ @ none:2 within `squaresum'
+; │┌ @ intfuncs.jl:243 within `literal_pow'
+; ││┌ @ none:2 within `*'
 	vmulsd	%xmm0, %xmm0, %xmm0
 	vmulsd	%xmm1, %xmm1, %xmm1
-;}}
-; Function +; {
-; Location: float.jl:395
+; │└└
+; │┌ @ float.jl:395 within `+'
 	vaddsd	%xmm1, %xmm0, %xmm0
-;}
+; │└
 	retl
 	nopl	(%eax)
-;}
+; └
 ----
 
 === Debugging

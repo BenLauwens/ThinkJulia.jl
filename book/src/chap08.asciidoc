@@ -72,7 +72,7 @@ julia> fruit[end-1]
 ----
 
 But the value of the index has to be an integer. Otherwise you get:
-(((MethodError)))((("error", "Base", "MethodError", see="MethodError")))
+(((MethodError)))((("error", "Core", "MethodError", see="MethodError")))
 
 [source,@julia-repl-test chap08]
 ----
@@ -580,7 +580,7 @@ ERROR: BoundsError: attempt to access "pots"
 ----
 
 This time a +BoundsError+ has been thrown. The value of +i+ is 5, which is out a range for the string +"pots"+.
-(((BoundsError)))((("error", "Base", "BoundsError", see="BoundsError")))
+(((BoundsError)))((("error", "Core", "BoundsError", see="BoundsError")))
 
 ===== Exercise 8-6
 

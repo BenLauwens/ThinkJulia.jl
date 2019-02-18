@@ -6,7 +6,7 @@ Now that we know how to create new composite types, the next step is to write fu
 [[time]]
 === Time
 
-As another example of a composite type, we’ll define a +mutable struct+ called +MyTime+ that records the time of day. The struct definition looks like this:
+As another example of a composite type, we’ll define a +struct+ called +MyTime+ that records the time of day. The struct definition looks like this:
 (((MyTime)))((("type", "programmer-defined", "MyTime", see="MyTime")))
 
 [source,@julia-setup chap16]
@@ -16,14 +16,14 @@ Represents the time of day.
 
 fields: hour, minute, second
 """
-mutable struct MyTime
+struct MyTime
     hour
     minute
     second
 end
 ----
 
-The name +Time+ is already used in Julia and to avoid a name clash, I have chosen +MyTime+. We can create a new mytime object:
+The name +Time+ is already used in Julia and to avoid a name clash, I have chosen +MyTime+. We can create a new +MyTime+ object:
 (((Time)))((("type", "Dates", "Time", see="Time")))
 
 [source,@julia-repl-test chap16]
@@ -32,7 +32,7 @@ julia> time = MyTime(11, 59, 30)
 MyTime(11, 59, 30)
 ----
 
-The object diagram for the mytime object looks like <<fig16-1>>.
+The object diagram for the +MyTime+ object looks like <<fig16-1>>.
 
 [[fig16-1]]
 .Object diagram
@@ -40,12 +40,12 @@ image::images/fig161.svg[]
 
 ===== Exercise 16-1
 
-Write a function called +printtime+ that takes a mytime object and prints it in the form +hour:minute:second+. The +@printf+ macro of the StdLib module +Printf+ prints an integer with the format sequence '%02d' using at least two digits, including a leading zero if necessary.
+Write a function called +printtime+ that takes a +MyTime+ object and prints it in the form +hour:minute:second+. The +@printf+ macro of the StdLib module +Printf+ prints an integer with the format sequence '%02d' using at least two digits, including a leading zero if necessary.
 (((printtime)))((("function", "programmer-defined", "printtime", see="printtime")))
 
 ===== Exercise 16-2
 
-Write a boolean function called +isafter+ that takes two mytime objects, +t1+ and +t2+, and returns +true+ if +t1+ follows +t2+ chronologically and +false+ otherwise. Challenge: don’t use an +if+ statement.
+Write a boolean function called +isafter+ that takes two +MyTime+ objects, +t1+ and +t2+, and returns +true+ if +t1+ follows +t2+ chronologically and +false+ otherwise. Challenge: don’t use an +if+ statement.
 (((isafter)))((("function", "programmer-defined", "isafter", see="isafter")))
 
 
@@ -116,7 +116,7 @@ Although this function is correct, it is starting to get big. We will see a shor
 Sometimes it is useful for a function to modify the objects it gets as parameters. In that case, the changes are visible to the caller. Functions that work this way are called _modifiers_.
 (((modifier)))
 
-+increment!+, which adds a given number of seconds to a mytime object, can be written naturally as a modifier. Here is a rough draft:
++increment!+, which adds a given number of seconds to a +MyTime+ object, can be written naturally as a modifier. Here is a rough draft:
 (((increment!)))((("function", "programmer-defined", "increment!", see="increment!")))
 
 [source,@julia-setup chap16]
@@ -136,7 +136,7 @@ end
 
 The first line performs the basic operation; the remainder deals with the special cases we saw before.
 
-Is this function correct? What happens if seconds is much greater than 60?
+Is this function correct? What happens if +seconds+ is much greater than 60?
 
 In that case, it is not enough to carry once; we have to keep doing it until +time.second+ is less than sixty. One solution is to replace the +if+ statements with +while+ statements. That would make the function correct, but not very efficient. 
 
@@ -151,7 +151,7 @@ In general, I recommend that you write pure functions whenever it is reasonable 
 
 ===== Exercise 16-4
 
-Write a “pure” version of +increment+ that creates and returns a new mytime object rather than modifying the parameter.
+Write a “pure” version of +increment+ that creates and returns a new +MyTime+ object rather than modifying the parameter.
 
 
 [[prototyping_versus_planning]]
@@ -167,9 +167,9 @@ An alternative is _designed development_, in which high-level insight into the p
 
 When we wrote +addtime+ and +increment!+, we were effectively doing addition in base 60, which is why we had to carry from one column to the next.
 
-This observation suggests another approach to the whole problem—we can convert mytime objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.
+This observation suggests another approach to the whole problem—we can convert +MyTime+ objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.
 
-Here is a function that converts mytimes to integers:
+Here is a function that converts +MyTime+s to integers:
 (((timetoint)))((("function", "programmer-defined", "timetoint", see="timetoint")))
 
 [source,@julia-setup chap16]
@@ -180,7 +180,7 @@ function timetoint(time)
 end
 ----
 
-And here is a function that converts an integer to a mytime (recall that +divrem+ divides the first argument by the second and returns the quotient and remainder as a tuple):
+And here is a function that converts an integer to a +MyTime+ (recall that +divrem+ divides the first argument by the second and returns the quotient and remainder as a tuple):
 (((inttotime)))((("function", "programmer-defined", "inttotime", see="inttotime")))
 
 [source,@julia-setup chap16]
@@ -215,20 +215,20 @@ In some ways, converting from base 60 to base 10 and back is harder than just de
 
 But if we have the insight to treat times as base 60 numbers and make the investment of writing the conversion functions (+timetoint+ and +inttotime+), we get a program that is shorter, easier to read and debug, and more reliable.
 
-It is also easier to add features later. For example, imagine subtracting two mytimes to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.
+It is also easier to add features later. For example, imagine subtracting two +MyTime+s to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.
 
 Ironically, sometimes making a problem harder (or more general) makes it easier (because there are fewer special cases and fewer opportunities for error).
 
 [[chap16_debugging]]
 === Debugging
 
-A mytime object is well-formed if the values of +minute+ and +second+ are between 0 and 60 (including 0 but not 60) and if +hour+ is positive. +hour+ and +minute+ should be integral values, but we might allow +second+ to have a fraction part.
+A +MyTime+ object is well-formed if the values of +minute+ and +second+ are between 0 and 60 (including 0 but not 60) and if +hour+ is positive. +hour+ and +minute+ should be integral values, but we might allow +second+ to have a fraction part.
 (((debugging)))
 
 Requirements like these are called _invariants_ because they should always be true. To put it a different way, if they are not true, something has gone wrong.
 (((invariant)))
 
-Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like +isvalidtime+ that takes a mytime object and returns +false+ if it violates an invariant:
+Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like +isvalidtime+ that takes a +MyTime+ object and returns +false+ if it violates an invariant:
 (((isvalidtime)))((("function", "programmer-defined", "isvalidtime", see="isvalidtime")))
 
 [source,@julia-setup chap16]
@@ -296,7 +296,7 @@ A style of program design in which the majority of functions are pure.
 (((functional programming style)))
 
 invariant::
-A condition that should always be true during the execution of a program.
+A condition that should never change during the execution of a program.
 (((invariant)))
 
 
@@ -305,15 +305,15 @@ A condition that should always be true during the execution of a program.
 [[ex16-1]]
 ===== Exercise 16-6
 
-Write a function called +multime+ that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.
+Write a function called +multime+ that takes a +MyTime+ object and a number and returns a new +MyTime+ object that contains the product of the original +MyTime+ and the number.
 (((multime)))((("function", "programmer-defined", "multime", see="multime")))
 
-Then use +multime+ to write a function that takes a mytime object that represents the finishing time in a race, and a number that represents the distance, and returns a mytime object that represents the average pace (time per mile).
+Then use +multime+ to write a function that takes a +MyTime+ object that represents the finishing time in a race, and a number that represents the distance, and returns a +MyTime+ object that represents the average pace (time per mile).
 
 [[ex16-2]]
 ===== Exercise 16-7
 
-Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/stable/stdlib/Dates/.
+Julia provides time objects that are similar to the +MyTime+ objects in this chapter, but they provide a rich set of function and operators. Read the documentation at https://docs.julialang.org/en/v1/stdlib/Dates/.
 
 . Write a program that gets the current date and prints the day of the week.
 

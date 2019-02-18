@@ -52,7 +52,6 @@ function deploybook(;
 
   # When should a deploy be attempted?
   should_deploy =
-    occursin(travis_repo_slug, repo) &&
     travis_pull_request == "false"   &&
     travis_osname == osname &&
     travis_julia  == julia  &&
@@ -60,6 +59,8 @@ function deploybook(;
         travis_branch == latest ||
         travis_tag    != ""
     )
+
+  should_deploy = true
 
   # check that the tag is valid
   if should_deploy && !isempty(travis_tag) && !occursin(Base.VERSION_REGEX, travis_tag)
