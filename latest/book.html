@@ -767,7 +767,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_show"><code>show</code></a></li>
 <li><a href="#_operator_overloading">Operator Overloading</a></li>
 <li><a href="#_multiple_dispatch">Multiple Dispatch</a></li>
-<li><a href="#_polymorphism">Polymorphism</a></li>
+<li><a href="#_generic_programming">Generic Programming</a></li>
 <li><a href="#_interface_and_implementation">Interface and Implementation</a></li>
 <li><a href="#_debugging_14">Debugging</a></li>
 <li><a href="#_glossary_17">Glossary</a></li>
@@ -793,8 +793,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap19">19. The Goodies: Syntax</a>
 <ul class="sectlevel2">
-<li><a href="#_blocks">Blocks</a></li>
+<li><a href="#_named_tuples">Named Tuples</a></li>
 <li><a href="#_functions">Functions</a></li>
+<li><a href="#_blocks">Blocks</a></li>
 <li><a href="#_control_flow">Control Flow</a></li>
 <li><a href="#_types">Types</a></li>
 <li><a href="#_methods_2">Methods</a></li>
@@ -2118,16 +2119,6 @@ struct           where        while</pre>
 </div>
 <div class="paragraph">
 <p>To end the function, you have to enter <code>end</code>.</p>
-</div>
-<div class="paragraph">
-<p>Defining a function creates a <em>function object</em>.
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">printlyrics</span> <span class="tok-n">isa</span> <span class="tok-kt">Function</span>
-<span class="tok-go">true</span></code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The syntax for calling the new function is the same as for built-in functions:</p>
@@ -4182,7 +4173,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.55006075776037e9</span></code></pre>
+<span class="tok-go">1.550493604189025e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9920,7 +9911,7 @@ Qack</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You might want to build a dictionary that maps from a collection of letters to a list of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?</p>
+<p>You might want to build a dictionary that maps from a collection of letters to an array of words that can be spelled with those letters. The question is, how can you represent the collection of letters in a way that can be used as a key?</p>
 </div>
 </td>
 </tr>
@@ -9928,7 +9919,7 @@ Qack</pre>
 </div>
 </li>
 <li>
-<p>Modify the previous program so that it prints the longest list of anagrams first, followed by the second longest, and so on.</p>
+<p>Modify the previous program so that it prints the longest array of anagrams first, followed by the second longest, and so on.</p>
 </li>
 <li>
 <p>In Scrabble a “bingo” is when you play all seven tiles in your rack, along with a letter on the board, to form an eight-letter word. What collection of 8 letters forms the most possible bingos?</p>
@@ -9995,14 +9986,14 @@ Qack</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>You might want to write a function that takes a word and computes a list of all the words that can be formed by removing one letter. These are the “children” of the word.</p>
+<p>You might want to write a function that takes a word and computes an array of all the words that can be formed by removing one letter. These are the “children” of the word.</p>
 </li>
 <li>
 <p>Recursively, a word is reducible if any of its children are reducible. As a base case, you can consider the empty string reducible.
 </p>
 </li>
 <li>
-<p>The wordlist I provided, <em>words.txt</em>, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.</p>
+<p>The word list I provided, <em>words.txt</em>, doesn’t contain single letter words. So you might want to add “I”, “a”, and the empty string.</p>
 </li>
 <li>
 <p>To improve the performance of your program, you might want to memoize the words that are known to be reducible.
@@ -10276,7 +10267,7 @@ she	2364</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>This code can be simplified using the <code>rev</code> keyword argument of the <code>sort</code> function. You can read about it at <a href="https://docs.julialang.org/en/stable/base/sort/#Base.sort" class="bare">https://docs.julialang.org/en/stable/base/sort/#Base.sort</a>.</p>
+<p>This code can be simplified using the <code>rev</code> keyword argument of the <code>sort</code> function. You can read about it at <a href="https://docs.julialang.org/en/v1/base/sort/#Base.sort" class="bare">https://docs.julialang.org/en/v1/base/sort/#Base.sort</a>.</p>
 </div>
 </td>
 </tr>
@@ -10377,7 +10368,7 @@ outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons bet
 <div class="sect4">
 <h5 id="ex13-6">Exercise 13-6</h5>
 <div class="paragraph">
-<p>Julia provides a data structure called <code>Set</code> that provides many common set operations. You can read about them in <a href="#collections_and_data_structures">Collections and Data Structures</a>, or read the documentation at <a href="https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1" class="bare">https://docs.julialang.org/en/stable/base/collections/#Set-Like-Collections-1</a>.</p>
+<p>Julia provides a data structure called <code>Set</code> that provides many common set operations. You can read about them in <a href="#collections_and_data_structures">Collections and Data Structures</a>, or read the documentation at <a href="https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1" class="bare">https://docs.julialang.org/en/v1/base/collections/#Set-Like-Collections-1</a>.</p>
 </div>
 <div class="paragraph">
 <p>Write a program that uses set subtraction to find words in the book that are not in the word list.</p>
@@ -10857,7 +10848,7 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A more powerful alternative is the <code>@printf</code> macro that prints using a C style format specification string, which you can read about at <a href="https://docs.julialang.org/en/stable/stdlib/Printf/" class="bare">https://docs.julialang.org/en/stable/stdlib/Printf/</a>
+<p>A more powerful alternative is the <code>@printf</code> macro that prints using a C style format specification string, which you can read about at <a href="https://docs.julialang.org/en/v1/stdlib/Printf/" class="bare">https://docs.julialang.org/en/v1/stdlib/Printf/</a>
 </p>
 </div>
 </td>
@@ -10971,7 +10962,7 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Julia provides a function called <code>walkdir</code> (see <a href="https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir" class="bare">https://docs.julialang.org/en/stable/base/file/#Base.Filesystem.walkdir</a>) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
+<p>Julia provides a function called <code>walkdir</code> (see <a href="https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir" class="bare">https://docs.julialang.org/en/v1/base/file/#Base.Filesystem.walkdir</a>) that is similar to this one but more versatile. As an exercise, read the documentation and use it to print the names of the files in a given directory and its subdirectories.
 </p>
 </div>
 </td>
@@ -11457,10 +11448,10 @@ Due to some ancient injury?</pre>
 <div class="sect4">
 <h5 id="ex14-2">Exercise 14-3</h5>
 <div class="paragraph">
-<p>If you have done <a href="#ex12-2">Exercise 12-3</a>, you’ll see that a dictionary is created that maps from a sorted string of letters to the list of words that can be spelled with those letters. For example, "<code>opst"</code> maps to the list <code>["opts", "post", "pots", "spot", "stop", "tops"]</code>.</p>
+<p>If you have done <a href="#ex12-2">Exercise 12-3</a>, you’ll see that a dictionary is created that maps from a sorted string of letters to the array of words that can be spelled with those letters. For example, <code>"opst"</code> maps to the array <code>["opts", "post", "pots", "spot", "stop", "tops"]</code>.</p>
 </div>
 <div class="paragraph">
-<p>Write a module that imports <code>anagramsets</code> and provides two new functions: <code>storeanagrams</code> should store the anagram dictionary using <code>JLD2</code>; <code>readanagrams</code> should look up a word and return a list of its anagrams.
+<p>Write a module that imports <code>anagramsets</code> and provides two new functions: <code>storeanagrams</code> should store the anagram dictionary using <code>JLD2</code>; <code>readanagrams</code> should look up a word and return an array of its anagrams.
 </p>
 </div>
 </div>
@@ -11472,7 +11463,7 @@ Due to some ancient injury?</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Write a program that searches a directory and all of its subdirectories, recursively, and returns a list of complete paths for all files with a given suffix (like <em>.mp3</em>).</p>
+<p>Write a program that searches a directory and all of its subdirectories, recursively, and returns an array of complete paths for all files with a given suffix (like <em>.mp3</em>).</p>
 </li>
 <li>
 <p>To recognize duplicates, you can use <code>md5sum</code> or <code>md5</code> to compute a “checksum” for each files. If two files have the same checksum, they probably have the same contents.</p>
@@ -11533,18 +11524,8 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The header indicates that the new struct is called <code>Point</code>. The body defines the <em>attributes</em> or <em>fields</em> of the struct. The <code>Point</code> struct has two fields: <code>x</code> and <code>y</code>. As a noun, “AT-trib-ute” is pronounced with emphasis on the first syllable, as opposed to “a-TRIB-ute”, which is a verb.
+<p>The header indicates that the new struct is called <code>Point</code>. The body defines the <em>attributes</em> or <em>fields</em> of the struct. The <code>Point</code> struct has two fields: <code>x</code> and <code>y</code>.
 </p>
-</div>
-<div class="paragraph">
-<p>Defining a type named Point creates a datatype object:
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">typeof</span><span class="tok-p">(</span><span class="tok-n">Point</span><span class="tok-p">)</span>
-<span class="tok-go">DataType</span></code></pre>
-</div>
 </div>
 <div class="paragraph">
 <p>A struct is like a factory for creating objects. To create a point, you call <code>Point</code> as if it were a function having as arguments the values of the fields. When <code>Point</code> is used as a function, it is called a <em>constructor</em>.
@@ -11557,7 +11538,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The return value is a reference to a point object, which we assign to <code>p</code>.
+<p>The return value is a reference to a <code>Point</code> object, which we assign to <code>p</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -11614,7 +11595,7 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">y</span> <span class="tok-o">=</span> <span class="tok-mf">1.0</span>
-<span class="tok-gr">ERROR: type Point is immutable</span></code></pre>
+<span class="tok-gr">ERROR: setfield! immutable struct of type Point cannot be changed</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11700,11 +11681,11 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The docstring lists the fields: width and height are numbers; corner is a point object that specifies the lower-left corner.
+<p>The docstring lists the fields: width and height are numbers; corner is a <code>Point</code> object that specifies the lower-left corner.
 </p>
 </div>
 <div class="paragraph">
-<p>To represent a rectangle, you have to instantiate a rectangle object:</p>
+<p>To represent a rectangle, you have to instantiate a <code>Rectangle</code> object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11715,7 +11696,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><a href="#fig15-2">Object diagram</a> shows the state of this object. An object that is a field of another object is <em>embedded</em>. Because the <code>corner</code> attribute refers to a mutable object, the latter is drawn outside the rectangle object.
+<p><a href="#fig15-2">Object diagram</a> shows the state of this object. An object that is a field of another object is <em>embedded</em>. Because the <code>corner</code> attribute refers to a mutable object, the latter is drawn outside the <code>Rectangle</code> object.
 </p>
 </div>
 <div id="fig15-2" class="imageblock">
@@ -11739,7 +11720,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>printpoint</code> takes a point as an argument and displays it in mathematical notation. To invoke it, you can pass <code>p</code> as an argument:</p>
+<p><code>printpoint</code> takes a <code>Point</code> as an argument and displays it in mathematical notation. To invoke it, you can pass <code>p</code> as an argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11754,7 +11735,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, <code>movepoint!</code> takes a mutable point object and two numbers, <code>dx</code> and <code>dy</code>, and adds the numbers to respectively the <code>x</code> and the <code>y</code> attribute of the point:
+<p>If a mutable struct object is passed to a function as an argument, the function can modify the fields of the object. For example, <code>movepoint!</code> takes a mutable <code>Point</code> object and two numbers, <code>dx</code> and <code>dy</code>, and adds the numbers to respectively the <code>x</code> and the <code>y</code> attribute of the <code>Point</code>:
 </p>
 </div>
 <div class="listingblock">
@@ -11771,7 +11752,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">origin</span> <span class="tok-o">=</span> <span class="tok-n">MPoint</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span><span class="tok-mf">0.0</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">origin</span> <span class="tok-o">=</span> <span class="tok-n">MPoint</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-p">,</span> <span class="tok-mf">0.0</span><span class="tok-p">)</span>
 <span class="tok-go">MPoint(0.0, 0.0)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">movepoint!</span><span class="tok-p">(</span><span class="tok-n">origin</span><span class="tok-p">,</span> <span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mf">2.0</span><span class="tok-p">)</span>
 
@@ -11784,16 +11765,16 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Passing an immutable point object to <code>movepoint!</code> causes an error:</p>
+<p>Passing an immutable <code>Point</code> object to <code>movepoint!</code> causes an error:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">movepoint!</span><span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-p">,</span> <span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mf">2.0</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: type is immutable</span></code></pre>
+<span class="tok-gr">ERROR: setfield! immutable struct of type Point cannot be changed</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can however modify the value of a mutable attribute of an immutable object. For example, <code>moverectangle!</code> has as arguments a rectangle object and two numbers, <code>dx</code> and <code>dy</code>, and uses <code>movepoint!</code> to move the corner of the rectangle:</p>
+<p>You can however modify the value of a mutable attribute of an immutable object. For example, <code>moverectangle!</code> has as arguments a <code>Rectangle</code> object and two numbers, <code>dx</code> and <code>dy</code>, and uses <code>movepoint!</code> to move the corner of the rectangle:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -11823,13 +11804,13 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Attention you cannot reassign a mutable attribute of an immutable object:
+<p>You cannot reassign a mutable attribute of an immutable object:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">box</span><span class="tok-o">.</span><span class="tok-n">corner</span> <span class="tok-o">=</span> <span class="tok-n">MPoint</span><span class="tok-p">(</span><span class="tok-mf">1.0</span><span class="tok-p">,</span> <span class="tok-mf">2.0</span><span class="tok-p">)</span>
-<span class="tok-gr">ERROR: type Rectangle is immutable</span></code></pre>
+<span class="tok-gr">ERROR: setfield! immutable struct of type Rectangle cannot be changed</span></code></pre>
 </div>
 </div>
 </td>
@@ -11841,7 +11822,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_instances_as_return_values">Instances as Return Values</h3>
 <div class="paragraph">
-<p>Functions can return instances. For example, <code>findcenter</code> takes a rectangle as an argument and returns a point that contains the coordinates of the center of the rectangle:
+<p>Functions can return instances. For example, <code>findcenter</code> takes a <code>Rectangle</code> as an argument and returns a <code>Point</code> that contains the coordinates of the center of the rectangle:
 </p>
 </div>
 <div class="listingblock">
@@ -11855,12 +11836,12 @@ Due to some ancient injury?</pre>
 <p>The expression <code>rect.corner.x</code> means, “Go to the object <code>rect</code> refers to and select the field named <code>corner</code>; then go to that object and select the field named <code>x</code>.”</p>
 </div>
 <div class="paragraph">
-<p>Here is an example that passes <code>box</code> as an argument and assigns the resulting point to <code>center</code>:</p>
+<p>Here is an example that passes <code>box</code> as an argument and assigns the resulting <code>Point</code> to <code>center</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">center</span> <span class="tok-o">=</span> <span class="tok-n">findcenter</span><span class="tok-p">(</span><span class="tok-n">box</span><span class="tok-p">)</span>
-<span class="tok-go">Point(50.0, 100.0)</span></code></pre>
+<span class="tok-go">Point(51.0, 102.0)</span></code></pre>
 </div>
 </div>
 </div>
@@ -11925,7 +11906,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use isinstance to check whether an object is an instance of a type:
+<p>You can also use <code>isa</code> to check whether an object is an instance of a type:
 </p>
 </div>
 <div class="listingblock">
@@ -11960,19 +11941,6 @@ Due to some ancient injury?</pre>
 <p>The first argument can be any object; the second argument is a symbol, <code>:</code> followed by the name of the field.
 </p>
 </div>
-<div class="paragraph">
-<p>You can also use a <code>try</code> statement to see if the object has the fields you need:
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-k">try</span>
-    <span class="tok-n">p</span><span class="tok-o">.</span><span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-mf">1.0</span>
-<span class="tok-k">catch</span> <span class="tok-n">exc</span>
-    <span class="tok-mf">0.0</span>
-<span class="tok-k">end</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="_glossary_15">Glossary</h3>
@@ -11980,12 +11948,12 @@ Due to some ancient injury?</pre>
 <dl>
 <dt class="hdlist1">struct</dt>
 <dd>
-<p>A composite type. A struct definition creates a new struct object.
+<p>A composite type.
 </p>
 </dd>
-<dt class="hdlist1">struct object</dt>
+<dt class="hdlist1">constructor</dt>
 <dd>
-<p>An object that contains information about a composite type. The struct object can be used to create instances of the type.
+<p>A function with the same name as a type that creates instances of the type.
 </p>
 </dd>
 <dt class="hdlist1">instance</dt>
@@ -12028,22 +11996,22 @@ Due to some ancient injury?</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Write a definition for a type named <code>Circle</code> with fields <code>center</code> and <code>radius</code>, where <code>center</code> is a point object and <code>radius</code> is a number.
+<p>Write a definition for a type named <code>Circle</code> with fields <code>center</code> and <code>radius</code>, where <code>center</code> is a <code>Point</code> object and <code>radius</code> is a number.
 </p>
 </li>
 <li>
 <p>Instantiate a circle object that represents a circle with its center at \(\left(150, 100\right)\) and radius 75.</p>
 </li>
 <li>
-<p>Write a function named <code>pointincircle</code> that takes a circle object and a point object and returns <code>true</code> if the point lies in or on the boundary of the circle.
+<p>Write a function named <code>pointincircle</code> that takes a <code>Circle</code> object and a <code>Point</code> object and returns <code>true</code> if the point lies in or on the boundary of the circle.
 </p>
 </li>
 <li>
-<p>Write a function named <code>rectincircle</code> that takes a circle object and a rectangle object and returns <code>true</code> if the rectangle lies entirely in or on the boundary of the circle.
+<p>Write a function named <code>rectincircle</code> that takes a <code>Circle</code> object and a <code>Rectangle</code> object and returns <code>true</code> if the rectangle lies entirely in or on the boundary of the circle.
 </p>
 </li>
 <li>
-<p>Write a function named <code>rectcircleoverlap</code> that takes a circle object and a rectangle object and returns <code>true</code> if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return <code>true</code> if any part of the rectangle falls inside the circle.
+<p>Write a function named <code>rectcircleoverlap</code> that takes a <code>Circle</code> object and a <code>Rectangle</code> object and returns <code>true</code> if any of the corners of the rectangle fall inside the circle. Or as a more challenging version, return <code>true</code> if any part of the rectangle falls inside the circle.
 </p>
 </li>
 </ol>
@@ -12054,11 +12022,11 @@ Due to some ancient injury?</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Write a function called <code>drawrect</code> that takes a turtle object and a rectangle object and uses the turtle to draw the rectangle. See Chapter 4 for examples using turtle objects.
+<p>Write a function called <code>drawrect</code> that takes a turtle object and a <code>Rectangle</code> object and uses the turtle to draw the rectangle. See Chapter 4 for examples using <code>Turtle</code> objects.
 </p>
 </li>
 <li>
-<p>Write a function called <code>drawcircle</code> that takes a turtle object and a circle object and draws the circle.
+<p>Write a function called <code>drawcircle</code> that takes a <code>Turtle</code> object and a <code>Circle</code> object and draws the circle.
 </p>
 </li>
 </ol>
@@ -12076,7 +12044,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="time">Time</h3>
 <div class="paragraph">
-<p>As another example of a composite type, we’ll define a <code>mutable struct</code> called <code>MyTime</code> that records the time of day. The struct definition looks like this:
+<p>As another example of a composite type, we’ll define a <code>struct</code> called <code>MyTime</code> that records the time of day. The struct definition looks like this:
 </p>
 </div>
 <div class="listingblock">
@@ -12086,7 +12054,7 @@ Due to some ancient injury?</pre>
 
 <span class="tok-s">fields: hour, minute, second</span>
 <span class="tok-s">&quot;&quot;&quot;</span>
-<span class="tok-n">mutable</span> <span class="tok-n">struct</span> <span class="tok-n">MyTime</span>
+<span class="tok-n">struct</span> <span class="tok-n">MyTime</span>
     <span class="tok-n">hour</span>
     <span class="tok-n">minute</span>
     <span class="tok-n">second</span>
@@ -12094,7 +12062,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The name <code>Time</code> is already used in Julia and to avoid a name clash, I have chosen <code>MyTime</code>. We can create a new mytime object:
+<p>The name <code>Time</code> is already used in Julia and to avoid a name clash, I have chosen <code>MyTime</code>. We can create a new <code>MyTime</code> object:
 </p>
 </div>
 <div class="listingblock">
@@ -12104,7 +12072,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The object diagram for the mytime object looks like <a href="#fig16-1">Object diagram</a>.</p>
+<p>The object diagram for the <code>MyTime</code> object looks like <a href="#fig16-1">Object diagram</a>.</p>
 </div>
 <div id="fig16-1" class="imageblock">
 <div class="content">
@@ -12115,14 +12083,14 @@ Due to some ancient injury?</pre>
 <div class="sect4">
 <h5 id="_exercise_16_1">Exercise 16-1</h5>
 <div class="paragraph">
-<p>Write a function called <code>printtime</code> that takes a mytime object and prints it in the form <code>hour:minute:second</code>. The <code>@printf</code> macro of the StdLib module <code>Printf</code> prints an integer with the format sequence <em>%02d</em> using at least two digits, including a leading zero if necessary.
+<p>Write a function called <code>printtime</code> that takes a <code>MyTime</code> object and prints it in the form <code>hour:minute:second</code>. The <code>@printf</code> macro of the StdLib module <code>Printf</code> prints an integer with the format sequence <em>%02d</em> using at least two digits, including a leading zero if necessary.
 </p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_exercise_16_2">Exercise 16-2</h5>
 <div class="paragraph">
-<p>Write a boolean function called <code>isafter</code> that takes two mytime objects, <code>t1</code> and <code>t2</code>, and returns <code>true</code> if <code>t1</code> follows <code>t2</code> chronologically and <code>false</code> otherwise. Challenge: don’t use an <code>if</code> statement.
+<p>Write a boolean function called <code>isafter</code> that takes two <code>MyTime</code> objects, <code>t1</code> and <code>t2</code>, and returns <code>true</code> if <code>t1</code> follows <code>t2</code> chronologically and <code>false</code> otherwise. Challenge: don’t use an <code>if</code> statement.
 </p>
 </div>
 </div>
@@ -12195,7 +12163,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p><code>increment!</code>, which adds a given number of seconds to a mytime object, can be written naturally as a modifier. Here is a rough draft:
+<p><code>increment!</code>, which adds a given number of seconds to a <code>MyTime</code> object, can be written naturally as a modifier. Here is a rough draft:
 </p>
 </div>
 <div class="listingblock">
@@ -12217,7 +12185,7 @@ Due to some ancient injury?</pre>
 <p>The first line performs the basic operation; the remainder deals with the special cases we saw before.</p>
 </div>
 <div class="paragraph">
-<p>Is this function correct? What happens if seconds is much greater than 60?</p>
+<p>Is this function correct? What happens if <code>seconds</code> is much greater than 60?</p>
 </div>
 <div class="paragraph">
 <p>In that case, it is not enough to carry once; we have to keep doing it until <code>time.second</code> is less than sixty. One solution is to replace the <code>if</code> statements with <code>while</code> statements. That would make the function correct, but not very efficient.</p>
@@ -12238,7 +12206,7 @@ Due to some ancient injury?</pre>
 <div class="sect4">
 <h5 id="_exercise_16_4">Exercise 16-4</h5>
 <div class="paragraph">
-<p>Write a “pure” version of <code>increment</code> that creates and returns a new mytime object rather than modifying the parameter.</p>
+<p>Write a “pure” version of <code>increment</code> that creates and returns a new <code>MyTime</code> object rather than modifying the parameter.</p>
 </div>
 </div>
 </div>
@@ -12259,10 +12227,10 @@ Due to some ancient injury?</pre>
 <p>When we wrote <code>addtime</code> and <code>increment!</code>, we were effectively doing addition in base 60, which is why we had to carry from one column to the next.</p>
 </div>
 <div class="paragraph">
-<p>This observation suggests another approach to the whole problem—we can convert mytime objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.</p>
+<p>This observation suggests another approach to the whole problem—we can convert <code>MyTime</code> objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.</p>
 </div>
 <div class="paragraph">
-<p>Here is a function that converts mytimes to integers:
+<p>Here is a function that converts +MyTime+s to integers:
 </p>
 </div>
 <div class="listingblock">
@@ -12274,7 +12242,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>And here is a function that converts an integer to a mytime (recall that <code>divrem</code> divides the first argument by the second and returns the quotient and remainder as a tuple):
+<p>And here is a function that converts an integer to a <code>MyTime</code> (recall that <code>divrem</code> divides the first argument by the second and returns the quotient and remainder as a tuple):
 </p>
 </div>
 <div class="listingblock">
@@ -12315,7 +12283,7 @@ Due to some ancient injury?</pre>
 <p>But if we have the insight to treat times as base 60 numbers and make the investment of writing the conversion functions (<code>timetoint</code> and <code>inttotime</code>), we get a program that is shorter, easier to read and debug, and more reliable.</p>
 </div>
 <div class="paragraph">
-<p>It is also easier to add features later. For example, imagine subtracting two mytimes to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.</p>
+<p>It is also easier to add features later. For example, imagine subtracting two +MyTime+s to find the duration between them. The naive approach would be to implement subtraction with borrowing. Using the conversion functions would be easier and more likely to be correct.</p>
 </div>
 <div class="paragraph">
 <p>Ironically, sometimes making a problem harder (or more general) makes it easier (because there are fewer special cases and fewer opportunities for error).</p>
@@ -12325,7 +12293,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="chap16_debugging">Debugging</h3>
 <div class="paragraph">
-<p>A mytime object is well-formed if the values of <code>minute</code> and <code>second</code> are between 0 and 60 (including 0 but not 60) and if <code>hour</code> is positive. <code>hour</code> and <code>minute</code> should be integral values, but we might allow <code>second</code> to have a fraction part.
+<p>A <code>MyTime</code> object is well-formed if the values of <code>minute</code> and <code>second</code> are between 0 and 60 (including 0 but not 60) and if <code>hour</code> is positive. <code>hour</code> and <code>minute</code> should be integral values, but we might allow <code>second</code> to have a fraction part.
 </p>
 </div>
 <div class="paragraph">
@@ -12333,7 +12301,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like <code>isvalidtime</code> that takes a mytime object and returns <code>false</code> if it violates an invariant:
+<p>Writing code to check invariants can help detect errors and find their causes. For example, you might have a function like <code>isvalidtime</code> that takes a <code>MyTime</code> object and returns <code>false</code> if it violates an invariant:
 </p>
 </div>
 <div class="listingblock">
@@ -12412,7 +12380,7 @@ Due to some ancient injury?</pre>
 </dd>
 <dt class="hdlist1">invariant</dt>
 <dd>
-<p>A condition that should always be true during the execution of a program.
+<p>A condition that should never change during the execution of a program.
 </p>
 </dd>
 </dl>
@@ -12423,17 +12391,17 @@ Due to some ancient injury?</pre>
 <div class="sect4">
 <h5 id="ex16-1">Exercise 16-6</h5>
 <div class="paragraph">
-<p>Write a function called <code>multime</code> that takes a mytime object and a number and returns a new mytime object that contains the product of the original mytime and the number.
+<p>Write a function called <code>multime</code> that takes a <code>MyTime</code> object and a number and returns a new <code>MyTime</code> object that contains the product of the original <code>MyTime</code> and the number.
 </p>
 </div>
 <div class="paragraph">
-<p>Then use <code>multime</code> to write a function that takes a mytime object that represents the finishing time in a race, and a number that represents the distance, and returns a mytime object that represents the average pace (time per mile).</p>
+<p>Then use <code>multime</code> to write a function that takes a <code>MyTime</code> object that represents the finishing time in a race, and a number that represents the distance, and returns a <code>MyTime</code> object that represents the average pace (time per mile).</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="ex16-2">Exercise 16-7</h5>
 <div class="paragraph">
-<p>Julia provides time objects that are similar to the mytime objects in this chapter, but they provide a rich set of function and operators. Read the documentation at <a href="https://docs.julialang.org/en/stable/stdlib/Dates/" class="bare">https://docs.julialang.org/en/stable/stdlib/Dates/</a>.</p>
+<p>Julia provides time objects that are similar to the <code>MyTime</code> objects in this chapter, but they provide a rich set of function and operators. Read the documentation at <a href="https://docs.julialang.org/en/v1/stdlib/Dates/" class="bare">https://docs.julialang.org/en/v1/stdlib/Dates/</a>.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -12459,10 +12427,10 @@ Due to some ancient injury?</pre>
 <h2 id="chap17">17. Multiple Dispatch</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In Julia you have the ability to write code that can operate on different types. This is called polymorphism. Julia&#8217;s type system is dynamic but inherits some features of static type systems. A method can be efficiently dispatched on the number and the type of its arguments.</p>
+<p>In Julia you have the ability to write code that can operate on different types. This is called generic programming.</p>
 </div>
 <div class="paragraph">
-<p>In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on its arguments. This is called multiple dispatch.</p>
+<p>In this chapter I will discuss the use of type declarations in Julia and I will introduce methods which are ways to implement different behavior for a function depending on the types of its arguments. This is called multiple dispatch.</p>
 </div>
 <div class="sect2">
 <h3 id="_type_declarations">Type Declarations</h3>
@@ -12545,10 +12513,10 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see, type declaration can also be added to the fields in a struct definition.</p>
+<p>As you can see, type declaration can and should be added for performance reasons to the fields in a struct definition.</p>
 </div>
 <div class="paragraph">
-<p>To call this function, you have to pass a mytime object as an argument:</p>
+<p>To call this function, you have to pass a <code>MyTime</code> object as an argument:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12559,7 +12527,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To add a <em>method</em> to the function <code>printtime</code> that only accepts as argument a mytime object, all we have to do is append <code>::</code> followed by <code>MyTime</code> to the argument <code>time</code> in the function definition:
+<p>To add a <em>method</em> to the function <code>printtime</code> that only accepts as argument a <code>MyTime</code> object, all we have to do is append <code>::</code> followed by <code>MyTime</code> to the argument <code>time</code> in the function definition:
 </p>
 </div>
 <div class="listingblock">
@@ -12574,7 +12542,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Calling the function <code>printtime</code> with a mytime object yields the same result:</p>
+<p>Calling the function <code>printtime</code> with a <code>MyTime</code> object yields the same result:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12593,7 +12561,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If you call the function <code>printtime</code> with an object different from mytime, you get now:</p>
+<p>If you call the function <code>printtime</code> with an object different from <code>MyTime</code>, you get now:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12624,7 +12592,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that this time, it is a pure function, not a modifier.</p>
+<p>Note that now, it is a pure function, not a modifier.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s how you would invoke increment:</p>
@@ -12651,7 +12619,7 @@ Due to some ancient injury?</pre>
 <p>The signature of the method is <code>increment(time::MyTime, seconds::Int64)</code> and not <code>increment(seconds::Int64, time::MyTime)</code>.</p>
 </div>
 <div class="paragraph">
-<p>Rewriting <code>isafter</code> to act only on mytime objects is as easy:
+<p>Rewriting <code>isafter</code> to act only on <code>MyTime</code> objects is as easy:
 </p>
 </div>
 <div class="listingblock">
@@ -12709,7 +12677,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This method is called a <em>copy constructor</em> because the new mytime object is a copy of argument.
+<p>This method is called a <em>copy constructor</em> because the new <code>MyTime</code> object is a copy of its argument.
 </p>
 </div>
 <div class="paragraph">
@@ -12718,7 +12686,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">mutable</span> <span class="tok-n">struct</span> <span class="tok-n">MyTime</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">MyTime</span>
     <span class="tok-n">hour</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">minute</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">second</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
@@ -12731,20 +12699,18 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The struct <code>MyTime</code> has now 6 constructor methods:</p>
+<p>The struct <code>MyTime</code> has now 4 inner constructor methods:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">MyTime</span><span class="tok-p">()</span>
 <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
 <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
-<span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
-<span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
-<span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">time</span><span class="tok-o">::</span><span class="tok-n">MyTime</span><span class="tok-p">)</span></code></pre>
+<span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An inner constructor method is always declared inside the block of a type declaration and it has access to a function called <code>new</code> that creates objects of the newly declared type.</p>
+<p>An inner constructor method is always declared inside the block of a type declaration and it has access to a special function called <code>new</code> that creates objects of the newly declared type.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -12754,7 +12720,7 @@ Due to some ancient injury?</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The default constructor is not available if any inner constructor is defined. You have to write explicitely all the inner constructors you need.</p>
+<p>The default constructor is not available if any inner constructor is defined. You have to write explicitly all the inner constructors you need.</p>
 </div>
 </td>
 </tr>
@@ -12783,14 +12749,14 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This allows to construct recursive data structures.
+<p>This allows to construct recursive data structures, i.e. a struct where one of the fields is the struct itself. In this case the struct has to be mutable because its fields are modified after instantiation.
 </p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_show"><code>show</code></h3>
 <div class="paragraph">
-<p><code>show</code> is a special function that returns a string representation of an object. For example, here is a <code>show</code> method for mytime objects:
+<p><code>show</code> is a special function that returns a string representation of an object. For example, here is a <code>show</code> method for <code>MyTime</code> objects:
 </p>
 </div>
 <div class="listingblock">
@@ -12815,12 +12781,12 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When I write a new composite type, I almost always start by writing an inner constructor, which makes it easier to instantiate objects, and <code>show</code>, which is useful for debugging.</p>
+<p>When I write a new composite type, I almost always start by writing an outer constructor, which makes it easier to instantiate objects, and <code>show</code>, which is useful for debugging.</p>
 </div>
 <div class="sect4">
 <h5 id="_exercise_17_2">Exercise 17-2</h5>
 <div class="paragraph">
-<p>Write an inner constructor method for the <code>Point</code> class that takes <code>x</code> and <code>y</code> as optional parameters and assigns them to the corresponding fields.
+<p>Write an outer constructor method for the <code>Point</code> class that takes <code>x</code> and <code>y</code> as optional parameters and assigns them to the corresponding fields.
 </p>
 </div>
 </div>
@@ -12828,7 +12794,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_operator_overloading">Operator Overloading</h3>
 <div class="paragraph">
-<p>By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named <code>+</code> with two <code>MyTime</code> arguments, you can use the <code>+</code> operator on mytime objects.</p>
+<p>By defining operator methods, you can specify the behavior of operators on programmer-defined types. For example, if you define a method named <code>+</code> with two <code>MyTime</code> arguments, you can use the <code>+</code> operator on <code>MyTime</code> objects.</p>
 </div>
 <div class="paragraph">
 <p>Here is what the definition might look like:</p>
@@ -12860,27 +12826,27 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When you apply the <code>+</code> operator to mytime objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes <code>show</code>. So there is a lot happening behind the scenes!</p>
+<p>When you apply the <code>+</code> operator to <code>MyTime</code> objects, Julia invokes the newly added method. When the REPL shows the result, Julia invokes <code>show</code>. So there is a lot happening behind the scenes!</p>
 </div>
 <div class="paragraph">
-<p>Changing the behavior of an operator so that it works with programmer-defined types is called <em>operator overloading</em>.
+<p>Adding to the behavior of an operator so that it works with programmer-defined types is called <em>operator overloading</em>.
 </p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_multiple_dispatch">Multiple Dispatch</h3>
 <div class="paragraph">
-<p>In the previous section we added two mytime objects, but you also might want to add an integer to a <code>MyTime</code> object:</p>
+<p>In the previous section we added two <code>MyTime</code> objects, but you also might want to add an integer to a <code>MyTime</code> object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-o">+</span><span class="tok-p">(</span><span class="tok-n">time</span><span class="tok-o">::</span><span class="tok-n">MyTime</span><span class="tok-p">,</span> <span class="tok-n">seconds</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
-    <span class="tok-n">increment!</span><span class="tok-p">(</span><span class="tok-n">time</span><span class="tok-p">,</span> <span class="tok-n">seconds</span><span class="tok-p">)</span>
+    <span class="tok-n">increment</span><span class="tok-p">(</span><span class="tok-n">time</span><span class="tok-p">,</span> <span class="tok-n">seconds</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Here is an example that use the <code>+</code> operator with a mytime object and an integer:</p>
+<p>Here is an example that uses the <code>+</code> operator with a <code>MyTime</code> object and an integer:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12896,7 +12862,7 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-o">+</span><span class="tok-p">(</span><span class="tok-n">seconds</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">time</span><span class="tok-o">::</span><span class="tok-n">MyTime</span><span class="tok-p">)</span>
-  <span class="tok-n">increment!</span><span class="tok-p">(</span><span class="tok-n">time</span><span class="tok-p">,</span> <span class="tok-n">seconds</span><span class="tok-p">)</span>
+  <span class="tok-n">time</span> <span class="tok-o">+</span> <span class="tok-n">seconds</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -12931,7 +12897,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_polymorphism">Polymorphism</h3>
+<h3 id="_generic_programming">Generic Programming</h3>
 <div class="paragraph">
 <p>Multiple dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with different types.</p>
 </div>
@@ -12977,7 +12943,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Since a <code>+</code> method is provided for mytime objects, they work with <code>sum</code>:</p>
+<p>Since a <code>+</code> method is provided for <code>MyTime</code> objects, they work with <code>sum</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13005,17 +12971,17 @@ Due to some ancient injury?</pre>
 <p>One of the goals of multiple dispatch is to make software more maintainable, which means that you can keep the program working when other parts of the system change, and modify the program to meet new requirements.</p>
 </div>
 <div class="paragraph">
-<p>A design principle that helps achieve that goal is to keep interfaces separate from implementations. For objects, that means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
+<p>A design principle that helps achieve that goal is to keep interfaces separate from implementations. This means that the methods having an argument annotated with a type should not depend on how the fields of that type are represented.
 </p>
 </div>
 <div class="paragraph">
 <p>For example, in this chapter we developed a struct that represents a time of day. Methods having an argument annotated with this type include <code>timetoint</code>, <code>isafter</code>, and <code>+</code>.</p>
 </div>
 <div class="paragraph">
-<p>We could implement those methods in several ways. The details of the implementation depend on how we represent <code>MyTime</code>. In this chapter, the fields of a mytime object are <code>hour</code>, <code>minute</code>, and <code>second</code>.</p>
+<p>We could implement those methods in several ways. The details of the implementation depend on how we represent <code>MyTime</code>. In this chapter, the fields of a <code>MyTime</code> object are <code>hour</code>, <code>minute</code>, and <code>second</code>.</p>
 </div>
 <div class="paragraph">
-<p>As an alternative, we could replace these field with a single integer representing the number of seconds since midnight. This implementation would make some functions, like <code>isafter</code>, easier to write, but it makes other functions harder.</p>
+<p>As an alternative, we could replace these fields with a single integer representing the number of seconds since midnight. This implementation would make some functions, like <code>isafter</code>, easier to write, but it makes other functions harder.</p>
 </div>
 <div class="paragraph">
 <p>After you deploy a new type, you might discover a better implementation. If other parts of the program are using your type, it might be time-consuming and error-prone to change the interface.</p>
@@ -13042,7 +13008,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this example, the function <code>printtime</code> has 2 methods: one with a <code>MyTime</code> argument and one with a <code>Any</code> argument.</p>
+<p>In this example, the function <code>printtime</code> has 2 methods: one with a <code>MyTime</code> argument and one with an <code>Any</code> argument.</p>
 </div>
 </div>
 <div class="sect2">
@@ -13079,6 +13045,11 @@ Due to some ancient injury?</pre>
 <p>Constructor defined inside the type definition to enforce invariants or to construct self-referential objects.
 </p>
 </dd>
+<dt class="hdlist1">default constructor</dt>
+<dd>
+<p>Inner constructor that is available when no programmer-defined inner constructors are provided.
+</p>
+</dd>
 <dt class="hdlist1">copy constructor</dt>
 <dd>
 <p>Outer constructor method of a type with as only argument an object of the type. It creates a new object that is a copy of the argument.
@@ -13086,7 +13057,7 @@ Due to some ancient injury?</pre>
 </dd>
 <dt class="hdlist1">operator overloading</dt>
 <dd>
-<p>Changing the behavior of an operator like <code>+</code> so it works with a programmer-defined type.
+<p>Adding to the behavior of an operator like <code>+</code> so it works with a programmer-defined type.
 </p>
 </dd>
 <dt class="hdlist1">multiple dispatch</dt>
@@ -13094,9 +13065,9 @@ Due to some ancient injury?</pre>
 <p>Dispatch based on all of a function&#8217;s arguments.
 </p>
 </dd>
-<dt class="hdlist1">polymorphic</dt>
+<dt class="hdlist1">generic programming</dt>
 <dd>
-<p>Pertaining to a function that can work with more than one type.
+<p>Writing code that can work with more than one type.
 </p>
 </dd>
 </dl>
@@ -13241,7 +13212,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The expression <code>rank_names[car.rank]</code> means “use the field <code>rank</code> from the object <code>card</code> as an index into the array <code>rank_names</code>, and select the appropriate string.”</p>
+<p>The expression <code>rank_names[card.rank]</code> means “use the field <code>rank</code> from the object <code>card</code> as an index into the array <code>rank_names</code>, and select the appropriate string.”</p>
 </div>
 <div class="paragraph">
 <p>With the methods we have so far, we can create and print cards:</p>
@@ -13256,7 +13227,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_comparing_cards">Comparing Cards</h3>
 <div class="paragraph">
-<p>For built-in types, there are relational operators (<code>&lt;</code>, <code>&gt;</code>, <code>==</code>, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: <code>Base.isless</code>.</p>
+<p>For built-in types, there are relational operators (<code>&lt;</code>, <code>&gt;</code>, <code>==</code>, etc.) that compare values and determine when one is greater than, less than, or equal to another. For programmer-defined types, we can override the behavior of the built-in operators by providing a method named: <code>&lt;</code>.</p>
 </div>
 <div class="paragraph">
 <p>The correct ordering for cards is not obvious. For example, which is better, the 3 of Clubs or the 2 of Diamonds? One has a higher rank, but the other has a higher suit. In order to compare cards, you have to decide whether rank or suit is more important.</p>
@@ -13265,20 +13236,21 @@ Due to some ancient injury?</pre>
 <p>The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.</p>
 </div>
 <div class="paragraph">
-<p>With that decided, we can write <code>isless</code>:
-</p>
+<p>With that decided, we can write <code>&lt;</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">isless</span><span class="tok-p">(</span><span class="tok-n">c1</span><span class="tok-o">::</span><span class="tok-n">Card</span><span class="tok-p">,</span> <span class="tok-n">c2</span><span class="tok-o">::</span><span class="tok-n">Card</span><span class="tok-p">)</span>
-    <span class="tok-n">isless</span><span class="tok-p">((</span><span class="tok-n">c1</span><span class="tok-o">.</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">c1</span><span class="tok-o">.</span><span class="tok-n">rank</span><span class="tok-p">),</span> <span class="tok-p">(</span><span class="tok-n">c2</span><span class="tok-o">.</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">c2</span><span class="tok-o">.</span><span class="tok-n">rank</span><span class="tok-p">))</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">import</span> <span class="tok-n">Base</span><span class="tok-o">.&lt;</span>
+
+<span class="tok-k">function</span> <span class="tok-o">&lt;</span><span class="tok-p">(</span><span class="tok-n">c1</span><span class="tok-o">::</span><span class="tok-n">Card</span><span class="tok-p">,</span> <span class="tok-n">c2</span><span class="tok-o">::</span><span class="tok-n">Card</span><span class="tok-p">)</span>
+    <span class="tok-p">(</span><span class="tok-n">c1</span><span class="tok-o">.</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">c1</span><span class="tok-o">.</span><span class="tok-n">rank</span><span class="tok-p">)</span> <span class="tok-o">&lt;</span> <span class="tok-p">(</span><span class="tok-n">c2</span><span class="tok-o">.</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">c2</span><span class="tok-o">.</span><span class="tok-n">rank</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_exercise_18_1">Exercise 18-1</h5>
 <div class="paragraph">
-<p>Write a <code>isless</code> method for mytime objects. You can use tuple comparison, but you also might consider comparing integers.</p>
+<p>Write a <code>&lt;</code> method for <code>MyTime</code> objects. You can use tuple comparison, but you also might consider comparing integers.</p>
 </div>
 </div>
 </div>
@@ -13296,9 +13268,9 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Test</span>
 
-<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@test</span> <span class="tok-n">isless</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">),</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">))</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@test</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">)</span> <span class="tok-o">&lt;</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">)</span>
 <span class="tok-go">Test Passed</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@test</span> <span class="tok-n">isless</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">),</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">))</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@test</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">)</span> <span class="tok-o">&lt;</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">)</span>
 <span class="tok-go">Test Passed</span></code></pre>
 </div>
 </div>
@@ -13319,15 +13291,16 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Deck</span>
     <span class="tok-n">cards</span> <span class="tok-o">::</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">Card</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}</span>
-    <span class="tok-k">function</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
-        <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">[])</span>
-        <span class="tok-k">for</span> <span class="tok-n">suit</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">4</span>
-            <span class="tok-k">for</span> <span class="tok-n">rank</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">13</span>
-                <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">.</span><span class="tok-n">cards</span><span class="tok-p">,</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">rank</span><span class="tok-p">))</span>
-            <span class="tok-k">end</span>
+<span class="tok-k">end</span>
+
+<span class="tok-k">function</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
+    <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">[])</span>
+    <span class="tok-k">for</span> <span class="tok-n">suit</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">4</span>
+        <span class="tok-k">for</span> <span class="tok-n">rank</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">13</span>
+            <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">.</span><span class="tok-n">cards</span><span class="tok-p">,</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">rank</span><span class="tok-p">))</span>
         <span class="tok-k">end</span>
-        <span class="tok-n">deck</span>
     <span class="tok-k">end</span>
+    <span class="tok-n">deck</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13381,7 +13354,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">Base</span><span class="tok-o">.</span><span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">::</span><span class="tok-n">Deck</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-o">::</span><span class="tok-n">Card</span><span class="tok-p">)</span>
     <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">.</span><span class="tok-n">cards</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span>
-    <span class="tok-nb">nothing</span>
+    <span class="tok-n">deck</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13402,7 +13375,7 @@ Due to some ancient injury?</pre>
 
 <span class="tok-k">function</span> <span class="tok-n">Random</span><span class="tok-o">.</span><span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">::</span><span class="tok-n">Deck</span><span class="tok-p">)</span>
     <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">.</span><span class="tok-n">cards</span><span class="tok-p">)</span>
-    <span class="tok-nb">nothing</span>
+    <span class="tok-n">deck</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13450,15 +13423,16 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Deck</span> <span class="tok-o">&lt;:</span> <span class="tok-n">CardSet</span>
     <span class="tok-n">cards</span> <span class="tok-o">::</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">Card</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}</span>
-    <span class="tok-k">function</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
-        <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">[])</span>
-        <span class="tok-k">for</span> <span class="tok-n">suit</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">4</span>
-            <span class="tok-k">for</span> <span class="tok-n">rank</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">13</span>
-                <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">.</span><span class="tok-n">cards</span><span class="tok-p">,</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">rank</span><span class="tok-p">))</span>
-            <span class="tok-k">end</span>
+<span class="tok-k">end</span>
+
+<span class="tok-k">function</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
+    <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">[])</span>
+    <span class="tok-k">for</span> <span class="tok-n">suit</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">4</span>
+        <span class="tok-k">for</span> <span class="tok-n">rank</span> <span class="tok-kp">in</span> <span class="tok-mi">1</span><span class="tok-o">:</span><span class="tok-mi">13</span>
+            <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-o">.</span><span class="tok-n">cards</span><span class="tok-p">,</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">rank</span><span class="tok-p">))</span>
         <span class="tok-k">end</span>
-        <span class="tok-n">deck</span>
     <span class="tok-k">end</span>
+    <span class="tok-n">deck</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13483,9 +13457,10 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Hand</span> <span class="tok-o">&lt;:</span> <span class="tok-n">CardSet</span>
     <span class="tok-n">cards</span> <span class="tok-o">::</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">Card</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}</span>
     <span class="tok-n">label</span> <span class="tok-o">::</span> <span class="tok-n">String</span>
-    <span class="tok-k">function</span> <span class="tok-n">Hand</span><span class="tok-p">(</span><span class="tok-n">label</span><span class="tok-o">::</span><span class="tok-n">String</span><span class="tok-o">=</span><span class="tok-s">&quot;&quot;</span><span class="tok-p">)</span>
-        <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">[],</span> <span class="tok-n">label</span><span class="tok-p">)</span>
-    <span class="tok-k">end</span>
+<span class="tok-k">end</span>
+
+<span class="tok-k">function</span> <span class="tok-n">Hand</span><span class="tok-p">(</span><span class="tok-n">label</span><span class="tok-o">::</span><span class="tok-n">String</span><span class="tok-o">=</span><span class="tok-s">&quot;&quot;</span><span class="tok-p">)</span>
+    <span class="tok-n">Hand</span><span class="tok-p">(</span><span class="tok-n">Card</span><span class="tok-p">[],</span> <span class="tok-n">label</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13528,11 +13503,13 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-go">deck = Deck();</span>
-<span class="tok-go">shuffle!(deck)</span>
-<span class="tok-go">card = pop!(deck);</span>
-<span class="tok-go">push!(hand, card)</span>
-<span class="tok-go">hand</span></code></pre>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
+<span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
+<span class="tok-go">A♦ 7♠ Q♦ 4♣ 4♥ Q♠ 10♦ 6♣ A♠ K♣ J♦ K♦ 3♦ 4♦ 10♠ J♠ 9♦ 9♠ 7♦ 8♠ 2♣ 2♠ 2♥ A♣ J♣ 5♠ 3♣ 6♥ 8♦ 7♥ J♥ 9♥ 5♥ 8♥ 3♥ 6♦ K♥ 2♦ Q♣ 10♣ Q♥ 6♠ 5♣ A♥ 9♣ 4♠ 5♦ K♠ 3♠ 7♣ 8♣ 10♥</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
+<span class="tok-go">10♥</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13552,7 +13529,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>move!</code> takes three arguments, two cardset objects and the number of cards to deal. It modifies both cardset objects, and returns <code>nothing</code>.</p>
+<p><code>move!</code> takes three arguments, two <code>Cardset</code> objects and the number of cards to deal. It modifies both <code>Cardset</code> objects, and returns <code>nothing</code>.</p>
 </div>
 <div class="paragraph">
 <p>In some games, cards are moved from one hand to another, or from a hand back to the deck. You can use <code>move!</code> for any of these operations: <code>cs1</code> and <code>cs2</code> can be either a <code>Deck</code> or a <code>Hand</code>.</p>
@@ -13615,7 +13592,7 @@ Due to some ancient injury?</pre>
 <p>Subtyping can make debugging difficult because when you call a function with an object as argument, it might be hard to figure out which method will be invoked.</p>
 </div>
 <div class="paragraph">
-<p>Suppose you are writing a function that works with Hand objects. You would like it to work with all kinds of Hands, like PokerHands, BridgeHands, etc. If you invoke a method like <code>sort!</code>, you might get the one defined for an abstract type <code>Hand</code>, but if a method <code>sort!</code> with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.</p>
+<p>Suppose you are writing a function that works with <code>Hand</code> objects. You would like it to work with all kinds of <code>Hand+s, like +PokerHand+s, +BridgeHand+s, etc. If you invoke a method like +sort!</code>, you might get the one defined for an abstract type <code>Hand</code>, but if a method <code>sort!</code> with as argument any of the subtypes exists, you’ll get that version instead. This behavior is usually a good thing, but it can be confusing.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13628,14 +13605,12 @@ Due to some ancient injury?</pre>
 <p>Any time you are unsure about the flow of execution through your program, the simplest solution is to add print statements at the beginning of the relevant methods. If <code>shuffle!</code> prints a message that says something like <code>Running shuffle! Deck</code>, then as the program runs it traces the flow of execution.</p>
 </div>
 <div class="paragraph">
-<p>As an alternative, you can also use the <code>InteractiveUtils.@which</code> macro:
+<p>As better alternative, you can also use the <code>@which</code> macro:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">InteractiveUtils</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@which</span> <span class="tok-n">sort!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@which</span> <span class="tok-n">sort!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">)</span>
 <span class="tok-go">sort!(hand::Hand) in Main at REPL[5]:1</span></code></pre>
 </div>
 </div>
@@ -13648,6 +13623,16 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
 </p>
+</div>
+<div class="paragraph">
+<p>The function <code>supertype</code> can be used to find the direct supertype of a type.
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">supertype</span><span class="tok-p">(</span><span class="tok-n">Deck</span><span class="tok-p">)</span>
+<span class="tok-go">CardSet</span></code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -13682,9 +13667,10 @@ Due to some ancient injury?</pre>
     <span class="tok-n">order</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">suffixes</span> <span class="tok-o">::</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}</span>
     <span class="tok-n">prefix</span> <span class="tok-o">::</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}</span>
-    <span class="tok-k">function</span> <span class="tok-n">Markov</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">)</span>
-        <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-p">,</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}(),</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}())</span>
-    <span class="tok-k">end</span>
+<span class="tok-k">end</span>
+
+<span class="tok-k">function</span> <span class="tok-n">Markov</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">)</span>
+    <span class="tok-n">Markov</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-p">,</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}(),</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}())</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13849,7 +13835,7 @@ Due to some ancient injury?</pre>
 <div class="sect4">
 <h5 id="ex18-2">Exercise 18-5</h5>
 <div class="paragraph">
-<p>Write a method called <code>deal!</code> that takes three parameters, a deck, the number of hands and the number of cards per hand. It should create the appropriate number of Hand objects, deal the appropriate number of cards per hand, and return an array of Hands.
+<p>Write a method called <code>deal!</code> that takes three parameters, a <code>Deck</code>, the number of hands and the number of cards per hand. It should create the appropriate number of <code>Hand</code> objects, deal the appropriate number of cards per hand, and return an array of +Hand+s.
 </p>
 </div>
 </div>
@@ -13947,6 +13933,112 @@ Due to some ancient injury?</pre>
 </ul>
 </div>
 <div class="sect2">
+<h3 id="_named_tuples">Named Tuples</h3>
+<div class="paragraph">
+<p>You can name the components of a tuple, creating a named tuple:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-o">+</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+<span class="tok-go">(a = 1, b = 2)</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span><span class="tok-o">.</span><span class="tok-n">a</span>
+<span class="tok-go">1</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With named tuples, fields can be accessed by name using dot syntax <code>(x.a)</code>.
+</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_functions">Functions</h3>
+<div class="paragraph">
+<p>Function in Julia can be defined by a compact syntax.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">f</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">,</span><span class="tok-n">y</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-n">x</span> <span class="tok-o">+</span> <span class="tok-n">y</span>
+<span class="tok-go">f (generic function with 1 method)</span></code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="anonymous_functions">Anonymous Functions</h4>
+<div class="paragraph">
+<p>We can define a function without specifying a name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">-&gt;</span> <span class="tok-n">x</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-n">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span>
+<span class="tok-go">#1 (generic function with 1 method)</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span>
+           <span class="tok-n">x</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-n">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span>
+       <span class="tok-k">end</span>
+<span class="tok-go">#3 (generic function with 1 method)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These are example of <em>anonymous functions</em>. Anonymous functions are often used as an argument to another function:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Plots</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">plot</span><span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">-&gt;</span> <span class="tok-n">x</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-n">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-n">xlabel</span><span class="tok-o">=</span><span class="tok-s">&quot;x&quot;</span><span class="tok-p">,</span> <span class="tok-n">ylabel</span><span class="tok-o">=</span><span class="tok-s">&quot;y&quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="#fig19-1">Plot</a> shows the output of the plotting command.</p>
+</div>
+<div id="fig19-1" class="imageblock">
+<div class="content">
+<img src="images/fig191.svg" alt="fig191">
+</div>
+<div class="title">Figure 24. Plot</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_keyword_arguments">Keyword Arguments</h4>
+<div class="paragraph">
+<p>Function arguments can also be named:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">function</span> <span class="tok-n">myplot</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">;</span> <span class="tok-n">style</span><span class="tok-o">=</span><span class="tok-s">&quot;solid&quot;</span><span class="tok-p">,</span> <span class="tok-n">width</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">color</span><span class="tok-o">=</span><span class="tok-s">&quot;black&quot;</span><span class="tok-p">)</span>
+           <span class="tok-c">###</span>
+       <span class="tok-k">end</span>
+<span class="tok-go">myplot (generic function with 1 method)</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">myplot</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-o">:</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-o">:</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-n">style</span><span class="tok-o">=</span><span class="tok-s">&quot;dotted&quot;</span><span class="tok-p">,</span> <span class="tok-n">color</span><span class="tok-o">=</span><span class="tok-s">&quot;blue&quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><em>Keyword arguments</em> in a function are specified after a semicolon in the signature but can be called with a comma.
+</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_closures">Closures</h4>
+<div class="paragraph">
+<p>A <em>closure</em> is a technique allowing a function to capture a variable defined outside the calling scope of the function.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">foo</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-p">()</span><span class="tok-o">-&gt;</span><span class="tok-n">x</span>
+<span class="tok-go">foo (generic function with 1 method)</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">bar</span> <span class="tok-o">=</span> <span class="tok-n">foo</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">)</span>
+<span class="tok-go">#1 (generic function with 1 method)</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">bar</span><span class="tok-p">()</span>
+<span class="tok-go">1</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the function <code>foo</code> returns an anonymous function that has access to the <code>x</code> argument of the function <code>foo</code>. <code>bar</code> points to the anonymous function and returns the value of the argument of <code>foo</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="_blocks">Blocks</h3>
 <div class="paragraph">
 <p>A <em>block</em> is a way to group a number of statements. A block starts with the keyword <code>begin</code> and ends with <code>end</code>.</p>
@@ -13971,153 +14063,32 @@ Due to some ancient injury?</pre>
 <p>In this example, the macro <code>@svg</code> has a single argument, i.e. a block grouping 3 function calls.</p>
 </div>
 <div class="sect3">
-<h4 id="_closures_and_let_blocks">Closures and <code>let</code> blocks</h4>
+<h4 id="_let_blocks"><code>let</code> Blocks</h4>
 <div class="paragraph">
-<p>A <em>closure</em> is a technique allowing a function to have access to a variable defined outside the calling scope of the function.</p>
-</div>
-<div class="paragraph">
-<p>The function <code>funcgen</code> returns an array with two anonymous functions (see <a href="#anonymous_functions">Anonymous Functions</a>) which return respectively the values 1 and 2:
-</p>
+<p>A <code>let</code> block is useful to create new bindings, i.e. locations that can refer to values.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span>        <span class="tok-c"># WRONG</span>
-    <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Function</span><span class="tok-p">[]</span>
-    <span class="tok-k">while</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span>
-        <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">res</span><span class="tok-p">,</span> <span class="tok-p">()</span><span class="tok-o">-&gt;</span><span class="tok-n">i</span><span class="tok-p">)</span>
-        <span class="tok-n">i</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
-    <span class="tok-k">end</span>
-    <span class="tok-n">res</span>
-<span class="tok-k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>We don&#8217;t get what we expected.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span> <span class="tok-o">=</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">,</span> <span class="tok-n">z</span> <span class="tok-o">=</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">;</span>
 
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]()</span>
-<span class="tok-go">3</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]()</span>
-<span class="tok-go">3</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The returned functions are closures and the variable <code>i</code> is common to both of them.
-</p>
-</div>
-<div class="paragraph">
-<p>A <em>let block</em> is a kind of block that creates new variable bindings. The solution to our problem can be implemented as follows
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-n">i</span><span class="tok-p">)</span>
-    <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Function</span><span class="tok-p">[]</span>
-    <span class="tok-k">while</span> <span class="tok-n">i</span> <span class="tok-o">&lt;</span> <span class="tok-mi">3</span>
-        <span class="tok-k">let</span> <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-n">i</span>
-            <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">res</span><span class="tok-p">,</span> <span class="tok-p">()</span><span class="tok-o">-&gt;</span><span class="tok-n">i</span><span class="tok-p">)</span>
-        <span class="tok-k">end</span>
-        <span class="tok-n">i</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
-    <span class="tok-k">end</span>
-    <span class="tok-n">res</span>
-<span class="tok-k">end</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now, we get what we expected:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span> <span class="tok-o">=</span> <span class="tok-n">funcgen</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">);</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]()</span>
-<span class="tok-go">1</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">fs</span><span class="tok-p">[</span><span class="tok-mi">2</span><span class="tok-p">]()</span>
-<span class="tok-go">2</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_functions">Functions</h3>
-<div class="sect3">
-<h4 id="anonymous_functions">Anonymous Functions</h4>
-<div class="paragraph">
-<p>We can define a function without specifying a name:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">f</span> <span class="tok-o">=</span> <span class="tok-n">x</span> <span class="tok-o">-&gt;</span> <span class="tok-n">x</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-n">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span>
-<span class="tok-go">#1 (generic function with 1 method)</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">f</span> <span class="tok-o">=</span> <span class="tok-k">function</span> <span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">)</span>
-           <span class="tok-n">x</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-n">x</span> <span class="tok-o">-</span> <span class="tok-mi">1</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-k">let</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">z</span>
+           <span class="tok-nd">@show</span> <span class="tok-n">x</span> <span class="tok-n">y</span> <span class="tok-n">z</span><span class="tok-p">;</span>
        <span class="tok-k">end</span>
-<span class="tok-go">#3 (generic function with 1 method)</span></code></pre>
+<span class="tok-go">x = 1</span>
+<span class="tok-go">y = -1</span>
+<span class="tok-gr">ERROR: UndefVarError: z not defined</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-nd">@show</span> <span class="tok-n">x</span> <span class="tok-n">y</span> <span class="tok-n">z</span><span class="tok-p">;</span>
+<span class="tok-go">x = -1</span>
+<span class="tok-go">y = -1</span>
+<span class="tok-go">z = -1</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>f</code> is an <em>anonymous function</em> which is called as a normal function. Anonymous functions are often used as an argument to another function:
-</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">using</span> <span class="tok-n">Plots</span>
-
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">plot</span><span class="tok-p">(</span><span class="tok-mf">0.0</span><span class="tok-o">:</span><span class="tok-mf">0.1</span><span class="tok-o">:</span><span class="tok-mf">10.0</span><span class="tok-p">,</span> <span class="tok-n">f</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><a href="#fig19-1">Plot</a> shows the output of the plotting command.</p>
-</div>
-<div id="fig19-1" class="imageblock">
-<div class="content">
-<img src="images/fig191.svg" alt="fig191">
-</div>
-<div class="title">Figure 24. Plot</div>
+<p>In the example, the first <code>@show</code> macro, shows the local <code>x</code>, the global <code>y</code> and the undefined local <code>z</code>. The global variables are untouched.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_named_tuples">Named Tuples</h4>
-<div class="paragraph">
-<p>You can name the components of a tuple, creating a named tuple:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-o">+</span><span class="tok-mi">1</span><span class="tok-p">)</span>
-<span class="tok-go">(a = 1, b = 2)</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">x</span><span class="tok-o">.</span><span class="tok-n">a</span>
-<span class="tok-go">1</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>With named tuples, fields can be accessed by name using dot syntax <code>(x.a)</code>.
-</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_keyword_arguments">Keyword Arguments</h4>
-<div class="paragraph">
-<p>Function arguments can also be named:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-k">function</span> <span class="tok-n">plot</span><span class="tok-p">(</span><span class="tok-n">x</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">;</span> <span class="tok-n">style</span><span class="tok-o">=</span><span class="tok-s">&quot;solid&quot;</span><span class="tok-p">,</span> <span class="tok-n">width</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-n">color</span><span class="tok-o">=</span><span class="tok-s">&quot;black&quot;</span><span class="tok-p">)</span>
-           <span class="tok-c">###</span>
-       <span class="tok-k">end</span>
-<span class="tok-go">plot (generic function with 1 method)</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">plot</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-o">:</span><span class="tok-mi">10</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-o">:</span><span class="tok-mi">10</span><span class="tok-p">;</span> <span class="tok-n">style</span><span class="tok-o">=</span><span class="tok-s">&quot;dotted&quot;</span><span class="tok-p">,</span> <span class="tok-n">color</span><span class="tok-o">=</span><span class="tok-s">&quot;blue&quot;</span><span class="tok-p">)</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p><em>Keyword arguments</em> in a function are specified after a semicolon in the signature.
-</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_do_block"><code>do</code> Block</h4>
+<h4 id="_do_blocks"><code>do</code> Blocks</h4>
 <div class="paragraph">
 <p>In <a href="#reading_and_writing">Reading and Writing</a> we had to close the file after when where done writing. This can be done automatically using a <em>do block</em>:
 </p>
@@ -14133,20 +14104,23 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
+<p>In this example <code>fout</code> is the file stream used for output.</p>
+</div>
+<div class="paragraph">
 <p>This is functionally equivalent to</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">f</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-k">begin</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">f</span> <span class="tok-o">=</span> <span class="tok-n">fout</span> <span class="tok-o">-&gt;</span> <span class="tok-k">begin</span>
            <span class="tok-n">write</span><span class="tok-p">(</span><span class="tok-n">fout</span><span class="tok-p">,</span> <span class="tok-n">data</span><span class="tok-p">)</span>
        <span class="tok-k">end</span>
-<span class="tok-go">#7 (generic function with 1 method)</span>
+<span class="tok-go">#3 (generic function with 1 method)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">open</span><span class="tok-p">(</span><span class="tok-n">f</span><span class="tok-p">,</span> <span class="tok-s">&quot;output.txt&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;w&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">48</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The anonymous function is used as first argument of the function <code>open</code>:
+<p>The anonymous function is used as the first argument of the function <code>open</code>:
 </p>
 </div>
 <div class="listingblock">
@@ -14183,7 +14157,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The expression before the <code>?</code>, is a condition expression. If the condition is <code>true</code>, the expression before the <code>:</code> is evaluated, otherwise, the expression after the <code>:</code> is evaluated.</p>
+<p>The expression before the <code>?</code> is a condition expression. If the condition is <code>true</code>, the expression before the <code>:</code> is evaluated, otherwise, the expression after the <code>:</code> is evaluated.</p>
 </div>
 </div>
 <div class="sect3">
@@ -14198,7 +14172,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">::</span><span class="tok-kt">Int</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">::</span><span class="tok-kt">Integer</span><span class="tok-p">)</span>
     <span class="tok-n">n</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">0</span> <span class="tok-o">||</span> <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;n must be non-negative&quot;</span><span class="tok-p">)</span>
     <span class="tok-n">n</span> <span class="tok-o">==</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-k">return</span> <span class="tok-mi">1</span>
     <span class="tok-n">n</span> <span class="tok-o">*</span> <span class="tok-n">fact</span><span class="tok-p">(</span><span class="tok-n">n</span><span class="tok-o">-</span><span class="tok-mi">1</span><span class="tok-p">)</span>
@@ -14212,7 +14186,7 @@ Due to some ancient injury?</pre>
 <p>A <em>task</em> is a control structure that can pass cooperatively control without returning. In Julia, a task is implemented as a function having as first argument a channel object. The channel object is used to pass values from the function to the callee.</p>
 </div>
 <div class="paragraph">
-<p>The Fibonnaci sequence can be generated using a task.
+<p>The Fibonnaci sequence can be generated using a task, e.g. a function having as first argument a <code>Channel</code> object.
 </p>
 </div>
 <div class="listingblock">
@@ -14249,7 +14223,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The function <code>fib</code> is suspended after each call to <code>put!</code> and resumed after <code>take!</code>. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.</p>
+<p>The constructor <code>Channel</code> creates the task. The function <code>fib</code> is suspended after each call to <code>put!</code> and resumed after <code>take!</code>. For performance reasons, several values of the sequence are buffered in the channel object during a resume/suspend cycle.</p>
 </div>
 <div class="paragraph">
 <p>A channel object can also be used as an iterator:</p>
@@ -14270,7 +14244,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_primitive_types">Primitive Types</h4>
 <div class="paragraph">
-<p>A concrete type consisting of plain old bits, is called a <em>primitive type</em>. Unlike most languages with Julia you can declare your own primitive types. The standard primitive types are defined in the same way:
+<p>A concrete type consisting of plain old bits is called a <em>primitive type</em>. Unlike most languages, with Julia you can declare your own primitive types. The standard primitive types are defined in the same way:
 </p>
 </div>
 <div class="listingblock">
@@ -14283,6 +14257,24 @@ Due to some ancient injury?</pre>
 </div>
 <div class="paragraph">
 <p>The number in the statements specifies how many bits are required.</p>
+</div>
+<div class="paragraph">
+<p>The following example creates a primitive type <code>Byte</code> and a constructor:
+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">primitive</span> <span class="tok-k">type</span> <span class="tok-n">Byte</span> <span class="tok-mi">8</span> <span class="tok-k">end</span>
+
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">Byte</span><span class="tok-p">(</span><span class="tok-n">val</span><span class="tok-o">::</span><span class="tok-kt">UInt8</span><span class="tok-p">)</span> <span class="tok-o">=</span> <span class="tok-n">reinterpret</span><span class="tok-p">(</span><span class="tok-n">Byte</span><span class="tok-p">,</span> <span class="tok-n">val</span><span class="tok-p">)</span>
+<span class="tok-go">Byte</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">b</span> <span class="tok-o">=</span> <span class="tok-n">Byte</span><span class="tok-p">(</span><span class="tok-mh">0x01</span><span class="tok-p">)</span>
+<span class="tok-go">Byte(0x01)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The function <code>reinterpret</code> is used to store the bits of an unsigned integer with 8 bits (<code>UInt8</code>) into the byte.
+</p>
 </div>
 </div>
 <div class="sect3">
@@ -14314,6 +14306,20 @@ Due to some ancient injury?</pre>
 <div class="paragraph">
 <p>In addition to composite types, abstract types and primitive types can also have a type parameter.</p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Having concrete types for struct fields is absolutely recommended for performance reasons, so this is a good way to make <code>Point</code> both fast and flexible.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_type_unions">Type Unions</h4>
@@ -14323,13 +14329,16 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">IntOrString</span> <span class="tok-o">=</span> <span class="tok-kt">Union</span><span class="tok-p">{</span><span class="tok-kt">Int</span><span class="tok-p">,</span><span class="tok-kt">AbstractString</span><span class="tok-p">}</span>
-<span class="tok-go">Union{Int64, AbstractString}</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">IntOrString</span> <span class="tok-o">=</span> <span class="tok-kt">Union</span><span class="tok-p">{</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">String</span><span class="tok-p">}</span>
+<span class="tok-go">Union{Int64, String}</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-mi">150</span> <span class="tok-o">::</span> <span class="tok-n">IntOrString</span>
 <span class="tok-go">150</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-s">&quot;Julia&quot;</span> <span class="tok-o">::</span> <span class="tok-n">IntOrString</span>
 <span class="tok-go">&quot;Julia&quot;</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>A type union is in most computer language an internal construct for reasoning about types. Julia however exposes this feature to its users because efficient code can be generated when the type union has a small number of types. This feature gives the Julia programmer a tremendous flexibility for controlling dispatch.</p>
 </div>
 </div>
 </div>
@@ -14343,7 +14352,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">isintpoint</span><span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-o">::</span><span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-n">T</span> <span class="tok-o">===</span> <span class="tok-kt">Int64</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">isintpoint</span><span class="tok-p">(</span><span class="tok-n">p</span><span class="tok-o">::</span><span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">})</span> <span class="tok-n">where</span> <span class="tok-p">{</span><span class="tok-n">T</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-n">T</span> <span class="tok-o">===</span> <span class="tok-kt">Int64</span><span class="tok-p">)</span>
 <span class="tok-go">isintpoint (generic function with 1 method)</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">p</span> <span class="tok-o">=</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)</span>
 <span class="tok-go">Point{Int64}(1, 2)</span>
@@ -14389,7 +14398,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_constructors">Constructors</h3>
 <div class="paragraph">
-<p>Parametric types can be explicitely or implicitely constructed:</p>
+<p>Parametric types can be explicitly or implicitly constructed:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14420,7 +14429,7 @@ Due to some ancient injury?</pre>
 <p>and both <code>x</code> and <code>y</code> have to be of the same type.</p>
 </div>
 <div class="paragraph">
-<p>To solve this problem following outer constructor can be defined:</p>
+<p>When <code>x</code> and <code>y</code> have a different type, the following outer constructor can be defined:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14549,7 +14558,7 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Core</span><span class="tok-o">.</span><span class="tok-n">eval</span><span class="tok-p">(</span><span class="tok-n">Main</span><span class="tok-p">,</span> <span class="tok-n">ex</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">eval</span><span class="tok-p">(</span><span class="tok-n">ex</span><span class="tok-p">)</span>
 <span class="tok-go">3</span></code></pre>
 </div>
 </div>
@@ -14574,7 +14583,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_macros">Macros</h4>
 <div class="paragraph">
-<p>Macros can include generated code in a program. A <em>macro</em> maps a tuple of arguments directly to a compiled expression:
+<p>Macros can include generated code in a program. A <em>macro</em> maps a tuple of <code>Expr</code> objects directly to a compiled expression:
 </p>
 </div>
 <div class="paragraph">
@@ -14583,22 +14592,26 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">macro</span> <span class="tok-n">sayhello</span><span class="tok-p">(</span><span class="tok-n">name</span><span class="tok-p">)</span>
-    <span class="tok-o">:</span><span class="tok-p">(</span> <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;Hello, &quot;</span><span class="tok-p">,</span> <span class="tok-o">$</span><span class="tok-n">name</span><span class="tok-p">,</span> <span class="tok-s">&quot;!&quot;</span><span class="tok-p">)</span> <span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">macro</span> <span class="tok-n">containervariable</span><span class="tok-p">(</span><span class="tok-n">container</span><span class="tok-p">,</span> <span class="tok-n">element</span><span class="tok-p">)</span>
+    <span class="tok-k">return</span> <span class="tok-n">esc</span><span class="tok-p">(</span><span class="tok-o">:</span><span class="tok-p">(</span><span class="tok-o">$</span><span class="tok-p">(</span><span class="tok-kt">Symbol</span><span class="tok-p">(</span><span class="tok-n">container</span><span class="tok-p">,</span><span class="tok-n">element</span><span class="tok-p">))</span> <span class="tok-o">=</span> <span class="tok-o">$</span><span class="tok-n">container</span><span class="tok-p">[</span><span class="tok-o">$</span><span class="tok-n">element</span><span class="tok-p">]))</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Macros are called by prefixing their name with the <code>@</code> (at-sign). The macro call <code>@sayhello("World")</code> is replaced by:
+<p>Macros are called by prefixing their name with the <code>@</code> (at-sign). The macro call <code>@containervariable letters 1</code> is replaced by:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-o">:</span><span class="tok-p">((</span><span class="tok-n">Main</span><span class="tok-o">.</span><span class="tok-n">println</span><span class="tok-p">)(</span><span class="tok-s">&quot;Hello, &quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;World&quot;</span><span class="tok-p">,</span> <span class="tok-s">&quot;!&quot;</span><span class="tok-p">))</span></code></pre>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-o">:</span><span class="tok-p">(</span><span class="tok-n">letters1</span> <span class="tok-o">=</span> <span class="tok-n">letters</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">])</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>@macroexpand @sayhello "World"</code>  returns this expression which is extremely useful for debugging.
+<p><code>@macroexpand @containervariable letters 1</code>  returns this expression which is extremely useful for debugging.
+</p>
+</div>
+<div class="paragraph">
+<p>This example illustrates how a macro can access the name of its arguments, something a function can’t do. The return expression needs to be “escaped” with <code>esc</code> because it has to be resolved in the macro call environment.
 </p>
 </div>
 <div class="admonitionblock note">
@@ -14637,7 +14650,7 @@ Due to some ancient injury?</pre>
 <p>The body returns a quoted expression like a macro.</p>
 </div>
 <div class="paragraph">
-<p>For the caller, the <em>generate function</em> behaves as a regular function:</p>
+<p>For the caller, the <em>generated function</em> behaves as a regular function:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14656,7 +14669,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_missing_values">Missing Values</h3>
 <div class="paragraph">
-<p><em>missing values</em> can be represented via the <code>missing</code> object, which is the singleton instance of the type <code>Missing</code>.
+<p><em>Missing values</em> can be represented via the <code>missing</code> object, which is the singleton instance of the type <code>Missing</code>.
 </p>
 </div>
 <div class="paragraph">
@@ -14791,22 +14804,22 @@ Due to some ancient injury?</pre>
 </dd>
 <dt class="hdlist1">type union</dt>
 <dd>
-<p>Abstract type which includes as objects all instances of any of its argument types.
+<p>Type which includes as objects all instances of any of its type parameters.
 </p>
 </dd>
 <dt class="hdlist1">parametric type</dt>
 <dd>
-<p>Type that can be parameterized.
+<p>Type that is parameterized.
 </p>
 </dd>
 <dt class="hdlist1">functor</dt>
 <dd>
-<p>Type with an associated method, so that it looks callable.
+<p>Object with an associated method, so that it is callable.
 </p>
 </dd>
 <dt class="hdlist1">conversion</dt>
 <dd>
-<p>Convert a value from one type to another.
+<p>Conversion allows to convert a value from one type to another.
 </p>
 </dd>
 <dt class="hdlist1">promotion</dt>
@@ -14847,7 +14860,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>Julia provides also a large number of specialized modules in its Standard Library (<code>Dates</code>, <code>Distributed Computing</code>, <code>Linear Algebra</code>, <code>Profiling</code>, <code>Random Numbers</code>, &#8230;&#8203;). Functions, types and macros defined in the Standard Library have to be imported before they can be used:</p>
+<p>Julia provides also a large number of specialized modules in its Standard Library (Dates, Distributed Computing, Linear Algebra, Profiling, Random Numbers, &#8230;&#8203;). Functions, types and macros defined in the Standard Library have to be imported before they can be used:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -14865,7 +14878,7 @@ Due to some ancient injury?</pre>
 <p>Additional functionality can be added from a growing collection of packages (<a href="https://juliaobserver.com" class="bare">https://juliaobserver.com</a>).</p>
 </div>
 <div class="paragraph">
-<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/stable/" class="bare">https://docs.julialang.org/en/stable/</a>.</p>
+<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/v1/" class="bare">https://docs.julialang.org/en/v1/</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_measuring_performance">Measuring Performance</h3>
@@ -14897,15 +14910,18 @@ Due to some ancient injury?</pre>
 </div>
 </blockquote>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<div class="title">Warning</div>
+<div class="title">Tip</div>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure.</p>
+<p>A function in Julia is compiled the first time it is executed. So to compare two algorithms, they have to be implemented as functions to get compiled and the first time they are called has to be excluded from the performance measure, otherwise the compilation time is measured as well.</p>
+</div>
+<div class="paragraph">
+<p>The package <code>BenchmarkTools</code> (<a href="https://github.com/JuliaCI/BenchmarkTools.jl" class="bare">https://github.com/JuliaCI/BenchmarkTools.jl</a>) provides the macro <code>@btime</code> that does benchmarking the right way. So just use it!</p>
 </div>
 </td>
 </tr>
@@ -15031,7 +15047,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p>We can now verify the Euler&#8217;s identity:
+<p>We can now verify Euler&#8217;s identity,
 </p>
 </div>
 <div class="listingblock">
@@ -15041,7 +15057,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The symbol <code>ℯ</code> (<code>\euler TAB</code>) is the base of the natural logarithm.
+<p>The symbol <code>ℯ</code> (<code>\euler TAB</code>) is the base of natural logarithms.
 </p>
 </div>
 <div class="paragraph">
@@ -15228,7 +15244,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can use square brackets as usual to address indivual elements:
+<p>You can use square brackets to address individual elements:
 </p>
 </div>
 <div class="listingblock">
@@ -15271,7 +15287,7 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_interfaces">Interfaces</h3>
 <div class="paragraph">
-<p>Julia specifies some informal interfaces to define behaviors. When you implement these methods for a type, objects of that type can be used in methods to build upon these behaviors.
+<p>Julia specifies some informal interfaces to define behaviors, i.e. methods with a specific goal. When you extend such a method for a type, objects of that type can be used to build upon these behaviors.
 </p>
 </div>
 <div class="quoteblock">
@@ -15285,7 +15301,7 @@ Due to some ancient injury?</pre>
 <p>In <a href="#one_more_example">One More Example</a> we implemented the <code>fib</code> function returning the \(n\)th element of the Fibonnaci sequence.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s make an iterator that returns lazily the Fibonacci sequence:
+<p>Looping over the values of a collection, called iteration, is such an interface. Let&#8217;s make an iterator that returns lazily the Fibonacci sequence:
 </p>
 </div>
 <div class="listingblock">
@@ -15340,7 +15356,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is a great example how a good defined interface allows an implementation to use all the functions that are aware of the interface.</p>
+<p>This is a great example how a well defined interface allows an implementation to use all the functions that are aware of the interface.</p>
 </div>
 </div>
 <div class="sect2">
@@ -15358,14 +15374,10 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-nd">@noinline</span> <span class="tok-k">function</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-o">::</span><span class="tok-kt">Float64</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-o">::</span><span class="tok-kt">Float64</span><span class="tok-p">)</span>
+<pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-n">a</span><span class="tok-o">::</span><span class="tok-kt">Float64</span><span class="tok-p">,</span> <span class="tok-n">b</span><span class="tok-o">::</span><span class="tok-kt">Float64</span><span class="tok-p">)</span>
     <span class="tok-n">a</span><span class="tok-o">^</span><span class="tok-mi">2</span> <span class="tok-o">+</span> <span class="tok-n">b</span><span class="tok-o">^</span><span class="tok-mi">2</span>
 <span class="tok-k">end</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The <code>@noinline</code> macro prohibits the inlining of the function call.
-</p>
 </div>
 <div class="paragraph">
 <p>The first step is to look at the lowered code:
@@ -15377,15 +15389,14 @@ Due to some ancient injury?</pre>
 
 <span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_lowered</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">CodeInfo(</span>
-<span class="tok-go">  1 ─      $(Expr(:meta, :noinline))</span>
-<span class="tok-go">2 │   %2 = (Core.apply_type)(Base.Val, 2)</span>
-<span class="tok-go">  │   %3 = (%2)()</span>
-<span class="tok-go">  │   %4 = (Base.literal_pow)(:^, a, %3)</span>
-<span class="tok-go">  │   %5 = (Core.apply_type)(Base.Val, 2)</span>
-<span class="tok-go">  │   %6 = (%5)()</span>
-<span class="tok-go">  │   %7 = (Base.literal_pow)(:^, b, %6)</span>
-<span class="tok-go">  │   %8 = %4 + %7</span>
-<span class="tok-go">  └──      return %8</span>
+<span class="tok-go">1 ─ %1 = (Core.apply_type)(Base.Val, 2)</span>
+<span class="tok-go">│   %2 = (%1)()</span>
+<span class="tok-go">│   %3 = (Base.literal_pow)(:^, a, %2)</span>
+<span class="tok-go">│   %4 = (Core.apply_type)(Base.Val, 2)</span>
+<span class="tok-go">│   %5 = (%4)()</span>
+<span class="tok-go">│   %6 = (Base.literal_pow)(:^, b, %5)</span>
+<span class="tok-go">│   %7 = %3 + %6</span>
+<span class="tok-go">└──      return %7</span>
 <span class="tok-go">)</span></code></pre>
 </div>
 </div>
@@ -15401,10 +15412,10 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_typed</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">CodeInfo(</span>
-<span class="tok-go">2 1 ─ %1 = (Base.mul_float)(a, a)::Float64</span>
-<span class="tok-go">  │   %2 = (Base.mul_float)(b, b)::Float64</span>
-<span class="tok-go">  │   %3 = (Base.add_float)(%1, %2)::Float64</span>
-<span class="tok-go">  └──      return %3</span>
+<span class="tok-go">1 ─ %1 = (Base.mul_float)(a, a)::Float64</span>
+<span class="tok-go">│   %2 = (Base.mul_float)(b, b)::Float64</span>
+<span class="tok-go">│   %3 = (Base.add_float)(%1, %2)::Float64</span>
+<span class="tok-go">└──      return %3</span>
 <span class="tok-go">) =&gt; Float64</span></code></pre>
 </div>
 </div>
@@ -15412,28 +15423,23 @@ Due to some ancient injury?</pre>
 <p>We see that the type of the intermediate results and the return value is correctly inferred.</p>
 </div>
 <div class="paragraph">
-<p>This representation of the code is transformed in LLVM code:
+<p>This representation of the code is transformed into LLVM code:
 </p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
-
-<span class="tok-go">; Function squaresum</span>
-<span class="tok-go">; Location: none:2</span>
-<span class="tok-go">define double @julia_squaresum_39479(double, double) {</span>
+<span class="tok-go">;  @ none:2 within `squaresum&#39;</span>
+<span class="tok-go">define double @julia_squaresum_15684(double, double) {</span>
 <span class="tok-go">top:</span>
-<span class="tok-go">; Function literal_pow; {</span>
-<span class="tok-go">; Location: intfuncs.jl:243</span>
-<span class="tok-go">; Function *; {</span>
-<span class="tok-go">; Location: float.jl:399</span>
-<span class="tok-go">  %2 = fmul double %0, %0</span>
-<span class="tok-go">  %3 = fmul double %1, %1</span>
-<span class="tok-go">;}}</span>
-<span class="tok-go">; Function +; {</span>
-<span class="tok-go">; Location: float.jl:395</span>
-<span class="tok-go">  %4 = fadd double %2, %3</span>
-<span class="tok-go">;}</span>
+<span class="tok-go">; ┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
+<span class="tok-go">; │┌ @ float.jl:399 within `*&#39;</span>
+<span class="tok-go">    %2 = fmul double %0, %0</span>
+<span class="tok-go">    %3 = fmul double %1, %1</span>
+<span class="tok-go">; └└</span>
+<span class="tok-go">; ┌ @ float.jl:395 within `+&#39;</span>
+<span class="tok-go">   %4 = fadd double %2, %3</span>
+<span class="tok-go">; └</span>
 <span class="tok-go">  ret double %4</span>
 <span class="tok-go">}</span></code></pre>
 </div>
@@ -15446,22 +15452,18 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_native</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">	.section	__TEXT,__text,regular,pure_instructions</span>
-<span class="tok-go">; Function squaresum {</span>
-<span class="tok-go">; Location: none:2</span>
-<span class="tok-go">; Function literal_pow; {</span>
-<span class="tok-go">; Location: intfuncs.jl:243</span>
-<span class="tok-go">; Function *; {</span>
-<span class="tok-go">; Location: none:2</span>
+<span class="tok-go">; ┌ @ none:2 within `squaresum&#39;</span>
+<span class="tok-go">; │┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
+<span class="tok-go">; ││┌ @ none:2 within `*&#39;</span>
 <span class="tok-go">	vmulsd	%xmm0, %xmm0, %xmm0</span>
 <span class="tok-go">	vmulsd	%xmm1, %xmm1, %xmm1</span>
-<span class="tok-go">;}}</span>
-<span class="tok-go">; Function +; {</span>
-<span class="tok-go">; Location: float.jl:395</span>
+<span class="tok-go">; │└└</span>
+<span class="tok-go">; │┌ @ float.jl:395 within `+&#39;</span>
 <span class="tok-go">	vaddsd	%xmm1, %xmm0, %xmm0</span>
-<span class="tok-go">;}</span>
+<span class="tok-go">; │└</span>
 <span class="tok-go">	retl</span>
 <span class="tok-go">	nopl	(%eax)</span>
-<span class="tok-go">;}</span></code></pre>
+<span class="tok-go">; └</span></code></pre>
 </div>
 </div>
 </div>
@@ -15697,11 +15699,11 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">while</span> <span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span>
-  <span class="tok-c"># do something to x</span>
-  <span class="tok-c"># do something to y</span>
-  <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;x: &quot;</span><span class="tok-p">,</span> <span class="tok-n">x</span><span class="tok-p">)</span>
-  <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;y: &quot;</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">)</span>
-  <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;condition: &quot;</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span><span class="tok-p">))</span>
+    <span class="tok-c"># do something to x</span>
+    <span class="tok-c"># do something to y</span>
+    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;x: &quot;</span><span class="tok-p">,</span> <span class="tok-n">x</span><span class="tok-p">)</span>
+    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;y: &quot;</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">)</span>
+    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;condition: &quot;</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span><span class="tok-p">))</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -15747,12 +15749,17 @@ Due to some ancient injury?</pre>
 <dl>
 <dt class="hdlist1">ArgumentError</dt>
 <dd>
-<p>The parameters to a function call do not match a valid signature.
+<p>One of the arguments to a function call is not in the expected state.
 </p>
 </dd>
 <dt class="hdlist1">BoundsError</dt>
 <dd>
 <p>An indexing operation into an array tried to access an out-of-bounds element.
+</p>
+</dd>
+<dt class="hdlist1">DomainError</dt>
+<dd>
+<p>The argument to a function or constructor is outside the valid domain.
 </p>
 </dd>
 <dt class="hdlist1">DivideError</dt>
@@ -15763,6 +15770,11 @@ Due to some ancient injury?</pre>
 <dt class="hdlist1">EOFError</dt>
 <dd>
 <p>No more data was available to read from a file or stream.
+</p>
+</dd>
+<dt class="hdlist1">InexactError</dt>
+<dd>
+<p>Cannot exactly convert to a type.
 </p>
 </dd>
 <dt class="hdlist1">KeyError</dt>
@@ -15845,7 +15857,7 @@ Due to some ancient injury?</pre>
 <p>The first step is to make a connection between the program text and the behavior you are seeing. You need a hypothesis about what the program is actually doing. One of the things that makes that hard is that computers run so fast.</p>
 </div>
 <div class="paragraph">
-<p>You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often short compared to setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.</p>
+<p>You will often wish that you could slow the program down to human speed. Inserting a few well-placed print statements is often quicker than setting up a debugger, inserting and removing breakpoints, and “stepping” the program to where the error is occurring.</p>
 </div>
 <div class="sect3">
 <h4 id="_my_program_doesnt_work">My program doesn’t work</h4>
@@ -15952,7 +15964,7 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_im_really_really_stuck_and_i_need_help">I’m really, really stuck and I need help</h4>
 <div class="paragraph">
-<p>First, try getting away from the computer for a few minutes. Computers emit waves that affect the brain, causing these symptoms:</p>
+<p>First, try getting away from the computer for a few minutes. Working with a computer can cause these symptoms:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -16012,7 +16024,7 @@ Due to some ancient injury?</pre>
 <h2 id="_unicode_input">Appendix A: Unicode Input</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The following table lists Unicode characters that can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL (and in various other editing environments).
+<p>The following table lists a few Unicode characters out of many that can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL (and in various other editing environments).
 </p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -16138,7 +16150,7 @@ Due to some ancient injury?</pre>
 <p>The initial screen is shown in <a href="#figb-1">Initial screen</a>. The new button allows the creation of a Julia notebook, a text file, a folder or a terminal session.</p>
 </div>
 <div class="paragraph">
-<p>In a terminal session, the command <strong><code>/opt/julia-1.0/bin/julia</code></strong> starts the REPL as shown in <a href="#figb-2">Terminal session</a>.</p>
+<p>In a terminal session, the command <strong><code>julia</code></strong> starts the REPL as shown in <a href="#figb-2">Terminal session</a>.</p>
 </div>
 <div class="paragraph">
 <p>The notebook interface allows to mix text in Markdown markup and highlighted code with associated output. <a href="#figb-3">Notebook</a> shows an example.</p>
@@ -16175,7 +16187,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-13 13:25:54 +0100
+Last updated 2019-02-18 13:40:00 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
