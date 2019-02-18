@@ -150,7 +150,7 @@ true
 Similarly, +isfile+ checks whether it’s a file.
 (((isfile)))((("function", "Base", "isfile", see="isfile")))
 
-+readdir+ returns a list of the files (and other directories) in the given directory:
++readdir+ returns an array of the files (and other directories) in the given directory:
 (((readdir)))((("function", "Base", "readdir", see="readdir")))
 
 [source,jlcon]

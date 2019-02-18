@@ -329,7 +329,7 @@ An alternative is:
 
 . Use +keys+ to get an array of the words in the book.
 
-. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, atexmath:[\(n\)].
+. Build an array that contains the cumulative sum of the word frequencies (see <<ex10-2>>). The last item in this array is the total number of words in the book, latexmath:[\(n\)].
 
 . Choose a random number from 1 to latexmath:[\(n\)]. Use a bisection search (see <<ex10-10>>) to find the index where the random number would be inserted in the cumulative sum.
 (((bisection search)))
@@ -386,7 +386,7 @@ In this example the length of the prefix is always two, but you can do Markov an
 
 Markov analysis:
 
-. Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be a list, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.
+. Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be an array, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.
 
 . Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Emma with prefix length 2:
 +

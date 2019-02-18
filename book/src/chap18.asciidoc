@@ -452,7 +452,7 @@ sort!(hand::Hand) in Main at REPL[5]:1
 
 So the +sort!+ method for +hand+ is the one having as argument an object of type +Hand+.
 
-Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like an +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
+Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like a +CardSet+, will also work with instances of its subtypes +Deck+ and +Hand+.
 
 If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
 (((Liskov substitution principle)))
@@ -492,12 +492,12 @@ To run multiple analyses, and keep them separate, we can encapsulate the state o
 ----
 struct Markov
     order :: Int64
-    suffixes :: Dict{String, Array{String, 1}}
+    suffixes :: Dict{Tuple{String,Vararg{String}}, Array{String, 1}}
     prefix :: Array{String, 1}
 end
 
 function Markov(order::Int64=2)
-    Markov(order, Dict{String, Array{String, 1}}(), Array{String, 1}())
+    new(order, Dict{Tuple{String,Vararg{String}}, Array{String, 1}}(), Array{String, 1}())
 end
 ----
 
@@ -513,7 +513,7 @@ function processword(markov::Markov, word::String)
     end
     get!(markov.suffixes, (markov.prefix...,), Array{String, 1}())
     push!(markov.suffixes[(markov.prefix...,)], word)
-    pushfirst!(markov.prefix)
+    popfirst!(markov.prefix)
     push!(markov.prefix, word)
 end
 ----

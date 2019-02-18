@@ -78,7 +78,7 @@ function printtime(time)
 end
 ----
 
-As you can see, type declaration can and should be added for performance reasons to the fields in a struct definition.
+As you can see, type declarations can and should be added for performance reasons to the fields in a struct definition.
 
 To call this function, you have to pass a +MyTime+ object as an argument:
 
@@ -266,7 +266,7 @@ MyTime(hour::Int64, minute::Int64)
 MyTime(hour::Int64, minute::Int64, second::Int64)
 ----
 
-An inner constructor method is always declared inside the block of a type declaration and it has access to a special function called +new+ that creates objects of the newly declared type.
+An inner constructor method is always defined inside the block of a type declaration and it has access to a special function called +new+ that creates objects of the newly declared type.
 
 [WARNING]
 ====

@@ -206,7 +206,7 @@ function minmax(t)
 end
 ----
 
-+maximum+ and +mininimum+ are built-in functions that find the largest and smallest elements of a sequence. +minmax+ computes both and returns a tuple of two values. The built-in function +extrema+ is more efficient.
++maximum+ and +minimum+ are built-in functions that find the largest and smallest elements of a sequence. +minmax+ computes both and returns a tuple of two values. The built-in function +extrema+ is more efficient.
 (((maximum)))(((minimum)))(((extrema)))((("function", "Base", "maximum", see="maximum")))((("function", "Base", "minimum", see="minimum")))((("function", "Base", "extrema", see="extrema")))
 
 === Variable-length Argument Tuples
@@ -483,7 +483,7 @@ Arrays are more common than tuples, mostly because they are mutable. But there a
 
 * For performance reasons. The compiler can specialize on the type.
 
-Because tuples are immutable, they don’t provide function like +sort!+ and +reverse!+, which modify existing arrays. But Julia provides the built-in function +sort+, which takes an array and returns a new array with the same elements in sorted order, and +reverse+, which takes any sequence and returns a sequence of the same type in reverse order.
+Because tuples are immutable, they don’t provide functions like +sort!+ and +reverse!+, which modify existing arrays. But Julia provides the built-in function +sort+, which takes an array and returns a new array with the same elements in sorted order, and +reverse+, which takes any sequence and returns a sequence of the same type in reverse order.
 (((sort)))(((sort!)))(((reverse)))(((reverse!)))(((zip)))((("function", "Base", "reverse", see="reverse")))(((zip)))((("function", "Base", "reverse!", see="reverse!")))
 
 
