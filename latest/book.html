@@ -4173,7 +4173,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.550493604189025e9</span></code></pre>
+<span class="tok-go">1.550500062163452e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5446,7 +5446,7 @@ A(m-1, A(m, n-1))&amp; \textrm{if}\ m &gt; 0\ \textrm{and}\ n &gt; 0.
 <p>Since <code>n</code> sometimes increases and sometimes decreases, there is no obvious proof that <code>n</code> will ever reach 1, or that the program terminates. For some particular values of <code>n</code>, we can prove termination. For example, if the starting value is a power of two, <code>n</code> will be even every time through the loop until it reaches 1. The previous example ends with such a sequence, starting with 16.</p>
 </div>
 <div class="paragraph">
-<p>The hard question is whether we can prove that this program terminates for all positive values of <code>n</code>. So far, no one has been able to prove it or disprove it! (See <a href="https://en.wikipedia.org/wiki/Collatz_conjecture" class="bare">https://en.wikipedia.org/wiki/Collatz_conjecture</a>)
+<p>The hard question is whether we can prove that this program terminates for all positive values of <code>n</code>. So far, no one has been able to prove it or disprove it! (See <a href="https://en.wikipedia.org/wiki/Collatz_conjecture." class="bare">https://en.wikipedia.org/wiki/Collatz_conjecture.</a>)
 </p>
 </div>
 <div class="sect4">
@@ -9490,7 +9490,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>maximum</code> and <code>mininimum</code> are built-in functions that find the largest and smallest elements of a sequence. <code>minmax</code> computes both and returns a tuple of two values. The built-in function <code>extrema</code> is more efficient.
+<p><code>maximum</code> and <code>minimum</code> are built-in functions that find the largest and smallest elements of a sequence. <code>minmax</code> computes both and returns a tuple of two values. The built-in function <code>extrema</code> is more efficient.
 </p>
 </div>
 </div>
@@ -9813,7 +9813,7 @@ Qack</pre>
 </ul>
 </div>
 <div class="paragraph">
-<p>Because tuples are immutable, they don’t provide function like <code>sort!</code> and <code>reverse!</code>, which modify existing arrays. But Julia provides the built-in function <code>sort</code>, which takes an array and returns a new array with the same elements in sorted order, and <code>reverse</code>, which takes any sequence and returns a sequence of the same type in reverse order.
+<p>Because tuples are immutable, they don’t provide functions like <code>sort!</code> and <code>reverse!</code>, which modify existing arrays. But Julia provides the built-in function <code>sort</code>, which takes an array and returns a new array with the same elements in sorted order, and <code>reverse</code>, which takes any sequence and returns a sequence of the same type in reverse order.
 </p>
 </div>
 </div>
@@ -10406,7 +10406,7 @@ outree quicksighted outwardly adelaide rencontre jeffereys unreserved dixons bet
 <p>Use <code>keys</code> to get an array of the words in the book.</p>
 </li>
 <li>
-<p>Build an array that contains the cumulative sum of the word frequencies (see <a href="#ex10-2">Exercise 10-2</a>). The last item in this array is the total number of words in the book, atexmath:[\(n\)].</p>
+<p>Build an array that contains the cumulative sum of the word frequencies (see <a href="#ex10-2">Exercise 10-2</a>). The last item in this array is the total number of words in the book, \(n\).</p>
 </li>
 <li>
 <p>Choose a random number from 1 to \(n\). Use a bisection search (see <a href="#ex10-10">Exercise 10-10</a>) to find the index where the random number would be inserted in the cumulative sum.
@@ -10476,7 +10476,7 @@ Due to some ancient injury?</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be a list, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.</p>
+<p>Write a program to read a text from a file and perform Markov analysis. The result should be a dictionary that maps from prefixes to a collection of possible suffixes. The collection might be an array, tuple, or dictionary; it is up to you to make an appropriate choice. You can test your program with prefix length two, but you should write the program in a way that makes it easy to try other lengths.</p>
 </li>
 <li>
 <p>Add a function to the previous program to generate random text based on the Markov analysis. Here is an example from Emma with prefix length 2:</p>
@@ -10920,7 +10920,7 @@ Due to some ancient injury?</pre>
 </p>
 </div>
 <div class="paragraph">
-<p><code>readdir</code> returns a list of the files (and other directories) in the given directory:
+<p><code>readdir</code> returns an array of the files (and other directories) in the given directory:
 </p>
 </div>
 <div class="listingblock">
@@ -12513,7 +12513,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see, type declaration can and should be added for performance reasons to the fields in a struct definition.</p>
+<p>As you can see, type declarations can and should be added for performance reasons to the fields in a struct definition.</p>
 </div>
 <div class="paragraph">
 <p>To call this function, you have to pass a <code>MyTime</code> object as an argument:</p>
@@ -12710,7 +12710,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>An inner constructor method is always declared inside the block of a type declaration and it has access to a special function called <code>new</code> that creates objects of the newly declared type.</p>
+<p>An inner constructor method is always defined inside the block of a type declaration and it has access to a special function called <code>new</code> that creates objects of the newly declared type.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -13506,9 +13506,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">A♦ 7♠ Q♦ 4♣ 4♥ Q♠ 10♦ 6♣ A♠ K♣ J♦ K♦ 3♦ 4♦ 10♠ J♠ 9♦ 9♠ 7♦ 8♠ 2♣ 2♠ 2♥ A♣ J♣ 5♠ 3♣ 6♥ 8♦ 7♥ J♥ 9♥ 5♥ 8♥ 3♥ 6♦ K♥ 2♦ Q♣ 10♣ Q♥ 6♠ 5♣ A♥ 9♣ 4♠ 5♦ K♠ 3♠ 7♣ 8♣ 10♥</span>
+<span class="tok-go">A♣ 8♦ 9♥ 4♣ 9♦ 8♥ 5♥ 6♠ 10♣ 9♣ Q♥ 3♣ 10♥ 2♣ 5♦ 5♠ 4♠ 6♦ 7♣ Q♣ 8♣ K♥ Q♠ 2♥ A♥ 2♠ 10♠ K♦ 4♥ 7♥ K♠ A♠ K♣ 4♦ 3♥ J♦ 6♥ 3♠ 8♠ 2♦ J♣ J♠ 5♣ 10♦ J♥ 3♦ 7♠ 6♣ Q♦ 9♠ 7♦ A♦</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">10♥</span>
+<span class="tok-go">A♦</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -13618,7 +13618,7 @@ Due to some ancient injury?</pre>
 <p>So the <code>sort!</code> method for <code>hand</code> is the one having as argument an object of type <code>Hand</code>.</p>
 </div>
 <div class="paragraph">
-<p>Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like an <code>CardSet</code>, will also work with instances of its subtypes <code>Deck</code> and <code>Hand</code>.</p>
+<p>Here’s a design suggestion: when you override a method, the interface of the new method should be the same as the old. It should take the same parameters, return the same type, and obey the same preconditions and postconditions. If you follow this rule, you will find that any function designed to work with an instance of a supertype, like a <code>CardSet</code>, will also work with instances of its subtypes <code>Deck</code> and <code>Hand</code>.</p>
 </div>
 <div class="paragraph">
 <p>If you violate this rule, which is called the “Liskov substitution principle”, your code will collapse like (sorry) a house of cards.
@@ -13665,12 +13665,12 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">struct</span> <span class="tok-n">Markov</span>
     <span class="tok-n">order</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
-    <span class="tok-n">suffixes</span> <span class="tok-o">::</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}</span>
+    <span class="tok-n">suffixes</span> <span class="tok-o">::</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-kt">Tuple</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span><span class="tok-kt">Vararg</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">}},</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}</span>
     <span class="tok-n">prefix</span> <span class="tok-o">::</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}</span>
 <span class="tok-k">end</span>
 
 <span class="tok-k">function</span> <span class="tok-n">Markov</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-o">=</span><span class="tok-mi">2</span><span class="tok-p">)</span>
-    <span class="tok-n">Markov</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-p">,</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}(),</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}())</span>
+    <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">order</span><span class="tok-p">,</span> <span class="tok-kt">Dict</span><span class="tok-p">{</span><span class="tok-kt">Tuple</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span><span class="tok-kt">Vararg</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">}},</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}}(),</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}())</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -13687,7 +13687,7 @@ Due to some ancient injury?</pre>
     <span class="tok-k">end</span>
     <span class="tok-n">get!</span><span class="tok-p">(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">suffixes</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">prefix</span><span class="tok-o">...</span><span class="tok-p">,),</span> <span class="tok-kt">Array</span><span class="tok-p">{</span><span class="tok-n">String</span><span class="tok-p">,</span> <span class="tok-mi">1</span><span class="tok-p">}())</span>
     <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">suffixes</span><span class="tok-p">[(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">prefix</span><span class="tok-o">...</span><span class="tok-p">,)],</span> <span class="tok-n">word</span><span class="tok-p">)</span>
-    <span class="tok-n">pushfirst!</span><span class="tok-p">(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">prefix</span><span class="tok-p">)</span>
+    <span class="tok-n">popfirst!</span><span class="tok-p">(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">prefix</span><span class="tok-p">)</span>
     <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">markov</span><span class="tok-o">.</span><span class="tok-n">prefix</span><span class="tok-p">,</span> <span class="tok-n">word</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
@@ -14878,7 +14878,7 @@ Due to some ancient injury?</pre>
 <p>Additional functionality can be added from a growing collection of packages (<a href="https://juliaobserver.com" class="bare">https://juliaobserver.com</a>).</p>
 </div>
 <div class="paragraph">
-<p>This chapter is not a replacement of the offical Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org/en/v1/" class="bare">https://docs.julialang.org/en/v1/</a>.</p>
+<p>This chapter is not a replacement of the official Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in <a href="https://docs.julialang.org" class="bare">https://docs.julialang.org</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="_measuring_performance">Measuring Performance</h3>
@@ -16187,7 +16187,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-18 13:40:00 +0100
+Last updated 2019-02-18 15:27:37 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
