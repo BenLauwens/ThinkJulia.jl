@@ -5,7 +5,7 @@ In January 2018 I started with the preparation of a programming course with as t
 
 I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of Think Python to Julia came to fruition.
 
-All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!“ He put me in touch with his editor of O'Reilly Media and now a year later I'm putting the finishing touches to this book.
+All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!” He put me in touch with his editor of O'Reilly Media and now a year later I'm putting the finishing touches to this book.
 
 It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O'Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lectures to give in August ... 
 
@@ -144,8 +144,8 @@ Let me know what version of the book you are working with, and what format. If y
 - Mark Schmitz suggested to turn on the syntax highlighting.
 - Zigu Zhao caught some bugs in Chapter 8.
 - Oleg Soloviev caught an error in the url to add the +ThinkJulia+ package.
-- Aaron Ang found some rendering and some naming issues.
+- Aaron Ang found some rendering and naming issues.
 - Sergey Volkov caught a broken link in Chapter 7.
-- Sean McAllister suggested to mention the excellent packages +BenchmarkTools+.
+- Sean McAllister suggested to mention the excellent package +BenchmarkTools+.
 - Carlos Bolech sent a long list of corrections and suggestions.
 - Krishna Kumar corrected the Markov example in Chapter 18.
