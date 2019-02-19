@@ -522,6 +522,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_conventions_used_in_this_book">Conventions Used in This Book</a></li>
 <li><a href="#_using_code_examples">Using Code Examples</a></li>
 <li><a href="#_acknowledgments">Acknowledgments</a></li>
+<li><a href="#_contributor_list">Contributor List</a></li>
 </ul>
 </li>
 <li><a href="#chap01">1. The Way of the Program</a>
@@ -860,13 +861,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>In January 2018 I started with the preparation of a programming course with as target group students without programming experience. I wanted to use Julia as a programming language and found out that there was no document with the purpose of learning to program and with Julia as the first programming language. There are wonderful tutorials that explain Julia&#8217;s key concepts but none of them paid sufficient attention to learning how to think like a programmer.</p>
 </div>
 <div class="paragraph">
-<p>I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of ThinkPython to Julia came to fruition.</p>
+<p>I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of Think Python to Julia came to fruition.</p>
 </div>
 <div class="paragraph">
-<p>All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port from Think Python to Julia and his answer was immediate: go for it! He put me in touch with his editor of O&#8217;Reilly and now a year later I&#8217;m putting the finishing touches to this book.</p>
+<p>All the course material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!“ He put me in touch with his editor of O&#8217;Reilly Media and now a year later I&#8217;m putting the finishing touches to this book.</p>
 </div>
 <div class="paragraph">
-<p>It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O&#8217;Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lessons in August &#8230;&#8203;</p>
+<p>It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O&#8217;Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lectures to give in August &#8230;&#8203;</p>
 </div>
 <div class="paragraph">
 <p>I hope you enjoy working with this book, and that it helps you learn to program and think like a computer scientist, at least a little bit.</p>
@@ -900,7 +901,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Julia is an optional typed programming language whose (user-defined) data types make the code clearer and more robust.</p>
 </li>
 <li>
-<p>Julia has an extended standard library and a lot of third party packages are available.</p>
+<p>Julia has an extended standard library and numerous third party packages are available.</p>
 </li>
 </ul>
 </div>
@@ -994,7 +995,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>All code used in this book is available from a Git repository on GitHub: <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a>. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git&#8217;s control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.</p>
 </div>
 <div class="paragraph">
-<p>A convenience package is provided that can be directly added to Julia. Just type <code>add <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a></code> in the Pkg REPL.</p>
+<p>A convenience package is provided that can be directly added to Julia. Just type <strong><code>pass:[add <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a></code></strong> in the Pkg REPL.</p>
 </div>
 <div class="paragraph">
 <p>The easiest way to run Julia code is going to <a href="https://juliabox.com" class="bare">https://juliabox.com</a> and start a free session. Both the REPL as a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from <a href="https://julialang.org" class="bare">https://julialang.org</a>, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the <code>IJulia</code> package and run a Jupyter notebook locally.</p>
@@ -1003,22 +1004,62 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_acknowledgments">Acknowledgments</h3>
 <div class="paragraph">
-<p>If you have a suggestion or correction, please send email to <a href="mailto:ben.lauwens@gmail.com">ben.lauwens@gmail.com</a> or open an issue on GitHub. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).</p>
-</div>
-<div class="paragraph">
-<p>Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!</p>
-</div>
-<div class="paragraph">
-<p>I really want to thank Allen for writing ThinkPython and allowing me to port ThinkPython to Julia. Your enthusiasm is contagious!</p>
-</div>
-<div class="paragraph">
-<p>Thanks to Melissa Potter from O&#8217;Reilly Media who made this a better book. You forced me to do the right thing and make this book as original as possible.</p>
+<p>I really want to thank Allen for writing Think Python and allowing me to port Think Python to Julia. Your enthusiasm is contagious!</p>
 </div>
 <div class="paragraph">
 <p>I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens and David P. Sanders.</p>
 </div>
 <div class="paragraph">
-<p>Other people who reported errors include</p>
+<p>Thanks to Melissa Potter from O&#8217;Reilly Media who made this a better book. You forced me to do the things right and make this book as original as possible.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to Matt Hacker from O&#8217;Reilly Media who helped me out with the Atlas toolchain and some syntax highlighting issues.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to all the students who worked with an early version of this book and all the contributors (listed below) who sent in corrections and suggestions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contributor_list">Contributor List</h3>
+<div class="paragraph">
+<p>If you have a suggestion or correction, please send email to <a href="mailto:ben.lauwens@gmail.com">ben.lauwens@gmail.com</a> or open an issue on GitHub. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).</p>
+</div>
+<div class="paragraph">
+<p>Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Scott Jones pointed out the name change of <code>Void</code> to <code>Nothing</code> and this started the migration to Julia v1.0.</p>
+</li>
+<li>
+<p>Robin Deits found some typos in Chapter 2.</p>
+</li>
+<li>
+<p>Mark Schmitz suggested to turn on the syntax highlighting.</p>
+</li>
+<li>
+<p>Zigu Zhao caught some bugs in Chapter 8.</p>
+</li>
+<li>
+<p>Oleg Soloviev caught an error in the url to add the <code>ThinkJulia</code> package.</p>
+</li>
+<li>
+<p>Aaron Ang found some rendering and naming issues.</p>
+</li>
+<li>
+<p>Sergey Volkov caught a broken link in Chapter 7.</p>
+</li>
+<li>
+<p>Sean McAllister suggested to mention the excellent packages <code>BenchmarkTools</code>.</p>
+</li>
+<li>
+<p>Carlos Bolech sent a long list of corrections and suggestions.</p>
+</li>
+<li>
+<p>Krishna Kumar corrected the Markov example in Chapter 18.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2436,7 +2477,10 @@ struct           where        while</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">printtwice</span><span class="tok-p">(</span><span class="tok-s">&quot;Spam &quot;</span><span class="tok-o">^</span><span class="tok-mi">4</span><span class="tok-p">)</span>
 <span class="tok-go">Spam Spam Spam Spam</span>
-<span class="tok-go">Spam Spam Spam Spam</span></code></pre>
+<span class="tok-go">Spam Spam Spam Spam</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">printtwice</span><span class="tok-p">(</span><span class="tok-n">cos</span><span class="tok-p">(</span><span class="tok-nb">π</span><span class="tok-p">))</span>
+<span class="tok-go">-1.0</span>
+<span class="tok-go">-1.0</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4345,7 +4389,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.550585407048639e9</span></code></pre>
+<span class="tok-go">1.550608869986277e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7094,7 +7138,7 @@ Qack</pre>
     <span class="tok-k">end</span>
     <span class="tok-n">i</span> <span class="tok-o">=</span> <span class="tok-n">firstindex</span><span class="tok-p">(</span><span class="tok-n">word</span><span class="tok-p">)</span>
     <span class="tok-n">j</span> <span class="tok-o">=</span> <span class="tok-n">nextind</span><span class="tok-p">(</span><span class="tok-n">word</span><span class="tok-p">,</span> <span class="tok-n">i</span><span class="tok-p">)</span>
-    <span class="tok-k">if</span> <span class="tok-n">word</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">&gt;</span> <span class="tok-n">word</span><span class="tok-p">[</span><span class="tok-n">j</span><span class="tok-p">]</span>
+    <span class="tok-k">if</span> <span class="tok-n">word</span><span class="tok-p">[</span><span class="tok-n">i</span><span class="tok-p">]</span> <span class="tok-o">&gt;</span> <span class="tok-n">word</span><span class="tok-p">[</span><span class="tok-n">j</span><span class="tok-p">]</span>
         <span class="tok-k">return</span> <span class="tok-kc">false</span>
     <span class="tok-k">end</span>
     <span class="tok-n">isabecedarian</span><span class="tok-p">(</span><span class="tok-n">word</span><span class="tok-p">[</span><span class="tok-n">j</span><span class="tok-o">:</span><span class="tok-k">end</span><span class="tok-p">])</span>
@@ -8373,7 +8417,7 @@ Qack</pre>
 <div class="sect4">
 <h5 id="ex10-2">Exercise 10-2</h5>
 <div class="paragraph">
-<p>Write a function called <code>cumulsum</code> that takes an array of numbers and returns the cumulative sum; that is, a new array where the \(i\)th element is the sum of the first \(i+1\) elements from the original array. For example:
+<p>Write a function called <code>cumulsum</code> that takes an array of numbers and returns the cumulative sum; that is, a new array where the \(i\)th element is the sum of the first \(i\) elements from the original array. For example:
 </p>
 </div>
 <div class="listingblock">
@@ -9541,7 +9585,7 @@ Qack</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">0</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-sc">&#39;A&#39;</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">t</span><span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-sc">&#39;A&#39;</span>
 <span class="tok-gr">ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int64)</span></code></pre>
 </div>
 </div>
@@ -12496,7 +12540,7 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">addtime</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-n">t2</span><span class="tok-p">)</span>
-    <span class="tok-k">if</span> <span class="tok-n">isvalidtime</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">isvalidtime</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
+    <span class="tok-k">if</span> <span class="tok-o">!</span><span class="tok-n">isvalidtime</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span> <span class="tok-o">||</span> <span class="tok-o">!</span><span class="tok-n">isvalidtime</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
         <span class="tok-n">error</span><span class="tok-p">(</span><span class="tok-s">&quot;invalid MyTime object in add_time&quot;</span><span class="tok-p">)</span>
     <span class="tok-k">end</span>
     <span class="tok-n">seconds</span> <span class="tok-o">=</span> <span class="tok-n">timetoint</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">)</span> <span class="tok-o">+</span> <span class="tok-n">timetoint</span><span class="tok-p">(</span><span class="tok-n">t2</span><span class="tok-p">)</span>
@@ -12863,8 +12907,8 @@ Due to some ancient injury?</pre>
     <span class="tok-n">minute</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">second</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-k">function</span> <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-o">=</span><span class="tok-mi">0</span><span class="tok-p">)</span>
-        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">0</span> <span class="tok-o">≤</span> <span class="tok-n">minute</span> <span class="tok-o">&lt;</span> <span class="tok-mi">60</span><span class="tok-p">,</span> <span class="tok-s">&quot;Minute is between 0 and 60.&quot;</span><span class="tok-p">)</span>
-        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">0</span> <span class="tok-o">≤</span> <span class="tok-n">second</span> <span class="tok-o">&lt;</span> <span class="tok-mi">60</span><span class="tok-p">,</span> <span class="tok-s">&quot;Second is between 0 and 60.&quot;</span><span class="tok-p">)</span>
+        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">0</span> <span class="tok-o">≤</span> <span class="tok-n">minute</span> <span class="tok-o">&lt;</span> <span class="tok-mi">60</span><span class="tok-p">,</span> <span class="tok-s">&quot;Minute is not between 0 and 60.&quot;</span><span class="tok-p">)</span>
+        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">0</span> <span class="tok-o">≤</span> <span class="tok-n">second</span> <span class="tok-o">&lt;</span> <span class="tok-mi">60</span><span class="tok-p">,</span> <span class="tok-s">&quot;Second is not between 0 and 60.&quot;</span><span class="tok-p">)</span>
         <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-p">)</span>
     <span class="tok-k">end</span>
 <span class="tok-k">end</span></code></pre>
@@ -13340,8 +13384,8 @@ Due to some ancient injury?</pre>
     <span class="tok-n">suit</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">rank</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-k">function</span> <span class="tok-n">Card</span><span class="tok-p">(</span><span class="tok-n">suit</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">,</span> <span class="tok-n">rank</span><span class="tok-o">::</span><span class="tok-kt">Int64</span><span class="tok-p">)</span>
-        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">1</span> <span class="tok-o">≤</span> <span class="tok-n">suit</span> <span class="tok-o">≤</span> <span class="tok-mi">4</span><span class="tok-p">,</span> <span class="tok-s">&quot;suit is between 1 and 4&quot;</span><span class="tok-p">)</span>
-        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">1</span> <span class="tok-o">≤</span> <span class="tok-n">rank</span> <span class="tok-o">≤</span> <span class="tok-mi">13</span><span class="tok-p">,</span> <span class="tok-s">&quot;rank is between 1 and 13&quot;</span><span class="tok-p">)</span>
+        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">1</span> <span class="tok-o">≤</span> <span class="tok-n">suit</span> <span class="tok-o">≤</span> <span class="tok-mi">4</span><span class="tok-p">,</span> <span class="tok-s">&quot;suit is not between 1 and 4&quot;</span><span class="tok-p">)</span>
+        <span class="tok-nd">@assert</span><span class="tok-p">(</span><span class="tok-mi">1</span> <span class="tok-o">≤</span> <span class="tok-n">rank</span> <span class="tok-o">≤</span> <span class="tok-mi">13</span><span class="tok-p">,</span> <span class="tok-s">&quot;rank is not between 1 and 13&quot;</span><span class="tok-p">)</span>
         <span class="tok-n">new</span><span class="tok-p">(</span><span class="tok-n">suit</span><span class="tok-p">,</span> <span class="tok-n">rank</span><span class="tok-p">)</span>
     <span class="tok-k">end</span>
 <span class="tok-k">end</span></code></pre>
@@ -13678,9 +13722,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">3♣ 8♦ J♥ J♦ Q♠ 2♥ Q♥ Q♣ 10♣ K♠ 10♥ 3♦ Q♦ 4♦ 2♠ J♠ 6♠ 6♣ 9♠ 2♣ 4♠ 5♦ J♣ A♥ 10♦ 7♥ 5♠ 6♥ A♣ 3♥ 7♣ 5♥ 7♦ A♦ 8♥ 7♠ K♣ 4♥ K♦ 5♣ A♠ 10♠ 6♦ 9♦ K♥ 3♠ 2♦ 9♥ 4♣ 8♣ 8♠ 9♣</span>
+<span class="tok-go">J♣ 2♥ K♣ 8♣ 3♠ 5♣ 4♠ K♥ 2♣ 3♦ J♦ 4♦ 7♥ 7♦ K♦ 8♥ 5♥ 2♦ 5♦ 6♠ J♠ A♥ 10♦ 4♣ 3♥ 8♠ Q♣ 9♣ 9♥ 7♠ 7♣ 6♦ 6♣ 10♠ A♦ 9♦ A♣ 3♣ J♥ 5♠ 2♠ Q♠ Q♦ 8♦ 9♠ A♠ Q♥ 10♥ 4♥ 6♥ 10♣ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">9♣</span>
+<span class="tok-go">K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -15201,7 +15245,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>⊆</code> operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in <code>word</code> appear in <code>available</code>.
+<p>The <code>⊆</code> (<strong><code>\subseteq TAB</code></strong>) operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in <code>word</code> appear in <code>available</code>.
 </p>
 </div>
 <div class="sect4">
@@ -15602,7 +15646,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">;  @ none:2 within `squaresum&#39;</span>
-<span class="tok-go">define double @julia_squaresum_14822(double, double) {</span>
+<span class="tok-go">define double @julia_squaresum_14823(double, double) {</span>
 <span class="tok-go">top:</span>
 <span class="tok-go">; ┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
 <span class="tok-go">; │┌ @ float.jl:399 within `*&#39;</span>
@@ -15731,10 +15775,13 @@ Due to some ancient injury?</pre>
 </p>
 </li>
 <li>
-<p>Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result. The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.
+<p>Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated in the order you expect, yielding an incorrect result.
 </p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>The first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable in more than one situation.</p>
 </div>
 <div class="sect2">
 <h3 id="_syntax_errors">Syntax Errors</h3>
@@ -16359,7 +16406,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-19 15:10:03 +0100
+Last updated 2019-02-19 21:41:06 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
