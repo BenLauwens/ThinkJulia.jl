@@ -5,7 +5,7 @@ In January 2018 I started with the preparation of a programming course with as t
 
 I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of Think Python to Julia came to fruition.
 
-All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!“ He put me in touch with his editor of O'Reilly Media and now a year later I'm putting the finishing touches to this book.
+All the course material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!“ He put me in touch with his editor of O'Reilly Media and now a year later I'm putting the finishing touches to this book.
 
 It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O'Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lectures to give in August ... 
 
@@ -68,58 +68,9 @@ This element indicates a warning or caution.
 
 All code used in this book is available from a Git repository on GitHub: https://github.com/BenLauwens/ThinkJulia.jl. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git's control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.
 
-A convenience package is provided that can be directly added to Julia. Just type *+pass:[add https://github.com/BenLauwens/ThinkJulia.jl]+* in the Pkg REPL.
+A convenience package is provided that can be directly added to Julia. Just type *+pass:[add https://github.com/BenLauwens/ThinkJulia.jl+* in the Pkg REPL.
 
 The easiest way to run Julia code is going to https://juliabox.com and start a free session. Both the REPL as a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from https://juliacomputing.com/products/juliapro.html. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from https://julialang.org, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the +IJulia+ package and run a Jupyter notebook locally.
-
-This book is here to help you get your job done. In general, you may use example code in your programs and documentation. You do not need to contact us for permission unless you’re reproducing a significant portion of the code. For example, writing a program that uses several chunks of code from this book does not require permission. Selling or distributing a CD-ROM of examples from O’Reilly books does require permission. Answering a question by citing this book and quoting example code does not require permission. Incorporating a significant amount of example code from this book into your product’s documentation does require permission.
-
-We appreciate, but do not require, attribution. An attribution usually includes the title, author, publisher, and ISBN. For example: “_Book Title_ by Some Author (O’Reilly). Copyright 2012 Some Copyright Holder, 978-0-596-xxxx-x.”
-
-If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at pass:[<a class="email" href="mailto:permissions@oreilly.com"><em>permissions@oreilly.com</em></a>].
-
-=== O'Reilly Safari
-
-[role = "safarienabled"]
-[NOTE]
-====
-pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em class="hyperlink">Safari</em></a>] (formerly Safari Books Online) is a membership-based training and reference platform for enterprise, government, educators, and individuals.
-====
-
-Members have access to thousands of books, training videos, Learning Paths, interactive tutorials, and curated playlists from over 250 publishers, including O’Reilly Media, Harvard Business Review, Prentice Hall Professional, Addison-Wesley Professional, Microsoft Press, Sams, Que, Peachpit Press, Adobe, Focal Press, Cisco Press, John Wiley & Sons, Syngress, Morgan Kaufmann, IBM Redbooks, Packt, Adobe Press, FT Press, Apress, Manning, New Riders, McGraw-Hill, Jones & Bartlett, and Course Technology, among others.
-
-For more information, please visit pass:[<a href="http://oreilly.com/safari" class="orm:hideurl"><em>http://oreilly.com/safari</em></a>]. 
-
-=== How to Contact Us
-
-Please address comments and questions concerning this book to the publisher:
-
-++++
-<ul class="simplelist">
-  <li>O’Reilly Media, Inc.</li>
-  <li>1005 Gravenstein Highway North</li>
-  <li>Sebastopol, CA 95472</li>
-  <li>800-998-9938 (in the United States or Canada)</li>
-  <li>707-829-0515 (international or local)</li>
-  <li>707-829-0104 (fax)</li>
-</ul>
-++++
-
-We have a web page for this book, where we list errata, examples, and any additional information. You can access this page at link:$$http://www.oreilly.com/catalog/<catalog page>$$[].
-
-++++
-<!--Don't forget to update the link above.-->
-++++
-
-To comment or ask technical questions about this book, send email to pass:[<a class="email" href="mailto:bookquestions@oreilly.com"><em>bookquestions@oreilly.com</em></a>].
-
-For more information about our books, courses, conferences, and news, see our website at link:$$http://www.oreilly.com$$[].
-
-Find us on Facebook: link:$$http://facebook.com/oreilly$$[]
-
-Follow us on Twitter: link:$$http://twitter.com/oreillymedia$$[]
-
-Watch us on YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
 
 === Acknowledgments
 
