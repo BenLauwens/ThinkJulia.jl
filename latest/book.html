@@ -1042,19 +1042,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!</p>
 </div>
-<div class="paragraph">
-<p><small>
-- Scott Jones pointed out the name change of <code>Void</code> to <code>Nothing</code> and this started the migration to Julia v1.0.
-- Robin Deits found some typos in Chapter 2.
-- Mark Schmitz suggested to turn on the syntax highlighting.
-- Zigu Zhao caught some bugs in Chapter 8.
-- Oleg Soloviev caught an error in the url to add the <code>ThinkJulia</code> package.
-- Aaron Ang found some rendering and naming issues.
-- Sergey Volkov caught a broken link in Chapter 7.
-- Sean McAllister suggested to mention the excellent package <code>BenchmarkTools</code>.
-- Carlos Bolech sent a long list of corrections and suggestions.
-- Krishna Kumar corrected the Markov example in Chapter 18.
-</small></p>
+<div class="openblock small">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Scott Jones pointed out the name change of <code>Void</code> to <code>Nothing</code> and this started the migration to Julia v1.0.</p>
+</li>
+<li>
+<p>Robin Deits found some typos in Chapter 2.</p>
+</li>
+<li>
+<p>Mark Schmitz suggested to turn on the syntax highlighting.</p>
+</li>
+<li>
+<p>Zigu Zhao caught some bugs in Chapter 8.</p>
+</li>
+<li>
+<p>Oleg Soloviev caught an error in the url to add the <code>ThinkJulia</code> package.</p>
+</li>
+<li>
+<p>Aaron Ang found some rendering and naming issues.</p>
+</li>
+<li>
+<p>Sergey Volkov caught a broken link in Chapter 7.</p>
+</li>
+<li>
+<p>Sean McAllister suggested to mention the excellent package <code>BenchmarkTools</code>.</p>
+</li>
+<li>
+<p>Carlos Bolech sent a long list of corrections and suggestions.</p>
+</li>
+<li>
+<p>Krishna Kumar corrected the Markov example in Chapter 18.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -4384,7 +4408,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.550612205787902e9</span></code></pre>
+<span class="tok-go">1.550616175117044e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13717,9 +13741,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">7♦ K♥ 10♥ Q♣ A♦ 10♦ Q♥ J♣ 6♣ J♦ 5♣ 6♥ A♥ K♣ 9♠ 9♦ 2♦ 9♣ 6♦ 8♣ 4♣ 3♦ 7♣ 3♣ 7♥ 2♠ 5♥ Q♠ 2♣ 4♥ 10♣ 4♠ 5♦ A♠ 8♠ 5♠ 4♦ 3♥ 6♠ 8♥ J♠ 8♦ K♦ 7♠ 2♥ 9♥ Q♦ 3♠ A♣ J♥ K♠ 10♠</span>
+<span class="tok-go">5♥ 7♠ 10♣ 6♦ 8♥ A♦ A♣ 5♣ 9♦ 4♦ 8♦ 3♥ 2♦ K♥ A♠ Q♠ 3♣ K♠ Q♥ 4♠ 2♣ 8♣ A♥ Q♦ J♦ 6♠ Q♣ 9♣ 7♦ J♥ 10♦ 10♠ 5♠ 2♥ 5♦ 7♣ 3♦ 6♥ 4♣ 9♥ 3♠ K♦ K♣ J♣ 7♥ 4♥ J♠ 2♠ 8♠ 9♠ 6♣ 10♥</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">10♠</span>
+<span class="tok-go">10♥</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -16401,7 +16425,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-19 22:36:42 +0100
+Last updated 2019-02-19 23:42:50 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
