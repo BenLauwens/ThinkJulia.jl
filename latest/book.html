@@ -514,8 +514,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_colophon">Colophon</a></li>
-<li><a href="#_preface">Preface</a></li>
+<li><a href="#_copyright">Copyright</a></li>
+<li><a href="#_preface">Preface</a>
+<ul class="sectlevel2">
+<li><a href="#_why_julia">Why Julia?</a></li>
+<li><a href="#_who_is_this_book_for">Who Is this Book For?</a></li>
+<li><a href="#_conventions_used_in_this_book">Conventions Used in This Book</a></li>
+<li><a href="#_using_code_examples">Using Code Examples</a></li>
+<li><a href="#_acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
 <li><a href="#chap01">1. The Way of the Program</a>
 <ul class="sectlevel2">
 <li><a href="#_what_is_a_program">What is a Program?</a></li>
@@ -835,7 +843,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="_colophon">Colophon</h2>
+<h2 id="_copyright">Copyright</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Copyright © 2018 Allen Downey, Ben Lauwens. All rights reserved.</p>
@@ -848,7 +856,174 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_preface">Preface</h2>
 <div class="sectionbody">
-
+<div class="paragraph">
+<p>In January 2018 I started with the preparation of a programming course with as target group students without programming experience. I wanted to use Julia as a programming language and found out that there was no document with the purpose of learning to program and with Julia as the first programming language. There are wonderful tutorials that explain Julia&#8217;s key concepts but none of them paid sufficient attention to learning how to think like a programmer.</p>
+</div>
+<div class="paragraph">
+<p>I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of ThinkPython to Julia came to fruition.</p>
+</div>
+<div class="paragraph">
+<p>All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port from Think Python to Julia and his answer was immediate: go for it! He put me in touch with his editor of O&#8217;Reilly and now a year later I&#8217;m putting the finishing touches to this book.</p>
+</div>
+<div class="paragraph">
+<p>It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O&#8217;Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lessons in August &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>I hope you enjoy working with this book, and that it helps you learn to program and think like a computer scientist, at least a little bit.</p>
+</div>
+<div class="verseblock">
+<pre class="content"><em>Ben Lauwens</em>
+<em>Professor of Mathematics</em>
+<em>Royal Military Academy</em>
+<em>Brussels</em></pre>
+</div>
+<div class="sect2">
+<h3 id="_why_julia">Why Julia?</h3>
+<div class="paragraph">
+<p>Julia was originally released in 2012 by Alan Edelman, Stefan Karpinski, Jeff Bezanson, and Viral Shah. It is a free and open source language.</p>
+</div>
+<div class="paragraph">
+<p>Choosing a programming language is always subjective. For me, the following characteristics of Julia are decisive:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Julia was developed as a high-performance programming language.</p>
+</li>
+<li>
+<p>Julia uses multiple dispatch which allows the programmer to choose from different programming patterns adapted to the application.</p>
+</li>
+<li>
+<p>Julia is a dynamically typed language that can easily be used interactively.</p>
+</li>
+<li>
+<p>Julia has a nice high level syntax that is easy to learn.</p>
+</li>
+<li>
+<p>Julia is an optional typed programming language whose (user-defined) data types make the code clearer and more robust.</p>
+</li>
+<li>
+<p>Julia has an extended standard library and a lot of third party packages are available.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Julia is a unique programming language because it solves the so-called two languages problem. No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsability of the programmer to adapt the parts of the code that form a bottleneck but this can done in Julia itself.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_who_is_this_book_for">Who Is this Book For?</h3>
+<div class="paragraph">
+<p>This book is for anyone who wants to learn to program. No formal prior knowledge is required.</p>
+</div>
+<div class="paragraph">
+<p>New concepts are introduced gradually and more advanced topics are described in later chapters.</p>
+</div>
+<div class="paragraph">
+<p>Think Julia can be used as a one-semester course at the high school or college level.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_conventions_used_in_this_book">Conventions Used in This Book</h3>
+<div class="paragraph">
+<p>The following typographical conventions are used in this book:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em>Italic</em></dt>
+<dd>
+<p>Indicates new terms, URLs, email addresses, filenames, and file extensions.</p>
+</dd>
+<dt class="hdlist1"><code>Constant width</code></dt>
+<dd>
+<p>Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.</p>
+</dd>
+<dt class="hdlist1"><strong><code>Constant width bold</code></strong></dt>
+<dd>
+<p>Shows commands or other text that should be typed literally by the user.</p>
+</dd>
+<dt class="hdlist1"><em><code>Constant width italic</code></em></dt>
+<dd>
+<p>Shows text that should be replaced with user-supplied values or by values determined by context.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This element signifies a tip or suggestion.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This element signifies a general note.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This element indicates a warning or caution.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_code_examples">Using Code Examples</h3>
+<div class="paragraph">
+<p>All code used in this book is available from a Git repository on GitHub: <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a>. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git&#8217;s control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.</p>
+</div>
+<div class="paragraph">
+<p>A convenience package is provided that can be directly added to Julia. Just type <code>add <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a></code> in the Pkg REPL.</p>
+</div>
+<div class="paragraph">
+<p>The easiest way to run Julia code is going to <a href="https://juliabox.com" class="bare">https://juliabox.com</a> and start a free session. Both the REPL as a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from <a href="https://julialang.org" class="bare">https://julialang.org</a>, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the <code>IJulia</code> package and run a Jupyter notebook locally.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_acknowledgments">Acknowledgments</h3>
+<div class="paragraph">
+<p>If you have a suggestion or correction, please send email to <a href="mailto:ben.lauwens@gmail.com">ben.lauwens@gmail.com</a> or open an issue on GitHub. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).</p>
+</div>
+<div class="paragraph">
+<p>Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!</p>
+</div>
+<div class="paragraph">
+<p>I really want to thank Allen for writing ThinkPython and allowing me to port ThinkPython to Julia. Your enthusiasm is contagious!</p>
+</div>
+<div class="paragraph">
+<p>Thanks to Melissa Potter from O&#8217;Reilly Media who made this a better book. You forced me to do the right thing and make this book as original as possible.</p>
+</div>
+<div class="paragraph">
+<p>I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens and David P. Sanders.</p>
+</div>
+<div class="paragraph">
+<p>Other people who reported errors include</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -4173,7 +4348,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.550500062163452e9</span></code></pre>
+<span class="tok-go">1.550584636812711e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13506,9 +13681,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">A♣ 8♦ 9♥ 4♣ 9♦ 8♥ 5♥ 6♠ 10♣ 9♣ Q♥ 3♣ 10♥ 2♣ 5♦ 5♠ 4♠ 6♦ 7♣ Q♣ 8♣ K♥ Q♠ 2♥ A♥ 2♠ 10♠ K♦ 4♥ 7♥ K♠ A♠ K♣ 4♦ 3♥ J♦ 6♥ 3♠ 8♠ 2♦ J♣ J♠ 5♣ 10♦ J♥ 3♦ 7♠ 6♣ Q♦ 9♠ 7♦ A♦</span>
+<span class="tok-go">A♥ 4♦ 9♠ 5♦ 3♦ 10♣ J♣ A♦ 3♠ 4♥ 7♠ K♦ K♥ 7♥ A♠ 3♣ J♦ 6♥ 3♥ Q♦ 4♣ 8♠ 7♦ Q♥ 10♠ J♥ 6♦ J♠ 10♥ 9♣ 9♥ 2♠ 2♥ 8♣ 2♣ Q♣ 10♦ A♣ K♠ 5♣ 8♥ 6♣ 9♦ 5♥ 6♠ K♣ 5♠ 2♦ 8♦ 7♣ 4♠ Q♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">A♦</span>
+<span class="tok-go">Q♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -15430,7 +15605,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">;  @ none:2 within `squaresum&#39;</span>
-<span class="tok-go">define double @julia_squaresum_15684(double, double) {</span>
+<span class="tok-go">define double @julia_squaresum_14822(double, double) {</span>
 <span class="tok-go">top:</span>
 <span class="tok-go">; ┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
 <span class="tok-go">; │┌ @ float.jl:399 within `*&#39;</span>
@@ -16187,7 +16362,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-18 15:27:37 +0100
+Last updated 2019-02-19 14:57:13 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
