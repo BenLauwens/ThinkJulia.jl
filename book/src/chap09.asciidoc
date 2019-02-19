@@ -225,7 +225,7 @@ function isabecedarian(word)
     end
     i = firstindex(word)
     j = nextind(word, i)
-    if word[1] > word[j]
+    if word[i] > word[j]
         return false
     end
     isabecedarian(word[j:end])

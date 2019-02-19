@@ -941,7 +941,7 @@ julia> nestedsum(t)
 [[ex10-2]]
 ===== Exercise 10-2
 
-Write a function called +cumulsum+ that takes an array of numbers and returns the cumulative sum; that is, a new array where the latexmath:[\(i\)]th element is the sum of the first latexmath:[\(i+1\)] elements from the original array. For example:
+Write a function called +cumulsum+ that takes an array of numbers and returns the cumulative sum; that is, a new array where the latexmath:[\(i\)]th element is the sum of the first latexmath:[\(i\)] elements from the original array. For example:
 (((cumulsum)))((("function", "programmer-defined", "cumulsum", see="cumulsum")))
 
 [source,@julia-repl-test chap10]

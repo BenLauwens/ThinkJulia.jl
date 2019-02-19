@@ -139,7 +139,7 @@ function usesonly(word, available)
 end
 ----
 
-The +⊆+ operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+.
+The +⊆+ (*+\subseteq TAB+*) operator checks whether one set is a subset or another, including the possibility that they are equal, which is true if all the letters in +word+ appear in +available+. 
 (((⊆)))((("operator", "Base", "⊆", see="⊆")))
 
 ===== Exercise 20-1

@@ -97,7 +97,7 @@ But if you try to modify one of the elements of the tuple, you get an error:
 
 [source,@julia-repl-test chap12]
 ----
-julia> t[0] = 'A'
+julia> t[1] = 'A'
 ERROR: MethodError: no method matching setindex!(::NTuple{5,Char}, ::Char, ::Int64)
 ----
 

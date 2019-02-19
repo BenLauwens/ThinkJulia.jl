@@ -123,14 +123,29 @@ Watch us on YouTube: link:$$http://www.youtube.com/oreillymedia$$[]
 
 === Acknowledgments
 
+I really want to thank Allen for writing Think Python and allowing me to port Think Python to Julia. Your enthusiasm is contagious!
+
+I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens and David P. Sanders.
+
+Thanks to Melissa Potter from O'Reilly Media who made this a better book. You forced me to do the things right and make this book as original as possible.
+
+Thanks to Matt Hacker from O'Reilly Media who helped me out with the Atlas toolchain and some syntax highlighting issues.
+
+Thanks to all the students who worked with an early version of this book and all the contributors (listed below) who sent in corrections and suggestions.
+
+=== Contributor List
+
 If you have a suggestion or correction, please send email to ben.lauwens@gmail.com or open an issue on GitHub. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).
 
 Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!
 
-I really want to thank Allen for writing Think Python and allowing me to port Think Python to Julia. Your enthusiasm is contagious! 
-
-Thanks to Melissa Potter from O'Reilly Media who made this a better book. You forced me to do the right thing and make this book as original as possible.
-
-I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens and David P. Sanders.
-
-Other people who reported errors include
+- Scott Jones pointed out the name change of +Void+ to +Nothing+ and this started the migration to Julia v1.0.
+- Robin Deits found some typos in Chapter 2.
+- Mark Schmitz suggested to turn on the syntax highlighting.
+- Zigu Zhao caught some bugs in Chapter 8.
+- Oleg Soloviev caught an error in the url to add the +ThinkJulia+ package.
+- Aaron Ang found some rendering and some naming issues.
+- Sergey Volkov caught a broken link in Chapter 7.
+- Sean McAllister suggested to mention the excellent packages +BenchmarkTools+.
+- Carlos Bolech sent a long list of corrections and suggestions.
+- Krishna Kumar corrected the Markov example in Chapter 18.

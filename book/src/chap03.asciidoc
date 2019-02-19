@@ -307,6 +307,9 @@ The same rules of composition that apply to built-in functions also apply to pro
 julia> printtwice("Spam "^4)
 Spam Spam Spam Spam
 Spam Spam Spam Spam
+julia> printtwice(cos(π))
+-1.0
+-1.0
 ----
 
 The argument is evaluated before the function is called, so in the examples the expressions +"Spam "^4+ and +cos(π)+ are only evaluated once.

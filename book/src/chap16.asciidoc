@@ -250,7 +250,7 @@ At the beginning of each function you could check the arguments to make sure the
 [source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
-    if isvalidtime(t1) && isvalidtime(t2)
+    if !isvalidtime(t1) || !isvalidtime(t2)
         error("invalid MyTime object in add_time")
     end
     seconds = timetoint(t1) + timetoint(t2)
