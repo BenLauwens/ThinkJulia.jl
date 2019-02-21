@@ -349,7 +349,7 @@ image::images/fig111.svg[]
 
 
 <<fig11-1>> is a state diagram showing +hist+ and +inverse+. A dictionary is represented as a box with the key-value pairs inside. If the values are integers, floats or strings, I draw them inside the box, but I usually draw arrays outside the box, just to keep the diagram simple.
-(((state-diagram)))
+(((state diagram)))
 
 [NOTE]
 ====

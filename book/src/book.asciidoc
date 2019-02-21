@@ -3,6 +3,8 @@ Ben Lauwens <ben.lauwens@gmail.com>; Allen Downey <allendowney@gmail.com>
 
 include::colophon.asciidoc[]
 
+include::dedication.asciidoc[]
+
 include::introduction.asciidoc[]
 
 include::chap01.asciidoc[]

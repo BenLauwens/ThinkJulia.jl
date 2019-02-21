@@ -9,6 +9,7 @@ const oreilly = "/Users/ben/Source/think-julia"
 const chaps = [
   "book.asciidoc",
   "colophon.asciidoc",
+  "dedication.asciidoc",
   "introduction.asciidoc",
   "preface.asciidoc",
   "chap01.asciidoc",

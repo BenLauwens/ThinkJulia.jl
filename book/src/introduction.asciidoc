@@ -90,6 +90,8 @@ If you have a suggestion or correction, please send email to ben.lauwens@gmail.c
 
 Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!
 
+[small]
+--
 - Scott Jones pointed out the name change of +Void+ to +Nothing+ and this started the migration to Julia v1.0.
 - Robin Deits found some typos in Chapter 2.
 - Mark Schmitz suggested to turn on the syntax highlighting.
@@ -100,3 +102,4 @@ Let me know what version of the book you are working with, and what format. If y
 - Sean McAllister suggested to mention the excellent package +BenchmarkTools+.
 - Carlos Bolech sent a long list of corrections and suggestions.
 - Krishna Kumar corrected the Markov example in Chapter 18.
+--

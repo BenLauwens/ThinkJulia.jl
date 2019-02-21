@@ -320,16 +320,16 @@ The following program counts the number of times the letter +a+ appears in a str
 [source,@julia-setup]
 ----
 word = "banana"
-count = 0
+counter = 0
 for letter in word
     if letter == 'a'
-        global count = count + 1
+        global counter = counter + 1
     end
 end
-println(count)
+println(counter)
 ----
 
-This program demonstrates another pattern of computation called a _counter_. The variable +count+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, count contains the result—the total number of +a+’s.
+This program demonstrates another pattern of computation called a _counter_. The variable +counter+ is initialized to 0 and then incremented each time an +a+ is found. When the loop exits, +counter+ contains the result—the total number of +a+’s.
 (((counter)))
 
 ===== Exercise 8-5
