@@ -578,7 +578,7 @@ A path that starts from the topmost directory in the file system.
 (((absolute path)))
 
 catch::
-To prevent an exception from terminating a program using the +try ... catch ... finally+ statements.
+To prevent an exception from terminating a program using the +try pass:[...] catch pass:[...] finally+ statements.
 (((catching)))
 
 database::

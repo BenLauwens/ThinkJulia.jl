@@ -105,13 +105,12 @@ For example:
 while x > 0 && y < 0
     # do something to x
     # do something to y
-    println("x: ", x)
-    println("y: ", y)
-    println("condition: ", (x > 0 && y < 0))
+    @debug "variables" x y
+    @debug "condition" x > 0 && y < 0
 end
 ----
 
-Now when you run the program, you will see three lines of output for each time through the loop. The last time through the loop, the condition should be +false+. If the loop keeps going, you will be able to see the values of +x+ and +y+, and you might figure out why they are not being updated correctly.
+Now when you run the program in debug mode, you will see the value of the variables and the condition for each time through the loop. The last time through the loop, the condition should be +false+. If the loop keeps going, you will be able to see the values of +x+ and +y+, and you might figure out why they are not being updated correctly.
 
 [[infinite_recursion]]
 ===== Infinite Recursion

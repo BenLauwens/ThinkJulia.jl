@@ -161,7 +161,7 @@ function printlyrics()
 end
 ----
 
-+function+ is a keyword that indicates that this is a function definition. The name of the function is +printlyrics+. The rules for function names are the same as for variable names: they can contain almost all Unicode characters, but the first character can’t be a number. You can’t use a keyword as the name of a function, and you should avoid having a variable and a function with the same name.
++function+ is a keyword that indicates that this is a function definition. The name of the function is +printlyrics+. The rules for function names are the same as for variable names: they can contain almost all Unicode characters (see <<characters>>), but the first character can’t be a number. You can’t use a keyword as the name of a function, and you should avoid having a variable and a function with the same name.
 ((("keyword", "function", see="function")))(((argument)))(((Unicode character)))
 
 The empty parentheses after the name indicate that this function doesn’t take any arguments.

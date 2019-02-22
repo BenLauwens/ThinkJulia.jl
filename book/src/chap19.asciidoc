@@ -110,7 +110,6 @@ In this example, the function +foo+ returns an anonymous function that has acces
 === Blocks
 
 A _block_ is a way to group a number of statements. A block starts with the keyword +begin+ and ends with +end+.
-
 (((begin)))((("keyword", "begin", see="begin")))(((end)))(((block)))
 
 In <<chap04>> the +@svg+ macro was introduced:
@@ -194,7 +193,7 @@ function open(f::Function, args...)
 end
 ----
 
-A +do+ block can “capture” variables from its enclosing scope. For example, the variable +data+ in the above example of +open...do+ is captured from the outer scope.
+A +do+ block can “capture” variables from its enclosing scope. For example, the variable +data+ in the above example of +open pass:[...] do+ is captured from the outer scope.
 
 
 === Control Flow
@@ -233,9 +232,9 @@ end
 
 ==== Tasks (aka Coroutines)
 
-A _task_ is a control structure that can pass cooperatively control without returning. In Julia, a task is implemented as a function having as first argument a channel object. The channel object is used to pass values from the function to the callee.
+A _task_ is a control structure that can pass cooperatively control without returning. In Julia, a task can be implemented as a function having as first argument a +Channel+ object. A channel is used to pass values from the function to the callee.
 
-The Fibonnaci sequence can be generated using a task, e.g. a function having as first argument a +Channel+ object.
+The Fibonnaci sequence can be generated using a task.
 (((task)))(((Channel)))((("type", "Base", "Channel", see="Channel")))(((put!)))((("function", "Base", "put!", see="put!")))
 
 [source,@julia-setup chap19]
@@ -417,11 +416,11 @@ Parametric types can be explicitly or implicitly constructed:
 
 [source,@julia-repl-test chap19]
 ----
-julia> Point(1,2) ## implicit T ##
+julia> Point(1,2)         # implicit T
 Point{Int64}(1, 2)
-julia> Point{Int64}(1, 2) ## explicit T ##
+julia> Point{Int64}(1, 2) # explicit T
 Point{Int64}(1, 2)
-julia> Point(1,2.5) ## implicit T ##
+julia> Point(1,2.5)       # implicit T
 ERROR: MethodError: no method matching Point(::Int64, ::Float64)
 ----
 

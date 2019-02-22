@@ -199,7 +199,7 @@ for (freq, word) in t[1:10]
 end
 ----
 
-I use a tab character (+'\t'+) as a “separator”, rather than a space, so the second column is lined up. Here are the results from _Emma_:
+I use a tab character (+pass:['\t']+) as a “separator”, rather than a space, so the second column is lined up. Here are the results from _Emma_:
 (((separator)))(((\t)))
 
 [source,@julia-eval chap13]

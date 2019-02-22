@@ -35,7 +35,7 @@ image::images/fig21.svg[]
 
 Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.
 
-Variable names can be as long as you like. They can contain almost all Unicode characters, but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.
+Variable names can be as long as you like. They can contain almost all Unicode characters (see <<characters>>), but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.
 
 Unicode characters can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
 (((Unicode character)))

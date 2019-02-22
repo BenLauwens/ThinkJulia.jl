@@ -36,7 +36,7 @@ julia> eng2sp["one"] = "uno";
 
 ----
 
-This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow "pass:[=&gt;]" between the key and value:
+This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow +pass:[=&gt;]+ between the key and value:
 (((pass:[=&gt;])))
 
 [source,@julia-repl-test chap11]

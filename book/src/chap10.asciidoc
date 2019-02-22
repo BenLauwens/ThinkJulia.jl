@@ -1025,7 +1025,7 @@ You can generate random birthdays with +rand(1:365)+.
 [[ex10-9]]
 ===== Exercise 10-9
 
-Write a function that reads the file +words.txt+ and builds an array with one element per word. Write two versions of this function, one using +push!+ and the other using the idiom +t = [t..., x]+. Which one takes longer to run? Why?
+Write a function that reads the file +words.txt+ and builds an array with one element per word. Write two versions of this function, one using +push!+ and the other using the idiom +t = [pass:[t...], x]+. Which one takes longer to run? Why?
 (((push!)))
 
 [[ex10-10]]

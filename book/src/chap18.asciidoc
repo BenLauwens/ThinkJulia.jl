@@ -98,7 +98,7 @@ The correct ordering for cards is not obvious. For example, which is better, the
 
 The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.
 
-With that decided, we can write +<+:
+With that decided, we can write +<+
 
 [source,@julia-setup chap18]
 ----

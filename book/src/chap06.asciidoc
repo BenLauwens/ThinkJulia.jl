@@ -139,7 +139,8 @@ distance(1, 2, 4, 6)
 
 I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.
 
-At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences latexmath:[\(x_2 - x_1\)] and latexmath:[\(y_2 - y_1\)]. The next version stores those values in temporary variables and prints them.
+At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences latexmath:[\(x_2 - x_1\)] and latexmath:[\(y_2 - y_1\)]. The next version stores those values in temporary variables and prints them with the +@show+ macro.
+((("@show")))((("macro", "Base", "@show", see="@show")))
 
 [source,@julia-setup]
 ----
@@ -374,19 +375,22 @@ end
 The flow of execution for this program is similar to the flow of +countdown+ in <<recursion>>. If we call +fact+ with the value +3+:
 (((flow of execution)))
 
-. Since +3+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
+[small]
+--
+Since +3+ is not +0+, we take the second branch and calculate the factorial of +n-1+ ...
 
-.. Since +2+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
+pass:[&#8193;]Since +2+ is not +0+, we take the second branch and calculate the factorial of +n-1+ ...
 
-... Since +1+ is not +0+, we take the second branch and calculate the factorial of +n-1+...
+pass:[&#8193;&#8193;]Since +1+ is not +0+, we take the second branch and calculate the factorial of +n-1+ ...
 
-.... Since +0+ equals +0+, we take the first branch and return +1+ without making any more recursive calls.
+pass:[&#8193;&#8193;&#8193;]Since +0+ equals +0+, we take the first branch and return +1+ without making any pass:[<br/>&#8193;&#8193;&#8193;&#8193;]more recursive calls.
 
-... The return value, +1+, is multiplied by +n+, which is +1+, and the +result+ is returned.
+pass:[&#8193;&#8193;]The return value, +1+, is multiplied by +n+, which is +1+, and the +result+ is returned.
 
-.. The return value, +1+, is multiplied by +n+, which is +2+, and the +result+ is returned.
+pass:[&#8193;]The return value, +1+, is multiplied by +n+, which is +2+, and the +result+ is returned.
 
-. The return value +2+ is multiplied by +n+, which is +3+, and the result, +6+, becomes the return value of the function call that started the whole process.
+The return value +2+ is multiplied by +n+, which is +3+, and the result, +6+, becomes the return value of the function call that started the whole process.
+--
 
 [[fig06-1]]
 .Stack diagram

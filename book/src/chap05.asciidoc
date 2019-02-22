@@ -267,19 +267,19 @@ julia> countdown(3)
 3 2 1 Blastoff!
 ----
 
-. The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself...
+The execution of +countdown+ begins with +n = 3+, and since +n+ is greater than 0, it outputs the value 3, and then calls itself ...
 
-.. The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, it outputs the value 2, and then calls itself...
+pass:[&#8193;]The execution of +countdown+ begins with +n = 2+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;]it outputs the value 2, and then calls itself ...
 
-... The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, it outputs the value 1, and then calls itself...
+pass:[&#8193;&#8193;]The execution of +countdown+ begins with +n = 1+, and since +n+ is greater than 0, pass:[<br/>&#8193;&#8193;&#8193;]it outputs the value 1, and then calls itself ...
 
-.... The execution of +countdown+ begins with +n = 0+, and since +n+ is not greater than 0, it outputs the word, +"Blastoff!"+ and then returns.
+pass:[&#8193;&#8193;&#8193;]The execution of +countdown+ begins with +n = 0+, and since +n+ is not greater than pass:[<br/>&#8193;&#8193;&#8193;&#8193;]0, it outputs the word, +"Blastoff!"+ and then returns.
 
-... The countdown that got +n = 1+ returns.
+pass:[&#8193;&#8193;]The countdown that got +n = 1+ returns.
 
-.. The countdown that got +n = 2+ returns.
+pass:[&#8193;]The countdown that got +n = 2+ returns.
 
-. The countdown that got +n = 3+ returns.
+The countdown that got +n = 3+ returns.
 
 And then you’re back in +Main+.
 

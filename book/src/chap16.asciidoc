@@ -40,7 +40,7 @@ image::images/fig161.svg[]
 
 ===== Exercise 16-1
 
-Write a function called +printtime+ that takes a +MyTime+ object and prints it in the form +hour:minute:second+. The +@printf+ macro of the StdLib module +Printf+ prints an integer with the format sequence '%02d' using at least two digits, including a leading zero if necessary.
+Write a function called +printtime+ that takes a +MyTime+ object and prints it in the form +hour:minute:second+. The +@printf+ macro of the StdLib module +Printf+ prints an integer with the format sequence `"%02d"` using at least two digits, including a leading zero if necessary.
 (((printtime)))((("function", "programmer-defined", "printtime", see="printtime")))
 
 ===== Exercise 16-2
@@ -169,7 +169,7 @@ When we wrote +addtime+ and +increment!+, we were effectively doing addition in 
 
 This observation suggests another approach to the whole problem—we can convert +MyTime+ objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.
 
-Here is a function that converts +MyTime+s to integers:
+Here is a function that converts mytimes to integers:
 (((timetoint)))((("function", "programmer-defined", "timetoint", see="timetoint")))
 
 [source,@julia-setup chap16]
