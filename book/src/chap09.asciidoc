@@ -124,7 +124,7 @@ end
 
 The +for+ loop traverses the characters in word. If we find the letter +'e'+, we can immediately return +false+; otherwise we have to go to the next letter. If we exit the loop normally, that means we didn’t find an +'e'+, so we return +true+.
 
-You could write this function more concisely using the +∉+ (+\notin TAB+) operator, but I started with this version because it demonstrates the logic of the search pattern.
+You could write this function more concisely using the +∉+ (*+\notin TAB+*) operator, but I started with this version because it demonstrates the logic of the search pattern.
 (((∉)))((("operator", "Base", "∉", see="∉")))
 
 +avoids+ is a more general version of +hasno_e+ but it has the same structure:

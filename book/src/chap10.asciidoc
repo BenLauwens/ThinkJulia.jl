@@ -526,7 +526,7 @@ image::images/fig102.svg[]
 
 In one case, +a+ and +b+ refer to two different objects that have the same value. In the second case, they refer to the same object.
 
-To check whether two variables refer to the same object, you can use the +≡+ (+\equiv TAB+) or +===+ operator.
+To check whether two variables refer to the same object, you can use the +≡+ (*+\equiv TAB+*) or +===+ operator.
 (((≡)))((("operator", "Base", "≡", see="≡")))((("===", see="≡")))
 
 [source,@julia-repl-test]

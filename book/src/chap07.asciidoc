@@ -308,7 +308,7 @@ if abs(y-x) < ε
 end
 ----
 
-Where +ε+ (+\varepsilon TAB+) has a value like +0.0000001+ that determines how close is close enough.
+Where +ε+ (*+\varepsilon TAB+*) has a value like +0.0000001+ that determines how close is close enough.
 
 
 === Algorithms

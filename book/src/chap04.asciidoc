@@ -35,7 +35,7 @@ julia> 🐢 = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
-The +ThinkJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +🐢+ (+\:turtle: TAB+).
+The +ThinkJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +🐢+ (*+\:turtle: TAB+*).
 (((Turtle)))((("type", "Luxor", "Turtle", see="Turtle")))
 
 Once you create a turtle, you can call a function to move it around a drawing. For example, to move the turtle forward:

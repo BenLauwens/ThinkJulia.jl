@@ -127,7 +127,7 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (+\_1 TAB+, +\_2 TAB+, etc.).
+Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (*+\_1 TAB+*, *+\_2 TAB+*, etc.).
 (((Unicode character)))
 
 To test the new function, call it with sample arguments:
@@ -166,7 +166,7 @@ function distance(x₁, y₁, x₂, y₂)
 end
 ----
 
-Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (+\^2 TAB+). Finally, you can use +sqrt+ to compute and return the result:
+Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (*+\^2 TAB+*). Finally, you can use +sqrt+ to compute and return the result:
 (((sqrt)))
 
 [source,@julia-setup]

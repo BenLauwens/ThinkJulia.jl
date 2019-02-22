@@ -28,7 +28,7 @@ julia> typeof('x')
 Char
 ----
 
-Even emojis are part of the Unicode standard.
+Even emojis are part of the Unicode standard. (*+\:banana: TAB+*)
 (((emoji)))
 
 
@@ -379,7 +379,7 @@ julia> findnext("na", "banana", 4)
 
 === The +∈+ Operator
 
-The operator +∈+ (+\in TAB+) is a boolean operator that takes a character and a string and returns +true+ if the first appears in the second:
+The operator +∈+ (*+\in TAB+*) is a boolean operator that takes a character and a string and returns +true+ if the first appears in the second:
 ((("∈", see="in")))((("operator", "Base", "in", see="in")))((("operator", "Base", "∈", see="in")))
 
 [source,@julia-repl-test]
