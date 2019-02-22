@@ -636,7 +636,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap08">8. Strings</a>
 <ul class="sectlevel2">
-<li><a href="#_characters">Characters</a></li>
+<li><a href="#characters">Characters</a></li>
 <li><a href="#_a_string_is_a_sequence">A String Is a Sequence</a></li>
 <li><a href="#_length"><code>length</code></a></li>
 <li><a href="#_traversal">Traversal</a></li>
@@ -859,6 +859,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p><strong>Allen Downey</strong> is a Professor of Computer Science at Olin College of Engineering. He has taught at Wellesley College, Colby College and U.C. Berkeley. He has a PhD in Computer Science from U.C. Berkeley and Master’s and Bachelor’s degrees from MIT.</p>
 </div>
+<div class="paragraph">
+<p>A paper version of this book is published by O&#8217;Reilly Media: <a href="http://shop.oreilly.com/product/0636920215707.do" class="bare">http://shop.oreilly.com/product/0636920215707.do</a> and can be bought on Amazon: <a href="https://www.amazon.com/Think-Julia-Like-Computer-Scientist/dp/1492045039" class="bare">https://www.amazon.com/Think-Julia-Like-Computer-Scientist/dp/1492045039</a></p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -873,13 +876,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_preface">Preface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In January 2018 I started with the preparation of a programming course with as target group students without programming experience. I wanted to use Julia as a programming language and found out that there was no document with the purpose of learning to program and with Julia as the first programming language. There are wonderful tutorials that explain Julia&#8217;s key concepts but none of them paid sufficient attention to learning how to think like a programmer.</p>
+<p>In January 2018 I started with the preparation of a programming course with as target group students without programming experience. I wanted to use Julia as a programming language and found out that there existed no book with the purpose of learning to program and with Julia as the first programming language. There are wonderful tutorials that explain Julia&#8217;s key concepts but none of them paid sufficient attention to learning how to think like a programmer.</p>
 </div>
 <div class="paragraph">
 <p>I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of Think Python to Julia came to fruition.</p>
 </div>
 <div class="paragraph">
-<p>All the course material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!” He put me in touch with his editor of O&#8217;Reilly Media and now a year later I&#8217;m putting the finishing touches to this book.</p>
+<p>All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!” He put me in touch with his editor of O&#8217;Reilly Media and now a year later I&#8217;m putting the finishing touches to this book.</p>
 </div>
 <div class="paragraph">
 <p>It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O&#8217;Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lectures to give in August &#8230;&#8203;</p>
@@ -893,7 +896,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_why_julia">Why Julia?</h3>
 <div class="paragraph">
-<p>Julia was originally released in 2012 by Alan Edelman, Stefan Karpinski, Jeff Bezanson, and Viral Shah. It is a free and open source language.</p>
+<p>Julia was originally released in 2012 by Alan Edelman, Stefan Karpinski, Jeff Bezanson, and Viral Shah. It is a free and open source programming language.</p>
 </div>
 <div class="paragraph">
 <p>Choosing a programming language is always subjective. For me, the following characteristics of Julia are decisive:</p>
@@ -901,7 +904,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Julia was developed as a high-performance programming language.</p>
+<p>Julia is developed as a high-performance programming language.</p>
 </li>
 <li>
 <p>Julia uses multiple dispatch which allows the programmer to choose from different programming patterns adapted to the application.</p>
@@ -921,7 +924,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </div>
 <div class="paragraph">
-<p>Julia is a unique programming language because it solves the so-called two languages problem. No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsability of the programmer to adapt the parts of the code that form a bottleneck but this can done in Julia itself.</p>
+<p>Julia is a unique programming language because it solves the so-called two languages problem. No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsability of the programmer to optimize the code that forms a bottleneck but this can done in Julia itself.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1010,10 +1013,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>All code used in this book is available from a Git repository on GitHub: <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a>. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git&#8217;s control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.</p>
 </div>
 <div class="paragraph">
-<p>A convenience package is provided that can be directly added to Julia. Just type <strong><code>add https://github.com/BenLauwens/ThinkJulia.jl</code></strong> in the Pkg REPL.</p>
+<p>A convenience package is provided that can be directly added to Julia. Just type <strong><code>add https://github.com/BenLauwens/ThinkJulia.jl</code></strong> in the REPL in Pkg mode.</p>
 </div>
 <div class="paragraph">
-<p>The easiest way to run Julia code is going to <a href="https://juliabox.com" class="bare">https://juliabox.com</a> and start a free session. Both the REPL as a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from <a href="https://julialang.org" class="bare">https://julialang.org</a>, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the <code>IJulia</code> package and run a Jupyter notebook locally.</p>
+<p>The easiest way to run Julia code is going to <a href="https://juliabox.com" class="bare">https://juliabox.com</a> and start a free session. Both the REPL and a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from <a href="https://julialang.org" class="bare">https://julialang.org</a>, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the <code>IJulia</code> package and run a Jupyter notebook on your computer.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1648,7 +1651,7 @@ julia&gt;</pre>
 <p>Programmers generally choose names for their variables that are meaningful—they document what the variable is used for.</p>
 </div>
 <div class="paragraph">
-<p>Variable names can be as long as you like. They can contain almost all Unicode characters, but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.</p>
+<p>Variable names can be as long as you like. They can contain almost all Unicode characters (see <a href="#characters">Characters</a>), but they can’t begin with a number. It is legal to use uppercase letters, but it is conventional to use only lower case for variable names.</p>
 </div>
 <div class="paragraph">
 <p>Unicode characters can be entered via tab completion of LaTeX-like abbreviations in the Julia REPL.
@@ -2325,7 +2328,7 @@ struct           where        while</pre>
 </div>
 </div>
 <div class="paragraph">
-<p><code>function</code> is a keyword that indicates that this is a function definition. The name of the function is <code>printlyrics</code>. The rules for function names are the same as for variable names: they can contain almost all Unicode characters, but the first character can’t be a number. You can’t use a keyword as the name of a function, and you should avoid having a variable and a function with the same name.
+<p><code>function</code> is a keyword that indicates that this is a function definition. The name of the function is <code>printlyrics</code>. The rules for function names are the same as for variable names: they can contain almost all Unicode characters (see <a href="#characters">Characters</a>), but the first character can’t be a number. You can’t use a keyword as the name of a function, and you should avoid having a variable and a function with the same name.
 </p>
 </div>
 <div class="paragraph">
@@ -4046,42 +4049,26 @@ search:
 <span class="tok-go">3 2 1 Blastoff!</span></code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The execution of <code>countdown</code> begins with <code>n = 3</code>, and since <code>n</code> is greater than 0, it outputs the value 3, and then calls itself&#8230;&#8203;</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>The execution of <code>countdown</code> begins with <code>n = 2</code>, and since <code>n</code> is greater than 0, it outputs the value 2, and then calls itself&#8230;&#8203;</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>The execution of <code>countdown</code> begins with <code>n = 1</code>, and since <code>n</code> is greater than 0, it outputs the value 1, and then calls itself&#8230;&#8203;</p>
-<div class="olist upperalpha">
-<ol class="upperalpha" type="A">
-<li>
-<p>The execution of <code>countdown</code> begins with <code>n = 0</code>, and since <code>n</code> is not greater than 0, it outputs the word, <code>"Blastoff!"</code> and then returns.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>The execution of <code>countdown</code> begins with <code>n = 3</code>, and since <code>n</code> is greater than 0, it outputs the value 3, and then calls itself &#8230;&#8203;</p>
 </div>
-</li>
-<li>
-<p>The countdown that got <code>n = 1</code> returns.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>&#8193;The execution of <code>countdown</code> begins with <code>n = 2</code>, and since <code>n</code> is greater than 0, <br/>&#8193;&#8193;it outputs the value 2, and then calls itself &#8230;&#8203;</p>
 </div>
-</li>
-<li>
-<p>The countdown that got <code>n = 2</code> returns.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>&#8193;&#8193;The execution of <code>countdown</code> begins with <code>n = 1</code>, and since <code>n</code> is greater than 0, <br/>&#8193;&#8193;&#8193;it outputs the value 1, and then calls itself &#8230;&#8203;</p>
 </div>
-</li>
-<li>
+<div class="paragraph">
+<p>&#8193;&#8193;&#8193;The execution of <code>countdown</code> begins with <code>n = 0</code>, and since <code>n</code> is not greater than <br/>&#8193;&#8193;&#8193;&#8193;0, it outputs the word, <code>"Blastoff!"</code> and then returns.</p>
+</div>
+<div class="paragraph">
+<p>&#8193;&#8193;The countdown that got <code>n = 1</code> returns.</p>
+</div>
+<div class="paragraph">
+<p>&#8193;The countdown that got <code>n = 2</code> returns.</p>
+</div>
+<div class="paragraph">
 <p>The countdown that got <code>n = 3</code> returns.</p>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>And then you’re back in <code>Main</code>.</p>
@@ -4408,7 +4395,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.550825262540075e9</span></code></pre>
+<span class="tok-go">1.550845974083664e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4760,7 +4747,8 @@ search:
 <p>I chose these values so that the horizontal distance is 3 and the vertical distance is 4; that way, the result is 5, the hypotenuse of a 3-4-5 triangle. When testing a function, it is useful to know the right answer.</p>
 </div>
 <div class="paragraph">
-<p>At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences \(x_2 - x_1\) and \(y_2 - y_1\). The next version stores those values in temporary variables and prints them.</p>
+<p>At this point we have confirmed that the function is syntactically correct, and we can start adding code to the body. A reasonable next step is to find the differences \(x_2 - x_1\) and \(y_2 - y_1\). The next version stores those values in temporary variables and prints them with the <code>@show</code> macro.
+</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -5040,42 +5028,30 @@ search:
 <p>The flow of execution for this program is similar to the flow of <code>countdown</code> in <a href="#recursion">Recursion</a>. If we call <code>fact</code> with the value <code>3</code>:
 </p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Since <code>3</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code>&#8230;&#8203;</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Since <code>2</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code>&#8230;&#8203;</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Since <code>1</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code>&#8230;&#8203;</p>
-<div class="olist upperalpha">
-<ol class="upperalpha" type="A">
-<li>
-<p>Since <code>0</code> equals <code>0</code>, we take the first branch and return <code>1</code> without making any more recursive calls.</p>
-</li>
-</ol>
+<div class="openblock small">
+<div class="content">
+<div class="paragraph">
+<p>Since <code>3</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code> &#8230;&#8203;</p>
 </div>
-</li>
-<li>
-<p>The return value, <code>1</code>, is multiplied by <code>n</code>, which is <code>1</code>, and the <code>result</code> is returned.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>&#8193;Since <code>2</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code> &#8230;&#8203;</p>
 </div>
-</li>
-<li>
-<p>The return value, <code>1</code>, is multiplied by <code>n</code>, which is <code>2</code>, and the <code>result</code> is returned.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>&#8193;&#8193;Since <code>1</code> is not <code>0</code>, we take the second branch and calculate the factorial of <code>n-1</code> &#8230;&#8203;</p>
 </div>
-</li>
-<li>
+<div class="paragraph">
+<p>&#8193;&#8193;&#8193;Since <code>0</code> equals <code>0</code>, we take the first branch and return <code>1</code> without making any <br/>&#8193;&#8193;&#8193;&#8193;more recursive calls.</p>
+</div>
+<div class="paragraph">
+<p>&#8193;&#8193;The return value, <code>1</code>, is multiplied by <code>n</code>, which is <code>1</code>, and the <code>result</code> is returned.</p>
+</div>
+<div class="paragraph">
+<p>&#8193;The return value, <code>1</code>, is multiplied by <code>n</code>, which is <code>2</code>, and the <code>result</code> is returned.</p>
+</div>
+<div class="paragraph">
 <p>The return value <code>2</code> is multiplied by <code>n</code>, which is <code>3</code>, and the result, <code>6</code>, becomes the return value of the function call that started the whole process.</p>
-</li>
-</ol>
+</div>
+</div>
 </div>
 <div id="fig06-1" class="imageblock">
 <div class="content">
@@ -6055,9 +6031,9 @@ Done!</code></pre>
 </p>
 </div>
 <div class="sect2">
-<h3 id="_characters">Characters</h3>
+<h3 id="characters">Characters</h3>
 <div class="paragraph">
-<p>English language speakers are familiar with characters such as the letters of the alphabet (A, B, C&#8230;&#8203;), numerals, and common punctuation. These characters are standardized and mapped to integer values between 0 and 127 by the <em>ASCII standard</em> (American Standard Code for Information Interchange).
+<p>English language speakers are familiar with characters such as the letters of the alphabet (A, B, C, &#8230;&#8203;), numerals, and common punctuation. These characters are standardized and mapped to integer values between 0 and 127 by the <em>ASCII standard</em> (American Standard Code for Information Interchange).
 </p>
 </div>
 <div class="paragraph">
@@ -8537,7 +8513,7 @@ Qack</pre>
 <div class="sect4">
 <h5 id="ex10-9">Exercise 10-9</h5>
 <div class="paragraph">
-<p>Write a function that reads the file <code>words.txt</code> and builds an array with one element per word. Write two versions of this function, one using <code>push!</code> and the other using the idiom <code>t = [t&#8230;&#8203;, x]</code>. Which one takes longer to run? Why?
+<p>Write a function that reads the file <code>words.txt</code> and builds an array with one element per word. Write two versions of this function, one using <code>push!</code> and the other using the idiom <code>t = [t..., x]</code>. Which one takes longer to run? Why?
 </p>
 </div>
 </div>
@@ -8645,7 +8621,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow "=&gt;" between the key and value:
+<p>This line creates an item that maps from the key "one" to the value "uno". If we print the dictionary again, we see a key-value pair with an arrow <code>=&gt;</code> between the key and value:
 </p>
 </div>
 <div class="listingblock">
@@ -9492,8 +9468,19 @@ Qack</pre>
 <div class="paragraph">
 <p>This chapter presents one more built-in type, the tuple, and then shows how arrays, dictionaries, and tuples work together. I also present a useful feature for variable-length argument arrays, the gather and scatter operators.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>One note: there is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”.</p>
+<p>There is no consensus on how to pronounce “tuple”. Some people say “tuh-ple”, which rhymes with “supple”. But in the context of programming, most people say “too-ple”, which rhymes with “quadruple”.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_tuples_are_immutable">Tuples Are Immutable</h3>
@@ -10476,7 +10463,7 @@ Qack</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>I use a tab character (<code><em>\t</em></code>) as a “separator”, rather than a space, so the second column is lined up. Here are the results from <em>Emma</em>:
+<p>I use a tab character (<code>'\t'</code>) as a “separator”, rather than a space, so the second column is lined up. Here are the results from <em>Emma</em>:
 </p>
 </div>
 <div class="listingblock">
@@ -11647,7 +11634,7 @@ Due to some ancient injury?</pre>
 </dd>
 <dt class="hdlist1">catch</dt>
 <dd>
-<p>To prevent an exception from terminating a program using the <code>try &#8230;&#8203; catch &#8230;&#8203; finally</code> statements.
+<p>To prevent an exception from terminating a program using the <code>try ... catch ... finally</code> statements.
 </p>
 </dd>
 <dt class="hdlist1">database</dt>
@@ -12318,7 +12305,7 @@ Due to some ancient injury?</pre>
 <div class="sect4">
 <h5 id="_exercise_16_1">Exercise 16-1</h5>
 <div class="paragraph">
-<p>Write a function called <code>printtime</code> that takes a <code>MyTime</code> object and prints it in the form <code>hour:minute:second</code>. The <code>@printf</code> macro of the StdLib module <code>Printf</code> prints an integer with the format sequence <em>%02d</em> using at least two digits, including a leading zero if necessary.
+<p>Write a function called <code>printtime</code> that takes a <code>MyTime</code> object and prints it in the form <code>hour:minute:second</code>. The <code>@printf</code> macro of the StdLib module <code>Printf</code> prints an integer with the format sequence <code>"%02d"</code> using at least two digits, including a leading zero if necessary.
 </p>
 </div>
 </div>
@@ -12465,7 +12452,7 @@ Due to some ancient injury?</pre>
 <p>This observation suggests another approach to the whole problem—we can convert <code>MyTime</code> objects to integers and take advantage of the fact that the computer knows how to do integer arithmetic.</p>
 </div>
 <div class="paragraph">
-<p>Here is a function that converts +MyTime+s to integers:
+<p>Here is a function that converts mytimes to integers:
 </p>
 </div>
 <div class="listingblock">
@@ -13471,7 +13458,7 @@ Due to some ancient injury?</pre>
 <p>The answer might depend on what game you are playing, but to keep things simple, we’ll make the arbitrary choice that suit is more important, so all of the Spades outrank all of the Diamonds, and so on.</p>
 </div>
 <div class="paragraph">
-<p>With that decided, we can write <code>&lt;</code>:</p>
+<p>With that decided, we can write <code>&lt;</code></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -13741,9 +13728,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">3♥ Q♥ J♦ 8♠ 6♣ J♥ 9♣ 6♠ A♦ Q♦ A♠ A♣ 2♥ K♥ 4♠ 3♠ Q♠ J♣ K♠ 6♦ 7♣ 4♥ 2♦ 5♣ 4♦ 8♣ 10♣ A♥ 9♦ 5♠ 3♦ 10♠ 9♠ 2♠ 10♥ 8♥ K♣ 3♣ 10♦ J♠ 7♦ 5♥ 7♥ 7♠ K♦ 2♣ 6♥ 5♦ 8♦ 4♣ Q♣ 9♥</span>
+<span class="tok-go">5♠ 4♠ K♠ 6♣ A♠ 10♦ 8♣ Q♠ Q♦ 9♠ 10♣ 9♣ 2♠ 5♦ J♦ 3♥ J♥ 8♦ Q♣ 2♣ 4♥ 8♥ 7♥ 4♦ 7♣ 2♦ K♦ 10♥ 10♠ 7♠ J♠ 6♦ A♥ 6♥ 3♣ 9♦ 5♥ 3♦ 6♠ 5♣ 7♦ 8♠ 3♠ 2♥ K♣ 4♣ J♣ K♥ A♣ 9♥ A♦ Q♥</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">9♥</span>
+<span class="tok-go">Q♥</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -14276,10 +14263,8 @@ Due to some ancient injury?</pre>
 <div class="sect2">
 <h3 id="_blocks">Blocks</h3>
 <div class="paragraph">
-<p>A <em>block</em> is a way to group a number of statements. A block starts with the keyword <code>begin</code> and ends with <code>end</code>.</p>
-</div>
-<div class="paragraph">
-<p></p>
+<p>A <em>block</em> is a way to group a number of statements. A block starts with the keyword <code>begin</code> and ends with <code>end</code>.
+</p>
 </div>
 <div class="paragraph">
 <p>In <a href="#chap04">Case Study: Interface Design</a> the <code>@svg</code> macro was introduced:</p>
@@ -14371,7 +14356,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A <code>do</code> block can “capture” variables from its enclosing scope. For example, the variable <code>data</code> in the above example of <code>open&#8230;&#8203;do</code> is captured from the outer scope.</p>
+<p>A <code>do</code> block can “capture” variables from its enclosing scope. For example, the variable <code>data</code> in the above example of <code>open ... do</code> is captured from the outer scope.</p>
 </div>
 </div>
 </div>
@@ -14418,10 +14403,10 @@ Due to some ancient injury?</pre>
 <div class="sect3">
 <h4 id="_tasks_aka_coroutines">Tasks (aka Coroutines)</h4>
 <div class="paragraph">
-<p>A <em>task</em> is a control structure that can pass cooperatively control without returning. In Julia, a task is implemented as a function having as first argument a channel object. The channel object is used to pass values from the function to the callee.</p>
+<p>A <em>task</em> is a control structure that can pass cooperatively control without returning. In Julia, a task can be implemented as a function having as first argument a <code>Channel</code> object. A channel is used to pass values from the function to the callee.</p>
 </div>
 <div class="paragraph">
-<p>The Fibonnaci sequence can be generated using a task, e.g. a function having as first argument a <code>Channel</code> object.
+<p>The Fibonnaci sequence can be generated using a task.
 </p>
 </div>
 <div class="listingblock">
@@ -14637,11 +14622,11 @@ Due to some ancient injury?</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-c">## implicit T ##</span>
+<pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mi">2</span><span class="tok-p">)</span>         <span class="tok-c"># implicit T</span>
 <span class="tok-go">Point{Int64}(1, 2)</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-kt">Int64</span><span class="tok-p">}(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-c">## explicit T ##</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">{</span><span class="tok-kt">Int64</span><span class="tok-p">}(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">)</span> <span class="tok-c"># explicit T</span>
 <span class="tok-go">Point{Int64}(1, 2)</span>
-<span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mf">2.5</span><span class="tok-p">)</span> <span class="tok-c">## implicit T ##</span>
+<span class="tok-gp">julia&gt;</span> <span class="tok-n">Point</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span><span class="tok-mf">2.5</span><span class="tok-p">)</span>       <span class="tok-c"># implicit T</span>
 <span class="tok-gr">ERROR: MethodError: no method matching Point(::Int64, ::Float64)</span></code></pre>
 </div>
 </div>
@@ -15939,14 +15924,13 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">while</span> <span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span>
     <span class="tok-c"># do something to x</span>
     <span class="tok-c"># do something to y</span>
-    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;x: &quot;</span><span class="tok-p">,</span> <span class="tok-n">x</span><span class="tok-p">)</span>
-    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;y: &quot;</span><span class="tok-p">,</span> <span class="tok-n">y</span><span class="tok-p">)</span>
-    <span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-s">&quot;condition: &quot;</span><span class="tok-p">,</span> <span class="tok-p">(</span><span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span><span class="tok-p">))</span>
+    <span class="tok-nd">@debug</span> <span class="tok-s">&quot;variables&quot;</span> <span class="tok-n">x</span> <span class="tok-n">y</span>
+    <span class="tok-nd">@debug</span> <span class="tok-s">&quot;condition&quot;</span> <span class="tok-n">x</span> <span class="tok-o">&gt;</span> <span class="tok-mi">0</span> <span class="tok-o">&amp;&amp;</span> <span class="tok-n">y</span> <span class="tok-o">&lt;</span> <span class="tok-mi">0</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Now when you run the program, you will see three lines of output for each time through the loop. The last time through the loop, the condition should be <code>false</code>. If the loop keeps going, you will be able to see the values of <code>x</code> and <code>y</code>, and you might figure out why they are not being updated correctly.</p>
+<p>Now when you run the program in debug mode, you will see the value of the variables and the condition for each time through the loop. The last time through the loop, the condition should be <code>false</code>. If the loop keeps going, you will be able to see the values of <code>x</code> and <code>y</code>, and you might figure out why they are not being updated correctly.</p>
 </div>
 </div>
 <div class="sect4">
@@ -16425,7 +16409,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-22 09:47:39 +0100
+Last updated 2019-02-22 15:32:50 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
