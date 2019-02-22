@@ -3050,7 +3050,7 @@ Stacktrace:
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>ThinkJulia</code> module provides a function called <code>Turtle</code> that creates a <code>Luxor.Turtle</code> object, which we assign to a variable named <code>🐢</code> (<code>\:turtle: TAB</code>).
+<p>The <code>ThinkJulia</code> module provides a function called <code>Turtle</code> that creates a <code>Luxor.Turtle</code> object, which we assign to a variable named <code>🐢</code> (<strong><code>\:turtle: TAB</code></strong>).
 </p>
 </div>
 <div class="paragraph">
@@ -3739,7 +3739,7 @@ search:
 <div class="sect2">
 <h3 id="_floor_division_and_modulus">Floor Division and Modulus</h3>
 <div class="paragraph">
-<p>The <em>floor division</em> operator, <code>÷</code> (<code>\div TAB</code>), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
+<p>The <em>floor division</em> operator, <code>÷</code> (<strong><code>\div TAB</code></strong>), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
 </p>
 </div>
 <div class="listingblock">
@@ -4408,7 +4408,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.550616175117044e9</span></code></pre>
+<span class="tok-go">1.550825262540075e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4745,7 +4745,7 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (<code>\_1 TAB</code>, <code>\_2 TAB</code>, etc.).
+<p>Obviously, this version doesn’t compute distances; it always returns zero. But it is syntactically correct, and it runs, which means that you can test it before you make it more complicated. The subscript numbers are available in the Unicode character encoding (<strong><code>\_1 TAB</code></strong>, <strong><code>\_2 TAB</code></strong>, etc.).
 </p>
 </div>
 <div class="paragraph">
@@ -4790,7 +4790,7 @@ search:
 </div>
 </div>
 <div class="paragraph">
-<p>Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (<code>\^2 TAB</code>). Finally, you can use <code>sqrt</code> to compute and return the result:
+<p>Again, you would run the program at this stage and check the output (which should be 25). Superscript numbers are also available (<strong><code>\^2 TAB</code></strong>). Finally, you can use <code>sqrt</code> to compute and return the result:
 </p>
 </div>
 <div class="listingblock">
@@ -5860,7 +5860,7 @@ Done!</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Where <code>ε</code> (<code>\varepsilon TAB</code>) has a value like <code>0.0000001</code> that determines how close is close enough.</p>
+<p>Where <code>ε</code> (<strong><code>\varepsilon TAB</code></strong>) has a value like <code>0.0000001</code> that determines how close is close enough.</p>
 </div>
 </div>
 <div class="sect2">
@@ -6082,7 +6082,7 @@ Done!</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Even emojis are part of the Unicode standard.
+<p>Even emojis are part of the Unicode standard. (<strong><code>\:banana: TAB</code></strong>)
 </p>
 </div>
 </div>
@@ -6434,17 +6434,17 @@ Qack</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-n">word</span> <span class="tok-o">=</span> <span class="tok-s">&quot;banana&quot;</span>
-<span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
+<span class="tok-n">counter</span> <span class="tok-o">=</span> <span class="tok-mi">0</span>
 <span class="tok-k">for</span> <span class="tok-n">letter</span> <span class="tok-kp">in</span> <span class="tok-n">word</span>
     <span class="tok-k">if</span> <span class="tok-n">letter</span> <span class="tok-o">==</span> <span class="tok-sc">&#39;a&#39;</span>
-        <span class="tok-kd">global</span> <span class="tok-n">count</span> <span class="tok-o">=</span> <span class="tok-n">count</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
+        <span class="tok-kd">global</span> <span class="tok-n">counter</span> <span class="tok-o">=</span> <span class="tok-n">counter</span> <span class="tok-o">+</span> <span class="tok-mi">1</span>
     <span class="tok-k">end</span>
 <span class="tok-k">end</span>
-<span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">count</span><span class="tok-p">)</span></code></pre>
+<span class="tok-n">println</span><span class="tok-p">(</span><span class="tok-n">counter</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This program demonstrates another pattern of computation called a <em>counter</em>. The variable <code>count</code> is initialized to 0 and then incremented each time an <code>a</code> is found. When the loop exits, count contains the result—the total number of <code>a</code>’s.
+<p>This program demonstrates another pattern of computation called a <em>counter</em>. The variable <code>counter</code> is initialized to 0 and then incremented each time an <code>a</code> is found. When the loop exits, <code>counter</code> contains the result—the total number of <code>a</code>’s.
 </p>
 </div>
 <div class="sect4">
@@ -6502,7 +6502,7 @@ Qack</pre>
 <div class="sect2">
 <h3 id="_the_operator">The <code>∈</code> Operator</h3>
 <div class="paragraph">
-<p>The operator <code>∈</code> (<code>\in TAB</code>) is a boolean operator that takes a character and a string and returns <code>true</code> if the first appears in the second:
+<p>The operator <code>∈</code> (<strong><code>\in TAB</code></strong>) is a boolean operator that takes a character and a string and returns <code>true</code> if the first appears in the second:
 </p>
 </div>
 <div class="listingblock">
@@ -7045,7 +7045,7 @@ Qack</pre>
 <p>The <code>for</code> loop traverses the characters in word. If we find the letter <code><em>e</em></code>, we can immediately return <code>false</code>; otherwise we have to go to the next letter. If we exit the loop normally, that means we didn’t find an <code><em>e</em></code>, so we return <code>true</code>.</p>
 </div>
 <div class="paragraph">
-<p>You could write this function more concisely using the <code>∉</code> (<code>\notin TAB</code>) operator, but I started with this version because it demonstrates the logic of the search pattern.
+<p>You could write this function more concisely using the <code>∉</code> (<strong><code>\notin TAB</code></strong>) operator, but I started with this version because it demonstrates the logic of the search pattern.
 </p>
 </div>
 <div class="paragraph">
@@ -7971,7 +7971,7 @@ Qack</pre>
 <p>In one case, <code>a</code> and <code>b</code> refer to two different objects that have the same value. In the second case, they refer to the same object.</p>
 </div>
 <div class="paragraph">
-<p>To check whether two variables refer to the same object, you can use the <code>≡</code> (<code>\equiv TAB</code>) or <code>===</code> operator.
+<p>To check whether two variables refer to the same object, you can use the <code>≡</code> (<strong><code>\equiv TAB</code></strong>) or <code>===</code> operator.
 </p>
 </div>
 <div class="listingblock">
@@ -13741,9 +13741,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">5♥ 7♠ 10♣ 6♦ 8♥ A♦ A♣ 5♣ 9♦ 4♦ 8♦ 3♥ 2♦ K♥ A♠ Q♠ 3♣ K♠ Q♥ 4♠ 2♣ 8♣ A♥ Q♦ J♦ 6♠ Q♣ 9♣ 7♦ J♥ 10♦ 10♠ 5♠ 2♥ 5♦ 7♣ 3♦ 6♥ 4♣ 9♥ 3♠ K♦ K♣ J♣ 7♥ 4♥ J♠ 2♠ 8♠ 9♠ 6♣ 10♥</span>
+<span class="tok-go">3♥ Q♥ J♦ 8♠ 6♣ J♥ 9♣ 6♠ A♦ Q♦ A♠ A♣ 2♥ K♥ 4♠ 3♠ Q♠ J♣ K♠ 6♦ 7♣ 4♥ 2♦ 5♣ 4♦ 8♣ 10♣ A♥ 9♦ 5♠ 3♦ 10♠ 9♠ 2♠ 10♥ 8♥ K♣ 3♣ 10♦ J♠ 7♦ 5♥ 7♥ 7♠ K♦ 2♣ 6♥ 5♦ 8♦ 4♣ Q♣ 9♥</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">10♥</span>
+<span class="tok-go">9♥</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -15292,7 +15292,7 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The symbol <code>ℯ</code> (<code>\euler TAB</code>) is the base of natural logarithms.
+<p>The symbol <code>ℯ</code> (<strong><code>\euler TAB</code></strong>) is the base of natural logarithms.
 </p>
 </div>
 <div class="paragraph">
@@ -15665,7 +15665,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">;  @ none:2 within `squaresum&#39;</span>
-<span class="tok-go">define double @julia_squaresum_14823(double, double) {</span>
+<span class="tok-go">define double @julia_squaresum_15685(double, double) {</span>
 <span class="tok-go">top:</span>
 <span class="tok-go">; ┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
 <span class="tok-go">; │┌ @ float.jl:399 within `*&#39;</span>
@@ -16425,7 +16425,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-19 23:42:50 +0100
+Last updated 2019-02-22 09:47:39 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
