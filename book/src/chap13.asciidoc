@@ -267,8 +267,10 @@ Finding the words from the book that are not in the word list from +words.txt+ i
 ----
 function subtract(d1, d2)
     res = Dict()
-    for key in keys(d1) ∩ keys(d2)
-        res[key] = nothing
+    for key in keys(d1)
+        if key ∉ keys(d2)
+            res[key] = nothing
+        end
     end
     res
 end

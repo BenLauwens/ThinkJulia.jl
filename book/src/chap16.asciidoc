@@ -95,16 +95,18 @@ The result, +10:80:00+ might not be what you were hoping for. The problem is tha
 [source,@julia-setup chap16]
 ----
 function addtime(t1, t2)
-    tsum = MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)
-    if tsum.second >= 60
-        tsum.second -= 60
-        tsum.minute += 1
+    second = t1.second + t2.second
+    minute = t1.minute + t2.minute
+    hour = t1.hour + t2.hour
+    if second >= 60
+        second -= 60
+        minute += 1
     end
-    if tsum.minute >= 60
-        tsum.minute -= 60
-        tsum.hour += 1
+    if minute >= 60
+        minute -= 60
+        hour += 1
     end
-    tsum
+    MyTime(hour, minute, second)
 end
 ----
 

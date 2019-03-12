@@ -67,7 +67,7 @@ In <<chap16>>, we defined a struct named +MyTime+ and in <<time>>, you wrote a f
 ----
 using Printf
 
-mutable struct MyTime
+struct MyTime
     hour :: Int64
     minute :: Int64
     second :: Int64
