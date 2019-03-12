@@ -4395,7 +4395,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.55085356737773e9</span></code></pre>
+<span class="tok-go">1.552393231136328e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -10554,8 +10554,10 @@ she	2364</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">subtract</span><span class="tok-p">(</span><span class="tok-n">d1</span><span class="tok-p">,</span> <span class="tok-n">d2</span><span class="tok-p">)</span>
     <span class="tok-n">res</span> <span class="tok-o">=</span> <span class="tok-kt">Dict</span><span class="tok-p">()</span>
-    <span class="tok-k">for</span> <span class="tok-n">key</span> <span class="tok-kp">in</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d1</span><span class="tok-p">)</span> <span class="tok-o">∩</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d2</span><span class="tok-p">)</span>
-        <span class="tok-n">res</span><span class="tok-p">[</span><span class="tok-n">key</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nb">nothing</span>
+    <span class="tok-k">for</span> <span class="tok-n">key</span> <span class="tok-kp">in</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d1</span><span class="tok-p">)</span>
+        <span class="tok-k">if</span> <span class="tok-n">key</span> <span class="tok-o">∉</span> <span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-n">d2</span><span class="tok-p">)</span>
+            <span class="tok-n">res</span><span class="tok-p">[</span><span class="tok-n">key</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nb">nothing</span>
+        <span class="tok-k">end</span>
     <span class="tok-k">end</span>
     <span class="tok-n">res</span>
 <span class="tok-k">end</span></code></pre>
@@ -12361,16 +12363,18 @@ Due to some ancient injury?</pre>
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">function</span> <span class="tok-n">addtime</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-p">,</span> <span class="tok-n">t2</span><span class="tok-p">)</span>
-    <span class="tok-n">tsum</span> <span class="tok-o">=</span> <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">t1</span><span class="tok-o">.</span><span class="tok-n">hour</span> <span class="tok-o">+</span> <span class="tok-n">t2</span><span class="tok-o">.</span><span class="tok-n">hour</span><span class="tok-p">,</span> <span class="tok-n">t1</span><span class="tok-o">.</span><span class="tok-n">minute</span> <span class="tok-o">+</span> <span class="tok-n">t2</span><span class="tok-o">.</span><span class="tok-n">minute</span><span class="tok-p">,</span> <span class="tok-n">t1</span><span class="tok-o">.</span><span class="tok-n">second</span> <span class="tok-o">+</span> <span class="tok-n">t2</span><span class="tok-o">.</span><span class="tok-n">second</span><span class="tok-p">)</span>
-    <span class="tok-k">if</span> <span class="tok-n">tsum</span><span class="tok-o">.</span><span class="tok-n">second</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">60</span>
-        <span class="tok-n">tsum</span><span class="tok-o">.</span><span class="tok-n">second</span> <span class="tok-o">-=</span> <span class="tok-mi">60</span>
-        <span class="tok-n">tsum</span><span class="tok-o">.</span><span class="tok-n">minute</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
+    <span class="tok-n">second</span> <span class="tok-o">=</span> <span class="tok-n">t1</span><span class="tok-o">.</span><span class="tok-n">second</span> <span class="tok-o">+</span> <span class="tok-n">t2</span><span class="tok-o">.</span><span class="tok-n">second</span>
+    <span class="tok-n">minute</span> <span class="tok-o">=</span> <span class="tok-n">t1</span><span class="tok-o">.</span><span class="tok-n">minute</span> <span class="tok-o">+</span> <span class="tok-n">t2</span><span class="tok-o">.</span><span class="tok-n">minute</span>
+    <span class="tok-n">hour</span> <span class="tok-o">=</span> <span class="tok-n">t1</span><span class="tok-o">.</span><span class="tok-n">hour</span> <span class="tok-o">+</span> <span class="tok-n">t2</span><span class="tok-o">.</span><span class="tok-n">hour</span>
+    <span class="tok-k">if</span> <span class="tok-n">second</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">60</span>
+        <span class="tok-n">second</span> <span class="tok-o">-=</span> <span class="tok-mi">60</span>
+        <span class="tok-n">minute</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
     <span class="tok-k">end</span>
-    <span class="tok-k">if</span> <span class="tok-n">tsum</span><span class="tok-o">.</span><span class="tok-n">minute</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">60</span>
-        <span class="tok-n">tsum</span><span class="tok-o">.</span><span class="tok-n">minute</span> <span class="tok-o">-=</span> <span class="tok-mi">60</span>
-        <span class="tok-n">tsum</span><span class="tok-o">.</span><span class="tok-n">hour</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
+    <span class="tok-k">if</span> <span class="tok-n">minute</span> <span class="tok-o">&gt;=</span> <span class="tok-mi">60</span>
+        <span class="tok-n">minute</span> <span class="tok-o">-=</span> <span class="tok-mi">60</span>
+        <span class="tok-n">hour</span> <span class="tok-o">+=</span> <span class="tok-mi">1</span>
     <span class="tok-k">end</span>
-    <span class="tok-n">tsum</span>
+    <span class="tok-n">MyTime</span><span class="tok-p">(</span><span class="tok-n">hour</span><span class="tok-p">,</span> <span class="tok-n">minute</span><span class="tok-p">,</span> <span class="tok-n">second</span><span class="tok-p">)</span>
 <span class="tok-k">end</span></code></pre>
 </div>
 </div>
@@ -12723,7 +12727,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="julia"><span></span><span class="tok-k">using</span> <span class="tok-n">Printf</span>
 
-<span class="tok-n">mutable</span> <span class="tok-n">struct</span> <span class="tok-n">MyTime</span>
+<span class="tok-n">struct</span> <span class="tok-n">MyTime</span>
     <span class="tok-n">hour</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">minute</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
     <span class="tok-n">second</span> <span class="tok-o">::</span> <span class="tok-kt">Int64</span>
@@ -13728,9 +13732,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">8♥ 9♥ K♠ 7♠ Q♦ 7♦ 3♣ 5♦ A♥ 4♣ 7♥ 2♠ J♥ 3♦ Q♥ 9♠ J♠ 10♠ 6♠ 4♠ 5♥ 2♣ Q♠ A♣ 4♥ 10♥ 6♣ 2♦ K♦ 5♣ 8♣ 2♥ 3♥ 8♦ Q♣ 10♣ A♦ J♦ 6♦ 10♦ 4♦ 7♣ 3♠ 8♠ K♥ 5♠ 9♣ A♠ K♣ 6♥ 9♦ J♣</span>
+<span class="tok-go">4♦ 8♥ Q♠ Q♥ 7♠ A♦ 10♣ 9♣ A♥ 4♥ 7♦ J♣ 3♦ J♠ K♣ Q♣ 4♣ 3♣ 2♥ 3♠ 5♦ J♥ A♣ 9♦ 2♠ 5♣ 8♣ K♦ 10♥ K♥ 6♣ 10♦ 7♣ A♠ 6♦ K♠ 5♠ 2♦ 6♥ J♦ 8♦ 8♠ 10♠ 3♥ 4♠ 9♥ Q♦ 9♠ 2♣ 5♥ 7♥ 6♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">J♣</span>
+<span class="tok-go">6♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -15650,7 +15654,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">;  @ none:2 within `squaresum&#39;</span>
-<span class="tok-go">define double @julia_squaresum_14823(double, double) {</span>
+<span class="tok-go">define double @julia_squaresum_15685(double, double) {</span>
 <span class="tok-go">top:</span>
 <span class="tok-go">; ┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
 <span class="tok-go">; │┌ @ float.jl:399 within `*&#39;</span>
@@ -16409,7 +16413,7 @@ Due to some ancient injury?</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-02-22 17:39:24 +0100
+Last updated 2019-03-12 13:20:27 +0100
 </div>
 </div>
 <script type="text/x-mathjax-config">
