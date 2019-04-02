@@ -519,7 +519,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_preface">Preface</a>
 <ul class="sectlevel2">
 <li><a href="#_why_julia">Why Julia?</a></li>
-<li><a href="#_who_is_this_book_for">Who Is this Book For?</a></li>
+<li><a href="#_who_is_this_book_for">Who Is This Book For?</a></li>
 <li><a href="#_conventions_used_in_this_book">Conventions Used in This Book</a></li>
 <li><a href="#_using_code_examples">Using Code Examples</a></li>
 <li><a href="#_acknowledgments">Acknowledgments</a></li>
@@ -528,7 +528,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#chap01">1. The Way of the Program</a>
 <ul class="sectlevel2">
-<li><a href="#_what_is_a_program">What is a Program?</a></li>
+<li><a href="#_what_is_a_program">What Is a Program?</a></li>
 <li><a href="#_running_julia">Running Julia</a></li>
 <li><a href="#_the_first_program">The First Program</a></li>
 <li><a href="#_arithmetic_operators">Arithmetic Operators</a></li>
@@ -876,22 +876,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_preface">Preface</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In January 2018 I started with the preparation of a programming course with as target group students without programming experience. I wanted to use Julia as a programming language and found out that there existed no book with the purpose of learning to program and with Julia as the first programming language. There are wonderful tutorials that explain Julia&#8217;s key concepts but none of them paid sufficient attention to learning how to think like a programmer.</p>
+<p>In January 2018 I started the preparation of a programming course targeting students without programming experience. I wanted to use Julia, but I found that there existed no book with the purpose of learning to program with Julia as the first programming language. There are wonderful tutorials that explain Julia&#8217;s key concepts, but none of them pay sufficient attention to learning how to think like a programmer.</p>
 </div>
 <div class="paragraph">
-<p>I knew the book Think Python by Allen Downey that contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works but the longer I was working on it, the more the content of my notes started to resemble the chapters of Think Python. The idea of developing my course notes as a port of Think Python to Julia came to fruition.</p>
+<p>I knew the book <a href="http://shop.oreilly.com/product/0636920045267.do"><em>Think Python</em></a> by Allen Downey, which contains all the key ingredients to learn to program properly. However, this book was based on the Python programming language. My first draft of the course notes was a melting pot of all kinds of reference works, but the longer I worked on it, the more the content started to resemble the chapters of <em>Think Python</em>. Soon, the idea of developing my course notes as a port of that book to Julia came to fruition.</p>
 </div>
 <div class="paragraph">
-<p>All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Discourse site of Julia about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as first programming language was apparently a missing link in the Julia universe. I contacted Allen if I could start an official port of Think Python to Julia and his answer was immediate: “go for it!” He put me in touch with his editor of O&#8217;Reilly Media and now a year later I&#8217;m putting the finishing touches to this book.</p>
+<p>All the material was available as Jupyter notebooks in a GitHub repository. After I posted a message on the Julia Discourse site about the progress of my course, the feedback was overwhelming. A book about basic programming concepts with Julia as the first programming language was apparently a missing link in the Julia universe. I contacted Allen to ask if I could start an official port of <em>Think Python</em> to Julia, and his answer was immediate: “Go for it!” He put me in touch with his editor at O&#8217;Reilly Media, and a year later I was putting the finishing touches on this book.</p>
 </div>
 <div class="paragraph">
-<p>It was a bumpy ride. In August 2018 Julia v1.0 was released and like all my colleague Julia programmers I had to do a migration of the code. All the examples in the book are tested during the conversion of the source files to O&#8217;Reilly compatible ASCIIDoc files. Both the toolchain and the code of the examples themselves had to be made Julia v1.0 compliant. Luckily there are no lectures to give in August &#8230;&#8203;</p>
+<p>It was a bumpy ride. In August 2018 Julia v1.0 was released, and like all my fellow Julia programmers I had to do a migration of the code. All the examples in the book were tested during the conversion of the source files to O&#8217;Reilly-compatible AsciiDoc files. Both the toolchain and the example code had to be made Julia v1.0–compliant. Luckily, there are no lectures to give in August&#8230;&#8203;.</p>
 </div>
 <div class="paragraph">
 <p>I hope you enjoy working with this book, and that it helps you learn to program and think like a computer scientist, at least a little bit.</p>
 </div>
-<div class="paragraph">
-<p><em>Ben Lauwens</em></p>
+<div class="paragraph byline">
+<p>Ben Lauwens</p>
 </div>
 <div class="sect2">
 <h3 id="_why_julia">Why Julia?</h3>
@@ -907,28 +907,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Julia is developed as a high-performance programming language.</p>
 </li>
 <li>
-<p>Julia uses multiple dispatch which allows the programmer to choose from different programming patterns adapted to the application.</p>
+<p>Julia uses multiple dispatch, which allows the programmer to choose from different programming patterns adapted to the application.</p>
 </li>
 <li>
 <p>Julia is a dynamically typed language that can easily be used interactively.</p>
 </li>
 <li>
-<p>Julia has a nice high level syntax that is easy to learn.</p>
+<p>Julia has a nice high-level syntax that is easy to learn.</p>
 </li>
 <li>
-<p>Julia is an optional typed programming language whose (user-defined) data types make the code clearer and more robust.</p>
+<p>Julia is an optionally typed programming language whose (user-defined) data types make the code clearer and more robust.</p>
 </li>
 <li>
-<p>Julia has an extended standard library and numerous third party packages are available.</p>
+<p>Julia has an extended standard library and numerous third-party packages are available.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Julia is a unique programming language because it solves the so-called two languages problem. No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsability of the programmer to optimize the code that forms a bottleneck but this can done in Julia itself.</p>
+<p>Julia is a unique programming language because it solves the so-called "two languages problem." No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsibility of the programmer to optimize the code that forms a bottleneck, but this can done in Julia itself.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_who_is_this_book_for">Who Is this Book For?</h3>
+<h3 id="_who_is_this_book_for">Who Is This Book For?</h3>
 <div class="paragraph">
 <p>This book is for anyone who wants to learn to program. No formal prior knowledge is required.</p>
 </div>
@@ -936,7 +936,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>New concepts are introduced gradually and more advanced topics are described in later chapters.</p>
 </div>
 <div class="paragraph">
-<p>Think Julia can be used as a one-semester course at the high school or college level.</p>
+<p><em>Think Julia</em> can be used for a one-semester course at the high school or college level.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1010,28 +1010,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_using_code_examples">Using Code Examples</h3>
 <div class="paragraph">
-<p>All code used in this book is available from a Git repository on GitHub: <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a>. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git&#8217;s control is called a “repository”. GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.</p>
+<p>All code used in this book is available from a Git repository on GitHub: <a href="https://github.com/BenLauwens/ThinkJulia.jl" class="bare">https://github.com/BenLauwens/ThinkJulia.jl</a>. If you are not familiar with Git, it is a version control system that allows you to keep track of the files that make up a project. A collection of files under Git&#8217;s control is called a “repository.” GitHub is a hosting service that provides storage for Git repositories and a convenient web interface.</p>
 </div>
 <div class="paragraph">
-<p>A convenience package is provided that can be directly added to Julia. Just type <strong><code>add https://github.com/BenLauwens/ThinkJulia.jl</code></strong> in the REPL in Pkg mode.</p>
+<p>A convenience package is provided that can be directly added to Julia. Just type <code>add <a href="https://github.com/BenLauwens/ThinkJulia.jl">https://github.com/BenLauwens/ThinkJulia.jl</a></code> in the REPL in Pkg mode, see <a href="#turtles">[turtles]</a>.</p>
 </div>
 <div class="paragraph">
-<p>The easiest way to run Julia code is going to <a href="https://juliabox.com" class="bare">https://juliabox.com</a> and start a free session. Both the REPL and a notebook interface are available. If you want to have Julia locally installed on you computer, JuliaPro from Julia Computing can be downloaded freely from <a href="https://juliacomputing.com/products/juliapro.html" class="bare">https://juliacomputing.com/products/juliapro.html</a>. It consists of a recent Julia version, the Juno IDE based on Atom and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from <a href="https://julialang.org" class="bare">https://julialang.org</a>, install the editor you like, e.g. Atom or Visual Studio Code, and activate the plugins for Julia integration. To a local install, you can also add the <code>IJulia</code> package and run a Jupyter notebook on your computer.</p>
+<p>The easiest way to run Julia code is by going to <a href="https://juliabox.com" class="bare">https://juliabox.com</a> and starting a free session. Both the REPL and a notebook interface are available. If you want to have Julia locally installed on your computer, you can download <a href="https://juliacomputing.com/products/juliapro.html">JuliaPro</a> for free from Julia Computing. It consists of a recent Julia version, the Juno interactive development environment based on Atom, and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from <a href="https://julialang.org" class="bare">https://julialang.org</a>, install the editor you like (e.g., Atom or Visual Studio Code), and activate the plug-ins for Julia integration. To a local install, you can also add the <code>IJulia</code> package and run a Jupyter notebook on your computer.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_acknowledgments">Acknowledgments</h3>
 <div class="paragraph">
-<p>I really want to thank Allen for writing Think Python and allowing me to port Think Python to Julia. Your enthusiasm is contagious!</p>
+<p>I really want to thank Allen for writing <em>Think Python</em> and allowing me to port his book to Julia. Your enthusiasm is contagious!</p>
 </div>
 <div class="paragraph">
-<p>I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens and David P. Sanders.</p>
+<p>I would also like to thank the technical reviewers for this book, who made many helpful suggestions: Tim Besard, Bart Janssens, and David P. Sanders.</p>
 </div>
 <div class="paragraph">
-<p>Thanks to Melissa Potter from O&#8217;Reilly Media who made this a better book. You forced me to do the things right and make this book as original as possible.</p>
+<p>Thanks to Melissa Potter from O&#8217;Reilly Media, who made this a better book. You forced me to do things right and make this book as original as possible.</p>
 </div>
 <div class="paragraph">
-<p>Thanks to Matt Hacker from O&#8217;Reilly Media who helped me out with the Atlas toolchain and some syntax highlighting issues.</p>
+<p>Thanks to Matt Hacker from O&#8217;Reilly Media, who helped me out with the Atlas toolchain and some syntax highlighting issues.</p>
 </div>
 <div class="paragraph">
 <p>Thanks to all the students who worked with an early version of this book and all the contributors (listed below) who sent in corrections and suggestions.</p>
@@ -1040,44 +1040,44 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_contributor_list">Contributor List</h3>
 <div class="paragraph">
-<p>If you have a suggestion or correction, please send email to <a href="mailto:ben.lauwens@gmail.com">ben.lauwens@gmail.com</a> or open an issue on GitHub. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).</p>
+<p>If you have a suggestion or correction, please send email to <a href="mailto:ben.lauwens@gmail.com">ben.lauwens@gmail.com</a> or open an issue on <a href="https://github.com/BenLauwens/ThinkJulia.jl">GitHub</a>. If I make a change based on your feedback, I will add you to the contributor list (unless you ask to be omitted).</p>
 </div>
 <div class="paragraph">
-<p>Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that makes it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!</p>
+<p>Let me know what version of the book you are working with, and what format. If you include at least part of the sentence the error appears in, that will make it easy for me to search. Page and section numbers are fine, too, but not quite as easy to work with. Thanks!</p>
 </div>
 <div class="openblock small">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Scott Jones pointed out the name change of <code>Void</code> to <code>Nothing</code> and this started the migration to Julia v1.0.</p>
+<p>Scott Jones pointed out the name change of <code>Void</code> to <code>Nothing</code>, and this started the migration to Julia v1.0.</p>
 </li>
 <li>
-<p>Robin Deits found some typos in Chapter 2.</p>
+<p>Robin Deits found some typos in <a href="#chap02">Variables, Expressions and Statements</a>.</p>
 </li>
 <li>
-<p>Mark Schmitz suggested to turn on the syntax highlighting.</p>
+<p>Mark Schmitz suggested turning on syntax highlighting.</p>
 </li>
 <li>
-<p>Zigu Zhao caught some bugs in Chapter 8.</p>
+<p>Zigu Zhao caught some bugs in <a href="#chap08">Strings</a>.</p>
 </li>
 <li>
-<p>Oleg Soloviev caught an error in the url to add the <code>ThinkJulia</code> package.</p>
+<p>Oleg Soloviev caught an error in the URL to add the <code>ThinkJulia</code> package.</p>
 </li>
 <li>
 <p>Aaron Ang found some rendering and naming issues.</p>
 </li>
 <li>
-<p>Sergey Volkov caught a broken link in Chapter 7.</p>
+<p>Sergey Volkov caught a broken link in <a href="#chap07">Iteration</a>.</p>
 </li>
 <li>
-<p>Sean McAllister suggested to mention the excellent package <code>BenchmarkTools</code>.</p>
+<p>Sean McAllister suggested mentioning the excellent package <code>BenchmarkTools</code>.</p>
 </li>
 <li>
 <p>Carlos Bolech sent a long list of corrections and suggestions.</p>
 </li>
 <li>
-<p>Krishna Kumar corrected the Markov example in Chapter 18.</p>
+<p>Krishna Kumar corrected the Markov example in <a href="#chap18">Subtyping</a>.</p>
 </li>
 </ul>
 </div>
@@ -1086,47 +1086,45 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 </div>
-<div class="sect1">
+<div class="sect1 pagenumrestart">
 <h2 id="chap01">1. The Way of the Program</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating tradeoffs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.</p>
+<p>The goal of this book is to teach you to think like a computer scientist. This way of thinking combines some of the best features of mathematics, engineering, and natural science. Like mathematicians, computer scientists use formal languages to denote ideas (specifically computations). Like engineers, they design things, assembling components into systems and evaluating trade-offs among alternatives. Like scientists, they observe the behavior of complex systems, form hypotheses, and test predictions.</p>
 </div>
 <div class="paragraph">
-<p>The single most important skill for a computer scientist is <em>problem solving</em>. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That’s why this chapter is called, “The way of the program”.
-</p>
+<p>The single most important skill for a computer scientist is <em>problem solving</em>. Problem solving means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately. As it turns out, the process of learning to program is an excellent opportunity to practice problem-solving skills. That’s why this chapter is called “The Way of the Program.”</p>
 </div>
 <div class="paragraph">
 <p>On one level, you will be learning to program, a useful skill by itself. On another level, you will use programming as a means to an end. As we go along, that end will become clearer.</p>
 </div>
 <div class="sect2">
-<h3 id="_what_is_a_program">What is a Program?</h3>
+<h3 id="_what_is_a_program">What Is a Program?</h3>
 <div class="paragraph">
-<p>A <em>program</em> is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching and replacing text in a document or something graphical, like processing an image or playing a video.
-</p>
+<p>A <em>program</em> is a sequence of instructions that specifies how to perform a computation. The computation might be something mathematical, such as solving a system of equations or finding the roots of a polynomial, but it can also be a symbolic computation, such as searching for and replacing text in a document, or something graphical, like processing an image or playing a video.</p>
 </div>
 <div class="paragraph">
 <p>The details look different in different languages, but a few basic instructions appear in just about every language:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">input</dt>
+<dt class="hdlist1">Input</dt>
 <dd>
 <p>Get data from the keyboard, a file, the network, or some other device.</p>
 </dd>
-<dt class="hdlist1">output</dt>
+<dt class="hdlist1">Output</dt>
 <dd>
 <p>Display data on the screen, save it in a file, send it over the network, etc.</p>
 </dd>
-<dt class="hdlist1">math</dt>
+<dt class="hdlist1">Math</dt>
 <dd>
 <p>Perform basic mathematical operations like addition and multiplication.</p>
 </dd>
-<dt class="hdlist1">conditional execution</dt>
+<dt class="hdlist1">Conditional execution</dt>
 <dd>
 <p>Check for certain conditions and run the appropriate code.</p>
 </dd>
-<dt class="hdlist1">repetition</dt>
+<dt class="hdlist1">Repetition</dt>
 <dd>
 <p>Perform some action repeatedly, usually with some variation.</p>
 </dd>
@@ -1139,22 +1137,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="_running_julia">Running Julia</h3>
 <div class="paragraph">
-<p>One of the challenges of getting started with Julia is that you might have to install Julia and related software on your computer. If you are familiar with your operating system, and especially if you are comfortable with the command-line interface, you will have no trouble installing Julia. But for beginners, it can be painful to learn about system administration and programming at the same time.
-</p>
+<p>One of the challenges of getting started with Julia is that you might have to install it and related software on your computer. If you are familiar with your operating system, and especially if you are comfortable with the command-line interface, you will have no trouble installing Julia. But for beginners, it can be painful to learn about system administration and programming at the same time.</p>
 </div>
 <div class="paragraph">
-<p>To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
-</p>
+<p>To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.</p>
 </div>
 <div class="paragraph">
-<p>In the browser you can run Julia on JuliaBox: <a href="https://www.juliabox.com" class="bare">https://www.juliabox.com</a>. No installation is required – just point your browser there, login and start computing (see <a href="#juliabox">JuliaBox</a>).
-</p>
+<p>In the browser, you can run Julia on <a href="https://www.juliabox.com">JuliaBox</a>. No installation is required—just point your browser there, log in, and start computing (see <a href="#juliabox">JuliaBox</a>).</p>
 </div>
 <div class="paragraph">
-<p>The Julia <em>REPL</em> (Read–Eval–Print Loop) is a program that reads and executes Julia code. You might start the REPL by opening a terminal on JuliaBox and typing <strong><code>julia</code></strong> on the command line. When it starts, you should see output like this:
-</p>
+<p>The Julia <em>REPL</em> (Read–Eval–Print Loop) is a program that reads and executes Julia code. You can start the REPL by opening a terminal on JuliaBox and typing <strong><code>julia</code></strong> on the command line. When it starts, you should see output like this:</p>
 </div>
-  <?hard-pagebreak?>
 <div class="listingblock">
 <div class="content">
 <pre>               _
@@ -1173,8 +1166,7 @@ julia&gt;</pre>
 <p>The first lines contain information about the REPL, so it might be different for you. But you should check that the version number is at least <code>1.0.0</code>.</p>
 </div>
 <div class="paragraph">
-<p>The last line is a <em>prompt</em> that indicates that the REPL is ready for you to enter code. If you type a line of code and hit <code>ENTER</code>, the REPL displays the result:
-</p>
+<p>The last line is a <em>prompt</em> that indicates that the REPL is ready for you to enter code. If you type a line of code and hit Enter, the REPL displays the result:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1183,7 +1175,7 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Code snippets can be copy-pasted verbatim, i.e. including the <code>julia&gt;</code> prompt and any output.</p>
+<p>Code snippets can be copied and pasted verbatim, including the <code>julia&gt;</code> prompt and any output.</p>
 </div>
 <div class="paragraph">
 <p>Now you’re ready to get started. From here on, I assume that you know how to start the Julia REPL and run code.</p>
@@ -1192,8 +1184,7 @@ julia&gt;</pre>
 <div class="sect2">
 <h3 id="_the_first_program">The First Program</h3>
 <div class="paragraph">
-<p>Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!”. In Julia, it looks like this:
-</p>
+<p>Traditionally, the first program you write in a new language is called “Hello, World!” because all it does is display the words “Hello, World!” In Julia, it looks like this:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1202,27 +1193,22 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This is an example of a <em>print statement</em>, although it doesn’t actually print anything on paper. It displays a result on the screen.
-</p>
+<p>This is an example of a <em>print statement</em>, although it doesn’t actually print anything on paper. It displays a result on the screen.</p>
 </div>
 <div class="paragraph">
-<p>The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.
-</p>
+<p>The quotation marks in the program mark the beginning and end of the text to be displayed; they don’t appear in the result.</p>
 </div>
 <div class="paragraph">
-<p>The parentheses indicate that <code>println</code> is a function. We’ll get to functions in <a href="#chap03">Functions</a>.
-</p>
+<p>The parentheses indicate that <code>println</code> is a function. We’ll get to functions in <a href="#chap03">Functions</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_arithmetic_operators">Arithmetic Operators</h3>
 <div class="paragraph">
-<p>After “Hello, World!”, the next step is arithmetic. Julia provides <em>operators</em>, which are symbols that represent computations like addition and multiplication.
-</p>
+<p>After “Hello, World!” the next step is arithmetic. Julia provides <em>operators</em>, which are symbols that represent computations like addition and multiplication.</p>
 </div>
 <div class="paragraph">
-<p>The operators <code>+</code>, <code>-</code>, and <code>*</code> perform addition, subtraction, and multiplication, as in the following examples:
-</p>
+<p>The operators <code>+</code>, <code>-</code>, and <code>*</code> perform addition, subtraction, and multiplication, as in the following examples:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1235,8 +1221,7 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The operator <code>/</code> performs division:
-</p>
+<p>The operator <code>/</code> performs division:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1248,8 +1233,7 @@ julia&gt;</pre>
 <p>You might wonder why the result is <code>42.0</code> instead of <code>42</code>. I’ll explain in the next section.</p>
 </div>
 <div class="paragraph">
-<p>Finally, the operator <code>^</code> performs exponentiation; that is, it raises a number to a power:
-</p>
+<p>Finally, the operator <code>^</code> performs exponentiation; that is, it raises a number to a power:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1261,16 +1245,13 @@ julia&gt;</pre>
 <div class="sect2">
 <h3 id="_values_and_types">Values and Types</h3>
 <div class="paragraph">
-<p>A <em>value</em> is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are <code>2</code>, <code>42.0</code>, and <code>"Hello, World!"</code>.
-</p>
+<p>A <em>value</em> is one of the basic things a program works with, like a letter or a number. Some values we have seen so far are <code>2</code>, <code>42.0</code>, and <code>"Hello, World!"</code>.</p>
 </div>
 <div class="paragraph">
-<p>These values belong to different <em>types</em>: <code>2</code> is an <em>integer</em>, <code>42.0</code> is a <em>floating-point number</em>, and <code>"Hello, World!"</code> is a <em>string</em>, so-called because the letters it contains are strung together.
-</p>
+<p>These values belong to different <em>types</em>: <code>2</code> is an <em>integer</em>, <code>42.0</code> is a <em>floating-point number</em>, and <code>"Hello, World!"</code> is a <em>string</em>, so called because the letters it contains are strung together.</p>
 </div>
 <div class="paragraph">
-<p>If you are not sure what type a value has, the REPL can tell you:
-</p>
+<p>If you are not sure what type a value has, the REPL can tell you:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1283,11 +1264,10 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Integers belong to the type <code>Int64</code>, strings belong to <code>String</code> and floating-point numbers belong to <code>Float64</code>.
-</p>
+<p>Integers belong to the type <code>Int64</code>, strings belong to <code>String</code>, and floating-point numbers belong to <code>Float64</code>.</p>
 </div>
 <div class="paragraph">
-<p>What about values like <code>"2"</code> and <code>"42.0"</code>? They look like numbers, but they are in quotation marks like strings.</p>
+<p>What about values like <code>"2"</code> and <code>"42.0"</code>? They look like numbers, but they are in quotation marks like strings. These are strings too:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1296,9 +1276,6 @@ julia&gt;</pre>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">typeof</span><span class="tok-p">(</span><span class="tok-s">&quot;42.0&quot;</span><span class="tok-p">)</span>
 <span class="tok-go">String</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>They’re strings.</p>
 </div>
 <div class="paragraph">
 <p>When you type a large integer, you might be tempted to use commas between groups of digits, as in <code>1,000,000</code>. This is not a legal <em>integer</em> in Julia, but it is legal:</p>
@@ -1310,37 +1287,25 @@ julia&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>That’s not what we expected at all! Julia parses <code>1,000,000</code> as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.
-</p>
+<p>That’s not what we expected at all! Julia parses <code>1,000,000</code> as a comma-separated sequence of integers. We’ll learn more about this kind of sequence later.</p>
 </div>
 <div class="paragraph">
-<p>You can get the expected result, using <code>1_000_000</code>, however.</p>
+<p>You can get the expected result using <code>1_000_000</code>, however.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_formal_and_natural_languages">Formal and Natural Languages</h3>
 <div class="paragraph">
-<p><em>Natural languages</em> are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.
-</p>
+<p><em>Natural languages</em> are the languages people speak, such as English, Spanish, and French. They were not designed by people (although people try to impose some order on them); they evolved naturally.</p>
 </div>
 <div class="paragraph">
-<p><em>Formal languages</em> are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly:
-</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Programming languages are formal languages that have been designed to express computations.</p>
-</div>
-</blockquote>
+<p><em>Formal languages</em> are languages that are designed by people for specific applications. For example, the notation that mathematicians use is a formal language that is particularly good at denoting relationships among numbers and symbols. Chemists use a formal language to represent the chemical structure of molecules. And most importantly, programming languages are formal languages that have been designed to express computations.</p>
 </div>
 <div class="paragraph">
-<p>Formal languages tend to have strict <em>syntax</em> rules that govern the structure of statements. For example, in mathematics the statement \(3 + 3 = 6\) has correct syntax, but \(3 += 3 \$ 6\) does not. In chemistry \(\mathrm{H_2O}\) is a syntactically correct formula, but \(\mathrm{_2Zz}\) is not.
-</p>
+<p>Formal languages tend to have strict <em>syntax</em> rules that govern the structure of statements. For example, in mathematics the statement \(3 + 3 = 6\) has correct syntax, but \(3 += 3 \$ 6\) does not. In chemistry, \(\mathrm{H_2O}\) is a syntactically correct formula, but \(\mathrm{_2Zz}\) is not.</p>
 </div>
 <div class="paragraph">
-<p>Syntax rules come in two flavors, pertaining to <em>tokens</em> and <em>structure</em>. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with \(3 += 3 \$ 6\) is that \(\$\) is not a legal token in mathematics (at least as far as I know). Similarly, \(\mathrm{_2Zz}\) is not legal because there is no element with the abbreviation \(\mathrm{Zz}\).
-</p>
+<p>Syntax rules come in two flavors, pertaining to <em>tokens</em> and <em>structure</em>. Tokens are the basic elements of the language, such as words, numbers, and chemical elements. One of the problems with \(3 += 3 \$ 6\) is that \(\$\) is not a legal token in mathematics (at least as far as I know). Similarly, \(\mathrm{_2Zz}\) is not legal because there is no element with the abbreviation \(\mathrm{Zz}\).</p>
 </div>
 <div class="paragraph">
 <p>The second type of syntax rule pertains to the way tokens are combined. The equation \(3 += 3\) is illegal because even though \(+\) and \(=\) are legal tokens, you can’t have one right after the other. Similarly, in a chemical formula the subscript comes after the element name, not before.</p>
@@ -1349,28 +1314,24 @@ julia&gt;</pre>
 <p>This is @ well-structured Engli$h sentence with invalid t*kens in it. This sentence all valid tokens has, but invalid structure with.</p>
 </div>
 <div class="paragraph">
-<p>When you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called <em>parsing</em>.
-</p>
+<p>When you read a sentence in English or a statement in a formal language, you have to figure out the structure (although in a natural language you do this subconsciously). This process is called <em>parsing</em>.</p>
 </div>
 <div class="paragraph">
 <p>Although formal and natural languages have many features in common—tokens, structure, and syntax—there are some differences:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">ambiguity</dt>
+<dt class="hdlist1">Ambiguity</dt>
 <dd>
-<p>Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.
-</p>
+<p>Natural languages are full of ambiguity, which people deal with by using contextual clues and other information. Formal languages are designed to be nearly or completely unambiguous, which means that any statement has exactly one meaning, regardless of context.</p>
 </dd>
-<dt class="hdlist1">redundancy</dt>
+<dt class="hdlist1">Redundancy</dt>
 <dd>
-<p>In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.
-</p>
+<p>In order to make up for ambiguity and reduce misunderstandings, natural languages employ lots of redundancy. As a result, they are often verbose. Formal languages are less redundant and more concise.</p>
 </dd>
-<dt class="hdlist1">literalness</dt>
+<dt class="hdlist1">Literalness</dt>
 <dd>
-<p>Natural languages are full of idiom and metaphor. If I say, “The penny dropped”, there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.
-</p>
+<p>Natural languages are full of idiom and metaphor. If I say, “The penny dropped,” there is probably no penny and nothing dropping (this idiom means that someone understood something after a period of confusion). Formal languages mean exactly what they say.</p>
 </dd>
 </dl>
 </div>
@@ -1381,13 +1342,11 @@ julia&gt;</pre>
 <dl>
 <dt class="hdlist1">Poetry</dt>
 <dd>
-<p>Words are used for their sounds as well as for their meaning, and the whole poem together creates an effect or emotional response. Ambiguity is not only common but often deliberate.
-</p>
+<p>Words are used for their sounds as well as for their meaning, and the whole poem together creates an effect or emotional response. Ambiguity is not only common but often deliberate.</p>
 </dd>
 <dt class="hdlist1">Prose</dt>
 <dd>
-<p>The literal meaning of words is more important, and the structure contributes more meaning. Prose is more amenable to analysis than poetry but still often ambiguous.
-</p>
+<p>The literal meaning of words is more important, and the structure contributes more meaning. Prose is more amenable to analysis than poetry but still often ambiguous.</p>
 </dd>
 <dt class="hdlist1">Programs</dt>
 <dd>
@@ -1396,20 +1355,19 @@ julia&gt;</pre>
 </dl>
 </div>
 <div class="paragraph">
-<p>Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal language.</p>
+<p>Formal languages are more dense than natural languages, so it takes longer to read them. Also, the structure is important, so it is not always best to read from top to bottom, left to right. Instead, you&#8217;ll learn to parse the program in your head, identifying the tokens and interpreting the structure. Finally, the details matter. Small errors in spelling and punctuation, which you can get away with in natural languages, can make a big difference in a formal language.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_debugging">Debugging</h3>
 <div class="paragraph">
-<p>Programmers make mistakes. For whimsical reasons, programming errors are called <em>bugs</em> and the process of tracking them down is called <em>debugging</em>.
-</p>
+<p>Programmers make mistakes. For whimsical reasons, programming errors are called <em>bugs</em> and the process of tracking them down is called <em>debugging</em>.</p>
 </div>
 <div class="paragraph">
 <p>Programming, and especially debugging, sometimes brings out strong emotions. If you are struggling with a difficult bug, you might feel angry, despondent, or embarrassed.</p>
 </div>
 <div class="paragraph">
-<p>There is evidence that people naturally respond to computers as if they were people. When they work well, we think of them as teammates, and when they are obstinate or rude, we respond to them the same way we respond to rude, obstinate people (Reeves and Nass, <em>The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places</em>).</p>
+<p>There is evidence that people naturally respond to computers as if they were people. When they work well, we think of them as teammates, and when they are obstinate or rude, we respond to them the same way we respond to rude, obstinate people.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup></p>
 </div>
 <div class="paragraph">
 <p>Preparing for these reactions might help you deal with them. One approach is to think of the computer as an employee with certain strengths, like speed and precision, and particular weaknesses, like lack of empathy and inability to grasp the big picture.</p>
@@ -1427,98 +1385,79 @@ julia&gt;</pre>
 <dl>
 <dt class="hdlist1">problem solving</dt>
 <dd>
-<p>The process of formulating a problem, finding a solution, and expressing it.
-</p>
-</dd>
-<dt class="hdlist1">REPL</dt>
-<dd>
-<p>A program that repeatedly reads input, execute it and output results.
-</p>
-</dd>
-<dt class="hdlist1">prompt</dt>
-<dd>
-<p>Characters displayed by the REPL to indicate that it is ready to take input from the user.
-</p>
+<p>The process of formulating a problem, finding a solution, and expressing it.</p>
 </dd>
 <dt class="hdlist1">program</dt>
 <dd>
-<p>A sequence of instructions that specifies a computation.
-</p>
+<p>A sequence of instructions that specifies a computation.</p>
+</dd>
+<dt class="hdlist1">REPL</dt>
+<dd>
+<p>A program that repeatedly reads input, executes it, and outputs results.</p>
+</dd>
+<dt class="hdlist1">prompt</dt>
+<dd>
+<p>Characters displayed by the REPL to indicate that it is ready to take input from the user.</p>
 </dd>
 <dt class="hdlist1">print statement</dt>
 <dd>
-<p>An instruction that causes the Julia REPL to display a value on the screen.
-</p>
+<p>An instruction that causes the Julia REPL to display a value on the screen.</p>
 </dd>
 <dt class="hdlist1">operator</dt>
 <dd>
-<p>A symbol that represents a simple computation like addition, multiplication, or string concatenation.
-</p>
+<p>A symbol that represents a simple computation like addition, multiplication, or string concatenation.</p>
 </dd>
 <dt class="hdlist1">value</dt>
 <dd>
-<p>One of the basic units of data, like a number or string, that a program manipulates.
-</p>
+<p>One of the basic units of data, like a number or string, that a program manipulates.</p>
 </dd>
 <dt class="hdlist1">type</dt>
 <dd>
-<p>A category of values. The types we have seen so far are integers (<code>Int64</code>), floating-point numbers (<code>Float64</code>), and strings (<code>String</code>).
-</p>
+<p>A category of values. The types we have seen so far are integers (<code>Int64</code>), floating-point numbers (<code>Float64</code>), and strings (<code>String</code>).</p>
 </dd>
 <dt class="hdlist1">integer</dt>
 <dd>
-<p>A type that represents whole numbers.
-</p>
+<p>A type that represents whole numbers.</p>
 </dd>
 <dt class="hdlist1">floating-point</dt>
 <dd>
-<p>A type that represents numbers with a decimal point.
-</p>
+<p>A type that represents numbers with a decimal point.</p>
 </dd>
 <dt class="hdlist1">string</dt>
 <dd>
-<p>A type that represents sequences of characters.
-</p>
+<p>A type that represents sequences of characters.</p>
 </dd>
 <dt class="hdlist1">natural language</dt>
 <dd>
-<p>Any one of the languages that people speak that evolved naturally.
-</p>
+<p>Any one of the languages that people speak that evolved naturally.</p>
 </dd>
 <dt class="hdlist1">formal language</dt>
 <dd>
-<p>Any one of the languages that people have designed for specific purposes, such as representing mathematical ideas or computer programs; all programming languages are formal languages.
-</p>
-</dd>
-<dt class="hdlist1">token</dt>
-<dd>
-<p>One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.
-</p>
-</dd>
-<dt class="hdlist1">structure</dt>
-<dd>
-<p>The way tokens are combined.
-</p>
+<p>Any one of the languages that people have designed for specific purposes, such as representing mathematical ideas or computer programs. All programming languages are formal languages.</p>
 </dd>
 <dt class="hdlist1">syntax</dt>
 <dd>
-<p>The rules that govern the structure of a program.
-</p>
+<p>The rules that govern the structure of a program.</p>
+</dd>
+<dt class="hdlist1">token</dt>
+<dd>
+<p>One of the basic elements of the syntactic structure of a program, analogous to a word in a natural language.</p>
+</dd>
+<dt class="hdlist1">structure</dt>
+<dd>
+<p>The way tokens are combined.</p>
 </dd>
 <dt class="hdlist1">parse</dt>
 <dd>
-<p>To examine a program and analyze the syntactic structure.
-</p>
+<p>To examine a program and analyze the syntactic structure.</p>
 </dd>
 <dt class="hdlist1">bug</dt>
 <dd>
-<p>An error in a program.
-</p>
+<p>An error in a program.</p>
 </dd>
 <dt class="hdlist1">debugging</dt>
 <dd>
-<p>The process of finding and correcting bugs.
-</p>
+<p>The process of finding and correcting bugs.</p>
 </dd>
 </dl>
 </div>
@@ -1545,8 +1484,7 @@ julia&gt;</pre>
 <p>Whenever you are experimenting with a new feature, you should try to make mistakes. For example, in the “Hello, World!” program, what happens if you leave out one of the quotation marks? What if you leave out both? What if you spell <code>println</code> wrong?</p>
 </div>
 <div class="paragraph">
-<p>This kind of experiment helps you remember what you read; it also helps when you are programming, because you get to know what the error messages mean. It is better to make mistakes now and on purpose than later and accidentally.
-</p>
+<p>This kind of experiment helps you remember what you read; it also helps when you are programming, because you get to know what the error messages mean. It is better to make mistakes now and on purpose rather than later and accidentally.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1560,7 +1498,7 @@ julia&gt;</pre>
 <p>You can use a minus sign to make a negative number like <code>-2</code>. What happens if you put a plus sign before a number? What about <code>2++2</code>?</p>
 </li>
 <li>
-<p>In math notation, leading zeros are ok, as in <code>02</code>. What happens if you try this in Julia?</p>
+<p>In math notation, leading zeros are okay, as in <code>02</code>. What happens if you try this in Julia?</p>
 </li>
 <li>
 <p>What happens if you have two values with no operator between them?</p>
@@ -1571,8 +1509,7 @@ julia&gt;</pre>
 <div class="sect4">
 <h5 id="ex01-2">Exercise 1-2</h5>
 <div class="paragraph">
-<p>Start the Julia REPL and use it as a calculator.
-</p>
+<p>Start the Julia REPL and use it as a calculator.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1597,7 +1534,7 @@ julia&gt;</pre>
 </div>
 </li>
 <li>
-<p>If you run a 10 kilometer race in 37 minutes 48 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?</p>
+<p>If you run a 10-kilometer race in 37 minutes 48 seconds, what is your average pace (time per mile in minutes and seconds)? What is your average speed in miles per hour?</p>
 </li>
 </ol>
 </div>
@@ -4395,7 +4332,7 @@ search:
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">time</span><span class="tok-p">()</span>
-<span class="tok-go">1.552393231136328e9</span></code></pre>
+<span class="tok-go">1.554234496488294e9</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -13732,9 +13669,9 @@ Due to some ancient injury?</pre>
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-n">deck</span> <span class="tok-o">=</span> <span class="tok-n">Deck</span><span class="tok-p">()</span>
 <span class="tok-go">A♣ 2♣ 3♣ 4♣ 5♣ 6♣ 7♣ 8♣ 9♣ 10♣ J♣ Q♣ K♣ A♦ 2♦ 3♦ 4♦ 5♦ 6♦ 7♦ 8♦ 9♦ 10♦ J♦ Q♦ K♦ A♥ 2♥ 3♥ 4♥ 5♥ 6♥ 7♥ 8♥ 9♥ 10♥ J♥ Q♥ K♥ A♠ 2♠ 3♠ 4♠ 5♠ 6♠ 7♠ 8♠ 9♠ 10♠ J♠ Q♠ K♠</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">shuffle!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">4♦ 8♥ Q♠ Q♥ 7♠ A♦ 10♣ 9♣ A♥ 4♥ 7♦ J♣ 3♦ J♠ K♣ Q♣ 4♣ 3♣ 2♥ 3♠ 5♦ J♥ A♣ 9♦ 2♠ 5♣ 8♣ K♦ 10♥ K♥ 6♣ 10♦ 7♣ A♠ 6♦ K♠ 5♠ 2♦ 6♥ J♦ 8♦ 8♠ 10♠ 3♥ 4♠ 9♥ Q♦ 9♠ 2♣ 5♥ 7♥ 6♠</span>
+<span class="tok-go">3♦ 6♦ 4♥ A♦ K♥ 10♣ 10♥ 4♦ 8♣ 6♠ 8♥ 2♣ 9♠ 7♦ Q♠ K♦ 9♣ 10♦ 7♣ 6♣ 9♥ 6♥ 9♦ A♣ 10♠ 2♠ 2♦ Q♣ J♥ 8♠ J♣ 5♦ 3♣ J♦ 4♣ 3♠ 8♦ Q♥ A♥ Q♦ 5♥ 2♥ 5♠ 5♣ J♠ A♠ K♠ 7♥ 4♠ 3♥ 7♠ K♣</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">card</span> <span class="tok-o">=</span> <span class="tok-n">pop!</span><span class="tok-p">(</span><span class="tok-n">deck</span><span class="tok-p">)</span>
-<span class="tok-go">6♠</span>
+<span class="tok-go">K♣</span>
 <span class="tok-gp">julia&gt;</span> <span class="tok-n">push!</span><span class="tok-p">(</span><span class="tok-n">hand</span><span class="tok-p">,</span> <span class="tok-n">card</span><span class="tok-p">)</span></code></pre>
 </div>
 </div>
@@ -15654,7 +15591,7 @@ Due to some ancient injury?</pre>
 <div class="content">
 <pre class="pygments highlight"><code data-lang="jlcon"><span></span><span class="tok-gp">julia&gt;</span> <span class="tok-nd">@code_llvm</span> <span class="tok-n">squaresum</span><span class="tok-p">(</span><span class="tok-mf">3.0</span><span class="tok-p">,</span> <span class="tok-mf">4.0</span><span class="tok-p">)</span>
 <span class="tok-go">;  @ none:2 within `squaresum&#39;</span>
-<span class="tok-go">define double @julia_squaresum_15685(double, double) {</span>
+<span class="tok-go">define double @julia_squaresum_14821(double, double) {</span>
 <span class="tok-go">top:</span>
 <span class="tok-go">; ┌ @ intfuncs.jl:243 within `literal_pow&#39;</span>
 <span class="tok-go">; │┌ @ float.jl:399 within `*&#39;</span>
@@ -16411,9 +16348,15 @@ Due to some ancient injury?</pre>
 </div>
 </div>
 </div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. Reeves, Byron, and Clifford Ivar Nass. 1996. “The Media Equation: How People Treat Computers, Television, and New Media Like Real People and Places.” Chicago, IL: Center for the Study of Language and Information; New York: Cambridge University Press.
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-03-12 13:20:27 +0100
+Last updated 2019-04-02 21:48:13 +0200
 </div>
 </div>
 <script type="text/x-mathjax-config">
