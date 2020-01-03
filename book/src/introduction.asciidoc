@@ -27,7 +27,7 @@ Choosing a programming language is always subjective. For me, the following char
 - Julia is an optionally typed programming language whose (user-defined) data types make the code clearer and more robust.
 - Julia has an extended standard library and numerous third-party packages are available.
 
-Julia is a unique programming language because it solves the so-called "two languages problem." No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsibility of the programmer to optimize the code that forms a bottleneck, but this can done in Julia itself.
+Julia is a unique programming language because it solves the so-called "two languages problem." No other programming language is needed to write high-performance code. This does not mean it happens automatically. It is the responsibility of the programmer to optimize the code that forms a bottleneck, but this can be done in Julia itself.
 
 === Who Is This Book For?
 
