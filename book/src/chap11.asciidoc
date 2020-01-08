@@ -529,7 +529,7 @@ As you work with bigger datasets it can become unwieldy to debug by printing and
 
 * Scale down the input:
 +
-If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find which errors. You sould not edit the files themselves, but rather modify the program so it reads only the first latexmath:[\(n\)] lines.
+If possible, reduce the size of the dataset. For example if the program reads a text file, start with just the first 10 lines, or with the smallest example you can find which errors. You should not edit the files themselves, but rather modify the program so it reads only the first latexmath:[\(n\)] lines.
 (((scale down)))
 +
 If there is an error, you can reduce latexmath:[\(n\)] to the smallest value that manifests the error, and then increase it gradually as you find and correct errors.
