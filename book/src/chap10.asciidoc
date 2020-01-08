@@ -780,7 +780,6 @@ And these are wrong:
 ----
 insert!(t, 4, [x])         # WRONG!
 push!(t, [x])              # WRONG!
-vcat(t, [x])               # WRONG!
 ----
 
 * Make copies to avoid aliasing.
