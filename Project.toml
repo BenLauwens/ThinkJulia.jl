@@ -1,0 +1,25 @@
+name = "ThinkJulia"
+uuid = "a7f2b756-c18b-4c7f-87da-faca9ac81b29"
+
+[deps]
+Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+BinaryProvider = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+Luxor = "ae8d54c2-7ccd-5906-9d76-62fc9837b5bc"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+REPL = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+TikzPictures = "37f6aa50-8035-52d0-81c2-5a1d08754b2d"
+
+[compat]
+BinaryProvider = "0.5"
+Luxor = "1"
+TikzPictures = "3"
+julia = "0.7, 1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
