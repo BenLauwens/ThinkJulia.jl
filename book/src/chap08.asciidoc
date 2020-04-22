@@ -23,7 +23,7 @@ A +Char+ value represents a single character and is surrounded by single quotes:
 julia> 'x'
 'x': ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
 julia> '🍌'
-'🍌': Unicode U+01f34c (category So: Symbol, other)
+'🍌': Unicode U+1F34C (category So: Symbol, other)
 julia> typeof('x')
 Char
 ----
@@ -68,7 +68,7 @@ julia> i = 1
 julia> fruit[i+1]
 'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
 julia> fruit[end-1]
-'n': ASCII/Unicode U+006e (category Ll: Letter, lowercase)
+'n': ASCII/Unicode U+006E (category Ll: Letter, lowercase)
 ----
 
 But the value of the index has to be an integer. Otherwise you get:
@@ -575,7 +575,7 @@ i = 4
 j = 1
 i = 5
 j = 0
-ERROR: BoundsError: attempt to access "pots"
+ERROR: BoundsError: attempt to access String
   at index [5]
 ----
 

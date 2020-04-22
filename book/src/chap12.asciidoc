@@ -70,7 +70,7 @@ If multiple arguments are provided, the result is a tuple with the given argumen
 [source,@julia-repl-test]
 ----
 julia> t3 = tuple(1, 'a', pi)
-(1, 'a', π = 3.1415926535897...)
+(1, 'a', π)
 ----
 
 Because tuple is the name of a built-in function, you should avoid using it as a variable name.

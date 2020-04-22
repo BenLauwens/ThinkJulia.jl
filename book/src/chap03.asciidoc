@@ -295,8 +295,8 @@ julia> printtwice(42)
 42
 42
 julia> printtwice(π)
-π = 3.1415926535897...
-π = 3.1415926535897...
+π
+π
 ----
 
 The same rules of composition that apply to built-in functions also apply to programmer-defined functions, so we can use any kind of expression as an argument for +printtwice+:
