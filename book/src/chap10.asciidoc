@@ -562,7 +562,7 @@ image::images/fig103.svg[]
 In this case we would say that the two arrays are _equivalent_, because they have the same elements, but not _identical_, because they are not the same object. If two objects are identical, they are also equivalent, but if they are equivalent, they are not necessarily identical.
 (((equivalent)))(((identical)))
 
-To be precise an object has a value. If you evaluate +[1, 2, 3]+, you get an array object whose value is a sequence of integers. If another array has the same elements, we say it has the same value, but it is not the same object.
+To be precise, an object has a value. If you evaluate +[1, 2, 3]+, you get an array object whose value is a sequence of integers. If another array has the same elements, we say it has the same value, but it is not the same object.
 
 
 === Aliasing
