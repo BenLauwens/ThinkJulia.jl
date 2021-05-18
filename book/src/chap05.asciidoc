@@ -1,13 +1,13 @@
 [[chap05]]
 == Conditionals and Recursion
 
-The main topic of this chapter is the +if+ statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: floor division and modulus.
+The main topic of this chapter is the +if+ statement, which executes different code depending on the state of the program. But first I want to introduce two new operators: euclidean division and modulus.
 
 
-=== Floor Division and Modulus
+=== Euclidean Division and Modulus
 
-The _floor division_ operator, +÷+ (*+\div TAB+*), divides two numbers and rounds down to an integer. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
-(((floor division operator)))((("operator", "Base", "÷", see="floor division operator")))((("÷", see="floor division operator")))
+The _Euclidean division_ operator, +÷+ (*+\div TAB+*), divides two numbers and rounds to the integer closest to 0. For example, suppose the run time of a movie is 105 minutes. You might want to know how long that is in hours. Conventional division returns a floating-point number:
+(((euclidean division operator)))((("operator", "Base", "÷", see="euclidean division operator")))((("÷", see="euclidean division operator")))
 
 [source,@julia-repl-test chap05]
 ----
@@ -17,7 +17,7 @@ julia> minutes / 60
 1.75
 ----
 
-But we don’t normally write hours with decimal points. Floor division returns the integer number of hours, rounding down:
+But we don’t normally write hours with decimal points. Euclidean division returns the integer number of hours, rounding down:
 
 [source,@julia-repl-test chap05]
 ----
@@ -456,7 +456,7 @@ And you get:
 
 This is not the result you expected.
 
-To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses floor division instead of floating-point division.
+To find the error, it might be useful to print the value of ratio, which turns out to be 0. The problem is in line 3, which uses euclidean division instead of floating-point division.
 
 [WARNING]
 ====
@@ -466,9 +466,9 @@ You should take the time to read error messages carefully, but don’t assume th
 
 === Glossary
 
-floor division::
-An operator, denoted +÷+, that divides two numbers and rounds down (toward negative infinity) to an integer.
-(((floor division)))
+euclidean division::
+An operator, denoted +÷+, that divides two numbers and rounds to the integer closest to 0. Positive values round down and negative values round up.
+(((euclidean division)))
 
 modulus operator::
 An operator, denoted with a percent sign (%), that works on integers and returns the remainder when one number is divided by another.
