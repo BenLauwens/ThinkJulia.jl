@@ -1,9 +1,11 @@
 name = "ThinkJulia"
 uuid = "a7f2b756-c18b-4c7f-87da-faca9ac81b29"
+authors = ["ben lauwens"]
+version = "0.1.0"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
-BinaryProvider = "b99e7846-7c00-51b0-8f62-c81ae34c0232"
+Gdbm_jll = "54ca2031-c8dd-5cab-9ed4-295edde1660f"
 Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
 Luxor = "ae8d54c2-7ccd-5906-9d76-62fc9837b5bc"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
@@ -13,10 +15,10 @@ Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 TikzPictures = "37f6aa50-8035-52d0-81c2-5a1d08754b2d"
 
 [compat]
-BinaryProvider = "0.5"
-Luxor = "1"
+Gdbm_jll = "1.18.1"
+Luxor = "3"
 TikzPictures = "3"
-julia = "0.7, 1"
+julia = "1.6"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"

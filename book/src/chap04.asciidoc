@@ -5,13 +5,11 @@ This chapter presents a case study that demonstrates a process for designing fun
 
 It introduces turtle graphics, a way to create programmatic drawings. Turtle graphics are not included in the Standard Library, so the ThinkJulia module has to be added to your Julia setup.
 
-The examples in this chapter can be executed in a graphical notebook on JuliaBox, which combines code, formatted text, math, and multimedia in a single document (see <<juliabox>>).
-(((JuliaBox, graphical notebook)))
-
+The examples in this chapter can be executed in a graphical notebook such as IJulia or Pluto, which leys you combine code, formatted text, math, and multimedia in a single document.
 
 === Turtles
 
-A _module_ is a file that contains a collection of related functions. Julia provides some modules in its Standard Library. Additional functionality can be added from a growing collection of _packages_ (https://juliaobserver.com).
+A _module_ is a file that contains a collection of related functions. Julia provides some modules in its Standard Library. Additional functionality can be added from a growing collection of _packages_ (https://juliahub.com).
 (((module)))(((package)))
 
 Packages can be installed in the REPL by entering the Pkg REPL-mode using the key +]+.

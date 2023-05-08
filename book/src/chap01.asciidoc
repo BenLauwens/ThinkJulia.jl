@@ -39,9 +39,7 @@ One ((("Julia", "running")))of the challenges of getting started with Julia is t
 
 To avoid that problem, I recommend that you start out running Julia in a browser. Later, when you are comfortable with Julia, I’ll make suggestions for installing Julia on your computer.
 
-In ((("JuliaBox")))((("online resources", "JuliaBox")))the browser, you can run Julia on https://www.juliabox.com[JuliaBox]. No installation is required—just point your browser there, log in, and start computing (see <<juliabox>>).
-
-The Julia _REPL_ (Read–Eval–Print Loop) ((("REPL (Read-Eval-Print Loop)")))is a program that reads and executes Julia code. You can start the REPL by opening a terminal on JuliaBox and typing *+julia+* on the command line. When it starts, you should see output like this:
+The Julia _REPL_ (Read–Eval–Print Loop) ((("REPL (Read-Eval-Print Loop)")))is a program that reads and executes Julia code. You can start the REPL by opening a terminal and typing *+julia+* on the command line. When it starts, you should see output like this:
 
 [source,@julia-eval]
 ----
