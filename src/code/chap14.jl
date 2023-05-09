@@ -43,7 +43,7 @@ function gdbm_fetch(handle::Ptr{Cvoid}, key::Datum)
 end
 
 function gdbm_exists(handle::Ptr{Cvoid}, key::Datum)
-  ret = ccall((:gdbm_exists, libgdbm)), Int32, (Ptr{Cvoid}, Datum), handle, key)
+  ret = ccall((:gdbm_exists, libgdbm), Int32, (Ptr{Cvoid}, Datum), handle, key)
   ret == 0 && return false
   true
 end

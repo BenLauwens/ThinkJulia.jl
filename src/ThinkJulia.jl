@@ -1,7 +1,5 @@
 module ThinkJulia
 
-  __precompile__(false)
-
   using Printf
   using Random
   using Base64
@@ -21,7 +19,7 @@ module ThinkJulia
 
   export printlyrics, repeatlyrics, printtwice, cattwice
   export rightjustify, printgrid
-  export Turtle, forward, turn, penup, pendown, @svg
+  export Turtle, forward, turn, penup, pendown, @svg, @drawsvg, @png, background
   #export countdown, printn, recurse
   #export area, absvalue, distance, circlearea, isdivisible, fact, fib
   export mysqrt, testsquareroot

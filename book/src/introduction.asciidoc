@@ -71,7 +71,7 @@ All ((("code examples in this book")))((("Git")))((("GitHub")))((("repository"))
 
 A ((("packages", "installing")))((("add command, in REPL")))convenience package is provided that can be directly added to Julia. Just type pass:[<code>add <a href="https://github.com/BenLauwens/ThinkJulia.jl">https://github.com/BenLauwens/ThinkJulia.jl</a></code>] in the REPL in Pkg mode, see <<turtles>>.
 
-The ((("Julia", "running")))easiest way to run Julia code is by going to https://juliabox.com and starting a free session. Both the REPL and a notebook interface are available. If ((("Julia", "installing")))you want to have Julia locally installed on your computer, you can download https://juliacomputing.com/products/juliapro.html[JuliaPro] for free from Julia Computing. It consists of a recent Julia version, the Juno interactive development environment based on Atom, and a number of preinstalled Julia packages. If you are more adventurous, you can download Julia from https://julialang.org, install the editor you like (e.g., Atom or Visual Studio Code), and activate the plug-ins for Julia integration. To ((("IJulia package")))a local install, you can also add the +IJulia+ package and run a Jupyter notebook on your computer.
+Download Julia from https://julialang.org, install the editor you like (e.g. Visual Studio Code), and activate the plug-ins for Julia integration. To ((("IJulia package")))a local install, you can also add the +IJulia+ package and run a Jupyter notebook on your computer.
 
 === Acknowledgments
 
