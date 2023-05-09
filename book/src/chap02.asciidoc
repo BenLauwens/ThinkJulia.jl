@@ -64,13 +64,13 @@ It turns out that +struct+ is one of Julia’s _keywords_. The REPL uses keyword
 Julia has these keywords:
 
 ----
-abstract type    baremodule   begin      break       catch
-const            continue     do         else        elseif      
-end              export       finally    for         function
-global           if           import     importall   in         
-let              local        macro      module      mutable struct
-primitive type   quote        return     try         using            
-struct           where        while
+abstract type   baremodule   begin    break            catch
+const           continue     do       else             elseif
+end             export       false    finally          for
+function        global       if       import           let
+local           macro        module   mutable struct   primitive type
+quote           return       true     using            struct
+while
 ----
 
 You don’t have to memorize this list. In most development environments, keywords are displayed in a different color; if you try to use one as a variable name, you’ll know.
