@@ -188,7 +188,7 @@ Here, another example of the dot operator is shown. Julia also allows numeric li
 
 === Strings
 
-In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (_regexes_), which eases the task of finding complex patterns in string objets.
+In <<chap08>> and <<chap09>>, we did some elementary searches in string objects. Julia can handle however Perl-compatible regular expressions (_regexes_), which eases the task of finding complex patterns in string objects.
 (((regex)))
 
 The +usesonly+ function can be implemented as a regex:

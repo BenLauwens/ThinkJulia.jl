@@ -423,7 +423,7 @@ The star (+pass:[*]+) near the arrow head is a _multiplicity_; it indicates how 
 
 There are no dependencies in this diagram. They would normally be shown with a dashed arrow. Or if there are a lot of dependencies, they are sometimes omitted.
 
-A more detailed diagram might show that a Deck actually contains an array of Cards, but built-in types like array and dictionnaries are usually not included in type diagrams.
+A more detailed diagram might show that a Deck actually contains an array of Cards, but built-in types like array and dictionaries are usually not included in type diagrams.
 
 [[interactive]]
 === Debugging
