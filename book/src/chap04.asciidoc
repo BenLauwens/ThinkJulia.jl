@@ -29,11 +29,12 @@ Before we can use the functions in a module, we have to import it with an +using
 ----
 julia> using ThinkJulia
 
-julia> 🐢 = Turtle()
+julia> turtle = Turtle()
 Luxor.Turtle(0.0, 0.0, true, 0.0, (0.0, 0.0, 0.0))
 ----
 
-The +ThinkJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +🐢+ (*+\:turtle: TAB+*).
+The +ThinkJulia+ module provides a function called +Turtle+ that creates a +Luxor.Turtle+ object, which we assign to a variable named +turtle+.  (A fun exercise is to change the code, both here and below, to replace +turtle+ by the emoji symbol +🐢+, which can be typed at the +julia>+ prompt by tab-completing
+*+\:turtle: TAB+*. This shows off Julia's support for more arbitrary symbolic identifiers based on the Unicode standard.)
 (((Turtle)))((("type", "Luxor", "Turtle", see="Turtle")))
 
 Once you create a turtle, you can call a function to move it around a drawing. For example, to move the turtle forward:
@@ -42,7 +43,7 @@ Once you create a turtle, you can call a function to move it around a drawing. F
 [source,julia]
 ----
 @svg begin
-    forward(🐢, 100)
+    forward(turtle, 100)
 end
 ----
 
@@ -66,11 +67,11 @@ To draw a right angle, modify the macro call:
 
 [source,julia]
 ----
-🐢 = Turtle()
+turtle = Turtle()
 @svg begin
-    forward(🐢, 100)
-    turn(🐢, -90)
-    forward(🐢, 100)
+    forward(turtle, 100)
+    turn(turtle, -90)
+    forward(turtle, 100)
 end
 ----
 
@@ -87,15 +88,15 @@ Chances are you wrote something like this:
 
 [source,julia]
 ----
-🐢 = Turtle()
+turtle = Turtle()
 @svg begin
-    forward(🐢, 100)
-    turn(🐢, -90)
-    forward(🐢, 100)
-    turn(🐢, -90)
-    forward(🐢, 100)
-    turn(🐢, -90)
-    forward(🐢, 100)
+    forward(turtle, 100)
+    turn(turtle, -90)
+    forward(turtle, 100)
+    turn(turtle, -90)
+    forward(turtle, 100)
+    turn(turtle, -90)
+    forward(turtle, 100)
 end
 ----
 
@@ -119,11 +120,11 @@ Here is a +for+ statement that draws a square:
 
 [source,julia]
 ----
-🐢 = Turtle()
+turtle = Turtle()
 @svg begin
     for i in 1:4
-        forward(🐢, 100)
-        turn(🐢, -90)
+        forward(turtle, 100)
+        turn(turtle, -90)
     end
 end
 ----
@@ -200,22 +201,22 @@ function square(t)
         turn(t, -90)
     end
 end
-🐢 = Turtle()
+turtle = Turtle()
 @svg begin
-    square(🐢)
+    square(turtle)
 end
 ----
 
 The innermost statements, +forward+ and +turn+ are indented twice to show that they are inside the +for+ loop, which is inside the function definition.
 (((indentation)))
 
-Inside the function, +t+ refers to the same turtle +🐢+, so +turn(t, -90)+ has the same effect as +turn(🐢, -90)+. In that case, why not call the parameter +🐢+? The idea is that +t+ can be any turtle, not just +🐢+, so you could create a second turtle and pass it as an argument to +square+:
+Inside the function, +t+ refers to the same turtle +turtle+, so +turn(t, -90)+ has the same effect as +turn(turtle, -90)+. In that case, why not call the parameter +turtle+? The idea is that +t+ can be any turtle, not just +turtle+, so you could create a second turtle and pass it as an argument to +square+:
 
 [source,julia]
 ----
-🐫 = Turtle()
+turtle2 = Turtle()
 @svg begin
-    square(🐫)
+    square(turtle2)
 end
 ----
 
@@ -236,9 +237,9 @@ function square(t, len)
         turn(t, -90)
     end
 end
-🐢 = Turtle()
+turtle = Turtle()
 @svg begin
-    square(🐢, 100)
+    square(turtle, 100)
 end
 ----
 
@@ -257,9 +258,9 @@ function polygon(t, n, len)
         turn(t, -angle)
     end
 end
-🐢 = Turtle()
+turtle = Turtle()
 @svg begin
-    polygon(🐢, 7, 70)
+    polygon(turtle, 7, 70)
 end
 ----
 
