@@ -11,7 +11,7 @@ Julia provides also a large number of specialized modules in its Standard Librar
 * +using _Module_+ imports all exported +_Module_+ functions, types and macros.
 (((using)))
 
-Additional functionality can be added from a growing collection of packages (https://juliaobserver.com).
+Additional functionality can be added from a growing collection of packages (https://juliahub.com/ui/Home).
 
 This chapter is not a replacement of the official Julia documentation. I give merely some examples to illustrate what is possible without being exhaustive.  Functions already introduced elsewhere are not included. A complete overview can be found in https://docs.julialang.org.
 
